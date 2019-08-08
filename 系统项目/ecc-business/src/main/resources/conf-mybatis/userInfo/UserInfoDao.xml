@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.userInfo.UserInfoDao">
+	
+	<resultMap type="userInfoVo" id="userInfoVo">
+		<result column="EMPID" property="empID"/>
+		<result column="EMNAME" property="empName"/>
+		<result column="REORGID" property="reorgId"/>
+		<result column="REORGNAME" property="reOrgName"/>
+		<result column="ORGID" property="orgId"/>
+		<result column="ORGNAME" property="orgName"/>
+		<result column="SECOND_ORGID" property="secondOrgid"/>
+		<result column="SECOND_ORGNAME" property="secondOrgname"/>
+		<result column="TITLEID" property="titleId"/>
+		<result column="TITLENAME" property="titleName"/>
+		<result column="EMPSNAME" property="empSName"/>
+		<result column="EMPSTAT" property="empStat"/>
+		<result column="ORMEMBERSTAT" property="ormemberStat"/>
+		<result column="EMPEMAIL" property="empEmail"/>
+	</resultMap>
+
+	<!-- 获取用户信息 -->
+	<select id="searchUserInfoList" parameterType="userInfoVo"  resultMap="userInfoVo" >
+			SELECT A.A1 AS REORGID,
+			       A.A1_NAME AS REORGNAME,
+			       A.A2 AS ORGID,
+			       A.A2_NAME AS ORGNAME,
+			       A.A3 AS  SECOND_ORGID,
+			       A.A3_NAME AS SECOND_ORGNAME,
+			       C.TITLEID AS TITLEID,
+			       C.TITLENAME AS TITLENAME,
+			       C.EMPID ,
+			       C.EMNAME,
+			       EMP.LOGIN AS EMPSNAME,
+			       EMP.STAT AS EMPSTAT,
+			       C.STAT AS ORMEMBERSTAT
+			  FROM (SELECT A.REORGID   AS A1,
+			               A.REORGNAME A1_NAME,
+			               A.ORGID     A2,
+			               A.ORGNAME   AS A2_NAME,
+			               B.ORGID     A3,
+			               B.ORGNAME   A3_NAME
+			          FROM T_ECC_ORRELA A, T_ECC_ORRELA B
+			         WHERE A.ORGID = B.REORGID AND A.STAT='STAR' AND B.STAT='STAR') A,
+			       T_ECC_ORMEMBER C,T_ECC_EMPLOYEE EMP
+			
+			 WHERE C.ORGID = A.A3 AND EMP.EMPID=C.EMPID
+			 <if test="empID !=null and empID!='' ">
+			 	AND C.EMPID=#{empID}
+			 </if>
+			 <if test="empName !=null and empName!= '' ">
+			 
+			 	 AND ( C.EMNAME LIKE CONCAT(CONCAT('%', #{empName}), '%')
+			 	      OR C.EMNAME LIKE CONCAT(CONCAT('%', #{empName}), '%')
+			 	      OR A.A2_NAME LIKE CONCAT(CONCAT('%', #{empName}), '%')
+			 	      OR A.A3_NAME LIKE CONCAT(CONCAT('%', #{empName}), '%')
+			 	      OR C.TITLENAME LIKE CONCAT(CONCAT('%', #{empName}), '%')
+			 	 )
+			 </if>
+			 <if test="empSName !=null and empSName != '' ">
+			 	 AND EMP.LOGIN = #{empSName}
+			 </if>
+			 ORDER BY EMNAME ASC
+	</select>
+	<!-- 查询KM用户信息 -->
+	<select id="searchUserInfo" parameterType="userInfoVo" resultMap="userInfoVo">
+	 SELECT * FROM T_ECC_EMPLOYEE EMP 
+	 WHERE  1=1
+	 <!--  EMP.STAT='STAR'  做缓存显示的员工列表  不需要过滤任何状态-->
+	 		<if test="empID !=null and empID!='' ">
+			 	AND EMP.EMPID=#{empID}
+			</if>
+	</select>
+	
+	<!-- 获取部门信息 -->
+	
+	<select id="searchDepartmentList" parameterType="userInfoVo"  resultMap="userInfoVo" >
+			SELECT DISTINCT  
+		         AB.PARENTID AS REORGID,
+		         AB.PARENTNAME AS REORGNAME,
+		         AB.ORGID,
+		         AB.ORGNAME,
+		         C.ORGID AS SECOND_ORGID,
+		         C.ORGNAME AS SECOND_ORGNAME  
+		    FROM  (
+					SELECT DISTINCT  
+		               A.ORGID   AS PARENTID ,
+		               A.ORGNAME AS PARENTNAME,
+		               B.ORGID,
+		               B.ORGNAME   
+			        FROM T_ECC_ORRELA A, T_ECC_ORRELA B
+			        WHERE A.ORGID = B.REORGID AND A.STAT='STAR' AND B.STAT='STAR' AND  A.REORGID='0'
+		      )AB 
+		  LEFT JOIN T_ECC_ORRELA C ON  AB.ORGID=C.REORGID  AND C.STAT='STAR'
+		  
+		  <if test="orgId !=null and orgId!='' ">
+			 	AND AB.ORGID=#{orgId}
+		  </if>
+		 <if test="orgName !=null and orgName!= '' ">
+		 
+		 	 AND ( C.EMNAME LIKE CONCAT(CONCAT('%', #{orgName}), '%')
+		 	      OR C.EMNAME LIKE CONCAT(CONCAT('%', #{orgName}), '%')
+		 	      OR A.A2_NAME LIKE CONCAT(CONCAT('%', #{orgName}), '%')
+		 	      OR A.A3_NAME LIKE CONCAT(CONCAT('%', #{orgName}), '%')
+		 	      OR C.TITLENAME LIKE CONCAT(CONCAT('%', #{orgName}), '%')
+		 	 )
+		 </if>
+		  ORDER BY REORGNAME DESC
+	</select>
+	
+	
+	<select id="queryAllDepartmentList"   resultMap="userInfoVo" >
+	   SELECT DISTINCT  
+	       A.ORGID   AS REORGID ,
+	       A.ORGNAME AS REORGNAME,
+	       '' ORGID,
+	       '' ORGNAME ,  
+	           '' AS SECOND_ORGID,
+	       '' AS SECOND_ORGNAME  
+		  FROM T_ECC_ORRELA A
+		  WHERE A.STAT='STAR' AND  A.REORGID='0'
+		  UNION ALL            
+		 SELECT DISTINCT  
+		       A.ORGID   AS REORGID ,
+		       A.ORGNAME AS REORGNAME,
+		       B.ORGID,
+		       B.ORGNAME ,  
+		       '' AS SECOND_ORGID,
+		       '' AS SECOND_ORGNAME  
+       FROM T_ECC_ORRELA A, T_ECC_ORRELA B
+      WHERE A.ORGID = B.REORGID AND A.STAT='STAR' AND B.STAT='STAR' AND  A.REORGID='0'
+          UNION ALL 
+    SELECT DISTINCT  
+           AB.PARENTID AS REORGID,
+           AB.PARENTNAME AS REORGNAME,
+           AB.ORGID,
+           AB.ORGNAME,
+           C.ORGID AS SECOND_ORGID,
+           C.ORGNAME AS SECOND_ORGNAME  
+      FROM  (
+        SELECT DISTINCT  
+                 A.ORGID   AS PARENTID ,
+                 A.ORGNAME AS PARENTNAME,
+                 B.ORGID,
+                 B.ORGNAME   
+            FROM T_ECC_ORRELA A, T_ECC_ORRELA B
+            WHERE A.ORGID = B.REORGID AND A.STAT='STAR' AND B.STAT='STAR' AND  A.REORGID='0'
+        )AB 
+    JOIN T_ECC_ORRELA C ON  AB.ORGID=C.REORGID  AND C.STAT='STAR'
+	</select>
+	
+	<!-- 查询某岗位下的用户列表 -->
+	<select id="queryEmpListByStationId"  parameterType="map"   resultMap="userInfoVo" >
+	  SELECT EMP.EMPID ,EMP.EMNAME FROM   T_ECC_ORMEMBER C, T_ECC_EMPLOYEE EMP
+			 WHERE  EMP.EMPID=C.EMPID AND EMP.STAT='STAR' AND C.STAT='STAR'
+       AND C.ORGID=#{orgId} AND C.TITLEID=#{stationId}
+	</select>
+	
+	<select id="searchUserInfoListByParam" resultMap="userInfoVo">
+		SELECT
+			EMP.EMPID,
+		   	EMP.LOGIN AS EMPSNAME,
+		   	EMP.STAT AS EMPSTAT,
+		   	EMP.EMNAME
+		FROM T_ECC_EMPLOYEE EMP 
+		WHERE 
+			STAT ='STAR'
+			<if test="limit != null and limit != '' ">
+				AND ROWNUM <![CDATA[ <= ]]> #{limit}
+			</if>
+			<if test="empName != null and empName != '' ">
+				AND EMP.EMNAME like '%'||#{empName}||'%'
+			</if>
+	</select>
+	
+	<select id="searchUserInfoById" parameterType="java.lang.String" resultMap="userInfoVo">
+		SELECT A.A1 AS REORGID,
+		       A.A1_NAME AS REORGNAME,
+		       A.A2 AS ORGID,
+		       A.A2_NAME AS ORGNAME,
+		       A.A3 AS  SECOND_ORGID,
+		       A.A3_NAME AS SECOND_ORGNAME,
+		       C.TITLEID AS TITLEID,
+		       C.TITLENAME AS TITLENAME,
+		       C.EMPID ,
+		       C.EMNAME,
+		       EMP.LOGIN AS EMPSNAME,
+		       EMP.STAT AS EMPSTAT,
+		       C.STAT AS ORMEMBERSTAT
+		  FROM (SELECT A.REORGID   AS A1,
+		               A.REORGNAME A1_NAME,
+		               A.ORGID     A2,
+		               A.ORGNAME   AS A2_NAME,
+		               B.ORGID     A3,
+		               B.ORGNAME   A3_NAME
+		          FROM T_ECC_ORRELA A, T_ECC_ORRELA B
+		         WHERE A.ORGID = B.REORGID AND A.STAT='STAR' AND B.STAT='STAR') A,
+		      T_ECC_ORMEMBER C,T_ECC_EMPLOYEE EMP
+		 WHERE C.ORGID = A.A3 AND EMP.EMPID=C.EMPID  AND EMP.EMPID = #{userId}
+		      AND C.STAT='STAR' AND EMP.STAT ='STAR' AND lower(A.A2) like lower('217CMWA%')
+	</select>
+	
+	<insert id="saveOrUpdLoginInfo" parameterType="com.cmwa.ecc.business.commonVo.LoginErrorVo">
+		<selectKey keyProperty="loginErrorCount" resultType="int" order="BEFORE">
+			SELECT COUNT(*) FROM T_ECC_USERLOGIN_INFO T WHERE T.LOGINID = #{loginId}
+		</selectKey>
+		<if test="loginErrorCount > 0">
+			UPDATE T_ECC_USERLOGIN_INFO 
+	    	   SET LOGINDATE = SYSDATE,
+	    	       LOGINERRORCOUNT = LOGINERRORCOUNT+1
+	    	 WHERE LOGINID = #{loginId}
+		</if>
+		<if test="loginErrorCount == 0">
+			INSERT INTO T_ECC_USERLOGIN_INFO 
+	       VALUES(
+	       		  TO_CHAR(SYSDATE,'YYYYMMDD') || LPAD(ECC_SEQ_USERLOGIN_ID.NEXTVAL, 6,'0'),
+	       		  #{loginId},
+	       		  SYSDATE,
+	       		  '1'
+	       		  )
+		</if>
+	</insert>	
+	
+	<select id="queryLoginInfo" parameterType="java.lang.String" resultType="com.cmwa.ecc.business.commonVo.LoginErrorVo">
+		SELECT T.LOGINID    loginId,
+       		   TO_CHAR(T.LOGINDATE,'YYYY-MM-DD HH24:MI:SS')  loginDate,
+       		   T.LOGINERRORCOUNT  loginErrorCount
+  		  FROM T_ECC_USERLOGIN_INFO T
+  		 WHERE T.LOGINID = #{loginId}
+	</select>
+	
+	<delete id="deleteLoginInfo" parameterType="java.lang.String">
+		DELETE FROM T_ECC_USERLOGIN_INFO WHERE LOGINID = #{loginId}
+	</delete>
+	
+	<select id="queryUserInfoByLoginName" resultMap="userInfoVo" resultType="userInfoVo">
+		SELECT 
+		   EMP.EMPID,
+		   EMP.LOGIN AS EMPSNAME,
+		   EMP.STAT AS EMPSTAT,
+		   EMP.EMNAME
+		FROM T_ECC_EMPLOYEE EMP 
+		WHERE 1=1 AND LOWER(EMP.STAT) = LOWER('STAR')
+		<if test="user.empSName != null and user.empSName != '' ">
+				AND EMP.LOGIN = #{user.empSName}
+		</if>
+	</select>
+</mapper>

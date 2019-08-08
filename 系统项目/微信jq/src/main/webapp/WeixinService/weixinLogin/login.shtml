@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+    
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscroll.js"></script>
+	
+    
+</head>
+<body>
+<section class="page" id="section">
+    
+    <!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->
+    <div class="banner"> </div>
+
+    <section>
+        <div class="box-input">
+            <div class="input-text line">
+               <label for="name">账号</label>
+               <input type="text" id="userName" placeholder="请输入手机号码或身份证号码"  />
+            </div>
+            <div class="input-password clear">
+               <label for="password">密码</label>
+               <input type="password" id="passWord" placeholder="请输入登录密码" />
+            </div>
+        </div>
+        <div class="box-input indentify">
+            <div class="input-text">
+                <label for="indentify upadateregiste">验证码</label>
+                <input type="text" id="randomCode" placeholder="请输入验证码" />
+                <span class="indentifyimg">
+               		<img src="/WeixinService/buildimageservlet.xhtml" id="loginPageRondomCodeImg" onclick="getLoginPageRandomCode()" class="code_pic" />
+                </span>
+            </div>
+			<div style="padding-left: 20px;">
+				<input class="checkbox" type="checkbox" id="ischecked" checked="true";/>
+				<em id="agree">同意</em>
+				<span class="agree" style="color: #2061A2;text-decoration: underline;">
+					<a href="javascript:showXy('xy_03')" style="font-size: 14px;color: #2061A2;text-decoration: underline;">《个人投资者告知函书》</a>
+				</span>
+			</div>
+        </div>
+        <div class="box-btn"><a class="" id="login_btn" >登录</a></div>
+        <div class="box-a">
+          <a href="/WeixinService/weixinLogin/register.shtml" class="fl">快速注册账号</a>
+          <a href="/WeixinService/resetPassword.shtml" class="fr">忘记密码</a>
+        </div>
+    </section>   
+   <div class="fotLog">
+    	<div class="fot"></div>
+    </div>
+
+</section>
+	<div id="xy_01" style="display: none;">
+		<div id="wrapper">
+			<div id="scroller">
+				<!--#include virtual="/WeixinService/xy.shtml"-->
+			</div>
+		</div>
+	</div>
+	<div id="xy_02" style="display: none;">
+		<!--#include virtual="/WeixinService/xy2.shtml"-->
+	</div>
+
+	<div id="xy_03" style="display: none;">
+		<div id="wrapper_personage">
+			<div id="scroller1_personage">
+				<!--#include virtual="/WeixinService/xy3.shtml"-->
+			</div>
+		</div>
+	</div>
+   <!--登陆加载--> 
+   <div id="maskDiv" class="maskDiv" >
+		<div class="gifImgDiv"></div>
+   </div>
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/login.min.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/login.js"></script> -->
+<script type="text/javascript">
+//document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/login.js?version='+jsversion+'"><\/script>');
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/login.min.js?version='+jsversion+'"><\/script>');
+</script>
+<style>
+	body,html{
+		background: #fff;
+		height: 100%;
+	}
+	.input-text input, .input-password input{
+		    padding: 20px 0;
+	}
+	.banner{
+		height: 88px;
+		background:url(/WeixinWeb/WeixinWeb_Images/images/logBan.jpg) no-repeat;
+		background-size: 100% 100%;
+		border-top: 10px #f2f2f2 solid;
+	}
+	section{
+		background: #fff;
+		padding-top: 10px;
+		padding-bottom: 5px;
+	}
+	.box-input{
+		margin-top: 0;
+		margin-bottom: 10px;
+	}
+	.input-text,.input-password {
+	    border: 1px solid #ededed;
+	    padding-left: 13px;
+	    margin-bottom: 10px;
+	}
+	.input-text label, .input-password label{
+		color: #000;
+                 line-height:40px;
+	}
+	.fot{
+		height: 180px;
+		overflow-x: scroll;
+		margin: 0 auto;
+		border-top:10px #f2f2f2 solid;
+	    background:url(/WeixinWeb/WeixinWeb_Images/images/logFot.jpg) no-repeat;
+		background-size: 100% 144px;
+		margin-top: 38px;
+		 background-position-y: 20px;
+		 padding-bottom: 25px;
+	}
+</style>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no">
+    <title>成长足迹</title>
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/generatePhotos.css">
+    <script src="js/library/jquery-3.2.1.min.js"></script>
+    <script src="js/library/qrcode.js"></script>
+    <script src="js/library/common.js"></script>
+    <script src="js/public.js"></script>
+    <script src="js/generatePhotos.js"></script>
+</head>
+<body>
+<div class="page">
+    <!--内容-->
+    <div class="contain" id="contain">
+        <div class="hasPicture clearFloat" id="hasPicture" style="display: none">
+            <div class="picture"  id="picture">
+                <!--<div class="pictureList pictureList2">-->
+                    <!--<div class="imgWrap">-->
+                        <!--<img src="image/picture/img4.png">-->
+                    <!--</div>-->
+                    <!--<div class="imgWrap">-->
+                        <!--<img src="image/picture/img4.png">-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+            <div class="jar">
+                <span>大宝宝 4岁2个月20天</span>
+                <span>大宝宝 4岁2个月20天</span>
+                <span>大宝宝 4岁2个月20天</span>
+            </div>
+            <div class="content">
+                <div class="text">
+                    足迹正文最多只显示3行字
+                </div>
+                <div class="codeWrap">
+                    <img src=""  class="codeImage">
+                </div>
+            </div>
+        </div>
+        <div class="notPicture clearFloat"  id="notPicture" style="display: none">
+            <div class="codeWrap">
+                <img src="" class="codeImage">
+            </div>
+            <div class="jar">
+                <span>大宝宝 4岁2个月20天</span>
+                <span>大宝宝 4岁2个月20天</span>
+                <span>大宝宝 4岁2个月20天</span>
+            </div>
+            <div class="text">
+                足迹正文最多只显示3行字
+            </div>
+        </div>
+    </div>
+    <!--按钮-->
+    <div class="buttonWrap clearFloat" id="buttonWrap">
+        <div class="confirm" id="confirm">确定</div>
+        <div class="edit" id="edit">重新编辑</div>
+    </div>
+    <!--提示-->
+    <div class="tip">长按图片保存到相册</div>
+    <!--<div class="hintBox centerHintBox generatePhotosBox">-->
+        <!--<img class="wrap" src="image/icon/public/generateWrap.png">-->
+        <!--<div class="text">-->
+            <!--<p>生成足迹相片</p>-->
+            <!--<p class="per">0%</p>-->
+        <!--</div>-->
+        <!--<div class="photosWrap">-->
+            <!--<img src="image/icon/public/generatePhotos.png">-->
+        <!--</div>-->
+    <!--</div>-->
+</div>
+<!--音频播放器-->
+<div class="circleAudioPlayer">
+    <canvas></canvas>
+    <div class="button"></div>
+    <div class="close"></div>
+</div>
+</body>
+</html>

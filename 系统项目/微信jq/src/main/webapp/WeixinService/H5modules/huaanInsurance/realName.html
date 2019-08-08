@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="x5-orientation" content="portrait" />
+    <meta name="apple-mobile-web-app-capable" content="no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no">
+	<title>招商财富×华安保险</title>
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/huaanInsurance/style.css"/>
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/huaanInsurance/dialog.css"/>
+</head>
+<body>
+<!-- 设置隐藏域  设置 用户选择的手机话费还是京东卡-->
+<input type="hidden" value="" id="IsJdCard">
+    <div class="wrap realName">
+    	<div class="content">
+    		<h2></h2>
+    		<div class="inputBox">
+	    		 <ul>
+	    		 	<li class="dswkb">
+	    		 		<span>姓名</span>
+	    		 		<input type="text"  name="userName" placeholder="请输入您的真实姓名" class="flex1" readonly="readonly"/>
+	    		 	</li>
+	    		 	<li class="dswkb">
+	    		 		<span>卡号</span>
+	    		 		<input type="tel"  name="bankCard" placeholder="请输入您的银行卡号" class="flex1" />
+	    		 	</li>
+	    		 	<li class="dswkb">
+	    		 		<span>银行</span>
+	    		 		<div class="bankName flex1"></div>
+	    		 	</li>
+	    		 	<li class="dswkb">
+	    		 		<span>身份证号</span>
+	    		 		<input type="text"  name="idCard" placeholder="请输入您的身份证号码" class="flex1" readonly="readonly"/>
+	    		 	</li>
+	    		 	<li class="dswkb">
+	    		 		<span>手机号码</span>
+	    		 		<input type="tel" maxlength="11"  name="telPhone" placeholder="请输入银行预留手机号码" class="flex1"/>
+	    		 	</li>
+					 <li class="dswkb prizeType">
+						 <span>奖品类别</span>
+						 <div class="flex1">
+							 <em class="cur">京东卡</em>
+							 <em>话费充值</em>
+						 </div>
+					 </li>
+					 <li class="dswkb telEdit" style="display: none;">
+						 <div class="flex1">
+							 <b id="topUpTel"></b><b class="editIcon"></b>
+						 </div>
+					 </li>
+	    		 </ul>
+	    		 <div class="remark">*为了确保您本人领取权益，请填写相关信息进行验证。<br>我们承诺您填写的信息不会泄露。</div>
+	    		 <a href="javascript:;" id="getBtn">完成领取</a>
+	    	</div>
+    	</div>
+    	<p class="tips">如有任何疑问，欢迎致电招商财富咨询：<span>0755-23988886</span>。<br />*活动最终解释权归招商财富所有。</p>
+    </div>
+	<!--输入手机号码-->
+	<div class="popup formInput" style="display: none;">
+		<div class="mask"></div>
+		<div class="content2 center">
+		   <h2>充值手机号 <i></i></h2>
+			<ul>
+				<li class="dswkb">
+					<em></em><input type="tel" maxlength="11" placeholder="请输入您的手机号码" name="topTel" class="flex1">
+				</li>
+				<li class="dswkb">
+					<em></em><input type="tel" maxlength="11" placeholder="确认手机号码" name="reTopTel" class="flex1">
+				</li>
+			</ul>
+            <div class="btn-box">
+                <span class="btn cancel">取消</span>
+                <span class="btn sure" onclick="realName.updateMobile()">确定</span>
+            </div>
+		</div>
+	</div>
+<!--  隐藏域 设置是否确认手机号-->
+    <div><input type="hidden" id="IsSure" value=""> </div>
+    <style>
+    	body,html{
+    		background: #f9f2e2;
+    	}
+    </style>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/huaanInsurance/jquery-3.2.1.min.js"></script>
+ 	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jweixin-1.0.0.js"></script>
+ 	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/flexible.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/huaanInsurance/dialog.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/huaanInsurance/common.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/huaanInsurance/realName.js"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ed2b61a27da9a7a4c08caac2ddb8ffc1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</body>
+</html>

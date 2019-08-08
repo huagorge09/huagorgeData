@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.instfeemana.InstFeeSetDao">
+	<resultMap type="instDiscounVo" id="instDiscounVo">
+		<result column="SERIALNO" property="serialNo"/>
+		<result column="INSTTYPE" property="instType"/>
+		<result column="INSTTYPE_NAME" property="instTypeName"/>
+		<result column="FUNDID" property="fundId"/>
+		<result column="FUND_NAME" property="fundName"/>
+		<result column="APKIND" property="apkind"/>
+		<result column="APKIND_NAME" property="apkindName"/>
+		<result column="STRAMT" property="strAmt"/>
+		<result column="ENDAMT" property="endAmt"/>
+		<result column="DISCOUNT" property="discount"/>
+		<result column="STATUS" property="status"/>
+		<result column="STATUS_NAME" property="statusName"/>
+		<result column="CK_STATUS" property="checkStatus"/>
+		<result column="CHECK_STATUS_NAME" property="checkStatusName"/>
+		
+		<result column="CREATE_ID" property="createId"/>
+		<result column="CREATE_NAME" property="createName"/>
+		<result column="CREATE_TIME" property="createTime"/>
+		<result column="MODIFY_ID" property="modifyId"/>
+		<result column="MODIFY_NAME" property="modifyName"/>
+		<result column="MODIFY_TIME" property="modifyTime"/>
+		<result column="CHECK_ID" property="checkId"/>
+		<result column="CHECK_NAME" property="checkName"/>
+		<result column="CHECK_TIME" property="checkTime"/>
+	</resultMap>
+	
+	<select id="queryInstDiscountListPage" resultMap="instDiscounVo" parameterType="sparam">
+		SELECT SERIALNO,
+		       INSTTYPE,
+		       IBF_GET_PARAMNAME('SYSTEM','INSTTYPE',INSTTYPE) AS INSTTYPE_NAME,
+		       FUNDID,
+		       (SELECT FUNDNM FROM FUNDINFO WHERE ROWNUM = 1 AND FUNDID = T.FUNDID) AS FUND_NAME,
+		       APKIND,
+		       IBF_GET_PARAMNAME('SYSTEM','APKIND',APKIND) AS APKIND_NAME,
+		       STRAMT,
+		       ENDAMT,
+		       TO_CHAR(DISCOUNT,'FM9999999999999990.00') AS DISCOUNT,
+		       STATUS,
+		       IBF_GET_PARAMNAME('SYSTEM','ECCDATAST',STATUS) AS STATUS_NAME,
+		       CK_STATUS,
+		       IBF_GET_PARAMNAME('SYSTEM','ECC_CHECKDATAST',CK_STATUS) AS CHECK_STATUS_NAME,
+		       C_MAN AS CREATE_ID,
+		       ECC_IBF_GET_EMPLOYEE_NAME(C_MAN) AS CREATE_NAME,
+		       TO_CHAR(C_TIME,'YYYY-MM-DD HH24:MI:SS') CREATE_TIME,
+		       E_MAN AS MODIFY_ID,
+		       ECC_IBF_GET_EMPLOYEE_NAME(E_MAN) AS MODIFY_NAME,
+		       TO_CHAR(E_TIME,'YYYY-MM-DD HH24:MI:SS') MODIFY_TIME,
+		       CONF_MAN AS CHECK_ID,
+		       ECC_IBF_GET_EMPLOYEE_NAME(CONF_MAN) AS CHECK_NAME,
+		       TO_CHAR(CONF_TIME,'YYYY-MM-DD HH24:MI:SS') AS CHECK_TIME
+		  FROM INST_DISCOUNT T
+		  WHERE 1=1
+		  <if test="sp.serialNo != null and sp.serialNo !='' ">
+			 	AND SERIALNO = #{sp.serialNo}
+		  </if>
+		  <if test="sp.instType != null and sp.instType !='' ">
+			 	AND INSTTYPE = #{sp.instType}
+		  </if>
+		  <if test="sp.apkind != null and sp.apkind !='' ">
+			 	AND APKIND = #{sp.apkind}
+		  </if>
+		  <if test="sp.fundId != null and sp.fundId !='' ">
+			 	AND FUNDID = #{sp.fundId}
+		  </if>
+		  ORDER BY CK_STATUS ASC,STATUS DESC
+	</select>
+	
+	<select id="queryInstDiscountAllList" resultMap="instDiscounVo" parameterType="sparam">
+		SELECT SERIALNO,
+		       INSTTYPE,
+		       IBF_GET_PARAMNAME('SYSTEM','INSTTYPE',INSTTYPE) AS INSTTYPE_NAME,
+		       FUNDID,
+		       (SELECT FUNDNM FROM FUNDINFO WHERE ROWNUM = 1 AND FUNDID = T.FUNDID) AS FUND_NAME,
+		       APKIND,
+		       IBF_GET_PARAMNAME('SYSTEM','APKIND',APKIND) AS APKIND_NAME,
+		       STRAMT,
+		       ENDAMT,
+		       TO_CHAR(DISCOUNT,'FM9999999999999990.00') AS DISCOUNT,
+		       TO_CHAR(C_TIME,'YYYY-MM-DD HH24:MI:SS') CREATE_TIME,
+		       STATUS,
+		       IBF_GET_PARAMNAME('SYSTEM','ECCDATAST',STATUS) AS STATUS_NAME,
+		       CK_STATUS,
+		       IBF_GET_PARAMNAME('SYSTEM','ECC_CHECKDATAST',CK_STATUS) AS CHECK_STATUS_NAME,
+		       C_MAN AS CREATE_ID,
+		       ECC_IBF_GET_EMPLOYEE_NAME(C_MAN) AS CREATE_NAME,
+		       TO_CHAR(C_TIME,'YYYY-MM-DD HH24:MI:SS') CREATE_TIME,
+		       E_MAN AS MODIFY_ID,
+		       ECC_IBF_GET_EMPLOYEE_NAME(E_MAN) AS MODIFY_NAME,
+		       TO_CHAR(E_TIME,'YYYY-MM-DD HH24:MI:SS') MODIFY_TIME,
+		       CONF_MAN AS CHECK_ID,
+		       ECC_IBF_GET_EMPLOYEE_NAME(CONF_MAN) AS CHECK_NAME,
+		       TO_CHAR(CONF_TIME,'YYYY-MM-DD HH24:MI:SS') AS CHECK_TIME
+		  FROM INST_DISCOUNT T
+		  WHERE 1=1
+		  <if test="sp.serialNo != null and sp.serialNo !='' ">
+			 	AND SERIALNO = #{sp.serialNo}
+		  </if>
+		  <if test="sp.instType != null and sp.instType !='' ">
+			 	AND INSTTYPE = #{sp.instType}
+		  </if>
+		  <if test="sp.apkind != null and sp.apkind !='' ">
+			 	AND APKIND = #{sp.apkind}
+		  </if>
+		  <if test="sp.fundId != null and sp.fundId !='' ">
+			 	AND FUNDID = #{sp.fundId}
+		  </if>
+		  ORDER BY CK_STATUS ASC,STATUS DESC
+	</select>
+	
+	<select id="operateInstFeeSetInfo" statementType="CALLABLE">
+		{ call DS_OTP_DISCOUNT_INSERT
+		 (
+			#{PI_SERIALNO,jdbcType=VARCHAR,mode=IN},
+			#{PI_INSTTYPE,jdbcType=VARCHAR,mode=IN},
+			#{PI_FUNDID,jdbcType=VARCHAR,mode=IN},
+			#{PI_APKIND,jdbcType=VARCHAR,mode=IN},
+			#{PI_STRAMT,jdbcType=VARCHAR,mode=IN},
+			#{PI_ENDAMT,jdbcType=VARCHAR,mode=IN},
+			#{PI_DISCOUNT,jdbcType=VARCHAR,mode=IN},
+			#{PI_CMAN,jdbcType=VARCHAR,mode=IN},
+			#{PI_EMAN,jdbcType=VARCHAR,mode=IN},
+			#{PI_CONFMAN,jdbcType=VARCHAR,mode=IN},
+			#{PI_STATUS,jdbcType=VARCHAR,mode=IN},
+			#{PI_CKSTATUS,jdbcType=VARCHAR,mode=IN},
+			#{PI_OPERATYPE,jdbcType=VARCHAR,mode=IN},
+			#{PO_RETCOD,jdbcType=VARCHAR,mode=OUT},
+			#{PO_RETMSG,jdbcType=VARCHAR,mode=OUT}
+          )
+        } 
+	</select>
+</mapper>

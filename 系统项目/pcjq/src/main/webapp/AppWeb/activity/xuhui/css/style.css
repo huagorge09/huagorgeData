@@ -1,0 +1,67 @@
+/*public start*/
+*{ margin: 0; padding: 0;}
+html { font-family: "Microsoft Yahei", Helvetica, Arial, Heiti SC,"Helvetica Neue", STHeiTi, sans-serif;}
+body { background: #000; font-family: "Microsoft Yahei", Helvetica, Arial, Heiti SC,"Helvetica Neue", STHeiTi, sans-serif;}
+img{ border: 0; display: block;}
+.fl{ float: left;}
+.fr{ float: right;}
+.block{ display: block;}
+.none{ display: none;}
+.clear{ clear: both;}
+.clear:after{content:''; width:0; height:0; display:block; clear:both;}
+/*public end*/
+
+.content{
+    width: 100%;
+    margin: 0 auto;
+    background:#fff;
+}
+.content div{
+		width:1000px;
+		margin: 0 auto;
+}
+.content div.banner{
+	 width:100%;
+	 background:#071730;
+}
+.content div.footer{
+	 width:100%;
+	 background:#071730;
+	 margin-top: 140px;
+}
+.content div.banner img,.content div.footer img{
+		display:block;
+		width:100%;
+		margin: 0 auto;
+}
+.content img{
+    width: 100%;
+    margin: 0 auto;
+}
+.content .banner,.content .footer{
+    position: relative;
+    z-index: 3;
+}
+.content div a{
+    position: absolute;    
+    display: block;
+    z-index: 4; 
+    /* background: #fff;
+      background: rgba(0,0,0,0.0)!important;
+     filter: alpha(opacity=0);  */ 
+}
+.content .banner a{
+     left: 71%;
+    bottom: 10%;
+    /* width: 12.2%; */
+    margin-left: -6.1%;
+}
+.content .footer a{
+            left: 54%;
+    top: -24%;
+    /* width: 16%; */
+    margin-left: -8%;
+}
+.content div.banner a img,.content div.footer a img{
+    width: 100%;
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>父亲节活动-关注领取电影券</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/activityNew.css">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/swiper.minNew.css">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/swiperNew.min.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+</head>
+<body>
+	<!--#include virtual="/WeixinService/headerOrFooter/otherHeaderNew.shtml"-->
+	<div class="href success">
+		<img src="/WeixinWeb/WeixinWeb_Images/activity/QR.jpg" alt="" class="big">
+	</div>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/attentionNew.js"></script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+    <title>预约</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/cfb10/cfb.css">
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-init.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/flexible.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+</head>
+<body>
+<div class="wrap">
+	<div class="banner">
+		<h2>固收王牌-财富宝系列</h2>
+		<p>财富宝Plus，双AAA主体担保，FOF策略，收益增强，稳中求胜！</p>
+	</div>
+	<div class="proBox">
+		
+		<h2>固收精选-财富宝273天理财系列</h2>
+		<ul>
+			<li>
+				<p>9个月</p>
+				<p>产品期限</p>
+			</li>
+			<li>
+				<p>预约可知</p>
+				<p>业绩报酬计提基准</p>
+			</li>
+			<li>
+				<p>100万</p>
+				<p>起投</p>
+			</li>
+		</ul>
+		<a href="javascript:bussiness();" class="btn">立即预约</a>
+		<p class="tips">*风险提示：投资有风险。本产品风险等级为R3中风险，适合风险承受能力为C3及以上的投资者。</p>
+	</div>
+</div>
+     <!--预约信息填写-->
+	<div class="cover-bg reserves hide">
+		<div class="content">
+			 <span class="close"></span>
+			 <h1>一键预约享专属服务<br>让投资无后顾之忧</h1>
+			 <h3>我们的专属顾问将24小时内给您回电</h3>
+			 <div class="form">
+			 	<ul>
+				 	<li>
+				 	   <div class="inputBox">
+				 	  	   <span></span> <input type="text" id="userName" name="userName" placeholder="请输入您的姓名"/>
+				 	   </div>	
+				       <p style="display: none;"></p>
+				 	</li>
+				 	<li class="foucs">
+				 		<div class="inputBox">
+				 	        <span></span> <input type="tel" id="mobilePhone" name="mobilePhone" maxlength="11" placeholder="请输入您的手机号码"/> 
+				 		</div>
+				 		<p  style="display: none;"></p>
+				 	</li>
+				 	
+				 </ul>
+				 <button id="saveBtn"  class="disabled">立即提交</button>
+			 </div>
+		</div>
+	</div>
+	<!-- 错误提示 -->
+	<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+		<span id="errorRemark"></span>
+	</div>
+	<!--预约成功-->
+	<div class="cover-bg success hide">
+		 <div class="content center">
+		 	<span class="close"></span>
+		 	<div class="successIcon"></div>
+		 	<h2>预约成功</h2>
+		 	<p>客户经理将尽快与您联系，请保持电话畅通</p>
+		 </div>
+	</div>
+	<style>
+		body,html{
+			height: 100%;
+			background: #070229;
+		}
+	.banner{
+		height: 7.02rem;
+		background: url(/WeixinWeb/WeixinWeb_Images/H5modules/sendMessage/banner.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.banner h2{
+		font-size: .32rem;
+		color: #fff;
+		padding-top: 3.75rem;
+		text-align: center;
+	}
+	.banner p{
+		width: 3.61rem;
+		line-height: .44rem;
+		font-size: .3rem;
+		color: #000000;
+		margin-left: 3.2rem;
+		margin-top: .2rem;
+	}
+	.proBox{
+		 height: 4.96rem;
+		 background: url(/WeixinWeb/WeixinWeb_Images/H5modules/sendMessage/pro.jpg);
+		 background-size: 100% 100%;
+	}
+	.proBox .kong{
+		visibility: hidden;
+	}
+	.proBox h2{
+		width: 5.42rem;
+		height: .6rem;
+		margin: 0 auto;
+		font-size: .32rem;
+		color: #fff;
+		text-align: center;
+		line-height: .6rem;
+	}
+	.proBox>p{
+	   font-size: .18rem;
+       color: #888794;
+	}
+	.proBox ul{
+		width: 6.5rem;
+		margin: 0 auto;
+		overflow: hidden;
+		margin-top: .5rem;
+	}
+	.proBox ul li{
+		text-align: center;
+		float: left;	
+	}
+	.proBox ul li p{
+		font-size: .22rem;
+	}
+	.proBox ul li p:nth-child(1){
+		height: .46rem;
+		line-height: .46rem;
+		font-size: .38rem;
+	}
+	.proBox ul li p:nth-child(2){
+		height: .50rem;
+		line-height: .46rem;
+		font-size: .22rem;
+		color: #9fa8ae;
+		margin-top: .05rem;
+	}
+	.proBox ul li:nth-child(1){
+		width: 2rem;	
+	}
+	.proBox ul li:nth-child(2){
+		width: 2.46rem;	
+	}
+	.proBox ul li:nth-child(2) p:nth-child(1){
+		font-weight:800;
+		font-size: .38rem;
+		color: #ef4f1e;
+	}
+	.proBox ul li:nth-child(3){
+		width: 2rem;	
+	}
+	.proBox .btn{
+		display: block;
+		width: 5.43rem;
+		height: .9rem;
+		 background: url(/WeixinWeb/WeixinWeb_Images/H5modules/sendMessage/btn.png);
+		 background-size: 100% 100%;
+		 text-align: center;
+		 margin: 0 auto;
+		 font-size: .32rem;
+		 color: #ffffff;
+		 line-height: .8rem;
+		     margin-top: .35rem;
+	}
+	.tips{
+	    font-size: .22rem;
+	    color: #888794;
+	    margin-top: .5rem;
+	    padding: 0 .5rem;
+	    line-height: .3rem;
+	}
+	</style> 
+ <script>
+	var pageSource=getUrlParams("tel").tel
+	var pageId="message"
+	$(function(){
+		cmwaOnkeyup("userName;mobilePhone",checkAppoInfoParam);
+		elemBind();
+	 	operatingRecord(pageSource,"openMessagePage",pageId,"","","","")
+	});
+	/* 验证输入框的有效性  */
+	function checkAppoInfoParam(){
+		var userName = $("#userName").val();
+		var mobilePhone = $("#mobilePhone").val();
+		if(userName == null || userName == ""){
+			$("#saveBtn").addClass("disabled").attr("onclick","");
+			return;
+		}else if(mobilePhone == null || mobilePhone == ""){
+			$("#saveBtn").addClass("disabled").attr("onclick","");
+			return;
+		}else{
+			$("#saveBtn").removeClass("disabled").attr("onclick","saveAppointInfo()");
+		}
+	}
+	/*
+	 * 用户信息提交
+	 */
+	function userDateSumbit(userName,mobilePhone){
+		$.ajax({
+				async : false,
+				url:apiHost + "/api/insertAppointInfo",
+				type : "post",
+				dataType : 'json',
+				data : {
+					"userName":userName,
+					"mobilePhone":mobilePhone,
+					"productType":"cfb273Message",
+					"cmfUserId":""
+				},
+				success : function(data) {
+					if(data.success){
+						$(".reserves").addClass("hide")
+						$(".success").removeClass("hide")
+						$("input[name=userName]").val('');
+						$("input[name=mobilePhone]").val('');
+						$("#saveBtn").addClass("disabled").attr("onclick","");
+					   operatingRecord(pageSource,"makeMessageSuccess",pageId,"","","","")
+					}else{
+						errorRemark(data.msg);
+					}
+				},
+				error : function() {
+					errorRemark("网络繁忙，请稍后再试。");
+				},
+			});
+	}
+	/**
+	 * 元素事件绑定
+	 */
+	function elemBind(){
+	    //鼠标键盘弹起
+		$("input").keyup(function(){
+			if($("input[name=userName]").val()!==""&&$("input[name=mobilePhone]").val()!==""){
+				$("button").removeClass("disabled");
+			}
+		});
+	     //输入框光标事件
+		$("input").focus(function(){
+			$(this).parents("div").addClass("foucs");
+			$(this).parents("li").find("p").hide().text("")
+		});
+		$("input").blur(function(){
+			$(this).parents("div").removeClass("foucs");
+		});
+	
+		//弹窗关闭
+		$(".close").click(function(){
+			$(".cover-bg").addClass("hide");
+			$("input[name=userName]").val('');
+			$("input[name=mobilePhone]").val('');
+	        $(".reserves li p").hide();
+	        $("body,html").css({"overflow":"auto","height":"auto"}); 
+	        $("#saveBtn").addClass("disabled").attr("onclick","");
+		})
+	
+	}
+	
+	//点击信息提交
+	function saveAppointInfo(){
+			var userName=$.trim($("input[name=userName]").val());
+			var mobilePhone=$.trim($("input[name=mobilePhone]").val());
+			var flag=true;
+			if(userName==""||!ischinese(userName)){
+				$("input[name=userName]").parents("li").find("p").show().text("请输入2-10字中文姓名");
+				flag=false;
+			}	
+			if (!isMobile(mobilePhone)) {
+				$("input[name=mobilePhone]").parents("li").find("p").show().text("请输入正确的手机号码");
+				flag=false;
+			}
+			
+			if(flag){
+				userDateSumbit(userName,mobilePhone);
+			}
+	}
+	
+	
+	function ischinese(name){
+	    return /^[\u2E80-\u9FFF]{2,10}$/.test(name)
+	}  
+	
+	 //验证手机号
+	function  isMobile(phone) {
+	        return /^0?(13[0-9]|15[012356789]|18[012356789]|14[57]|17[03678])[0-9]{8}$/.test(phone);
+	}
+	/**
+	 * 预约
+	 */
+	function bussiness(){	
+		 operatingRecord(pageSource,"clickAppointment",pageId,"","","","")
+		 $(".reserves").removeClass("hide");
+		 $("body,html").css({"overflow":"auto","height":"100%"}); 
+	}
+
+ </script>
+</body>
+</html>

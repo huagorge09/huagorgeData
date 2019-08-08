@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/bannerStyle.css">
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscroll.js"></script>
+<script src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscroll-probe.js"></script>
+
+</head>
+<body>
+	<section class="page">
+
+		<div id="wrapper">
+			<div id="scroller">
+				<!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->
+				<section>
+					<div id="fundInfoBox">
+					</div>
+					<a href="javascript:goToFund();" class="check-order" style="margin-top: 20px;">返回查看产品信息</a>
+				</section>
+			</div>
+		</div>
+	</section>
+	<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/fundElement.min.js"></script> -->
+	<script type="text/javascript">
+	document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/fundElement.min.js?version='+new Date().getTime()+'"><\/script>');
+	</script>
+</body>
+</html>

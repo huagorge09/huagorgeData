@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+    
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedomNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscrollNew.js"></script>
+	
+    
+</head>
+<body>
+<section class="page">
+<div id="wrapper">
+       <div id="scroller">
+    <!--#include virtual="/WeixinService/headerOrFooter/headerNew.shtml"-->
+
+
+
+	<section>
+		<div class="box-news box-aboutus">
+			<h2>
+				<img src="/WeixinWeb/WeixinWeb_Images/images/aboutus.jpg" alt="">
+			</h2>
+			<div class="box-news-detail">
+				<p>
+					招商财富资产管理有限公司是由招商基金管理有限公司发起设立的全资子公司，于2013年2月21日正式成立，注册地为深圳市前海，注册资本17.4亿元，经营特定客户资产管理业务以及中国证监会许可的其他业务。
+				</p>
+				<p>
+					我们崇尚"以人为本"的经营理念，在来自基金、信托、银行、券商等多元化背景的人员格局中，以多元化思维碰撞作为持续创新的动力。通过人的融合、机制的融合、文化的融合，做到业务精进、风控精细，构建招商财富独具特色的核心竞争力。
+				</p>
+				<p>
+					我们始终努力为客户财富增值服务、为股东价值提升服务、为员工职业能力塑造和生活质量完善服务，努力成为客户推崇、股东满意、员工热爱、具有国际竞争力的资产管理机构。
+				</p>
+				<p>
+					我们以风控文化作为稳健发展的基石，以全方位产品运营中心作为高速运转的保障，以母公司招商基金灵活稳定的后台作为业务创新的支撑，不断强化中后台的高效运营能力。
+				</p>
+				<p>
+					为了更好地服务实体经济，适应财富管理行业新的发展环境和机遇，招商财富资产管理有限公司将积极与银行、券商、保险、信托及私募等机构开展密切合作，并凭借招商银行、招商证券、招商基金多年来在资产管理行业的良好投资管理以及专业理财经验，共同打造成为专业化、高水平的综合型资产管理平台。
+				</p>
+			</div>
+		</div>
+	</section>
+
+</div></div>
+</section>
+
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/aboutUsNew.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

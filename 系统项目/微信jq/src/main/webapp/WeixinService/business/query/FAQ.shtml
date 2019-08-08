@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/js.js"></script>
+    <!-- 常用JS文件 -->
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<!--  滚动条js  -->
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscroll.js"></script>
+	
+</head>
+<body>
+<section class="page">
+   <div id="wrapper">
+        <div id="scroller">
+		    <!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->   
+		    <section id="FAQSection">
+		        <!-- <div class="box box-FAQ last">
+		            <h2><span>投资范围是什么？</span></h2>
+		            <div class="box-text"><p>本理财方案是招商财富资产管理有限公司发行的本理财方案是招商财富资产管理有限公司发行的本理财方案是招商财富资产管理有限公司发行的。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本理财方案是招商财富资产管理有限公司发行的本理财方案是招商财富资产管理有限公司发行的本理财方案是招商财富资产管理有限公司发行的。</p></div>
+		            <div class="more"><a href="#" class="comeback-pro">返回查看产品信息</a></div>
+		        </div> -->
+		    </section>
+	    </div>
+    </div>
+</section>  
+</body>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/FAQ.min.js"></script>
+<script type="text/javascript">
+	
+</script>
+
+</html>

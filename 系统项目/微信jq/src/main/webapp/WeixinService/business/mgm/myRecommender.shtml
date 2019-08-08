@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>我的顾问</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+		<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/mgm/myRecommender.css">
+	</head>
+	<body>
+		<!--  蒙层 -->
+		<div class="backLayer" style="display: none;"></div>
+
+		<header>
+			<div class="top">
+				<a href="javascript:void(0)" onclick="goback()"></a>
+				<p class="title">推荐顾问</p>
+			</div>
+			<!-- 顾问名片 -->
+			<div class="recommenderCard">
+				<div class="recommend_head">
+					<p class="recommendName" id="custserName"></p>
+					<p class="yourRecommender">您的专属顾问</p>
+					<!-- 顾问头像 -->
+					<img class="custserPhoto" id="custserPhoto" />
+					
+				</div>
+
+				<div class="recommendDetail">
+					<p class="reCommendPhone">
+						<span class="inputName">手机号码</span><span class="inputContent" id="custserMobile"></span>
+						<!-- 电话图标 -->
+						<a class="teleIcon"></a>
+					</p>
+					<p class="weixin">
+						<span class="inputName">微信昵称</span><span class="inputContent" id="custserNickname"></span></p>
+				</div>
+				<!--  微信二维码 -->
+				<div>
+					<!--  二维码 -->
+					<img class="qrCodeImg" id="qrCodeImg" />
+					<p class="wxCardTip"><span class="weixinIcon"></span><span>TA的微信名片</span></p>
+				</div>
+			</div>
+		</header>
+		<!-- 推荐你的顾问给朋友-->
+		<section class="recommend">
+			<div class="box_getScore">
+				<i class="blueBlock"></i><span class="title1">推荐<span class="custserGender"></span>给您的朋友</span>
+			</div>
+			<div class="friendInfo">
+				<div class="input_friendName">朋友姓名:<input type="text" id="customerName" placeholder="请输入朋友姓名">
+				</div>
+				<div class="input_friendPhone">朋友手机:<input type="tel" id="customerMobile" placeholder="请输入朋友手机号">
+				</div>
+			</div>
+		</section>
+		<footer>
+			<span class="recommendButton" onclick="recommendSubmit()">把<span class="custserGender"></span>推荐给朋友</span>
+		</footer>
+
+
+		<!-- 弹出框部分 -->
+		<div style=" display: none;" class="recommendPop">
+			<!-- 弹出框顶部 -->
+			<div class="popHead">
+				<span class="popTitle">提示</span><span class="closeIcon" onclick="closePop()"></span>
+			</div>
+			<!-- 推荐提示 -->
+			<div class="popTip">
+				<p class="hasBeUser oneLine">您推荐的朋友已经是我们的客户</p>
+				<p class="pipDetail twoLine">您推荐的顾问将在24小时内联系您的朋友</p>
+				<p class="pipDetail threeLine">感谢您的支持</p>
+			</div>
+			<!-- 按钮区域 -->
+			<div class="popBottom">
+				<span class="knowedButton" onclick="knowCommit()">知道了</span>
+			</div>
+		</div>
+		<!-- 弹出框 -->
+		
+		<script src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-2.0.0.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+		<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/mgmMyRecommender.js"></script>-->
+		<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/mgmMyRecommender.min.js"></script> 
+	</body>
+</html>

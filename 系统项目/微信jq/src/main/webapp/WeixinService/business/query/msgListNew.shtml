@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+   	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/bannerStyleNew.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscrollNew.js"></script>
+    <script src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscroll-probeNew.js"></script>  
+	<style type="text/css">
+    	.cover-bg .cover-point{
+    		top: 40%;
+    	}
+    	.mid{
+   		    width: 85%;
+    	}
+    	.bulletin-report-decs{
+   		   /*  height: 15px;
+		    float: left;
+		    font-size: 1.5rem;
+		    display: inherit;
+		    height: 29px;
+		    color: #4c4c4c;
+		    width: 100%;*/
+		    margin: 5px 0px 0px 15px; 
+    	}
+    	.bulletin-report-decs .report-decs-title{
+   		    color: #2061a2;
+   		    font-size: 14px;
+    	}
+    	.bulletin-report-decs .report-decs-content{
+    		font-size: 13px;
+    		display: none;
+    	}
+    </style>
+    <style>
+	.cover_bg{z-index: 999;}
+	.guideBox{width: 342px;height: 406px;border-radius: 5px; position: absolute;left: 50%;top: 50%;margin-left: -171px;margin-top:-203px;background: #fff;}
+	.guideBox h2{ width: 208px;height: 38px;line-height: 38px; font-size: 18px; color: #fff; margin: 0 auto; text-align: center; background: url(/WeixinWeb/WeixinWeb_Images/images/guide.png) no-repeat center;background-size: 208px 38px;margin-top: -16px;}
+    .guideBox .text{padding-top: 20px;padding-left: 26px;}
+    .guideBox p{font-size: 14px;line-height: 19px;color: #384752;}
+    .guideBox .p1{margin: 9px 0 7px 0;}
+    .guideBox .p2{margin-top: 13px;margin-bottom: 3px;}
+    .guideBox .p3{margin-top:3px;margin-bottom: 4px;}
+    .guideBox .tips1{margin-top: 12px;color: #717e8c;}
+    .guideBox .know{display: block;text-align: center; margin: 22px auto 0 auto;color: #fff;width: 160px; height: 40px;line-height: 40px; border-radius: 3px;  background: #ca132c;font-size: 16px;}
+    .guideNext{width: 268px;height: 84px;background: url(/WeixinWeb/WeixinWeb_Images/images/guide2.png) no-repeat;background-size: 100% 100%; position: absolute; left: 10%; top: 6%;}
+</style>
+    
+</head>
+<body>
+
+<section class="page">
+
+<div id="wrapper">
+        <div id="scroller">
+    <!--#include virtual="/WeixinService/headerOrFooter/headerNew.shtml"-->
+
+    
+  
+    <section>
+    	<div class="bulletin-report-decs">
+            	<a class="report-decs-title" href="javascript:showOrHideReportDescContent()">信披说明<img alt="" src="/WeixinWeb/WeixinWeb_Images/images/triangle-arrow-d.png"></a>
+            	<div class="report-decs-content">
+            		如您需在线查询信息披露，请您做好以下准备：
+            		<br>
+					1、	完成用户注册和实名认证：
+					<br>
+					若您当日实名，需要T+1个工作日进行确认，请您耐心等待再查询结果。
+					<br>
+					2、如您已经实名，您需满足如下条件：
+					<br>
+					A、您已购买我司产品，且产品披露时点仍在存续中；
+					<br>
+					B、资管计划年报、季报披露一般原则：
+					<br>
+					季度报告：合同有约定且产品运作满2个月；
+					<br>
+					年度报告：合同有约定且产品运作满3个月；
+					<br>
+					如遇任何问题，随时联系我们：400-8878-555（周一至周五09:00-17:30）。
+            	</div>
+            </div>
+    </section>
+      <section id="msgList">
+        <div class="bulletin">
+            <img class="bulletin-icon" src="/WeixinWeb/WeixinWeb_Images/images/none-gray.png" />
+            <span>暂无消息,敬请期待...</span>
+        </div>
+    </section>
+	<div id="pullUp" class="ub ub-pc c-gra">
+        <div class="pullUpIcon"></div>
+        <div class="pullUpLabel">上拉显示更多...</div>
+    </div>
+</div></div>  
+</section>
+
+<div class="cover-bg" id="guide" style="display: none;">
+    <div class="guideBox" style="display: block;">
+    	<h2>信息披露说明</h2>
+    	<div class="text">
+    		<p>如您需在线查询信息披露，请您做好以下准备：</p>
+    		<p class="p1">(1)完成用户注册和实名认证：</p>
+	    	<p>若您当日实名，需要T+1个工作日进行确认，<br>请您耐心等待再查询结果。</p>
+	    	<p class="p2">(2)如您已经实名，您需满足如下条件：</p>
+	    	<p class="p3">A、您已购买我司产品，且产品披露时点仍在<br>存续中；</p>
+	    	<p>B、资管计划年报、季报披露一般原则：<br>季度报告：合同有约定且产品运作满2个月；<br>年度报告：合同有约定且产品运作满3个月；</p>
+	    	<p class="tips1">如遇任何问题，随时联系我们：400-8878-555（周一至周五09:00-17:30）。</p>
+    	</div>
+    	<span  class="know">我知道了</span>
+    </div>
+    <span class="guideNext" style="display: none;"></span>
+</div>
+
+
+  <!-- 尚未完成操作弹窗-->
+    <div class="cover_bg" id="noOperation" style="display: none;">
+    	 <!-- 尚未完成风险评测-->
+    	 <div class="content risk" id="riskContent" style="display: none;">
+    	 	  <h2></h2>
+    	 	  <p>哎呀！您尚未完成风险测评</p>
+    	 	  <div class="tips">
+    	 	  	  <h3>温馨提示：</h3>
+    	 	  	  <p>根据监管要求，为保护投资者权益，需要了解您的相关信息和风险等级，以实现对您的最大保障。</p>
+    	 	  	  <p class="yearReport">
+    	 	  	  	 动动小指尖， 30秒完成风险测评，轻松查看<span id="riskMsg"></span>信息
+    	 	  	  </p>
+    	 	  </div>
+    	 	 <a href="javascript:void(0);" id="goRisk" class="btn">我要测评</a>
+    	 </div>
+    	 
+    	 <!-- 尚未完成实名认证-->
+    	 <div class="content realName" id="realNameContent"  style="display: none;">
+    	 	  <h2></h2>
+    	 	  <p>咦，尚未完成实名认证，我们找不<br>到您的<span id="realNameMsg"></span>信息~</p>
+    	 	  <p class="once">别急！立即完成实名认证即可！</p>
+    	 	  <div class="tips">
+    	 	  	  <h3>温馨提示：</h3>
+    	 	  	  <p>实名过程中需要提供您的银行卡号、手机号及身份证，无需提供任何交易密码，以确保您的资金财产安全。</p>
+    	 	  </div>
+    	 	   <a href="javascript:void(0);" id="goAuth" class="btn">我要实名</a>
+    	 </div>
+    	 
+    	  <!-- 重新测评-->
+    	 <div class="content rNameRisk" id="reRiskContent"  style="display: none;">
+    	 	  <h2></h2>
+    	 	  <p>根据监管要求，您的风险测评已过有效期，还请重新测评</p>
+    	 	   <a href="javascript:void(0);" id="reRisk" class="btn">确定</a>
+    	 </div>
+    </div>
+
+
+
+
+
+<script type="text/javascript">
+ document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/msgListNew.js?version='+jsversion+'"><\/script>'); 
+//document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/msgListNew.min.js?version='+jsversion+'"><\/script>');
+</script>
+</body>
+</html>

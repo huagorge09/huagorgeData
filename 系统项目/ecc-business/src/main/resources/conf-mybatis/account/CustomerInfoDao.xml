@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.cmwa.ecc.business.dao.account.CustomerInfoDao" >
+	<select id="onlineCustomerListPage" parameterType="sparam" resultType="custInfoDto">
+			SELECT NVL(F.FUNDACCT, ' ') AS FUNDACCT,
+			       C.CUSTNO,
+			       U.CUSTNAME AS INVNM,
+			       U.IDTYPE AS IDTP,
+			       U.IDNO,
+			       U.MOBILE,
+			       P.PMNM AS CUSTST,
+			       C.OPENDT
+			  FROM CUSTINFO C,
+			       FUNDACCOINFO F,
+			       USER_BASEINFO U,
+			       USER_ACCORLA A,
+			       (SELECT PMKY, PMCO, PMNM
+			          FROM PARAMETER
+			         WHERE PMKY = 'CUSTST'
+			           AND PMCO  <![CDATA[ <> ]]> '****') P
+			 WHERE 1 = 1
+			   AND C.CUSTST = P.PMCO
+			   AND C.CUSTNO = F.CUSTNO(+)
+			   AND (U.CMFUSERID = A.CMFUSERID AND A.ECCUSTNO = C.CUSTNO)
+          		  <if test="null!=sp.custname and ''!=sp.custname">
+			 		AND U.CUSTNAME=   #{sp.custname}
+			  </if>
+			  <if test="null!=sp.idno and ''!=sp.idno">
+				 AND U.IDTYPE='0' AND U.IDNO =  #{sp.idno}
+			  </if>
+			  <if test="null!=sp.mobile and ''!=sp.mobile">
+				 AND U.MOBILE=   #{sp.mobile}
+			  </if>
+			  <if test="null!=sp.custst and ''!=sp.custst">
+				 AND C.CUSTST= #{sp.custst}
+			  </if>
+			  <if test="null!=sp.opendt and ''!=sp.opendt">
+				 AND C.OPENDT= #{sp.opendt}
+			  </if>
+			  <if test="null!=sp.fundacct and ''!=sp.fundacct">
+				  AND F.FUNDACCT = #{sp.fundacct}
+			  </if>
+	 ORDER BY C.OPENDT DESC
+	</select>
+	
+	
+	<select id="queryTradeAccoListPage" parameterType="sparam" resultType="bankAccoInfoDto">
+			   
+		SELECT T.TRADEACCO,
+		       B.BANKLONGNAME,
+		       T.BANKACCO,
+		       B.MOBILE,
+		       DECODE(TA.TRADEFLAG, 'Y', '正常', 'N', '无效') AS FDACST,
+		       T.OPENDT
+			  FROM TRADEACCOINFO   T,
+			       THIRD_BANK_RELA C,
+			       BANKACCOINFO    B,
+			       CUSTINFO        C,
+			       TRADEACCORELA   TA,
+			       USER_BASEINFO   U,
+			       USER_ACCORLA    A
+			 WHERE T.CUSTNO = B.CUSTNO
+			   AND T.TRADEACCOST = 'N'
+			   AND T.BANKNO = C.THIRDCHANNEL
+			   AND B.REALBANKNO = C.BANKNO
+			   AND T.TRADEACCO = B.TRADEACCO
+			   AND T.CUSTNO = C.CUSTNO
+			   AND (U.CMFUSERID = A.CMFUSERID AND A.ECCUSTNO = C.CUSTNO)
+			   AND T.TRADEACCO = TA.TRADEACCO
+			   <if test="null!=sp.custno and ''!=sp.custno">
+					 AND T.CUSTNO =  #{sp.custno}
+				</if>
+	 		ORDER BY T.OPENDT DESC
+	</select>
+	
+	<select id="getOnlineUserInfo" parameterType="sparam" resultType="custInfoDto">
+			SELECT NVL(F.FUNDACCT, ' ') AS FUNDACCT,
+			       C.CUSTNO,
+			       U.CUSTNAME AS INVNM,
+			       U.IDTYPE AS IDTP,
+			       U.IDNO,
+			       U.MOBILE,
+			       C.OPENDT
+			  FROM CUSTINFO C,
+			       FUNDACCOINFO F,
+			       USER_BASEINFO U,
+			       USER_ACCORLA A 
+			 WHERE  C.CUSTNO = F.CUSTNO(+)
+			   AND U.CMFUSERID = A.CMFUSERID
+			   AND A.ECCUSTNO = C.CUSTNO
+				 ORDER BY C.OPENDT DESC
+	</select>
+</mapper> 

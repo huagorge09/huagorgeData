@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>投资者说明</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css" />
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css" />
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedomNew.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1New.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/sliderNew.js"></script>
+    <style type="text/css"></style>
+  </head>
+  <body style="background-color: rgb(245, 245, 245);">
+    <section class="page" id="specialty_context">
+      <div id="scroller"></div>
+      <!--#include virtual="/WeixinService/headerOrFooter/headerNew.shtml"-->
+      <section class="title" id="section_0">
+        <div style="background: #fff;margin-top: 10px;padding-bottom: 10px;">
+          <h2 style="font-size: 15px;border-bottom: 1px solid #F2F2F2;height: 45px;line-height: 45px; margin: 0 20px 0 20px;color: #4c4c4c;">
+            当前为专业投资者：
+          </h2>
+          <p style="margin: 5px 20px 5px 20px; line-height: 23px;font-size: 14px;color: #a1a1a1;">
+            专业投资者需要依据自己的专业投资知识，查看、购买所有产品，我们不再做任何强制性的风险提示；
+          </p>
+          <p style="margin: 5px 20px 5px 20px; line-height: 23px;font-size: 14px;color: #a1a1a1;">
+            专业投资者可以申请转为普通投资者，重新享有信息告知、风险警示、适当性匹配等方面的特殊保护。
+          </p>
+        </div>
+
+        <div class="btn-state">
+          <a href="javascript:backUserInfoPage();" class="btn-back">我的</a>
+          <a href="javascript:showHint();" class="btn-golden">申请转换</a>
+        </div>
+      </section>
+
+      <div class="cover-bg" id="hint_01" style="display: none;">
+        <div class="cover-point" style="top: 35%;">
+          <div class="cover-point-text mid">
+            <div style="margin: 35px auto 25px;font-size: 14px;text-align: center; width: 100%;">您已是专业投资者，<br>自行做出投资决定并自主承担投资风险。<br>确认转换为普通投资者？</div>
+          </div>
+          <div
+            style="display: flex;justify-content: space-around;margin-bottom: 1rem;"
+          >
+            <span onclick="closeHint();" style="color: #C49A63;border: 1px #C49A63 solid;margin: 5px;width: 35%;text-align: center;line-height: 2.5rem;">取消</span>
+            <span onclick="goRiskPage();" style="color: #fff;background: linear-gradient(270deg, rgba(218, 193, 155, 1) 0%, rgba(187, 149, 98, 1) 100%);margin: 5px;width: 35%;text-align: center;line-height: 2.5rem;">确认</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/riskLevelNew.js"></script> -->
+    <!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/riskLevelNew.min.js"></script> -->
+    <script>
+      $(function() {
+        $(".header .top-a h2").html("投资者说明");
+        document.title = "投资者说明";
+      });
+      function showHint() {
+        $("#hint_01").show();
+      }
+      function closeHint() {
+        $("#hint_01").hide();
+      }
+      /**
+       * 申请普通投资者
+       */
+      function goRiskPage() {
+        $.ajax({
+          async: !1,
+          url: "/WeixinService/business/appConversionUserInvtp.xhtml",
+          data: {
+            apptp: "1"
+          },
+          dataType: "json",
+          cache: !1,
+          type: "POST",
+          error: function() {
+            show_tips("网络繁忙，请稍后再试。");
+          },
+          success: function(n) {
+            if (n != null && n.resultCode == "0000") {
+              window.location.href = "/WeixinService/business/user/riskLevelNew.shtml?invprtp=1&eventId=event_wx_professionId&pageSource=wx_professionId";
+            } else if (n.resultCode == "9999") {
+              errorRemark("当前正在申请中，请勿重复申请!");
+            } else {
+              errorRemark("申请异常");
+            }
+          }
+        });
+      }
+
+      /**
+       * 返回用户管理页面
+       */
+      function backUserInfoPage() {
+        window.location.href = "/#/myAccount";
+      }
+    </script>
+  </body>
+</html>

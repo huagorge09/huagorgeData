@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.bank.BankInfoDao">
+<resultMap type="bankBnkbaseVo" id="bankBnkbaseVo">
+		<result column="BNK_NO" property="bnkNo"></result>	
+		<result column="BNK_NM" property="bnkNm"></result>	
+		<result column="WEB_SITE" property="webSite"></result>	
+		<result column="EBNK_URL" property="ebnkUrl"></result>	
+		<result column="BALANCE_URL" property="balanceUrl"></result>	
+		<result column="TEL_BNK" property="telBnk"></result>	
+		<result column="LINK_MAN" property="linkMan"></result>	
+		<result column="LINK_MAN_TEL" property="linkManTel"></result>	
+		<result column="LINK_MAN_FAX" property="linkManFax"></result>	
+		<result column="LINK_MAN_EMAIL" property="linkManEmail"></result>	
+		<result column="DIS_ORDER" property="disOrder"></result>	
+		<result column="DIS_FLG" property="disFlg"></result>	
+		<result column="C_TIME" property="cTime"></result>	
+		<result column="C_MAN" property="cMan"></result>	
+		<result column="E_TIME" property="eTime"></result>	
+		<result column="E_MAN" property="eMan"></result>	
+		<result column="STATUS" property="status"></result>	
+	</resultMap>
+	
+	<select id="getBankBnkbaseList" resultMap="bankBnkbaseVo" parameterType="sparam">
+		SELECT BNK_NO,
+		       BNK_NM,
+		       WEB_SITE,
+		       EBNK_URL,
+		       BALANCE_URL,
+		       TEL_BNK,
+		       LINK_MAN,
+		       LINK_MAN_TEL,
+		       LINK_MAN_FAX,
+		       LINK_MAN_EMAIL,
+		       DIS_ORDER,
+		       DIS_FLG,
+		       C_TIME,
+		       C_MAN,
+		       E_TIME,
+		       E_MAN,
+		       STATUS,
+		       BNK_NM_ABBR
+		  FROM BANK_BNKBASE 
+		  WHERE 1=1
+		  <if test="sp.bankName != null and sp.bankName !='' ">
+		  	AND BNK_NM LIKE #{sp.bankName}||'%'
+		  </if>
+		  ORDER BY DIS_ORDER , BNK_NO
+	</select>
+</mapper>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.activity.ActivityAwardStoreDao">
+	
+	<select id="listAwardOnStore" resultType="com.cmwa.ec.weixin.dto.ActivityAwardStoreDto">
+		SELECT * FROM (
+		SELECT 
+			T.STORE_ID as storeId,
+			T.ACTIVITY_ID as activityId,
+			T.AWARD_ID as awardId,
+			T.AWARD_NUM as awardNum,
+			T.AWARD_PWD as awardPwd,
+			T.AWARD_STATE as awardState,
+			T.CREATED_DATE as createdDate,
+			T.CREATED_USER as createdUser,
+			T.UPDATED_DATE as updatedDate,
+			T.UPDATED_USER as updatedUser,
+			T.VERSION as version
+		FROM CMWA_WX_ACT_AWARD_STORE T 
+		WHERE 1=1
+		<if test="param.activityId != null and param.activityId != ''">
+			AND T.ACTIVITY_ID = #{param.activityId,jdbcType=VARCHAR}
+		</if>
+		<if test="param.awardId != null and param.awardId != ''" >
+			AND T.AWARD_ID = #{param.awardId,jdbcType=VARCHAR}
+		</if>		
+		<if test="param.awardState != null and param.awardState != ''">
+			AND T.AWARD_STATE = #{param.awardState,jdbcType=VARCHAR}
+		</if>
+		<if test="param.version != null and param.version != ''">
+			AND T.VERSION = #{param.version,jdbcType=NUMERIC}
+		</if>
+		<if test="random == true">
+			ORDER BY DBMS_RANDOM.VALUE
+		</if>
+	) WHERE 1=1
+	<if test="random == true">
+		AND rownum <![CDATA[=]]> 1
+	</if>
+	</select>
+	
+	
+	<update id="updateAwardOnStore">
+	 	UPDATE CMWA_WX_ACT_AWARD_STORE SET 
+		 	VERSION = #{param.version,jdbcType=NUMERIC},
+	 		AWARD_STATE = #{param.awardState,jdbcType=VARCHAR},
+	 		UPDATED_DATE = sysdate,
+	 		UPDATED_USER = 'system'
+	 	WHERE 
+	 		ACTIVITY_ID = #{param.activityId,jdbcType=VARCHAR}
+	 		AND AWARD_ID = #{param.awardId,jdbcType=VARCHAR}
+	 		AND STORE_ID = #{param.storeId,jdbcType=VARCHAR}
+	 		AND VERSION = #{param.version,jdbcType=NUMERIC}-1	 		
+	 		AND AWARD_STATE = 
+	 		<if test="writeBack == false">
+	 			#{param.awardState,jdbcType=VARCHAR}
+	 		</if>
+	 		<if test="writeBack == true">
+	 			0
+	 		</if>
+	</update>
+	
+	<select id="countUsedAward" resultType="int">
+		SELECT COUNT(1) FROM CMWA_WX_ACT_AWARD_STORE T WHERE T.AWARD_STATE = '1' 
+		AND T.ACTIVITY_ID = #{activityId,jdbcType=VARCHAR} 
+		AND T.AWARD_ID = #{awardId,jdbcType=VARCHAR}
+    </select>
+</mapper>

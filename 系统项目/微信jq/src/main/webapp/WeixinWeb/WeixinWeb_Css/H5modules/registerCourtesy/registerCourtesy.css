@@ -1,0 +1,117 @@
+body {
+    color: #333;
+    margin: 0 auto;
+    font-family: Arial, "Microsoft YaHei";
+    font-size: 50px;
+    background: #fff;
+    height: 100%;
+}
+.logo{
+    width: 2.6rem;
+    height: .67rem;
+    position: absolute;
+    background: url( /WeixinWeb/WeixinWeb_Images/H5modules/registerCourtesy/logo.png) no-repeat;
+    background-size: 100% 100%;
+    left: .18rem;
+    top:.18rem;
+}
+.pannel{
+    width: 7.5rem;
+    height: 6.91rem;
+    background: url( /WeixinWeb/WeixinWeb_Images/H5modules/registerCourtesy/haoli.png) no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+}
+.pannel p{
+    font-size: .3rem;
+    color: #3f3f3f;
+    line-height: .48rem;
+    position: absolute;
+}
+.pannel p:nth-child(1){
+    width: 3.05rem;
+    text-align: center;
+    right: 0;
+    top: 1.35rem;
+}
+.pannel p:nth-child(2){
+    width: 3.1rem;
+    text-align: center;
+    top: 6.4rem;
+    left: 0;
+}
+.getRegister{
+    display: block;
+    width: 4.43rem;
+    height: 1.11rem;
+    background: url( /WeixinWeb/WeixinWeb_Images/H5modules/registerCourtesy/btn.png) no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+    font-size: .34rem;
+    color: #fff;
+    line-height: 1rem;
+    margin: .32rem auto .26rem auto;
+}
+.rules{
+    border:1px #e94625 solid;
+    margin: 0 .2rem;
+    text-align: center;
+    border-radius: 8px;
+    padding: 0 .09rem;
+    background: #fff9f8;
+}
+.rules h2{
+    width: 3rem;
+    margin: 0 auto;
+    height: .57rem;
+    border-bottom: 1px #eb6e59 solid;
+    font-size: .34rem;
+    color: #e94625;
+    position: relative;
+    margin-bottom: .45rem;
+}
+.rules h2 span{
+    display: inline-block;
+    width: 1.77rem;
+    text-align: center;
+    background: #fff9f8;
+    margin-top: .2rem;
+}
+.rules p{
+    font-size: .26rem;
+    color: #040000;
+    line-height: .34rem;
+    text-align: left;
+    padding-left: .33rem;
+    position: relative;
+    margin-bottom: .15rem;
+}
+.rules p span{
+    position: absolute;
+    display: inline-block;
+    width: .26rem;
+    height: .26rem;
+    background: #e86460;
+    border-radius: 50%;
+    text-align: center;
+    line-height: .26rem;
+    color: #fff;
+    font-size: .223rem;
+    left: 0;
+    top: .03rem;
+}
+.tips{
+    font-size: .2rem;
+    color: #818181;
+    text-align: left;
+    margin-left: .1rem;
+    margin-bottom: .14rem;
+}
+.tips i{
+    display: inline-block;
+    width: .14rem;
+    height: .13rem;
+    background: url( /WeixinWeb/WeixinWeb_Images/H5modules/registerCourtesy/star.png) no-repeat;
+    background-size: 100% 100%;
+    margin-right: .08rem;
+}

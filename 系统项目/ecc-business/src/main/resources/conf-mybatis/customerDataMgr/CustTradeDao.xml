@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.customerDataMgr.CustTradeDao" >
+	<select id="modifyCategoryV2" parameterType="openAccountDto" statementType="CALLABLE">
+		{ 
+			call DS_OAP_MODIFY_CUSTINVTP(
+				#{permissionId,jdbcType=VARCHAR,mode=IN},
+				#{serialno,jdbcType=VARCHAR,mode=IN},
+				#{trustType,jdbcType=VARCHAR,mode=IN},
+				#{newCustno,jdbcType=VARCHAR,mode=IN},
+				#{valueOfA,jdbcType=VARCHAR,mode=IN},
+				#{acctabbr,jdbcType=VARCHAR,mode=IN},
+				<!--  -->
+				#{nullStr,jdbcType=VARCHAR,mode=IN}, 
+				#{nullStr,jdbcType=VARCHAR,mode=IN},
+				#{addr,jdbcType=VARCHAR,mode=IN},
+				#{postcode,jdbcType=VARCHAR,mode=IN},
+				#{mobile,jdbcType=VARCHAR,mode=IN},
+				#{email,jdbcType=VARCHAR,mode=IN},
+				<!--  -->
+				#{tel,jdbcType=VARCHAR,mode=IN},
+				#{housetel,jdbcType=VARCHAR,mode=IN},
+				#{tel,jdbcType=VARCHAR,mode=IN},
+				#{fax,jdbcType=VARCHAR,mode=IN},
+				#{voccode,jdbcType=VARCHAR,mode=IN},
+				#{edlevel,jdbcType=VARCHAR,mode=IN},
+				<!--  -->
+				#{income,jdbcType=VARCHAR,mode=IN},
+				#{sex,jdbcType=VARCHAR,mode=IN},
+				#{nullStr,jdbcType=VARCHAR,mode=IN},
+				#{nullStr,jdbcType=VARCHAR,mode=IN},
+				#{nationalitycode,jdbcType=VARCHAR,mode=IN},
+				#{nullStr,jdbcType=VARCHAR,mode=IN},
+				#{idvalidate,jdbcType=VARCHAR,mode=IN},
+				<!--  -->
+				#{sendingroute,jdbcType=VARCHAR,mode=IN},
+				#{nullStr,jdbcType=VARCHAR,mode=IN},
+				#{nullStr,jdbcType=VARCHAR,mode=IN},
+				#{industryType,jdbcType=VARCHAR,mode=IN},
+				#{instrepnm,jdbcType=VARCHAR,mode=IN},
+				#{instrepidtp,jdbcType=VARCHAR,mode=IN},
+				
+				#{instrepidno,jdbcType=VARCHAR,mode=IN},
+				#{instrepvalidate,jdbcType=VARCHAR,mode=IN},
+				#{instrepnation,jdbcType=VARCHAR,mode=IN},
+				#{principalname,jdbcType=VARCHAR,mode=IN},
+				#{principalidtp,jdbcType=VARCHAR,mode=IN},
+				#{principalidno,jdbcType=VARCHAR,mode=IN},
+				
+				#{principalvalidt,jdbcType=VARCHAR,mode=IN},
+				#{principalnation,jdbcType=VARCHAR,mode=IN},
+				#{nullStr,jdbcType=VARCHAR,mode=IN},
+				#{nullStr,jdbcType=VARCHAR,mode=IN},
+				#{nullStr,jdbcType=VARCHAR,mode=IN},
+				#{faxdelegate,jdbcType=VARCHAR,mode=IN},
+				
+				#{nullStr,jdbcType=VARCHAR,mode=IN},
+				#{nullStr,jdbcType=VARCHAR,mode=IN},
+				#{holdingname,jdbcType=VARCHAR,mode=IN},
+				#{holdingidtp,jdbcType=VARCHAR,mode=IN},
+				#{holdingidno,jdbcType=VARCHAR,mode=IN},
+				#{holdingvalidate,jdbcType=VARCHAR,mode=IN},
+				
+				#{nullStr,jdbcType=VARCHAR,mode=IN},
+				#{nullStr,jdbcType=VARCHAR,mode=IN},
+				#{beneficiary,jdbcType=VARCHAR,mode=IN},
+				#{operatorId,jdbcType=VARCHAR,mode=IN},
+				#{invnm,jdbcType=VARCHAR,mode=IN},
+				#{idtp,jdbcType=VARCHAR,mode=IN},
+				
+				#{idno,jdbcType=VARCHAR,mode=IN},
+				#{custrisklevl,jdbcType=VARCHAR,mode=IN},
+				#{custriskscore,jdbcType=VARCHAR,mode=IN},
+				#{docbusinesstp,jdbcType=VARCHAR,mode=IN},
+				#{newDocStr,jdbcType=VARCHAR,mode=IN},
+				#{newOcontStr,jdbcType=VARCHAR,mode=IN},
+				
+				#{newOidStr,jdbcType=VARCHAR,mode=IN},
+				#{ifalldocument,jdbcType=VARCHAR,mode=IN},
+				#{ifOriginal,jdbcType=VARCHAR,mode=IN},
+				#{ifsaved,jdbcType=VARCHAR,mode=IN},
+				#{modifylist,jdbcType=VARCHAR,mode=IN},
+				#{isupload,jdbcType=VARCHAR,mode=IN},
+				
+				#{szsecacc,jdbcType=VARCHAR,mode=IN},
+				#{shsecacc,jdbcType=VARCHAR,mode=IN},
+				#{remarkinfo,jdbcType=VARCHAR,mode=IN},
+				#{organType,jdbcType=VARCHAR,mode=IN},
+				#{isscan,jdbcType=VARCHAR,mode=IN},
+				#{keepaddress,jdbcType=VARCHAR,mode=IN},
+				
+				#{salesaccmanager,jdbcType=VARCHAR,mode=IN},
+				#{fileno,jdbcType=VARCHAR,mode=IN},
+				#{invprtp,jdbcType=VARCHAR,mode=IN},
+				#{errcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{errmsg,jdbcType=VARCHAR,mode=OUT}
+			)
+		} 
+	</select>
+	<select id="updateVoiceRecord" parameterType="riskLevelDto" resultType="riskLevelDto">
+			UPDATE CUSTINFOEX SET VOICERECORD = #{voicerecord} WHERE CUSTNO = #{custno}
+	</select>
+	<select id="auditCustRiskLevelV2" parameterType="riskLevelDto" statementType="CALLABLE">
+		{ 
+			call OTP_SETCUSTRISKLEVEL_CMWA_V2(
+				#{custno,jdbcType=VARCHAR,mode=IN},
+				#{risklevel,jdbcType=VARCHAR,mode=IN},
+				#{valueOfDir,jdbcType=VARCHAR,mode=IN},
+				#{operatorId,jdbcType=VARCHAR,mode=IN},
+				#{valueOfM,jdbcType=VARCHAR,mode=IN},
+				#{scope,jdbcType=VARCHAR,mode=IN},
+				#{answer,jdbcType=VARCHAR,mode=IN},
+				#{specriskLevel,jdbcType=VARCHAR,mode=IN},
+				#{errcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{errmsg,jdbcType=VARCHAR,mode=OUT}
+			)
+		}
+	</select>
+</mapper>

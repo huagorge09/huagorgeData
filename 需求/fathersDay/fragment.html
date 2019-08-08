@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="x5-orientation" content="portrait" />
+   <!-- <meta name="apple-mobile-web-app-capable" content="no" />-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no">
+	<title>我的地图碎片</title>
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/animation.css" />
+</head>
+<body class="fragBg">
+    <div class="fragment" style="height: 11.98rem;">
+    	
+    	 <div class="fragmentReturn" onclick="action.returnIndex()"></div>
+    	 <div class="rating" onclick="action.rating()"></div>
+    	 <!--签到区域-->
+    	 <div class="fargBox">
+    	 	   <div class="singInRing" onclick="action.getSignFrag()">
+    	 	   	    <p>领取</p>
+    	 	   	    <p>碎片X1</p>
+    	 	   </div>
+    	 	   <p id="countTips" style="display: none;">领取地图碎片，解锁旅行宝箱。</p>
+    	 	   <p id="countTips2" style="display: none;">今日领取次数已用完，明天再来噢！</p>
+    	 	   <p id="countdown">距离下次领取<em></em></p>
+    	 	   <ul class="fragmentProgress dswkb">
+    	 	   	  <li>
+    	 	   	  	 <em></em>
+    	 	   	  	 <p>待领取</p>
+    	 	   	  	 <div></div>
+    	 	   	  </li>
+    	 	   	  <li>
+    	 	   	  	 <em></em>
+    	 	   	  	 <p>待领取</p>
+    	 	   	  	 <div></div>
+    	 	   	  </li>
+    	 	   	  <li>
+    	 	   	  	 <em></em>
+    	 	   	  	 <p>待领取</p>
+    	 	   	  	 <div></div>
+    	 	   	  </li>
+    	 	   	  <li>
+    	 	   	  	 <em></em>
+    	 	   	  	 <p>待领取</p>
+    	 	   	  </li>
+    	 	   </ul>
+    	 </div>
+    	 <div class="fragMap">
+    	 	   <div class="title" onclick="action.topInvete()">转发好友领碎片</div>
+    	 	   <p>分享好友，您与好友均可获得一张碎片</p>
+    	 	   <ul>
+    	 	   	  <li class="gold dswkb" id="copper">
+    	 	   	  	 <span>椰<br>林<br>沙<br>滩</span>
+    	 	   	  	 <div class="flex1">
+    	 	   	  	 	 <em></em>+
+    	 	   	  	 	 <em></em>+
+    	 	   	  	 	 <em></em>+
+    	 	   	  	 	 <em></em>=
+    	 	   	  	 	 <em onclick="fragment.openBoxPrize(this)">
+    	 	   	  	 	 	<i></i>
+    	 	   	  	 	 </em>
+    	 	   	  	 </div>
+    	 	   	  </li>
+    	 	   	  <li class="silver dswkb"  id="silver">
+    	 	   	  	<span>无<br>垠<br>草<br>原</span>
+    	 	   	  	 <div class="flex1">
+    	 	   	  	 	 <em></em>+
+    	 	   	  	 	 <em></em>+
+    	 	   	  	 	 <em></em>+
+    	 	   	  	 	 <em></em>=
+    	 	   	  	 	 <em onclick="fragment.openBoxPrize(this)">
+    	 	   	  	 	 	<i></i>
+    	 	   	  	 	 </em>
+    	 	   	  	 </div>
+    	 	   	  </li>
+    	 	   	  <li class="copper dswkb" id="gold">
+    	 	   	  	<span>海<br>天<br>相<br>接</span>
+    	 	   	  	 <div class="flex1">
+    	 	   	  	 	 <em></em>+
+    	 	   	  	 	 <em></em>+
+    	 	   	  	 	 <em></em>+
+    	 	   	  	 	 <em></em>=
+    	 	   	  	 	 <em onclick="fragment.openBoxPrize(this)">
+    	 	   	  	 	 	<i></i>
+    	 	   	  	 	 </em>
+    	 	   	  	 </div>
+    	 	   	  </li>
+    	 	   </ul>
+    	 </div>
+    </div>
+    
+    <!--首次进入得碎片弹窗-->
+    <div class="popup getFrag" style="display: none;">
+    	<div class="mask"></div>
+    	<div class="content center">
+    		<p>送您一张旅行碎片！</p>
+    		<p>集齐4张碎片<br>一起召唤旅行奖券吧！</p>
+    		<div class="flashRotation"></div>
+    		<div class="flash">
+    			<div class="chipShine">
+    				<span></span>
+    				<span></span>
+    				<span></span>
+    				<span></span>
+    				<span></span>
+    			   <div class="chip"></div>
+    			</div>
+    			<p class="">6个小时后可继续领取哦~</p>
+    			<a href="javascript:;" onclick="fragment.getFragMent()"></a>
+
+    		</div>
+    		<div class="gonglve"></div>
+        </div>
+    </div>
+    
+    
+     <!--打开宝箱没有集齐-->
+    <div class="popup openFragNo" style="display: none;">
+    	<div class="mask"></div>
+    	<div class="content center">
+    		   <span class="close" onclick="action.closeOpen()"></span>
+    		   <div class="openBox" style="display: none;">
+    		   	    <img src="images/openNone3.png"/>
+    		   	    <p><span>“椰林沙滩”</span>仅差<em></em>片就能集齐啦！<br>拼全地图即刻解锁铜宝箱！</p>
+    		   	    <h3>（提示：您可通过每日签到领取碎片或邀请好友同步获得）</h3>
+    		   	    <a href="javascript:;" onclick="action.openInvete()">邀请好友获取碎片</a>
+    		   </div>
+    		    <div class="openBox"  style="display: none;">
+    		   	    <img src="images/openNone2.png"/>
+    		   	    <p><span>“无垠草原 ”</span>仅差<em></em>片就能集齐啦！<br>拼全地图即刻解锁银宝箱！</p>
+    		   	    <h3>（提示：您可通过每日签到领取碎片或邀请好友同步获得）</h3>
+    		   	    <a href="javascript:;" onclick="action.openInvete()">邀请好友获取碎片</a>
+    		   </div>
+    		    <div class="openBox" style="display: none;">
+    		   	    <img src="images/openNone1.png"/>
+    		   	    <p><span>“海天相接”</span>仅差<em></em>片就能集齐啦!<br>拼全地图即刻解锁金宝箱！</p>
+    		   	    <h3>（提示：您可通过每日签到领取碎片或邀请好友同步获得）</h3>
+    		   	    <a href="javascript:;" onclick="action.openInvete()">邀请好友获取碎片</a>
+    		   </div>
+        </div>
+    </div>	
+    <!--打开宝箱中奖-->
+    <div class="popup winPrize" style="display: none;">
+    	<div class="mask"></div>
+    	<div class="content center">
+    	       <span class="close" onclick="action.closeOpen()"></span>
+    		   <span class="conguration"></span>
+    		   <div class="quanBox" style="display: none;">
+    		   	     <div class="quan">
+    		   	     	<i >
+    		   	     		<p>代金券</p>
+    		   	     		<p><em>¥</em><b class="faceValue"></b></p>
+    		   	     	</i>
+    		   	     </div>
+    		   	     <p>踏破铁鞋无觅处,得来全不费功夫</p>
+    		   	     <p>成功囊获<i class="faceValue"></i>元携程代金券</p>
+    		   	     <p>记得带爸爸去看看外面的世界~</p>
+    		   </div>
+    		   <div class="fragBox" style="display: none;">
+    		   	   <div class="fargNum"><em>x<b></b></em></div>
+    		   	   <p>成功捕获<em><b></b></em>张碎片！<br>离旅行神券仅一步之遥</p>
+    		   	   <h2>再接再厉，集齐地图碎片<br>开启父爱之旅！</h2>
+    		   </div>
+    		    <a href="javascript:;" onclick="action.userGetFragment()">立即领取</a>
+        </div>
+    </div>
+   <!--好友助力情况下-->
+    <div class="popup subscribe" style="display: none;">
+    	<div class="mask"></div>
+    	<div class="content">
+    		<span onclick="action.closeShare()"></span>
+    		<img src="" id="imgDiv"/>
+        </div>
+        <p>你和爸爸的温馨旅途，就差一个分享<i></i></p>
+    </div>
+     <!--用户没有关注-->
+     <div class="popup follow" style="display: none;">
+     	<div class="mask"></div>
+    	<div class="content center">
+    		 <img src="" id="codeChannel"/>
+    		 <p> 咦~还没关注我们？<br>即刻关注，宝箱一触即发！<br>旅行奖券“码”上来！</p>
+    	</div>
+     </div>
+      <script type="text/javascript" src="js/jweixin-1.0.0.js"></script> 
+ 	<script type="text/javascript" src="js/flexible.min.js" ></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+    <script type="text/javascript" src="js/qrcode.js" ></script>
+    <script type="text/javascript" src="js/jquery.fly.min.js" ></script>
+    <script type="text/javascript" src="js/config.js" ></script>
+   <script type="text/javascript" src="js/public.js" ></script>
+    <script type="text/javascript" src="js/share.js" ></script>
+    <script type="text/javascript" src="js/imgCompose.js" ></script>
+   <script type="text/javascript" src="js/fragment.js" ></script>
+
+</body>
+</html>

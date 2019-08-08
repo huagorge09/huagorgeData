@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="MobileOptimized" content="320">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title></title>
+    <link rel="stylesheet" href="css/public.css" type="text/css"/>
+    <script type="text/javascript" src="../lib/jquery-3.2.1.min.js" ></script>
+    <script type="text/javascript" src="../lib/flexible.js" ></script>
+    <script type="text/javascript" src="js/scheduleBox.js" ></script>
+    <style>
+    	.scheduleBox .scheduleBar {
+    		position: absolute;
+    		left: 50%;
+    		top:50%;
+		    width: 5.9rem;
+		    height: 0.2rem;
+		    background-color: #fff;
+		    border-radius: 0.1rem;
+		    z-index: 9999;
+		}
+		.scheduleBox .currentBar {
+		    height: 100%;
+		    width: 0;
+		    border-radius: 0.1rem;
+		    background-color: #ffda44;
+		}
+    </style>
+</head>
+<body>
+	<script>
+        new scheduleBox({per:-100, timer:200});
+	</script>
+</body>
+</html>

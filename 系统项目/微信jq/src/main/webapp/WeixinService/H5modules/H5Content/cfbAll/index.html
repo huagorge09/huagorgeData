@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>招商财富-财富宝系列 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/cfbAll/cfb.css">
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-init.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/flexible.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+
+</head>
+<body>
+	<div class="warpper" style="padding-bottom: 1rem;">
+		<div class="banner"></div>
+		<div class="guide2">
+			<div class="product">
+				 <div class="C2">
+					<div>
+						<h2>财富宝28天理财3号FOF</h2>
+						<div class="tag">热销中</div>
+					</div>
+					<!--<h3>募集截止：2018年6月27日 15:00</h3>-->
+					 <ul class="clearFloat">
+						<li>
+							<p><span>28</span>天</p>
+							<p>产品期限</p>
+						</li>
+						<li style="padding-top: .05rem;">
+							<p><span>4.60</span>%</p>
+							<p>业绩报酬计提基准</p>
+						</li>
+						<li>
+							<p><em id="startBuy">30</em><span>万</span></p>
+							<p>起投金额</p>
+						</li>
+					</ul>
+					<a href="javascript:;" class="once once1">立即抢购</a>
+				 </div>
+				 
+				<p class="t2 C2">风险提示：投资有风险，本产品风险等级为R2中低风险，适合风险承受能力为C2及以上的投资者。</p>
+				<div class="C2">
+					<div>
+						<h2>财富宝126天理财2号FOF</h2>
+						<div class="tag">热销中</div>
+					</div>
+					<!--<h3>募集截止：2018年6月27日 15:00</h3>-->
+					 <ul class="clearFloat">
+						<li>
+							<p><span>126</span>天</p>
+							<p>产品期限</p>
+						</li>
+						<li style="padding-top: .05rem;">
+							<p><span>4.95</span>%</p>
+							<p>业绩报酬计提基准</p>
+						</li>
+						<li>
+							<p><em>30</em><span>万</span></p>
+							<p>起投金额</p>
+						</li>
+					</ul>
+					<a href="javascript:;" class="once once2">立即抢购</a>
+				 </div>
+				 
+				<p class="t2 C2">风险提示：投资有风险，本产品风险等级为R2中低风险，适合风险承受能力为C2及以上的投资者。</p>
+			</div>
+		</div>
+		<div class="advantage">
+			<ul>
+				<li>
+					<p>产品定期开放，进退灵活</p>
+					<div>每个运作期结束后开放申赎，兼顾<br>流动性与增值性</div>
+				</li>
+				<li>
+					<p>旗舰配置，投研精英精心设计</p>
+					<div>系列产品发行超300期，FOF策略，<br>运作稳健，表现优良</div>
+				</li>
+				<li>
+					<p>权威团队，与投资人共进退</p>
+					<div>成熟的固收管理团队，大资金债券建仓的<br>能力强，与投资人共进退</div>
+				</li>
+			</ul>
+		</div>
+	    <div class="follow"><img src="/WeixinWeb/WeixinWeb_Images/H5modules/cfb126/follow.jpg" width="100%"></div>
+	</div>
+	  <div class="bottom clearFloat">
+    	<a href="javascript:;" onclick="bussiness();" id="myBtn1">我感兴趣</a>
+    	<a href="javascript:;" onclick="myAdviser();" id="myBtn2">我的顾问</a>
+    </div>
+	<!--预约信息填写-->
+	<div class="cover-bg reserves hide">
+		<div class="content">
+			 <span class="close"></span>
+			 <h1>一键预约享专属服务<br>让投资无后顾之忧</h1>
+			 <h3>我们的专属顾问将24小时内给您回电</h3>
+			 <div class="form">
+			 	<ul>
+				 	<li>
+				 	   <div class="inputBox">
+				 	  	   <span></span> <input type="text" id="userName" name="userName" placeholder="请输入姓名"/>
+				 	   </div>	
+				       <p style="display: none;"></p>
+				 	</li>
+				 	<li class="foucs">
+				 		<div class="inputBox">
+				 	        <span></span> <input type="tel" id="mobilePhone" name="mobilePhone" maxlength="11" placeholder="请输入手机号码"/> 
+				 		</div>
+				 		<p  style="display: none;"></p>
+				 	</li>
+				 	
+				 </ul>
+				 <button id="saveBtn"  class="disabled">立即提交</button>
+			 </div>
+		</div>
+	</div>
+	<!-- 错误提示 -->
+	<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+		<span id="errorRemark"></span>
+	</div>
+	<!--预约成功-->
+	<div class="cover-bg success hide">
+		 <div class="content center">
+		 	<span class="close"></span>
+		 	<div class="successIcon"></div>
+		 	<h2>预约成功</h2>
+		 	<p>客户经理将尽快与您联系，请保持电话畅通</p>
+		 </div>
+	</div>
+	 <!-- 尚未完成操作弹窗-->
+    <div class="cover_bg" id="noOperation" style="display: none;">
+    	 <!-- 尚未完成风险评测-->
+    	 <div class="content risk" id="riskContent" style="display: none;">
+    	 	  <h2></h2>
+    	 	  <p>哎呀！您尚未完成风险测评</p>
+    	 	  <div class="tips">
+    	 	  	  <h3>温馨提示：</h3>
+    	 	  	  <p>根据监管要求，为保护投资者权益，需要了解您的相关信息和风险等级，以实现对您的最大保障。</p>
+    	 	  	  <p class="yearReport">
+    	 	  	  	 动动小指尖， 30秒完成风险测评，轻松查看产品信息
+    	 	  	  </p>
+    	 	  </div>
+    	 	 <a href="javascript:void(0);" id="goRisk" class="btn">我要测评</a>
+    	 </div>
+    	 <!-- 重新测评-->
+    	 <div class="content rNameRisk" id="reRiskContent"  style="display: none;">
+    	 	  <h2></h2>
+    	 	  <p>根据监管要求，您的风险测评已过有效期，还请重新测评</p>
+    	 	   <a href="javascript:void(0);" id="reRisk" class="btn">确定</a>
+    	 </div>
+	</div>
+	<input type="hidden" name='typeId'>
+     <script>
+    	 var pageId="wx_cfbAll_h5PageId"
+    </script>
+     <script src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/activityCommon1.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/cfbAll/index.js"></script>
+    
+</body>
+</html>

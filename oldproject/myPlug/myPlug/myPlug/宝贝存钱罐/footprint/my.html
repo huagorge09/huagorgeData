@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no">
+    <title>成长足迹</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/mobiscroll.2.13.2.css">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/my.css">
+    <script src="js/library/jquery-3.2.1.min.js"></script>
+    <script src="js/library/mobiscroll.2.13.2.js"></script>
+    <script src="js/library/swiper.min.js"></script>
+    <script src="js/library/common.js"></script>
+    <script src="js/public.js"></script>
+    <script src="js/my.js"></script>
+</head>
+<body>
+<div class="page">
+    <!--固定top-->
+    <div class="fixed-top" id="fixedTop">
+        <!--我的、广场-->
+        <div class="tab clearFloat">
+            <a href="my.html" class="option current">我的</a>
+            <a href="square.html" class="option">广场</a>
+        </div>
+        <!--设置-->
+        <div class="setUp">
+            <div class="date" id="scrollToMonth"></div>
+            <div class="screen" id="screen">筛选</div>
+        </div>
+        <!--筛选条件-->
+        <div class="screenBlock" id="screenBlock">
+            <div class="context">
+                <div class="wrap clearFloat">
+                    <div class="shouSuo">
+                        <div class="shouSuoButton">搜索</div>
+                        <input type="text" id="screenInput">
+                        <span class="delete"></span>
+                    </div>
+                    <div class="select">
+                        <span class="option photo">有照片</span>
+                        <span class="option photo">无照片</span>
+                        <span class="option tape">有录音</span>
+                        <span class="option tape">无录音</span>
+                        <span class="option">精华足迹</span>
+                    </div>
+                    <div class="button">
+                        <div class="reset" id="screenReset">重置</div>
+                        <div class="confirm" id="screenConfirm">确定</div>
+                    </div>
+                </div>
+            </div>
+            <div class="close" id="screenBlockClose"></div>
+        </div>
+    </div>
+    <!--内容-->
+    <div class="contain clearFloat">
+        <!--新消息提示-->
+        <div class="newMessage">
+            <a class="wrap" href="message.html">
+                <img src="image/picture/img2.png">
+                <span class="text">2条新消息</span>
+            </a>
+        </div>
+        <!--每月列表-->
+        <div class="monthList clearFloat">
+            <div class="monthItem">
+                <div class="title">2017年9月</div>
+                <!--足迹列表-->
+                <div class="dayList clearFloat">
+                    <!--广告=========>dayItemt添加ad类-->
+                    <div class="dayItem myAd">
+                        <div class="date">20<span>日</span></div>
+                        <div class="context">
+                            <!--4种广告内容=========>话题-->
+                            <div class="block topic">
+                                <div class="text">小海满9个月啦，会学习叫爸爸妈妈了吧 ?  可以录下来，也是宝贝成长的珍贵回忆哦~小海满9个月啦，会学习叫爸爸妈妈了吧 ?</div>
+                                <div class="navigation">去录音 ></div>
+                            </div>
+                            <!--4种广告内容=========>回忆-->
+                            <!--<div class="block memory">-->
+                                <!--<div class="text">小海满9个月啦，会学习叫爸爸妈妈了吧 ?  可以录下来，也是宝贝成长的珍贵回忆哦~</div>-->
+                                <!--<div class="navigation">去晒图 ></div>-->
+                            <!--</div>-->
+                            <!--4种广告内容=========>成长-->
+                            <!--<div class="block growUp">-->
+                                <!--<div class="text">小海满9个月啦，会学习叫爸爸妈妈了吧 ?  可以录下来，也是宝贝成长的珍贵回忆哦~</div>-->
+                                <!--<div class="navigation">去看看 ></div>-->
+                            <!--</div>-->
+                            <!--4种广告内容=========>节日-->
+                            <!--<div class="block festival">-->
+                                <!--<div class="text">小海满9个月啦，会学习叫爸爸妈妈了吧 ?  可以录下来，也是宝贝成长的珍贵回忆哦~</div>-->
+                                <!--<div class="navigation">去晒图 ></div>-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                    <div class="dayItem">
+                        <div class="date">20<span>日</span></div>
+                        <div class="context">
+                            <div class="wrap">
+                                <div class="top clearFloat">
+                                    <!--孩子-->
+                                    <div class="childrenWrap">
+                                        <div class="children">
+                                            <span class="childrenInfo">
+                                                <span class="name">大宝宝</span>
+                                                <span class="year">4岁2个月20天</span>
+                                            </span>
+                                        </div>
+                                        <div class="children">
+                                            <span class="childrenInfo">
+                                                <span class="name">大宝宝</span>
+                                                <span class="year">4岁2个月20天</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!--加精-->
+                                    <div class="fabulous"></div>
+                                    <!--操作-->
+                                    <div class="operation">
+                                        <!--分享-->
+                                        <div class="share"></div>
+                                        <!--更多-->
+                                        <div class="moreWrap">
+                                            <div class="more"></div>
+                                            <div class="list">
+                                                <div class="generatePhotos">足迹相片</div>
+                                                <div class="applyFabulous">申请精华</div>
+                                                <div class="edit">编辑</div>
+                                                <div class="delete">删除</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text">凝望着校园的春景，我又走进难忘的青春记忆，那曾是绿草如织繁花似锦的世界，也是当今党和人民的关怀。凝望着校园的春景，我又走进难忘的青春记忆，那曾是绿草如织繁花似锦的世界，也是当今党和人民的关怀。凝望着校园的春景，我又走进难忘的青春记忆，那曾是绿草如织繁花似锦的世界，也是当今党和人民的关怀。凝望着校园的春景，我又走进难忘的青春记忆，那曾是绿草如织繁花似锦的世界，也是当今党和人民的关怀。凝望着校园的春景，我又走进难忘的青春记忆，那曾是绿草如织繁花似锦的世界，也是当今党和人民的关怀。凝望着校园的春景，我又走进难忘的青春记忆，那曾是绿草如织繁花似锦的世界，也是当今党和人民的关怀。</div>
+                                <!--图片=========>此处需判断图片的个数，1个需添加singlePicture类-->
+                                <div class="picture clearFloat">
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img3.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img4.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img4.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img4.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img4.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img4.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img4.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img4.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                </div>
+                                <!--录音-->
+                                <div class="record">
+                                    <audio src="https://www.sino-life.com/SL_LEM/grownService/showVoiceByFileId.do?fileId=2999300003-20170226151932-b513423bf91a4efa8a9a99e8ebea8e61-000"></audio>
+                                    <!--音频播放器-->
+                                    <div class="BarAudioPlayer">
+                                        <div class="currentTime">00:00</div>
+                                        <div class="scheduleBar">
+                                            <div class="currentSchedule"></div>
+                                            <div class="button"></div>
+                                        </div>
+                                        <div class="endTime">00:00</div>
+                                    </div>
+                                </div>
+                                <div class="topic-theme">
+                                    <!--话题======>话题有录音标记-->
+                                    <span class="text navigateTopic">#<span class="tape"></span>你愿意用肾换iphoneX吗#</span>
+                                    <!--主题-->
+                                    <span class="text navigateTheme">#你愿意用肾换iphoneX吗#</span>
+                                </div>
+                            </div>
+                            <div class="bottom">
+                                <div class="daShang ban">打赏(20)</div>
+                                <div class="pingLun ban">评论(30)</div>
+                                <div class="dianZan ban">点赞(50)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dayItem">
+                        <div class="date">20<span>日</span></div>
+                        <div class="context">
+                            <div class="wrap">
+                                <div class="top clearFloat">
+                                    <!--孩子-->
+                                    <div class="childrenWrap">
+                                        <div class="children">
+                                            <span class="childrenInfo">
+                                                <span class="name">大宝宝</span>
+                                                <span class="year">4岁2个月20天</span>
+                                            </span>
+                                        </div>
+                                        <div class="children">
+                                            <span class="childrenInfo">
+                                                <span class="name">大宝宝</span>
+                                                <span class="year">4岁2个月20天</span>
+                                            </span>
+                                        </div>
+                                        <div class="children">
+                                            <span class="childrenInfo">
+                                                <span class="name">大宝宝</span>
+                                                <span class="year">4岁2个月20天</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!--加精-->
+                                    <div class="fabulous"></div>
+                                    <!--操作-->
+                                    <div class="operation">
+                                        <!--分享-->
+                                        <div class="share"></div>
+                                        <!--更多-->
+                                        <div class="moreWrap">
+                                            <div class="more"></div>
+                                            <div class="list">
+                                                <div class="applyFabulous">申请精华</div>
+                                                <div class="edit">编辑</div>
+                                                <div class="delete">删除</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text">凝望着校园的春景，我又走进难忘的青春记忆，那曾是绿草如织繁花似锦的世界，也是当今党和人民的关怀。</div>
+                                <!--图片=========>此处需判断图片的个数，1个需添加singlePicture类-->
+                                <div class="picture singlePicture clearFloat">
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png">
+                                    </div>
+                                </div>
+                                <!--录音-->
+                                <div class="record">
+                                    <audio src="https://www.sino-life.com/SL_LEM/grownService/showVoiceByFileId.do?fileId=2999300003-20170507204513-94e891d0d9fe4fdf9fa4273a52fec18e-000"></audio>
+                                    <!--音频播放器-->
+                                    <div class="BarAudioPlayer">
+                                        <div class="currentTime">00:00</div>
+                                        <div class="scheduleBar">
+                                            <div class="currentSchedule"></div>
+                                            <div class="button"></div>
+                                        </div>
+                                        <div class="endTime">00:00</div>
+                                    </div>
+                                </div>
+                                <div class="topic-theme">
+                                    <!--话题======>话题有录音标记-->
+                                    <span class="text navigateTopic">#<span class="tape"></span>你愿意用肾换iphoneX吗#</span>
+                                    <!--主题-->
+                                    <span class="text navigateTheme">#你愿意用肾换iphoneX吗#</span>
+                                </div>
+                            </div>
+                            <div class="bottom">
+                                <div class="daShang ban">打赏(20)</div>
+                                <div class="pingLun ban">评论(30)</div>
+                                <div class="dianZan ban">点赞(50)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="monthItem">
+                <div class="title">2017年8月</div>
+                <!--足迹列表-->
+                <div class="dayList clearFloat">
+                    <div class="dayItem">
+                        <div class="date">20<span>日</span></div>
+                        <div class="context">
+                            <div class="wrap">
+                                <div class="top clearFloat">
+                                    <!--孩子-->
+                                    <div class="childrenWrap">
+                                        <div class="children">
+                                            <span class="childrenInfo">
+                                                <span class="name">大宝宝</span>
+                                                <span class="year">4岁2个月20天</span>
+                                            </span>
+                                        </div>
+                                        <div class="children">
+                                            <span class="childrenInfo">
+                                                <span class="name">大宝宝</span>
+                                                <span class="year">4岁2个月20天</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!--加精-->
+                                    <div class="fabulous"></div>
+                                    <!--操作-->
+                                    <div class="operation">
+                                        <!--分享-->
+                                        <div class="share"></div>
+                                        <!--更多-->
+                                        <div class="moreWrap">
+                                            <div class="more"></div>
+                                            <div class="list">
+                                                <div class="applyFabulous">申请精华</div>
+                                                <div class="edit">编辑</div>
+                                                <div class="delete">删除</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text">凝望着校园的春景，我又走进难忘的青春记忆，那曾是绿草如织繁花似锦的世界，也是当今党和人民的关怀。</div>
+                                <!--图片=========>此处需判断图片的个数，1个需添加singlePicture类-->
+                                <div class="picture clearFloat">
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                </div>
+                                <!--录音-->
+                                <div class="record">
+                                    <audio src="https://www.sino-life.com/SL_LEM/grownService/showVoiceByFileId.do?fileId=2999300003-20170409174811-e97b1295b10d4f8c867c5003698a7239-000"></audio>
+                                    <!--音频播放器-->
+                                    <div class="BarAudioPlayer">
+                                        <div class="currentTime">00:00</div>
+                                        <div class="scheduleBar">
+                                            <div class="currentSchedule"></div>
+                                            <div class="button"></div>
+                                        </div>
+                                        <div class="endTime">00:00</div>
+                                    </div>
+                                </div>
+                                <div class="topic-theme">
+                                    <!--话题======>话题有录音标记-->
+                                    <span class="text navigateTopic">#<span class="tape"></span>你愿意用肾换iphoneX吗#</span>
+                                    <!--主题-->
+                                    <span class="text navigateTheme">#你愿意用肾换iphoneX吗#</span>
+                                </div>
+                            </div>
+                            <div class="bottom">
+                                <div class="daShang ban">打赏(20)</div>
+                                <div class="pingLun ban">评论(30)</div>
+                                <div class="dianZan ban">点赞(50)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dayItem">
+                        <div class="date">20<span>日</span></div>
+                        <div class="context">
+                            <div class="wrap">
+                                <div class="top clearFloat">
+                                    <!--孩子-->
+                                    <div class="childrenWrap">
+                                        <div class="children">
+                                            <span class="childrenInfo">
+                                                <span class="name">大宝宝</span>
+                                                <span class="year">4岁2个月20天</span>
+                                            </span>
+                                        </div>
+                                        <div class="children">
+                                            <span class="childrenInfo">
+                                                <span class="name">大宝宝</span>
+                                                <span class="year">4岁2个月20天</span>
+                                            </span>
+                                        </div>
+                                        <div class="children">
+                                            <span class="childrenInfo">
+                                                <span class="name">大宝宝</span>
+                                                <span class="year">4岁2个月20天</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!--加精-->
+                                    <div class="fabulous"></div>
+                                    <!--操作-->
+                                    <div class="operation">
+                                        <!--分享-->
+                                        <div class="share"></div>
+                                        <!--更多-->
+                                        <div class="moreWrap">
+                                            <div class="more"></div>
+                                            <div class="list">
+                                                <div class="applyFabulous">申请精华</div>
+                                                <div class="edit">编辑</div>
+                                                <div class="delete">删除</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text">凝望着校园的春景，我又走进难忘的青春记忆，那曾是绿草如织繁花似锦的世界，也是当今党和人民的关怀。</div>
+                                <!--图片=========>此处需判断图片的个数，1个需添加singlePicture类-->
+                                <div class="picture singlePicture clearFloat">
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png">
+                                    </div>
+                                </div>
+                                <!--录音-->
+                                <div class="record">
+                                    <audio src="https://www.sino-life.com/SL_LEM/grownService/showVoiceByFileId.do?fileId=2999300003-20170409152430-16bd7c84dffc46c3bd536d3b6fbad039-000"></audio>
+                                    <!--音频播放器-->
+                                    <div class="BarAudioPlayer">
+                                        <div class="currentTime">00:00</div>
+                                        <div class="scheduleBar">
+                                            <div class="currentSchedule"></div>
+                                            <div class="button"></div>
+                                        </div>
+                                        <div class="endTime">00:00</div>
+                                    </div>
+                                </div>
+                                <div class="topic-theme">
+                                    <!--话题======>话题有录音标记-->
+                                    <span class="text navigateTopic">#<span class="tape"></span>你愿意用肾换iphoneX吗#</span>
+                                    <!--主题-->
+                                    <span class="text navigateTheme">#你愿意用肾换iphoneX吗#</span>
+                                </div>
+                            </div>
+                            <div class="bottom">
+                                <div class="daShang ban">打赏(20)</div>
+                                <div class="pingLun ban">评论(30)</div>
+                                <div class="dianZan ban">点赞(50)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--筛选无足迹-->
+    <div class="notContain">没有找到相应足迹,<span>重新筛选</span></div>
+</div>
+<!--滑至顶部按钮-->
+<div class="pageUp" id="pageUp"></div>
+<!--音频播放器-->
+<div class="circleAudioPlayer">
+    <canvas></canvas>
+    <div class="button"></div>
+    <div class="close"></div>
+</div>
+</body>
+</html>

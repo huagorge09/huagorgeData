@@ -1,0 +1,439 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+    <!-- 常用JS文件 -->
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/highcharts.js"></script>
+	<!--  滚动条js  -->
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscroll.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+</head>
+<body>
+<section class="page">
+	<div id="wrapper" style="bottom: 70px;">
+        <div id="scroller">
+		<input type="hidden" id="typeId" value="" />
+		<input type="hidden" name="appointDate" value="" /><!-- 预约开始日 -->
+		<input type="hidden" name="appointEndDate" value="" /><!-- 预约结束日 -->
+		<input type="hidden" name="salesDate" value="" /><!-- 认购开始日 -->
+		<input type="hidden" name="subdeadLine" value="" /><!-- 认购结束日 -->
+		<input type="hidden" name="currentWorkdate" value="" /><!-- 当前工作日 -->
+		<input type="hidden" id="maxNumber" value="" /><!-- 产品有效人数 -->
+    	<input type="hidden" id="buyerNumber" value="" /><!-- 产品已购买人数 -->
+    <!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->    
+    <section>
+        <div class="pro-head">
+            <h2>
+            	<span>
+            		<label id="typeName"></label>-<label id="adName"></label>
+            	</span>
+            </h2>
+            <div class="parameter">
+                    <span class="invitation">推荐</span>
+                <ul id="fundTypeInfo">
+                </ul>
+                <ul id="fundTypeInfoJinzhi" class="hide">
+                </ul>
+                
+                <div class="schedule">
+                    <span class="text">投资进度：</span>
+                    <div class="bar"><em id="proBar"></em></div>
+                    <span class="number"><label id="investPro"></label><i>%</i></span> 
+                </div>
+            </div>
+            <p class="tips" style="display: none;">该数据仅供参考，实际数据以申赎为准</p>
+           
+        </div>
+        <div class="step-bg">
+            <div class="step">
+                <!--普通产品-->
+                <div class="ordinary">
+                    <div class="step-bar">
+                        <div id="line" class="line_date">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div id="cirle" class="cirle">
+                            <span class="cirle" onclick="dateAlert('产品预约','当日起产品开始预约，募集期完成汇款，即可锁定额度。')"></span>
+                            <span class="cirle" onclick="dateAlert('正式发售','当日起产品正式发售，请及时完成汇款，锁定产品额度。')"></span>
+                            <span class="cirle" onclick="dateAlert('认购截止','当日产品募集结束，停止销售，次日起息。')"></span>
+                            <span class="cirle" onclick="dateAlert('到期日期','当日产品到期，预计将在5个工作日内完成收益分配。')"></span>
+                        </div>
+                    </div>
+                    <div class="step-text clear">
+                        <ul>
+                            <li>
+                                <span class="act">产品预约</span><p id="appointDate"></p>
+                            </li>
+                            <li>
+                                <span>正式发售</span><p id="salesDate"></p>
+                            </li>
+                            <li>
+                                <span>认购截止</span><p id="subdeadLine"></p>
+                            </li>
+                            <li>
+                                <span id="cfbDate">到期日期</span><p id="maturityDate"></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--七天十四天理财-->
+                <div class="fund7Day" style="display: none;">
+                    <div class="step-bar">
+                        <div id="line" class="line_date">
+                            <span class="act"></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="fund7Day-text">
+                            <em>存续七天</em>
+                            <em>存续七天</em>
+                        </div>
+                        <div id="cirle" class="cirle">
+                            <span class="cirle act" ></span>
+                            <span class="cirle" ></span>
+                            <span class="cirle" ></span>
+                        </div>
+                    </div>
+                    <div class="step-text clear">
+                        <ul>
+                            <li>
+                                <span class="act">购买</span><p id="buyTime"></p>
+                            </li>
+                            <li>
+                                <span>首个可赎回日</span><p id="expireTime"></p>
+                            </li>
+                            <li>
+                                <span>次个可赎回日</span><p id="netExpireTime"></p>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+         <div class="box highchart-box hide" id="highchart">
+            <div class="head"><span class="left fl"></span><span class="right fr"><a href="javascript:goToOldNet();">查看历史净值</a><span class="hide"></span></span></div>
+            <div class="highchart clear" id="highchart1">
+            </div>
+            <div class="highchart_nav">
+                <ul>
+                    <li class="act" onclick="queryEstimateByFundId('-1')">1个月</li>
+                    <li onclick="queryEstimateByFundId('-3')">3个月</li>
+                    <li onclick="queryEstimateByFundId('-6')">6个月</li>
+                    <li onclick="queryEstimateByFundId('-12')">1年</li>
+                </ul>
+            </div>
+        </div>
+        <div id="fundInfoBox">
+        </div>
+        <div class="box FAQ" id="showRedBox">   
+            <h2 id="goToRedeemList" onclick="goToRedeemList();">
+                <div class="goToRedeemListDiv font">
+                    <p class="fontClocr">到期赎回</p>
+                    <p class="font-color"><em id="showRedemption">0</em>份</p>
+                </div>
+                <div class="goToRedeemListDiv">
+                    <p class="fontClocr">到期滚存</p>
+                    <p  class="font-color"><em id="showRenew">0</em>份</p>
+                </div>
+        	<!-- <span>到期赎回：<em id="showRedemption">0</em>份</span>
+	        <span>到期滚存：<em id="showRenew">0</em>份</span> -->
+	        <img class="jt" src="/WeixinWeb/WeixinWeb_Images/images/ic_next.png"></h2>               	
+        </div>
+        <div class="box FAQ" id="otherElement">
+            <h2 id="goToElement" onclick="goToElement();"><span><a href="#">投资项目信息</a></span><img class="jt" src="/WeixinWeb/WeixinWeb_Images/images/ic_next.png"></h2>
+        </div>
+        <div class="box FAQ">
+            <h2 id="goToFAQ" onclick="goToFAQ();"><span><a href="#">常见问题</a></span><img class="jt" src="/WeixinWeb/WeixinWeb_Images/images/ic_next.png"></h2>
+        </div>
+    </section>
+    <input type="hidden" id="fundId">
+    <input type="hidden" id="period">
+    <input type="hidden" id="offLineFund">
+    </div>
+</div>
+	
+	<div class="buy">
+		<p id="disDiv" style="
+			    padding-left:20px;
+			    padding-top:10px;
+			    font-size: 16px;
+			    line-height: 20px;
+			    color: blue;display: none"></p>
+        <div class="left fl surplus" id="disDiv2">
+            <span>剩余可投：</span><em id="showDisplayLimit"></em>
+        </div>
+        <div class="left fl redeemGo" style="display: none;">
+             <a  href="javascript:redeemGo();">赎回</a>
+        </div>
+        <div class="right fr">
+             <a id="button1" href="javascript:goToBuy();">立即购买</a>
+        </div>
+    </div>
+    
+    <div class="cover-bg product-date hide">
+        <div class="cover-point">
+            <h3 id="dateTitle">产品预约</h3>
+            <div class="cover-point-text mid">
+                <p id="dateContent">当日起产品开始预约，发售前完成汇款，即可锁定额度</p>
+            </div>
+            <span class="cover-point-bottom">我知道了</span>
+        </div>
+    </div>
+    <div class="cover_bg hide" id="lianghua">
+        <div class="cover-con">
+            <i class="close" onclick="closeCover();"></i>
+            <span class="cover-con-text">
+              	  预约该产品，请拨打
+                <em>400-8878-555</em>
+            </span>
+            <a href="tel:400-8878-555" class="pop-up-three-confirm">立即拨打</a>
+        </div>
+    </div>
+    
+    <!--产品分享-->
+    <div id="mask" class="mask" style="display: none">
+         <div class="share"></div>
+         <p>点击右上角分享<br>分享给朋友</p>
+	</div>
+</section>
+<style>
+    .fund7Day  .step-bar{
+        width: 95% !important;
+    }
+    .fund7Day .line_date span:nth-child(1){
+        left: 2% !important;
+    }
+    .fund7Day .line_date span:nth-child(3){
+        left: 64% !important;
+    }
+    .fund7Day #cirle span:nth-child(1){
+        left: 1%!important;
+    }
+    .fund7Day #cirle span:nth-child(2){
+        left: 45%!important;
+    }
+    .fund7Day #cirle span:nth-child(3){
+        left: 93%!important;
+    }
+    .fund7Day .step-text li{
+        width: 33% !important;
+    }
+    .fund7Day .step-text li:nth-child(1){
+        text-indent:4%!important;
+    }
+    .fund7Day-text{
+        position: absolute;
+        left: 16%;
+        top: 15px;
+        width: 100%;
+    }
+    .fund7Day-text em:nth-child(1){
+        margin-right: 32%;
+    }
+   #fundTypeInfo .totalAmount{
+    	width: 100%;
+    }
+    .newValue{
+    top: 64px !important;
+    left: 48% !important;
+    text-align: center;
+    margin-left: 4px;
+    height: 51px;
+    background: #68a2e4;
+    }
+    .newValue2{
+    	top: 64px !important;
+    	text-align: center;
+    	margin-left: -12px;
+    	    height: 51px;
+    	    background: #68a2e4;
+    }
+    .totalAmount p{
+    	text-align: center;
+    }
+    .totalAmount p:nth-child(1){
+    	   font-size: 14px;
+           margin-bottom: 10px;
+           color: #9bcde6;
+    	   
+    }
+     .totalAmount p:nth-child(2){
+    	font-size: 20px;
+    	 color: #fff;
+    	    
+    }
+    .fixedProduct{
+    	height: 115px !important;
+    }
+     .fixedProduct li div{
+     	    color: #9bcde6;
+     }
+     .fixedProduct li div:nth-child(1){
+     	color: #fff;
+     	padding-top: 6px;
+     }
+    .fixedProduct #fundTypeInfo{
+         width: 100%;
+    }
+    .tips{
+	    background-color: #fff;
+	    height: 25px;
+	    line-height: 25px;
+	    color: #999;
+	    background-image: url(/WeixinWeb/WeixinWeb_Images/images/tips.png);
+	    background-size: 14px 14px;
+	    background-repeat: no-repeat;
+	    padding-left: 26px;
+	    background-position-x: 5px;
+	    background-position-y: 5px;
+    }
+    .redeemGo a{
+	    display: block;
+	    font-size: 1.7rem;
+	    color: #fff;
+	    /* padding: 7px 37px; */
+	    margin: 14px 0 0 0;
+	    border-radius: 3px;
+	    background: #a7a7a7;
+	    border: 1px #a7a7a7 solid;
+	    width: 130px;
+	    height: 37px;
+	    text-align: center;
+	    line-height: 37px;
+    }
+    .redeemGoStatus{
+    	background: #fff !important;
+    	color: #333 !important;
+    }
+    .buy .right a{
+    	width: 130px;
+	    height: 37px;
+	    text-align: center;
+	    line-height: 37px;
+	    padding: 0;
+    }
+    .pro-head h2{
+        height: auto;
+        padding: 0px 13px;
+        padding-right: 10px;
+    }
+    .pro-head h2 span{
+        line-height: 32px;
+        margin-left: 0;
+    }
+   .pro-head .parameter ul li {
+       float: left;
+        width: 56%;
+       padding-top: 2px;
+    }
+    .schedule{
+			display: none;
+	}
+	.pro-head .parameter{
+		height: 82px;
+    }
+    .pro-head .parameter ul li:nth-child(2){
+        width: 128px;
+    }
+    .pro-head .parameter ul li:nth-child(4){
+        width: 127px;
+    }
+    .fixedProduct  #fundTypeInfo  li:nth-child(2){
+        width: 56%;
+    }
+	.mask{
+        position: fixed;
+        z-index: 31000;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        background: rgba(8, 8, 8,0.7);
+	}
+	.share{
+		width: 108px;
+		height:112px;
+		background: url('/WeixinWeb/WeixinWeb_Images/mgm/sIcon.png');
+		background-size: 100% 100%;
+		position: absolute;
+		right: 5%;
+		top: 0;
+    }
+    .mask p{
+        font-size: 18px;
+        color: #fff;
+        position: absolute;
+        right: 80px;
+        top: 111px;
+        line-height: 19px;
+    }
+	.step-bg .step{
+		position: relative;
+    }
+    .pro-head{
+        position: relative;
+    }
+    .invitation{
+        position: absolute;
+        bottom: -149px;
+        color: #fff;
+        width: 150px;
+        height: 30px;
+        background: #539BED;
+        left: 50%;
+        margin-left: -75px;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 5px;
+        font-size: 15px;
+    }
+    .tips{
+        height: 60px;
+    }
+    .step-bg{
+        height: 150px;
+    }
+    .fixedProduct .invitation{
+        bottom: -53px;
+    }
+    #showRedBox #goToRedeemList p{
+        font-size: 14px;
+    }
+    .goToRedeemListDiv{
+        display: inline-block;
+        width: 45%;
+        text-align: center;
+    }
+   .font{
+       text-indent: 15px;
+   }
+   .goToRedeemListDiv p{
+       margin-top: 10px;
+   }
+   .fontClocr{
+       color:#999;
+   }
+   .font-color{
+		color:#000;
+   }
+</style>
+</body>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/share.js"></script>
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/fundInfo.js"></script> -->
+<script type="text/javascript">
+//document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/fundInfo.js?version='+jsversion+'"><\/script>');
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/fundInfo.min.js?version='+jsversion+'"><\/script>');
+</script>
+</html>

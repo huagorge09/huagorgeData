@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.widget.WidgetDao">
+
+	<select id="queryMatchApkindList" parameterType="sparam" resultType="java.util.Map">
+		SELECT PMCO, 
+			   PMNM,
+			   PMV1 pmv1,
+			   PMV2 pmv2
+		  FROM PARAMETER
+		 WHERE PMCO <![CDATA[<>]]> '******'
+		 	<if test="sp.pmst != null and sp.pmst !='' ">
+		   		AND PMST = #{sp.pmst}
+		    </if>
+		    <if test="sp.pmky != null and sp.pmky !='' ">
+		   		AND PMKY = #{sp.pmky}
+		    </if>
+		    <if test="sp.pmco != null and sp.pmco !='' ">
+		   		AND PMCO = #{sp.pmco}
+		    </if>
+		    <if test="sp.pmv1 != null and sp.pmv1 !='' ">
+		   		AND PMV1 = #{sp.pmv1}
+		    </if>
+		    <if test="sp.pmv2 != null and sp.pmv2 !='' ">
+		   		AND PMV2 = #{sp.pmv2}
+		    </if>
+		    <if test="sp.pmv3 != null and sp.pmv3 !='' ">
+		   		AND PMV3 = #{sp.pmv3}
+		    </if>
+		   <if test="sp.pmnm != null and sp.pmnm !='' ">
+		   		AND (PMNM LIKE '%' || #{sp.pmnm} || '%' OR PMCO LIKE '%' || #{sp.pmnm} || '%')
+		   </if>
+		 ORDER BY PMCO ASC
+	</select>
+	
+	<!-- 根据参数类型、参数键和参数码取得系统参数信息 -->
+	<select id="getParameterByPmstPmkyPmco" parameterType="sparam" resultType="com.cmwa.ecc.business.commonVo.ParameterDto">
+		SELECT PMCO	pmco,
+			   PMNM	pmnm,
+			   PMV1 pmv1,
+			   PMV2 pmv2
+		  FROM PARAMETER
+		 WHERE PMCO <![CDATA[<>]]> '******'
+   		   AND PMKY = #{pmky}
+   		   AND PMST = #{pmst}
+   		   AND PMCO = #{pmco}
+		 ORDER BY PMCO ASC
+	</select>
+	
+</mapper>

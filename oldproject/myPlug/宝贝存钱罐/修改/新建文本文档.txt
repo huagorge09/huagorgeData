@@ -1,0 +1,5 @@
+<span class="time">申请精华审核通过可得10猪币</span>
+<a href="generatePhotos.html"><span class="generatePhotos"></span></a>
+<div class="loadMoreButton" id="loadMoreButton-dianZan">加载更多</div>
+<div class="loadMoreButton" id="loadMoreButton-pingLun">加载更多</div>
+<div class="loadMoreButton"  id="loadMoreButton-daShang">加载更多</div>

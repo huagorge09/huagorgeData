@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+   	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/bannerStyleNew.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscrollNew.js"></script>
+    <script src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscroll-probeNew.js"></script>  
+	
+</head>
+<body>
+
+<section class="page">
+
+<div id="wrapper">
+        <div id="scroller">
+    <!--#include virtual="/WeixinService/headerOrFooter/headerNew.shtml"-->
+    
+    <section id="afficheList">
+        <div class="bulletin" style="display: none;">
+            <img class="bulletin-icon" src="/WeixinWeb/WeixinWeb_Images/images/none-gray.png" />
+            <span>暂无公告,敬请期待...</span>
+        </div>
+    </section>  
+	<div id="pullUp" class="ub ub-pc c-gra">
+        <div class="pullUpIcon"></div>
+        <div class="pullUpLabel">上拉显示更多...</div>
+    </div>
+	
+</div></div>  
+</section>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/afficheListNew.min.js"></script>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+    <title>招商财富-财富宝系列 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/cfbp2/cfb.css">
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-init.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/flexible.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+
+
+</head>
+<body>
+	<div class="guide">
+		<div class="guide1">
+			<p> 固收王牌-财富宝系列</p>
+			<p>历史业绩优良，产品定期开放，<br>
+				进退灵活。与精英团队共享超额<br>
+				收益，抢占先基，稳步求赢！</p>
+		</div>
+		<div class="guide2">
+			<h1>与其静待时机，不如选择牛基</h1>
+			<div class="product">
+				<h2>财富宝273天理财系列</h2>
+				<h3>募集截止：2018年8月6日 15:00</h3>
+				<ul class="clearFloat">
+					<li>
+						<p>273<span>天</span></p>
+						<p>产品期限</p>
+					</li>
+					<li>
+						<p><span>登录可见</span></p>
+						<p>业绩计提基准</p>
+					</li>
+					<li>
+						<p>100<span>万</span></p>
+						<p>起投</p>
+					</li>
+				</ul>
+			</div>
+			<!--<div class="product">-->
+				<!--<h2>财富宝119天理财系列</h2>-->
+				<!--<h3>募集截止：2018年7月30日 15:00</h3>-->
+				<!--<ul class="clearFloat">-->
+					<!--<li>-->
+						<!--<p>119<span>天</span></p>-->
+						<!--<p>产品期限</p>-->
+					<!--</li>-->
+					<!--<li>-->
+						<!--<p><span>登录可见</span></p>-->
+						<!--<p>业绩计提基准</p>-->
+					<!--</li>-->
+					<!--<li>-->
+						<!--<p>100<span>万</span></p>-->
+						<!--<p>起投</p>-->
+					<!--</li>-->
+				<!--</ul>-->
+			<!--</div>-->
+			<div class="productTips">
+				<p class="t1">产品风险等级为R2，适合C2中低风险承受能力以及以上客群</p>
+				<p class="t3">应监管要求，产品详情登陆可见。为保护您的权益和更好地进行产品适配，过程中需要了解您的相关信息和风险等级。</p>
+				<a href="javascript:;" class="loginSee" onclick="seeProduct()">登录可见产品详情</a>
+			</div>
+		</div>
+		<div class="markt">产品过往业绩不代表未来表现，不等于产品实际投资，投资需谨慎</div>
+    </div>
+
+    <div class="bottom clearFloat">
+    	<a href="javascript:;" onclick="bussiness();" id="myBtn1">我感兴趣</a>
+    	<a href="javascript:;" onclick="myAdviser();" id="myBtn2">我的顾问</a>
+    </div>
+    
+    	<!--预约信息填写-->
+	<div class="cover-bg reserves hide">
+		<div class="content">
+			 <span class="close"></span>
+			 <h1>一键预约享专属服务<br>让投资无后顾之忧</h1>
+			 <h3>我们的专属顾问将24小时内给您回电</h3>
+			 <div class="form">
+			 	<ul>
+				 	<li>
+				 	   <div class="inputBox">
+				 	  	   <span></span> <input type="text" id="userName" name="userName" placeholder="请输入您的姓名"/>
+				 	   </div>	
+				       <p style="display: none;"></p>
+				 	</li>
+				 	<li class="foucs">
+				 		<div class="inputBox">
+				 	        <span></span> <input type="tel" id="mobilePhone" name="mobilePhone" maxlength="11" placeholder="请输入您的手机号码"/> 
+				 		</div>
+				 		<p  style="display: none;"></p>
+				 	</li>
+				 	
+				 </ul>
+				 <button id="saveBtn"  class="disabled">立即提交</button>
+			 </div>
+		</div>
+	</div>
+	<!-- 错误提示 -->
+	<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+		<span id="errorRemark"></span>
+	</div>
+	<!--预约成功-->
+	<div class="cover-bg success hide">
+		 <div class="content center">
+		 	<span class="close"></span>
+		 	<div class="successIcon"></div>
+		 	<h2>预约成功</h2>
+		 	<p>客户经理将尽快与您联系，请保持电话畅通</p>
+		 </div>
+	</div>
+	 <script>
+    	 var pageId="wx_cfbP2_guidePageId"
+    </script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/cfbp2/index.js"></script>
+</body>
+</html>

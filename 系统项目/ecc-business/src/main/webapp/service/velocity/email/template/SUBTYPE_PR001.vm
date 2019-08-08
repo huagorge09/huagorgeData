@@ -1,0 +1,391 @@
+
+<table width='96%'>
+#if ($investStatus.equals("1")) 
+	<tr align='center';>
+		<td  width="11%"style="background-color:orange;">子产品简称</td>
+		<td  width="11%"style="background-color:orange;">提前还款日</td>
+		<td  width="10%"style="background-color:orange;">还款金额</td>
+		<td  width="10%"style="background-color:orange;">业务类型</td>
+		<td  width="11%"style="background-color:orange;">子产品成立日</td>
+		<td  width="11%"style="background-color:orange;">子产品到期日</td>
+		<td  width="11%"style="background-color:orange;">资金来源</td>
+		<td  width="10%"style="background-color:orange;">项目经理</td>
+		<td  width="11%"style="background-color:orange;">FA处理日</td>
+	</tr>
+	<tr align="center">
+		<td>$!investMatterVo.subFundSname</td>
+		<td>$!investMatterVo.investDate</td>
+		<td>$!investMatterVo.repayAmount</td>
+		<td>$!investMatterVo.prdBizTypeName</td>
+		<td>$!investMatterVo.expectedIntBegDate</td>
+		<td>
+			#if ($investMatterVo.aliveForever.equals("1")) 
+				长期
+			#else
+				$!investMatterVo.expectedEndDate
+			#end
+		</td>
+		<td>$!tbsCapitalsrc</td>
+		<td>$!investMatterVo.mgrName</td>
+		<td class="white-bg">$!investMatterVo.faDate</td>
+	</tr>
+#elseif ($investStatus.equals("2")) 
+	<tr align='center';>
+		<td width="11%"style="background-color:orange;">子产品简称 </td>
+		<td width="11%"style="background-color:orange;">收益分配日</td>
+		<td width="10%"style="background-color:orange;">业务类型</td>
+		<td width="11%"style="background-color:orange;">子产品初始规模</td>
+		<td width="11%"style="background-color:orange;">子产品成立日</td>
+		<td width="11%"style="background-color:orange;">子产品到期日</td>
+		<td width="10%"style="background-color:orange;">资金来源</td>
+		<td width="10%"style="background-color:orange;">项目经理</td>
+		<td width="11%"style="background-color:orange;">FA处理日</td>
+	</tr>
+	<tr align="center">
+		<td>$!investMatterVo.subFundSname</td>
+		<td>$!investMatterVo.investDate</td>
+		<td>$!investMatterVo.prdBizTypeName</td>
+		<td>$!investMatterVo.subInitalSize</td>
+		<td>$!investMatterVo.expectedIntBegDate</td>
+		<td>
+			#if ($investMatterVo.aliveForever.equals("1")) 
+				长期
+			#else
+				$!investMatterVo.expectedEndDate
+			#end
+		</td>
+		<td>$!tbsCapitalsrc</td>
+		<td>$!investMatterVo.mgrName</td>
+		<td class="white-bg">$!investMatterVo.faDate</td>
+	</tr>
+#elseif ($investStatus.equals("3")) 
+	<tr align='center';>
+		<td width="11%"style="background-color:orange;">子产品简称 </td>
+		<td width="11%"style="background-color:orange;">提前子产品到期日 </td>
+		<td width="10%"style="background-color:orange;">业务类型</td>
+		<td width="11%"style="background-color:orange;">子产品成立日</td>
+		<td width="11%"style="background-color:orange;">子产品到期日</td>
+		<td width="10%"style="background-color:orange;">资金来源</td>
+		<td width="10%"style="background-color:orange;">项目经理</td>
+		<td width="11%"style="background-color:orange;">FA处理日</td>
+	</tr>
+	<tr align="center">
+		<td>$!investMatterVo.subFundSname</td>
+		<td>$!investMatterVo.investDate</td>
+		<td>$!investMatterVo.prdBizTypeName</td>
+		<td>$!investMatterVo.expectedIntBegDate</td>
+		<td>
+			#if ($investMatterVo.aliveForever.equals("1")) 
+				长期
+			#else
+				$!investMatterVo.expectedEndDate
+			#end
+		</td>
+		<td>$!tbsCapitalsrc</td>
+		<td>$!investMatterVo.mgrName</td>
+		<td class="white-bg">$!investMatterVo.faDate</td>
+	</tr>
+#elseif ($investStatus.equals("4")) 
+	<tr align='center';>
+		<td width="11%"style="background-color:orange;">子产品简称 </td>
+		<td width="11%"style="background-color:orange;">展期后子产品到期日</td>
+		<td width="10%"style="background-color:orange;">业务类型</td>
+		<td width="11%"style="background-color:orange;">子产品成立日</td>
+		<td width="11%"style="background-color:orange;">子产品到期日</td>
+		<td width="10%"style="background-color:orange;">资金来源</td>
+		<td width="10%"style="background-color:orange;">项目经理</td>
+	</tr>
+	<tr align="center">
+		<td>$!investMatterVo.subFundSname</td>
+		<td>$!investMatterVo.investDate</td>
+		<td>$!investMatterVo.prdBizTypeName</td>
+		<td>$!investMatterVo.expectedIntBegDate</td>
+		<td>
+			#if ($investMatterVo.aliveForever.equals("1")) 
+				长期
+			#else
+				$!investMatterVo.expectedEndDate
+			#end
+		</td>
+		<td>$!tbsCapitalsrc</td>
+		<td>$!investMatterVo.mgrName</td>
+	</tr>
+#elseif ($investStatus.equals("5")) 
+	<tr align='center';>
+		<td  width="11%"style="background-color:orange;">子产品简称</td>
+		<td  width="11%"style="background-color:orange;">支付日期</td>
+		<td  width="10%"style="background-color:orange;">支付金额</td>
+		<td  width="11%"style="background-color:orange;">业务类型</td>
+		<td  width="11%"style="background-color:orange;">子产品成立日</td>
+		<td  width="11%"style="background-color:orange;">子产品到期日</td>
+		<td  width="10%"style="background-color:orange;">资金来源</td>
+		<td  width="10%"style="background-color:orange;">项目经理</td>
+		<td  width="11%"style="background-color:orange;">FA处理日</td>
+	</tr>
+	<tr align="center">
+		<td>$!investMatterVo.subFundSname</td>
+		<td>$!investMatterVo.investDate</td>
+		<td>$!investMatterVo.repayAmount</td>
+		<td>$!investMatterVo.prdBizTypeName</td>
+		<td>$!investMatterVo.expectedIntBegDate</td>
+		<td>
+			#if ($investMatterVo.aliveForever.equals("1")) 
+				长期
+			#else
+				$!investMatterVo.expectedEndDate
+			#end
+		</td>
+		<td>$!tbsCapitalsrc</td>
+		<td>$!investMatterVo.mgrName</td>
+		<td class="white-bg">$!investMatterVo.faDate</td>
+	</tr>
+#elseif ($investStatus.equals("6")) 
+	<tr align='center';>
+		<td  width="11%"style="background-color:orange;">子产品简称</td>
+		<td  width="11%"style="background-color:orange;">提取日期</td>
+		<td  width="10%"style="background-color:orange;">提取金额</td>
+		<td  width="11%"style="background-color:orange;">业务类型</td>
+		<td  width="11%"style="background-color:orange;">子产品成立日</td>
+		<td  width="11%"style="background-color:orange;">子产品到期日</td>
+		<td  width="10%"style="background-color:orange;">资金来源</td>
+		<td  width="10%"style="background-color:orange;">项目经理</td>
+		<td  width="11%"style="background-color:orange;">FA处理日</td>
+	</tr>
+	<tr align="center">
+		<td>$!investMatterVo.subFundSname</td>
+		<td>$!investMatterVo.investDate</td>
+		<td>$!investMatterVo.repayAmount</td>
+		<td>$!investMatterVo.prdBizTypeName</td>
+		<td>$!investMatterVo.expectedIntBegDate</td>
+		<td>
+			#if ($investMatterVo.aliveForever.equals("1")) 
+				长期
+			#else
+				$!investMatterVo.expectedEndDate
+			#end
+		</td>
+		<td>$!tbsCapitalsrc</td>
+		<td>$!investMatterVo.mgrName</td>
+		<td class="white-bg">$!investMatterVo.faDate</td>
+	</tr>
+#end
+</table></br>
+
+#if($feeYieldList.size() != 0)
+<div style="margin-top:20px;margin-top:20px;margin-bottom:10px;">客户收益/费率：</div>
+<table width='96%'>
+	#foreach ($investFeeRateList in $feeYieldList)
+		#foreach ($investFeeRateVo in $investFeeRateList)
+			#if(!$investFeeRateVo.feeRateType.equals('1') && !$investFeeRateVo.feeRateType.equals('9'))
+				<tr>
+					<td style='font-weight:bolder;' align="center">&nbsp;$investFeeRateVo.feeName:&nbsp;</td>
+					<td colspan='10' style='color:red;' align="left">
+						#if($!investMatterVo.feeSource.equals('1'))
+							(来源于产品费用与收益)
+						#else 
+							(来源于产品管理)
+						#end
+					</td>
+				</tr>
+				<tr align="center">
+					<td  width="15%">&nbsp;</td>
+					<td  width="8%">&nbsp;费用类型：&nbsp;</td>
+					<td  width="6%" align="center">
+						#if($investMatterVo.feeSource.equals('0'))
+							#if($investFeeRateVo.feeRateType.equals('0'))固定
+							#elseif($investFeeRateVo.feeRateType.equals('1'))阶梯
+							#elseif($investFeeRateVo.feeRateType.equals('2'))区间
+							#elseif($investFeeRateVo.feeRateType.equals('3'))梯度
+							#elseif($investFeeRateVo.feeRateType.equals('4'))浮动
+							#end
+						#elseif($investMatterVo.feeSource.equals('1')) 
+							#if($investFeeRateVo.feeRateType.equals('0'))
+								#if($investFeeRateVo.feeName.equals('客户收益'))
+									固定利率
+								#else
+									固定费率
+								#end
+							#elseif($investFeeRateVo.feeRateType.equals('1'))
+								#if($investFeeRateVo.feeName.equals('客户收益'))
+									浮动利率
+								#else
+									浮动费率
+								#end
+							#elseif($investFeeRateVo.feeRateType.equals('2'))固定金额
+							#elseif($investFeeRateVo.feeRateType.equals('3'))
+								#if($investFeeRateVo.feeName.equals('客户收益'))
+									剩余收益
+								#else
+									剩余费用
+								#end
+							#end
+						#end </td>
+					#if($investFeeRateVo.feeRateType == 2)
+						<td width="8%">&nbsp;总金额：&nbsp;</td>
+						<td width="8%" align="center">#if(!$investFeeRateVo.feeAmount)— #else $investFeeRateVo.feeAmount #end</td>
+					#else
+						<td  width="8%">&nbsp;费率：&nbsp;</td>
+						<td  width="8%" align="center">#if(!$investFeeRateVo.feeRate)— 
+							#else 
+								$investFeeRateVo.feeRate
+								#if ($investMatterVo.feeSource.equals('0') && ($investFeeRateVo.feeRateType == '3' || $investFeeRateVo.feeRateType == '4'))
+								#else <span>%</span>
+								#end
+							#end	
+						</td>
+					#end
+					<td width="10%">&nbsp;计费起始日：&nbsp;</td>
+					<td width="8%" align="center">#if(!$investFeeRateVo.feeBeginDate)— #else $investFeeRateVo.feeBeginDate #end</td>
+					<td width="10%">&nbsp;计费结束日：&nbsp;</td>
+					<td width="8%" align="center">#if(!$investFeeRateVo.feeEndDate)— #else $investFeeRateVo.feeEndDate #end</td>
+					<td width="8%">&nbsp;备注：&nbsp;</td>
+					<td width="11%" align="center">#if(!$investFeeRateVo.remark)— #else $investFeeRateVo.remark #end</td>
+				</tr>
+			#elseif($investFeeRateVo.feeRateType.equals('1'))
+				#if($investMatterVo.feeSource.equals('0'))
+					<tr>
+						<td style='font-weight:bolder;' align="center">&nbsp;$!investFeeRateVo.feeName:&nbsp;</td>
+						<td colspan='10' style='color:red;' align="left">(来源于产品管理)</td>
+					</tr>
+					<tr align="center">
+						<td width="15%">&nbsp;</td>
+						<td width="8%">&nbsp;费用类型：&nbsp;</td>
+						<td width="6%" align="center">阶梯费率</td>
+						<td width="10%">&nbsp;阶梯费率1：&nbsp;</td>
+						<td width="8%" align="center">#if(!$investFeeRateVo.feeRate)— #else $investFeeRateVo.feeRate % #end</td>
+						<td width="8%">&nbsp;天数：&nbsp;</td>
+						<td width="8%" align="center">#if(!$investFeeRateVo.days)— #else $investFeeRateVo.days #end</td>
+						<td width="10%">&nbsp;阶梯费率2：&nbsp;</td>
+						<td width="8%" align="center">#if(!$investFeeRateVo.endFeeRate)— #else $investFeeRateVo.endFeeRate % #end</td>
+						<td width="8%">&nbsp;备注：&nbsp;</td>
+						<td width="11%" align="center">#if(!$investFeeRateVo.remark)— #else $investFeeRateVo.remark #end</td>
+					</tr>
+					
+				#elseif($investMatterVo.feeSource.equals('1'))
+					#if($velocityCount == 1)
+						<tr>
+							<td class="form-table-td-title-zheng" style='font-weight:bolder;' align="center">&nbsp;$!investFeeRateVo.feeName:&nbsp;</td>
+							<td colspan='10' style='color:red;' align="left">(来源于产品费用与收益)</td>
+						</tr>
+					#end
+					<tr align="center">
+						<td width="15%">&nbsp;</td>
+						<td width="8%">&nbsp;费用类型：&nbsp;</td>
+						<td width="6%" align="center">
+							#if($investFeeRateVo.feeName.equals('客户收益'))
+								浮动利率
+							#else
+								浮动费率
+							#end
+						</td>
+						<td width="8%">&nbsp;费率：&nbsp;</td>
+						<td width="8%" align="center">#if(!$investFeeRateVo.feeRate)— #else $investFeeRateVo.feeRate % #end</td>
+						<td width="10%">&nbsp;计费起始日：&nbsp;</td>
+						<td width="8%" align="center">#if(!$investFeeRateVo.feeBeginDate)— #else $investFeeRateVo.feeBeginDate #end</td>
+						<td width="10%">&nbsp;计费结束日：&nbsp;</td>
+						<td width="8%" align="center">#if(!$investFeeRateVo.feeEndDate)— #else $investFeeRateVo.feeEndDate #end</td>
+						<td width="8%">&nbsp;备注：&nbsp;</td>
+						<td width="11%" align="center">#if(!$investFeeRateVo.remark)— #else $investFeeRateVo.remark #end</td>
+					</tr>
+				#end
+			#elseif($investFeeRateVo.feeRateType == '9')
+					<tr align="left">
+						<td class="form-table-td-title-zheng" style='font-weight:bolder;'>&nbsp;$!investFeeRateVo.feeName:&nbsp;</td>
+						<td colspan='10' style='color:red;'>(来源于产品管理)</td>
+					</tr>
+					<tr>
+						<td width=15%;>&nbsp;</td>
+						<td class="form-table-td-title-zheng" style="text-align: left;" colspan="10" align="left"><span style="padding-left:35px;">无</span></td>
+					</tr>
+			#end
+		#end
+	#end
+</table></br>
+#end
+
+#if($underFeeRate.size() != 0)
+<div style="margin-top:20px;margin-top:20px;margin-bottom:10px;">底层利率：</div>
+<table width='96%'>
+	#foreach ($investFeeRateList in $underFeeRate)
+		#foreach ($investFeeRateVo in $investFeeRateList)
+			#if($investFeeRateVo.feeRateType == 0 || $investFeeRateVo.feeRateType == 2)
+				<tr>
+					<td style='font-weight:bolder;' align="center">&nbsp;$investFeeRateVo.feeName:&nbsp;</td>
+					<td colspan='10' style='color:red;' align="left"></td>
+				</tr>
+				<tr align="center">
+					<td  width="15%">&nbsp;</td>
+					<td  width="8%">&nbsp;费用类型：&nbsp;</td>
+					<td  width="6%" align="center">#if($investFeeRateVo.feeRateType.equals('0')) 固定费率   #elseif($investFeeRateVo.feeRateType.equals('2')) 固定金额  #end</td>
+					<td  width="8%">&nbsp;费率：&nbsp;</td>
+					<td  width="8%" align="center">
+						#if(!$investFeeRateVo.feeRate)
+							— 
+						#else
+							#if($investFeeRateVo.feeRateType.equals('0')) $investFeeRateVo.feeRate %    #elseif($investFeeRateVo.feeRateType.equals('2')) $investFeeRateVo.feeRate  #end
+						#end 
+						</td>
+					<td width="10%">&nbsp;计费起始日：&nbsp;</td>
+					<td width="8%" align="center">#if(!$investFeeRateVo.feeBeginDate)— #else $investFeeRateVo.feeBeginDate #end</td>
+					<td width="10%">&nbsp;计费结束日：&nbsp;</td>
+					<td width="8%" align="center">#if(!$investFeeRateVo.feeEndDate)— #else $investFeeRateVo.feeEndDate #end</td>
+					<td width="8%">&nbsp;备注：&nbsp;</td>
+					<td width="11%" align="center">#if(!$investFeeRateVo.remark)— #else $investFeeRateVo.remark #end</td>
+				</tr>
+			#elseif($investFeeRateVo.feeRateType == 1)
+				#if($velocityCount == 1)
+					<tr>
+						<td class="form-table-td-title-zheng" style='font-weight:bolder;' align="center">&nbsp;$!investFeeRateVo.feeName:&nbsp;</td>
+						<td colspan='10' style='color:red;' align="left"></td>
+					</tr>
+				#end
+				<tr align="center">
+					<td width="15%">&nbsp;</td>
+					<td width="8%">&nbsp;费用类型：&nbsp;</td>
+					<td width="6%" align="center">
+						#if($investFeeRateVo.feeRateType.equals('0')) 固定费率  
+						#elseif($investFeeRateVo.feeRateType.equals('1')) 浮动费率
+						#elseif($investFeeRateVo.feeRateType == 2)固定金额  
+						#end
+					</td>
+					#if($investFeeRateVo.feeRateType == 2)
+						<td width="8%">&nbsp;总金额：&nbsp;</td>
+						<td width="8%" align="center">#if(!$investFeeRateVo.feeAmount)— #else $investFeeRateVo.feeAmount #end</td>
+					#else
+						<td width="8%">&nbsp;费率：&nbsp;</td>
+						<td width="8%" align="center">#if(!$investFeeRateVo.feeRate)— #else $investFeeRateVo.feeRate % #end</td>
+					#end
+					<td width="10%">&nbsp;计费起始日：&nbsp;</td>
+					<td width="8%" align="center">#if(!$investFeeRateVo.feeBeginDate)— #else $investFeeRateVo.feeBeginDate #end</td>
+					<td width="10%">&nbsp;计费结束日：&nbsp;</td>
+					<td width="8%" align="center">#if(!$investFeeRateVo.feeEndDate)— #else $investFeeRateVo.feeEndDate #end</td>
+					<td width="8%">&nbsp;备注：&nbsp;</td>
+					<td width="11%" align="center">#if(!$investFeeRateVo.remark)— #else $investFeeRateVo.remark #end</td>
+				</tr>
+			#end
+		#end
+	#end
+</table></br>
+#end
+
+<table width='96%'>
+	<tr>
+		<td width="15%">历史产品端、底层标的端所有要素PM确认结果&nbsp;&nbsp;</td>
+		<td colspan="4" width=81%  style="word-wrap:break-word;word-break:break-all;padding-left:15px;">
+			#foreach($hisDto in $commentList)
+				$hisDto.hisAction &nbsp;&nbsp;$hisDto.createTime &nbsp;&nbsp;$hisDto.createName:</br>$hisDto.hisOpinionReplace<br/>
+			#end
+		</td>
+	</tr>
+	<tr>
+		<td align="center" colspan="6" >&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="form-table-td-title">历史审批意见&nbsp;&nbsp;</td>
+		<td colspan="5"  style="word-wrap:break-word;word-break:break-all;padding-left:15px;">
+			#foreach($hisDto in $fahisList)
+				$hisDto.hisAction &nbsp;&nbsp;$hisDto.createTime &nbsp;&nbsp;$hisDto.createName:</br>$hisDto.hisOpinionReplace <br/>
+			#end
+		</td>
+	</tr>
+</table>

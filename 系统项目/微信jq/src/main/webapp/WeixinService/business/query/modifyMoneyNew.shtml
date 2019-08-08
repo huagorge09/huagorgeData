@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+   	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/bannerStyleNew.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedomNew.js"></script>
+	
+    
+</head>
+<body>
+
+<section class="page">
+
+    <!--#include virtual="/WeixinService/headerOrFooter/headerNew.shtml"-->
+	
+	<div style="display: none;">
+		<input type="hidden" id="serialno" value="" />
+		<input type="hidden" id="tradeAcco" value="" />
+		<input type="hidden" id="fundId" value="" />
+		<input type="hidden" id="orderType" value="" />
+		
+		<input type="hidden" id="oldMoney" value="" /><!-- 原订单金额 -->
+        <input type="hidden" id="sartBuying">  <!-- 起购金额 -->
+		<input type="hidden" id="profit" value="" /><!-- 收益率 -->
+		<input type="hidden" id="termInDay" value="" /><!-- 存续期限，以天为单位 -->
+		<input type="hidden" id="scale" value="" /><!-- 产品规模 -->
+		<input type="hidden" id="displayLimit" value="" /><!-- 展示额度 -->
+		<input type="hidden" id="productMoney" value="" /><!-- 认购起点 -->
+		<input type="hidden" id="moneyStep" value="" /><!-- 认购步长 -->
+        <input type="hidden" id="typeId" value="" /><!-- 类型id -->
+	</div>
+	
+    <section>
+        <div class="registe-point">
+            <span>请重新输入买入金额</span>
+        </div>
+        <div class="box-money">
+            <div class="money mid">
+                <label for="money">买入金额</label>
+                <span class="entry-money">
+                	<input type="text"  id="money" value="" onblur="checkedMoney();" /><em class="fr">元</em>
+                </span>
+                <div class="point">
+                    <span class="fl" id="inCome"><em>业绩报酬计提基准：</em><i id="expectInCome"></i></span>
+                    <span class="fr" id="feePack"><em>认购收费：￥</em><i id="fee"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="box-input registe box-pay-password clear">
+            <div class="password mid">
+                <label for="password fl">安全码</label>
+                <input type="password" id="tPassWord" placeholder="请输入安全码">
+                <a href="/WeixinService/business/user/resetTPasswordNew.shtml" class="forget-password fr">忘记安全码？</a>
+             </div>
+            
+            <div class="input-text input-textud">
+                <label for="indentify">验证码</label>
+                <input type="text" id="randomCode" placeholder="请输入验证码" style="width:40%;"/>
+                <span class="indentifyimg">
+               		<img src="/WeixinService/buildimageservlet.xhtml" id="rondomCodeImg" onclick="getRandomCode()" class="code_pic" />
+                </span>
+            </div>    
+        </div>           
+        <div class="buy buy_btn order-bottom">
+            <div class="left fl">
+                <a href="javascript:modifyAppointRequest();">确认修改</a>
+            </div>
+            <div class="right fr">
+                 <a href="javascript:toBack();">放弃</a>
+            </div>
+        </div>
+    </section> 
+    
+</section>
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/modifyMoneyNew.js"></script> 
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/modifyMoneyNew.min.js"></script>-->
+<script type="text/javascript">
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/modifyMoneyNew.min.js?version='+new Date().getTime()+'"><\/script>');
+</script>
+</body>
+</html>

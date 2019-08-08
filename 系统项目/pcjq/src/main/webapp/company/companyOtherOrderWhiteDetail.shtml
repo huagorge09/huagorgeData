@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"/>
+<title>招商财富</title>
+
+</head>
+<body>
+
+<!-- 取消订单提示弹窗 S -->
+<div id="tips" class="cover_bg" style="display: none;">
+    <div class="cover-con risk-warning">
+        <h1>取消订单</h1>
+        <i class="close" onclick="close_tips('tips')"></i>
+        <span class="cover-con-text">确定取消此单？取消订单后，将无法找回</span>
+        <input class="risk-warning-goon" type="button" onclick="cancelAppointRequest();" value="确定" />
+        <input class="risk-warning-reset" type="button" onclick="close_tips('tips');" value="取消" />
+    </div>
+</div>
+<!-- 取消订单提示弹窗 E -->
+
+<div class="cover_bg" id="fundInfo_tips" style="display: none">
+	<div class="cover-con pop-up-four none" id="appointDate_info" style="display: none">
+        <h1 class="appoint">产品预约</h1>
+        <i class="close" onclick="close_fundInfo('fundInfo_tips')"></i>
+        <span class="cover-con-text">当日起产品开始预约，您可通过线上下单预约产品，并在<em id="appoint_date_tips">1月19日15:00</em>前完成汇款，即可锁定产品额度。</span>
+        <input class="pop-up-four-confirm" type="button" value="确认" onclick="close_fundInfo('fundInfo_tips')"/>
+    </div>
+	<div class="cover-con pop-up-four" id="salesDate_info" style="display: none">
+        <h1 class="sales">正式发售</h1>
+        <i class="close" onclick="close_fundInfo('fundInfo_tips')"></i>
+        <span class="cover-con-text">当日起产品正式发售，您可通过在线下单并完成线下汇款，锁定产品额度。</span>
+        <input class="pop-up-four-confirm" type="button" value="确认" onclick="close_fundInfo('fundInfo_tips')"/>
+    </div>
+	<div class="cover-con pop-up-four" id="subdeadLine_info" style="display: none">
+        <h1 class="subdead">认购截止</h1>
+        <i class="close" onclick="close_fundInfo('fundInfo_tips')"></i>
+        <span class="cover-con-text">当日产品募集结束，停止销售，次日产品正式起息。</span>
+        <input class="pop-up-four-confirm" type="button" value="确认" onclick="close_fundInfo('fundInfo_tips')"/>
+    </div>
+	<div class="cover-con pop-up-four" id="maturityDate_info" style="display: none">
+        <h1 class="maturity">到期日期</h1>
+        <i class="close" onclick="close_fundInfo('fundInfo_tips')"></i>
+        <span class="cover-con-text">当日产品到期，预计将在5个工作日内完成收益分配，请注意查收您的银行账户信息。</span>
+        <input class="pop-up-four-confirm" type="button" value="确认" onclick="close_fundInfo('fundInfo_tips')"/>
+    </div>
+</div>
+
+<!-- header -->
+<!--#include virtual="/AppService/public/header.shtml"-->
+
+<!-- 隐藏项 -->
+<div style="display: none;">
+	<input type="hidden" id="page" value="0" />
+	<input type="hidden" id="maxPages" value="1" />
+	<input type="hidden" id="typeId" value="" />
+	<input type="hidden" id="fundId" value="" />
+	<input type="hidden" id="period" value="" />
+	<input type="hidden" id="serialno" value="" />
+	<input type="hidden" id="money" value="" />
+    <input type="hidden" id="isSubPrdAppraisement" value="" /><!-- 子产品是否估值 -->
+    <input type="hidden" id="outerId" value="" /><!-- 系列产品外部代码 -->
+</div>
+
+<div class="box-head income-head reservation-order appointment">
+    <div class="box-head-con mid">
+    
+        <!-- 固收类产品  基本信息 S -->
+        <div class="box-head-left fl" id="top_left_01" style="display: none;">
+            <div class="head-left-con">
+                <h1><span class="fl" id="adname"></span><i class="fl" id="typeName"></i></h1>
+                <span class="point" id="adtext"></span>
+                <div class="left-con-mid">
+                    <dl class="start">
+                        <dt class="floatincome" id="profit"></dt>
+                        <dd>业绩报酬计提基准</dd>
+                    </dl>
+                    <dl class="center">
+                        <dt id="term"></dt>
+                        <dd>理财期限</dd>
+                    </dl>
+                    <dl class="end">
+                        <dt id="scale"></dt>
+                        <dd>募集规模</dd>
+                    </dl>
+                </div>
+                <div class="left-con-bottom">
+                    <div class="left-con-bottom-order" id="sellPercent">
+                    
+                    </div>
+                    <span class="residual" id="displayLimitText"></span>
+                    <span id="QAtelG" style="display: none;">如有疑问请咨询<em style="color: red;">400-8878-555</em></span>
+                </div>
+            </div>
+        </div>
+        <!-- 固收类产品  基本信息 E -->
+        
+        <!-- 固收净值型  基本信息 S -->
+        <div class="box-head-left fl" id="top_left_04" style="display: none;">
+            <div class="head-left-con">
+                <h1><span class="fl" id="adname"></span><i class="fl" id="typeName"></i></h1>
+                <span class="point" id="adtext"></span>
+                <div class="left-con-mid">
+                    <dl class="start">
+                        <dt class="floatincome" id="netval_new"></dt>
+                        <dd>最新净值</dd>
+                    </dl>
+                    <dl class="center">
+                        <dt id="maxNetValue"></dt>
+                        <dd>历史最高净值</dd>
+                    </dl>
+                    <dl class="end">
+                        <dt id="netval_profit"></dt>
+                        <dd>累计收益率</dd>
+                    </dl>
+                </div>
+                <div class="left-con-bottom">
+                    <div class="left-con-bottom-order" id="netval_text">
+                       <em><b>嘉利产品1号最新净值日期为<i>2015年12月2日</i></b></em>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 固收净值型  基本信息 S -->
+        
+        <!-- 浮动收益类产品  基本信息 S -->
+        <div class="box-head-left fl" id="top_left_02" style="display: none;">
+            <div class="head-left-con">
+                <h1><span class="fl" id="adname"></span><i class="fl" id="typeName"></i></h1>
+                <span class="point" id="adtext"></span>
+                <div class="left-con-mid">
+                    <dl class="start">
+                        <dt class="floatincome">浮动收益</dt>
+                        <dd>业绩报酬计提基准</dd>
+                    </dl>
+                    <dl class="center">
+                        <dt id="term"></dt>
+                        <dd>理财期限</dd>
+                    </dl>
+                    <dl class="end">
+                        <dt id="scale"></dt>
+                        <dd>募集规模</dd>
+                    </dl>
+                </div>
+                <div class="left-con-bottom">
+                    <div class="left-con-bottom-order" id="sellPercent">
+                       
+                    </div>
+                    <span class="residual" id="displayLimitText"></span>
+                    <span id="QAtelF" style="display: none;">如有疑问请咨询<em style="color: red;">400-8878-555</em></span>
+                </div>
+            </div>
+        </div>
+        <!-- 浮动收益类产品  基本信息 E -->
+        
+        <!-- 净值产品开放型  基本信息 S -->
+        <div class="box-head-left fl" id="top_left_03" style="display: none;">
+            <div class="head-left-con">
+                <h1><span class="fl" id="adname"></span><i class="fl" id="typeName"></i></h1>
+                <span class="point" id="adtext"></span>
+                <div class="left-con-mid">
+                    <dl class="start">
+                        <dt class="floatincome" id="netval_new"></dt>
+                        <dd>最新净值</dd>
+                    </dl>
+                    <dl class="center">
+                        <dt id="maxNetValue"></dt>
+                        <dd>历史最高净值</dd>
+                    </dl>
+                    <dl class="end">
+                        <dt id="netval_profit"></dt>
+                        <dd>累计收益率</dd>
+                    </dl>
+                </div>
+                <div class="left-con-bottom">
+                    <div class="left-con-bottom-order" id="netval_text">
+                       <em><b>嘉利产品1号最新净值日期为<i>2015年12月2日</i></b></em>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 净值产品开放型  基本信息 E -->
+        
+        <div class="box-head-right fl" id="orderDetail">
+            <!--<h1 class="floatincome">预约中...</h1> -->
+            <!--<div class="head-righ-con">-->
+            <div class="box-info">
+                <h2><span>查询类型：<em id="proType"></em></span></h2>
+                <h2><span>产品id：<em id="proID"></em></span></h2>
+            </div>
+
+                <!--<h3>产品id：</h3>-->
+                <!--<div class="order-info">-->
+                    <!--<p>预约金额：<em>0,000,000</em><i>元</i></p>-->
+                    <!--<p>业绩报酬计提基准：<em>0,0.0</em><i>元</i></p>-->
+                    <!--<p style="display: none;">产品合同：<em id="econtrant"><a></a></em></p>-->
+                <!--</div>-->
+                <!--<div class="check-cancel">-->
+                    <!--<a href="javascript:void(0);" class="check">查看汇款信息</a>-->
+                    <!--<a href="javascript:tipsShow('tips')" class="cancel">取消订单</a>-->
+                <!--</div>-->
+                <!--<p class="point">请您于<em>0000年 00月00日00:00</em>前完成汇款</p>-->
+            <!--</div>            -->
+        </div>
+    </div>
+</div>
+<div class="step mid" id="timeAxis" style="display: none;">
+     <div class="process-right fl" >
+        <dl class="first act" onclick="show_fundInfo('appointDate_info');">
+            <span class="hover">
+                <dt><span class="pic pic01"></span></dt>
+                <dd>产品预约<span id="appointDate"></span></dd>
+            </span>    
+            <b class="process-right-jt"></b>
+        </dl>
+        <dl class="act" onclick="show_fundInfo('salesDate_info');">
+            <span class="hover">
+                <dt><span class="pic pic02"></span></dt>
+                <dd>正式发售<span id="salesDate"></span></dd>
+            </span>
+            <b class="process-right-jt"></b>
+        </dl>
+        <dl class="process03" onclick="show_fundInfo('subdeadLine_info');">
+            <span class="hover">
+                <dt><span class="pic pic03"></span></dt>
+                <dd>认购截止<span id="subdeadLine"></span></dd>
+            </span>
+            <b class="process-right-jt"></b>
+        </dl>
+        <dl class="last" onclick="show_fundInfo('maturityDate_info');">
+            <span class="hover">
+                <dt><span class="pic pic04"></span></dt>
+                <dd>到期日期<span id="maturityDate"></span></dd>
+            </span>
+        </dl>
+    </div>           
+</div>
+
+<!-- 净值产品 开放型 净值信息 S -->
+<div id="netval" style="display: none;">
+	<div class="box-earliest mid" id="highchart">
+	    <div class="highchart_nav">
+	        <ul>
+	            <li class="start act"><span onclick="queryEstimateByFundId('-1')">1个月</span></li>
+	            <li class="second"><span onclick="queryEstimateByFundId('-3')">3个月</span></li>
+	            <li class="third"><span onclick="queryEstimateByFundId('-6')">6个月</span></li>
+	            <li class="end"><span onclick="queryEstimateByFundId('-12')">1年</span></li>
+	        </ul>
+	    </div>
+	    <div class="highchart_con highchart_con01 clear" id="netvalContent">
+	        <b>单位净值</b>
+	        <b id="profitByDate"></b>
+	        <div class="highchart" id="highchart1">  
+	        	<!-- 曲线图位置 -->         
+	        </div>
+	        <p id="text1" style='display:none;padding-left: 20px;
+                padding-bottom: 35px;
+                padding-top: 0px;'>注:该净值为招商财富-长城汇理2号专项资管计划份额净值</p>
+	    </div>
+	</div>
+</div>
+<!-- 净值产品 开放型 净值信息 E -->
+<div class="noJz" style="display:none;margin-bottom: 15px;">
+    <div style="margin: 0 auto; width: 1000px; height: 300px;     padding-top: 150px; background: #fff; text-align: center">
+       <h2 style="height: 50px; line-height: 50px;font-size: 18px;">该产品为非净值类产品，无净值数据</h2>
+    </div>
+</div>
+
+
+<div class="box-first mid" id="productInfo" style="display: none;">
+	<h1>产品基本信息</h1>
+	<div class="content">
+		<div class="box01">
+            <ul>
+       			<!-- 产品基本信息 小标题 html -->
+            </ul>
+        </div>
+       <!-- 产品基本信息 大标题 html -->
+	</div>
+</div>
+
+<div class="box-second mid" id="projectInfo" style="display: none">
+    <h1>投资项目信息</h1>
+    <div class="content">
+       <!-- 投资项目信息 html -->
+    </div>
+</div>
+<div class="box-third mid" id="qa" style="display: none;">
+    <h1>常见问题</h1>
+    <div class="content">
+       <!-- 常见问题 html -->
+    </div>
+</div>
+<style>
+    .box-info{
+        width: 250px;
+        height: 70px;
+        background: #fff;
+        padding-top: 12px;
+    }
+    .box-head{
+        height: 82px;
+    }
+    .box-head .box-head-right{
+        margin: 0;
+    }
+    .box-info h2{
+        padding-left: 20px;
+        line-height: 30px;
+        font-size: 16px;
+    }
+    .box-head {
+        margin-bottom: 8px;
+    }
+</style>
+<!-- footer -->
+<!--#include virtual="/AppService/public/footer.shtml"-->
+<!--<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/companyOtherOrderWhiteDetail.js"></script>-->
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/companyOtherOrderWhiteDetail.min.js"></script>
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/agentOrderData.js"></script>
+<script>
+</script>
+</body>
+</html>

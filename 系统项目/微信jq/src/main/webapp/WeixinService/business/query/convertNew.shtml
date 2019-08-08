@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+   	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/bannerStyleNew.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedomNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/numberToCapitalNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/headerNew.min.js"></script>
+	<!--  滚动条js  -->
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscrollNew.js"></script>
+	
+	
+
+</head>
+<body>
+
+ <!-- 尚未完成操作弹窗-->
+    <div class="cover_bg" id="noOperation" style="display: none;">
+    	 <!-- 尚未完成风险评测-->
+    	 <div class="content risk" id="riskContent" style="display: none;">
+    	 	  <h2></h2>
+    	 	  <p>哎呀！您尚未完成风险测评</p>
+    	 	  <div class="tips">
+    	 	  	  <h3>温馨提示：</h3>
+    	 	  	  <p>根据监管要求，为保护投资者权益，需要了解您的相关信息和风险等级，以实现对您的最大保障。</p>
+    	 	  	  <p class="yearReport">
+    	 	  	  	 动动小指尖， 30秒完成风险测评，轻松查看产品信息
+    	 	  	  </p>
+    	 	  </div>
+    	 	 <a href="javascript:void(0);" id="goRisk" class="btn">我要测评</a>
+    	 </div>
+    	 
+    
+    	 
+    	  <!-- 重新测评-->
+    	 <div class="content rNameRisk" id="reRiskContent"  style="display: none;">
+    	 	  <h2></h2>
+    	 	  <p>根据监管要求，您的风险测评已过有效期，还请重新测评</p>
+    	 	   <a href="javascript:void(0);" id="reRisk" class="btn">确定</a>
+    	 </div>
+    </div>
+
+
+
+
+</body>
+ <script type="text/javascript">
+//  document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/prdCFBConvertNew.js?version='+jsversion+'"><\/script>'); 
+ document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/prdCFBConvertNew.min.js?version='+jsversion+'"><\/script>');
+</script>
+</html>

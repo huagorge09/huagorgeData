@@ -1,0 +1,14 @@
+<TABLE CELLSPACING=0 CELLPADDING=0 WIDTH=""100%"">
+  <TR>
+  	<TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">类型</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">子产品简称</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">子产品编码</TD>
+  </TR>
+  #foreach($reviewPrdRelVo in $reviewPrdRelList)
+  	<TR>
+  	 <TD ALIGN=CENTER WIDTH=7%><SPAN>$!reviewPrdRelVo.prdTypeName</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!reviewPrdRelVo.subFundsName</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!reviewPrdRelVo.subPrdCode</SPAN></TD>
+   </TR>
+  #end
+</TABLE>

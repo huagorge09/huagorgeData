@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>招商财富-财富宝系列 </title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/cfb10/cfb.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-init.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/flexible.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+
+</head>
+<body>
+<div class="warpper" style="padding-bottom: 1rem;">
+    <div class="banner"></div>
+    <div class="recommendBox">
+        <ul class="item">
+            <li>
+                <h2>财富宝273天理财202号FOF</h2>
+                <div class="proInfo clearFloat">
+                    <div class="info">
+                        <p>9<span>个月</span></p>
+                        <p>存续期限</p>
+                    </div>
+                    <div class="info">
+                        <p>6.00<span>%</span></p>
+                        <p>业绩报酬计提基准</p>
+                    </div>
+                    <div class="info">
+                        <p>100<span>万起</span></p>
+                        <p>起投金额</p>
+                    </div>
+                </div>
+                <a href="javascript:bussiness('273');" class="once once1">立即预约</a>
+                <div class="tips">
+                    <p>*风险提示：投资有风险。本产品风险等级为R3中风险，适合风险承受能力为C3及以上的投资者。</p>
+                </div>
+                <h2 class="secondItem">财富宝91天理财11号FOF</h2>
+                <div class="proInfo clearFloat">
+                    <div class="info">
+                        <p>3<span>个月</span></p>
+                        <p>存续期限</p>
+                    </div>
+                    <div class="info">
+                        <p>4.90<span>%</span></p>
+                        <p>业绩报酬计提基准</p>
+                    </div>
+                    <div class="info">
+                        <p>30<span>万起</span></p>
+                        <p>起投金额</p>
+                    </div>
+                </div>
+                <a href="javascript:bussiness('91');" class="once once2">立即预约</a>
+                <div class="tips">
+                    <p>*风险提示：投资有风险。本产品风险等级为R2中低风险，适合风险承受能力为C2及 以上的投资者。</p>
+                </div>
+
+            </li>
+        </ul>
+
+    </div>
+    <div class="advantage">
+        <h2></h2>
+        <ul>
+            <li>
+                <p>权威团队-为您的资金保驾护航</p>
+                <div>拥有成熟的固定收益团队，累计管理规模<br>超过350亿元。</div>
+            </li>
+            <li>
+                <p>旗舰配置-投研精英匠心设计</p>
+                <div>系列产品发行近300期，运作稳健，力争<br>为客户创造长期养眼的回报。</div>
+            </li>
+            <li>
+                <p>超额收益-力争实现资产的保值增值</p>
+                <div>与投资人共进退，超出业绩报酬计提基准<br>部分的一定比例计入客户超额收益。</div>
+            </li>
+            <li>
+                <p>产品定期开放-进退灵活</p>
+                <div>产品期限短，定期开放，进退灵活。<br>FOF策略，把握多重收益机会。</div>
+            </li>
+        </ul>
+    </div>
+    <div class="follow"><img src="/WeixinWeb/WeixinWeb_Images/H5modules/cfb10/follow.jpg" width="100%"></div>
+</div>
+<div class="bottom clearFloat">
+    <a href="javascript:;" onclick="bussiness();" id="myBtn1">我感兴趣</a>
+    <a href="javascript:;" onclick="myAdviser();" id="myBtn2">我的顾问</a>
+</div>
+<!--预约信息填写-->
+<div class="cover-bg reserves hide">
+    <div class="content">
+        <span class="close"></span>
+        <h1>一键预约享专属服务<br>让投资无后顾之忧</h1>
+        <h3>我们的专属顾问将24小时内给您回电</h3>
+        <div class="form">
+            <ul>
+                <li>
+                    <div class="inputBox">
+                        <span></span> <input type="text" id="userName" name="userName" placeholder="请输入姓名"/>
+                    </div>
+                    <p style="display: none;"></p>
+                </li>
+                <li class="foucs">
+                    <div class="inputBox">
+                        <span></span> <input type="tel" id="mobilePhone" name="mobilePhone" maxlength="11" placeholder="请输入手机号码"/>
+                    </div>
+                    <p  style="display: none;"></p>
+                </li>
+
+            </ul>
+            <button id="saveBtn"  class="disabled">立即提交</button>
+        </div>
+    </div>
+</div>
+<!-- 错误提示 -->
+<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+    <span id="errorRemark"></span>
+</div>
+<!--预约成功-->
+<div class="cover-bg success hide">
+    <div class="content center">
+        <span class="close"></span>
+        <div class="successIcon"></div>
+        <h2>预约成功</h2>
+        <p>客户经理将尽快与您联系，请保持电话畅通</p>
+    </div>
+</div>
+<!-- 尚未完成操作弹窗-->
+<div class="cover_bg" id="noOperation" style="display: none;">
+    <!-- 尚未完成风险评测-->
+    <div class="content risk" id="riskContent" style="display: none;">
+        <h2></h2>
+        <p>哎呀！您尚未完成风险测评</p>
+        <div class="tips">
+            <h3>温馨提示：</h3>
+            <p>根据监管要求，为保护投资者权益，需要了解您的相关信息和风险等级，以实现对您的最大保障。</p>
+            <p class="yearReport">
+                动动小指尖， 30秒完成风险测评，轻松查看产品信息
+            </p>
+        </div>
+        <a href="javascript:void(0);" id="goRisk" class="btn">我要测评</a>
+    </div>
+    <!-- 重新测评-->
+    <div class="content rNameRisk" id="reRiskContent"  style="display: none;">
+        <h2></h2>
+        <p>根据监管要求，您的风险测评已过有效期，还请重新测评</p>
+        <a href="javascript:void(0);" id="reRisk" class="btn">确定</a>
+    </div>
+</div>
+<script>
+    var pageSource = getUrlParams("tel").tel
+    var pageId = "message"
+    $(function () {
+        cmwaOnkeyup("userName;mobilePhone", checkAppoInfoParam);
+        elemBind();
+        operatingRecord(pageSource, "openMessagePage", pageId, "", "", "", "")
+    });
+
+    /* 验证输入框的有效性  */
+    function checkAppoInfoParam() {
+        var userName = $("#userName").val();
+        var mobilePhone = $("#mobilePhone").val();
+        if (userName == null || userName == "") {
+            $("#saveBtn").addClass("disabled").attr("onclick", "");
+            return;
+        } else if (mobilePhone == null || mobilePhone == "") {
+            $("#saveBtn").addClass("disabled").attr("onclick", "");
+            return;
+        } else {
+            $("#saveBtn").removeClass("disabled").attr("onclick", "saveAppointInfo()");
+        }
+    }
+
+    /*
+     * 预约提交
+     */
+    function seeProduct() {
+        bussiness();
+    }
+
+    /*
+     * 用户信息提交
+     */
+    function userDateSumbit(userName, mobilePhone) {
+        $.ajax({
+            async: false,
+            url: apiHost + "/api/insertAppointInfo",
+            type: "post",
+            dataType: 'json',
+            data: {
+                "userName": userName,
+                "mobilePhone": mobilePhone,
+                "productType":$("#myBtn1").attr("type"),
+                "cmfUserId": ""
+            },
+            success: function (data) {
+                if (data.success) {
+                    $(".reserves").addClass("hide")
+                    $(".success").removeClass("hide")
+                    $("input[name=userName]").val('');
+                    $("input[name=mobilePhone]").val('');
+                    $("#saveBtn").addClass("disabled").attr("onclick", "");
+                    operatingRecord(pageSource, "makeMessageSuccess", pageId, "", "", "", "")
+                } else {
+                    errorRemark(data.msg);
+                }
+            },
+            error: function () {
+                errorRemark("网络繁忙，请稍后再试。");
+            },
+        });
+    }
+
+    /**
+     * 元素事件绑定
+     */
+    function elemBind() {
+        //鼠标键盘弹起
+        $("input").keyup(function () {
+            if ($("input[name=userName]").val() !== "" && $("input[name=mobilePhone]").val() !== "") {
+                $("button").removeClass("disabled");
+            }
+        });
+        //输入框光标事件
+        $("input").focus(function () {
+            $(this).parents("div").addClass("foucs");
+            $(this).parents("li").find("p").hide().text("")
+        });
+        $("input").blur(function () {
+            $(this).parents("div").removeClass("foucs");
+        });
+
+        //弹窗关闭
+        $(".close").click(function () {
+            $(".cover-bg").addClass("hide");
+            $("input[name=userName]").val('');
+            $("input[name=mobilePhone]").val('');
+            $(".reserves li p").hide();
+            $("body,html").css({"overflow": "auto", "height": "auto"});
+            $("#saveBtn").addClass("disabled").attr("onclick", "");
+        })
+
+    }
+
+    //点击信息提交
+    function saveAppointInfo() {
+        var userName = $.trim($("input[name=userName]").val());
+        var mobilePhone = $.trim($("input[name=mobilePhone]").val());
+        var flag = true;
+        if (userName == "" || !ischinese(userName)) {
+            $("input[name=userName]").parents("li").find("p").show().text("请输入2-10字中文姓名");
+            flag = false;
+        }
+        if (!isMobile(mobilePhone)) {
+            $("input[name=mobilePhone]").parents("li").find("p").show().text("请输入正确的手机号码");
+            flag = false;
+        }
+
+        if (flag) {
+            userDateSumbit(userName, mobilePhone);
+        }
+    }
+
+
+    function ischinese(name) {
+        return /^[\u2E80-\u9FFF]{2,10}$/.test(name)
+    }
+
+    //验证手机号
+    function isMobile(phone) {
+        return /^0?(13[0-9]|15[012356789]|18[012356789]|14[57]|17[03678])[0-9]{8}$/.test(phone);
+    }
+
+    /**
+     * 预约
+     */
+    function bussiness(type) {
+        operatingRecord(pageSource, "clickAppointment", pageId, "", "", "", "")
+        $(".reserves").removeClass("hide");
+        $("body,html").css({"overflow": "auto", "height": "100%"});
+        if(type=="273"||type==""||!!!type){
+            $("#myBtn1").attr("type","cfb273")
+        }else if(type=="91"){
+            $("#myBtn1").attr("type","cfb91")
+        }
+    }
+
+    function myAdviser() {
+        location.href = "/WeixinService/sendMessage/bussinessCard.html?pageSource=" + pageSource + "&eventId=event_cfb_adviserId"
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.TemplateMsgtoMECCDao">
+
+	<insert id="insertTemplateMsgtoMECC" parameterType="com.cmwa.ec.weixin.dto.TemplateMsgtoMECCDto">
+		insert into CMF_WEIXIN_PUSHMESSAGE 
+		(
+			MESSAGEID , 
+			CMFUSERID ,   
+			MESSAGETYPE , 
+			TEMPLATECODE ,
+			JSONDATA ,
+			SENDSTATUS , 
+			INSERTTIME , 
+			UPDATETIME,
+			URL
+		)
+		values(
+			#{dto.messageId,jdbcType=VARCHAR},
+			#{dto.toUserId,jdbcType=VARCHAR},
+			#{dto.messageType,jdbcType=VARCHAR},
+			#{dto.template_id,jdbcType=VARCHAR},
+			#{dto.content,jdbcType=VARCHAR},
+			#{dto.state,jdbcType=VARCHAR},
+			SYSDATE,
+			SYSDATE,
+			#{dto.url,jdbcType=VARCHAR}
+		)
+		
+	</insert>
+	
+	<select id="queryRemindFailureRedeem" resultType="com.cmwa.ec.weixin.dto.RemindFailureRedeemDto"  >
+	SELECT F.FUNDNM,
+	       C.MOBILENO,
+	       C.INVNM,
+	       T.FUNDID,
+	       T.SERIALNO,
+	       T.SUBQUTY,
+	       T.SUBAMT,
+	       SYSDATE AS DATE1
+	  FROM APPOINTREQUEST T, CUSTINFO C, FUNDINFO F
+	  WHERE T.CUSTNO = C.CUSTNO
+	   AND T.FUNDID = F.FUNDID
+	   AND T.SERIALNO = #{dto.serialNo,jdbcType=VARCHAR}
+	</select>
+	
+</mapper>

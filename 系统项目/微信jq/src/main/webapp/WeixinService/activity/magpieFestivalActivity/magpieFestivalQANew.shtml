@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>七夕活动-权益问答</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/qixi/qixiStyleNew.css">
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/DataStatisJsNew.js"></script>
+</head>
+<body>
+<section class="page" style="position:absolute;width:100%;height:100%;top:0;left:0;background:#fff;">
+<!--#include virtual="/WeixinService/headerOrFooter/otherHeaderNew.shtml"-->
+<input type="hidden" id="eventId" value="H0003"> 
+    <section class="title" id="section_01">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>1.</em><b>特定客户资产管理计划的认购起点是多少？</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="12.5">A.100万。</li>
+                <li data-score="0">B.50万。</li>
+                <li data-score="0">C.10万。</li>
+                <li data-score="0">D.1万。</li>
+            </ul>
+        </div>
+        <div class="box-btn">
+   			 <a class="riskevaluation-btn" href="/WeixinService/activity/magpieFestivalActivity/leadStartNew.shtml"><img src="/WeixinWeb/WeixinWeb_Images/activity/qixi/btn_return.jpg" alt=""></a>
+		</div>      
+    </section> 
+    <section class="title" id="section_02" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>2.</em><b>投资于特定客户资产管理计划的单位和个人，需要满足以下什么条件？</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="12.5">A.个人人均年收入不低于40万元或金融资产不低于500万元；机构客户需满足净资产1000万元以上。</li>
+                <li data-score="0">B.机构和个人可支配资金100万元以上。</li>
+                <li data-score="0">C.机构和个人能够凑到的资金100万元以上。</li>
+                <li data-score="0">D.不需要满足什么条件。</li>
+            </ul>
+        </div>    
+        <div class="box-btn">
+   			 <a class="riskevaluation-btn pre_question" href="#"><img src="/WeixinWeb/WeixinWeb_Images/activity/qixi/btn_last.jpg" alt=""></a>
+		</div>    
+    </section> 
+     <section class="title" id="section_03" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>3.</em><b>购买产品之前，为什么理财公司需要投资者填写风险调查问卷？</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="0">A.管理人免责。</li>
+                <li data-score="0">B.走形式过场。</li>
+                <li data-score="12.5">C.评估投资者的风险承受能力，以方便投资者购买到与其风险承受能力相匹配的产品。</li>
+                <li data-score="0">D.不是很能理解。</li>
+            </ul>
+        </div>  
+        <div class="box-btn">
+   			 <a class="riskevaluation-btn pre_question" href="#"><img src="/WeixinWeb/WeixinWeb_Images/activity/qixi/btn_last.jpg" alt=""></a>
+		</div>      
+    </section> 
+    <section class="title" id="section_04" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>4.</em><b>王先生经过风险评估后，自身风险承受能力为保守型，请问他适合购买什么风险等级的产品？</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="0">A.高风险。</li>
+                <li data-score="0">B.中风险。</li>
+                <li data-score="12.5">C.低风险。</li>
+                <li data-score="0">D.都可以买。</li>
+            </ul>
+        </div>      
+        <div class="box-btn">
+   			 <a class="riskevaluation-btn pre_question" href="#"><img src="/WeixinWeb/WeixinWeb_Images/activity/qixi/btn_last.jpg" alt=""></a>
+		</div>  
+    </section> 
+    <section class="title" id="section_05" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>5.</em><b>李女士的理财经理给其推荐了一款理财产品，投资于股票市场，并声称业绩报酬计提基准为8%，可以做到保本保收益，请问李女士应该购买吗？</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="0">A.买，因为保本保收益。</li>
+                <li data-score="0">B.买，收益还行，比较稳定。</li>
+                <li data-score="0">C.不买，虽然保本保息，但收益率太低了。</li>
+                <li data-score="12.5">D.不买，理财经理违规推介，股票市场风险很高，不可能做到保本保收益。</li>
+            </ul>
+        </div> 
+        <div class="box-btn">
+   			 <a class="riskevaluation-btn pre_question" href="#"><img src="/WeixinWeb/WeixinWeb_Images/activity/qixi/btn_last.jpg" alt=""></a>
+		</div>       
+    </section> 
+    <section class="title" id="section_06" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>6.</em><b>购买特定客户资产管理计划之前，投资者应该首先需要：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="0">A.听理财经理口头推介，因为信任理财经理，所以不需要签订产品的合同及风险揭示书。</li>
+                <li data-score="12.5">B.听完理财经理推介后，认真阅读产品资产管理合同等相关文件，了解产品的风险等级，并签署产品风险揭示书。</li>
+                <li data-score="0">C.先打款，合同签不签看心情。</li>
+                <li data-score="0">D.什么都不需要做。</li>
+            </ul>
+        </div> 
+        <div class="box-btn">
+   			 <a class="riskevaluation-btn pre_question" href="#"><img src="/WeixinWeb/WeixinWeb_Images/activity/qixi/btn_last.jpg" alt=""></a>
+		</div>       
+    </section> 
+    <section class="title" id="section_07" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>7.</em><b>在基金各当事人规范运作的前提下，基金的投资风险主要由谁承担？</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="0">A.管理人，因为投资是他们做的，自然由他们负责。</li>
+                <li data-score="0">B.托管人，钱在他们那儿，钱少了就要负责。</li>
+                <li data-score="0">C.代销机构，他们销售的产品，出了问题当然要负责。</li>
+                <li data-score="12.5">D.委托人，基金的本质是基金投资人收益共享，风险共担。</li>
+            </ul>
+        </div>      
+        <div class="box-btn">
+   			 <a class="riskevaluation-btn pre_question" href="#"><img src="/WeixinWeb/WeixinWeb_Images/activity/qixi/btn_last.jpg" alt=""></a>
+		</div>  
+    </section> 
+    <section class="title" id="section_08" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>8.</em><b>某私募机构宣称其旗下私募基金虽然不保本不保息，但可以一年回本、两年翻番，请问应该投资吗？</b></div>
+        </div>
+        <div class="box-option clear">
+        	<ul>
+                <li data-score="12.5">A.要谨慎投资，因为产品涉嫌夸大宣传，需要仔细甄别产品风险才可做投资决策。</li>
+                <li data-score="0">B.应该，因为听起来产品收益可观。</li>
+                <li data-score="0">C.应该，这家私募机构很有名。</li>
+                <li data-score="0">D.不应该，因为产品不保本不保息。</li>
+            </ul>
+        </div>   
+        <div class="box-btn" id="submitQA">
+   		 	<a class="riskevaluation-btn" href="javascript:comit();"><img src="/WeixinWeb/WeixinWeb_Images/activity/qixi/btn_submit.jpg" alt=""></a>
+    		<a href="#" class="check-order02 pre_question">重做上一题</a>
+		</div>   
+    </section> 
+    <section id="successQA" class="hide" style="background: #fff;">
+        <div class="bg-state riskscore">
+            <div class="state-icon">
+                <span class="score-text">您的评测结果为：</span>
+                <div class="score">
+                    <span class="score-value">
+                        <em></em>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <a href="javascript:lead();" class="check-order"><img src="/WeixinWeb/WeixinWeb_Images/activity/qixi/btn_award.jpg" alt=""></a>
+        <a href="/WeixinService/activity/magpieFestivalActivity/magpieFestivalQANew.shtml" class="check-order02">重新评测</a>
+        <div class="qx-page03-bottom"><img src="/WeixinWeb/WeixinWeb_Images/activity/qixi/text_pic_2.jpg" alt=""></div>
+    </section>  
+   <!--#include virtual="/WeixinService/activity/magpieFestivalActivity/magpieFestivalShareNew.shtml"--> 
+</section>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/magpieFestivalQANew.min.js"></script>
+</body>
+</html>

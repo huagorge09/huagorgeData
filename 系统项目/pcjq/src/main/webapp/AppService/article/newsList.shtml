@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<link rel="shortcut icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+<link rel="icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+<meta name="keyword" content="新闻资讯、投研观点、公司新闻动态、市场解读" />
+ <meta name="description" content="招商财富公司新闻提供最新的招商财富公司动态、荣获奖项、行业资讯、投资方向研判等，更多关于招商财富公司新闻精彩详情请访问招商财富官网" /> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<!--[if IE]>
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageJs/html5.js"></script>
+<![endif]-->
+<!--[if IE 6]>
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageJs/DD_belatedPNG_0.0.8a.min.js"></script>
+	<script>
+		DD_belatedPNG.fix('*');
+	</script>
+<![endif]-->
+</head>
+<body>
+	
+<!-- header -->
+<!--#include virtual="/AppService/public/header.shtml"-->
+
+
+<div style="display: none;">
+	<input type="text" id="page" value="0" hidden="true" />
+	<input type="text" id="maxPages" value="1" hidden="false" />
+</div>
+
+<div class="info-content mid">
+    <div class="content-head">
+        <h2 class="fl">新闻资讯</h2>
+        <span class="search fr">
+            <input type="text" id="name">
+            <a href="javascript:searchByName()" class="btn"></a>
+        </span>
+        <div class="information clear">
+            <div class="information-left fl">
+                <ul>
+                    <li class="newnotice"><a href="javascript:noticeList()" class="">新闻资讯</a></li>
+                    <li class="newsinfo"><a href="javascript:newsList()" class="">最新公告</a></li>
+                    <li class="newsoriginal"><a href="javascript:originalArticleList()" class="">原创文章</a></li>
+                </ul>
+            </div>
+            <div class="information-right fl">
+                <img src="/AppWeb/AppWeb_Images/images/icon_nav.png" alt="" class="information-nav-icon">
+                <div id="list" class="mynews-tab-con bulletin-none clear">
+	                
+                </div>
+                 <div class="listNone" style="text-align:center;padding-top: 50px;display: none;">
+	                <img src="/AppWeb/AppWeb_Images/images/newNone.png" style="width: 150px;">
+	                <p style="color:#999;">对不起,搜索的内容为空</p>
+	        </div>
+                <div class="page">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .information .information-left ul li.newsoriginal a{
+        background: url(/AppWeb/AppWeb_Images/images/icon_news_normal.png) no-repeat 22px center;
+    }
+    .information .information-left ul li.newsoriginal a:hover,
+    .information .information-left ul li.newsoriginal a.act{
+        color: #fff;
+        background: url(/AppWeb/AppWeb_Images/images/icon_news_active.png) #ca132c no-repeat 22px center;
+    }
+</style>
+
+<!-- footer -->
+<!--#include virtual="/AppService/public/footer.shtml"-->
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/newsList.min.js"></script>
+<!--<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/newsList.js"></script>-->
+</body>
+</html>

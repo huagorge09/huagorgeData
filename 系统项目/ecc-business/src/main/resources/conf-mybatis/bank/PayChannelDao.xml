@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cmwa.ecc.business.dao.bank.PayChannelDao">
+		 <select id="queryPayChannelListPage" parameterType="sparam" resultType="bankPayChannelVo">
+				SELECT THIRDCHANNEL,
+				       BANKNO,
+				       STATUS,
+				       CREATEDATE,
+				       CREATETIME,
+				       CREATEOPID,
+				       MODIFYDATE,
+				       MODIFYTIME,
+				       MODIFYOPID,
+				       BANKNAME,
+				       THIRDBANKNO,
+				       OPENDEMO,
+				       OPENOBSERVE AS openObseRev,
+				       PAYMODE,
+				       MIPFLAG,
+				       RECOMMEND,
+<!-- 				       (SELECT OPNAME FROM LGI_OPERATOR WHERE OPID = CREATEOPID) AS CREATOPNAME,
+				       (SELECT OPNAME FROM LGI_OPERATOR WHERE OPID = MODIFYOPID) AS MODIFYOPNAME -->
+				       <!-- 修改为新员工表  -->
+				       (SELECT EMNAME FROM T_ECC_EMPLOYEE WHERE EMPID = CREATEOPID) AS CREATOPNAME,
+				       (SELECT EMNAME FROM T_ECC_EMPLOYEE WHERE EMPID = MODIFYOPID) AS MODIFYOPNAME
+				FROM THIRD_BANK_RELA
+				WHERE 1=1 
+				<if test=" null != sp.thirdChannel  and '' != sp.thirdChannel">
+					AND THIRDCHANNEL = NVL(#{sp.thirdChannel},THIRDCHANNEL) 
+				</if>
+				<if test=" null != sp.bnkNo  and '' != sp.bnkNo">
+					AND BANKNO = NVL(#{sp.bnkNo},BANKNO)
+				</if>
+				ORDER BY BANKNO
+		</select>
+		<select id="queryPayChannelListTotal" parameterType="sparam" resultType="int">
+				SELECT COUNT(*)
+				FROM THIRD_BANK_RELA
+				WHERE 1=1 
+				<if test=" null != sp.thirdChannel  and '' != sp.thirdChannel">
+					AND THIRDCHANNEL = NVL(#{sp.thirdChannel},THIRDCHANNEL) 
+				</if>
+				<if test=" null != sp.bnkNo  and '' != sp.bnkNo">
+					AND BANKNO = NVL(#{sp.bnkNo},BANKNO)
+				</if>
+				ORDER BY BANKNO
+		</select>
+		
+		
+		<insert id="insertPayChannel" parameterType="bankPayChannelVo">
+			INSERT INTO THIRD_BANK_RELA
+					  (THIRDCHANNEL,
+					   BANKNO,
+					   STATUS,
+					   CREATEDATE,
+					   CREATETIME,
+					   CREATEOPID,
+					   MODIFYDATE,
+					   MODIFYTIME,
+					   MODIFYOPID,
+					   BANKNAME,
+					   THIRDBANKNO,
+					   OPENDEMO,
+					   OPENOBSERVE,
+					   PAYMODE,
+					   MIPFLAG,
+					   RECOMMEND)
+					VALUES
+					  (#{thirdChannel,jdbcType=VARCHAR},
+					   #{bankNO,jdbcType=VARCHAR},
+					   #{status,jdbcType=VARCHAR},
+					   TO_CHAR(SYSDATE, 'YYYYMMDD'),
+					   TO_CHAR(SYSDATE, 'HH24MMSS'),
+					   #{createOpid,jdbcType=VARCHAR},
+					   TO_CHAR(SYSDATE, 'YYYYMMDD'),
+					   TO_CHAR(SYSDATE, 'HH24MMSS'),
+					   #{modifyOpid,jdbcType=VARCHAR},
+					   #{bankName,jdbcType=VARCHAR},
+					   #{thirdBankNO,jdbcType=VARCHAR},
+					   #{openDemo,jdbcType=VARCHAR},
+					   #{openObseRev,jdbcType=VARCHAR},
+					   #{payMode,jdbcType=VARCHAR},
+					   #{mipFlag,jdbcType=VARCHAR},
+					   #{recommend,jdbcType=VARCHAR})
+		</insert>
+		
+		<delete id="delPayChannel" parameterType="String">
+				DELETE THIRD_BANK_RELA T
+				WHERE T.THIRDCHANNEL = #{thirdChannel}
+				AND T.BANKNO = #{bankNO}
+		</delete>
+		
+		<update id="updatePayChannel" parameterType="bankPayChannelVo">
+			UPDATE THIRD_BANK_RELA T SET 
+					T.STATUS = #{status,jdbcType=VARCHAR},
+					T.MODIFYOPID = #{modifyOpid,jdbcType=VARCHAR},
+					T.BANKNO = #{bankNO,jdbcType=VARCHAR},
+					T.BANKNAME = #{bankName,jdbcType=VARCHAR},
+					T.THIRDBANKNO = #{thirdBankNO,jdbcType=VARCHAR},
+					T.OPENDEMO = #{openDemo,jdbcType=VARCHAR},
+					T.OPENOBSERVE = #{openObseRev,jdbcType=VARCHAR},
+					T.MODIFYDATE =  TO_CHAR(SYSDATE, 'YYYYMMDD'),
+					T.MODIFYTIME=TO_CHAR(SYSDATE, 'HH24MMSS'),
+					T.PAYMODE = #{payMode,jdbcType=VARCHAR},
+					T.MIPFLAG = #{mipFlag,jdbcType=VARCHAR}, 
+					T.RECOMMEND = #{recommend,jdbcType=VARCHAR}
+					WHERE T.THIRDCHANNEL = #{thirdChannel,jdbcType=VARCHAR} 
+					AND T.BANKNO = #{oldBankNo,jdbcType=VARCHAR}
+		</update> 
+</mapper>

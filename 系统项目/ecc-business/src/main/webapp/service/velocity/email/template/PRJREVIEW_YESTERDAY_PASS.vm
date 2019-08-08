@@ -1,0 +1,30 @@
+<TABLE CELLSPACING=0 CELLPADDING=0 WIDTH=""100%""> 
+  <TR>
+  	<TD WIDTH=7% ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">项目立项名称</TD>
+    <TD WIDTH=7% ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">项目评审名称</TD>
+    <TD WIDTH=7% ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">项目经理</TD>
+	<TD WIDTH=7% ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">所属部门</TD>
+    <TD WIDTH=7% ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">本次追加规模</TD>
+    <TD WIDTH=7% ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">本次管理费率</TD>
+    <TD WIDTH=7% ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">本次业绩比较基准</TD>
+    <TD WIDTH=7% ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">本次投资期限</TD>
+  </TR>
+ #if($reviewList.size() != 0)
+  #foreach($prjReviewVo in $reviewList)
+  	<TR>
+  	 <TD ALIGN=CENTER WIDTH=7%><SPAN>$!prjReviewVo.prjTitle</SPAN></TD>
+  	 <TD ALIGN=CENTER WIDTH=7%><SPAN>$!prjReviewVo.title</SPAN></TD>
+  	 <TD ALIGN=CENTER WIDTH=7%><SPAN>$!prjReviewVo.managerNm</SPAN></TD>
+  	 <TD ALIGN=CENTER WIDTH=7%><SPAN>$!prjReviewVo.deptNM</SPAN></TD>
+  	 <TD ALIGN=CENTER WIDTH=7%><SPAN>$!prjReviewVo.investScale</SPAN></TD>
+  	 <TD ALIGN=CENTER WIDTH=7%><SPAN>$!prjReviewVo.manageFee</SPAN></TD>
+  	 <TD ALIGN=CENTER WIDTH=7%><SPAN>$!prjReviewVo.rateFee</SPAN></TD>
+  	 <TD ALIGN=CENTER WIDTH=7%><SPAN>$!prjReviewVo.investTermType</SPAN></TD>    
+   </TR>
+  #end
+#elseif($reviewList.size() == 0)
+	<TR>
+  	 <TD ALIGN=CENTER COLSPAN="8"><SPAN>无数据!</SPAN></TD>
+   </TR>
+#end
+</TABLE>

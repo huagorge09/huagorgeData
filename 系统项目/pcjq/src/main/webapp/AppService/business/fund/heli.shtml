@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>和利</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/AppWeb/AppWeb_Css/activity/heli.css">
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/commons.js"></script>
+<!--[if IE]>
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageJs/html5.js"></script>
+<![endif]-->
+<!--[if IE 6]>
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageJs/DD_belatedPNG_0.0.8a.min.js"></script>
+	<script>
+		DD_belatedPNG.fix('*');
+	</script>
+<![endif]-->
+</head>
+<body>
+	
+<!-- header -->
+<!--#include virtual="/AppService/public/header.shtml"-->
+<div class="banner"></div>
+<input type="hidden" id="pageId" value="cfbId">
+<div class="product">
+	<div class="w">
+		 <ul class="clear">
+		 	<li class="first">
+		 		<div class="itemBox">
+		 				<h3 class="title">与其静待时机，不如选择牛基</h3>
+		 				<div class="productName">和利3号</div>
+		 				<div class="clear">
+		 					<div class="info fl clear"  data-id="event_03HeLiId">
+			 					<div class="in1 in fl">
+			 						<p class="p2">320<span>天</span></p>
+			 						<p class="p1">产品期限</p>
+			 					</div>
+			 					<div class="in1 in in3 fl">
+			 						<p class="p2">5.9%</p>
+			 						<p class="p1">业绩计提基准</p>
+			 					</div>
+			 					<div class="in1 in2 fl">			 						
+			 						<p class="p2">100<span>万</span></p>
+			 						<p class="p1">起投</p>
+			 					</div>
+		 					</div>
+		 					<a href="javascript:;" class="once fl" data-eventId="event_advisoryId01">立即咨询</a>
+		 				</div>
+		 				<div class="clear">
+		 					<div class="time">募集截止：2018年4月26日  15:00</div>
+		 					<div class="notice">产品风险等级为R2，适合C2中低风险承受能力以及以上客群</div>
+		 					<div class="zhu">追求绝对收益不代表未来最终收益的保证，投资有风险，产品最终收益以实际运行情况为准。</div>
+		 				</div>
+		 		</div>
+		 		
+		 	</li>
+
+		 </ul>
+		 
+	</div>
+</div>
+<div class="feature" >
+	<div class="w">
+		<h2>四大产品核心优势</h2>
+		<ul class="clear">
+			<li class="icon1">
+				<h2>多维度流动性管理</h2>
+				<p>投研团队精细化运作，多维度流动性<br>管理，严格的风险收益配比</p>
+			</li>
+			<li class="icon2">
+				<h2>权威信评严控风险</h2>
+				<p>专业信评团队，甄选个券资质，<br>运作至今未出现一例信用风险事件</p>
+			</li>
+			<li class="icon3">
+				<h2>超额收益让利于民</h2>
+				<p>与投资人共进退，超出业绩计提基准<br>部分的一定比例计入客户超额收益</p>
+			</li>
+			<li class="icon4">
+				<h2>灵活进退资金畅通无阻</h2>
+				<p>每个封闭期结束后开放参与退出，<br>兼顾增值性与流动性</p>
+			</li>
+		</ul>
+		
+	</div>
+</div>
+
+<div class="footer-yuyue-bar footer-yuyue-active">
+		<div class="yy-top-button">
+			<span class="yy-top-button-left"></span><span class="yy-top-button-text">收起预约</span><span class="yy-top-button-right"></span>
+		</div>
+		<div class="yy-content">
+			<div class="yy-full-content">
+				<div class="yy-full-intro">
+					<div class="yy-slogon">证监会核准资管平台，百年招商承启</div>
+					<div class="yy-hot-line">
+						<strong>400-8878-555</strong>
+					</div>
+				</div>
+				<div class="yy-input-box">
+					<div class="input-list">
+						<input class="yy_name  placeholder" name="userName2" type="text"  value="" placeholder="请输入2-10字中文姓名" maxlength="11">
+						<input class="yy_phone  placeholder" name="mobilePhone2" type="text" id="yy_footer_phone" value="" placeholder="请输入11位手机号码" maxlength="11"> 
+							<span id="yy-footer-submit-btn">立即预约</span>
+					</div>
+					<div class="yy-tip">客户经理将及时与您联系，为您提供全面、专业的产品服务</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="yy-tip-content">
+				<div class="yy-tip-slogan">
+					<i class="yy-icon-white-star"></i><i class="yy-icon-white-star"></i><i class="yy-icon-white-star"></i><span>证监会核准资管平台，百年招商承启</span><i class="yy-icon-white-star"></i><i class="yy-icon-white-star"></i><i class="yy-icon-white-star"></i>
+				</div>
+				<div class="yy-tip-tel">400-8878-555</div>
+			</div>
+		</div>
+</div>
+
+
+    <!--预约信息填写-->
+	<div class="cover_bg reserves" style="display: none;">
+		<div class="content">
+			 <h2>预约咨询<span class="close"></span></h2>
+			 <div class="form">
+			 	<ul>
+				 	<li>
+				 	   <div class="inputBox">
+				 	  	   <span>姓名:</span> <input type="text" name="userName"/>
+				 	   </div>	
+				       <p></p>
+				 	</li>
+				 	<li class="foucs">
+				 		<div class="inputBox">
+				 	        <span>电话:</span> <input type="tel" name="mobilePhone" maxlength="11"/> 
+				 		</div>
+				 		<p></p>
+				 	</li>
+				 	
+				 </ul>
+				 <button class="disabled">提交</button>
+			 </div>
+		</div>
+	</div>
+	
+	<!--预约成功弹窗	-->
+	<div class="cover_bg success succTips" style="display: none;">
+			 <div class="content center">
+			 	<span class="close"></span>
+			 	<div class="successIcon"></div>
+			 	<h2>预约成功</h2>
+			 	<p>客户经理将尽快与您联系，请保持电话畅通</p>
+			 </div>
+	</div>
+
+    <!--信息提示-->
+	<div class="cover_bg success infoTips" style="display: none;">
+			 <div class="content center">
+			 	<span class="close"></span>
+			 	<div class="successIcon"></div>
+			 	<p>请输入2-10字中文姓名</p>
+			 </div>
+	</div>
+	
+	
+	
+	  <!-- 尚未完成操作弹窗-->
+    <div class="cover_bg" id="noOperation" style="display: none;">
+    	 <!-- 尚未完成风险评测-->
+    	 <div class="content risk"  style="display: none;" style="">
+    	 	  <h2></h2>
+    	 	  <p>哎呀！您尚未完成风险测评</p>
+    	 	  <div class="tips">
+    	 	  	  <h3>温馨提示：</h3>
+    	 	  	  <p>根据监管要求，为保护投资者权益，需要了解您的相关信息和风险等级，<br>以实现对您的最大保障。</p>
+    	 	  	  <p class="yearReport">
+    	 	  	  	 动动小指尖， 30秒完成风险测评，轻松查看<span class="">产品</span>信息
+    	 	  	  </p>
+    	 	  </div> 
+    	 	   <a class="btn" data-event="event_banner_wealthH5IdRatingId">我要测评</a>
+    	 </div>
+    	 <!-- 重新测评-->
+    	 <div class="content anewRisk"  style="display: none; width: 515px; height: 341px;">
+    	 	  <h2></h2>
+    	 	  <p style="line-height: 30px;height:auto; font-size:18px;padding-left:0;">根据监管要求，您的风险测评<br>已过有效期，还请重新测评。</p>
+    	 	  <a class="btn" style="margin-top: 25px;" data-event="event_banner_expiredId">确定</a>
+    	 </div>
+    </div>
+    
+    <style>
+    	.gudieBox{width: 622px;height: 530px;background: #fff;border-radius: 10px;position: absolute;left: 50%;top: 50%;margin-left: -279px;margin-top: -265px;padding-top: 29px;}
+        .gudieBox h2{height: 39px;line-height: 39px;text-align: center;margin-bottom: 20px;background: url(/AppWeb/AppWeb_Images/images/guide3.png) top center no-repeat;color: #fff;font-size: 20px;}
+        .gudieBox .text{padding-left: 42px;}
+        .gudieBox p{font-size: 16px; line-height: 28px; }
+        .gudieBox .pt1{margin-bottom: 35px;margin-top: 35px;}
+        .gudieBox .pt2{color: #717e8c;}
+        .gudieBox .btn{width: 194px; height: 42px;line-height: 42px; font-size: 20px;text-align: center; border-radius: 5px;color: #fff;border: none; cursor: pointer; background: #ca132c; margin: 60px auto 0;outline: none;}
+        .gudieBox .icon{position: absolute; display: inline-block;width: 164px;height: 151px;background: url(/AppWeb/AppWeb_Images/images/guide4.png) no-repeat; bottom: 0; right: 0;background-size: 100% 100%;}
+        .nextGuide .w{margin: 0 auto; width: 1000px; position: relative;}
+        .nextGuide .see{width:375px;height: 41px; background: url(/AppWeb/AppWeb_Images/images/guide1.png) no-repeat; position: absolute;top: 120px;left: 332px;}
+        .nextGuide .know{width:112px;height: 47px; cursor: pointer; background: url(/AppWeb/AppWeb_Images/images/guide2.png) no-repeat;position: absolute;top: 163px;left: 444px;}
+    	
+    	#noOperation .content{width: 594px;height: 476px;position: absolute;left: 50%;top:50%;margin-top: -238px;margin-left: -279px; background: #fff;border-radius: 5px;}
+        #noOperation h2{width:193px;height: 157px;background: url(/AppWeb/AppWeb_Images/images/noOper1.png) no-repeat;  background-size: 100% 100%; margin: 22px auto 2px auto;}
+        #noOperation .content>p{height: 40px;line-height: 40px; font-size: 20px; color: #212121; text-align: center;}
+        #noOperation .tips{    padding-top: 28px;padding-left: 30px;}
+        #noOperation h3{background: url(/AppWeb/AppWeb_Images/images/noOper2.png) no-repeat;padding-left: 23px;margin-bottom: 3px; font-size: 18px; color: #212121;}
+        #noOperation p{font-size: 16px; color: #666666;line-height: 26px;padding-left: 22px;}
+        #noOperation .yearReport{height: 49px;line-height: 42px; width: 504px; color: #47a1f0;margin-left: 21px;background: url(/AppWeb/AppWeb_Images/images/noOper3.png) no-repeat;margin-top: 12px;text-align: center;padding: 0;}
+        #noOperation .btn{display: block; width: 194px; height: 42px;line-height: 42px; font-size: 20px;text-align: center; border-radius: 5px;color: #fff;border: none; cursor: pointer; background: #ca132c; margin: 15px auto 0;outline: none;}
+        #noOperation p.once{text-align: center; font-size: 18px; color: #999999;    line-height: 22px;}
+        #noOperation .realName{height: 450px;margin-top: -225px;}
+    </style>
+    <!-- 2018032新增E -->
+<!-- footer -->
+<!--#include virtual="/AppService/public/footer.shtml"-->
+
+ <!--<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/heli.js"></script>   -->
+ <script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/heli.min.js"></script>
+</body>
+</html>

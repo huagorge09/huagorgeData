@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+    
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedomNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/regValidaterNew.js"></script>
+	
+</head>
+<body>
+<section class="page">
+
+	<!--#include virtual="/WeixinService/headerOrFooter/headerNew.shtml"-->
+
+    <section id="div1">
+    	
+        <div class="registe-point">
+            <span>请输入需要添加的银行卡号</span>
+        </div>
+        <div class="box-input registe">            
+            <div class="input-password line clear">
+               <label for="bank">银行卡</label>
+               <input type="text" id="bankNumberTemp" placeholder="请输入您的银行卡号"/>
+               <input type="hidden" id="bankNumber">
+               <input type="hidden" id="bankName">
+               <input type="hidden" id="channelNo">
+               <input type="hidden" id="bankNo">
+               <input type="hidden" id="verifyStatus" value="no">
+            </div>
+            <div class="input-password line clear">
+               <label for="name">姓名</label>
+               <span id="userNameFormat" class="bank-info"></span>
+               <input id="userName" type="hidden" readonly="readonly"/>
+            </div>
+            <div class="input-password line clear">
+               <label for="nameID">身份证</label>
+               <span id="idNoFormat" class="bank-info"></span>
+               <input id="idNo" type="hidden" readonly="readonly"/>
+            </div>
+        </div>        
+        <div class="box-btn"><a id="div1NextBtn" href="javascript:void(0)">下一步</a></div>
+        <div class="box-a">
+          <a href="javascript:querySupportBankList();" class="fr">查看支持的银行</a>
+        </div>
+
+		<div id="hintDiv" class="cover-bg suport-bank hide">
+		    <div class="suport-bank-con">
+		        <h2>支持银行</h2>
+		        <span id="supportBankList" class="suport-bank-text">暂支持：招商银行、建设银行、民生银行、工商银行、农业银行、浦发银行、中国银行、交通银行、广发银行、平安银行、兴业银行。</span>
+		        <span onclick="closeTips('hintDiv');" class="suport-bank-bottom">我知道了</span>
+		    </div>
+		</div>
+
+    </section> 
+	
+	<section id="div2" class="hide">
+        <div class="registe-point">
+            <span>可联系银行客服获知银行预留手机号</span>
+        </div>
+        <div class="box-input registe">            
+            <div class="input-password line clear">
+               <label for="bank"><img src="/WeixinWeb/WeixinWeb_Images/images/ic_registration_car.png" width="26" height="19" alt="" style="margin-left: 20%;"></label>
+               <span class="bankNO"><i id="formatedBankNum"></i><em id="bank_name">招商银行</em></span>
+            </div>
+            <div class="input-password line clear">
+               <label for="phone">手机号</label>
+               <input id="mobile" type="tel" placeholder="请输入该银行预留手机号" />
+            </div>
+            <div class="input-text registe-indentify input-password line clear">
+               <label for="identify">验证码</label>
+               <input id="verifyCode" type="text" placeholder="请输入手机验证码" />
+               <span class="indentifyimg"><a id="AgetCode" href="javascript:getMobileVerifyCode()">获取验证码</a></span>
+            </div>
+        </div>        
+        <div class="box-btn"><a id="div2NextBtn" href="javascript:void(0)">下一步</a></div>
+    </section> 
+    <input type="hidden" id="sessionID"/>
+	
+	<section id="div3" class="hide">
+		<div class="bg-state registe">
+            <div class="state-icon waiting"><img src="/WeixinWeb/WeixinWeb_Images/images/bg_bank_ok.png" alt="" /></div>
+            <h1 class="registe-successful">添加成功</h1>
+        </div>
+        <a href="/WeixinService/business/query/fundListNew.shtml" class="check-order">查看专属产品</a>
+    </section> 
+    <section id="div4" class="hide">
+		<div class="bg-state registe">
+            <div class="state-icon waiting"><img src="/WeixinWeb/WeixinWeb_Images/images/bg_bank_ok.png" alt="" /></div>
+            <h1 class="registe-successful">添加成功</h1>
+        </div>
+        <a href="javascript:goToBuyOrder();" class="check-order">继续完成订单</a>
+        <a href="/WeixinService/business/query/fundListNew.shtml" style="display: block;width: 100%;text-align: center;color:#2061a2;font-size: 1.4em;text-decoration: underline;margin-top:20px">查看其它专属产品</a>
+    </section> 
+    <!--招行签约-->
+	<FORM name="cmbForm" id="cmbForm" action="" METHOD="post" onsubmit="document.charset='utf-8';" accept-charset="utf-8" target="_blank">
+		<INPUT id="merchant" NAME="merchant" TYPE="hidden" value="ICBC_PERBANK_EBConsignPay">
+		<INPUT id="uin" NAME="uin" TYPE="hidden" value="1.0.0.0">
+		<INPUT id="url" NAME="url" TYPE="hidden" value="BDP300241833">
+		<INPUT id="timeStamp" NAME="TimeStamp" TYPE="hidden" value="201607200000026">
+		<INPUT id="checkSum" NAME="CheckSum" TYPE="hidden" value="扣费">
+		<INPUT id="mcAccountNo" NAME="McAccountNo" TYPE="hidden" value="40009000160441a">
+		<INPUT id="username" NAME="username" TYPE="hidden" value="4000023029200124946">
+		<INPUT id="reserve1" NAME="reserve1" TYPE="hidden" value="20151231">
+		<INPUT id="reserve2" NAME="reserve2" TYPE="hidden" value="http://127.0.0.1/testNew.jsp">
+	</FORM>
+</section>
+
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/addBankNew.min.js"></script> -->
+<!-- js引入加入版本号，解决微信端js缓存问题 -->
+<script>
+	document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/addBankNew.min.js?version='+new Date().getTime()+'"><\/script>');
+</script>
+</body>
+</html>

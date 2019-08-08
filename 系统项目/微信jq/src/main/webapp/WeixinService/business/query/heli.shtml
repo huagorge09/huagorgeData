@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>债市精选*和利系列</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/activity/heli.css">
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-init.min.js"></script>
+       <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/flexible.min.js"></script>
+       <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+      <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/header.min.js"></script>
+	 <!--  <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/heli.js"></script>  -->
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/heli.min.js"></script>
+</head>
+<body>
+	
+	<div class="warpper">
+		<div class="banner"></div>
+		<div class="recommendBox">
+			<h2>与其静待时机，不如选择牛基</h2>
+			<ul class="item">
+				<li eventId="event_wx_02HeLiId" params="fundId=17A725&period=2">
+					<h2>和利2号</h2>
+					<div class="proInfo clearFloat">
+						<div class="info">
+							<p>1.5<span>年</span></p>
+							<p>产品期限</p>
+							<div class="line"></div>
+						</div>
+						<div class="info">
+							<p>6.2%</p>
+							<p>业绩计提基准</p>
+							<div class="line"></div>
+						</div>
+						<div class="info">
+							<p>100<span>万</span></p>
+							<p>起投</p>
+						</div>
+					</div>
+					<div class="tips">
+						<p>募集截止：2018年5月22日</p>
+						<p>产品风险等级为R2，适合C2中低风险承受能力以及以上客群</p>
+						<p>追求绝对收益不代表未来最终收益的保证，投资有风险，产品最终收益以实际运行情况为准。</p>
+					</div>
+				</li>
+			</ul>
+			<a href="javascript:;" class="once">立即咨询</a>
+		</div>
+		<div class="advantage">
+			<h2>四大产品核心优势</h2>
+			<ul>
+				<li>
+					<p>多维度流动性管理</p>
+					<div>投研团队精细化运作，多维度流动性管理<br>严格的风险收益配比</div>
+				</li>
+				<li>
+					<p>权威信评严控风险</p>
+					<div>专业信评团队，甄选个券资质，运作<br>至今未出现一例信用风险事件</div>
+				</li>
+				<li>
+					<p>超额收益共同分享</p>
+					<div>与投资人共进退，超出业绩计提基准<br>部分的一定比例计入客户超额收益</div>
+				</li>
+				<li>
+					<p>定期开放进退灵活</p>
+					<div>每个封闭期结束后开放参与退出，兼顾<br>增值性与流动性</div>
+				</li>
+			</ul>
+		</div>
+	    <div class="follow"></div>
+	</div>
+	<!--预约信息填写-->
+	<div class="cover-bg reserves hide">
+		<div class="content">
+			 <h2>预约咨询<span class="close"></span></h2>
+			 <div class="form">
+			 	<ul>
+				 	<li>
+				 	   <div class="inputBox">
+				 	  	   <span>姓名:</span> <input type="text" id="userName" name="userName"/>
+				 	   </div>	
+				       <p style="display: none;"></p>
+				 	</li>
+				 	<li class="foucs">
+				 		<div class="inputBox">
+				 	        <span>电话:</span> <input type="tel" id="mobilePhone" name="mobilePhone" maxlength="11"/> 
+				 		</div>
+				 		<p  style="display: none;"></p>
+				 	</li>
+				 	
+				 </ul>
+				 <button id="saveBtn"  class="disabled">提交</button>
+			 </div>
+		</div>
+	</div>
+	<!-- 错误提示 -->
+	<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+		<span id="errorRemark"></span>
+	</div>
+	<!--预约成功-->
+	<div class="cover-bg success hide">
+		 <div class="content center">
+		 	<span class="close"></span>
+		 	<div class="successIcon"></div>
+		 	<h2>预约成功</h2>
+		 	<p>客户经理将尽快与您联系，请保持电话畅通</p>
+		 </div>
+	</div>
+</body>
+</html>

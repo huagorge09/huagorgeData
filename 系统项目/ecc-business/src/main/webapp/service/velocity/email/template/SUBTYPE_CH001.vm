@@ -1,0 +1,39 @@
+<H1 WIDTH=""100%"" ALIGN=CENTER >综合业务平台服务报告</H1>
+<TABLE CELLSPACING=0 CELLPADDING=0 WIDTH=""100%"">
+  <TR>
+    <TD ALIGN=CENTER  COLSPAN="2">服务报告日期：</TD>
+    <TD ALIGN=CENTER  COLSPAN="2">$!date</TD>
+    <TD ALIGN=CENTER  COLSPAN="3">服务报告类型：</TD>
+    <TD ALIGN=CENTER  COLSPAN="2">到期日核对不一致通知</TD>
+  </TR> 
+  <TR>
+    <TD ALIGN=CENTER WIDTH=7% STYLE="BACKGROUND-COLOR:ORANGE;">序号</TD>
+    <TD ALIGN=CENTER WIDTH=7% STYLE="BACKGROUND-COLOR:ORANGE;">子产品简称</TD>
+    <TD ALIGN=CENTER WIDTH=7% STYLE="BACKGROUND-COLOR:ORANGE;">产品类型</TD>
+    <TD ALIGN=CENTER WIDTH=7% STYLE="BACKGROUND-COLOR:ORANGE;">子产品成立日</TD>
+    <TD ALIGN=CENTER WIDTH=7% STYLE="BACKGROUND-COLOR:ORANGE;">子产品到期日</TD>
+    <TD ALIGN=CENTER WIDTH=7% STYLE="BACKGROUND-COLOR:ORANGE;">FA到期日</TD>
+    <TD ALIGN=CENTER WIDTH=7% STYLE="BACKGROUND-COLOR:ORANGE;">资金来源</TD>
+    <TD ALIGN=CENTER WIDTH=7% STYLE="BACKGROUND-COLOR:ORANGE;">负责人</TD>
+    <TD ALIGN=CENTER WIDTH=7% STYLE="BACKGROUND-COLOR:ORANGE;">到期日核对状态</TD>
+  </TR>
+  #if ($threeCheckVoList.size() > 0)
+  #foreach($threeCheckVo in $threeCheckVoList)
+  	<TR>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!{velocityCount}</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!threeCheckVo.subFundSName</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!threeCheckVo.prdBizTypeCover</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!threeCheckVo.expectedIntBegDate</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!threeCheckVo.expectedEndDate</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!threeCheckVo.principalReturnDate</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!threeCheckVo.capitalSrcCover</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!threeCheckVo.mgrNames</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!threeCheckVo.endDateCheckStatus</SPAN></TD>
+   </TR>
+  #end
+  #else
+        <tr>
+        	<td align=center colspan="9">无数据!</td>
+        </tr>
+    #end
+</TABLE>

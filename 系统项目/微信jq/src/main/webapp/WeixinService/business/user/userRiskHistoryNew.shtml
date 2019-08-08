@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>历史测评</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedomNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1New.min.js"></script>
+	<!--  滚动条js  -->
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscrollNew.js"></script>
+	
+	<style type="text/css">
+	.risk_tr{
+		height: 40px;line-height: 40px;
+	}
+	.risk_tr:nth-of-type(2n+1){
+		background:rgba(246,246,246,1);
+	}
+	.risk_td1{
+		/*border: 1px solid rgba(246,246,246,1);*/width: 50%;border-left: 0;
+	}
+	.risk_td2{
+		/*border: 1px solid rgba(246,246,246,1);*/width: 50%;border-right: 0;
+	}
+	</style>
+</head>
+
+<body>
+<section class="page">
+<div id="wrapper">
+    <div id="scroller" style="height: 100%;">
+    <!--#include virtual="/WeixinService/headerOrFooter/headerNew.shtml"-->
+    <section>
+       <div class="center-accountset" style="margin-top: 0;">
+  			<table style="text-align: center;border: 1px solid #f3f3f3;margin-bottom: 70px;">
+  				<div style="width: 100%;height: 44px;text-align: center;line-height: 44px;font-size: 14px;color: #C49A63;">
+  					历史测评记录
+  				</div>
+				<thead>
+					<tr>
+                   		<td style="width: 50%;height: 44px;line-height: 44px;border-left: 0;border-top: 0;">测评时间</td>
+                   		<td style="height: 30px;border-right: 0;border-top: 0;">测评结果</td>
+                   	</tr>
+			   	</thead>
+			   	<tbody id="riskData"></tbody>
+			</table>
+       	</div>
+    </section> 
+	
+</div></div>
+</section> 
+<a href="javascript:backRiskPage();" class="check-order" style="margin-bottom: 20px;width: 90%;margin-right: 5%;position: fixed;left: 5%;bottom: 0px;z-index: 11;">返回</a>
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/userRiskHistoryNew.min.js"></script> -->
+<script type="text/javascript">
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/userRiskHistoryNew.min.js?version='+new Date().getTime()+'"><\/script>');
+</script>
+<script>
+$(document).ready(function(e) {
+	queryRiskHistory();
+});
+</script>
+</body>
+</html>

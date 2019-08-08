@@ -1,0 +1,26 @@
+<ul class="nav metismenu" id="side-menu">
+  #foreach($root in $menuList)
+   #set($root_idx=${velocityCount})
+	<li><a href="#"><i class="$!root.icon"></i> <span class="nav-label" id="rootm${root_idx}" >$!root.name</span> <span class="fa arrow"></span></a>
+	  #if ($root.childs.size() > 0) 
+		<ul class="nav nav-second-level collapse">
+		    #foreach($sec in $root.childs)
+		      #set($sec_idx=${velocityCount})
+			 #if ($sec.childs.size() == 0) 
+		     <li class="final-menu"><a href="#" data-url="#!${sec.url}" data-title="$!sec.name"  id="secm${root_idx}${sec_idx}" ><i class="$!sec.icon"></i>$!sec.name</a></li>
+			 #else
+			  <li><a href="#" id="secm${root_idx}${sec_idx}" ><i class="$!sec.icon"></i>$!sec.name<span class="fa arrow"></span></a>
+					<ul class="nav nav-third-level collapse" style="height: 0px;">
+					   #foreach($third in $sec.childs)
+						 #set($third_idx=${velocityCount})
+						  <li class="final-menu"><a href="#"  id="thirdm${root_idx}${sec_idx}${third_idx}" data-url="#!${third.url}" data-title="$!third.name"><i class="$!third.icon"></i>$!third.name</a></li>
+					   #end
+					</ul>
+			  </li>
+		     #end
+			#end
+		</ul>
+		#end
+   </li>
+   #end
+</ul>

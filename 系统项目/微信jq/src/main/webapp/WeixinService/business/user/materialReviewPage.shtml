@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+<script type="text/javascript"
+	src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+<script type="text/javascript"
+	src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+<script type="text/javascript"
+	src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1.min.js"></script>
+<script type="text/javascript"
+	src="/WeixinWeb/WeixinWeb_JSLibrary/slider.js"></script>
+<style type="text/css">
+@media only screen and (max-device-width: 359.9px){
+	/* 280 */
+	.taskPic2{
+		background: url(/WeixinWeb/WeixinWeb_Images/images/pic_flow_2_280.png) no-repeat 0px 0px;
+	}
+	.taskPic{
+		background: url(/WeixinWeb/WeixinWeb_Images/images/pic_flow_280.png) no-repeat 0px 0px;
+	}
+}
+@media only screen and (max-device-width: 399.9px) and (min-device-width: 360px){
+	/* 320 */
+	.taskPic2{
+		background: url(/WeixinWeb/WeixinWeb_Images/images/pic_flow_2_320.png) no-repeat 0px 0px;
+	}
+	.taskPic{
+		background: url(/WeixinWeb/WeixinWeb_Images/images/pic_flow_320.png) no-repeat 0px 0px;
+	}
+}
+
+@media only screen and (min-device-width: 399.9px){
+	/* 350 */
+	.taskPic2{
+		background: url(/WeixinWeb/WeixinWeb_Images/images/pic_flow_2_350.png) no-repeat 0px 0px;
+	}
+	.taskPic{
+		background: url(/WeixinWeb/WeixinWeb_Images/images/pic_flow_350.png) no-repeat 0px 0px;
+	}
+}
+
+
+</style>
+</head>
+<body style="background-color: rgb(245, 245, 245);">
+	<section class="page" id="specialty_context">
+		<div id="scroller"></div>
+		<!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->
+		<section class="title" id="section_03">
+			<div style="background: #fff; margin-top: 10px; padding-bottom: 10px;">
+				<h2 style="font-size: 15px; border-bottom: 1px solid #F2F2F2; height: 45px; line-height: 45px; margin: 0 20px 0 20px; color: #4c4c4c;">
+					专业投资者(个人)须同时符合以下条件：</h2>
+				<p style="margin: 5px 20px 5px 20px; line-height: 23px; font-size: 14px; color: #a1a1a1;">
+					（1）金融资产不低于500万元，或者最近3年个人年均收入不低于50万元；<br>
+					（2）具有2年以上证券、基金、期货、黄金、外汇等投资经历，或者具有2年以上金融产品设计、投资、风险管理及相关工作经历，或者属于经有关监管部门设立的金融机构、经行业协会备案或登记的证券、期货公司子公司，私募基金管理人的高级管理人员，获得职业资格认证的从事金融相关业务的注册会计师和律师。
+				</p>
+			</div>
+			<div style="background: #fff; margin-top: 10px; padding-bottom: 10px;">
+				<h2 style="font-size: 15px; border-bottom: 1px solid #F2F2F2; height: 65px; line-height: 22px; margin: 0 20px 0 20px; color: #4c4c4c; padding-top: 10px;">
+					申请专业投资者所需提交材料和投递邮箱地址：cmwa@cmwachina.com</h2>
+				<p style="margin: 5px 20px 5px 20px; line-height: 23px; font-size: 14px; color: #a1a1a1;">
+					（1）金融资产证明或个人年收入证明；<br> （2）投资经历证明或工作证明、职业资格证书。
+				</p>
+			</div>
+			<div style="background: #fff; margin-top: 10px;">
+				<h2 style="font-size: 15px; border-bottom: 1px solid #F2F2F2; height: 45px; line-height: 45px; margin: 0 20px 0 20px; color: #4c4c4c;">
+					专业投资者申请流程：</h2>
+				<div id="taskPic" class="taskPic" style="margin: 5px 20px 5px 20px;width: 100%;height: 80px;"></div>
+				<div id="applySuccAlertText" class="applySuccAlertText" style="display:none; margin: 5px 20px 5px 20px;width: 100%;">提示：专业投资者证明材料已审核通过，请进行投资知识测评</div>
+			</div>
+			<br>
+			<div id="commitData" style="display: none;">
+				<a href="javascript:cancelApplyInvestor();" class="check-order">取消申请</a><br>
+				<a href="javascript:backUserInfoPage();" class="check-order" style="background: #d3d3d3; margin-bottom: 20px;">返回</a>
+			</div>
+			
+			<div id="knowledgeGTest" style="display: none;">
+				<a href="javascript:goKnowledgeTestPage();" class="check-order">开始测评</a><br>
+				<a href="javascript:cancelApplyInvestor();" class="check-order">取消申请</a><br>
+				<!-- <a href="javascript:backUserInfoPage();" class="check-order" style="background: #d3d3d3; margin-bottom: 20px;">返回</a> -->
+			</div>
+			
+		</section>
+	</section>
+	
+	<div class="cover-bg" id="tips_01" style="display: none">
+      <div class="cover-point" style="top: 35%;">
+          <div class="cover-point-text mid">
+              <p><em id="weixinRiskHtml" style="margin: 28px 0 20px 20px;">您是否确认取消申请专业投资者？</em></p>
+          </div>
+          <div class="left fl" style="width: 50%;height: 50px;line-height: 50px;background: #ededed;margin-left: 0;">
+              <a id="weixinRiskBtn" style="display: block; width: 100%; height: 100%; text-align: center; padding: 0; margin: 0; background: none; color: #4c4c4c; font-size: 1.6rem;">关闭窗口</a>
+          </div>
+          <div class="right fr" style="width: 49.8%;height: 50px;line-height: 50px;background: #ca132c;">
+              <a id="cancelApplyBtn" style="display: block; width: 100%; color: #fff; height: 100%; text-align: center; font-size: 1.6rem;">确认取消</a>
+          </div>
+      </div>
+</div>
+	
+	<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/riskLevel.js"></script> -->
+	<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/riskLevel.min.js"> -->
+<script type="text/javascript">
+$(document).ready(function(e) {
+
+	$(".header .top-a h2").html("投资者申请详情");
+	document.title="投资者申请详情";
+
+	
+	var pic = GetQueryString("pic");
+	if(pic == "2"){
+		$("#taskPic").removeClass("taskPic").addClass("taskPic2");
+		$("#commitData").hide();
+		$("#knowledgeGTest").show();
+		$("#applySuccAlertText").show();
+	}else{
+		$("#commitData").show();
+		$("#knowledgeGTest").hide();
+	}
+});
+
+function GetQueryString(name)
+{
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null){
+         var val = decodeURI(r[2]);
+    	 return  unescape(val);
+     }else{
+    	 return null;
+     }
+}
+
+function goKnowledgeTestPage(){
+	window.location.href="/WeixinService/business/user/investKnowledgeTest.shtml";
+}
+
+/**
+ * 取消申请
+ */
+function cancelApplyInvestor(){
+	$("#tips_01").show();
+	$("#weixinRiskBtn").unbind("click");
+	$("#weixinRiskBtn").bind("click",function(){
+		$("#tips_01").hide();
+	});
+	$("#cancelApplyBtn").unbind("click");
+	$("#cancelApplyBtn").bind("click",function(){
+		cancelAppInvtp();
+	});
+}
+
+/**
+ * 取消申请专业投资者
+ */
+function cancelAppInvtp(){
+	$.ajax({
+        async: !1,
+        url: "/WeixinService/business/cancelAppConversionUserInvtp.xhtml",
+        data: {},
+        dataType: "json",
+        cache: !1,
+        type: "post",
+        error: function() {
+            show_tips("网络繁忙，请稍后再试。");
+        },
+        success: function(n) {
+        	if(n != null && n.resultCode =="0000"){
+        		$("#tips_01").hide();
+        		errorRemark("确认取消申请成功！");
+        		window.setTimeout(function () {
+        			backUserInfoPage();
+        	    }, 1000);
+        		
+            }else{
+            	$("#tips_01").hide();
+            	errorRemark("确认取消申请失败！");
+            }
+        }
+    });
+}
+
+/**
+ * 返回用户管理页面
+ */
+function backUserInfoPage(){
+	window.location.href="/WeixinService/business/user/userInfo.shtml";
+}
+</script>
+</body>
+</html>

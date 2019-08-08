@@ -1,0 +1,516 @@
+﻿body{
+	padding-bottom: 105px !important;
+}
+body.shrink{
+	padding-bottom: 45px !important;
+}
+.cover_bg{
+	z-index: 999999 !important;
+}
+.banner{
+	height:610px;
+	background: url(/AppWeb/AppWeb_Images/images/activityhl/banner.jpg) no-repeat top;
+}
+.product{
+	background: #fff8e6;
+	padding-top:48px;
+	padding-bottom:44px;
+}
+.w{
+ width: 1000px;
+    margin: 0 auto;
+}
+
+.product li{
+	height: 482px;
+	border-radius: 5px;
+	background: url(/AppWeb/AppWeb_Images/images/activityhl/bg1.png) no-repeat top;
+	background-size: 100% 100%;
+}
+
+.product .itemBox{
+	padding: 0 40px;
+}
+.product h3{
+	height: 59px;
+	line-height: 59px;
+	font-size: 31px;
+	color: #fff;
+	text-align: center;
+}
+.product .productName{
+   margin-top: 65px;
+   font-size: 30px;
+   color: #802d2a;
+   padding-left: 43px;
+   line-height:73px;
+}
+.product .info{
+	 padding-left: 43px
+}
+
+.product .in1 .p1{
+	line-height: 32px;
+	font-size: 20px;
+	color: #a0876a;
+}
+.product .in1 .p2{
+	font-size: 40px;
+	margin-bottom: 4px;
+	color: #42362c;
+}
+.product .in1 .p2 span{
+	font-size: 26px;
+}
+.product .in{
+	width: 207px;
+}
+.product .in2{
+	width: 200px;
+	text-align: left;
+}
+.product .in2 .p1{
+  padding-left: 20px
+}
+.product .in3 .p2{
+   font-size: 50px;
+   color: #e42a12;
+   margin-top: -6px;
+}
+.product .in3 .p1{
+	margin-top: -9px;
+}
+.product .time{
+	background: url(/AppWeb/AppWeb_Images/images/activityhl/time.png) no-repeat left;
+	background-size: 22px 23px;
+	background-position-x:38px;
+	padding-left: 69px;
+	margin-top: 63px;
+	font-size: 18px;
+	color: #7f7c75;
+}
+.product .zhu{
+	color: #782332;
+	font-size: 16px;
+   background: url(/AppWeb/AppWeb_Images/images/activityhl/star.png) no-repeat left;
+	background-size: 15px 14px;
+	background-position-x:7px;
+	padding-left: 30px;
+}
+
+.product .notice{
+	margin-top: 24px;
+	padding-left: 10px;
+	font-size: 16px;
+	color: #2e2d2d;
+}
+.product .tips{
+	height: 40px;
+	margin-top: 20px;
+	border-top: 1px #eeeeee solid;
+	border-bottom: 1px #eeeeee solid;
+}
+.product .tips div{
+	font-size: 14px;
+	color: #8a5d0b;
+	line-height: 38px;
+	border-top: 1px #ffffff solid;
+	border-bottom: 1px #ffffff solid;
+	padding-left: 27px;
+	background: #faf4ea;
+}
+
+.product .once{
+	display: block;
+	width: 182px;
+	height: 56px;
+    background: url(/AppWeb/AppWeb_Images/images/activityhl/btn.png) no-repeat left;
+	background-size: 100% 100%;
+	margin: 24px auto 0 auto;
+	font-size: 26px;
+	text-align: center;
+	line-height: 56px;
+	color: #ffea00;
+}
+.info{
+	cursor: pointer;
+}
+.feature{
+	height: 520px;
+	background: #fff;
+	padding-top: 40px;
+}
+.feature .w{
+		position: relative;
+}
+.feature .w>h2{
+	width: 100%;
+	color: #fff;
+	height: 60px;
+	line-height: 60px;
+	font-size: 31.7px;
+	text-align: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.feature ul{
+	background: url(/AppWeb/AppWeb_Images/images/activityhl/bg2.png) no-repeat;
+	background-size: 1000px 482px;
+	height: 482px;
+	padding-top:123px;
+	padding-left: 50px;
+}
+.feature li{
+	width: 290px;
+	float: left;
+	height: 128px;
+	margin-bottom: 53px;
+	padding-left: 145px;
+}
+.feature li h2{
+	font-size: 24px;
+	display: inline-block;
+	border-bottom: 2px #c02713 solid;
+	line-height: 47px;
+	color:#c02713;
+	margin-bottom: 8px;
+}
+.feature li p{
+	font-size: 16px;
+	line-height: 24px;
+	color: #787878;
+}
+.feature li.icon1{
+	background: url(/AppWeb/AppWeb_Images/images/activityhl/icon1.png) no-repeat left;
+	margin-right: 48px;
+}
+.feature li.icon2{
+	background: url(/AppWeb/AppWeb_Images/images/activityhl/icon2.png) no-repeat left;
+}
+.feature li.icon3{
+	background: url(/AppWeb/AppWeb_Images/images/activityhl/icon3.png) no-repeat left;
+	margin-right: 50px;
+}
+.feature li.icon4{
+	background: url(/AppWeb/AppWeb_Images/images/activityhl/icon4.png) no-repeat left;
+}
+
+.footer-yuyue-active{
+	    bottom: 0;
+}
+
+
+
+/*弹窗*/
+
+.reserves .content{
+	width: 478px;
+	height: 348px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	background: #fff;
+	border-radius: 5px;
+    margin-left:-239px;
+    margin-top: -174px;
+}
+.reserves h2{
+	width: 100%;
+	height: 62px;
+	line-height: 62px;
+	background: #f0f0f0;
+	position: relative;
+	font-size: 24px;
+	color: #000;
+	text-align: center;
+	margin-bottom: 28px;
+}
+.reserves h2 span,.success span{
+	display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url(/AppWeb/AppWeb_Images/images/activityhl/close.png) no-repeat left;
+	background-size: 100% 100%;
+	position: absolute;
+	right:18px;
+	top:23px;
+	cursor: pointer;
+}
+.reserves .form{
+	padding: 0 52px 30px 52px;
+}
+.reserves .inputBox{
+	line-height:54px;
+	border:1px #dedede solid;
+	border-radius: 3px;
+	margin-bottom: 6px;
+}
+.reserves .inputBox span{
+	display: inline-block;
+	width: 80px;
+	text-align: center;
+	color: #666;
+	font-size: 18px;
+}
+.reserves .inputBox input{
+   height: 54px;
+   border: 0;
+   padding-left: 10px;
+   color: #212121;
+   font-size: 18px;
+}
+.reserves .inputBox.foucs{
+	border-color: #59aaf3;
+}
+.reserves ul p{
+	height: 15px;
+	font-size: 14px;
+	color: #ca132a;
+	line-height: 15px;
+	margin-bottom: .25rem;
+}
+.reserves button{
+	width: 100%;
+	border:0;
+	height: 56px;
+	line-height: 56px;
+	border-radius: 3px;
+	font-size: 22px;
+	color: #fff;
+	background: #ca132a;
+	margin-top:17px;
+}
+.reserves button.disabled{
+	background: #cecece;
+}
+/*预约成功*/
+.success .content{
+	width: 478px;
+	height: 230px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -239px;
+	margin-top:-115px;
+	background: #fff;
+	border-radius: 5px;
+}
+.success .successIcon{
+	width: 65px;
+	height:65px;
+	background: url(/AppWeb/AppWeb_Images/images/activityhl/success.png) no-repeat;
+	background-size: 100% 100%;
+	margin:40px auto 17px auto;
+}
+.success h2{
+	line-height: 25px;
+	font-size: 22px;
+	color: #212121;
+	text-align: center;
+}
+.success p{
+	font-size: 19px;
+	text-align: center;
+	color: #666;
+	line-height: 30px;
+	margin-top: 5px;
+}
+
+
+/*信息提示*/
+.infoTips .content {
+	height: 180px;
+}
+
+.success .successIcon{
+	background: url(/AppWeb/AppWeb_Images/images/activityhl/notice.png) no-repeat;
+}
+
+
+.footer-yuyue-bar {
+    position: fixed;
+    z-index: 500;
+    bottom: -145px;
+    left: 0;
+    overflow: visible;
+    width: 100%;
+    height: 145px; 
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+}
+.footer-yuyue-active {
+    bottom: 0;
+}
+.footer-yuyue-bar .yy-content {
+    overflow: hidden;
+    width: 100%;
+    height: 120px;
+    background-color: #d61c2a;
+}
+.footer-yuyue-bar .yy-full-content {
+    overflow: hidden;
+    width: 1000px;
+    height: 120px;
+    margin: 0 auto;
+    padding-top: 25px;
+    padding-left: 90px;
+    -webkit-transition: height .1s;
+    -moz-transition: height .1s;
+    -ms-transition: height .1s;
+    -o-transition: height .1s;
+    transition: height .1s;
+    background: url(/AppWeb/AppWeb_Images/images/activityhl/phone.png) no-repeat;
+    background-position: 4px 25px;
+}
+.footer-yuyue-tip-active {
+    height: 77px;
+}
+.footer-yuyue-bar .yy-icon-white-star {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: -3px 3px 0;
+    vertical-align: middle;
+    background: url(/AppWeb/AppWeb_Images/images/activityhl/icon-white-star.png) no-repeat;
+   
+}
+.footer-yuyue-bar .yy-tip-content {
+    display: none;
+    overflow: hidden;
+    width: 840px;
+    height: 52px;
+    margin: 0 auto;
+    padding-top: 12px;
+    font-size: 24px;
+    line-height: 28px;
+    color: #fff;
+    *width: 850px;
+}
+.footer-yuyue-bar .yy-tip-content .yy-tip-slogan {
+    float: left;
+    width: 536px;
+    height: 28px;
+    margin-right: 29px;
+    font-size: 20px;
+    line-height: 28px;
+    border-right: 1px solid #830101;
+}
+.footer-yuyue-bar .yy-tip-content .yy-tip-slogan span {
+    padding: 0 20px;
+}
+.footer-yuyue-bar .yy-tip-content .yy-tip-tel {
+    float: left;
+    height: 28px;
+    padding-left: 32px;
+    font-size: 23px;
+    line-height: 28px;
+    color: #fff;
+    background: url(/AppWeb/AppWeb_Images/images/activityhl/icon-tel.png) no-repeat left center;
+
+}
+.footer-yuyue-tip-active .yy-full-content {
+    display: none;
+}
+.footer-yuyue-tip-active .yy-tip-content {
+    display: block;
+}
+.footer-yuyue-bar .yy-full-content .yy-slogon {
+    margin-top: 4px;
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1;
+    color: #fff;
+}
+.footer-yuyue-bar .yy-full-content .yy-hot-line strong {
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+}
+.footer-yuyue-bar .yy-tip {
+    margin-top: 12px;
+    font-size: 16px;
+    line-height: 1;
+    color: #fff;
+}
+.footer-yuyue-bar .yy-input-box input {
+    float: left;
+    width: 186px;
+    height: 45px;
+    margin-right: 10px;
+    padding-left: 12px;
+    font-size: 14px;
+    line-height: 45px;
+    color: #333;
+    border-width: 0;
+    border-radius: 4px;
+    outline: none;
+    *width: 174px;
+}
+.footer-yuyue-bar .yy-input-box .input-list {
+    height: 45px;
+}
+.footer-yuyue-bar .yy-input-box .placeholder {
+    color: #999;
+}
+.footer-yuyue-bar .yy-input-box #yy-footer-submit-btn {
+    display: block;
+    float: left;
+    width: 140px;
+    height: 45px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 45px;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: top;
+    color: #fff;
+    border-width: 0;
+    border-radius: 4px;
+    outline: none;
+    background-color: #f80;
+}
+.footer-yuyue-bar .yy-full-content .yy-full-intro {
+    float: left;
+    width: 400px;
+    padding-left: 4px;
+}
+.yy-top-button {
+    position: relative;
+    overflow: hidden;
+    width: 110px;
+    height: 25px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 25px;
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+}
+.yy-top-button .yy-top-button-left {
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-bottom: 25px solid #d61c2a;
+    border-left: 15px solid transparent;
+}
+.yy-top-button .yy-top-button-right {
+    position: absolute;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-right: 15px solid transparent;
+    border-bottom: 25px solid #d61c2a;
+}
+.yy-top-button .yy-top-button-text {
+    display: inline-block;
+    width: 80px;
+    height: 25px;
+    background-color: #d61c2a;
+}
+

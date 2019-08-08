@@ -1,0 +1,125 @@
+
+#if ($templeType.equals("1")) 
+<TABLE CELLSPACING=0 CELLPADDING=0 WIDTH=""100%"">
+  <TR>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">附件名称</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">合同分类</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">所属系列产品</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">所属签报</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">签报经办人</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">签报部门</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">签报结束时间</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">用印时间</TD>
+  </TR>
+  <TR>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN STYLE="COLOR:RED;">$!signContractVo.attachName</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN STYLE="COLOR:RED;">$!signContractVo.contractTypeName</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContractVo.prjName</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContractVo.signTitle</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContractVo.createName</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContractVo.signDeptName</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContractVo.signEndTime</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContractVo.signHandTime</SPAN></TD>
+  </TR>
+  #foreach($signContract in $signContractList)
+  	<TR>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN STYLE="COLOR:RED;">$!signContract.attachName</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN STYLE="COLOR:RED;">$!signContract.contractTypeName</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContract.prjName</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContract.signTitle</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContract.createName</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContract.signDeptName</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContract.signEndTime</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContract.signHandTime</SPAN></TD>
+   </TR>
+  #end　　
+</TABLE>
+
+#elseif ($templeType.equals("2")) 
+
+<TABLE CELLSPACING=0 CELLPADDING=0 WIDTH=""100%"">
+  <TR>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">附件名称</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">合同分类</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">所属系列产品</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">所属签报</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">签报经办人</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">签报部门</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">签报结束时间</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">用印时间</TD>
+  </TR>
+  <TR>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContractVo.attachName</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContractVo.contractTypeName</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContractVo.prjName</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContractVo.signTitle</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContractVo.createName</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContractVo.signDeptName</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContractVo.signEndTime</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContractVo.signHandTime</SPAN></TD>
+  </TR>
+</TABLE>
+
+#elseif ($templeType.equals("3")) 
+	用印合同列表:
+	#if ($signContractList.size() > 0)
+		<TABLE CELLSPACING=0 CELLPADDING=0 WIDTH=""100%"">
+		  <TR>
+		    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">附件名称</TD>
+		    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">合同分类</TD>
+		    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">所属系列产品</TD>
+		    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">所属签报</TD>
+		    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">签报经办人</TD>
+		    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">签报部门</TD>
+		    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">签报结束时间</TD>
+		    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">用印时间</TD>
+		  </TR>
+		  #foreach($signContract in $signContractList)
+		  	<TR>
+		     <TD ALIGN=CENTER WIDTH=7%><SPAN STYLE="COLOR:RED;">$!signContract.attachName</SPAN></TD>
+		     <TD ALIGN=CENTER WIDTH=7%><SPAN STYLE="COLOR:RED;">$!signContract.contractTypeName</SPAN></TD>
+		     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContract.prjName</SPAN></TD>
+		     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContract.signTitle</SPAN></TD>
+		     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContract.createName</SPAN></TD>
+		     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContract.signDeptName</SPAN></TD>
+		     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContract.signEndTime</SPAN></TD>
+		     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!signContract.signHandTime</SPAN></TD>
+		   </TR>
+		  #end　　
+		</TABLE>
+	#else
+		无数据
+	#end
+	<br>
+	<br>
+	<br>
+	无需用印合同列表:
+	#if ($nonSignContractList.size() > 0)
+		<TABLE CELLSPACING=0 CELLPADDING=0 WIDTH=""100%"">
+		  <TR>
+		    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">附件名称</TD>
+		    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">合同分类</TD>
+		    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">所属系列产品</TD>
+		    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">所属签报</TD>
+		    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">签报经办人</TD>
+		    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">签报部门</TD>
+		    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">签报结束时间</TD>
+		    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">用印时间</TD>
+		  </TR>
+		  #foreach($nonSignContract in $nonSignContractList)
+		  	<TR>
+		     <TD ALIGN=CENTER WIDTH=7%><SPAN STYLE="COLOR:RED;">$!nonSignContract.attachName</SPAN></TD>
+		     <TD ALIGN=CENTER WIDTH=7%><SPAN STYLE="COLOR:RED;">$!nonSignContract.contractTypeName</SPAN></TD>
+		     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!nonSignContract.prjName</SPAN></TD>
+		     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!nonSignContract.signTitle</SPAN></TD>
+		     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!nonSignContract.createName</SPAN></TD>
+		     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!nonSignContract.signDeptName</SPAN></TD>
+		     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!nonSignContract.signEndTime</SPAN></TD>
+		     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!nonSignContract.signHandTime</SPAN></TD>
+		   </TR>
+		  #end　　
+		</TABLE>
+	#else
+		无数据
+	#end
+#end

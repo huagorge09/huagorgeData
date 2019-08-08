@@ -1,0 +1,99 @@
+
+#if ($templeType.equals("1")) 
+<H1 WIDTH=""100%"" ALIGN=CENTER >综合业务平台服务报告</H1>
+<TABLE CELLSPACING=0 CELLPADDING=0 WIDTH=""100%"">
+
+  <TR>
+    <TD ALIGN=CENTER  COLSPAN="2">服务报告日期：</TD>
+    <TD ALIGN=CENTER  COLSPAN="3">$!date</TD>
+    <TD ALIGN=CENTER  COLSPAN="2">服务报告类型：</TD>
+    <TD ALIGN=CENTER  COLSPAN="2">清算报告上传提醒 </TD>
+  </TR> 
+  <TR>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">序号</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">系列产品简称</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">外部代码</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">证监会报备代码</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">产品业务类型</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">到期类型</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">到期日</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">清算日</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">清算结束日</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">到期日监控</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">清算报告上传监控</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">清算备案监控</TD>
+  </TR>
+#foreach($settlementsReport in $settlementsReportList)  
+  <TR>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN STYLE="COLOR:RED;">$!{velocityCount}</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN STYLE="COLOR:RED;">$!settlementsReport.prjSName</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReport.outerId</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReport.csrcCode</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReport.prdBizType</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReport.expirationType</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReport.expirationDate</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReport.settDate</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReport.settEndDate</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReport.monitorDate</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReport.uploadMonitorDate</SPAN></TD>
+    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReport.reportMonitorDate</SPAN></TD>
+  </TR>　
+#end　　  
+</TABLE>
+#elseif ($templeType.equals("2")) 
+											
+<TABLE CELLSPACING=0 CELLPADDING=0 WIDTH=""100%"">
+  <TR>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">序号</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">系列产品简称</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">外部代码</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">证监会报备代码</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">产品业务类型</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">到期类型</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">到期日</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">清算日</TD>
+  </TR>
+   #foreach($settlementsReportVo in $settlementsReportList)
+   	#if($velocityCount == 1)
+	  <TR>
+	    <TD ALIGN=CENTER WIDTH=7%><SPAN>1</SPAN></TD>
+	    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReportVo.prjSName</SPAN></TD>
+	    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReportVo.outerId</SPAN></TD>
+	    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReportVo.csrcCode</SPAN></TD>
+	    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReportVo.prdBizType</SPAN></TD>
+	    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReportVo.expirationType</SPAN></TD>
+	    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReportVo.expirationDate</SPAN></TD>
+	    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReportVo.settDate</SPAN></TD>
+	  </TR>
+  	#end
+  #end
+</TABLE>
+
+<div style="margin-top:20px;margin-bottom:10px;font-size: 16px;">附件列表:</div>
+<TABLE CELLSPACING=0 CELLPADDING=0 WIDTH=""100%"">
+  <TR>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">序号</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">清算报告名称</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">清算报告上传时间</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">上传人</TD>
+  </TR>
+   #foreach($settlementsReportVo in $settlementsReportList)
+   	#if($velocityCount == 1)
+	  <TR>
+	    <TD ALIGN=CENTER WIDTH=7%><SPAN>1</SPAN></TD>
+	    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReportVo.settAttName</SPAN></TD>
+	    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReportVo.setupDate</SPAN></TD>
+	    <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReportVo.createName</SPAN></TD>
+	  </TR>
+	#else
+  	<TR>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!{velocityCount}</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReportVo.settAttName</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReportVo.setupDate</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!settlementsReportVo.createName</SPAN></TD>
+   </TR>
+  	#end
+  #end
+</TABLE>
+
+#end

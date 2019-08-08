@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="x5-orientation" content="portrait" />
+	<meta name="apple-mobile-web-app-capable" content="no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no">
+	<title>粤马年会抽奖</title>
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/yearActivity/style.css" />
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/yearActivity/dialog.css" />
+</head>
+<body>
+    <!--抽奖内容-->
+    <div class="redPack" style="display: none">
+    	<h2></h2>
+        <div class="openPack shake" onclick="index.openPrize()"></div>
+    </div>
+    <div class="rules" style="display: none;">活动规则</div>
+    
+    <!--已中奖内容-->
+    <div class="prizesucc" style="display: none">
+    	<h2 class="titH2"></h2>
+        <div class="prizeBox">
+             <h2>恭喜您获得理财体验券</h2>
+             <div class="money"><span>￥</span><em id="prizeMoney"></em></div>
+             <p>注册并成功购买产品后兑换等值礼品</p>
+             <a href="/WeixinService/business/query/fundList.shtml">去注册买产品</a>
+        </div>
+        <p>任何疑问请联系您的专属顾问 <em id="custserName"></em></p>
+        <p >联系方式：<a href="" id="custserMobileTel" style="color:#dd1a17;"><em id="custserMobile"></em></a></p>
+    </div>
+    <!--中奖弹窗-->
+    <div class="prizeMask" style="display: none">
+        <div class="content bounceIn">
+            <div class="money"></div>
+            <a href="javascript:index.userSure()">确定</a>
+        </div>
+        <div class="mask"></div>
+    </div>
+    <!--时间到期弹窗-->
+    <div class="outMask timeOut" style="display: none">
+        <div class="content bounceIn">
+           <img  src="/WeixinWeb/WeixinWeb_Images/H5modules/yearActivity/timeOut.png" alt="" />
+           <h2>客官，你来晚了</h2>
+           <p>活动结束啦，下次赶早噢！</p>
+           <span class="close"></span>
+        </div>
+        <div class="mask"></div>
+    </div>
+    <!--券用完弹窗-->
+    <div class="outMask offerOut" style="display: none">
+        <div class="content bounceIn">
+           <img src="/WeixinWeb/WeixinWeb_Images/H5modules/yearActivity/offerOut.png" alt="" />
+           <h2>你来迟了，活动优惠券已抽完~</h2>
+           <p>下次记得早点来噢</p>
+           <span class="close"></span>
+        </div>
+        <div class="mask"></div>
+    </div>
+    <!--券用完弹窗-->
+    <div class="rulesMask rulesText" style="display: none">
+        <div class="content center">
+            <div class="title">活动规则</div>
+            <div class="textCon">
+            	<h2>一：理财体验券使用规则</h2>
+            	<p>1.	体验券使用期限：2019年1月12-2019年12月31日；</p>
+            	<p>2.	体验券仅限本人<span>首次购买产品</span>使用，使用后可获得体验券金额对应的体验收益<span>(不含体验券本金部分)</span></p>
+                <p>3.	体验收益计算公式=体验券金额*体验期限*收益基准，其中</p>
+                <p class="pt1">1）首次购买<span>活期理财产品</span>，可获得“体验券金额*<span>1个月体验期限*4%业绩基准</span>”的体验收益；</p>
+                <p class="pt1">2）首次购买<span>定期固收理财产品</span>，可获得 “体验券金额*<span>当期产品期限*当期产品业绩基准</span>”的体验收益”；</p>
+                <p class="pt1">3）首次购买其他类型产品，体验收益计算方式请与“我的顾问”咨询；</p>
+                <p>4.	首次购买产品后10个工作日内可获得体验收益（以<span>积分</span>的形式发放），详情请联系“我的顾问”；</p>
+                <p>5.	招商财富保留本次活动的最终解释权，如有疑问请致电：0755-23988886。</p>
+                <h2 class="h2mtb">二：体验收益计算示例</h2>
+                <p>1.	如获得100,000元体验券并首次购买现金管理产品，体验收益=100,000*(1/12)*4%= 333元；</p>
+                <p>2.	如获得100,000元体验券并首次购买“9个月期限、6%业绩报酬计提基准”的固定收益产品，体验收益=100,000*(9/12)*6%= 4,500元</p>
+            </div>
+            <div class="tips">过往业绩不预示其未来表现，投资需谨慎</div>
+            <span class="close"></span>
+        </div>
+        <div class="mask"></div>
+    </div>
+    <!--未关注弹窗-->
+    <div class="qrcodeMask" style="display: none;">
+    	<div class="content center">
+		    <img src="" alt="" width="100%" id="codeImg">
+			<p>长按识别二维码关注招商财富</p>
+			<span onclick="index.closeQrcode();"></span>
+		</div>
+		<div class="mask"></div>
+    </div>
+    <style>
+	.rulesMask .textCon .pt1{
+	     font-size:.28rem;
+	     color:#999999
+	}
+	</style>
+	
+ 	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/yearActivity/flexible.min.js" ></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/yearActivity/jquery-3.2.1.min.js" ></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/yearActivity/jweixin-1.0.0.js" ></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/yearActivity/dialog.min.js" ></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/yearActivity/config.js" ></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/yearActivity/public.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/yearActivity/index.js" ></script>
+</body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+    
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/slider.js"></script>
+	
+    <style type="text/css">
+            .fund-registe-point {
+                margin: 30px auto 25px;       
+            }
+
+            .fund-registe-point .risk-point {
+                width: 90%;
+                margin: 0 auto;
+                text-align: left;
+            }
+			.state-icon .score-text {
+			    display: block;
+			    text-align: center;
+			    margin-bottom: 20px;
+			    font-size: 2rem;
+			    color: #3f3f3f;
+			}
+            .fund-registe-point.riskevaluation-point b {
+                    float: left;
+                    width: 100%;
+                    line-height: 20px;
+                    color: #3f3f3f;
+                    font-weight: normal;
+                    padding: 8px 0 3px 0px;
+                    text-align: left;
+                    border-bottom: 1px solid rgb(222,222,222);
+                }
+            .fund-registe-point.riskevaluation-point em {
+                float: left;
+                margin: 15px 0;
+                color: #3f3f3f;
+            }
+            @media only screen and (min-device-width: 360px){
+                .fund-registe-point.riskevaluation-point b{
+                    font-size: 1.45rem;
+                }
+            }
+            
+            .box-option ul li {
+                line-height: 15px;
+                color: #3f3f3f;
+                padding: 12px 0 12px 7.5%;
+                border-bottom: 1px solid rgb(222,222,222);
+                background: url(/WeixinWeb/WeixinWeb_Images/images/icon_select_normal.png) no-repeat left 14px;
+                background-size: 16px 16px;
+            }
+            .box-option{
+                background: none
+            }
+
+            @media only screen and (max-device-width: 360px){
+                .fund-registe-point.riskevaluation-point b .box-option ul li{
+                    font-size: 1.25rem;
+                }
+                .box-option ul li{
+                     line-height: 16px;
+    				 padding: 7px 0 7px 10%;
+    				 background: url(/WeixinWeb/WeixinWeb_Images/images/icon_select_normal.png) no-repeat left 7px;
+    				background-size: 16px 16px;
+                }
+                .fund-registe-point.riskevaluation-point b{
+                    padding-bottom: 8px;
+                }
+                .box-option-min .box-option ul li{
+                	padding: 13px 0 13px 10%;
+				    background: url(/WeixinWeb/WeixinWeb_Images/images/icon_select_normal.png) no-repeat left;
+				    background-size: 16px 16px;
+                }
+                
+                .box-option-min .box-option ul li input{
+                	    width: 170px;
+                }
+                
+                .box-option-medium .box-option ul li{
+                	padding: 5px 0 5px 10%;
+				    line-height: 19px;
+				    background: url(/WeixinWeb/WeixinWeb_Images/images/icon_select_normal.png) no-repeat left;
+				    background-size: 16px 16px;
+                }
+                .box-option ul li.act{
+                	background: url(/WeixinWeb/WeixinWeb_Images/images/icon_select_active.png) no-repeat left center;
+    				background-size: 16px 16px;
+                }
+            }
+            .fund-bg-state{
+	    		height: 65%;
+	   		}
+	   		
+	   		#section_result{
+	   			margin: 25px auto 25px;
+			    line-height: 37px;
+			    font-size: 14px;
+			    background-color: #FFF;
+	   		}
+			#section_result div {
+			    height: 40px;
+			}
+			
+			#section_result .result_img{
+				text-align: center;
+			}
+			
+			#section_result .result_img img{
+				margin-top: 10px;
+			}
+			
+	   		#section_result .result_level .level{
+	   			font-size: 16px;
+    			font-weight: bold;
+	   		}
+    </style>
+    
+</head>
+<body style="background-color: #fff">
+<section class="page">
+	<section class="title" id="section_0" style="">
+		<div class="fund-bg-state">
+			<div class="state-icon waiting"><img src="/WeixinWeb/WeixinWeb_Images/images/icon_top_wenJuan.png" alt="" style="margin-top: 20px;"/></div>
+			<h1>风险调查问卷</h1>
+			<span class="point title_point">该问卷用于评估个人投资者的风险承受能力，请您如实回答下列问题</span>
+		</div>
+	</section>
+	 
+	
+	<section class="title box-option-min" id="section_01" style="display: none;">
+        <div class="fund-registe-point riskevaluation-point">
+            <div class="risk-point"><b>1.您目前的主要收入来源是：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">无固定收入（2分）</li>
+                <li data-score="4">退休金（4分）</li>
+                <li data-score="6">工资、劳务报酬（6分）</li>
+                <li data-score="8">个体经营或财产收入（房租、股权收入等）（8分）</li>
+                <li data-score="10">企业经营（10分）</li>
+            </ul>
+        </div> 
+	</section>
+	<section class="title box-option-min" id="section_02" style="display: none;">
+        <div class="fund-registe-point riskevaluation-point">
+            <div class="risk-point"><b>2.您的年收入是：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="0" data-value="2">30万元以下</li>
+                <li data-score="0" data-value="4">30-50万元</li>
+                <li data-score="0" data-value="6">50-100万元</li>
+                <li data-score="0" data-value="8">100万以上</li>
+            </ul>
+        </div> 
+	</section> 
+	
+	<section class="title box-option-min" id="section_03" style="display: none;">
+        <div class="fund-registe-point riskevaluation-point">
+            <div class="risk-point"><b>3.您的可支配收入是多少（折合人民币）：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">100万元以下（2分）</li>
+                <li data-score="4">100万元至200万元（4分）</li>
+                <li data-score="6">200万元至500万元（6分）</li>
+                <li data-score="8">500万元至1000万元（8分）</li>
+                <li data-score="10">1000万元以上（10分）</li>
+            </ul>
+        </div> 
+	</section> 
+	
+	<section class="title box-option-min" id="section_04" style="display: none;">
+        <div class="fund-registe-point riskevaluation-point">
+            <div class="risk-point"><b>4.在您每年的家庭可支配收入中，可用于金融投资（储蓄存款除外）的比例为：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">小于10%（2分）</li>
+                <li data-score="4">10%至25%（4分）</li>
+                <li data-score="6">25%至50%（6分）</li>
+                <li data-score="8">50%至80%（8分）</li>
+                <li data-score="10">80%以上（10分）</li>
+            </ul>
+        </div> 
+	</section> 
+	
+	<section class="title box-option-min" id="section_05" style="display: none;">
+        <div class="fund-registe-point riskevaluation-point">
+            <div class="risk-point"><b>5.您的资产负债情况属于以下哪一种：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">有较大数额未到期负债（2分）</li>
+                <li data-score="4">收入和支出相抵（4分）</li>
+                <li data-score="6">有一定积蓄（6分）</li>
+                <li data-score="8">有较为丰厚的积蓄并有一定的投资（8分）</li>
+                <li data-score="10">比较富裕且有相当的投资（10分）</li>
+            </ul>
+        </div> 
+	</section> 
+	
+	<section class="title box-option-medium" id="section_06" style="display: none;">
+        <div class="fund-registe-point riskevaluation-point">
+            <div class="risk-point"><b>6.您的投资知识可描述为：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">无：没有金融产品方面的知识（2分）</li>
+                <li data-score="4">有限：理解部分金融产品及其相关风险的概念，但十分有限（4分）</li>
+                <li data-score="6">一般：对金融产品及其相关风险具有基本的知识和理解（6分）</li>
+                <li data-score="8">丰富：对金融产品及其相关风险具有丰富的知识和理解（8分）</li>
+                <li data-score="10">专业：对金融产品及其相关风险具有专业的知识和深入的理解（10分）</li>
+            </ul>
+        </div> 
+	</section> 
+	
+	<section class="title box-option-min" id="section_07" style="display: none;">
+        <div class="fund-registe-point riskevaluation-point">
+            <div class="risk-point"><b>7.您的投资经验可描述为：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">基本无投资经验（2分）</li>
+                <li data-score="4">大部分投资于存款、国债等（4分）</li>
+                <li data-score="6">大部分投资于银行理财产品、保险理财产品等（6分）</li>
+                <li data-score="8">大部分投资于基金、股票等（8分）</li>
+                <li data-score="10">大部分投资于创业板股票、外汇、期货等高风险产品（10分）</li>
+            </ul>
+        </div> 
+	</section> 
+	
+	<section class="title box-option-min" id="section_08" style="display: none;">
+        <div class="fund-registe-point riskevaluation-point">
+            <div class="risk-point"><b>8.您有多少年投资基金、股票、信托、私募证券或金融衍生产品等风险投资品的经验：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">没有（2分）</li>
+                <li data-score="4">少于2年（4分）</li>
+                <li data-score="6">2至5年（6分）</li>
+                <li data-score="8">5至10年（8分）</li>
+                <li data-score="10">10年以上（10分）</li>
+            </ul>
+        </div> 
+	</section>
+	
+	<section class="title box-option-min" id="section_09" style="display: none;">
+        <div class="fund-registe-point riskevaluation-point">
+            <div class="risk-point"><b>9.您计划中的投资期限是多长：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">少于1年（2分）</li>
+                <li data-score="4">1-3年（4分）</li>
+                <li data-score="6">3-5年（6分）</li>
+                <li data-score="8">5-8年（8分）</li>
+                <li data-score="10">8年以上（10分）</li>
+            </ul>
+        </div>   
+	</section>
+	
+	<section class="title box-option-medium" id="section_10" style="display: none;">
+        <div class="fund-registe-point riskevaluation-point">
+            <div class="risk-point"><b>10.您打算重点投资于哪些种类的投资品种：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">短债、货币市场基金等主要投资于货币工具的基金（2分）</li>
+                <li data-score="4">债券型基金等主要投资于固定收益类资产的基金（4分）</li>
+                <li data-score="6">混合型基金等投资于权益类与固定收益类资产的基金（6分）</li>
+                <li data-score="8">股票型基金等主要投资于权益类资产的基金（8分）</li>
+                <li data-score="10">分级基金等其它复杂或高风险基金（10分）</li>
+            </ul>
+        </div>   
+	</section>
+	
+	<section class="title box-option-min" id="section_11" style="display: none;">
+        <div class="fund-registe-point riskevaluation-point">
+            <div class="risk-point"><b>11.以下哪项描述最符合您的投资态度：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">厌恶风险，能够承担极小的风险（2分）</li>
+                <li data-score="4">虽然厌恶风险但愿意承担一些风险（4分）</li>
+                <li data-score="6">在深思熟虑后愿意承担一定的风险（6分）</li>
+                <li data-score="8">敢冒风险，比较激进（8分）</li>
+                <li data-score="10">爱好风险，相当激进（10分）</li>
+            </ul>
+        </div>   
+	</section>
+	
+	<section class="title box-option-medium" id="section_12" style="display: none;">
+        <div class="fund-registe-point riskevaluation-point">
+            <div class="risk-point"><b>12.以下几种投资模式，您更偏好哪种模式：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">收益只有5%，但可能亏损不超过5%（2分）</li>
+                <li data-score="4">收益15%，但可能亏损5%（4分）</li>
+                <li data-score="6">收益是30%，但可能亏损15%（6分）</li>
+                <li data-score="8">收益50%，但可能亏损30%（8分）</li>
+                <li data-score="10">收益100%，但可能亏损60%（10分）</li>
+            </ul>
+        </div>   
+	</section>
+	
+	<section class="title box-option-min" id="section_13" style="display: none;">
+        <div class="fund-registe-point riskevaluation-point">
+            <div class="risk-point"><b>13.您认为自己能承受的最大投资损失是多少：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">5%以内（2分）</li>
+                <li data-score="4">5%-10%（4分）</li>
+                <li data-score="6">10%-30%（6分）</li>
+                <li data-score="8">30%-50%（8分）</li>
+                <li data-score="10">超过50%（10分）</li>
+            </ul>
+        </div>   
+	</section>
+	
+	<section class="title box-option-min" id="section_14" style="display: none;">
+        <div class="fund-registe-point riskevaluation-point">
+            <div class="risk-point"><b>14.是否存在实际控制关系：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="0" data-value="N">否</li>
+                <li data-score="0" data-value="Y">是
+                	<input type="text" />
+                </li>
+            </ul>
+        </div>   
+	</section>
+	
+	<section class="title box-option-min" id="section_15" style="display: none;">
+        <div class="fund-registe-point riskevaluation-point">
+            <div class="risk-point"><b>15.交易实际受益人：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="0" data-value="Y">本人</li>
+                <li data-score="0" data-value="N">他人
+                	<input type="text" />
+                </li>
+            </ul>
+        </div>   
+	</section>
+	
+	<section class="title box-option-min" id="section_16" style="display: none;">
+        <div class="fund-registe-point riskevaluation-point">
+            <div class="risk-point"><b>16.是否有不良诚信记录：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="0" data-value="N">否</li>
+                <li data-score="0" data-value="Y">是
+                	<input type="text" />
+                </li>
+            </ul>
+        </div>   
+	</section>
+	
+	<section class="title box-option-min" id="section_17" style="display: none;">
+        <div class="fund-registe-point riskevaluation-point">
+            <div class="risk-point"><b>17.请问您是否具有完全民事行为能力？</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="0" data-value="Y">是</li>
+                <li data-score="0" data-value="N">否</li>
+            </ul>
+        </div>   
+	</section>
+	
+	<section class="title box-option-min" id="section_18" style="display: none;">
+        <div class="fund-registe-point riskevaluation-point">
+            <div class="risk-point"><b>18.请问您是否没有风险容忍度或者不愿承受任何投资损失？</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="0" data-value="Y">是</li>
+                <li data-score="0" data-value="N">否</li>
+            </ul>
+        </div>   
+	</section>
+	
+	<section id="section_result" style="display: none;">
+		<div class="cover_div result_img">
+			<img alt="" src="/WeixinWeb/WeixinWeb_Images/images/icon_jiLu_tick.png">
+		</div>
+		<div class="cover_div result_title">经测评，您的风险承受能力为：</div>
+		<div class="cover_div result_level">
+			<span class="level" id="riskLevelName"></span>
+			<span class="ability" id="riskAbility"></span>
+		</div>
+		<div class="cover_div result_date">
+			<span>测评时间：</span>
+			<span id="riskEvalDate"></span>
+		</div>
+		<div class="cover_div result_levelsTitle">温馨提示：风险等级由高往低依次为：</div>
+		<div class="cover_div result_levelDetails">C5-积极型、C4-成长型、C3-平衡型、C2-稳健型、C1-保守型</div>
+		<div class="cover_div result_investTitle">投资建议：适合您投资的产品风险等级为：</div>
+		<div class="cover_div result_investDetails" id="riskInvestAdvice"></div>
+	
+       <!--  <div class="fund-bg-state riskscore" style='margin:25px auto 25px'>
+            <div class="state-icon" style='position: absolute;top: 42%;/* left: 50%; */margin: -35% 0 0 0; width:89%'>
+                <span class="score-text">您的评测结果为</span>
+                <div class="score" style='    width: 173px;margin: auto;height: 173px;background:#fff;'>
+                    <span class="score-value">
+                        <em style='top:42%;left:11%' id="scoreCount">100</em><i>分</i>
+                    </span>
+                </div>
+            </div>            
+            <span class="point" style="color:#3f3f3f;position: absolute;bottom: 29%;color: #3f3f3f;">
+                <em id="scoreName">为积极型客户</em>
+            </span>
+        </div> -->
+    </section> 
+	 
+</section>  
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/fundRiskLevel.min.js"></script> -->
+<script>
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/fundRiskLevel.min.js?version='+new Date().getTime()+'"><\/script>');
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta id="viewport" name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="MobileOptimized" content="320">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>弹窗</title>
+    <link rel="stylesheet" href="css/public.css" type="text/css"/>
+    <script type="text/javascript" src="../lib/jquery-3.2.1.min.js" ></script>
+    <script type="text/javascript" src="../lib/flexible.js" ></script>
+    <script type="text/javascript" src="js/dialog.js" ></script>
+</head>
+<body>
+	<script>
+		dialog.alert({
+			type:"1",
+			title:"提示标题",
+			content:"输入错误",
+			confirm:function(){
+				alert("这个是一个确认回调函数")
+			},
+			cancel:function(){
+				alert("这个是一个取消回调函数")
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+.text-left{ text-align: left;}
+.ml20{ margin-left: 20px;}
+table,td,tr{ padding: 0; margin: 0;}
+a{ cursor: pointer;}
+
+.detal-body{ color: #474747; width: 700px;}
+.detal-body h1{ font-size: 16px; border-bottom: 1px solid #474747; line-height: 30px; padding-left: 15px;}
+.detal-body input.setmsg{ width: 150px; height: 20px; padding: 5px;}
+.detal-body table.detal-box{ text-align:right; width: 100%; font-size: 14px;}
+.detal-body table.detal-box tr.dashe{ border-bottom: 1px solid #dedfe0;}
+.detal-body table.detal-box td{ vertical-align: middle; padding:10px;}
+.detal-body table.detal-box table.hotcity{ border-top: 1px solid #000; border-left: 1px solid #000;}
+.detal-body table.detal-box table.hotcity td{ border-right: 1px solid #000; border-bottom: 1px solid #000;}
+.detal-body table.detal-box table.hotcity td a{ padding: 0 10px;}
+.detal-body input.erro{ width:50px; height:35px; font-size:12px;}
+.detal-body input.err{ width:230px; height:35px; font-size:12px;}
+
+.tan-box{ padding: 10px; position: absolute; display: none; background-color: #f6f6f6; left:210px; top:240px;}
+.tan-box .shut{ position: absolute; right: 0; top: 0; cursor: pointer;}
+.tan-box button{ width: 200px;}
+.tan-box input{ width: 200px;}

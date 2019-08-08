@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+</head>
+
+<script type="text/javascript">
+	
+</script>
+<body>
+    <footer>
+		<div class="foot">
+	        <div class="nav-a">
+	            <ul>
+	                <li><a id="menu_f1" href="javascript:footerLink('/WeixinService/business/query/fundListNew.shtml','1');">热销</a></li>
+	                <li><a id="menu_f2" href="javascript:footerLink('/WeixinService/adviserNew.shtml','3');" class="act">我的顾问</a></li>
+	                <li><a id="menu_f3" href="javascript:footerLink('/WeixinService/business/user/queryAccountNew.shtml?','3');">财富中心</a></li><!-- 链接后面的问号不要删掉，否则安卓微信点击有一定概率无效 -->
+	            </ul>
+	        </div>
+	    </div>
+	</footer>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/footerNew.min.js"></script>
+
+</body>
+</html>

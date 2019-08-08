@@ -1,0 +1,544 @@
+@charset "UTF-8";
+
+/**********************************************
+                 收益冰块样式（冰块）
+**********************************************/
+.yield{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate3d(-50%,0,0);
+    -webkit-transform: translate3d(-50%,0,0);
+    width: 2.45rem;
+    height: 2.45rem;
+    box-sizing: border-box;
+    padding-top: .5rem;
+    background: url(../images/dash/yield.png);
+    background-size: 100% 100%;
+    text-align: center;
+    line-height: .66rem;
+    font-size:.66rem;
+    font-weight: bold;
+    color:#f9f097;
+    text-shadow: 1px 0 #176279,-1px 0 #176279,0 1px #176279,0 -1px #176279,
+    1px -1px #176279,-1px 1px #176279,1px 1px #176279,-1px -1px #176279;
+}
+
+.yield .yield-rate,
+.yield .yield-boom-1,
+.yield .yield-boom-2{
+    display: none;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate3d(-50%,-50%,0) scale(0);
+    -webkit-transform: translate3d(-50%,-50%,0) scale(0);
+}
+
+
+.yield-rate{
+
+}
+
+.yield-boom-1,
+.yield-boom-2{
+    width: 7.5rem;
+    height: 7.5rem;
+    background-size: 100% 100%;
+    animation: yield-boom .4s linear forwards;
+    -webkit-animation: yield-boom .4s linear forwards;
+}
+.yield-boom-1{
+    background-image: url(../images/dash/yield-boom-1.png);
+}
+.yield-boom-2{
+    background-image: url(../images/dash/yield-boom-2.png);
+    animation-duration: .3s;
+    -webkit-animation-duration: .3s;
+    animation-delay: .1s;
+    -webkit-animation-delay: .1s;
+}
+
+@keyframes yield-boom {
+    90%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform: translate3d(-50%,-50%,0) scale(1);
+    }
+}
+@-webkit-keyframes yield-boom {
+    90%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        -webkit-transform: translate3d(-50%,-50%,0) scale(1);
+    }
+}
+
+
+
+.yield.ice-boom{
+    font-size: 0;
+    text-shadow: none;
+    background: none;
+}
+
+.yield.ice-boom .yield-rate,
+.yield.ice-boom .yield-boom-1,
+.yield.ice-boom .yield-boom-2{
+    display: block;
+}
+
+
+
+/**********************************************
+                 完成目标（爱心）
+**********************************************/
+#target{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+#target.show-info{
+    z-index: 3;
+}
+
+.target-heart{
+    position: absolute;
+    left: 0;
+    bottom: 6.2rem;
+    display: none;
+    width: 7.5rem;
+    height: 3.66rem;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+.target-heart.will{
+    bottom: 4.2rem;
+}
+
+.target-heart .heart,
+.target-heart .line{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 7.5rem;
+    height: 3.66rem;
+    background-size: 100% 100%;
+}
+
+.target-heart .heart{
+    background-image: url(../images/dash/target-heart.png);
+    animation: target-heart 2s linear infinite;
+    -webkit-animation: target-heart 2s linear infinite;
+}
+
+@keyframes target-heart {
+    50%{
+        transform: translate3d(0,-.03rem,0);
+    }
+}
+@-webkit-keyframes target-heart {
+    50%{
+        -webkit-transform: translate3d(0,-.03rem,0);
+    }
+}
+
+.target-heart .line{
+    background-image: url(../images/dash/target-line.png);
+    transform-origin: 50% 55%;
+    -webkit-transform-origin: 50% 55%;
+    animation: target-line 2s linear infinite;
+    -webkit-animation: target-line 2s linear infinite;
+}
+
+@keyframes target-line {
+    50%{
+        transform: rotateX(15deg);
+    }
+}
+@-webkit-keyframes target-line {
+    50%{
+        -webkit-transform: rotateX(15deg);
+    }
+}
+
+.target-content{
+    position: absolute;
+    bottom: 0;
+    left: 2.17rem;
+    width: 3.16rem;
+    height: 1rem;
+    text-align: center;
+    line-height: .3rem;
+    font-size: .28rem;
+    color: #fff;
+}
+
+.target-theta{
+    line-height: .55rem;
+    font-size: .3rem;
+    font-weight: bold;
+}
+
+.target-theta i{
+    font-size: .55rem;
+}
+
+/**********************************************
+                 冲破目标（爱心）
+**********************************************/
+.target-heart.ani{
+    animation: target-break .8s linear forwards;
+    -webkit-animation: target-break .8s linear forwards;
+}
+@keyframes target-break {
+    100%{
+        transform: translate3d(0,3rem,0);
+    }
+}
+@-webkit-keyframes target-break {
+    100%{
+        -webkit-transform: translate3d(0,3rem,0);
+    }
+}
+.target-heart.break .heart,
+.target-heart.break .line{
+    display: none;
+}
+
+.target-heart.break .heart-break,
+.target-heart.break .line-break{
+    display: block;
+}
+.target-heart .line-break{
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 7.5rem;
+    height: 3.5rem;
+    background: url(../images/dash/target-line-break.png);
+    background-size: 100% 100%;
+    animation: line-break .6s linear forwards;
+    -webkit-animation: line-break .6s linear forwards;
+}
+@keyframes line-break {
+    100%{
+        opacity: 0;
+    }
+}
+@-webkit-keyframes line-break {
+    100%{
+        opacity: 0;
+    }
+}
+.target-heart .heart-break{
+    display: none;
+    position: absolute;
+    bottom:-.78rem;
+    left: 0;
+    width: 7.5rem;
+    height: 5.62rem;
+    background: url(../images/dash/target-heart-break-shine.png);
+    background-size: 100% 100%;
+    opacity: .5;
+    animation: heart-break 1.6s linear forwards;
+    -webkit-animation: heart-break 1.6s linear forwards;
+}
+@keyframes heart-break {
+    10%,60%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform: translate3d(0,-.8rem,0);
+    }
+}
+@-webkit-keyframes heart-break {
+    10%,60%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        -webkit-transform: translate3d(0,-.8rem,0);
+    }
+}
+
+.target-heart .heart-break:before,
+.target-heart .heart-break:after{
+    content: "";
+    display: block;
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+}
+
+.target-heart .heart-break:before{
+    background-image: url(../images/dash/target-heart-break.png);
+}
+
+.target-heart .heart-break:after{
+    background-image: url(../images/dash/target-heart-break-bg.png);
+    opacity: 0;
+    transform: scale(.2) rotate(-20deg);
+    -webkit-transform: scale(.2) rotate(-20deg);
+    animation: heart-break-bg .5s linear forwards;
+    -webkit-animation: heart-break-bg .5s linear forwards;
+}
+
+@keyframes heart-break-bg {
+    100%{
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+@-webkit-keyframes heart-break-bg {
+    100%{
+        opacity: 1;
+        -webkit-transform: scale(1) rotate(0deg);
+    }
+}
+
+
+/**********************************************
+                 提前完成目标（气球）
+**********************************************/
+
+.target-balloon{
+    position: absolute;
+    left: 0;
+    bottom: 5rem;
+    display: none;
+    width: 7.5rem;
+    height: 6.93rem;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+.target-balloon.will{
+    bottom: 2rem;
+}
+
+.target-balloon.ani{
+    animation: target-break .8s linear forwards;
+    -webkit-animation: target-break .8s linear forwards;
+}
+
+.target-balloon .balloon{
+    width: 100%;
+    height: 100%;
+    background: url(../images/dash/target-balloon.png);
+    background-size: 100% 100%;
+}
+
+.target-balloon .target-content{
+    position: absolute;
+    bottom: 3rem;
+    left: 10%;
+    width: 80%;
+    text-align: center;
+    line-height: .5rem;
+    font-size: .54rem;
+    color: #fff;
+    text-shadow: 0 2px #EC6A00,0 -2px #EC6A00,2px 0 #EC6A00,-2px 0 #EC6A00,
+    -2px 2px #EC6A00,2px 2px #EC6A00,2px -2px #EC6A00,-2px -2px #EC6A00;
+}
+
+.target-balloon .target-content i{
+    display: inline-block;
+    margin-left: .06rem;
+    vertical-align: middle;
+    position: relative;
+    font-size: .4rem;
+}
+.target-balloon .date{
+    font-size: .24rem;
+    text-shadow: 0 1px #EC6A00,0 -1px #EC6A00,1px 0 #EC6A00,-1px 0 #EC6A00,
+    -1px 1px #EC6A00,1px 1px #EC6A00,1px -1px #EC6A00,-1px -1px #EC6A00;
+}
+.target-balloon .info{
+    position: absolute;
+    bottom: 3.12rem;
+    right: 2.5rem;
+    width: .25rem;
+    height: .25rem;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAABF1BMVEUAAADsawDrYQDsaADrYQDrYADrYwDrZADrZQDsZgDsaADsaADsaADrYADrZQDrZQDrZgDsZwDsagDsagDrYgDqXQDrYADrYADrYADrYADrZQDrZgDsaADsaADsaQDsaQDsaQD////qXgDrXwH+9vD62Lzznlj++PP4yaLsZgDrYgDrXAD//Pn6z6/3uIb2snr1rnb1rXLzol/zoFvvgifuex3qVQD98un+8OX97uD85dP73ML507P5zqr2u4v1rW/ylUvvhC/vgCbueBfrXgDoSwD//fz++vb4xp7wiTPwhzHvgCrudRXpUAD869z74Mn61LT51LT507D3w5b3wJXzp2fznVXymE/xk0jwjj3tdR3sagroSABY3unOAAAAIXRSTlMABNhp5+PTvpqHdG5j3bKuoIoTCvz7+Pf19Limel1bTkppMFm/AAABT0lEQVQoz22R53LCMBCEz/QOgfTuE3awjQs2OPRO6Ok9ef/niGNZQJh8PzS7s7N30gg8LiKhI4J44Dvxc7DBZXh3IGotQW2bFTmUWAenewu9xlOqWkWJsmBn2K3za2oWydAghtYN/4cSuq1z5Z3fRlScXZxvcUvto2EaKm3n+8Ec+GWdBh20FXv4mnfNkxSH9KDq6paCVuFFWhquuyqHISTSijUqO+d0+eFdIgCHbSrrqnPz4nz0Ru2EAGltvKRrfwlUNhFQWAWNT3ve8LSAQFRXuVtH0yozDwj7bWbyYu+eZxQI+Ez+P/QApCrXzN3pDSaLszD4ZY3t6X8P8myYFAMuyUpFkXTHnuwFswBnKLKSwCod9INDlHS21mtyBH7hMmi6A1m1JKe51Xf3n9mgcaGHEQ4YCZ9ULk2aQrNgzKRkHDbIxVNBgogkcBzLgssPBQdPAucIricAAAAASUVORK5CYII=);
+    background-size: 100% 100%;
+}
+.target-balloon.break .balloon,
+.target-balloon.break .target-content,
+.target-balloon.break .info{
+    display: none;
+}
+
+
+#target.show-info .target-balloon .content{
+    display: block;
+}
+
+.target-balloon .content{
+    display: none;
+    width: 5.67rem;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: .36rem .3rem;
+    background-color: rgba(255,255,255,.9);
+    border-radius: .2rem;
+    line-height: .36rem;
+    text-align: justify;
+    font-size: .26rem;
+    color:#666;
+    text-shadow: none;
+}
+
+
+.target-balloon .boom{
+    display: none;
+    width: 7.5rem;
+    height: 7.55rem;
+    background-size: 100% 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    transform: translate3d(0,0,0) scale(0);
+    -webkit-transform: translate3d(0,0,0) scale(0);
+}
+.target-balloon.break .boom{
+    display: block;
+}
+
+.target-balloon .boom1{
+    background-image: url(../images/dash/balloon-boom1.png);
+    transform-origin: 30% 30%;
+    -webkit-transform-origin: 30% 30%;
+    animation: balloon-boom .15s linear forwards 4;
+    -webkit-animation: balloon-boom .15s linear forwards 4;
+}
+
+.target-balloon .boom2{
+    background-image: url(../images/dash/balloon-boom2.png);
+    transform-origin: 70% 20%;
+    -webkit-transform-origin: 70% 20%;
+    animation: balloon-boom .15s linear forwards .1s 4;
+    -webkit-animation: balloon-boom .15s linear forwards .1s 4;
+}
+
+.target-balloon .boom3{
+    background-image: url(../images/dash/balloon-boom3.png);
+    transform-origin: 30% 20%;
+    -webkit-transform-origin: 30% 20%;
+    animation: balloon-boom .15s linear forwards .2s 4;
+    -webkit-animation: balloon-boom .15s linear forwards .2s 4;
+}
+
+.target-balloon .boom4{
+    background-image: url(../images/dash/balloon-boom4.png);
+    transform-origin: 60% 10%;
+    -webkit-transform-origin: 60% 10%;
+    animation: balloon-boom .15s linear forwards .3s 4;
+    -webkit-animation: balloon-boom .15s linear forwards .3s 4;
+}
+
+.target-balloon .boom5{
+    background-image: url(../images/dash/balloon-boom5.png);
+    transform-origin: 60% 40%;
+    -webkit-transform-origin: 60% 40%;
+    animation: balloon-boom .15s linear forwards .4s 4;
+    -webkit-animation: balloon-boom .15s linear forwards .4s 4;
+}
+
+.target-balloon .boom6{
+    background-image: url(../images/dash/balloon-boom6.png);
+    transform-origin: 50% 30%;
+    -webkit-transform-origin: 50% 30%;
+    animation: balloon-boom .15s linear forwards .5s 4;
+    -webkit-animation: balloon-boom .15s linear forwards .5s 4;
+}
+
+@keyframes balloon-boom {
+    90%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform: translate3d(0,0,1rem) scale(1);
+    }
+}
+@-webkit-keyframes balloon-boom {
+    90%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        -webkit-transform: translate3d(0,0,1rem) scale(1);
+    }
+}
+
+
+.target-balloon .star{
+    display: none;
+    position: absolute;
+    width: 1.75rem;
+    height: 1.68rem;
+    background: url(../images/dash/balloon-star.png);
+    background-size: 100% 100%;
+    opacity: 0;
+    transform: translate3d(0,0,0) scale(0);
+    -webkit-transform: translate3d(0,0,0) scale(0);
+}
+.target-balloon.break .star{
+    display: block;
+}
+
+.target-balloon .star1{
+    bottom: 4rem;
+    left: 4rem;
+    animation: balloon-boom .15s linear forwards 3;
+    -webkit-animation: balloon-boom .15s linear forwards 3;
+}
+
+.target-balloon .star2{
+    bottom: 3rem;
+    left: 3rem;
+    animation: balloon-boom .15s linear forwards .1s 3;
+    -webkit-animation: balloon-boom .15s linear forwards .1s 3;
+}
+
+.target-balloon .star3{
+    bottom: 3.5rem;
+    left: 2rem;
+    animation: balloon-boom .15s linear forwards .2s 3;
+    -webkit-animation: balloon-boom .15s linear forwards .2s 3;
+}
+
+.target-balloon .star4{
+    bottom: 4.5rem;
+    left: 2.5rem;
+    animation: balloon-boom .15s linear forwards .3s 3;
+    -webkit-animation: balloon-boom .15s linear forwards .3s 3;
+}
+
+.target-balloon .star5{
+    bottom: 3rem;
+    left: 1rem;
+    animation: balloon-boom .15s linear forwards .4s 3;
+    -webkit-animation: balloon-boom .15s linear forwards .4s 3;
+}
+
+.target-balloon .star6{
+    bottom: 3.2rem;
+    left: 4.5rem;
+    animation: balloon-boom .15s linear forwards .5s 3;
+    -webkit-animation: balloon-boom .15s linear forwards .5s 3;
+}
+

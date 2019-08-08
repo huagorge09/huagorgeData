@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/dialogNew.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+    
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedomNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/regValidaterNew.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/dialogNew.min.js"></script>
+    
+    <!--  时间控件 -->
+    <link href="/WeixinWeb/WeixinWeb_Css/LCalendarNew.css" rel="stylesheet" type="text/css">
+	<script src="/WeixinWeb/WeixinWeb_JSLibrary/LCalendarNew.min.js"></script>
+
+</head>
+<body>
+<section class="page">
+
+	<!--#include virtual="/WeixinService/headerOrFooter/headerNew.shtml"-->
+
+    <section id="div1">
+        <div class="registe-point">
+            <span>请选择一张银行卡进行实名验证</span>
+        </div>
+        <div class="box-input registe">            
+            <div class="input-password line clear">
+               <label for="bank">银行卡</label>
+               <input type="text" id="bankNumberTemp" placeholder="请输入您的银行卡号" />
+               <input type="hidden" id="bankNumber">
+               <input type="hidden" id="bankName">
+               <input type="hidden" id="channelNo">
+               <input type="hidden" id="bankNo">
+               <input type="hidden" id="verifyStatus" value="no">
+            </div>
+            <div class="input-password line clear">
+               <label for="name">姓名</label>
+               <input id="userName" type="text" placeholder="请输入您的真实姓名" />
+            </div>
+            <div class="input-password line clear">
+               <label for="nameID">身份证</label>
+               <input id="idNo" type="text" placeholder="请输入您的身份证号码" />
+            </div>
+			<div class="input-password line clear">
+               <label class="idCardTime" style=" width: 29%;">身份证到期日 </label>是否永久有效
+               <input id="idExpireDate"  type="text" class="calendars"  readonly="readonly"   style="color: #999;padding-left: 10px; width: 37%" placeholder="请选择身份证有效期">
+               <input type="checkbox" name="foever" style="width: 15px;height: 43px;line-height: 43px; "> 
+            </div>
+        </div>        
+        <div class="box-btn"><a id="div1NextBtn" href="javascript:void(0)">下一步</a></div>
+        <div class="box-a">
+          <a href="javascript:querySupportBankList();" class="fr">查看支持的银行</a>
+        </div>
+
+	<div id="hintDiv" class="cover-bg suport-bank hide">
+	    <div class="suport-bank-con">
+	        <h2>支持银行</h2>
+	        <span id="supportBankList" class="suport-bank-text">暂支持：招商银行、建设银行、民生银行、工商银行、农业银行、浦发银行、中国银行、交通银行、广发银行、平安银行、兴业银行。</span>
+	        <span onclick="closeTips('hintDiv');" class="suport-bank-bottom">我知道了</span>
+	    </div>
+	</div>
+
+    </section> 
+	
+	<section id="div2" class="hide">
+        <div class="registe-point">
+            <span>可联系银行客服获知银行预留手机号</span>
+        </div>
+        <div class="box-input registe">            
+            <div class="input-password line clear">
+               <label for="bank"><img src="/WeixinWeb/WeixinWeb_Images/images/ic_registration_car.png" width="26" height="19" alt="" style="margin-left: 20%;"></label>
+               <span class="bankNO"><i id="formatedBankNum"></i><em id="bank_name">招商银行</em></span>
+            </div>
+            <div class="input-password line clear">
+               <label for="phone">手机号</label>
+               <input id="mobile" type="tel" placeholder="请输入该银行预留手机号" />
+            </div>
+            <div class="input-text registe-indentify input-password line clear">
+               <label for="identify">验证码</label>
+               <input id="verifyCode" type="text" placeholder="请输入手机验证码" />
+               <span class="indentifyimg"><a id="AgetCode" href="javascript:getMobileVerifyCode()">获取验证码</a></span>
+            </div>
+        </div>        
+        <div class="box-btn"><a id="div2NextBtn" href="javascript:void(0)">下一步</a></div>
+    </section> 
+    <input type="hidden" id="sessionID"/>
+    
+	<section id="div3" class="hide">
+        <div class="registe-point">
+            <span>请设置安全码</span>
+        </div>
+        <div class="box-input registe">            
+            <div class="input-password line clear">
+               <label for="bank">安全码</label>
+               <input id="txtPassword" type="password" placeholder="由数字+字母组成的8位以上安全码" style="width:75%;" />
+            </div>
+            <div class="input-password line clear">
+               <label for="name" style="width:22%;">确认安全码</label>
+               <input id="txtConfirmPassword" style="margin-left: 10px;" type="password" placeholder="请再次填写安全码" />
+            </div>
+        </div>        
+        <div class="box-btn" style="margin-top:17px;"><a id="div3NextBtn" href="javascript:void(0)">下一步</a></div>
+    </section> 
+	
+	<section id="div4" class="hide">
+        <div class="bg-state">
+            <div class="state-icon waiting"><img src="/WeixinWeb/WeixinWeb_Images/images/img_name_success.png" alt="" /></div>
+            <h1>完成实名</h1>
+            <span class="point" style="color:#3f3f3f;">恭喜您！成为招商财富尊贵客户。</span>
+        </div>
+        <a href="/WeixinService/business/query/fundListNew.shtml" class="check-order">查看专属产品</a>
+    </section> 
+    <!--招行签约-->
+	<FORM name="cmbForm" id="cmbForm" action="" METHOD="post" onsubmit="document.charset='utf-8';" accept-charset="utf-8" target="_blank">
+		<INPUT id="merchant" NAME="merchant" TYPE="hidden" value="ICBC_PERBANK_EBConsignPay">
+		<INPUT id="uin" NAME="uin" TYPE="hidden" value="1.0.0.0">
+		<INPUT id="url" NAME="url" TYPE="hidden" value="BDP300241833">
+		<INPUT id="timeStamp" NAME="TimeStamp" TYPE="hidden" value="201607200000026">
+		<INPUT id="checkSum" NAME="CheckSum" TYPE="hidden" value="扣费">
+		<INPUT id="mcAccountNo" NAME="McAccountNo" TYPE="hidden" value="40009000160441a">
+		<INPUT id="username" NAME="username" TYPE="hidden" value="4000023029200124946">
+		<INPUT id="reserve1" NAME="reserve1" TYPE="hidden" value="20151231">
+		<INPUT id="reserve2" NAME="reserve2" TYPE="hidden" value="http://127.0.0.1/testNew.jsp">
+	</FORM>
+</section>
+
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/bankAuthNew.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/bankAuthNew.min.js"></script> -->
+<script type="text/javascript">
+/* document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/bankAuthNew.js?version='+jsversion+'"><\/script>'); */
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/bankAuthNew.min.js?version='+jsversion+'"><\/script>');
+</script>
+<script>
+ $(function(){
+  $("#idExpireDate").bind('input propertychange',function () {
+     $("#idExpireDate").blur()
+   });
+ })
+</script>
+</body>
+</html>

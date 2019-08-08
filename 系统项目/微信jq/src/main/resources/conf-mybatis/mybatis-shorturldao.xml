@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.activity.ShortUrlDao">
+	<resultMap id="shrotUrlResultMap" type="com.cmwa.ec.weixin.dto.ShortUrlDto">
+		<result property="keys" column="KEYS" />
+		<result property="urlValues" column="URL_VALUES" />
+	</resultMap>
+
+	<select id="queryShortUrlByPrimaryKey" parameterType="string"
+		resultMap="shrotUrlResultMap">
+		SELECT * FROM CMWA_WX_URL_MAPPER T WHERE T.KEYS =
+		#{keys,jdbcType=VARCHAR}
+	</select>
+
+
+	<insert id="insertShortUrl" parameterType="com.cmwa.ec.weixin.dto.ShortUrlDto">
+		INSERT INTO
+		CMWA_WX_URL_MAPPER
+		(
+			KEYS,
+			URL_VALUES,
+			CREATED_DATE,
+			CREATED_BY,
+			UPDATED_DATE,
+			UPDATED_BY
+		)
+		VALUES
+		(
+			#{param.keys,jdbcType=VARCHAR},
+			#{param.urlValues,jdbcType=VARCHAR},
+			SYSDATE,
+			'SYSTEM',
+			SYSDATE,
+			'SYSTEM'
+		)
+	</insert>
+
+</mapper>

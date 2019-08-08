@@ -1,0 +1,129 @@
+html,body{
+    background:#fff;
+}
+.adviserUserImg{
+   width:7.5rem;
+    height:7.5rem
+}
+.adviserInfo{
+position: absolute;
+    width: 7rem;
+    background: #fff;
+    top: 54%;
+    left: 50%;
+    margin-left: -3.5rem;
+    border-radius: 6px;
+    -moz-box-shadow: 2px 2px 19px #B0B0B0;
+    -webkit-box-shadow: 2px 2px 19px #B0B0B0;
+    box-shadow: 2px 2px 19px #B0B0B0;
+}
+.adviserInfo h2{
+    height: 1.14rem;
+    line-height: 1.14rem;
+    font-size: .4rem;
+    color: #fff;
+    padding-left: .5rem;
+    background: -webkit-linear-gradient(#0592e3, #62c1fd);
+    background: -o-linear-gradient(#0592e3, #62c1fd);
+    background: -moz-linear-gradient(#0592e3, #62c1fd);
+    background: linear-gradient(#0592e3, #62c1fd);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    margin-bottom:.2rem
+}
+.adviserInfo h2 em{
+    float: right;
+    font-size: .3rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/images/icon_adviser1.png) no-repeat;
+    padding-right: .3rem;
+    background-size: .4rem .4rem;
+    background-position-x: 0rem;
+    background-position-y: .38rem;
+    padding-left: .5rem;
+}
+.adviserInfo ul{
+    padding-bottom:.2rem
+}
+.adviserInfo li{
+    padding-left: .38rem;
+    height: .9rem;
+    line-height: .9rem;
+    color: #7d7a7d;
+    position: relative;
+    border-bottom: 1px #f1f1f1 solid;
+}
+.adviserInfo li:nth-child(3),.adviserInfo li:nth-child(4){
+    border-bottom:none;
+}
+.adviserInfo li span:nth-child(1){
+    display:inline-block;
+    width:2.4rem;
+    text-align:left;
+    font-size: .3rem;
+}
+.adviserInfo li span:nth-child(2){
+    display: inline-block;
+    width: 4rem;
+    color:#474447;
+    font-size: .3rem;
+
+}
+.adviserInfo li em,.adviserInfo li>a{
+    display: inline-block;
+    width: .4rem;
+    height: .4rem;
+    vertical-align: middle;
+    position: absolute;
+    right: .5rem;
+    top: .2rem;
+}
+.adviserInfo li span:nth-child(2) a{
+    color: #474447;
+    display: block;
+}
+.adviserInfo li:nth-child(1)>a{
+    background: url(/WeixinWeb/WeixinWeb_Images/images/icon_adviser2.png) no-repeat;
+    background-size: .4rem .4rem;
+}
+.adviserInfo li:nth-child(2) em{
+    background: url(/WeixinWeb/WeixinWeb_Images/images/icon_adviser3.png) no-repeat;
+    background-size: .4rem .4rem;
+}
+.adviserInfo li:nth-child(3)>a{
+    background: url(/WeixinWeb/WeixinWeb_Images/images/icon_adviser4.png) no-repeat;
+    background-size: .4rem .4rem;
+}
+.nav-a ul li a {
+    font-size: .32rem;
+}
+.qrcode{
+    width:5rem;
+        height: 5.6rem;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin-left:-2.5rem;
+    margin-top:-2.7rem;
+    background:#fff;
+    border-radius:5px;
+    padding:.1rem
+}
+.qrcode p{
+   font-size: .26rem;
+    text-align: center;
+    line-height: .63rem;
+}
+.qrcode span{
+    width: .5rem;
+    height: .5rem;
+    position: absolute;
+    right: -.5rem;
+    top: -.6rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/images/icon_close.png) no-repeat;
+    background-size: .5rem .5rem;
+}
+.adviserUserImg img{
+    border-bottom: 7px #99999957 solid;
+    border-bottom-left-radius: 19px;
+    border-bottom-right-radius: 19px;
+}

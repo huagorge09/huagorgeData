@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no">
+    <title>足迹详情</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/square.css">
+    <link rel="stylesheet" href="css/myFootprintDetails.css">
+    <script src="js/library/jquery-3.2.1.min.js"></script>
+    <script src="js/library/swiper.min.js"></script>
+    <script src="js/library/common.js"></script>
+    <script src="js/public.js"></script>
+    <script src="js/myFootprintDetails.js"></script>
+</head>
+<body>
+<div class="page">
+    <div class="compile clearFloat">
+        <span>2017年9月13日</span>
+            <span class="list">
+                <a href="generatePhotos.html"><span class="generatePhotos"></span></a>
+                <span class="fenXiang" id="fenXiang"></span>
+                <span class="shanChu" id="delete"></span>
+                <a href="writefootprints.html?source=footprintEdit"><span class="bianJi"></span></a>
+            </span>
+    </div>
+    <div class="dayItem">
+        <div class="context">
+            <div class="wrap">
+                <div class="top clearFloat">
+                    <!--孩子-->
+                    <div class="childrenWrap">
+                        <div class="children">
+                                <span class="childrenInfo">
+                                    <span class="name">大宝宝</span>
+                                    <span class="year">4岁</span>
+                                </span>
+                        </div>
+                    </div>
+                    <!--加精-->
+                    <div class="applyFabulous" id="applyFabulous">申请精华</div>
+                </div>
+                <div class="text">凝望着校园的春景，我又走进难忘的青春记忆，那曾是绿草如织繁花似锦的世界，也是当今党和人民的关怀。</div>
+                <!--图片=========>此处需判断图片的个数，1个需添加singlePicture类-->
+                <div class="picture clearFloat">
+                    <div class="imgWrap">
+                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                    </div>
+                    <div class="imgWrap">
+                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                    </div>
+                    <div class="imgWrap">
+                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                    </div>
+                </div>
+                <!--录音-->
+                <div class="record">
+                    <audio src="http://pic.ibaotu.com/00/22/50/22t888piCF8X.mp3"></audio>
+                    <!--音频播放器-->
+                    <div class="BarAudioPlayer">
+                        <div class="currentTime">00:00</div>
+                        <div class="scheduleBar">
+                            <div class="currentSchedule"></div>
+                            <div class="button"></div>
+                        </div>
+                        <div class="endTime">00:00</div>
+                    </div>
+                </div>
+                <div class="topic-theme">
+                    <!--话题======>话题有录音标记-->
+                    <span class="text navigateTopic">#<span class="tape"></span>你愿意用肾换iphoneX吗#</span>
+                    <!--主题-->
+                    <span class="text navigateTheme">#你愿意用肾换iphoneX吗#</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="block dianZan">
+        <div class="title">点赞 (3)</div>
+        <div class="content">
+            <div class="dianZanList clearFloat">
+                <a class="item" href="footprintHomePage.html">
+                    <img src="image/picture/img1.png">
+                </a>
+                <a class="item" href="footprintHomePage.html">
+                    <img src="image/picture/img1.png">
+                </a>
+                <a class="item" href="footprintHomePage.html">
+                    <img src="image/picture/img1.png">
+                </a>
+            </div>
+        </div>
+        <div class="loadMoreButton" id="loadMoreButton-dianZan">加载更多</div>
+    </div>
+    <div class="block pingLun">
+        <div class="title">评论 (3)</div>
+        <div class="content">
+            <div class="pingLunList">
+                <div class="item">
+                    <a class="head" href="footprintHomePage.html">
+                        <img src="image/picture/img1.png">
+                    </a>
+                    <div class="content">
+                        <div class="cenZhu">
+                            <a class="name" href="footprintHomePage.html">王小二</a>
+                            <span class="time">2017.08.21<span>17:21</span></span>
+                        </div>
+                        <div class="text callComment">通过计算、观察和咨询等方法对某个对象进行一系列的复合分析研究和评估，从而确定对象的意义、价值或者状态。</div>
+                        <div class="huiFu">
+                            <p>
+                                <a class="renWu" href="footprintHomePage.html">我</a>回复<a class="renWu" href="footprintHomePage.html">王小二</a>：<span class="callComment">其中，所谓评价者（Evaluators），也称为评估人。</span>
+                            </p>
+                            <p>
+                                <a class="renWu" href="footprintHomePage.html">王小二</a>回复<a class="renWu" href="footprintHomePage.html">我</a>：<span class="callComment">别人给我的回复别人给我的回复别人给我的回复。</span>
+                            </p>
+                            <p>
+                                <a class="renWu" href="footprintHomePage.html">我</a>回复<a class="renWu" href="footprintHomePage.html">王小二</a>：<span class="callComment">如果我们的评价，既重视教师的评价，也重视学生自己的评。</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="loadMoreButton" id="loadMoreButton-pingLun">加载更多</div>
+    </div>
+    <div class="block daShang">
+        <div class="title">打赏 (3)</div>
+        <div class="pingLunList">
+            <div class="item">
+                <a class="head" href="footprintHomePage.html">
+                    <img src="image/picture/img1.png">
+                </a>
+                <div class="content">
+                    <div class="cenZhu">
+                        <a class="name" href="footprintHomePage.html">王小二</a>
+                        <span class="tuHao">土豪</span>
+                        <span class="time">2017.08.21<span>17:21</span></span>
+                    </div>
+                    <div class="text callComment">宝贝棒棒哒！奖励<span>2</span>个小猪币！</div>
+                    <div class="huiFu">
+                        <p>
+                            <a class="renWu" href="footprintHomePage.html">我</a>回复<a class="renWu" href="footprintHomePage.html">王小二</a>：<span class="callComment">其中，所谓评价者（Evaluators），也称为评估人。</span>
+                        </p>
+                        <p>
+                            <a class="renWu" href="footprintHomePage.html">王小二</a>回复<a class="renWu" href="footprintHomePage.html">我</a>：<span class="callComment">别人给我的回复别人给我的回复别人给我的回复。</span>
+                        </p>
+                        <p>
+                            <a class="renWu" href="footprintHomePage.html">我</a>回复<a class="renWu" href="footprintHomePage.html">王小二</a>：<span class="callComment">如果我们的评价，既重视教师的评价，也重视学生自己的评。</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <a class="head" href="footprintHomePage.html">
+                    <img src="image/picture/img1.png">
+                </a>
+                <div class="content">
+                    <div class="cenZhu">
+                        <a class="name" href="footprintHomePage.html">王小二</a>
+                        <span class="tuHao">土豪</span>
+                        <span class="time">2017.08.21<span>17:21</span></span>
+                    </div>
+                    <div class="text callComment">宝贝棒棒哒！奖励<span>2</span>个小猪币！</div>
+                </div>
+            </div>
+        </div>
+        <div class="loadMoreButton"  id="loadMoreButton-daShang">加载更多</div>
+    </div>
+    <div class="footer">
+        <div class="not">木有啦 ~</div>
+        <div>礼尚往来，您也去“广场”鼓励更多孩子吧~</div>
+    </div>
+</div>
+<!--音频播放器-->
+<div class="circleAudioPlayer">
+    <canvas></canvas>
+    <div class="button"></div>
+    <div class="close"></div>
+</div>
+</body>
+</html>

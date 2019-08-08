@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedomNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1New.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/sliderNew.js"></script>
+    <style type="text/css">
+	</style>
+</head>
+<body style="background-color: rgb(245, 245, 245);">
+<section class="page" id="specialty_context">
+	<div id="scroller"></div>
+    <!--#include virtual="/WeixinService/headerOrFooter/headerNew.shtml"-->
+	<section class="title" id="section_0">
+		<div class="bg-state">
+			<div class="state-icon waiting" style="text-align: center;margin: 0;width: 100%;padding: 0;">
+			<img src="/WeixinWeb/WeixinWeb_Images/images/pic_success.png" alt="" style="width: 100px;"></div>
+			<div style="width: 88%;margin: 10px auto;line-height: 25px;">
+			恭喜您成功通过测试，请您认真阅读以下内容：<br>
+			　　 一、经营机构在向专业投资者销售产品或提供服务时， 对专业投资者履行的适当性职责区别于普通投资者，普通投资者在信息告知、风险警示、适当性匹配等方面享有特别保护。<br>
+			 　　二、专业投资者具备必要的投资知识和经验，自行做出投资决定并自主承担投资风险。<br>
+			 　　三、当您提供的财产状况、交易情况、工作经历等信息发生重大变化时，请及时通知招商财富，经复核如不再符合专业投资者的申请条件，将不再被认定为专业投资者。
+			</div>
+		</div>
+		<br>
+		<a href="javascript:backUserInfoPage();" class="check-order" style="width: 90%;float: none;">我知道了</a>
+	</section>
+</section>
+<script>
+$(document).ready(function(e) {
+	$(".header .top-a h2").html("投资知识评测");
+	document.title="投资知识评测";
+});
+
+
+/**
+ * 返回用户管理页面
+ */
+function backUserInfoPage(){
+	window.location.href="/#/myAccount";
+}
+</script>
+</body>
+</html>

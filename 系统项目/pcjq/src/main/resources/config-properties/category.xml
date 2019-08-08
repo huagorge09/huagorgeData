@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<category>
+  <root-category id="EC" name="招商财富" level="" default-id="MY_ACCOUNT">
+	<url>index.jsp</url>
+	<param></param>
+  </root-category>
+<!-- 一级菜单 -->
+  <sub-category id="MY_ACCOUNT" name="我的账户" level="" default-id="RICHES_INFO">
+	<parent-id>EC</parent-id>
+	<url>applicationGroups.shtml</url>
+    <param></param>
+  </sub-category>
+  
+<!-- 二级菜单 -->
+  <!-- 第一组 -->
+  <sub-category id="RICHES_INFO" name="财富总览" level="" default-id="">
+	<parent-id>MY_ACCOUNT</parent-id>
+	<url>business/account/accountInfo.shtml</url>
+    <param>money-overviews</param>
+  </sub-category>
+  
+  <sub-category id="ACCOUNT_INFO" name="个人信息" level="" default-id="">
+	<parent-id>MY_ACCOUNT</parent-id>
+	<url>business/account/queryMySafeInfo.shtml</url>
+    <param>account-info</param>
+  </sub-category> 
+
+  <sub-category id="ACCOUNT_BANK" name="我的银行卡" level="" default-id="">
+	<parent-id>MY_ACCOUNT</parent-id>
+	<url>business/account/myBankCard.shtml</url>
+    <param>mybank</param>
+  </sub-category>
+
+  <sub-category id="ACCOUNT_STATEMENT" name="我的对账单" level="" default-id="">
+	<parent-id>MY_ACCOUNT</parent-id>
+	<url>business/account/myBill.shtml</url>
+    <param>mystatement</param>
+  </sub-category>
+
+  <sub-category id="ACCOUNT_MESSAGE" name="我的消息" level="" default-id="">
+	<parent-id>MY_ACCOUNT</parent-id>
+	<url>business/article/articleList.shtml</url>
+    <param>mynews</param>
+  </sub-category>
+  
+    <sub-category id="ACCOUNT_INTEGRAL" name="我的积分" level="" default-id="">
+        <parent-id>MY_ACCOUNT</parent-id>
+        <url>business/mgm/myIntegral.shtml</url>
+        <param>myIntegral</param>
+    </sub-category>
+
+ <sub-category id="ACCREDITED_INVESTOR" name="投资者认证" level="" default-id="">
+	<parent-id>MY_ACCOUNT</parent-id>
+	<url></url>
+    <param>qualified</param>
+  </sub-category>
+  <!-- <sub-category id="ACCOUNT_RICHES" name="我的财富券" level="" default-id="">
+	<parent-id>MY_ACCOUNT</parent-id>
+	<url>sun_menu4.jsp</url>
+    <param>mygiftvoucher</param>
+  </sub-category> -->
+</category>

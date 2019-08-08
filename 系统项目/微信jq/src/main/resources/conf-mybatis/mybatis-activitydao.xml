@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.ActivityDao">
+	<insert id="createActivityUserRecord">
+		INSERT INTO CMWA_WX_INVESTOR_USER VALUES(#{userDto.openId},SYSDATE,#{userDto.userFullName},#{userDto.mobile},#{userDto.address})
+	</insert>
+	<select id="queryUserAnswerRecord" resultType="com.cmwa.ec.weixin.dto.InvestorAnswerDto">
+		SELECT
+			OPENID as openId,
+			SCORE as score,
+			FIRSTDATE as firstDate,
+			LASTDATE as lastDate,
+			COUNT as count
+		FROM 
+			CMWA_WX_INVESTOR_ANSWER
+		WHERE 
+			OPENID = #{openId}
+	</select>
+	<select id="queryUserTodayLuckDrawRecord" resultType="com.cmwa.ec.weixin.dto.InvestorAwardDto">
+		SELECT
+		    OPENID as openId,
+		    CREATEDATE as createDate,
+		    STATUS as status
+		FROM
+    		CMWA_WX_INVESTOR_AWARD 
+    	WHERE 
+    		OPENID=#{openId} AND TO_CHAR(CREATEDATE,'YYYY-MM-DD')=TO_CHAR(SYSDATE,'YYYY-MM-DD')
+	</select>
+	<insert id="createUserForwardRecord">
+		INSERT INTO CMWA_WX_INVESTOR_FORWARD VALUES(
+			#{openId},
+			SYSDATE,
+			SYSDATE,
+			<if test="type=='friend'">
+				1,0
+			</if>
+			<if test="type=='circle'">
+				0,1
+			</if>
+		)
+	</insert>
+	<update id="updateUserForwardRecord">
+		UPDATE 
+			CMWA_WX_INVESTOR_FORWARD 
+		SET 
+			LASTDATE=SYSDATE,
+			<if test="type=='friend'">
+				FRIENDCOUNT=FRIENDCOUNT+1
+			</if>
+			<if test="type=='circle'">
+				CIRCLECOUNT=CIRCLECOUNT+1
+			</if> 
+		WHERE 
+			OPENID=#{openId}
+	</update>
+	<select id="queryUserForwardRecord" resultType="com.cmwa.ec.weixin.dto.InvestorForwardDto">
+		SELECT 
+			OPENID as openId,
+			FIRSTDATE as firstDate,
+			LASTDATE as lastDate,
+			FRIENDCOUNT as friendCount,
+			CIRCLECOUNT as circleCount
+		FROM 
+			CMWA_WX_INVESTOR_FORWARD
+		WHERE 
+			OPENID=#{openId}
+	</select>
+	<select id="countTodayAwardRecord" resultType="int">
+		SELECT
+    		COUNT(1)
+		FROM 
+		    CMWA_WX_INVESTOR_AWARD
+		WHERE 
+		    TO_CHAR(CREATEDATE,'YYYY-MM-DD')=TO_CHAR(SYSDATE,'YYYY-MM-DD') and STATUS!=0
+	</select>
+	<insert id="createUserAwardRecord">
+		INSERT INTO CMWA_WX_INVESTOR_AWARD VALUES(#{openId},SYSDATE,#{status})
+	</insert>
+	<insert id="createUserAnswerRecord">
+		INSERT INTO CMWA_WX_INVESTOR_ANSWER VALUES(#{openId},#{score},SYSDATE,SYSDATE,1)
+	</insert>
+	<update id="updateUserAnswerRecord">
+		UPDATE 
+			CMWA_WX_INVESTOR_ANSWER 
+		SET 
+			SCORE=#{score},
+			LASTDATE=SYSDATE,
+			COUNT=COUNT+1 
+		WHERE 
+			OPENID=#{openId}
+	</update>
+	<update id="updateUserAwardRecord">
+		UPDATE 
+			CMWA_WX_INVESTOR_AWARD 
+		SET 
+			STATUS=#{status} 
+		WHERE 
+			OPENID=#{openId} AND STATUS!=0
+	</update>
+	<select id="queryUserAwardRecord" resultType="com.cmwa.ec.weixin.dto.InvestorAwardDto">
+		SELECT 
+			OPENID as openId,
+			CREATEDATE as createDate,
+			STATUS as status
+		FROM
+			CMWA_WX_INVESTOR_AWARD
+		WHERE
+			OPENID=#{openId} AND STATUS!=0
+	</select>
+	<select id="queryUserInfoByUerId" parameterType="string" resultType="com.cmwa.ec.weixin.dto.InvectorUserInfoexDto">
+		SELECT  
+				SUBSCRIBE as subscribe, 
+				HEADIMGURL as headImgurl,
+				OPENID as openId,
+				NICKNAME as nickName,
+				SUBSCRIBE_TIME as subscribeTime,
+				SUBSCRIBE_CHANNEL as subscribeChannel,
+				CUSTSER_ID as custserid
+		FROM 	
+				CMWA_WX_USER_INFO
+	    WHERE 
+		 		USER_ID = #{userId}
+	</select>
+	
+	<select id="queryUserInfoByOpenId" parameterType="string" resultType="com.cmwa.ec.weixin.dto.InvectorUserInfoexDto">
+		SELECT  
+				SUBSCRIBE as subscribe, 
+				HEADIMGURL as headImgurl,
+				OPENID as openId,
+				NICKNAME as nickName,
+				SUBSCRIBE_TIME as subscribeTime,
+				SUBSCRIBE_CHANNEL as subscribeChannel,
+				CUSTSER_ID as custserid
+		FROM 	
+				CMWA_WX_USER_INFO
+	    <where>
+			OPENID = #{openId}
+		</where>
+	</select>
+	
+	<update id="updateUserInfoCustser">
+		UPDATE 
+			Cmwa_Wx_User_Info 
+		SET 
+			CUSTSER_ID=#{map.custserid} 
+		WHERE 
+			OPENID=#{map.openId}
+	</update>
+	
+</mapper>

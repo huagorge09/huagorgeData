@@ -1,0 +1,6 @@
+1.vue设置body失效，通过生命周期设置背景颜色 beforeCreate beforeDestroy     
+2.highCart this指向问题，设置子组件传递值时 需要把vue this对象保存 然后再通过props  传递highcart配置参数
+3.this.$next() 数据没有更新前 在watch中
+4.webpack 打包样式css3兼容消失问题  /*! autoprefixer: off */  /* autoprefixer: on */
+5.插槽  子组件定义<slot name="demo"></slot> 父组件  <div slot="demo"></div>
+6.过滤数据当过滤完后的数据位空后，再重置所有条件，computed里面的方法不执行，只有在vue开发者工具才能执行，解决方式为在watch 里面再次调用computed方法

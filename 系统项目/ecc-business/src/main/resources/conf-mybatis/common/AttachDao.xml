@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cmwa.ecc.business.entity.fundinfo.AttachDao">
+
+	<insert id="saveEleContract" parameterType="attachVo">
+		<selectKey resultType="String" keyProperty="attId" order="BEFORE">
+			SELECT SEQ_TCONTRACT.NEXTVAL AS ATTACHID FROM DUAL
+		</selectKey>
+		INSERT INTO CMF_EC_ELECONTRACT_ATTACH
+		(ATTACHID, CONTENT, FILENAME)
+		VALUES
+		(#{attId,jdbcType=VARCHAR},#{attBlob,jdbcType=BLOB},#{attName,jdbcType=VARCHAR})
+	</insert>
+	
+	<select id="getEleContract" resultType="int">
+		SELECT SEQ_TCONTRACT.NEXTVAL AS ATTACHID FROM DUAL
+	</select>
+	
+	<delete id="delEleContractAttach" parameterType="String">
+		DELETE FROM CMF_EC_ELECONTRACT_ATTACH where ATTACHID=#{attId}
+	</delete>
+	
+	<select id="queryEleContractAttach" parameterType="String" resultType="attachVo">
+		SELECT ATTACHID AS attId,FILENAME AS attName,CONTENT AS attBlob FROM CMF_EC_ELECONTRACT_ATTACH WHERE ATTACHID =#{attId}
+	</select>
+	<select id="queryEleContractAttachList"  resultType="attachVo">
+		SELECT ATTACHID AS attId,FILENAME AS attName FROM CMF_EC_ELECONTRACT_ATTACH WHERE ATTACHID IN 
+	     <foreach item="item" index="index" collection="array" open="(" separator="," close=")"> 
+			  			 #{item}
+	    </foreach> 
+	</select>
+	
+	<resultMap id="BaseResultMap" type="productEstimateDto">
+	    <result column="D_DATE" jdbcType="TIMESTAMP" property="dDate" />
+	    <result column="D_CDATE" jdbcType="TIMESTAMP" property="dCdate" />
+	    <result column="C_FUNDCODE" jdbcType="VARCHAR" property="cFundcode" />
+	    <result column="C_TODAYSTATUS" jdbcType="CHAR" property="cTodaystatus" />
+	    <result column="C_STATUS" jdbcType="CHAR" property="cStatus" />
+	    <result column="F_NETVALUE" jdbcType="DECIMAL" property="fNetvalue" />
+	    <result column="F_LASTSHARES" jdbcType="DECIMAL" property="fLastshares" />
+	    <result column="F_LASTASSET" jdbcType="DECIMAL" property="fLastasset" />
+	    <result column="F_ASUCCEED" jdbcType="DECIMAL" property="fAsucceed" />
+	    <result column="F_RSUCCEED" jdbcType="DECIMAL" property="fRsucceed" />
+	    <result column="C_VASTFLAG" jdbcType="CHAR" property="cVastflag" />
+	    <result column="F_ENCASHRATIO" jdbcType="DECIMAL" property="fEncashratio" />
+	    <result column="F_CHANGERATIO" jdbcType="DECIMAL" property="fChangeratio" />
+	    <result column="C_EXCESSFLAG" jdbcType="CHAR" property="cExcessflag" />
+	    <result column="F_SUBSCRIBERATIO" jdbcType="DECIMAL" property="fSubscriberatio" />
+	    <result column="C_INPUTPERSONNEL" jdbcType="VARCHAR" property="cInputpersonnel" />
+	    <result column="C_CHECKPERSONNEL" jdbcType="VARCHAR" property="cCheckpersonnel" />
+	    <result column="F_INCOME" jdbcType="DECIMAL" property="fIncome" />
+	    <result column="F_INCOMEUNIT" jdbcType="DECIMAL" property="fIncomeunit" />
+	    <result column="F_INCOMERATIO" jdbcType="DECIMAL" property="fIncomeratio" />
+	    <result column="F_UNASSIGN" jdbcType="DECIMAL" property="fUnassign" />
+	    <result column="F_TOTALNETVALUE" jdbcType="DECIMAL" property="fTotalnetvalue" />
+	    <result column="F_SERVICEFARE" jdbcType="DECIMAL" property="fServicefare" />
+	    <result column="C_TANO" jdbcType="CHAR" property="cTano" />
+	    <result column="C_PUBLISHED" jdbcType="CHAR" property="cPublished" />
+	    <result column="F_DYNAMICLINE" jdbcType="DECIMAL" property="fDynamicline" />
+	    <result column="F_DAYINC" jdbcType="DECIMAL" property="fDayinc" />
+	    <result column="F_WEEKINC" jdbcType="DECIMAL" property="fWeekinc" />
+	    <result column="F_DAYINC_SMS" jdbcType="DECIMAL" property="fDayincSms" />
+	    <result column="F_MONTHINC" jdbcType="DECIMAL" property="fMonthinc" />
+	    <result column="F_NETVALUEDAYINC" jdbcType="DECIMAL" property="fNetvaluedayinc" />
+	    <result column="F_INCINTHREEDAYS" jdbcType="DECIMAL" property="fIncinthreedays" />
+	    <result column="F_INCOMEINC" jdbcType="DECIMAL" property="fIncomeinc" />
+	    <result column="F_TOTALINCOMEINC" jdbcType="DECIMAL" property="fTotalincomeinc" />
+	    <result column="F_RESERVEDASSET" jdbcType="DECIMAL" property="fReservedasset" />
+	    <result column="F_REALNETVALUE" jdbcType="DECIMAL" property="fRealnetvalue" />
+	    <result column="C_TAINPUT" jdbcType="CHAR" property="cTainput" />
+	    <result column="C_FAINPUT" jdbcType="CHAR" property="cFainput" />
+	    <result column="F_SEASONINC" jdbcType="DECIMAL" property="fSeasoninc" />
+	    <result column="F_HALFINC" jdbcType="DECIMAL" property="fHalfinc" />
+	    <result column="F_YEARINC" jdbcType="DECIMAL" property="fYearinc" />
+	    <result column="C_TODAYCHGSTATUS" jdbcType="CHAR" property="cTodaychgstatus" />
+	    <result column="C_TODAYPCSSTATUS" jdbcType="CHAR" property="cTodaypcsstatus" />
+	    <result column="C_TODAYSPLITSTATUS" jdbcType="CHAR" property="cTodaysplitstatus" />
+	    <result column="F_FANETVALUE" jdbcType="DECIMAL" property="fFanetvalue" />
+	    <result column="C_PUBLISHED_TEMP" jdbcType="CHAR" property="cPublishedTemp" />
+	    <result column="C_MANUALINPUT" jdbcType="CHAR" property="cManualinput" />
+	    <result column="C_PCFINPUT" jdbcType="CHAR" property="cPcfinput" />
+	    <result column="C_TODAYTRFSTATUS" jdbcType="CHAR" property="cTodaytrfstatus" />
+	    <result column="C_CHECKFLAG" jdbcType="CHAR" property="cCheckflag" />
+	    <result column="C_ISVALUATIONDAY" jdbcType="CHAR" property="cIsvaluationday" />
+	    <result column="F_INCOMERATIO_30DAYS" jdbcType="DECIMAL" property="fIncomeratio30days" />
+	    <result column="F_RMBNETVALUE" jdbcType="DECIMAL" property="fRmbnetvalue" />
+	    <result column="F_RMBTOTALNETVALUE" jdbcType="DECIMAL" property="fRmbtotalnetvalue" />
+	    <result column="F_THIS_YEARINC" jdbcType="DECIMAL" property="fThisYearinc" />
+	    <result column="F_1_YEARINC" jdbcType="DECIMAL" property="f1Yearinc" />
+	    <result column="F_2_YEARINC" jdbcType="DECIMAL" property="f2Yearinc" />
+	    <result column="F_3_YEARINC" jdbcType="DECIMAL" property="f3Yearinc" />
+	    <result column="F_5_YEARINC" jdbcType="DECIMAL" property="f5Yearinc" />
+	    <result column="F_SETUPINC" jdbcType="DECIMAL" property="fSetupinc" />
+	    <result column="F_INCOMERATIO_90DAYS" jdbcType="DECIMAL" property="fIncomeratio90days" />
+	    <result column="F_INCOMERATIO_45DAYS" jdbcType="DECIMAL" property="fIncomeratio45days" />
+	    <result column="D_CREATEDATE" jdbcType="TIMESTAMP" property="dCreatedate" />
+	    <result column="D_AUDITDATE" jdbcType="TIMESTAMP" property="dAuditdate" />
+	    <result column="F_LASTTOTALASSET" jdbcType="DECIMAL" property="fLasttotalasset" />
+  </resultMap>
+  
+	<select id="queryEstimateFromCrmBp" resultMap="BaseResultMap">
+		 SELECT DISTINCT * from   TFUNDDAY  where  to_char(D_DATE, 'yyyymmdd') = #{workDate}
+		 and c_fundcode in
+		<foreach collection="list" item="item" index="index" open="(" separator="," close=")"> 
+			  			 #{item.funcode}
+	    </foreach> 
+	</select>
+</mapper>

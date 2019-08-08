@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>招商财富</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"/>
+	<meta name="format-detection" content="telephone=no"/>
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/app_styleNew.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+</head>
+
+	<script type="text/javascript">
+	
+		$(document).ready(function(e){
+			//修改公共页头名称
+			$("#headerTitle").text("非法访问");
+			
+			$("#titleBack").removeClass("icon_back");
+			$("#titleBack").addClass("icon_back01");
+			$("#titleBack").attr("href","javascript:void(0)");
+			
+		});
+		
+	</script>
+
+
+<body>
+ 
+	<section class="main">
+		<div class="order_box">
+			<div align="center">非法访问</div>
+		</div>
+ 	</section>
+</body>
+</html>
+
+
+
+ 
+ 
+

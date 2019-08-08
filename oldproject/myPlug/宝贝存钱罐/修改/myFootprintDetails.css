@@ -1,0 +1,181 @@
+.compile{
+    padding: 0.2rem 0.3rem 0 0.3rem;
+    line-height: 0.8rem;
+    font-size: 0.26rem;
+    color: #666;
+}
+.block{
+    margin-top: 0.2rem;
+    padding: 0 0.3rem;
+    background-color: #fff;
+}
+.block .title{
+    padding: 0;
+    background-color: #fff;
+}
+.block .content{
+    background-color: #fff;
+    flex:1;
+    -webkit-flex:1;
+}
+/*编辑*/
+.compile .list{
+    float: right;
+}
+.compile .list span{
+    width: 0.4rem;
+    height: 0.4rem;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 0.4rem 0.4rem;
+    margin-left: 0.6rem;
+    vertical-align: middle;
+}
+.compile .list .generatePhotos{
+    background-image: url("../image/icon/myFootprintDetails/photos.png");
+    background-size: 0.36rem 0.32rem;
+}
+.compile .list .bianJi{
+    background-image: url("../image/icon/myFootprintDetails/bianJi.png");
+}
+.compile .list .shanChu{
+    background-image: url("../image/icon/myFootprintDetails/shanChu.png");
+}
+.compile .list .fenXiang{
+    background-image: url("../image/icon/myFootprintDetails/fenXiang.png");
+}
+.dayItem .applyFabulous{
+    float: right;
+    line-height: 0.48rem;
+    padding: 0 0.14rem;
+    border: solid 1px #e0e0e0;
+    color: #666;
+    font-size: 0.26rem;
+    border-radius: 0.04rem;
+    margin-right: 0.02rem;
+}
+.dayItem .top .more{
+    float: right;
+    font-size: 0.26rem;
+    color: #999;
+}
+/*点赞*/
+.dianZanList{
+    padding-bottom: 0.1rem;
+}
+.dianZanList .item{
+    display: inline-block;
+    margin-right: 0.3rem;
+    margin-bottom: 0.2rem;
+    float: left;
+}
+.dianZanList .item img{
+    display: block;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+}
+/*评论列表*/
+.pingLunList{
+    padding-bottom: 0.38rem;
+}
+.pingLunList .item{
+    display: flex;
+    display: -webkit-flex;
+    margin-bottom: 0.6rem;
+}
+.pingLunList .item:last-of-type{
+    margin-bottom: 0;
+}
+.pingLunList .item .head img{
+    width: 0.8rem;
+    height: 0.8rem;
+    display: block;
+    border-radius: 50%;
+    margin-right: 0.2rem;
+}
+.pingLunList .item .cenZhu{
+    line-height: 0.5rem;
+}
+.pingLunList .item .cenZhu .name{
+    font-size: 0.3rem;
+    color: #437baf;
+    vertical-align: middle;
+}
+.pingLunList .item .cenZhu .tuHao{
+    display: inline-block;
+    font-size: 0.24rem;
+    line-height: 0.32rem;
+    padding: 0 0.11rem;
+    background-color: #ffc000;
+    color: #fff;
+    border-radius: 0.04rem;
+    margin-left: 0.15rem;
+    vertical-align: middle;
+}
+.pingLunList .item .cenZhu .time{
+    font-size: 0.24rem;
+    color: #999;
+    float: right;
+    vertical-align: middle;
+}
+.pingLunList .item .cenZhu .time span{
+    margin-left: 0.2rem;
+}
+.pingLunList .item .text{
+    margin-top: 0.15rem;
+    font-size: 0.28rem;
+    color: #333;
+    line-height: 0.36rem;
+}
+.pingLunList .item .text span{
+    font-size: 0.36rem;
+    color: #ffc000;
+    margin: 0 0.1rem;
+}
+.pingLunList .item .huiFu{
+    position: relative;
+    background-color: #f6f6f6;
+    line-height: 0.36rem;
+    padding: 0.1rem 0.3rem;
+    margin-top: 0.25rem;
+}
+.pingLunList .item .huiFu:before{
+    content: "";
+    display: block;
+    position: absolute;
+    border: solid 0.13rem transparent;
+    border-bottom-color: #f6f6f6;
+    top: -0.25rem;
+    left: 0.4rem;
+}
+.pingLunList .item .huiFu p{
+    padding: 0.1rem 0;
+}
+.pingLunList .item .huiFu .renWu{
+    color: #437baf;
+}
+/*底部*/
+.footer{
+    text-align: center;
+    font-size: 0.24rem;
+    line-height: 0.4rem;
+    color: #bbb;
+    padding: 0.3rem 0;
+}
+.footer .not:before,
+.footer .not:after{
+    content: "";
+    display: inline-block;
+    width: 0.7rem;
+    height: 1px;
+    background-color: #bbb;
+    vertical-align: middle;
+}
+.footer .not:before{
+    margin-right: 0.23rem;
+}
+.footer .not:after{
+    margin-left: 0.23rem;
+}

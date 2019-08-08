@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>修改手机号码</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+<!-- header -->
+<!--#include virtual="/AppService/public/header.shtml"-->
+
+
+
+<div class="pay-schedule mid registe-schedule clear">
+    <div class="pay-order schedule01 current"><span>1、验证身份</span></div>
+    <div class="pay-order schedule02"><span>2、新号码确认</span></div>
+    <div class="pay-order schedule03"><span>3、修改成功</span></div>
+</div>
+
+<div style="display: none;">
+	<input type="hidden" id="sessionID" value=""/>
+</div>
+
+
+<div class="confirm-order registe-mid recoverpassword mid clear placeholder-left" id="div_01">    
+    <div class="registe-con">
+        <span class="realname-point">为了您的账户安全，请输入安全码</span>
+        <ul>
+            <li>
+                <label for="password">输入密码</label>
+                <input type="password" id="tPassword" class="password" placeholder="请输入安全码">
+                <span class="error-point repassword" id="error_tips_01" style="display: none;">密码格式有误</span>
+                <a href="/AppService/business/account/resetTPassword.shtml" class="forgetpassword clear">忘记密码？</a>
+            </li>         
+        </ul>
+        <span class="registe-con-btn">
+        	<a href="javascript:checkTPassword();">下一步</a>
+        </span>
+    </div>
+</div>
+
+
+<div class="confirm-order registe-mid updatepaypassword mid clear placeholder-left placeholder-top" id="div_02" style="display: none;">    
+    <div class="registe-con">
+        <ul>
+            <li>
+                <label for="phone">新的手机号码</label>
+                <input type="text" id="mobile" class="phone" placeholder="请您输入新的手机号码">
+                <span class="error-point phone" id="error_tips_02" style="display: none;">手机号码有误</span>
+            </li>
+            <li>
+                <label for="repassword">验证码</label>
+                <input type="text" id="vrfCode" class="identify-input phone-bank" placeholder="请输入6位数验证码">
+                <span class="indentifyimg phone">
+                    <input type="button" id="AgetCode" onclick="getVrfCode()" value="获取验证码">
+                </span>
+                <span class="error-point phone" id="error_tips_03" style="display: none;">短信验证码有误</span>
+                <div class="indentifyimg-point">
+					<span class="point-clickafter none" id="point-clickafter">验证码已发送至您的手机，请勿泄露；</span>
+				</div>
+            </li>            
+        </ul>
+        <span class="registe-con-btn">
+        	<a href="javascript:checkVrfCode();">确认</a>
+        	<a href="javascript:history.go(-1);" class="cancel">取消</a>
+        </span>
+    </div>
+</div>
+
+
+<div class="confirm-order registe-mid recoverpassword mid clear" id="div_03" style="display: none;">    
+    <div class="registe-con">
+        <span class="realname-point">为保证账号安全，请重新设置登录密码</span>
+        <ul>
+            <li>
+                <label for="password">输入密码</label>
+                <input type="password" id="password" class="password" placeholder="请设置登录密码">
+                <span class="error-point repassword" id="error_tips_04" style="display: none;">密码格式有误</span>
+            </li>
+            <li>
+                <label for="repassword">确认密码</label>
+                <input type="password" id="rePassword" class="repassword" placeholder="请再次输入密码">
+                <span class="error-point repassword" id="error_tips_05" style="display: none;">两次密码不一致</span>
+            </li>            
+        </ul>
+        <span class="registe-con-btn"><a href="javascript:modifyRegMobileAndSetPsw()">完成</a></span>
+    </div>
+</div>
+
+
+<div class="confirm-pay pay-state recoverpassword-succe registe-mid mid clear" id="div_04" style="display: none;">
+    <img class="pay-state-img" src="/AppWeb/AppWeb_Images/images/user_xiuGaiShouJiHao_icon_ok.png" height="140" width="230" />
+    <h2>恭喜您，绑定手机号码已重置完成！请重新登录！</h2>
+    <span class="nowlogin"><em id="time">10</em>秒 后将自动跳转至<a href="/login/login.shtml">登录页面</a> >></span>
+    <a href="/login/login.shtml" class="nowlogin">确认</a>
+</div>
+
+
+<!-- footer -->
+<!--#include virtual="/AppService/public/footer.shtml"-->
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/modifyRegMobile.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+2017/10/13
+1.my.css添加.setUp .date-current日期选择样式
+2.my.js日期选择添加date-current类$("#scrollToMonth").text(dateText)改为$("#scrollToMonth").text(dateText).addClass("date-current");
+3.public.css修改分享按钮间距.dayItem .context .operation .more{margin-left: 0.46rem;}
+4.public.css修改足迹列表精华样式.dayItem .context .fabulous{margin-left: 0.33rem;}
+5.myFootprintDetails.css添加申请精华按钮样式.dayItem .applyFabulous{margin-right: 0.02rem;}
+6.square.css修改标题左边黄线高度.block .title .text{position: relative;padding-left: 0.2rem;；去除border-left}增加.block .title .text:before
+7.public.css修改同龄偏下.dayItem .context .children span{删除vertical-align: middle;},.dayItem .context .fabulous{删除vertical-align: middle;}
+8.footprintDetails.html,myFootprintDetails.html删除 【点赞、评论、打赏与（3）之间的空格】
+9.所有页面的时间[2017.08.21 17:00中的17:00添加<span></span>包裹]
+  myFootprintDetails.css添加.pingLunList .item .cenZhu .time span样式
+  square.css添加.dayItem .context .time span样式
+10.修改footprintDetails.html木有啦底下一段文案
+11.修改public.css音频时间与滑动条之间的距离.BarAudioPlayer .currentTime{padding-right: 0.45rem;}  .BarAudioPlayer .endTime{padding-left: 0.45rem;}
+12.square.css修改tab选择文字的粗细.zuJi .square-tab .current{添加font-weight: 600;}
+13.square.css修改去参加、去录音按钮边框宽度.tuiJian .tuWen .luYin{修改border: solid 0.06rem #fff;}
+14.public.css添加.dianZan-animation:before样式及dianZan-animation动画，修改.daShang-animation:after{-webkit-animation: daShang-animation 1.5s both;
+    animation: daShang-animation 1.5s both;}，daShang-animation动画
+15.public.css添加足迹内容样式.dayItem .context .wrap>.text{添加word-break : normal;}
+16.image/icon/my/添加dropDown-A.png图片
+17.common.js修改autoHintBox弹窗，修改shareBox弹窗，修改所有调用shareBox方法
+18.修改my.setUp .date{color: #333;font-size: 0.32rem;} .setUp .screen{color: #333;font-size: 0.32rem;}
+19.修改my.js筛选选择状态
+  

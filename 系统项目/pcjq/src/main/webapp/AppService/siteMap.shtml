@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>网站地图_招商财富  都市精英的私人银行、高净值人士专业资产管理平台</title>
+	<meta name="keyword" content="资产配置、高端投资理财、资产管理、理财产品、固定收益、私募股权、债券、资产证券化、solution" />
+    <meta name="description" content="招商财富是招商旗下专业高端资产管理平台，主要经营特定客户资产管理业务。招商财富为高净值客户提供优质的金融投资理财产品、投资理财建议和专业的资产配置服务，满足客户全方位的资产管理需求。" /> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="shortcut icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+	<!--[if IE]>
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageJs/html5.js"></script>
+	<![endif]-->
+	<!--[if IE 6]>
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageJs/DD_belatedPNG_0.0.8a.min.js"></script>
+	<script>
+		DD_belatedPNG.fix('*');
+	</script>
+	<![endif]-->
+</head>
+<body>
+
+<!-- header -->
+<!--#include virtual="/AppService/public/header.shtml"-->
+
+<div class="wrap mid">
+     <ul>
+		 <li>
+			 <h2><i></i>快捷操作</h2>
+			 <p>
+				 <a href="/login/register.shtml">用户注册</a><span>|</span>
+				 <a href="/login/login.shtml">用户登陆</a><span>|</span>
+				 <a href="/login/resetLPassWord.shtml?type=R">忘记密码</a>
+			 </p>
+		 </li>
+		 <li>
+			 <h2><i></i>财富产品</h2>
+			 <p><a href="/AppService/business/fund/fundList.shtml">产品中心</a></p>
+		 </li>
+		 <li>
+			 <h2><i></i>新闻动态</h2>
+			 <p><a href="/AppService/article/newsList.shtml">新闻资讯</a></p>
+		 </li>
+		 <li>
+			 <h2><i></i>财富故事</h2>
+			 <p>
+				 <a href="/AppService/article/aboutUs.shtml#aboutUs">关于我们</a><span>|</span>
+				 <a href="/AppService/article/aboutUs.shtml#joinUs">加入财富</a><span>|</span>
+				 <a href="/AppService/article/aboutUs.shtml#aboutMap">联系我们</a>
+			 </p>
+		 </li>
+		 <li>
+			 <h2><i></i>投资者保护</h2>
+			 <p>
+				 <a href="/AppService/article/investorProtect.shtml?type=1">行业法规及规范性文件</a><span>|</span>
+				 <a href="/AppService/article/investorProtect.shtml?type=2">反洗钱专栏</a><span>|</span>
+				 <a href="/AppService/article/investorProtect.shtml?type=3">蓝天行动</a>
+			 </p>
+		 </li>
+		 <li>
+			 <h2><i></i>我的财富</h2>
+			 <p>
+				 <a href="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&thirdCatId=RICHES_INFO">财富总览</a><span>|</span>
+				 <a href="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&thirdCatId=ACCOUNT_INFO">个人信息</a><span>|</span>
+				 <a href="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&thirdCatId=ACCOUNT_BANK">我的银行卡</a><span>|</span>
+				 <a href="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&thirdCatId=ACCOUNT_STATEMENT">我的对账单</a><span>|</span>
+				 <a href="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&thirdCatId=ACCOUNT_MESSAGE">我的消息</a>
+			 </p>
+		 </li>
+	 </ul>
+</div>
+<style>
+	.wrap{
+		background: #fff;
+		margin-top: 20px;
+		padding-bottom: 5px;
+	}
+	.wrap li{
+		padding:30px 30px 20px 30px;
+		border-bottom:1px #e5e5e5 solid;
+	}
+	.wrap li h2{
+		color:#c9132c;
+		font-size:16px;
+		padding-left:6px;
+	}
+	.wrap li h2 i{
+		width: 4px;
+		height: 16px;
+		background: #c70e25;
+		border-radius: 5px;
+		margin-right: 5px;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.wrap li p{
+		padding-left:14px;
+		margin-top:16px;
+	}
+	.wrap li p span{
+		margin:0 10px;
+	}
+	.wrap li p a{
+		font-size:16px;
+		color:#212121;
+	}
+</style>
+
+
+<!-- footer -->
+<!--#include virtual="/AppService/public/footer.shtml"-->
+<!--<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/aboutUs.min.js"></script>-->
+</body>
+</html>

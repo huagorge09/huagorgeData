@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx-3.2.xsd  
+        http://www.springframework.org/schema/util 
+        http://www.springframework.org/schema/util/spring-util-3.2.xsd   
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+        ">
+
+	<bean id="eccSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="eccDataSource" />
+		<property name="configLocation" value="classpath:conf-mybatis/mybatis/mybatis.xml"></property>
+		<property name="mapperLocations" value="classpath*:conf-mybatis/*/*Dao.xml" />
+	</bean>
+	
+	 <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="eccSqlSessionFactory" />
+        <!-- 扫描该目录下有@MybatisDao注解的dao接口 -->
+        <property name="basePackage" value="com.cmwa.ecc.business.dao" />
+        <property name="annotationClass" value="com.cmwa.ecc.business.mybatis.annotation.MybatisDao" />
+    </bean>
+    
+   	<bean name="eccSqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="eccSqlSessionFactory" />
+	</bean>
+	
+	<bean id="eccTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="eccDataSource" />
+	</bean>
+	
+	<tx:advice id="transactionAdvice" transaction-manager="eccTransactionManager">
+		<tx:attributes>
+			<tx:method name="*" propagation="REQUIRED" rollback-for="Throwable"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="transactionPointcut" expression="execution(* com.cmwa.ecc.business..*Service.*(..))" />
+		<aop:advisor advice-ref="transactionAdvice" pointcut-ref="transactionPointcut" />
+	</aop:config>
+	
+	<bean class="com.cmwa.ecc.business.mail.send.MailSender" lazy-init="false" />
+	
+	<!-- 线程池 -->
+	<bean id="threadPoolTaskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor" >
+		<property name="corePoolSize" value="10"/>
+		<property name="maxPoolSize" value="25"/>
+		<property name="keepAliveSeconds" value="3000"/>
+		<property name="queueCapacity" value="1000"/>
+		<property name="rejectedExecutionHandler">
+			<bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy"></bean>
+		</property>
+	</bean>
+	
+	<!-- 加载数据字典     -->
+	<bean id="loadDataDictionary" class="com.cmwa.ecc.business.utils.DictionaryUtil" init-method = "init" lazy-init="false"></bean>
+	
+	<!-- 加载用户信息     -->
+	<bean id="loadDataUserInfo" class="com.cmwa.ecc.business.utils.UserInfoUtil" init-method = "init"></bean>
+	
+	<!-- 加载部门信息     -->
+	<bean id="loadDataDepartment" class="com.cmwa.ecc.business.utils.DepartmentUtil" init-method = "init"></bean>
+	
+	<bean lazy-init="false" id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean"/>
+</beans>

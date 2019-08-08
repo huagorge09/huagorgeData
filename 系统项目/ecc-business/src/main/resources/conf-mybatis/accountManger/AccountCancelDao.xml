@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.accountManger.AccountCancelDao">
+	
+	<!-- 撤销账户申请  -->
+	<select id="accountCancel" parameterType="com.cmwa.ecc.business.entity.accountManger.TradeDto" statementType="CALLABLE">
+        { CALL DS_OAP_CANCEL(
+				#{permissionId,jdbcType=VARCHAR,mode=IN},
+				#{serialno,jdbcType=VARCHAR,mode=IN},
+				#{trustType,jdbcType=VARCHAR,mode=IN},
+				#{tradeacco,jdbcType=VARCHAR,mode=IN},
+				#{oldserialno,jdbcType=VARCHAR,mode=IN},
+				#{operatorId,jdbcType=VARCHAR,mode=IN},
+				#{checkno,jdbcType=VARCHAR,mode=IN},
+ 				#{errcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{errmsg,jdbcType=VARCHAR,mode=OUT}
+			)
+		}
+	</select>
+</mapper>

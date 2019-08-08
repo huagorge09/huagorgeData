@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.activity.ActParameterDao">
+	 	<!-- 获取参数 -->
+	<select id="getParameter" parameterType="string" resultType="com.cmwa.ec.weixin.dto.ParameterDto">
+		SELECT PMST, PMKY, PMCO, PMNM, PMV1, PMV2, PMV3, PMV4, PMV5,INSERTTIMESTAMP, UPDATETIMESTAMP ,
+			 (SELECT COUNT(1) FROM PARAMETER T1 WHERE PMST ='SYSTEM' AND PMKY ='DS_CITYCODE' AND T1.PMV1 = T2.PMCO)LEAFNUM
+		 FROM PARAMETER T2
+		WHERE  PMCO NOT LIKE '%****%'
+		<if test="dto.pmst != null and dto.pmst != '' ">
+			AND PMST =#{dto.pmst,jdbcType=VARCHAR}
+		</if>
+		<if test="dto.pmky != null and dto.pmky != '' ">
+			AND PMKY =#{dto.pmky,jdbcType=VARCHAR}
+		</if>
+		<if test="dto.pmco != null and dto.pmco != '' ">
+			AND PMCO =#{dto.pmco,jdbcType=VARCHAR}
+		</if>
+		<if test="dto.pmv1 != null and dto.pmv1 != '' ">
+			AND pmv1 =#{dto.pmv1,jdbcType=VARCHAR}
+		</if>
+		<if test="dto.pmv2 != null and dto.pmv2 != '' ">
+			AND pmv2 =#{dto.pmv2,jdbcType=VARCHAR}
+		</if>
+	</select>
+	
+	<select id="getParameterDto"  resultType="com.cmwa.ec.weixin.dto.ParameterDto">
+		SELECT PMST, PMKY, PMCO, PMNM, PMV1, PMV2, PMV3
+		FROM PARAMETER
+		WHERE  
+			PMST =#{dto.pmst}
+		AND PMKY =#{dto.pmky}
+		AND PMCO =#{dto.pmco}
+	</select>
+	
+	<resultMap id="customerServiceMap" type="com.cmwa.ec.weixin.dto.CustomerServiceDto">
+		<result property="custserId" column="CUSTSER_ID" />
+		<result property="custserName" column="CUSTSER_NAME" />
+		<result property="custserMobile" column="CUSTSER_MOBILE" />
+		<result property="custserWorkYear" column="CUSTSER_WORKYEAR" />
+		<result property="custserAddress" column="CUSTSER_ADDRESS" />
+		<result property="custserPhoto" column="CUSTSER_PHOTO" />
+		<result property="custserNickname" column="CUSTSER_NICKNAME" />
+		<result property="custserPersonalQrCode" column="CUSTSER_PERSONAL_QRCODE" />
+	</resultMap>
+	
+	
+	<select id="queryCustServiceInfo" parameterType="java.util.Map"  resultMap="customerServiceMap">
+		    SELECT 
+		        T.CUSTSER_ID,
+		        T.CUSTSER_NAME,
+		        T.CUSTSER_MOBILE,
+		        T.CUSTSER_WORKYEAR,
+		        T.CUSTSER_ADDRESS,
+		        T.CUSTSER_PHOTO,
+		        T.CUSTSER_NICKNAME,
+		        T.CUSTSER_PERSONAL_QRCODE
+			FROM CMWA_CUSTSERVICE_INFO T WHERE 1=1	
+			<if test="map.custserId != null and map.custserId != ''">
+				AND T.CUSTSER_ID =#{map.custserId,jdbcType=VARCHAR}
+			</if>		
+			<if test="map.custserType != null and map.custserType != ''">
+				AND T.CUSTSER_TYPE =#{map.custserType,jdbcType=VARCHAR}
+			</if>	
+			<if test="map.state != null and map.state != ''">
+				AND T.CUSTSER_DEFAULT =#{map.state,jdbcType=CHAR}
+			</if>
+			ORDER BY T.UPDATE_DATE DESC
+	</select>
+	
+	<update id="updateParameter" parameterType="com.cmwa.ec.weixin.dto.ParameterDto" >
+		UPDATE PARAMETER
+		   SET PMNM = PMNM -1
+		 WHERE PMST =#{dto.pmst}
+		 AND PMKY =#{dto.pmky}
+		 AND PMCO =#{dto.pmco}
+		 AND to_number(PMNM) >0
+	</update>
+	
+	<select id="normalGetParameter" resultType="com.cmwa.ec.weixin.dto.ParameterDto">		
+	</select>
+	
+	<update id="updatePmcoByPmky" parameterType="com.cmwa.ec.weixin.dto.ParameterDto" >
+		 UPDATE PARAMETER
+		  	SET PMCO = PMCO -1
+		 WHERE 
+			 PMKY =#{dto.pmky}
+			 AND PMCO =#{dto.pmco}
+			 AND to_number(PMCO) >0
+	</update>
+	
+	<delete id="deleteUserTerms">
+			DELETE FROM CMWA_USER_TERMS_LOG TG WHERE TG.CMFUSERID = #{cmfUserId} AND TG.FUNDCODE = #{fundId} AND TG.PERIOD = #{period}
+	</delete>
+	
+	<!-- 保存客户风险揭示函纪录 -->
+	<insert id="insertUserTerms" parameterType="java.util.List" useGeneratedKeys="false">
+			begin
+   			<foreach collection="list" item="item" index="index" separator="">
+	   			INSERT INTO CMWA_USER_TERMS_LOG
+				  (ID, CMFUSERID, FUNDCODE, PERIOD, TERMS_ID, STATE, CREATE_BY, CREATE_DT)
+	   			VALUES
+	   				(
+	   					#{item.id},
+	   					#{item.cmfUserId},
+	   					#{item.fundCode},
+	   					#{item.period},
+	   					#{item.termsId},
+	   					#{item.state},
+	   					'SYSTEM',
+	   					sysdate
+	   				);
+   		     </foreach>		
+   		    end;
+     </insert>    
+     
+    <!--插入记录用户操作日志  -->
+    <insert id="insertUserOperateLog"  parameterType="java.util.Map">
+        INSERT INTO CMWA_USER_OPERATE_LOG(ID,
+                                          CMFUSERID,
+                                          LOGIN_CHANNEL,
+                                          TYPE,
+                                          CREATETIME,
+                                          UPDATETIME,
+                                          FUNDID,
+                                          PERIOD)
+                                    VALUES(
+                                            SEQ_USER_OPERATE_LOG.NEXTVAL,
+		                                    #{map.cmfuserid,jdbcType=VARCHAR},
+		                                    #{map.loginChannel,jdbcType=VARCHAR},
+		                                    #{map.type,jdbcType=VARCHAR},
+		                                    SYSDATE,
+		                                    SYSDATE,
+		                                    #{map.fundId}, 
+		                                    #{map.period})
+    </insert>
+</mapper>

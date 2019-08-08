@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>招商财富</title>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/AppWeb/AppWeb_Css/business/qualified/qualified.css" />
+	<link rel="stylesheet" type="text/css" href="/AppWeb/AppWeb_Css/dialog.css" />
+</head>
+
+<body>
+	<!-- header -->
+	<!--#include virtual="/AppService/public/header.shtml"-->
+	<div class="main">
+		<!--资产证明-->
+		<div class="title">
+			<h2>合格投资者证明</h2>
+			<div class="txt">若要完成合格投资者认证，需证明：</div>
+			<div class="txt2 clear">
+				<span class="span1">资产证明</span>
+				<span class="span2">金融资产<br>>=500万元</span>
+				<span class="span3">或</span>
+				<span class="span4">近三年平均收入<br>40万元</span>
+			</div>
+		</div>
+		<div class="verify">
+			<h2>上传资产证明<span>（可上传PDF/JPG/视频文件）</span></h2>
+			<div class="assetsBox">
+				<ul id="financiList" class="assetsList clear">
+				</ul>
+			</div>
+		</div>
+
+		<!--  投资经历-->
+		<div class="title exper">
+			<div class="txt2 clear">
+				<span class="span1">投资经历证明</span>
+				<span class="span2">两年投资经历</span>
+			</div>
+		</div>
+		<div class="verify">
+			<h2>上传投资经历证明<span>（可上传PDF/JPG/视频文件）</span></h2>
+			<div class="assetsBox">
+				<ul id="assetsList" class="assetsList clear">
+				</ul>
+			</div>
+		</div>
+		<!--  身份证正反面 -->
+		<div class="icCardContent">
+			<h2>上传身份证正反面<span class="tx">（可上传JPG/PNG文件）</span></h2>
+			<i id="deletPersonImg" class="deletePersonImg2" style="display:none;"></i>
+			<img class="idPersonImg2" id="icPersonNone" />
+
+			<i id="deleteCountryImg" class="deleteCountryImg2" style="display:none;"></i>
+			<img class="idCountryImg2" id="icCountryNone" />
+
+		</div>
+
+		<div class="btnBox">
+			<a href="javascript:;" class="disable">确认上传以上材料</a>
+			<a href="javascript:;" id="returnBtn">返回修改材料</a>
+		</div>
+	</div>
+
+	<!-- footer -->
+	<!--#include virtual="/AppService/public/footer.shtml"-->
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/dialog.min.js"></script>
+	<!-- <script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/qualifiedCommon.js"></script>
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/qualifiedSure.js"></script> -->
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/qualifiedCommon.min.js"></script>
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/qualifiedSure.min.js"></script>
+</body>
+
+</html>

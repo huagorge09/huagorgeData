@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.SynchronousDataDao">
+
+<resultMap id="userCommonDtoMap"
+	type="com.cmwa.ec.query.facade.dto.user.UserCommonDto">
+	<result property="userType" column="USERTYPE" />
+	<result property="riskLevel" column="RISKLEVEL" />
+	<result property="paySt" column="PAYST" />
+	<result property="evalDate" column="EVALDATE" />
+	<result property="cmfUserId" column="CMFUSERID" />
+	<result property="ecCustNo" column="ECCUSTNO" />
+</resultMap>
+
+	<resultMap id="UserOrderDtoMap"
+		type="com.cmwa.ec.query.facade.dto.user.UserOrderDto">
+		<result property="openId" column="OPENID" />
+		<result property="cmfUserId" column="CMFUSERID" />
+		<result property="custNo" column="CUSTNO" />
+		<result property="fundId" column="FUNDID" />
+		<result property="period" column="PERIOD" />
+		<result property="typeId" column="TYPE_ID" />
+		<result property="subamt" column="SUBAMT" />
+		<result property="apdt" column="APDT" />
+		<result property="fundName" column="FUND_NAME" />
+		<result property="adName" column="AD_NAME" />
+		<result property="maturityDate" column="MATURITYDATE" />
+		<result property="createdDate" column="CREATED_DATE" />
+		<result property="createBy" column="CREATED_BY" />
+		<result property="updateDate" column="UPDATED_DATE" />
+		<result property="updateBy" column="UPDATED_BY" />
+		<result property="paySt" column="PAYST" />
+	</resultMap>
+
+	<insert id="synchUserInfoExtend">
+		INSERT INTO CMWA_WX_USER_INFO_EXTEND EN
+		(EN.OPENID,
+		EN.REGISTER_STATUS,
+		EN.REAL_NAME_STATUS,
+		EN.RISK_EVAL_STATUS,
+		EN.RISK_CODE,
+		EN.PURCHASE_STATUS,
+		EN.LAST_RISK_EVAL_DATE,
+		EN.CREATED_DATE,
+		EN.CREATED_BY,
+		EN.UPDATED_DATE,
+		EN.UPDATED_BY,
+		EN.CMFUSERID,
+		EN.CUSTNO,
+		EN.BUY_ONLINE,
+		EN.BUY_OFFLINE)
+		VALUES
+		(#{dto.openId,jdbcType=VARCHAR},
+		#{dto.registrStatus,jdbcType=VARCHAR},
+		#{dto.realNameStatus,jdbcType=VARCHAR},
+		#{dto.riskEvalStatus,jdbcType=VARCHAR},
+		#{dto.riskCode,jdbcType=VARCHAR},
+		#{dto.purchaseStatus,jdbcType=VARCHAR},
+		to_date(#{dto.lastRiskEvalDate,jdbcType=VARCHAR},'YYYYMMDD'),
+		SYSDATE,
+		#{dto.createdBy,jdbcType=VARCHAR},
+		SYSDATE,
+		#{dto.updateBy,jdbcType=VARCHAR},
+		#{dto.cmfUserId,jdbcType=VARCHAR},
+		#{dto.custNo,jdbcType=VARCHAR},
+		#{dto.buyOnLine,jdbcType=VARCHAR},
+		#{dto.buyOffLine,jdbcType=VARCHAR})
+	</insert>
+
+	<update id="updateUserInfoExtend">
+		UPDATE CMWA_WX_USER_INFO_EXTEND 
+		<set>
+			<if test="dto.registrStatus != null and dto.registrStatus != '' ">
+			REGISTER_STATUS = #{dto.registrStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="dto.realNameStatus != null and dto.realNameStatus != '' ">
+			REAL_NAME_STATUS = #{dto.realNameStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="dto.riskEvalStatus != null and dto.riskEvalStatus != '' ">
+			RISK_EVAL_STATUS = #{dto.riskEvalStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="dto.riskCode != null and dto.riskCode != '' ">
+			RISK_CODE = #{dto.riskCode,jdbcType=VARCHAR},
+			</if>
+			<if test="dto.purchaseStatus != null and dto.purchaseStatus != '' ">
+			PURCHASE_STATUS = #{dto.purchaseStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="dto.lastRiskEvalDate != null and dto.lastRiskEvalDate != '' ">
+			LAST_RISK_EVAL_DATE = to_date(#{dto.lastRiskEvalDate,jdbcType=VARCHAR},'YYYYMMDD'),
+			</if>
+			<if test="dto.custNo != null and dto.custNo != '' ">
+			CUSTNO = #{dto.custNo,jdbcType=VARCHAR},
+			</if>
+			<if test="dto.buyOnLine != null and dto.buyOnLine != '' ">
+			BUY_ONLINE = #{dto.buyOnLine,jdbcType=VARCHAR},
+			</if>
+			<if test="dto.buyOffLine != null and dto.buyOffLine != '' ">
+			BUY_OFFLINE = #{dto.buyOffLine,jdbcType=VARCHAR},
+			</if>
+			UPDATED_DATE = SYSDATE,
+			UPDATED_BY = #{dto.updateBy,jdbcType=VARCHAR}
+		</set>
+		WHERE CMFUSERID = #{dto.cmfUserId,jdbcType=VARCHAR}
+	</update>
+	
+	<insert id="synchUserOrderInfo">
+		INSERT INTO CMWA_WX_USER_ORDER WX
+		(WX.OPENID,
+		WX.CMFUSERID,
+		WX.FUNDID,
+		WX.PERIOD,
+		WX.TYPE_ID,
+		WX.SUBAMT,
+		WX.APDT,
+		WX.FUND_NAME,
+		WX.AD_NAME,
+		WX.MATURITYDATE,
+		WX.CREATED_DATE,
+		WX.CREATED_BY,
+		WX.UPDATED_DATE,
+		WX.UPDATED_BY,
+		WX.PAYST,
+		WX.SERIALNO)
+		VALUES
+		(#{dto.openId,jdbcType=VARCHAR},
+		#{dto.cmfUserId,jdbcType=VARCHAR},
+		#{dto.fundId,jdbcType=VARCHAR},
+		#{dto.period,jdbcType=VARCHAR},
+		#{dto.typeId,jdbcType=VARCHAR},
+		#{dto.subamt,jdbcType=VARCHAR},
+		#{dto.apdt,jdbcType=VARCHAR},
+		#{dto.fundName,jdbcType=VARCHAR},
+		#{dto.adName,jdbcType=VARCHAR},
+		#{dto.maturityDate,jdbcType=VARCHAR},
+		to_date(#{dto.createDate,jdbcType=VARCHAR},'YYYYMMDD HH24:MI:SS'),
+		#{dto.createBy,jdbcType=VARCHAR},
+		to_date(#{dto.updateDate,jdbcType=VARCHAR},'YYYYMMDD HH24:MI:SS'),
+		#{dto.updateBy,jdbcType=VARCHAR},
+		#{dto.paySt,jdbcType=VARCHAR},
+		#{dto.serialNo,jdbcType=VARCHAR})
+	</insert>
+
+	<update id="updateUserOrderInfo">
+		UPDATE CMWA_WX_USER_ORDER 
+		<set>
+			<if test="dto.openId != null and dto.openId != '' ">
+			OPENID = #{dto.openId,jdbcType=VARCHAR},
+			</if>
+			<if test="dto.cmfUserId != null and dto.cmfUserId != '' ">
+			CMFUSERID = #{dto.cmfUserId,jdbcType=VARCHAR},
+			</if>
+			<if test="dto.fundId != null and dto.fundId != '' ">
+			FUNDID = #{dto.fundId,jdbcType=VARCHAR},
+			</if>
+			<if test="dto.period != null and dto.period != '' ">
+			PERIOD = #{dto.period,jdbcType=VARCHAR},
+			</if>
+			<if test="dto.typeId != null and dto.typeId != '' ">
+			TYPE_ID = #{dto.typeId,jdbcType=VARCHAR},
+			</if>
+			<if test="dto.subamt != null and dto.subamt != '' ">
+			SUBAMT = #{dto.subamt,jdbcType=VARCHAR},
+			</if>
+			<if test="dto.apdt != null and dto.apdt != '' ">
+			APDT = #{dto.apdt,jdbcType=VARCHAR},
+			</if>
+			<if test="dto.fundName != null and dto.fundName != '' ">
+			FUND_NAME = #{dto.fundName,jdbcType=VARCHAR},
+			</if>
+			<if test="dto.adName != null and dto.adName != '' ">
+			AD_NAME = #{dto.adName,jdbcType=VARCHAR},
+			</if>
+			<if test="dto.maturityDate != null and dto.maturityDate != '' ">
+			MATURITYDATE = #{dto.maturityDate,jdbcType=VARCHAR},
+			</if>
+			<if test="dto.createDate != null and dto.createDate != '' ">
+			CREATED_DATE = to_date(#{dto.createDate,jdbcType=VARCHAR},'YYYYMMDD HH24:MI:SS'),
+			</if>
+			<if test="dto.createBy != null and dto.createBy != '' ">
+			CREATED_BY = #{dto.createBy,jdbcType=VARCHAR},
+			</if>
+			<if test="dto.updateDate != null and dto.updateDate != '' ">
+			UPDATED_DATE = to_date(#{dto.updateDate,jdbcType=VARCHAR},'YYYYMMDD HH24:MI:SS'),
+			</if>
+			<if test="dto.updateBy != null and dto.updateBy != '' ">
+			UPDATED_BY = #{dto.updateBy,jdbcType=VARCHAR},
+			</if>
+			<if test="dto.paySt != null and dto.paySt != '' ">
+			PAYST = #{dto.paySt,jdbcType=VARCHAR},
+			</if>
+			<if test="dto.serialNo != null and dto.serialNo != '' ">
+			SERIALNO = #{dto.serialNo,jdbcType=VARCHAR},
+			</if>
+		</set>
+		WHERE SERIALNO = #{dto.serialNo,jdbcType=VARCHAR}
+	</update>
+
+	<!-- 旧表CMF_WEIXIN_USERINFO 查出的数据同步到CMWA_WX_USER_INFO新表 -->
+	<insert id="synchWxUserInfo"  parameterType="com.cmwa.ec.query.facade.dto.user.WxUserInfoDto">
+	  	INSERT INTO CMWA_WX_USER_INFO INFO
+	    (INFO.OPENID,
+	    INFO.UNIONID,
+	    INFO.USER_ID,
+	    INFO.SUBSCRIBE,
+	    INFO.SUBSCRIBE_TIME,
+	    INFO.NICKNAME,
+	    INFO.SEX,
+	    INFO.CITY,
+	    INFO.COUNTRY,
+	    INFO.PROVINCE,
+	    INFO.LANGUAGE,
+	    INFO.HEADIMGURL,
+	    INFO.REMARK,
+	    INFO.GROUPID,
+	    INFO.TAGID_LIST,
+	    INFO.SUBSCRIBE_SCENE,
+	    INFO.QR_SCENE,
+	    INFO.QR_SCENE_STR,
+	    INFO.PRIVILEGE,
+	    INFO.UPDATED_DATE,
+	    INFO.UPDATED_BY,
+	    INFO.CREATED_DATE,
+	    INFO.CREATED_BY)
+	  	values
+	    (#{dto.openId,jdbcType=VARCHAR},
+	    #{dto.unionId,jdbcType=VARCHAR},
+	    #{dto.userId,jdbcType=VARCHAR},
+	    #{dto.subscribe,jdbcType=VARCHAR},
+	    to_date(#{dto.subscribeTime,jdbcType=VARCHAR},'YYYY-MM-DD HH24:MI:SS'),
+	    #{dto.nickName,jdbcType=VARCHAR},
+	    #{dto.sex,jdbcType=VARCHAR},
+	    #{dto.city,jdbcType=VARCHAR},
+	    #{dto.country,jdbcType=VARCHAR},
+	    #{dto.province,jdbcType=VARCHAR},
+	    #{dto.language,jdbcType=VARCHAR},
+	    #{dto.headImgUrl,jdbcType=VARCHAR},
+	    #{dto.remark,jdbcType=VARCHAR},
+	    #{dto.groupId,jdbcType=VARCHAR},
+	    #{dto.tagIdList,jdbcType=VARCHAR},
+	    #{dto.subscribeScene,jdbcType=VARCHAR},
+	    #{dto.qrScene,jdbcType=VARCHAR},
+	    #{dto.qrSceneStr,jdbcType=VARCHAR},
+	    #{dto.privlege,jdbcType=VARCHAR},
+	    to_date(#{dto.updateDate,jdbcType=VARCHAR},'YYYY-MM-DD HH24:MI:SS'),
+	    #{dto.updateBy,jdbcType=VARCHAR},
+	    to_date(#{dto.createDate,jdbcType=VARCHAR},'YYYY-MM-DD HH24:MI:SS'),
+	    #{dto.createBy,jdbcType=VARCHAR})
+	</insert>
+	
+	<update id="updateWxUserInfo" parameterType="com.cmwa.ec.query.facade.dto.user.WxUserInfoDto">
+		update CMWA_WX_USER_INFO 
+		<set>
+		<if test="dto.openId != null and dto.openId != '' ">
+		OPENID = #{dto.openId,jdbcType=VARCHAR},
+		</if>
+		<if test="dto.unionId != null and dto.unionId != '' ">
+		UNIONID = #{dto.unionId,jdbcType=VARCHAR},
+		</if>
+		<if test="dto.userId != null and dto.userId != '' ">
+		USER_ID = #{dto.userId,jdbcType=VARCHAR},
+		</if>
+		<if test="dto.subscribe != null and dto.subscribe != '' ">
+		SUBSCRIBE = #{dto.subscribe,jdbcType=VARCHAR},
+		</if>
+		<if test="dto.subscribeTime != null and dto.subscribeTime != '' ">
+		SUBSCRIBE_TIME = to_date(#{dto.subscribeTime,jdbcType=VARCHAR},'YYYY-MM-DD HH24:MI:SS'),
+		</if>
+		<if test="dto.nickName != null and dto.nickName != '' ">
+		NICKNAME = #{dto.nickName,jdbcType=VARCHAR},
+		</if>
+		<if test="dto.sex != null and dto.sex != '' ">
+		SEX = #{dto.sex,jdbcType=VARCHAR},
+		</if>
+		<if test="dto.city != null and dto.city != '' ">
+		CITY = #{dto.city,jdbcType=VARCHAR},
+		</if>
+		<if test="dto.country != null and dto.country != '' ">
+		COUNTRY = #{dto.country,jdbcType=VARCHAR},
+		</if>
+		<if test="dto.province != null and dto.province != '' ">
+		PROVINCE = #{dto.province,jdbcType=VARCHAR},
+		</if>
+		<if test="dto.language != null and dto.language != '' ">
+		LANGUAGE = #{dto.language,jdbcType=VARCHAR},
+		</if>
+		<if test="dto.headImgUrl != null and dto.headImgUrl != '' ">
+		HEADIMGURL = #{dto.headImgUrl,jdbcType=VARCHAR},
+		</if>
+		<if test="dto.remark != null and dto.remark != '' ">
+		REMARK = #{dto.remark,jdbcType=VARCHAR},
+		</if>
+		<if test="dto.groupId != null and dto.groupId != '' ">
+		GROUPID = #{dto.groupId,jdbcType=VARCHAR},
+		</if>
+		<if test="dto.tagIdList != null and dto.tagIdList != '' ">
+		TAGID_LIST = #{dto.tagIdList,jdbcType=VARCHAR},
+		</if>
+		<if test="dto.subscribeScene != null and dto.subscribeScene != '' ">
+		SUBSCRIBE_SCENE = #{dto.subscribeScene,jdbcType=VARCHAR},
+		</if>
+		<if test="dto.qrScene != null and dto.qrScene != '' ">
+		QR_SCENE = #{dto.qrScene,jdbcType=VARCHAR},
+		</if>
+		<if test="dto.qrSceneStr != null and dto.qrSceneStr != '' ">
+		QR_SCENE_STR = #{dto.qrSceneStr,jdbcType=VARCHAR},
+		</if>
+		<if test="dto.privlege != null and dto.privlege != '' ">
+		PRIVILEGE = #{dto.privlege,jdbcType=VARCHAR},
+		</if>
+		<if test="dto.updateDate != null and dto.updateDate != '' ">
+		UPDATED_DATE = to_date(#{dto.updateDate,jdbcType=VARCHAR},'YYYY-MM-DD HH24:MI:SS'),
+		</if>
+		<if test="dto.updateBy != null and dto.updateBy != '' ">
+		UPDATED_BY = #{dto.updateBy,jdbcType=VARCHAR},
+		</if>
+		<if test="dto.createDate != null and dto.createDate != '' ">
+		CREATED_DATE = to_date(#{dto.createDate,jdbcType=VARCHAR},'YYYY-MM-DD HH24:MI:SS'),
+		</if>
+		<if test="dto.createBy != null and dto.createBy != '' ">
+		CREATED_BY = #{dto.createBy,jdbcType=VARCHAR},
+		</if>
+		</set>
+		where OPENID = #{dto.openId,jdbcType=VARCHAR}
+	</update>
+	
+	<select id="queryInfoexCount" resultType="int">
+		SELECT COUNT(1) FROM CMWA_WX_USER_INFO_EXTEND
+		WHERE CMFUSERID = #{cmfUserId}
+	</select>
+	
+	<select id="queryUserOrderCount" resultType="int">
+		SELECT COUNT(1) FROM CMWA_WX_USER_ORDER 
+		WHERE SERIALNO = #{serialNo}
+	</select>
+	
+	<select id="queryWxInfoCount" resultType="int">
+		SELECT COUNT(1) FROM CMWA_WX_USER_INFO
+		WHERE OPENID = #{openId}
+	</select>
+	
+	<select id="queryInfoex" resultType="com.cmwa.ec.query.facade.dto.user.UserInfoexDto" >
+		SELECT
+		EX.OPENID openid,
+		EX.CRM_CUSTNO crmCustno,
+		EX.EC_CUSTNO crmCustno,
+		EX.CMFUSERID cmfuserid,
+		EX.BINDSTAT bindstat,
+		EX.BINDTIME bindtime,
+		EX.DEFAULTBANKNO defaultbankno,
+		EX.INSERTTIME inserttime,
+		EX.UPDATETIME updatetime
+		FROM
+		CMF_WEIXIN_USERINFOEX EX
+		WHERE 1=1
+		<if test="cmfUserId != null and cmfUserId != '' ">
+			AND EX.CMFUSERID = #{cmfUserId}
+		</if>
+	</select>
+	
+	<select id="getUserAndOpenId" resultType="com.cmwa.ec.query.facade.dto.user.UserInfoExtendDto">
+		SELECT EX.OPENID,EX.CMFUSERID,EX.CUSTNO FROM CMWA_WX_USER_INFO_EXTEND EX 
+		where 1=1
+		 <if test="dto.custNo != null and dto.custNo != '' ">
+			AND EX.CUSTNO=#{dto.custNo}
+		</if>
+	</select>
+	
+	<select id="queryWeiXinUserInfo"
+		resultType="com.cmwa.ec.query.facade.dto.user.UserInfoDto">
+		SELECT F.OPENID openid,
+		F.USERID userid,
+		F.STATUS status,
+		F.SUBCRIBE_TIME subscribe_time,
+		F.NICKNAME nickname,
+		F.SEX sex,
+		F.CITY city,
+		F.COUNTRY country,
+		F.PROVINCE province,
+		F.LANGUAGE language,
+		F.HEADIMGURL headimgurl,
+		F.UPDATETIME updatetime,
+		F.INSERTTIME
+		inserttime,
+		F.CODE
+		FROM CMF_WEIXIN_USERINFO F
+		WHERE 1=1
+		<if test="dto.openid != null and dto.openid != '' ">
+			AND F.OPENID=#{dto.openid}
+		</if>
+	</select>
+	
+</mapper>  

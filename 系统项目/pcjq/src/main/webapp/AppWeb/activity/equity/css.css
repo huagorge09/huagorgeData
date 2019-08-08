@@ -1,0 +1,148 @@
+/*public start*/
+*{ margin: 0; padding: 0;}
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0; padding:0;}
+header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details,summary,picture{display:block;}
+table{border-collapse:collapse; border-spacing:0;}
+caption,th{text-align:left; font-weight:normal;}
+html,body,img,iframe,abbr{border:0;}
+i,em{font-style:normal;}
+[hidefocus],summary{outline:0;}
+li{list-style:none;}
+sup,sub{font-size:12px;}
+textarea{overflow:auto; resize:none;}
+label{cursor:default;}
+a,button{cursor:pointer;}
+h1,h2,h3,h4,h5,h6,b{font-weight:normal; display:block;}
+a,a:hover{text-decoration:none;}
+a{color:#666; -webkit-transition: 0.3s; -moz-transition: 0.3s; transition: 0.3s;}
+a:hover{color:#333;}
+body,textarea,input,button,select,keygen,legend{font:14px/1.5 'Microsoft YaHei', 'Microsoft YaHei UI', 'WenQuanYi Micro Hei', Arial, sans-serif,\5b8b\4f53; color:#666; outline:0;}
+html{width:100%; height:100%; font-size:10px;}
+body{background:#f8f9fc; -webkit-transition:none !important; -moz-transition:none !important; -ms-transition:none !important; -o-transition:none !important;}
+input[type=submit]{cursor:pointer;}
+img{ border:none;}
+
+.fl{float:left;}
+.fr{float:right;}
+.clear{zoom:1;}
+.clear:after{content:''; width:0; height:0; display:block; clear:both;}
+.none{display:none}
+
+header{width:100%; height:112px; position:relative; overflow:hidden;}
+header img, footer img{position:absolute; left:50%; margin-left:-960px; top:0;}
+footer{width:100%; height:315px; position:relative; overflow:hidden;}
+/*public end*/
+
+/*head start*/
+.equity{
+    width: 100%;
+}
+.equity .equity_bg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+.equity .equity_bg img{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.equity .main{
+    position: absolute;
+    left: 50%;
+    z-index: 2;
+    width: 74%;
+    margin: 0 0 5% -37%;
+}
+.equity .main .head{
+    width: 50%;
+    margin: 8% 0 0 12%;
+}
+.equity .main .head img.title{
+    width: 100%;
+}
+.equity .main .head img.order_btn{
+    width: 47.5%;
+    margin: 15px 25%;
+}
+.equity .main .com01{
+    width: 60%;
+    margin: 23% auto 0;
+}
+.equity .main .com01 img{
+    width: 100%;
+}
+.equity .main .com02{
+    width: 68.70%;
+    margin: 20% auto 0;
+}
+.equity .main .com02 img{
+    width: 100%;
+}
+.equity .main .com03{
+    width: 66.5%;
+    margin: 26% auto 0;
+}
+.equity .main .com03 img{
+    width: 100%;
+}
+.equity .main .com04{
+    width: 92%;
+    margin: 16% auto 0;
+}
+.equity .main .com04 img{
+    width: 100%;
+}
+.equity .main .com05{
+    width: 75%;
+    margin: 5% auto 0;
+}
+.equity .main .com05 img{
+    width: 100%;
+    display: block;
+}
+.equity .main .com06{
+    width: 85%;
+    margin: 13% auto 0;
+}
+.equity .main .com06 img{
+    width: 100%;
+}
+.equity .main .com07{
+    width: 98%;
+    margin: 12% auto 0;
+}
+.equity .main .com07 img{
+    width: 100%;
+}
+.equity .main .com08{
+    position: relative;
+    width: 100%;
+    margin: 18% auto 0;
+}
+.equity .main .com08 img{
+    width: 100%;
+}
+
+.equity .main .com08 a.a_com08{
+    position: absolute;
+    left: 18.5654%;
+    top:0;
+    display: block;
+    width: 23.38%;
+    height: 21.758%;
+    z-index: 4;
+    background: #fff;
+    background: rgba(0,0,0,0.0)!important;
+    filter:alpha(opacity=0);
+}
+.equity .main .com09{
+    width: 88%;
+    margin: 12% auto 0;
+}
+.equity .main .com09 img{
+    width: 100%;
+}
+/*head end*/

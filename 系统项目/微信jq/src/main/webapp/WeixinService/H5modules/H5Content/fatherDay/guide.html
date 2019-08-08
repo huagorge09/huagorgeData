@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>用行动回报父亲的爱</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/fatherDay/cfb.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-init.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/flexible.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+
+
+</head>
+<body class="guide">
+<div class="wrapper">
+     <div class="banner"></div>
+     <div class="purchase">
+         <div class="purchase-but but-start"  onclick="seeProduct();">立即购买</div>
+         <div class="purchase-but but-over"  onclick="bussiness();" id="myBtn1" style="display: none;">立即预约</div>
+     </div>
+     <div class="be-thankful">
+         <div class="link-box">
+             <div class="go-register">
+                <div class="register-start antel"></div>
+                <div class="register-over antel"  style="display: none;"></div>
+             </div>
+             <div class="go-share">
+                 <div class="share-start antel"></div>
+                 <div class="shart-over antel"   style="display: none;"></div>
+             </div>
+         </div>
+     </div>
+     <div class="character"></div>
+     <div class="base-box">
+         <div class="box-img"><img src="/WeixinWeb/WeixinWeb_Images/H5modules/fatherDay/fqj02_07.png" width="100%"></div>
+     </div>
+</div>
+
+
+<!--预约信息填写-->
+<div class="cover-bg reserves hide">
+    <div class="content">
+        <span class="close"></span>
+        <h1>一键预约享专属服务<br>让投资无后顾之忧</h1>
+        <h3>我们的专属顾问将24小时内给您回电</h3>
+        <div class="form">
+            <ul>
+                <li>
+                    <div class="inputBox">
+                        <span></span> <input type="text" id="userName" name="userName" placeholder="请输入您的姓名"/>
+                    </div>
+                    <p style="display: none;"></p>
+                </li>
+                <li class="foucs">
+                    <div class="inputBox">
+                        <span></span> <input type="tel" id="mobilePhone" name="mobilePhone" maxlength="11"
+                                             placeholder="请输入您的手机号码"/>
+                    </div>
+                    <p style="display: none;"></p>
+                </li>
+
+            </ul>
+            <button id="saveBtn" class="disabled">立即提交</button>
+        </div>
+    </div>
+</div>
+<!-- 错误提示 -->
+<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+    <span id="errorRemark"></span>
+</div>
+<!--预约成功-->
+<div class="cover-bg success hide">
+    <div class="content center">
+        <span class="close"></span>
+        <div class="successIcon"></div>
+        <h2>预约成功</h2>
+        <p>客户经理将尽快与您联系，请保持电话畅通</p>
+    </div>
+</div>
+<!---活动已结束--->
+<div class="cover-bg hide" id="overActivity">
+    
+        <div class="bg-img center" style="border-radius: 5px;">
+            <div class="bj-box">
+                <div class="shut-down"></div>
+                <img src="/WeixinWeb/WeixinWeb_Images/H5modules/fatherDay/fqjtshik_03.png" width="100%">
+            </div>
+        </div>
+    
+</div>
+<!---微信分享--->
+<div id="mask" class="mask" style="display: none">
+    <div class="share"></div>
+    <p>点击右上角分享<br>分享给朋友</p>
+</div>
+<script>
+    var pageId="wx_fatherDay_guidePageId"
+</script>
+
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/fatherDay/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/fatherDay/share.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/fatherDay/index.js"></script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ed2b61a27da9a7a4c08caac2ddb8ffc1";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

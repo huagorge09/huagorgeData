@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+</head>
+<body>
+    
+</body>
+<script>
+$(document).ready(function(e) {
+	window.location.href="http://viewer.maka.im/pcviewer/NFT40UWH?DSCKID=c1513a2c-9d34-4c5a-b9b2-db6d029de938&DSTIMESTAMP=1467624718167";
+	//window.document.href="https://www.baidu.com";
+});
+</script>
+</html>

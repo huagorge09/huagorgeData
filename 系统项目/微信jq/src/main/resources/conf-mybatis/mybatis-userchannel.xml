@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.UserChannelDao">
+
+	<select id="queryUserChannelCountById" parameterType="string" resultType="int">
+		SELECT COUNT(*)
+	      FROM CMF_WEIXIN_ACTIVITY_CHANNEL
+	     WHERE OPENID=#{openId}
+	</select>
+	
+	<insert id="insertUserChannel" parameterType="string">
+		INSERT INTO CMF_WEIXIN_ACTIVITY_CHANNEL
+			(
+				OPENID,
+				CHANNEL,
+				EVENTTYPE,
+				INSERTTIME,
+				UPDATETIME
+			)
+		VALUES
+			(
+				#{openId},
+				#{channel},
+				#{eventType},
+				SYSDATE,
+				SYSDATE
+			)
+	</insert>
+	
+	<update id="updateUserChannelById" parameterType="string">
+		UPDATE CMF_WEIXIN_ACTIVITY_CHANNEL
+		   SET UPDATETIME = SYSDATE,
+		   	   CHANNEL=#{channel},
+		   	   EVENTTYPE=#{eventType}
+		 WHERE OPENID = #{openId}
+		  
+	</update>
+
+</mapper>

@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jsNew.js"></script>
+    <!-- 常用JS文件 -->
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedomNew.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/numberToCapitalNew.js"></script>
+    <!--  滚动条js  -->
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscrollNew.js"></script>
+</head>
+
+<style type="text/css">
+
+    #inCome {
+        display: block;
+        width: 100%;
+        height: 46px;
+    }
+
+    #inCome:before,
+    #inCome:after {
+        display: table;
+        content: '';
+        clear: both;
+    }
+
+    #inCome li {
+        width: 50%;
+        height: 46px;
+        line-height: 46px;
+        float: left;
+        background: url(../../../WeixinWeb/WeixinWeb_Images/images/icon_select_normal.png) no-repeat left 1px;
+        background-size: 18px 18px;
+        background-position: 0 14px;
+        text-indent: 24px;
+        font-size: 14px;
+    }
+
+    #inCome li.act {
+        background: url(../../../WeixinWeb/WeixinWeb_Images/images/icons_zhifuliucheng__xuanzhongquang_pre.png) no-repeat left 1px;
+        background-size: 18px 18px;
+        background-position: 0 14px;
+    }
+
+    .inCome-tips {
+        width: 100%;
+        background: #f9f9f9;
+        padding: 5px 0;
+    }
+
+    .inCome-tips p {
+        margin-left: 5%;
+        width: 90%;
+        line-height: 20px;
+    }
+
+    .cover-point-con {
+        position: fixed;
+        left: 50%;
+        z-index: 1000;
+        width: 81%;
+        margin-left: -40.5%;
+        border-radius: 3px;
+        background: #fff;
+    }
+
+    .cover-point-con h3 {
+        text-align: center;
+        color: #ca132c;
+        height: 50px;
+        line-height: 50px;
+        border-bottom: 2px solid #f2f2f2;
+
+    }
+
+    .cover-point-text {
+        margin: 10px auto;
+    }
+
+    .cover-point-con .cover-point-text p {
+        width: 100%;
+        display: inline-block;
+        line-height: 25px;
+        color: #4c4c4c;
+    }
+
+    @media only screen and (max-device-width: 360px) {
+        .cover-point-con {
+            top: 18px;
+            height: 440px;
+        }
+
+        .cover-point-context {
+            height: 55%;
+        }
+    }
+
+    @media only screen and (min-device-width: 361px) {
+        .cover-point-con {
+            top: 10%;
+            height: 440px;
+        }
+
+        .cover-point-con .cover-point-text p {
+            font-size: 1.4rem;
+        }
+
+        .cover-point-context {
+            height: 55%;
+        }
+    }
+
+    p.MsoNormal {
+        font-weight: bold;
+    }
+
+    .suport-bank-bottom {
+        width: 50% !important;
+        float: left;
+    }
+
+    .userBankList {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-box;
+        display: box;
+
+    }
+
+    .userBankList em {
+        display: block;
+        width: 105px;
+        line-height: 45px;
+    }
+
+    .userBankList p {
+        -webkit-box-flex: 1;
+        -moz-box-flex: 1;
+        -ms-box-flex: 1;
+        box-flex: 1;
+        line-height: 45px;
+        font-size: 1.4rem;
+        background: url(/WeixinWeb/WeixinWeb_Images/images/rightJt.png) right no-repeat;
+        background-size: 9px 15px;
+        text-align: right;
+        padding-right: 15px;
+    }
+
+    .buy-money h2 span.fl {
+        font-size: 1.4rem;
+    }
+
+    .paybtn {
+        margin-top: 40px
+    }
+</style>
+<script type="text/javascript">
+</script>
+<body>
+<section class="page">
+    <!--#include virtual="/WeixinService/headerOrFooter/headerNew.shtml"-->
+    <div id="scroller">
+        <!-- 购买金额页  正文-->
+        <section id="buyMoneySection">
+            <section>
+                <div class="pay-head">
+                    <h3 class="userBankList">
+                        <em>赎回到</em>
+                        <p><span data-share=""></span></p>
+                    </h3>
+                </div>
+                <div class="totalAmount">
+<!--                     <span>总份额：<em id="totalRedemption">xxxxx</em></span> -->
+                    <span style="width:400px;margin-left: 5px">可赎回份额：<em id="redemptionShare"></em>份(<em id="bt1"></em>元，仅供参考)</span>
+                </div>
+                <div class="buy-money clear">
+                    <div class="h2bg">
+                        <h2>
+                            <span class="fl">赎回份额:</span>
+                            <div class="buy-money-input">
+                                <input id="money" type="text" placeholder="请输入赎回份额" onchange="checkedMoney()"/>
+                                <i>全部赎回</i>
+                            </div>
+                        </h2>
+                    </div>
+                    <div class="buy-money-mobile">
+                          <span style="width:400px;margin-left: 20px;">预计赎回金额：<em id="moneyTotal"></em>元（该金额仅供参考)</span>
+                    </div>
+                </div>
+                    <style>
+                        .buy-money-mobile span {
+                            display: block;
+                            width: 25%;
+                            color: #1f1f1f;
+                            line-height: 45px;
+                            float: left;
+                            font-size: 1.4rem;
+                        }
+
+                        .buy-money-mobile input {
+                            float: left;
+                            width: 65%;
+                            height: 20px;
+                            line-height: 20px;
+                            padding: 22px 0;
+                            color: #3f3f3f;
+                            border: none;
+                            outline: none;
+                            font-size: 1.4rem;
+                        }
+                    </style>
+                
+                <!--<div class="pay-money updatepay-money clear">
+
+                    <div class="pay-money-bottom updatepay-money-bottom">
+                        <input id="isok" type="checkbox">
+                        <span  id="econtract">同意</span>
+                    </div>
+                </div>-->
+            </section>
+            <a href="javascript:userGotoRedeem();" id="btn_01" class="paybtn buy_btn" style="position: fixed">去赎回</a>
+        </section>
+        <!-- 财富宝赎回金额页  正文-->
+        <section id="buyMoneySection2" class="hide">
+            <section>
+                <!-- <div class="totalAmount">
+                     <span>本期到期时间</span><br/>
+                     <span><em class="maturityDate">xxxxx</em></span>
+                </div>
+                <div class="totalAmount">
+                     <span>总份额：<em class="totalQuty">0</em>份</span>
+                </div>
+                <div class="buy-money clear">
+                    <div class="h2bg">
+                        <h2>
+                           <span class="fl">到期赎回份额</span>
+                            <div class="buy-money-input buy-money-font" >
+                                <input id="money2" type="text" placeholder="请输入赎回份额" onchange="checkedMoney()"/>  份<i>&nbsp;全部赎回</i>
+                            </div>
+                        </h2>
+                    </div>
+                </div>
+                 <div class="totalAmount">
+                             <span>滚存入下一期份额：<em class="renewQuty">0</em>份</span>
+                 </div> -->
+                <div class="state-back">
+                    <p><span>本期到期时间</span><em class="maturityDate">xxxxx</em></p>
+                </div>
+                <div class="state-back back-input">
+                    <p><span>总份额</span><em><i class="totalQuty"></i> 份</em></p>
+                    <p><span>到期赎回份额</span><input id="money2" type="text" placeholder="请输入赎回份额"
+                                                 onchange="checkedMoney()"/> <strong>份</strong><i class="strongFont">&nbsp;全部赎回</i>
+                    </p>
+                    <p><span>预计赎回金额<em><i id="redeemMoney"></i>元</em></span><span class="questionRedeem"></span></p>
+                    <p><span>预计滚存入下一期金额<em><i id="reNewMoney"></i> 元</em></span><span class="questionRedeem"></span></p>
+                </div>
+            </section>
+            <a href="javascript:fundTrade();" id="btn_05" class="paybtn buy_btn paybtn-but">确认安排</a>
+        </section>
+    </div>
+
+    <!-- 选择银行卡页  正文-->
+    <section id="selectBankSection" class="hide">
+        <section>
+            <div class="pay-money updatepay-money money-bank clear" style="background: #fff;margin-top: 10px;">
+                <h2>
+                    <div class="fl">赎回份额</div>
+                    <div class="fr">
+                        <p id="moneyText"></p>
+                        <p id="uppercase"></p>
+                    </div>
+                </h2>
+                <div class="pay-addr-info">
+                    <span><em>银行卡：</em><b class="bank_01"></b></span>
+                    <span><em>收款银行：</em><b class="bank_02"></b></span>
+                    <span><em>收款人姓名：</em><b class="bank_03"></b></span>
+                    <span><em>收款账户：</em><b class="bank_04"></b></span>
+                </div>
+            </div>
+        </section>
+
+        <a href="javascript:fundTrade();" id="btn_02" class="paybtn buy_btn">下一步</a>
+    </section>
+
+    <!-- 验证安全码页 线下 -->
+    <!--<section id="verifyPasswordSection" class="hide">-->
+    <!--<div class="pay-password-point"><span>请输入安全码，完成订单</span></div>-->
+    <!--<div class="box-pay-password updatebox-pay-password">-->
+    <!--<div class="password mid">-->
+    <!--<label for="password fl">安全码</label>-->
+    <!--<input id="tPassword" type="password" placeholder="请输入安全码" />-->
+    <!--<a href="/WeixinService/business/user/resetTPasswordNew.shtml" class="forget-password fr">忘记安全码？</a>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="pay-addr-info">
+        <h2 class="mid">请按以下信息，尽快完成汇款，我们会根据汇款时间为您锁定产品份额。</h2>
+        <span><em>收款银行：</em><b>招商银行总行营业部</b></span>
+        <span><em>收款账户：</em><b>招商财富资产管理有限公司</b></span>
+        <span><em>收款账号：</em><b>9551 0827 0000 009</b></span>
+    </div>
+    <div class="custom"><i class="mid">如有问题，请咨询客服热线：<em>400-8878-555</em></i></div>
+    <a href="javascript:fundTrade();" id="btn_03" class="paybtn buy_btn">提交订单</a>-->
+    <!-- </section> -->
+
+    <!-- 验证安全码页 线下 -->
+    <section id="verifyPasswordSectionOnLine" class="hide">
+        <div class="box-pay-password updatebox-pay-password">
+            <div class="password mid">
+                <label for="password fl">安全码</label>
+                <input type="password" placeholder="请输入安全码"/>
+                <a href="/WeixinService/business/user/resetTPasswordNew.shtml" class="forget-password fr">忘记安全码？</a>
+            </div>
+            <div class="password identify mid">
+                <label for="password fl">验证码</label>
+                <input type="text" placeholder="请输入手机验证码"/>
+                <a href="#" class="forget-identify fr">获取验证码</a>
+            </div>
+            <div class="point clear"><span class="mid">已经验证码发至您银行卡绑定的手机号：<em></em></span></div>
+        </div>
+        <a href="#" class="paybtn buy_btn" id="btn_04">下一步</a>
+    </section>
+
+    <!-- 线下支付成功页面 -->
+    <section id="offLineSuccessSection" class="hide">
+        <div class="bg-state">
+            <div class="state-icon waiting"><img
+                    src="/WeixinWeb/WeixinWeb_Images/images/icons_zhifuliucheng_dengdaihuikuang_iconsbg.png" alt=""/>
+            </div>
+            <h1>赎回成功</h1>
+            <div class="pay-addr-info">
+                <span><em>收款银行：</em><b class="bank_02">建设银行</b></span>
+                <span><em>收款人姓名：</em><b class="bank_03">成他</b></span>
+                <span><em>收款账户：</em><b class="bank_04">121212</b></span>
+            </div>
+        </div>
+        <a href="javascript:redirectUrl('/WeixinService/business/query/orderListNew.shtml')" class="check-order">查看订单</a>
+    </section>
+
+    <!-- 财富宝赎回成功页面 -->
+    <section id="offLineSuccessSection2" class="hide">
+        <div class="bg-state">
+            <div class="state-back">
+                <p><span>本期到期时间</span><em class="maturityDate">xxxxx</em></p>
+                <!-- <span>本期到期时间</span> -->
+                <!-- <em class="maturityDate">xxxxx</em> -->
+            </div>
+            <div class="state-back">
+                <p><span class="back-color">资金安排信息</span></p>
+                <p><span>预计赎回金额</span><em><i id="redeemQuty"></i>元</em></p>
+                <p><span>预计滚入下一期金额</span><em><i id="reNewMoney2"></i> 元</em></p>
+            </div>
+            <div class="state-back">
+                <p><span class="back-color">赎回资金到账账户信息</span></p>
+                <p><span>收款银行</span><em class="bank_05">0</em></p>
+                <p><span>收款人姓名</span><em class="bank_06">0</em></p>
+                <p><span>收款账户</span><em class="bank_07">0</em></p>
+            </div>
+
+            <!-- <div class="state-icon waiting"><img src="/WeixinWeb/WeixinWeb_Images/images/icons_zhifuliucheng_dengdaihuikuang_iconsbg.png" alt="" /></div> -->
+            <!-- <div class="totalAmount">
+	            <span>本期到期时间</span><br/>
+	            <span><em class="maturityDate">xxxxx</em></span>
+	       </div>
+	       	<div class="totalAmount">
+	       		<span>资金安排信息：</span><br/>
+	            <span>总份额：<em class="totalQuty">0</em>份</span><br/>
+	            <span>到期赎回份额份额：<em id="redeemQuty">0</em>份</span><br/>
+	            <span>滚存入下一期份额：：<em class="renewQuty">0</em>份</span><br/>
+	       </div>
+	       <div class="totalAmount">
+	       		<span>赎回资金到账账户信息：</span><br/>
+	            <span><em>收款银行：</em><b class="bank_05">建设银行</b></span><br/>
+		        <span><em>收款人姓名：</em><b class="bank_06">成他</b></span><br/>
+		        <span><em>收款账户：</em><b class="bank_07">121212</b></span>
+	       </div> -->
+        </div>
+        <a href="javascript:redirectUrl('/WeixinService/business/query/orderListNew.shtml')" class="check-order">查看订单</a>
+    </section>
+
+    <!-- 线上支付失败页面 银行卡余额不足 -->
+    <section id="onLineErrorSection" class="hide">
+        <div class="bg-state">
+            <div class="state-icon waiting"><img
+                    src="/WeixinWeb/WeixinWeb_Images/images/icons_zhifuliucheng_zhifuchenggong_iconsbg.png" alt=""/>
+            </div>
+            <h1>支付遇到问题</h1>
+            <span class="point">您的银行卡余额不足，请核对后重新支付！</span>
+        </div>
+        <a href="#" class="check-order">重新支付</a>
+        <a href="javascript:redirectUrl('/WeixinService/business/query/orderListNew.shtml')" class="check-order02">查看订单</a>
+    </section>
+
+    <!-- 线上支付成功页面  已受理-->
+    <section id="onLineSuccessReqSection" class="hide">
+        <div class="bg-state">
+            <div class="state-icon waiting"><img
+                    src="/WeixinWeb/WeixinWeb_Images/images/icons_zhifuliucheng_chenggongshouli_iconsbg.png" alt=""/>
+            </div>
+            <h1>成功受理</h1>
+            <span class="point">支付申请已受理。由于金额较大，请稍后查询支付结果</span>
+        </div>
+        <a href="javascript:redirectUrl('/WeixinService/business/query/orderListNew.shtml')" class="check-order">查看订单</a>
+    </section>
+
+    <!-- 线上支付成功页面  扣款成功-->
+    <section id="onLineSuccessSection" class="hide">
+        <div class="bg-state">
+            <div class="state-icon waiting"><img
+                    src="/WeixinWeb/WeixinWeb_Images/images/icons_zhifuliucheng_zhifuchenggong_iconsbg.png" alt=""/>
+            </div>
+            <h1>支付成功</h1>
+            <span class="point">恭喜！您已成功支付<em>1,000,000</em>元。</span>
+        </div>
+        <a href="javascript:redirectUrl('/WeixinService/business/query/orderListNew.shtml')" class="check-order">查看订单</a>
+    </section>
+</section>
+
+<!-- 错误提示 -->
+<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+    <span id="errorRemark">请输入正确的金额</span>
+</div>
+
+<div id="redeemTips" class="cover-bg suport-bank hide">
+    <div class="suport-bank-con">
+        <h2 style="width: 100%;">提示</h2>
+        <!-- <span id="supportBankList" class="suport-bank-text">您赎回后剩余金额为{surplusMoney}，低于该产品最低持仓金额{minHoldingMoney}，系统将会将您剩余份额全部赎回</span> -->
+        <span id="supportBankList" class="suport-bank-text">尊敬的{custName}，您设置的赎回份额 ({redeemMoney}份) 导致滚存入下一期份额 ({c}份) 低于产品最低持有金额  ({d}元)，请全部赎回或输入更少的份额，谢谢。</span>
+        <!-- <span onclick="closeTipAndGotoRedeem();" class="suport-bank-bottom">确定</span> -->
+        <!-- <span onclick="closeTip();" class="suport-bank-bottom">确定</span> -->
+        <span onclick="closeTip();" class="suport-bank-to">确定</span>
+    </div>
+</div>
+<!--选择赎回账号-->
+<div class="cover-bg hide" id="selection-tradeAcco-list">
+    <div class="cover-content updatecover-content">
+        <h2>选择赎回账号<i id="cover-content-x"></i></h2>
+        <div class="content-bank">
+            <ul id="bankList_off">
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- 持仓市值提示框-->
+<div id="redeemMoneyBox" class="redeemMoneyBox" style="display: none">
+    <span class="closeIcon" id="closeIcon" onclick="closeHoldTip()"></span>
+    <p class="holdContent1">该金额用昨日净值估计，仅供参考</p>
+    <p class="knowHoldBtn" id="knowHoldBtn" onclick="closeHoldTip()">知道了</p>
+</div>
+<!-- 蒙层-->
+<div class="back_pop" id="back_pop" style="display: none;"></div>
+
+<input type="hidden" id="fundId">
+<input type="hidden" id="balance">
+<input type="hidden" id="serialNo">
+<input type="hidden" id="custNo">
+<input type="hidden" id="fundname">
+<input type="hidden" id="tradeAcco">
+<input type="hidden" id="bankAcco">
+<input type="hidden" id="adname">
+<input type="hidden" id="paymentinter">
+<input type="hidden" id="period">
+<input type="hidden" id="latestNewValue">
+<input type="hidden" id="typeId">
+<input type="hidden" id="minHoldingMoney">
+<input type="hidden" id="subQuty">
+<input type="hidden" id="custName">
+<style>
+    .back_pop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000000;
+        opacity: 0.55;
+        z-index: 1;
+    }
+
+    .redeemMoneyBox {
+        position: absolute;
+        top: 50%;
+        width: 72%;
+        height: 23%;
+        left: 50%;
+        margin-left: -36%;
+        border-radius: 5px;
+        margin-top: -15%;
+        z-index: 99;
+        color: black;
+        background-color: white;
+    }
+
+    .knowHoldBtn {
+        width: 80px;
+        height: 30px;
+        background-color: #ef6016;
+        text-align: center;
+        font-size: 16px;
+        color: white;
+        margin: 0 auto;
+        line-height: 30px;
+        margin-top: 17px;
+        border-radius: 10px;
+    }
+
+    .holdContent1 {
+        margin-top: 38px;
+        font-size: 14px;
+        margin-left: 23%;
+        width: 53%;
+        text-align: center;
+    }
+
+    .closeIcon {
+        background: url(/WeixinWeb/WeixinWeb_Images/mgm/closeIcon.png) no-repeat;
+        background-size: 18px;
+        width: 18px;
+        height: 20px;
+        position: absolute;
+        right: 9%;
+        top: 10%;
+        cursor: pointer;
+    }
+
+    .pay-money {
+        margin-top: 0;
+    }
+
+    .pay-money.updatepay-money {
+        min-height: 56px;
+        height: auto;
+        margin-bottom: 19px;
+        background-color: #f2f2f2;
+    }
+
+    .pay-money .pay-money-bottom {
+        width: 90%;
+        margin: 0 auto;
+        margin-bottom: 30px;
+        padding-top: 9px;
+    }
+
+    .buy-money .h2bg {
+        background: #fff;
+    }
+
+    .buy-money {
+        height: 45px;
+        margin-top: 0;
+    }
+
+    .totalAmount {
+        padding-left: 15px;
+        line-height: 30px;
+        font-size: 16px;
+        overflow: hidden;
+    }
+
+    .totalAmount span {
+        font-size: 13px;
+        display: block;
+        width: 50%;
+        float: left;
+    }
+
+    .buy-money-input {
+        width: 100%;
+        font-size: 16px;
+        margin-top: 0;
+        border: 0;
+        height: 45px;
+        line-height: 45px;
+    }
+
+    .buy-money-input input {
+        font-size: 1.3rem;
+        width: 60%;
+    }
+
+    .buy-money-input i {
+        color: #0172dc;
+        font-size: 1.3rem;
+    }
+
+    .pay-money h2 div {
+        color: #ca132c !important;
+    }
+
+    #moneyText {
+        font-size: 18px;
+        color: #ca132c;
+    }
+
+    #uppercase {
+        color: #1F1F1F;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    #selectBankSection .pay-addr-info span:nth-child(1) b {
+        font-size: 13px;
+        color: #999;
+    }
+
+    #selectBankSection .pay-addr-info span:nth-child(2) b {
+        color: #999;
+        font-size: 14px;
+    }
+
+    #selectBankSection .pay-addr-info span:nth-child(3) b {
+        font-size: 13px;
+        color: #999;
+    }
+
+    #selectBankSection .pay-addr-info span:nth-child(4) b {
+        font-size: 13px;
+        color: #ca132c;
+    }
+
+    #selectBankSection b {
+        font-weight: normal;
+    }
+
+    #offLineSuccessSection .pay-addr-info {
+        background: #f2f2f2;
+        padding-left: 20px;
+    }
+
+    #offLineSuccessSection .pay-addr-info span:nth-child(1) b,
+    #offLineSuccessSection .pay-addr-info span:nth-child(2) b {
+        font-weight: normal;
+        color: #999;
+    }
+
+    #offLineSuccessSection .pay-addr-info span:nth-child(3) b {
+        color: #ca132c;
+        font-weight: normal;
+    }
+
+    .cover-bg .cover-content.updatecover-content .content-bank {
+        height: auto;
+    }
+
+    .selection-bank-list h2 {
+
+    }
+
+    #selection-tradeAcco-list .cover-content {
+        top: 27%;
+    }
+
+    .buy-money-font {
+        font-size: 14px;
+    }
+
+    .suport-bank-to {
+        margin: 0 auto;
+        display: block;
+        width: 50%;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        color: #2061A2;
+        cursor: pointer;
+    }
+
+    .state-back {
+        background-color: #fff;
+        margin-bottom: 10px;
+        padding: 10px 10px 10px 15px;
+        font-size: 14px;
+    }
+
+    .state-back p {
+        font-size: 14px;
+        padding: 5px 0px 5px 0px;
+    }
+
+    .state-back p em {
+        float: right;
+        text-align: right;
+    }
+
+    .state-back p span {
+        color: #000;
+    }
+
+    .back-color {
+        color: #666 !important;
+    }
+
+    .back-input p input {
+        width: 40%;
+        height: 25px;
+        margin-left: 1%;
+        border: 1px solid #e8e8e8;
+        border-radius: 3px;
+    }
+
+    .back-input p strong {
+        color: #000;
+    }
+
+    .strongFont {
+        color: #0078ff;
+    }
+
+    .paybtn-but {
+        width: 95%;
+        margin: 0 auto;
+        border-radius: 3px;
+        margin-top: 15px;
+    }
+
+    .questionRedeem {
+        background: url("/WeixinWeb/WeixinWeb_Images/images/ic_help.png") no-repeat;
+        background-size: contain;
+        padding: 6px;
+        position: relative;
+        left: 9px;
+        top: 10px;
+    }
+</style>
+</body>
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/userRedeemNew.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/userRedeemNew.min.js"></script> -->
+<script type="text/javascript">
+/* document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/userRedeemNew.js?version='+jsversion+'"><\/script>'); */
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/userRedeemNew.min.js?version='+new Date().getTime()+'"><\/script>');
+</script>
+</html> 

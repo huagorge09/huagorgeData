@@ -1,0 +1,48 @@
+#if ($templateError.size() > 0) 
+<table class="table table-bordered">
+	#foreach($data in $templateError)
+		<tr align='center'  ><td style="font-weight: bold;"><b>$data</b></td></tr><br> </tr>
+	#end
+</table>
+#else
+<table class="table table-bordered">
+		<tr align='center'  ><td style="font-weight: bold;"><b>导入成功记录 ${correctCount}条,失败${errorCount} 条.</b></td></tr><br> </tr>
+</table>
+#end 
+
+#if ($contentErrorMap.size() > 0) 
+<table class="table table-bordered">
+   <tr style="font-weight: bold;">Excel模板错误信息</tr>
+   		<tr>
+   			<td style="font-weight: bold;"> Excel行号</td>
+   			#foreach($title in $titles)
+	   			#if($errortitles.contains($title))
+				 <td   style="font-weight: bold;">$title</td>
+	   			#end
+			#end
+		</tr>
+		
+		
+    #foreach($data in $contentErrorMap.entrySet())
+		<tr class="white-bg">
+		#set($num=$data.key+1)
+		    <td   align="left">$num</td>
+			#foreach($title in $titles)
+			   #if($errortitles.contains($title))
+				         #if($data.value.containsKey($title))
+										#foreach($key in $data.value.keySet())
+											#if($title.equals($key))
+												 <td     class="white-bg">
+														 $data.value.get($key)
+												 </td>
+											 #end
+										#end
+						  #else
+						  <td  class="white-bg"> </td>
+						  #end  
+				#end
+		 	#end
+		</tr>
+	#end
+</table>
+#end

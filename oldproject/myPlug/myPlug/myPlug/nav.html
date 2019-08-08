@@ -1,0 +1,201 @@
+
+
+
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="http://192.168.8.183:17890/capitalWeb/css/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="http://192.168.8.183:17890/capitalWeb/css/bootstrap/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="http://192.168.8.183:17890/capitalWeb/css/bootstrap/iconfont/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="http://192.168.8.183:17890/capitalWeb/css/bootstrap/css/animate.css" />
+
+<link rel="stylesheet" type="text/css" href="http://192.168.8.183:17890/capitalWeb/css/bootstrap/css/plugins/jQueryUI/jquery-ui-1.10.4.custom.min.css" />
+<link rel="stylesheet" type="text/css" href="http://192.168.8.183:17890/capitalWeb/css/bootstrap/css/plugins/jqGrid/ui.jqgrid.css" />
+<link rel="stylesheet" type="text/css" href="http://192.168.8.183:17890/capitalWeb/css/bootstrap/css/plugins/select2/select2.min.css" />
+<link rel="stylesheet" 	type="text/css" href="http://192.168.8.183:17890/capitalWeb/css/bootstrap/css/plugins/datepicker/bootstrap-datepicker.css" />
+<link rel="stylesheet" type="text/css" href="http://192.168.8.183:17890/capitalWeb/css/bootstrap/css/plugins/summernote/summernote.css" />
+<link rel="stylesheet"  type="text/css" href="http://192.168.8.183:17890/capitalWeb/css/bootstrap/css/plugins/toastr/toastr.min.css" />
+<link rel="stylesheet" 	type="text/css" href="http://192.168.8.183:17890/capitalWeb/css/bootstrap/css/plugins/iCheck/custom.css" />
+<link rel="stylesheet" type="text/css" href="http://192.168.8.183:17890/capitalWeb/css/bootstrap/css/plugins/sweetalert/sweetalert.css" />
+<link rel="stylesheet" type="text/css" href="http://192.168.8.183:17890/capitalWeb/css/bootstrap/css/style.css" />
+
+<script type="text/javascript" src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/js/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/js/jquery-ui-1.10.4.min.js"></script>
+<script type="text/javascript" src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script type="text/javascript" src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script type="text/javascript" src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/js/plugins/jqGrid/i18n/grid.locale-cn.js"></script>
+<script type="text/javascript" src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/js/plugins/jqGrid/jquery.jqGrid4.2.min.js"></script>
+<script type="text/javascript" src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/js/plugins/select2/select2.full.js"></script>
+<script type="text/javascript" src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/js/plugins/select2/i18n/zh-CN.js"></script>
+<script type="text/javascript" src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/js/plugins/summernote/summernote.min.js"></script>
+<script type="text/javascript" src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/js/plugins/validate/jquery.validate.min.js"></script>
+<script type="text/javascript" src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/js/plugins/toastr/toastr.min.js"></script>
+<script type="text/javascript" src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/js/plugins/fullcalendar/moment.min.js"></script>
+<script type="text/javascript" src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/js/plugins/fullcalendar/moment.zh-cn.js"></script>
+<script type="text/javascript" src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/js/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/js/plugins/datepicker/bootstrap-datepicker.zh-CN.js"></script>
+<script type="text/javascript" src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/js/plugins/iCheck/icheck.min.js"></script>
+<script type="text/javascript" src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/js/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="http://192.168.8.183:17890/capitalWeb/js/jqGrid/jquery.jqGrid.src-4.4.5.js" type="text/javascript"></script>
+<script src="http://192.168.8.183:17890/capitalWeb/js/jqGrid/jqGridHelper.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://192.168.8.183:17890/capitalWeb/js/common/common.js"></script>
+<script type="text/javascript" src="http://192.168.8.183:17890/capitalWeb/js/common/widget.js"></script>
+<script type="text/javascript" src="http://192.168.8.183:17890/capitalWeb/js/common/properties/parameterConstants.js"></script>
+<script type="text/javascript" src="http://192.168.8.183:17890/capitalWeb/js/common/validate.methods.js"></script>
+
+<head>
+<!-- 这里引入导航信息header.tpl -->
+<meta charset="GBK">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+<title>直销清算平台</title>
+<!-- 这里应该是有style.css的
+但是这样会被覆盖，所以放在footer里面了 -->
+<!-- Mainly scripts -->
+<!-- Custom and plugin javascript -->
+<link rel="stylesheet" type="text/css"
+	href="http://192.168.8.183:17890/capitalWeb/css/bootstrap/css/index.css" />
+</head>
+<body class="fixed-nav">
+	<div id="wrapper">
+		<nav class="navbar-default navbar-static-side" role="navigation">
+		<div class="sidebar-collapse">
+			<ul class="nav metismenu" id="side-menu">
+				
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<script type="text/javascript">
+	//获取左侧菜单栏
+	function getBuniessmgrMenu(){
+			 $.ajax({
+			    	async:false,
+			        url: "/capitalService/menu/business.xhtml",
+			        cache: false,
+			        dataType: "json",
+			        type : 'post',
+			        error : function(textStatus, errorThrown) {  
+			   				alert('系统内部错误');     	
+			        }, 
+			        success : function (data){
+			        		if(data.resultState!="0000"){
+			        			//菜单操作失败 使用隐藏模式								
+			        			return;
+			        		}
+			        		var secondList=data.resultData.menuList;
+			        		var html='';	
+			        		for(var second=0;second<secondList.length;second++){
+					        	//先注释second href "+secondList[second].href+"
+					        	
+					        	var thirdList=secondList[second].menuList;
+					        	if(thirdList!=null&&thirdList.length==0){
+					        		html+="<li class='final-menu'><a href='#' data-url='"+secondList[second].href+"' data-title='"+secondList[second].secname+"'><i class='"+secondList[second].icon+"'></i> <span class='nav-label'>"+secondList[second].secname+"</span> ";
+					        	}else{
+						        	html+="<li><a href='#'><i class='"+secondList[second].icon+"'></i> <span class='nav-label'>"+secondList[second].secname+"</span> ";
+						        	if(thirdList!=null&&thirdList.length>0){
+						        		html+="<span class='fa arrow'></span></a>";
+						        		html+='<ul class="nav nav-second-level collapse" style="height: 0px;">';
+						        		for(var third=0;third<thirdList.length;third++){
+								        	var fourthList=thirdList[third].menuList;
+								        	if(fourthList!=null&&fourthList.length>0){
+							        			html+="<li ><a href='#'> <span class='nav-label'>"+thirdList[third].secname+"</span> ";
+								        		html+="<span class='fa arrow'></span></a>";
+								        		html+='<ul class="nav nav-third-level collapse" style="height: 0px;">';
+								        		for(var fourth in fourthList){
+								        			html+="<li class='final-menu'><a href='#' data-url='"+fourthList[fourth].href+"' data-title='"+fourthList[fourth].secname+"'><span class='nav-label'>"+fourthList[fourth].secname+"</span> </a></li>";		
+								        		}
+								        		html+='</ul></a></li>';
+								        	}else{
+							        			html+="<li class='final-menu'><a href='#' data-url='"+thirdList[third].href+"' data-title='"+thirdList[third].secname+"'><span class='nav-label'>"+thirdList[third].secname+"</span> ";
+								        		html+='</a></li>';
+								        	}
+						        		}	
+						        		html+="</ul></a></li>";
+						        	}else{
+						        		html+='</a></li>';
+						        	}
+					        	}
+					        }
+					        html+="";
+					        $('#side-menu').html(html);
+				   }
+			    });
+	}	
+	getBuniessmgrMenu();
+</script>
+<ul class="nav metismenu" id="side-menu">
+</ul>
+			</ul>
+		</div>
+		</nav>
+		<div id="page-wrapper" class="gray-bg">
+			<div class="row">
+				
+<nav class="navbar navbar-fixed-top row" role="navigation">
+
+
+<div class="navbar-header">
+			<img class="logo-element"
+				src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/css/img/capital.png"> <a
+				class="navbar-minimalize minimalize-styl-2 btn btn-primary "
+				href="#"><i class="fa fa-bars"></i> </a>
+</div>
+<ul class="nav navbar-top-links navbar-right">
+	    <li class="systemInfo"> <!-- 休市增加hughCity-->
+	    	<span>
+	    		<span class="status"></span>当前系统状态
+	    	    <span class="stautsText">开市</span>
+	    	</span>
+	    	<span class="sysTime">当前工作时间：<span>2018-04-20</span></span>
+	    </li>
+	    <style>
+	    	.systemInfo{color: #666;}
+	    	.systemInfo .stautsText{display:inline-block;width: 50px; height: 20px;background: #fee0d5; border-radius: 4px; text-align: center; color: #fe6720; line-height: 20px;margin-left: 9px;margin-right: 25px;}
+	    	.systemInfo .status{margin-right: 10px; display: inline-block; width: 10px; height: 10px; background: #fc6820;border-radius: 50%;}
+	        .systemInfo .sysTime{margin-right: 5px; background: url(time.jpg) no-repeat;padding-left: 15px; background-position-y: 3px;}
+	        .hughCity .status{background: #666;}
+	        .hughCity .stautsText{background: #666; color: #fff;}
+	    </style>
+		<li class="dropdown">
+			<a class="dropdown-toggle"
+				data-toggle="dropdown" href="#"> <img alt="image"
+					class="img-circle"
+					src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/css/img/profile_small.jpg" width="30"
+					height="30">系统管理员
+			</a>
+			<ul class="dropdown-menu animated fadeInRight m-t-xs">
+				<!-- <li><a href="/mecc/client/index.jsp">返回</a></li> -->
+				<li>
+					<a href="/login.jsp">登出</a>
+				</li>
+			</ul>
+		</li>
+</ul>
+</nav>
+			</div>
+			<!-- 这里内容 -->
+			<div class="wrapper wrapper-content page-tabs">
+				<div class="border-bottom white-bg page-tabs-header">
+					<ul class="nav-page-tabs">
+					</ul>
+				</div>
+				<div class="nav-page-container"></div>
+			</div>
+			<!-- 这里引入脚本信息footer.tpl -->
+			<div class="footer">
+				<div class="pull-right">
+					<strong>&copy; 2016 招商财富资产管理有限公司</strong>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<style>
+		
+	</style>
+	
+</body>
+<script type="text/javascript"
+	src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/js/plugins/pace/pace.min.js"></script>
+<script type="text/javascript"
+	src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/js/index.js"></script>
+<script type="text/javascript"
+	src="http://192.168.8.183:17890/capitalWeb/css/bootstrap/js/inspinia.js"></script>
+</html>
+

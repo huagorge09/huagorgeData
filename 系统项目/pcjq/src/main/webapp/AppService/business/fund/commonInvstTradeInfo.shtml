@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>普通投资者交易告知书</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="shortcut icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+<link rel="icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+</head>
+<body>
+
+	<!-- header -->
+	<!--#include virtual="/AppService/public/header.shtml"-->
+
+	<div class="user_xybox">
+	    <div class="user_xycenter">
+	        <h2 class="xy_title">普通投资者交易告知书</h2>
+	        <div>
+	        	在您购买产品前，我司郑重提示您：
+				<br/>&nbsp;&nbsp;&nbsp;&nbsp;资产管理计划不同于银行储蓄和债券等能够提供固定收益预期的金融工具，投资人购买资产管理计划，既可能按其持有份额分享资产管理计划投资所产生的收益，也可能承担资产管理计划投资所带来的损失。 
+				<br/>
+					<span style="font-weight: bold;">（一）可能直接导致本金亏损的事项</span>
+				<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;资产管理计划在投资运作过程中可能面临各种风险，既包括市场风险、信用风险，也包括资产管理计划自身的管理风险、技术风险、操作风险和合规风险等，资产管理计划净值会因为证券市场波动、交易对手方违约等因素产生波动，在前述因素的影响下，资产管理计划份额净值可能低于初始面值，导致投资者出现本金亏损。根据投资范围不同，资产管理计划分为标准化市场投资、非标市场投资、混合投资等不同类型，投资人投资不同类型的资产管理计划将可能产生不同水平的收益预期，也将可能承担不同程度的风险。一般来说，资产管理计划的收益预期越高，投资人承担的风险也越大。
+				<br/>
+					<span style="font-weight: bold;">（二）可能直接导致超过原始本金损失的事项</span>
+				<br/>
+				    &nbsp;&nbsp;&nbsp;&nbsp;资产管理计划在投资运作过程中可能因为按照资产管理计划合同约定，如结构化资管计划劣后级投资人履行追加补足金额义务等而导致投资人的亏损超过其原始本金的情况，请投资人特别留意资产管理计划合同中的相关约定内容。
+				<br/>
+					<span style="font-weight: bold;">（三）因经营机构的业务或者财产状况变化，可能导致本金或者原始本金亏损的事项及影响客户判断的重要事由</span>
+				<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;如我司的业务或者财产状况发生变化，并可能导致投资人本金或者原始本金亏损或者影响投资人判断。我司将及时披露，请持续关注我司的日常披露事项，了解我司业务或者财产状况的变化，审慎做出投资决策。
+				<br/>
+					<span style="font-weight: bold;">（四）限制销售对象权利行使期限或者可能解除合同期限等限制内容</span>
+				<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;不同资产管理计划由于不同的运作特征，可能会对您的权利行使期限造成一定影响，请重点关注：如某些资产管理计划设置有封闭期，在封闭期期间，您无法申购、赎回该资产管理计划，可能会对您的权利行使造成一定限制；某些资产管理计划要求投资人对资产管理计划份额持有一定期限，在期限到期前，投资人不能提出赎回申请，可能会对您的权利行使造成一定限制；此外，若发生合同中规定的暂停申购、大额暂停赎回等情形，投资人将无法申购、赎回，可能会对您的权利行使造成一定限制。
+				<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+				请您在购买产品前认真阅读《资产管理计划合同》、《投资说明书》等资产管理计划法律文件，了解资产管理计划的风险收益特征，并根据自身的投资目标、投资期限、投资经验、资产状况等判断产品是否和您的风险承受能力相适应。若您购买的产品风险等级与您的风险承受能力相符，则您可以进行认/申购该产品的操作；若您购买的产品风险等级超出您的风险承受能力时，我司将对您进行风险错配的书面风险警示，请务必仔细阅读，审慎决策。若您属于风险承受能力最低类别投资者，您将不能购买风险等级高于您风险承受能力的产品。
+	        </div>
+	    </div>
+	</div>
+	<!-- footer -->
+	<!--#include virtual="/AppService/public/footer.shtml"-->
+</body>
+</html>

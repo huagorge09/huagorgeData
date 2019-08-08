@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.ShareConvertRecordDao">
+	
+	<insert id="insert" parameterType="com.cmwa.ec.weixin.dto.ShareConvertRecordDto">
+		insert into SHARE_CONVERT_RECORD 
+		(
+			SHAREUSERSECID ,
+			CONVERTOPENID , 
+			CONVERTSECID ,
+			CONVERTOPERTYPE , 
+			CHANNELNO , 
+			INSERTTIME
+		)
+		values(
+			#{dto.shareUserSecId,jdbcType=VARCHAR},
+			#{dto.convertOpenid,jdbcType=VARCHAR},
+			#{dto.convertSecId,jdbcType=VARCHAR},
+			#{dto.convertOperType,jdbcType=VARCHAR},
+			#{dto.channelNo,jdbcType=VARCHAR},
+			SYSDATE
+		)
+	</insert>
+	
+</mapper>

@@ -1,0 +1,730 @@
+/* reset */
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0; padding:0;}
+header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details,summary,picture{display:block;}
+table{border-collapse:collapse; border-spacing:0;}
+/*caption,th{text-align:left; font-weight:normal;}*/
+html,body,img,iframe,abbr{border:0;}
+i,em{font-style:normal;}
+[hidefocus],summary{outline:0;}
+li{list-style:none;}
+sup,sub{font-size:12px;}
+textarea{overflow:auto; resize:none;}
+a,button{cursor:pointer;}
+h1,h2,h3,h4,h5,h6,b{font-weight:normal; display:block;}
+a,a:hover{text-decoration:none;}
+a{color:#666; -webkit-transition: 0.3s; -moz-transition: 0.3s; transition: 0.3s;}
+a:hover{color:#333;}
+body,textarea,input,button,select,keygen,legend{font:14px/1.5 'Microsoft YaHei', Helvetica, Arial, 'Microsoft YaHei UI', 'WenQuanYi Micro Hei', sans-serif,\5b8b\4f53; color:#666; outline:0;}
+html{width:100%; height:100%; font-size:10px;}
+body{/* background: url(../images/bg.png) no-repeat center #F1F8FF; background-size: 100% 100%; */ -webkit-transition:none !important; -moz-transition:none !important; -ms-transition:none !important; -o-transition:none !important;}
+input[type=submit]{cursor:pointer;}
+img{border: 0; vertical-align: middle;}
+
+
+
+/*  左侧角色选择列表层  */
+.ManageBox {
+    position: absolute;
+    width: 121px;
+    height: 278px;
+    top: 0;
+    left: -138px;
+}
+
+.ManageBox h1 {
+   font-size: 20px;
+   font-weight: bold;
+   margin-left: 2px; 
+}
+
+.ManageBox ul {
+    margin-top: 37px;
+}
+
+.ManageBox ul li {
+    display: block;
+    width: 121px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.ManageBox ul li:before,.ManageBox ul li:after {
+    display: table;
+    content: '';
+    clear: both;
+}
+
+.ManageBox ul li:hover span.role-name{
+    color: #fbab1e;
+}
+
+.ManageBox ul li.active {
+    background: url(../images/pic_choose.png) no-repeat;
+}
+
+.ManageBox ul li span.pic {
+    display: block;
+    float: left;
+    width: 17px;
+    height: 17px;
+    margin-top: 7px;
+    margin-left: 12px;
+    border-radius: 15px;
+    background: #a6a6a6;
+}
+
+.ManageBox ul li:hover span.pic {
+    background: url(../images/pic_menu.png) no-repeat;
+}
+
+.ManageBox ul li.active span.pic {
+    background: url(../images/pic_menu.png) no-repeat;
+}
+
+.ManageBox ul li:hover span.pic-all-role,
+.ManageBox ul li.active span.pic-all-role {
+    background-position: 0 0;
+}
+
+.ManageBox ul li:hover span.pic-business-manager,
+.ManageBox ul li.active span.pic-business-manager {
+    background-position: 0 -34px;
+}
+
+.ManageBox ul li:hover span.pic-risk-control,
+.ManageBox ul li.active span.pic-risk-control {
+    background-position: 0 -65px;
+}
+
+.ManageBox ul li:hover span.pic-marketing-management,
+.ManageBox ul li.active span.pic-marketing-management {
+    background-position: 0 -96px;
+}
+
+.ManageBox ul li:hover span.pic-business-center,
+.ManageBox ul li.active span.pic-business-center {
+    background-position: 0 -127px;
+}
+
+.ManageBox ul li:hover span.pic-TA,
+.ManageBox ul li.active span.pic-TA {
+    background-position: 0 -157px;
+}
+
+.ManageBox ul li:hover span.pic-FA,
+.ManageBox ul li.active span.pic-FA {
+    background-position: 0 -187px;
+}
+
+.ManageBox ul li:hover span.pic-multiple-management,
+.ManageBox ul li.active span.pic-multiple-management {
+    background-position: 0 -217px;
+}
+
+.ManageBox ul li span.role-name {
+    display: block;
+    float: left;
+    width: 77px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 15px;
+    color: #6d7378;
+}
+
+
+
+
+
+
+/*  节点图  */
+.node-box {
+    position: relative;
+    width: 1349px;
+    height: 922px;
+    margin: 16px auto 0;
+    background: url(../images/pic_line&frame.png) no-repeat;
+}
+
+.node-box .node {
+    width: 125px;
+    height: 60px;
+    position: absolute;
+}
+
+.node-box .node .node-section {
+    position: relative;
+    width: 125px;
+    height: 60px;
+    text-align: center;
+    cursor: default;
+}
+
+.node-box .node .node-section span.node-pic {
+    display: block;
+    width: 25px;
+    height: 24px;
+    line-height: 24px;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    position: absolute;
+    z-index: 1;
+    top: 8px;
+    left: 50px;
+    background: url(../images/icon_role-color.png) no-repeat;
+}
+
+.node-box .node .node-section span.pic-business-manager {
+    background-position: 0 0;
+}
+
+.node-box .node .node-section span.pic-risk-control {
+    background-position: 0 -24px;
+}
+
+.node-box .node .node-section span.pic-marketing-management {
+    background-position: 0 -48px; 
+}
+
+.node-box .node .node-section span.pic-business-center {
+    background-position: 0 -73px; 
+}
+
+.node-box .node .node-section span.pic-TA {
+    background-position: 0 -96px; 
+}
+
+.node-box .node .node-section span.pic-FA {
+    background-position: 0 -120px; 
+}
+
+.node-box .node .node-section span.pic-multiple-management {
+    background-position: 0 -145px; 
+}
+
+.node-box .node .node-section span.node-title {
+    display: block;
+    width: 125px;
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    bottom: 0;
+    color: #6d7378;
+    white-space: nowrap;
+}
+
+.node-box .node .node-section span.red-point {
+    position: absolute;
+    z-index: 2;
+    top: 7px;
+    left: 66px;
+    display: none;
+    width: 8px;
+    height: 8px;
+    border: solid 1px #fff;
+    border-radius: 15px;
+    background-color: #fe0000;
+}
+
+.node-box .node .node-section span.tips {
+	display: none;
+	width: 152px;
+	border: solid 1px #ccc;
+	box-shadow: 1px 1px 1px #ccc;
+	padding: 5px;
+	position: absolute;
+	z-index: 3;
+	background-color: #fff;
+	font-size: 12px;
+	line-height: 16px;
+}
+
+.node-box .node .node-section span.tips-top {
+	left: 40px;
+	bottom: 60px;
+}
+
+.node-box .node .node-section span.tips-right {
+	left: 89px;
+}
+
+.node-box .node .node-section span.tips-bottom {
+	top: 42px;
+	left: 40px;
+}
+
+.node-box .node .node-section span.tips-left {
+	right: 89px;
+}
+
+.node-box .node .big-node span.tips-top {
+	left: 40px;
+	bottom: 70px;
+}
+
+.node-box .node .big-node span.tips-right {
+	left: 93px;
+}
+
+.node-box .node .big-node span.tips-bottom {
+	top: 50px;
+	left: 40px;
+}
+
+.node-box .node .big-node span.tips-left {
+	right: 94px;
+}
+
+.node-box .node .node-section .tips span.tips-triangle {
+	position: absolute;
+	z-index: 4;
+	display: block;
+	width: 0;
+	height: 0;
+}
+
+.node-box .node .node-section .tips-top span.tips-triangle {
+	left: 17px;
+	top: 42px;
+	border-top: solid 5px #fff;
+	border-left: solid 5px transparent;
+	border-right: solid 5px transparent;
+}
+
+.node-box .node .node-section .tips-right span.tips-triangle {
+	left: -5px;
+	top: 14px;
+	border-right: solid 5px #fff;
+	border-top: solid 5px transparent;
+	border-bottom: solid 5px transparent;
+}
+
+.node-box .node .node-section .tips-bottom span.tips-triangle {
+	left: 17px;
+	top: -5px;
+	border-bottom: solid 5px #fff;
+	border-left: solid 5px transparent;
+	border-right: solid 5px transparent;
+}
+
+.node-box .node .node-section .tips-left span.tips-triangle {
+	left: 150px;
+	top: 14px;
+	border-left: solid 5px #fff;
+	border-top: solid 5px transparent;
+	border-bottom: solid 5px transparent;
+}
+
+.node-box .node .node-section:hover span.tips {
+	display: block;
+}
+
+.node-box .node .big-node span.node-pic {
+    width: 47px;
+    height: 47px;
+    line-height: 47px;
+    top: -3px;
+    left: 39px;
+    border-radius: 25px;
+    background: url(../images/big-icon_role-color.png) no-repeat;
+}
+
+.node-box .node .big-node span.pic-business-manager {
+    background-position: 0 0;
+}
+
+.node-box .node .big-node span.pic-risk-control {
+    background-position: 0 -48px;
+}
+
+.node-box .node .big-node span.pic-marketing-management {
+    background-position: 0 -96px;
+}
+
+.node-box .node .big-node span.pic-business-center {
+    background-position: 0 -144px;
+}
+
+.node-box .node .big-node span.pic-TA {
+    background-position: 0 -192px;
+}
+
+.node-box .node .big-node span.pic-FA {
+    background-position: 0 -240px;
+}
+
+.node-box .node .big-node span.pic-multiple-management {
+    background-position: 0 -288px;
+}
+
+.node-box .node .big-node span.red-point {
+    top: 3px;
+    left: 72px;
+}
+
+.node-box .node .notCheck span.node-pic {
+    background: #a6a6a6;
+}
+
+.node-box .node .big-node.notCheck span.node-pic {
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
+    left: 43px;
+    top: 1px;
+}
+
+.node-box .node .canClick {
+	cursor: pointer;
+}
+
+.node-box .node .canClick span.red-point {
+    display: block;
+}
+
+.node-box .node-start {
+    top: 70px;
+    left: 108px;
+}
+
+.node-box .node-start .node-section span.node-pic {
+    width: 16px;
+    height: 16px;
+    top: 12px;
+    left: 52.5px;
+    background: #a6a6a6;
+}
+
+.node-box .node-1 {
+    top: 10px;
+    left: 232px;
+}
+
+.node-box .node-2 {
+    top: 10px;
+    left: 356px;
+}
+
+.node-box .node-3 {
+    top: 10px;
+    left: 480px;
+}
+
+.node-box .node-4 {
+    top: 10px;
+    left: 728px;
+}
+
+.node-box .node-5 {
+    top: 10px;
+    left: 976px;
+}
+
+.node-box .node-6 {
+    top: 70px;
+    left: 232px;
+}
+
+.node-box .node-7 {
+    top: 70px;
+    left: 356px;
+}
+
+.node-box .node-8 {
+    top: 70px;
+    left: 480px;
+}
+
+.node-box .node-9 {
+    top: 70px;
+    left: 604px;
+}
+
+.node-box .node-10 {
+    top: 70px;
+    left: 852px;
+}
+
+.node-box .node-11 {
+    top: 130px;
+    left: 976px;
+}
+
+.node-box .node-12 {
+    top: 130px;
+    left: 1100px;
+}
+
+.node-box .node-13 {
+    top: 222px;
+    left: 976px;
+}
+
+.node-box .node-14 {
+    top: 249px;
+    left: 232px;
+}
+
+.node-box .node-15 {
+    top: 249px;
+    left: 108px;
+}
+
+.node-box .node-16 {
+    top: 282px;
+    left: 1100px;
+}
+
+.node-box .node-17 {
+    top: 282px;
+    left: 976px;
+}
+
+.node-box .node-18 {
+    top: 310px;
+    left: 1224px;
+}
+
+.node-box .node-19 {
+    top: 310px;
+    left: 852px;
+}
+
+.node-box .node-20 {
+    top: 310px;
+    left: 728px;
+}
+
+.node-box .node-21 {
+    top: 310px;
+    left: 604px;
+}
+
+.node-box .node-21 .node-section span.node-pic {
+    background: #98db50;
+}
+
+.node-box .node-22 {
+    top: 310px;
+    left: 480px;
+}
+
+.node-box .node-23 {
+    top: 310px;
+    left: 356px;
+}
+
+.node-box .node-24 {
+    top: 310px;
+    left: -16px;
+}
+
+.node-box .node-24 .node-section span.node-pic {
+    background: #98db50;
+}
+
+.node-box .node-25 {
+    top: 340px;
+    left: 1100px;
+}
+
+.node-box .node-26 {
+    top: 449px;
+    left: 232px;
+}
+
+.node-box .node-27 {
+    top: 449px;
+    left: 356px;
+}
+
+.node-box .node-28 {
+    top: 449px;
+    left: 604px;
+}
+
+.node-box .node-29 {
+    top: 449px;
+    left: 728px;
+}
+
+.node-box .node-30 {
+    top: 449px;
+    left: 976px;
+}
+
+.node-box .node-31 {
+    top: 509px;
+    left: 232px;
+}
+
+.node-box .node-32 {
+    top: 509px;
+    left: 356px;
+}
+
+.node-box .node-33 {
+    top: 509px;
+    left: 604px;
+}
+
+.node-box .node-34 {
+    top: 509px;
+    left: 728px;
+}
+
+.node-box .node-35 {
+    top: 509px;
+    left: 976px;
+}
+
+.node-box .node-36 {
+    top: 568px;
+    left: 480px;
+}
+
+.node-box .node-37 {
+    top: 673px;
+    left: 1100px;
+}
+
+.node-box .node-38 {
+    top: 673px;
+    left: 976px;
+}
+
+.node-box .node-39 {
+    top: 673px;
+    left: 852px;
+}
+
+.node-box .node-40 {
+    top: 673px;
+    left: 728px;
+}
+
+.node-box .node-41 {
+    top: 673px;
+    left: 604px;
+}
+
+.node-box .node-42 {
+    top: 673px;
+    left: 480px;
+}
+
+.node-box .node-43 {
+    top: 673px;
+    left: 232px;
+}
+
+.node-box .node-44 {
+    top: 734px;
+    left: 1100px;
+}
+
+.node-box .node-45 {
+    top: 734px;
+    left: 976px;
+}
+
+.node-box .node-46 {
+    top: 734px;
+    left: 852px;
+}
+
+.node-box .node-47 {
+    top: 734px;
+    left: 728px;
+}
+
+.node-box .node-48 {
+    top: 734px;
+    left: 604px;
+}
+
+.node-box .node-49 {
+    top: 734px;
+    left: 480px;
+}
+
+.node-box .node-50 {
+    top: 795px;
+    left: 852px;
+}
+
+.node-box .node-51 {
+    top: 795px;
+    left: 604px;
+}
+
+.node-box .node-52 {
+    top: 795px;
+    left: 480px;
+}
+
+.node-box .node-53 {
+    top: 795px;
+    left: 232px;
+}
+
+.node-box .node-54 {
+    top: 795px;
+    left: 108px;
+}
+
+.node-box .node-55 {
+    top: 855px;
+    left: 852px;
+}
+
+.node-box .node-56 {
+    top: 855px;
+    left: 604px;
+}
+
+.node-box .node-57 {
+    top: 855px;
+    left: 480px;
+}
+
+.node-box .node-58 {
+    top: 449px;
+    left: 480px;
+}
+
+.node-box .node-59 {
+    top: 509px;
+    left: 480px;
+}
+
+.node-box .node-finish {
+    top: 795px;
+    left: -16px;
+}
+
+.node-box .node-finish .node-section span.node-pic {
+    width: 30px;
+    height: 30px;
+    top: 5px;
+    left: 47px;
+    background: #c1c1c1;
+}
+
+.node-box .node-finish .node-section .node-pic span.node-pic-finish {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    display: block;
+    width: 22px;
+    height: 22px;
+    border: solid 4px #fff;
+    border-radius: 15px;
+    background-color: #a6a6a6;
+} 
+
+
+
+
+

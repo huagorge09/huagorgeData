@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link href="/WeixinWeb/WeixinWeb_Css/mgm/integralRecordNew.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+	<script src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-2.0.0New.min.js" type="text/javascript"></script>
+
+	<!-- 常用JS文件 -->
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedomNew.js"></script>
+
+	<title>积分记录</title>
+</head>
+<body class="content">
+<!--#include virtual="/WeixinService/headerOrFooter/headerNew.shtml"-->
+<div>
+
+	<div class="headX">
+		<!-- <div class="goback"><a href="javascript:void(0)" onclick="goback()"><返回</a></div> -->
+		<div class="top">
+
+			<p class=""><i class="blueBlock"></i><span class="get1">已获取</span></p>
+		</div>
+		<div class="integralEcharts" id="a">
+		</div>
+		<div class="buyAmount">
+			<p class="noBuy" id="noBuy"></p>
+			<p class="hasBuy" id="hasBuy"></p>
+		</div>
+
+	</div>
+	<div class="greyBar"></div>
+	<div>
+		<div class="recordTit">
+			<span class="r1"><i class="blueBlock"></i><span class="get1">记录</span></span>
+			<span class="totalIntegral">总积分：</span><span id="total"></span>
+		</div>
+		<div class="recordBox">
+			<ul class="lists" id="lists">
+			</ul>
+            <div class="noRecord" style="display:none">
+				 <img src="/WeixinWeb/WeixinWeb_Images/mgm/noRecord.png" alt="">
+				 <p>暂无数据</p>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+<script src="/WeixinWeb/WeixinWeb_JSLibrary/echartsNew.min.js" type="text/javascript"></script>
+<script src="/WeixinWeb/WeixinWeb_JSLibrary/droploadNew.js" type="text/javascript"></script>
+
+<!-- <script src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/mgmIntegralEchartsNew.js" type="text/javascript"></script>
+<script src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/mgmDropIntegralDetailNew.js" type="text/javascript"></script>
+<script src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/mgmIntegralRecordNew.js" type="text/javascript"></script> -->
+
+<script src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/mgmIntegralEchartsNew.min.js" type="text/javascript"></script>
+<script src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/mgmDropIntegralDetailNew.min.js" type="text/javascript"></script>
+<script src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/mgmIntegralRecordNew.min.js" type="text/javascript"></script>
+</body>
+</html>

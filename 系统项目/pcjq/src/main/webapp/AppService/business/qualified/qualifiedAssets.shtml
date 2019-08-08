@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>招商财富</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/AppWeb/AppWeb_Css/business/qualified/qualified.css"/>
+    <link rel="stylesheet" type="text/css" href="/AppWeb/AppWeb_Css/dialog.css"/>
+</head>
+<body>
+<!-- header -->
+<!--#include virtual="/AppService/public/header.shtml"-->
+<div class="main">
+   <div class="title">
+   	   <h2>收入证明要求</h2>
+   </div>
+    <ul class="tab clear">
+     	<li class="assetsTab1 cur">完税要求</li>
+     	<li class="assetsTab2">单位收入证明</li>
+     	<li class="assetsTab3">银行流水</li>
+    </ul>
+    <div class="fileUpBox tabFile">
+   	    <!--没有文件-->
+   	    <div class="noneFile">
+   	    	<div class="addFile">
+   	    		<span onclick="qualifiedAssets.financialUpFile()"></span>
+   	    	</div>
+   	    	<p><span>上传收入证明</span><br>（可上传PDF/JPG/视频文件）</p>
+   	    </div>
+   	    <!--有文件-->
+   	    <div class="hasFile"  style="display: none;">
+   	    	<p onclick="qualifiedAssets.financialUpFile()">继续上传</p>
+   	    	<ul id="financiList">
+         	</ul>
+   	    </div>
+   	    <form enctype="multipart/form-data" id="financialCertificate">
+	        <input type="file" name="file" accept=".pdf,.jpg,.bmp,.jpeg,.png,.mp4,.rmvb,.avi,.flv,.3gp,.flv,.mov" id="financialFileUpload" style="display: none;">
+	        <input type="hidden" name="recordSource" value="ec-qualified">
+	        <input type="hidden" name="fileType" value="financialCertificate">
+		</form>
+       <div class="proUpload">
+	        <div class="progress" id="financialPro" style="display: none;">
+		       <span class="orange" style="width:0%;"><span>0%</span></span>
+		    </div>
+		    <div class="selectFile">
+		        <div>上传的文件名：<span id="financialNameRead"></span></div>
+		        <input type="button" id="upLoadFinancialBtn" value="上 传 " class="upLoadBtn"/>
+		    </div>
+        </div>
+        <div id="financialMask" class="diableMask" style="display: none;">
+	       <p></p>
+	     </div>
+   	    <div class="btnBox" style="margin-top: 95px;">
+	       <a href="/AppService/business/qualified/qualified.shtml" id="next">下一步</a>
+	    </div>
+   </div>
+    <div class="tabContent">
+    	<div class="improveText" style="display: block;">
+    		<div class="fileBox">
+		       <div class="clear firstFile">
+		       	   <div class="listTxt">
+			   	   	   <h2>完税证明</h2>
+			   	   	   <ul>
+			   	   	   	  <li>1.须为本人最近三年的个人所得税完税证明；</li>
+			   	   	   	  <li>2.请确保姓名 与申请客户信息一致；</li>
+			   	   	   	  <li>3.年均应纳税金额不低于40万。</li>
+			   	   	   	  <li>4.信息分布在多张截图需要提供截图视频，单张截图展示所有信息则不需视频</li>
+			   	   	   </ul>
+			   	   </div>
+			   	   
+		       </div>
+		       <div class="clear">
+		       	   <div class="listTxt">
+			   	   	   <h2>示例图<em><a href="/AppWeb/AppWeb_Images/images/qualified/incomeVideo.mp4" target="_blank"><span>视频案例></span></a></em></h2>
+			   	   	   <div class="example">
+			   	   	   	   <img src="/AppWeb/AppWeb_Images/images/qualified/img1.jpg"/>
+			   	   	   </div>
+			   	   </div>
+		       </div>
+		       	<div class="clear firstFile">
+		       	   <div class="listTxt moreText">
+			   	   	   <h2>参考网站</h2>
+			   	   	   <ul>
+			   	   	   	  <li>1.上海：上海市税务局，或关注微信公众号“上海税务”，点击涉税查询”一“个人办税”菜单；</li>
+			   	   	   	  <li>2.北京：关注微信公众号“北京税务”，点击“我要办”一“个税查询”菜单；</li>
+			   	   	   	  <li>3.广州：关注微信公众号“广州税务”，点击“微税办”一“个人办税”菜单；</li>
+			   	   	   	  <li>4.深圳：关注微信公众号“深圳税务纳税服务二”，点击“自助办税”一“个人中心”菜单中“申报纳税信息”查询；</li>
+			   	   	   	  <li>5.其他省市，可至相应税务官方网站或微信公众号查询办。</li>
+			   	   	   </ul>
+			   	   </div>
+			   	   <a class="more" href="/AppWeb/AppWeb_Images/images/qualified/queryChannel.xlsx">更多城市&gt;&gt;</a>
+		       </div>
+		   </div>
+    	</div>
+    	<div class="improveText" style="display: none;">
+    		<div class="fileBox">
+		       <div class="clear firstFile">
+		       	   <div class="listTxt">
+			   	   	   <h2>单位收入证明</h2>
+			   	   	   <ul>
+			   	   	   	  <li>1.须为最近三年收入证明；</li>
+			   	   	   	  <li>2.请确保姓名与申请客户信息一致；</li>
+			   	   	   	  <li>3.工作单位及日期完整；</li>
+			   	   	   	  <li>4.须盖有单位公章。</li>
+			   	   	   	  <li>5.近三年更换过单位，需提供两家任职单位收入证明。</li>
+			   	   	   	  <li>6.证明出具时间需为申请日前一个月内</li>
+			   	   	   </ul>
+			   	   </div>
+			   	   
+		       </div>
+		       <div class="clear">
+		       	   <div class="listTxt">
+			   	   	   <h2>示例图</h2>
+			   	   	   <div class="example">
+			   	   	   	   <img src="/AppWeb/AppWeb_Images/images/qualified/img2.jpg"/>
+			   	   	   	   <a href="/AppWeb/AppWeb_Images/images/qualified/incomeCertificate.doc" style="bottom: 11px; right: -125px;">收入证明模板下载</a>
+			   	   	   </div>
+			   	   </div>
+		       </div>
+		       	
+		   </div>
+    	</div>
+    	<div class="improveText" style="display: none;">
+    		<div class="fileBox">
+		       <div class="clear firstFile">
+		       	   <div class="listTxt">
+			   	   	   <h2>银行对账单</h2>
+			   	   	   <ul>
+			   	   	   	  <li>1.须为本人名下最近三年（借记卡/储蓄卡）对账单，含工资/代发工资项目；</li>
+			   	   	   	  <li>2.请确保姓名与申请客户信息一致；</li>
+			   	   	   	  <li>3.非截屏文件须盖有银行业务公章。</li>
+			   	   	   	  <li>4.信息分布在多张截图需要提供截图视频，单张截图展示所有信息则不需要视频</li>
+			   	   	   </ul>
+			   	   </div>
+			   	   
+		       </div>
+		       <div class="clear">
+		       	   <div class="listTxt">
+			   	   	   <h2>示例图</h2>
+			   	   	   <div class="example">
+			   	   	   	   <img src="/AppWeb/AppWeb_Images/images/qualified/img3.jpg"/>
+			   	   	   	   <!--<a href="/AppWeb/qualifiedUser/incomeCertificate.doc">收入证明模板下载</a>-->
+			   	   	   </div>
+			   	   </div>
+		       </div>
+		       	
+		   </div>
+    	</div>
+    </div>
+</div>
+
+<!-- footer -->
+<!--#include virtual="/AppService/public/footer.shtml"-->
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/dialog.min.js"></script>
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/jquery.form.min.js"></script>
+<!--<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/qualifiedCommon.js"></script>-->
+<!--<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/qualifiedAssets.js"></script>-->
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/qualifiedCommon.min.js"></script>
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/qualifiedAssets.min.js"></script>
+</body>
+</html>

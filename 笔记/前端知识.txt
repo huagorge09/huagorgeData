@@ -1,0 +1,157 @@
+﻿1. 左右两边div高度对其，左边适应右边的高度，左边设置margin-bottom：-5000px，padding-bottom:5000px  父级元素 overflow:hidden     
+2. windows打开心页面window.open("http://www.baidu.com", "", "height=550, width=950, top=50, left=250, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no");
+3.头部多出了空格分号  编码格式改成utf-8 无BOM
+4. ios input 光标不上下居中，给padding 加个上下内边距  
+$("div[class=tax_add_div]div[id!=tax_template]"
+
+5. FormData 上传文件  ie10+
+    var formData = new FormData($( "#uploadForm" )[0]);  
+     $.ajax({  
+          url: '' ,  
+          type: 'POST',  
+          data: formData,  
+          async: false,  
+          cache: false,  
+          contentType: false,  
+          processData: false,  
+          success: function (returndata) {  
+              alert(returndata);  
+          },  
+          error: function (returndata) {  
+              alert(returndata);  
+          }  
+     });  
+
+6 ios
+  此事件在微信浏览器会失效
+  动态加载的元素 绑定
+  $(document).on("click",".answerList li",function(){})
+  需要在样式中加入cursor: pointer;
+7.文字超出3个点
+	width: 4.17rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+8.ios 安卓  时间格式统一为 2018/01/02 replace(/-/g,"/")
+
+9.img 图片如果要占全部，则设置属性为block 或者设置为position为absolute 
+
+10 transform比margin性能好50%~70%。
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+11 输入框用input事件监控输入状态
+
+12  字符串转化成时间对象
+    var now = new Date();
+	str =new Date("2018-07-28 00:00:00"),
+	str2= new Date("2018-07-28 08:00:00")
+	if(now>=str&&now<=str2) {}
+	
+	  // 目标日期时间戳
+      const end = Date.parse(new Date(myvue.endTimeData))
+      // 当前时间戳
+      const now = Date.parse(new Date())
+
+
+
+
+
+document.addEventLister("oncontextmenu",function(){
+})
+// 禁止右键菜单
+document.oncontextmenu = function(e){ return false; };
+// 禁止文字选择
+document.onselectstart = function(e){ return false; };
+// 禁止复制
+document.oncopy = function(e){ return false; };
+// 禁止剪切
+document.oncut = function(e){ return false; };
+// 禁止粘贴
+document.onpaste = function(e){ return false; };
+
+13. 精确判断字符串的类型 Object.prototype.toString.call()
+
+
+14 $("#objid",parent.document)  iframe 获取父元素的元素
+A: ajax 异步javascript and XML
+B: Browser 渲染DOM树 render
+C: css   层叠样式表
+D: DOM    元素对象
+E: Events   元素时间
+F: fireDebug  火佛debug
+G: Grid    栅格化布局
+h: html    超文本编辑语言
+i: IE      ie browser
+J: javascript    浏览器脚本语言
+k:keyword     seo关键字
+L:less    css 动态语言
+M:MVC     模型试图控制器
+N:node   node.js  用js写后台语言
+o:object   面型对象
+p:php    超文本预处理器
+q:query   查询方法
+r: Regular Expressions  正则表达式
+s:source control   资源控制器
+t:tdd 驱动开发   驱动开发测试方法
+u: unit testing  单元开发
+v：vim   vim前端编辑器
+w：WordPress   php开发的模板
+x：xss   跨站脚本攻击
+y：YUI  前端模板框架
+z：z-index   css的一个属性
+
+
+15 安卓微信分享存在#号后参数丢失   在#号前加？
+16 ios输入法被顶后 操作区域错位
+   window.scroll(0, 0);
+   window.innerHeight = window.outerHeight = this.screenHeight
+   this[aaa]=""
+
+XMind 8
+draw8
+
+我们要说的 7 种常见设计模式如下：
+工厂模式
+单例模式
+适配器模式
+装饰器模式
+代理模式
+观察者模式
+迭代器模式
+
+-webkit-transition: left 300ms;
+transition: left 300ms;   过渡效果
+
+遍历对象
+for(let k in obj){
+  console.log(k+":"+obj[k])
+}
+
+1、Content-Type: application/json
+2、Content-Type: multipart/form-data  let data = new FormData();
+3、Content-Type: application/x-www-form-urlencoded   import qs from 'Qs'  qs.stringify({data})
+
+scrollTo(1020,0) 
+
+undefined null  number string Boolean symbol 
+
+object array function 
+
+_debounce=(callback,wait){  函数防抖
+  let timer;
+  return ()=>{
+	clearTimeOut(timer)
+	timer=setTimeOut(callback,wait)
+  }
+}   
+_throttle(callback,wait){   函数节流
+  let timer;
+  if(timer){
+    return;
+  }
+  timer=setTimeOut(()=>{
+   callback()
+   timer=null
+  },wait)
+}
+

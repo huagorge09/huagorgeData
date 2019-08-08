@@ -1,0 +1,416 @@
+.contain{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 1.19rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.hasPicture{
+    padding: 0.2rem 0.2rem 0.9rem 0.2rem;
+    margin-bottom: 1.11rem;
+}
+.imgWrap {
+    position: absolute;
+    display: block;
+    overflow: hidden;
+    float: left;
+}
+.imgWrap img {
+    display: block;
+    width: 100%;
+    position: absolute;
+}
+.pictureList{
+    position: relative;
+    width: 7.1rem;
+    height: 7.4rem;
+    margin: auto;
+}
+/*一张图*/
+.pictureList1 .imgWrap:nth-of-type(1){
+    width: 7.1rem;
+    height: 7.4rem;
+    top:0;
+    left: 0;
+}
+/*两张图*/
+.pictureList2 .imgWrap:nth-of-type(1){
+    width: 3.5rem;
+    height: 5.14rem;
+    top:1.13rem;
+    left: 0;
+}
+.pictureList2 .imgWrap:nth-of-type(2){
+    width: 3.5rem;
+    height: 5.14rem;
+    top: 1.13rem;;
+    left: 3.6rem;
+}
+/*三张图*/
+.pictureList3 .imgWrap:nth-of-type(1){
+    width: 4.45rem;
+    height: 6.6rem;
+    top:0.4rem;
+    left: 0;
+}
+.pictureList3 .imgWrap:nth-of-type(2){
+    width: 2.55rem;
+    height: 3.24rem;
+    top: 0.4rem;;
+    right: 0;
+}
+.pictureList3 .imgWrap:nth-of-type(3){
+    width: 2.55rem;
+    height: 3.24rem;
+    top: 3.75rem;;
+    right: 0;
+}
+/*四张图*/
+.pictureList4 .imgWrap{
+    width: 3.5rem;
+    height: 3.64rem;
+}
+.pictureList4 .imgWrap:nth-of-type(1){
+    top:0;
+    left: 0;
+}
+.pictureList4 .imgWrap:nth-of-type(2){
+    top: 0;
+    right: 0;
+}
+.pictureList4 .imgWrap:nth-of-type(3){
+    bottom: 0;
+    left: 0;
+}
+.pictureList4 .imgWrap:nth-of-type(4){
+    bottom: 0;
+    right: 0;
+}
+/*五张图*/
+.pictureList5 .imgWrap:nth-of-type(1){
+    width: 2.3rem;
+    height: 3.34rem;
+    top:0.3rem;
+    left: 0;
+}
+.pictureList5 .imgWrap:nth-of-type(2){
+    width: 2.3rem;
+    height: 3.34rem;
+    top:0.3rem;
+    left: 2.4rem;
+}
+.pictureList5 .imgWrap:nth-of-type(3){
+    width: 2.3rem;
+    height: 3.34rem;
+    top:0.3rem;
+    right: 0;
+}
+.pictureList5 .imgWrap:nth-of-type(4){
+    width: 3.5rem;
+    height: 3.34rem;
+    bottom: 0.3rem;
+    left: 0;
+}
+.pictureList5 .imgWrap:nth-of-type(5){
+    width: 3.5rem;
+    height: 3.34rem;
+    bottom: 0.3rem;
+    right: 0;
+}
+/*六张图*/
+.pictureList6 .imgWrap{
+    width: 2.3rem;
+    height: 3.34rem;
+}
+.pictureList6 .imgWrap:nth-of-type(1){
+    top: 0.31rem;
+    left: 0;
+}
+.pictureList6 .imgWrap:nth-of-type(2){
+    top: 0.31rem;
+    left: 2.4rem;
+}
+.pictureList6 .imgWrap:nth-of-type(3){
+    top: 0.31rem;
+    right: 0;
+}
+.pictureList6 .imgWrap:nth-of-type(4){
+    bottom: 0.31rem;
+    left: 0;
+}
+.pictureList6 .imgWrap:nth-of-type(5){
+    bottom: 0.31rem;
+    left: 2.4rem;
+}
+.pictureList6 .imgWrap:nth-of-type(6){
+    bottom: 0.31rem;
+    right: 0;
+}
+/*七张图*/
+.pictureList7 .imgWrap:nth-of-type(1),
+.pictureList7 .imgWrap:nth-of-type(2),
+.pictureList7 .imgWrap:nth-of-type(3),
+.pictureList7 .imgWrap:nth-of-type(4){
+    width: 3.5rem;
+    height: 2.4rem;
+}
+.pictureList7 .imgWrap:nth-of-type(1){
+    top: 0;
+    left: 0;
+}
+.pictureList7 .imgWrap:nth-of-type(2){
+    top: 0;
+    right: 0;
+}
+.pictureList7 .imgWrap:nth-of-type(3){
+    top: 2.5rem;
+    left: 0;
+}
+.pictureList7 .imgWrap:nth-of-type(4){
+    top: 2.5rem;
+    right: 0;
+}
+.pictureList7 .imgWrap:nth-of-type(5),
+.pictureList7 .imgWrap:nth-of-type(6),
+.pictureList7 .imgWrap:nth-of-type(7){
+    width: 2.3rem;
+    height: 2.4rem;
+    bottom: 0;
+}
+.pictureList7 .imgWrap:nth-of-type(5){
+    left: 0;
+}
+.pictureList7 .imgWrap:nth-of-type(6){
+    left: 2.4rem;
+}
+.pictureList7 .imgWrap:nth-of-type(7){
+    right: 0;
+}
+/*八张图*/
+.pictureList8 .imgWrap:nth-of-type(1),
+.pictureList8 .imgWrap:nth-of-type(2),
+.pictureList8 .imgWrap:nth-of-type(3),
+.pictureList8 .imgWrap:nth-of-type(4),
+.pictureList8 .imgWrap:nth-of-type(5),
+.pictureList8 .imgWrap:nth-of-type(6){
+    width: 2.3rem;
+    height: 2.4rem;
+}
+.pictureList8 .imgWrap:nth-of-type(1){
+    top: 0;
+    left: 0;
+}
+.pictureList8 .imgWrap:nth-of-type(2){
+    top: 0;
+    left: 2.4rem;
+}
+.pictureList8 .imgWrap:nth-of-type(3){
+    top: 0;
+    right: 0;
+}
+.pictureList8 .imgWrap:nth-of-type(4){
+    top: 2.5rem;
+    left: 0;
+}
+.pictureList8 .imgWrap:nth-of-type(5){
+    top: 2.5rem;
+    left: 2.4rem;
+}
+.pictureList8 .imgWrap:nth-of-type(6){
+    top: 2.5rem;
+    right: 0;
+}
+.pictureList8 .imgWrap:nth-of-type(7),
+.pictureList8 .imgWrap:nth-of-type(8){
+    width: 3.5rem;
+    height: 2.4rem;
+    bottom: 0;
+}
+.pictureList8 .imgWrap:nth-of-type(7){
+     left: 0;
+ }
+.pictureList8 .imgWrap:nth-of-type(8){
+    right: 0;
+}
+/*九张图*/
+.pictureList9 .imgWrap{
+    width: 2.3rem;
+    height: 2.4rem;
+}
+.pictureList9 .imgWrap:nth-of-type(1){
+    top: 0;
+    left: 0;
+}
+.pictureList9 .imgWrap:nth-of-type(2){
+    top: 0;
+    left: 2.4rem;
+}
+.pictureList9 .imgWrap:nth-of-type(3){
+    top: 0;
+    right: 0;
+}
+.pictureList9 .imgWrap:nth-of-type(4){
+    top: 2.5rem;
+    left: 0;
+}
+.pictureList9 .imgWrap:nth-of-type(5){
+    top: 2.5rem;
+    left: 2.4rem;
+}
+.pictureList9 .imgWrap:nth-of-type(6){
+    top: 2.5rem;
+    right: 0;
+}
+.pictureList9 .imgWrap:nth-of-type(7){
+    bottom: 0;
+    left: 0;
+}
+.pictureList9 .imgWrap:nth-of-type(8) {
+    bottom: 0;
+    left: 2.4rem;
+}
+.pictureList9 .imgWrap:nth-of-type(9) {
+    bottom: 0;
+    right: 0;
+}
+/*罐子*/
+.jar{
+    margin-top: 0.49rem;
+}
+.jar span{
+    padding: 0 0.17rem;
+    display: inline-block;
+    font-size: 0.22rem;
+    line-height: 0.38rem;
+    border: solid 1px #ffc000;
+    border-radius: 0.4rem;
+    margin-right: 0.12rem;
+    margin-bottom: 0.1rem;
+    color: #ffc000;
+}
+/*内容*/
+.hasPicture .content{
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+}
+.hasPicture .content .text{
+    flex: 1;
+    -webkit-flex: 1;
+    overflow: hidden;
+    margin-right: 0.4rem;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    color: #333333;
+    font-size: 0.26rem;
+    line-height: 0.4rem;
+    max-height: 1.2rem;
+}
+.hasPicture .codeWrap{
+    width: 1.36rem;
+    height: 1.36rem;
+}
+.hasPicture .codeWrap img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+/*没有图片*/
+.notPicture{
+    padding: 0.2rem 0.32rem 0.9rem 0.32rem;
+    margin-bottom: 2.42rem;
+}
+.notPicture .codeWrap{
+    width: 2.14rem;
+    height: 2.14rem;
+    margin: 0.28rem auto 0.9rem auto;
+}
+.notPicture .codeWrap img{
+    width: 100%;
+    height: 100%;
+}
+.notPicture .text{
+    margin-top: 0.25rem;
+    font-size: 0.3rem;
+    line-height: 0.4rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 9;
+    -webkit-box-orient: vertical;
+    color: #333333;
+    overflow: hidden;
+    max-height: 3.6rem;
+}
+#compositePictureCanvas{
+    display: block;
+    width: 100%;
+}
+/*按钮*/
+.buttonWrap{
+    position: fixed;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: none;
+    background-color: #fff;
+    bottom: 0;
+    left: 0;
+}
+.buttonWrap div{
+    line-height: 0.86rem;
+    text-align: center;
+    border: solid 1px;
+    font-size: 0.3rem;
+    color: #333;
+    border-radius: 0.07rem;
+}
+.buttonWrap div.edit{
+    border-color: #dddddd;
+}
+.buttonWrap div.confirm{
+    background-color: #ffc000;
+    border-color: #ffc000;
+}
+.hasPicture-buttonWrap{
+    height: 1.3rem;
+    padding: 0 0.3rem 0.42rem 0.3rem;
+}
+.hasPicture-buttonWrap div{
+    position: absolute;
+    top:0;
+    width: 3.4rem;
+}
+.hasPicture-buttonWrap .confirm{
+    right: 0.3rem;
+}
+.hasPicture-buttonWrap .edit{
+    left: 0.3rem;
+}
+.notPicture-buttonWrap {
+    padding: 0 0.3rem 0.32rem 0.3rem;
+}
+.notPicture-buttonWrap .confirm{
+    margin-bottom: 0.3rem;
+}
+.tip{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 1.19rem;
+    bottom: 0;
+    left: 0;
+    font-size: 0.36rem;
+    line-height: 1.19rem;
+    color: #333;
+    background-color: #ffda44;
+    text-align: center;
+}
+.imgWrapShadow{
+    box-shadow: 0 0 0.15rem #666;
+    z-index: 5;
+}

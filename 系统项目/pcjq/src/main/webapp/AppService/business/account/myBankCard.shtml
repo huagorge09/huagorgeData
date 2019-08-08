@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+
+	<h2 class="mybank-title">
+		<em>我的银行卡</em><a href="/AppService/business/bank/addBank.shtml">添加银行卡</a>
+	</h2>
+	<div class="mybank-tab-con">
+	</div>
+    
+    
+	<FORM  name="order" id="contractSign_order" METHOD="post" ACTION="https://B2c.icbc.com.cn/servlet/EBConsignPayServlet" onsubmit="document.charset='GBK';" accept-charset="GBK" target="_blank">
+		<INPUT id="contractSign_interfaceName" NAME="interfaceName" TYPE="hidden" value="ICBC_PERBANK_EBConsignPay">
+		<INPUT id="contractSign_interfaceVersion" NAME="interfaceVersion" TYPE="hidden" value="1.0.0.0">
+		<INPUT id="contractSign_selserialNo" NAME="selserialNo" TYPE="hidden" value="BDP300241833"><!-- 协议编号 -->
+		
+		<INPUT id="contractSign_payNo" NAME="payNo" TYPE="hidden" value="201607200000026"><!-- 缴费编号 -->
+		
+		<INPUT id="contractSign_selpayType" NAME="selpayType" TYPE="hidden" value="扣费"><!-- 缴费种类 -->
+		
+		<INPUT id="contractSign_selcorpId" NAME="selcorpId" TYPE="hidden" value="40009000160441a"><!-- 企业编码 -->
+		
+		<INPUT id="contractSign_selaccountNo" NAME="selaccountNo" TYPE="hidden" value="4000023029200124946"><!-- 企业收费账号 -->
+		
+		<INPUT id="contractSign_regDate" NAME="regDate" TYPE="hidden" value="20151231"><!-- 签约日期 -->
+		
+		<INPUT id="contractSign_HSURL" NAME="HSURL" TYPE="hidden" value="http://127.0.0.1/test.jsp"><!-- 通知地址 -->
+		
+		<INPUT id="contractSign_merCertID" NAME="merCertID" TYPE="hidden" value="ncrp.y.4000"><!-- 证书ID -->
+		
+		<INPUT id="contractSign_Language" NAME="Language" TYPE="hidden" value="ZH_CN"><!-- 语言 -->
+		
+		<INPUT id="contractSign_certDate" NAME="certDate" TYPE="hidden" value="20160720152101"><!-- 交易日期时间（14位时间戳） -->
+		<INPUT id="contractSign_allowFinalDate" NAME="allowFinalDate" TYPE="hidden" value="0">
+		<INPUT id="contractSign_accountNo" NAME="accountNo" TYPE="hidden" value="6222024000799000076">
+		
+		<INPUT id="contractSign_certData" NAME="certData" TYPE="hidden" value="MIIFhQYJKoZIhvcNAQcCoIIFdjCCBXICAQExCzAJBgUrDgMCGgUAMIIBWgYJKoZIhvcNAQcBoIIBSwSCAUdpbnRlcmZhY2VOYW1lPUlDQkNfUEVSQkFOS19FQkNvbnNpZ25QYXkmaW50ZXJmYWNlVmVyc2lvbj0xLjAuMC4wJnNlbHNlcmlhbE5vPUJEUDMwMDI0MTgzMyZwYXlObz0yMDE2MDcyMDAwMDAwMjYmc2VscGF5VHlwZT1UVFQmc2VsY29ycElkPTQwMDA5MDAwMTYwNDQxYSZzZWxhY2NvdW50Tm89NDAwMDAyMzAyOTIwMDEyNDk0NiZyZWdEYXRlPTIwMTUxMjMxJkhTVVJMPWh0dHA6Ly8xMjcuMC4wLjEvdGVzdC5qc3AmbWVyQ2VydElEPW5jcnAueS40MDAwJmNlcnREYXRlPTIwMTYwNzIwMTUyMTAxJmFjY291bnRObz02MjIyMDI0MDAwNzk5MDAwMDc2JmFsbG93RmluYWxEYXRlPTCgggMPMIIDCzCCAfOgAwIBAgIKG5LKECVWAAJvczANBgkqhkiG9w0BAQUFADA7MR8wHQYDVQQDExZJQ0JDIFRlc3QgQ29ycG9yYXRlIENBMRgwFgYDVQQKEw90ZXN0aWNiYy5jb20uY24wHhcNMTUxMjMxMDMwNjQxWhcNMjAxMjMxMDMwNjQxWjA/MRQwEgYDVQQDEwtuY3JwLnkuNDAwMDENMAsGA1UECxMENDAwMDEYMBYGA1UEChMPdGVzdGljYmMuY29tLmNuMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCggAaIsLIQ0zFHBgkj+L2bqbLY/vdaxwHHVJBPIyq3IulSG10JA5pwLmTgEr59iRi4wV2myRDhYfioL/PeDm7GYMVzmuBtNX9BB35xPVfZuxHrO/RVsSrdoP4M0hWhm5E16dTy12wzJjjQUBcFM0eiNaJsG5ovmrvtnoqNEN9XWQIDAQABo4GQMIGNMB8GA1UdIwQYMBaAFER9t5AsN6TZ7WzipIdXZwq18E0UMEsGA1UdHwREMEIwQKA+oDykOjA4MQ4wDAYDVQQDEwVjcmwzMjEMMAoGA1UECxMDY3JsMRgwFgYDVQQKEw90ZXN0aWNiYy5jb20uY24wHQYDVR0OBBYEFCNmgyn2V5f9lFzawl8JxiiojQ7KMA0GCSqGSIb3DQEBBQUAA4IBAQAXwwrEH/vNMbpzX8+8EtjbgH2Jm8bEjxr9YU6thEnDR+gvySr4CkeA8PEgpeiCem4iUXPjRUuANbnbjvNPfU1xxKzZwxO9uiC0xX7YpyLI4wc/DzVIQcm7hsFoBjlHw/8pixk4DIlvBQyedZYo9VRURiIO/PQBEWmP9kI+gt7hOQT0id7+mj4VuXMfQAcZ88z5QZ2cKlSuBTi1RtKzPVsHWbimbxRqtCiSJU0Tyx5jcvMtl3WKwyjpOLZJuuxdgHr4QYKihY1W62DcaBnDmRjgmd/xQwNY9xf7ZZLz5AZr/7txBWGkCQrZANA41RHPZrNPNqdozIHPincCeBKldLR3MYHuMIHrAgEBMEkwOzEfMB0GA1UEAxMWSUNCQyBUZXN0IENvcnBvcmF0ZSBDQTEYMBYGA1UEChMPdGVzdGljYmMuY29tLmNuAgobksoQJVYAAm9zMAkGBSsOAwIaBQAwDQYJKoZIhvcNAQEBBQAEgYA5yfiqjmn40hEVeAIUJQltOavRIq+nNgYIeUpIloLwpZrwFUpdPEVjdJK2jEgTHPbkY+TgSwoKON+YbmvNCKKjNe4f+9HLigKg1iuu6/sfVEfY3fzXj4q34RjvdNz+9bv3feVzBYsNWVZIeFQMYPvMeuSj4feQcb93BeQTyV6L7w==">  <!-- 签名 -->
+		
+		<INPUT type="hidden" NAME="tipMsg"  value="欢迎在线签署《中国工商银行网上银行个人委托缴费协议》" > <!-- 提示信息 -->
+	</FORM>
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/myBankCard.min.js"></script>
+</body>
+</html>

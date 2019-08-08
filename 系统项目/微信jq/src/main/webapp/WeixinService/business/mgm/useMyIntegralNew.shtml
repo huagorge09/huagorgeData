@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>招商财富</title>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/mgm/useMyIntegralNew.css">
+
+</head>
+
+<body>
+
+
+	<header>
+		<div class="top">
+			<a class="goBack" href="javascript:void(0)" onclick="goback()">返回</a>
+			<p class="title">我的积分</p>
+		</div>
+		<div class="scoreNum" id="scoreNum"></div>
+		<p class="totalNum">总积分</p>
+	</header>
+	<p class="greyBar"></p>
+	<section id="cardBox">
+
+	</section>
+	<!--  兑换京东卡弹出框 -->
+	<footer>
+
+	</footer>
+	<div style="display: none;" class="isSureExchange">
+		<!-- 弹出框顶部 -->
+		<div class="popHead">
+			<span class="popTitle">提示</span><span class="closeIcon" id="closeEx" onclick="closePop()"></span>
+		</div>
+		<!-- 兑换提示 -->
+		<div class="popTip">
+			<p class="warningIcon"></p>
+			<p class="tipDetail">
+				<span>您将兑换<i class="awardDetail"></i><i class="awardName"></i></span>
+				<span class="actively">消耗<i class="integralChange"></i>积分</span>
+			</p>
+
+		</div>
+		<!-- 按钮区域 -->
+		<div class="popBottom">
+			<span class="cancel" onclick="closePop()">取消</span><span class="submit" onclick="submitExchange(this)">兑换</span>
+		</div>
+	</div>
+
+
+
+	<!-- 积分不足 -->
+	<div class="successWindow" style="display:none;" id="intggralNoth">
+		<!-- 弹出框顶部 -->
+		<div class="popHead">
+			<span class="popTitle">提示</span><span class="closeIcon" onclick="closeSuccess()"></span>
+		</div>
+		<!-- 兑换提示 -->
+		<div class="successDetail">
+			<p>您的积分不足</p>
+		</div>
+		<!-- 按钮区域 -->
+		<div class="popBottom">
+			<span class="success_confirm" onclick="closeSuccess()">确定</span>
+		</div>
+
+	</div>
+
+
+
+	<!-- 兑换成功弹出框 -->
+	<div class="successWindow" style="display:none;">
+		<!-- 弹出框顶部 -->
+		<div class="popHead">
+			<span class="popTitle">提示</span><span class="closeIcon" onclick="closeSuccess()"></span>
+		</div>
+		<!-- 兑换提示 -->
+		<div class="successDetail" id="successDetail">
+			<!-- 兑换成功图标 -->
+			<p class="successIcon"></p>
+			<p class="tipDetail" id="successContent">
+				<span>恭喜您成功兑换<i class="awardDetail"></i><i class="awardName"></i>，</span>
+				<span>稍后将把兑换信息发送到您<span class="phone">110</span>手</span>
+				<span>机上，请注意查收</span>
+			</p>
+		</div>
+		<!-- 按钮区域 -->
+		<div class="popBottom">
+			<span class="success_confirm" onclick="closeSuccess()">确定</span>
+		</div>
+
+	</div>
+	<!-- 兑换产品id -->
+	<input type="hidden" id="awardid" />
+	<!--  蒙层 -->
+	<div class="backLayer" style="display: none;"></div>
+	<script src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-2.0.0New.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/otherHeaderNew.min.js"></script>
+	<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/mgmUseMyIntegralNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/mgmUseMyIntegralNew.min.js"></script> -->
+	<script type="text/javascript">
+	var jsversion = new Date().getTime();
+	/* document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/mgmUseMyIntegralNew.js?version='+jsversion+'"><\/script>'); */
+	document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/mgmUseMyIntegralNew.min.js?version='+jsversion+'"><\/script>');
+	</script>
+</body>
+
+</html>

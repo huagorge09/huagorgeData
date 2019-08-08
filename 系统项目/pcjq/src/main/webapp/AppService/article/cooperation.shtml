@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>财富故事</title>
+<link rel="shortcut icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+<link rel="icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<!--[if IE]>
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageJs/html5.js"></script>
+<![endif]-->
+<!--[if IE 6]>
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageJs/DD_belatedPNG_0.0.8a.min.js"></script>
+	<script>
+		DD_belatedPNG.fix('*');
+	</script>
+<![endif]-->
+</head>
+<body>
+	
+<!-- header -->
+<!--#include virtual="/AppService/public/header.shtml"-->
+
+<div style="display: none;">
+<a href="#cooperation" id="temp_cooperation">a</a>
+<a href="#consignment" id="temp_consignment">b</a>
+</div>
+
+<div class="cooperation-bg mid" id="infos">
+<div class='cooperation-con' id='cooperation'>
+
+</div>
+<div class='cooperation-con cooperation02' id='consignment'>
+</div>
+</div>
+
+<!-- footer -->
+<!--#include virtual="/AppService/public/footer.shtml"-->
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/cooperation.min.js"></script>
+</body>
+</html>

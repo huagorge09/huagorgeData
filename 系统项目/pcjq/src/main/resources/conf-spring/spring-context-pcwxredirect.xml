@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-autowire="byName"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-3.0.xsd
+						http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<!-- wx2pc -->
+	<bean id="redirectBean_01" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="false"/>
+		<property name="isGetResParam" value="false"/>
+		<property name="redirectUri" value="/login/login.shtml"/>
+	</bean>
+	<bean id="redirectBean_02" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="false"/>
+		<property name="isGetResParam" value="false"/>
+		<property name="redirectUri" value="/AppService/index.shtml"/>
+	</bean>
+	<bean id="redirectBean_03" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="false"/>
+		<property name="isGetResParam" value="false"/>
+		<property name="redirectUri" value="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&amp;thirdCatId=RICHES_INFO"/>
+	</bean>
+	<bean id="redirectBean_04" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="false"/>
+		<property name="isGetResParam" value="false"/>
+		<property name="redirectUri" value="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&amp;thirdCatId=ACCOUNT_INFO"/>
+	</bean>
+	<bean id="redirectBean_05" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="false"/>
+		<property name="isGetResParam" value="false"/>
+		<property name="redirectUri" value="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&amp;thirdCatId=ACCOUNT_MESSAGE"/>
+	</bean>
+	<bean id="redirectBean_06" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="false"/>
+		<property name="isGetResParam" value="false"/>
+		<property name="redirectUri" value="/AppService/business/fund/fundList.shtml"/>
+	</bean>
+	<bean id="redirectBean_07" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="false"/>
+		<property name="isGetResParam" value="false"/>
+		<property name="redirectUri" value="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&amp;thirdCatId=RICHES_INFO"/>
+	</bean>
+	<bean id="redirectBean_08" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="false"/>
+		<property name="isGetResParam" value="false"/>
+		<property name="redirectUri" value="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&amp;thirdCatId=RICHES_INFO"/>
+	</bean>
+	<bean id="redirectBean_09" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="false"/>
+		<property name="isGetResParam" value="true"/>
+		<property name="redirectUri" value="/AppService/business/fund/orderDetail.shtml"/>
+	</bean>
+	<bean id="redirectBean_10" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="false"/>
+		<property name="isGetResParam" value="false"/>
+		<property name="redirectUri" value="/AppService/business/fund/fundList.shtml"/>
+	</bean>
+	<bean id="redirectBean_11" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="false"/>
+		<property name="isGetResParam" value="false"/>
+		<property name="redirectUri" value="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&amp;thirdCatId=ACCOUNT_STATEMENT"/>
+	</bean>
+	<bean id="redirectBean_12" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="false"/>
+		<property name="isGetResParam" value="false"/>
+		<property name="redirectUri" value="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&amp;thirdCatId=ACCOUNT_BANK"/>
+	</bean>
+	<bean id="redirectBean_13" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="false"/>
+		<property name="isGetResParam" value="false"/>
+		<property name="redirectUri" value="/AppService/business/account/modifyTPassword.shtml"/>
+	</bean>
+	<bean id="redirectBean_14" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="false"/>
+		<property name="isGetResParam" value="false"/>
+		<property name="redirectUri" value="/login/resetLPassWord.shtml?type=R"/>
+	</bean>
+	<bean id="redirectBean_15" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="false"/>
+		<property name="isGetResParam" value="true"/>
+		<property name="redirectUri" value="/login/register.shtml"/>
+	</bean>
+	<bean id="redirectBean_16" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="false"/>
+		<property name="isGetResParam" value="true"/>
+		<property name="redirectUri" value="/login/register.shtml"/>
+	</bean>
+	<bean id="redirectBean_17" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="false"/>
+		<property name="isGetResParam" value="true"/>
+		<property name="redirectUri" value="/login/login.shtml"/>
+	</bean>
+
+	<!-- pc2wx -->
+	<bean id="redirectBean_51" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="false"/>
+		<property name="isGetResParam" value="true"/>
+		<property name="redirectUri" value="/WeixinService/business/query/orderDetail.shtml"/>
+	</bean>
+	
+	
+	<bean id="redirectBean_52" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="false"/>
+		<property name="isGetResParam" value="false"/>
+		<property name="redirectUri" value="/WeixinService/index.shtml"/>
+	</bean>
+
+	
+	<bean id="redirectBean_53" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="true"/>
+		<property name="isGetResParam" value="false"/>
+		<property name="redirectUriMap">
+			<map>
+				<entry key="mainCatId=MY_ACCOUNT&amp;thirdCatId=RICHES_INFO" value="/WeixinService/business/user/queryAccount.shtml" />
+				<entry key="mainCatId=MY_ACCOUNT&amp;thirdCatId=ACCOUNT_INFO" value="/WeixinService/business/user/userInfo.shtml" />
+				<entry key="mainCatId=MY_ACCOUNT&amp;thirdCatId=ACCOUNT_BANK" value="/WeixinService/business/bank/bankList.shtml" />
+				<entry key="mainCatId=MY_ACCOUNT&amp;thirdCatId=ACCOUNT_STATEMENT" value="/WeixinService/business/query/myBill.shtml" />
+				<entry key="mainCatId=MY_ACCOUNT&amp;thirdCatId=ACCOUNT_MESSAGE" value="/WeixinService/business/query/msgList.shtml" />
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="redirectBean_54" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="false"/>
+		<property name="isGetResParam" value="false"/>
+		<property name="redirectUri" value="/WeixinService/otherIELogin/otherIELogin.shtml"/>
+	</bean>
+	<bean id="redirectBean_55" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="false"/>
+		<property name="isGetResParam" value="false"/>
+		<property name="redirectUri" value="/WeixinService/business/query/fundList.shtml"/>
+	</bean>
+	<bean id="redirectBean_56" class="com.cmwa.ec.log.dto.WxPCDto">
+		<property name="isGetReqParam" value="false"/>
+		<property name="isGetResParam" value="false"/>
+		<property name="redirectUri" value="/WeixinService/business/query/fundList.shtml"/>
+	</bean>
+	
+	
+	<bean class="com.cmwa.ec.log.filter.PCWXSkipFilter" lazy-init="false">
+		<property name="channelId" value="01"/><!-- PC为01，微信为03 -->
+		<property name="wxHost" value="${wxHost}"/>
+		<property name="pcHost" value="${pcHost}"/>
+		<property name="wx2pc">
+			<map>
+				<entry key="/WeixinService/weixinLogin/login.shtml" value-ref="redirectBean_01" />
+				<entry key="/WeixinService/index.shtml" value-ref="redirectBean_02" />
+				<entry key="/WeixinService/business/user/queryAccount.shtml" value-ref="redirectBean_03" />
+				<entry key="/WeixinService/business/user/userInfo.shtml" value-ref="redirectBean_04" />
+				<entry key="/WeixinService/business/query/msgList.shtml" value-ref="redirectBean_05" />
+				<entry key="/WeixinService/business/query/fundList.shtml" value-ref="redirectBean_06" />
+				<entry key="/WeixinService/business/query/orderListAgent.shtml" value-ref="redirectBean_07" />
+				<entry key="/WeixinService/business/query/orderList.shtml" value-ref="redirectBean_08" />
+				<entry key="/WeixinService/business/query/orderDetail.shtml" value-ref="redirectBean_09" />
+				<entry key="/WeixinService/business/query/fundInfo.shtml" value-ref="redirectBean_10" />
+				<entry key="/WeixinService/business/query/myBill.shtml" value-ref="redirectBean_11" />
+				<entry key="/WeixinService/business/bank/bankList.shtml" value-ref="redirectBean_12" />
+				<entry key="/WeixinService/business/user/modifyTPassword.shtml" value-ref="redirectBean_13" />
+				<entry key="/WeixinService/resetPassword.shtml" value-ref="redirectBean_14" />
+				<entry key="/WeixinService/otherIELogin/otherIERegister.shtml" value-ref="redirectBean_15" />
+				<entry key="/WeixinService/weixinLogin/register.shtml" value-ref="redirectBean_16" />
+				<entry key="/WeixinService/otherIELogin/otherIELogin.shtml" value-ref="redirectBean_17" />
+				
+				<!-- <entry key="http://www.cmwachina.com/m/project/index.html#!/article/newInformationList.html" value-ref="http://www.cmwachina.com/main/xxpl/gsgg/index.shtml#main_wp" />
+				<entry key="http://www.cmwachina.com/m/project/index.html#!/article/companyNotesList.html" value-ref="http://www.cmwachina.com/main/xxpl/cpgg/index.shtml" />-->
+				<!-- <entry key="" value-ref="/AppService/query/getOneFund.xhtml" /> 订单详情页 -->
+			</map>
+		</property>
+		
+		<property name="pc2wx">
+			<map>
+				<entry key="/AppService/business/fund/orderDetail.shtml" value-ref="redirectBean_51" />
+				<entry key="/AppService/index.shtml" value-ref="redirectBean_52" />
+				<entry key="/AppService/applicationGroups.shtml" value-ref="redirectBean_53" />			
+				<entry key="/login/login.shtml" value-ref="redirectBean_54" />
+				<entry key="/AppService/business/fund/fundList.shtml" value-ref="redirectBean_55" />
+				<entry key="/AppService/business/fund/fundDetail.shtml" value-ref="redirectBean_56" />
+				
+				<!-- <entry key="http://www.cmwachina.com/main/xxpl/cpgg/index.shtml" value-ref="http://www.cmwachina.com/m/project/index.html#!/article/companyNotesList.html?channel=page" />
+				<entry key="http://www.cmwachina.com/main/gyzc/index.shtml" value-ref="http://www.cmwachina.com/m/project/index.html#!/other/aboutUs.html" /> -->
+			</map>
+		</property>
+	</bean>
+
+
+
+</beans>

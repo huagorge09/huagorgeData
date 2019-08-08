@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css" />
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css" />
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedomNew.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1New.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/sliderNew.js"></script>
+    <style type="text/css"></style>
+  </head>
+  <body style="background-color: rgb(245, 245, 245);">
+    <section class="page" id="specialty_context">
+      <div id="scroller"></div>
+      <!--#include virtual="/WeixinService/headerOrFooter/headerNew.shtml"-->
+      <section class="title" id="section_0">
+        <div class="bg-state">
+          <div class="" style="width: 80%;margin: 44px auto 25px;">
+            <span class="point">
+              很抱歉，您的投资知识测试未达标！
+            </span>
+          </div>
+          <div style="display: flex;justify-content: space-around;margin-bottom: 1rem;">
+            <a href="javascript:resetTest();" class="check-order">重新测试</a>
+            <a href="javascript:cancelTest();" style="background: #d3d3d3; margin-bottom: 20px;" class="check-order">稍后再测</a>
+          </div>
+        </div>
+      </section>
+    </section>
+    <script>
+      $(document).ready(function(e) {
+        $(".header .top-a h2").html("投资知识评测");
+        document.title = "投资知识评测";
+      });
+
+      /**
+       * 重新测试
+       */
+      function resetTest() {
+        window.location.href = "/WeixinService/business/user/investKnowledgeTestNew.shtml";
+      }
+
+      /**
+       * 返回用户管理页面
+       */
+      function cancelTest() {
+        window.location.href = "/#/myAccount";
+      }
+    </script>
+  </body>
+</html>

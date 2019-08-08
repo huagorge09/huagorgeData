@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>招商财富-群星1号 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/cfb206/cfb.css">
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-init.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/flexible.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+
+</head>
+<body>
+	<div class="warpper proDetail2">
+		<div class="banner"></div>
+		<div class="guide2">
+			<div class="product">
+					<div>
+						<h2>群星1号</h2>
+					</div>
+					<h3>开放期：2019年4月23-2019年4月29日</h3>
+					 <ul class="clearFloat">
+						<li>
+							<p><span>19.48</span>%</p>
+							<p>成立以来收益率*</p>
+						</li>
+						<li>
+							<p><span>40</span>万</p>
+							<p>起投金额</p>
+						</li>
+					</ul>
+					<a href="javascript:;" class="once once2">立即购买</a>
+					<p style="margin-top: .1rem;">*产品投资起始日为2017/10/31，截止2019/4/4，收益率为19.48%<br>（数据来源：招商财富）。</p>
+					<p style="margin-top: .1rem;">*投资有风险，本产品风险等级为R4中高风险，适合风险承受能力C4及以上的投资者。</p>
+				</div>
+		</div>
+	  </div>
+	  <div class="detail1">
+	  	
+	  </div>
+	  	  <div class="detail2">
+	  	
+	  </div>
+	  	  <div class="detail3">
+	  	
+	  </div>
+	    <div style="margin-top: -1px;">
+	  	 <img src="/WeixinWeb/WeixinWeb_Images/H5modules/cfb206/img2-4.jpg" width="100%" />
+	  </div>
+	  <div class="bottom clearFloat">
+    	<a href="javascript:;" onclick="bussiness();" id="myBtn1">我感兴趣</a>
+    	<a href="javascript:;" onclick="myAdviser();" id="myBtn2">我的顾问</a>
+    </div>
+	<!--预约信息填写-->
+	<div class="cover-bg reserves hide">
+		<div class="content">
+			 <span class="close"></span>
+			 <h1>一键预约享专属服务<br>让投资无后顾之忧</h1>
+			 <h3>我们的专属顾问将24小时内给您回电</h3>
+			 <div class="form">
+			 	<ul>
+				 	<li>
+				 	   <div class="inputBox">
+				 	  	   <span></span> <input type="text" id="userName" name="userName" placeholder="请输入姓名"/>
+				 	   </div>	
+				       <p style="display: none;"></p>
+				 	</li>
+				 	<li class="foucs">
+				 		<div class="inputBox">
+				 	        <span></span> <input type="tel" id="mobilePhone" name="mobilePhone" maxlength="11" placeholder="请输入手机号码"/> 
+				 		</div>
+				 		<p  style="display: none;"></p>
+				 	</li>
+				 	
+				 </ul>
+				 <button id="saveBtn"  class="disabled">立即提交</button>
+			 </div>
+		</div>
+	</div>
+	<!-- 错误提示 -->
+	<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+		<span id="errorRemark"></span>
+	</div>
+	<!--预约成功-->
+	<div class="cover-bg success hide">
+		 <div class="content center">
+		 	<span class="close"></span>
+		 	<div class="successIcon"></div>
+		 	<h2>预约成功</h2>
+		 	<p>客户经理将尽快与您联系，请保持电话畅通</p>
+		 </div>
+	</div>
+	 <!-- 尚未完成操作弹窗-->
+    <div class="cover_bg" id="noOperation" style="display: none;">
+    	 <!-- 尚未完成风险评测-->
+    	 <div class="content risk" id="riskContent" style="display: none;">
+    	 	  <h2></h2>
+    	 	  <p>哎呀！您尚未完成风险测评</p>
+    	 	  <div class="tips">
+    	 	  	  <h3>温馨提示：</h3>
+    	 	  	  <p>根据监管要求，为保护投资者权益，需要了解您的相关信息和风险等级，以实现对您的最大保障。</p>
+    	 	  	  <p class="yearReport">
+    	 	  	  	 动动小指尖， 30秒完成风险测评，轻松查看产品信息
+    	 	  	  </p>
+    	 	  </div>
+    	 	 <a href="javascript:void(0);" id="goRisk" class="btn">我要测评</a>
+    	 </div>
+    	 <!-- 重新测评-->
+    	 <div class="content rNameRisk" id="reRiskContent"  style="display: none;">
+    	 	  <h2></h2>
+    	 	  <p>根据监管要求，您的风险测评已过有效期，还请重新测评</p>
+    	 	   <a href="javascript:void(0);" id="reRisk" class="btn">确定</a>
+    	 </div>
+	</div>
+	<input type="hidden" name='typeId'>
+     <script>
+    	 var pageId="wx_qunDetail_h5PageId"
+    </script>
+     <script src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/activityCommon1.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/cfb206/index.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,9 @@
+#if ($type.equals("0")) 
+<a class="btn btn-primary" id="${id}" href="javascript:;" onclick="javascript:${fun}"   url="$!{menu.url}"  param="${param}" ><i class="$!{menu.icon}"></i>&nbsp;$!{menu.name}</a>
+#elseif($type.equals("1"))
+<button class="btn btn-primary" id="${id}"  onclick="javascript:${fun}"  url="$!{menu.url}"  param="${param}" ><i class="$!{menu.icon}"></i>&nbsp;$!{menu.name}</button>
+#elseif($type.equals("2"))
+<a href="javascript:;" class="btn btn-link btn-jqgrid" title="$!{menu.name}" onclick="javascript:${fun}" url="$!{menu.url}" param="${param}" ><i class="$!{menu.icon}"></i></a>
+#elseif($type.equals("3"))
+<span style="padding:2px;margin-left: 20px;"><input type="button" title="$!{menu.name}" value="$!{menu.name}" onclick="javascript:${fun}" style="font-size:12px; background-color:#dfdfdf; text-align:center; border:0px; cursor: pointer;margin-bottom:5px;"></span>
+#end

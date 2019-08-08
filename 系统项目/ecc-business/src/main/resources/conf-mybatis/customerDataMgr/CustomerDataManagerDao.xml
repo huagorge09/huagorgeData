@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.customerDataMgr.CustomerDataManagerDao" >
+	<resultMap id="riskLevelMap" type="riskLevelDto">
+		<result column="CUSTNO" property="custno" jdbcType="VARCHAR" />
+		<result column="INVNM" property="invnm" jdbcType="VARCHAR" />
+		<result column="INVTP" property="invtp" jdbcType="VARCHAR" />
+		<result column="INVTP_NAME" property="invtpName" jdbcType="VARCHAR" />
+		<result column="RISKLEVEL" property="risklevel" jdbcType="VARCHAR" />
+		<result column="OLD_RISKLEVEL" property="oldRiskLevel" jdbcType="VARCHAR" />
+		<result column="OLD_RISKLEVEL_NAME" property="oldRiskLevelName" jdbcType="VARCHAR" />
+		<result column="RISKLEVEL_NAME" property="risklevelName" jdbcType="VARCHAR" />
+		<result column="EVALANSWER" property="answer" jdbcType="VARCHAR" />
+		<result column="ECCUSTNO" property="regioncode" jdbcType="VARCHAR" />
+		<result column="FUNDACCT" property="fundacc" jdbcType="VARCHAR" />
+		<result column="EVALDATE" property="custriskdate" jdbcType="VARCHAR" />
+		<result column="OUTDATE" property="outdate" jdbcType="VARCHAR" />
+		<result column="VOICERECORD" property="voicerecord" jdbcType="VARCHAR" />
+		<result column="INVPRTP" property="invprtp" jdbcType="VARCHAR" />
+		<result column="INVPRTP_NAME" property="invprtpName" jdbcType="VARCHAR" />
+		<result column="APPST" property="appst" jdbcType="VARCHAR" />
+		<result column="APPTP" property="apptp" jdbcType="VARCHAR" />
+		<result column="APPTP_NAME" property="apptpName" jdbcType="VARCHAR" />
+		<result column="APPST_NAME" property="appstName" jdbcType="VARCHAR" />
+		<result column="APDT" property="apdt" jdbcType="VARCHAR" />
+		<result column="OPNM" property="opnm" jdbcType="VARCHAR" />
+		<result column="REGIONCODE_NAME" property="regioncodeName" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="getRiskLevelInfoList" parameterType="sparam" resultMap="riskLevelMap">
+			SELECT T.CUSTNO,
+	           C.INVTP,
+	           C.INVTP AS INVTP_NAME,
+	           C.INVNM,
+	           R.FUNDACCT,
+	           L.EVALDATE,
+	           CASE
+	             WHEN UB.ECCUSTNO IS NOT NULL THEN
+	              '网上'
+	             ELSE
+	              '网下'
+	           END AS REGIONCODE_NAME,
+	           CASE WHEN C.SPECRISKLEVEL = '1' THEN 
+	                '0 C0-最低'
+	                ELSE 
+	                   CONCAT(CONCAT(L.RISKLEVEL,' '),IBF_GET_PARAMNAME('SYSTEM','CUSTRISKLEVEL',L.RISKLEVEl))
+	           END AS RISKLEVEL_NAME,        
+	           CASE WHEN NVL(DC.INVPRTP, UB.INVPRTP) = '0' THEN 
+	                ''
+	                ELSE 
+	                   IBF_GET_PARAMNAME('SYSTEM','OLD_RISKLEVEL',L.OLD_RISKLEVEl)
+	           END AS OLD_RISKLEVEL_NAME,         
+	           L.RISKLEVEL,
+	           L.EVALTIME,
+	           L.EVALTYPE,
+	           (CONCAT((TO_CHAR(TO_NUMBER(SUBSTR(L.EVALDATE,0,4)) + 1)),SUBSTR(L.EVALDATE,5))) OUTDATE,
+<!-- 	           (SELECT OPNAME AS OPNM FROM LGI_OPERATOR WHERE TRIM(OPID) = L.TERMINALINFO) OPNM, -->
+	           (SELECT EMNAME AS OPNM FROM T_ECC_EMPLOYEE WHERE TRIM(EMPID) = L.TERMINALINFO) OPNM,
+	           L.TERMINALINFO,
+	           UB.ECCUSTNO,
+	           CE.VOICERECORD,
+	           UA.APPTP,
+	           UA.APPTP AS APPTP_NAME,
+	           UA.APDT,
+	           CASE
+	             WHEN UB.INVPRTP = '0' AND UB.INVPRTPSCORE >= 60 THEN
+	              ''
+	             WHEN (SELECT COUNT(1)
+	                     FROM USER_APPCVSITP T
+	                    WHERE T.CUSTNO = UB.ECCUSTNO) > 0 THEN
+	              (SELECT APPST FROM USER_APPCVSITP UA WHERE UA.CUSTNO = UB.ECCUSTNO)
+	             ELSE
+	              ''
+	           END AS APPST,
+	           CASE
+	             WHEN UB.INVPRTP = '0' AND UB.INVPRTPSCORE >= 60 THEN
+	              ''
+	             WHEN (SELECT COUNT(1)
+	                     FROM USER_APPCVSITP T
+	                    WHERE T.CUSTNO = UB.ECCUSTNO) > 0 THEN
+	              (SELECT APPST FROM USER_APPCVSITP UA WHERE UA.CUSTNO = UB.ECCUSTNO)
+	             ELSE
+	              ''
+	           END AS APPST_NAME,
+	           UA.CHKFLAG,
+	           NVL(DC.INVPRTP, UB.INVPRTP) INVPRTP,
+	           NVL(DC.INVPRTP, UB.INVPRTP) INVPRTP_NAME,
+	           L.EVALANSWER,
+	           L.OLD_RISKLEVEl,
+	           C.SPECRISKLEVEL
+	          FROM (SELECT DISTINCT (CUSTNO) FROM TRADEACCOINFO TT) T,
+	               (SELECT FUNDACCT, CUSTNO
+	                  FROM TRADEACCORELA
+	                 WHERE FUNDACCT IS NOT NULL
+	                 GROUP BY FUNDACCT, CUSTNO) R,
+	               (SELECT BAS.CMFUSERID, BAS.INVPRTP, BAS.INVPRTPSCORE, A.ECCUSTNO
+	                  FROM USER_BASEINFO BAS, USER_ACCORLA A
+	                 WHERE A.CMFUSERID(+) = BAS.CMFUSERID) UB,
+	               USER_APPCVSITP UA,
+	               CUSTINFO C,
+	               CUSTRISKLEVEL L,
+	               CUSTINFOEX CE,
+	               DS_CUSTCLASSINFO DC
+	         WHERE T.CUSTNO = R.CUSTNO(+)
+	           AND T.CUSTNO = C.CUSTNO
+	           AND T.CUSTNO = L.CUSTNO(+)
+	           AND T.CUSTNO = UA.CUSTNO(+)
+	           AND CE.CUSTNO = T.CUSTNO
+	           AND T.CUSTNO = DC.CUSTNO(+)
+	           AND T.CUSTNO = UB.ECCUSTNO(+)
+	       <if test=" null != sp.invnm  and '' != sp.invnm">
+		  		 AND C.INVNM LIKE '%'||#{sp.invnm}||'%' 
+		    </if>
+		    <if test=" null != sp.invtp  and '' != sp.invtp">
+		  		 AND C.INVTP = #{sp.invtp}
+		    </if>
+		    <if test=" null != sp.custno  and '' != sp.custno">
+		  		 AND C.CUSTNO = #{sp.custno}
+		    </if> 
+			<if test=" null != sp.risklevel and '999' == sp.risklevel and '' != sp.risklevel">
+				AND L.RISKLEVEL IS NULL
+			</if>
+			<if test=" null != sp.risklevel and '' != sp.risklevel and sp.risklevel != '999'">
+				AND L.RISKLEVEL = #{sp.risklevel} 
+				AND C.SPECRISKLEVEL <![CDATA[<>]]> '1'
+			</if>
+			<if test=" null != sp.fundacct and '' != sp.fundacct">
+				AND R.FUNDACCT LIKE  '%'||#{sp.fundacct}||'%' 
+			</if>
+			<if test=" null != sp.invprtp and '' != sp.invprtp">
+				AND DC.INVPRTP = #{sp.invprtp}
+			</if>
+			<if test=" null != sp.specRiskLevel and '' != sp.specRiskLevel">
+				AND C.SPECRISKLEVEL = '1'
+			</if>
+			<if test="null != sp.beginDate and '' != sp.beginDate">
+				AND L.EVALDATE <![CDATA[>=]]> #{sp.beginDate}
+			</if>
+			<if test="null != sp.endDate and '' != sp.endDate">
+				AND L.EVALDATE <![CDATA[<=]]> #{sp.endDate}
+			</if>
+			ORDER BY OUTDATE ASC
+	</select>
+	<select id="getRiskLevelInfoListPage" parameterType="sparam" resultMap="riskLevelMap">
+	<![CDATA[	
+		SELECT T.CUSTNO,
+	           C.INVTP,
+	           C.INVTP AS INVTP_NAME,
+	           C.INVNM,
+	           R.FUNDACCT,
+	           L.EVALDATE,
+	           CASE
+	             WHEN UB.ECCUSTNO IS NOT NULL THEN
+	              '网上'
+	             ELSE
+	              '网下'
+	           END AS REGIONCODE_NAME,
+	           CASE WHEN C.SPECRISKLEVEL = '1' THEN 
+	                '0 C0-最低'
+	                ELSE 
+	                   CONCAT(CONCAT(L.RISKLEVEL,' '),DECODE(L.RISKLEVEL,'0','C0-最低',IBF_GET_PARAMNAME('SYSTEM','CUSTRISKLEVEL',L.RISKLEVEl)))
+	           END AS RISKLEVEL_NAME,        
+	           CASE WHEN NVL(DC.INVPRTP, UB.INVPRTP) = '0' THEN 
+	                ''
+	                ELSE 
+	                   IBF_GET_PARAMNAME('SYSTEM','OLD_RISKLEVEL',L.OLD_RISKLEVEl)
+	           END AS OLD_RISKLEVEL_NAME,         
+	           L.RISKLEVEL,
+	           L.EVALTIME,
+	           L.EVALTYPE,
+	           (SELECT CONCAT((TO_CHAR(TO_NUMBER(SUBSTR(L.EVALDATE,0,4)) + 1)),SUBSTR(L.EVALDATE,5)) FROM DUAL) OUTDATE,
+  	           (SELECT EMNAME AS OPNM FROM T_ECC_EMPLOYEE WHERE TRIM(EMPID) = L.TERMINALINFO) OPNM,
+			   L.TERMINALINFO,
+	           UB.ECCUSTNO,
+	           CE.VOICERECORD,
+	           UA.APPTP,
+	           UA.APPTP AS APPTP_NAME,
+	           UA.APDT,
+	           CASE
+	             WHEN UB.INVPRTP = '0' AND UB.INVPRTPSCORE >= 60 THEN
+	              ''
+	             WHEN (SELECT COUNT(1)
+	                     FROM USER_APPCVSITP T
+	                    WHERE T.CUSTNO = UB.ECCUSTNO) > 0 THEN
+	              (SELECT APPST FROM USER_APPCVSITP UA WHERE UA.CUSTNO = UB.ECCUSTNO)
+	             ELSE
+	              ''
+	           END AS APPST,
+	           CASE
+	             WHEN UB.INVPRTP = '0' AND UB.INVPRTPSCORE >= 60 THEN
+	              ''
+	             WHEN (SELECT COUNT(1)
+	                     FROM USER_APPCVSITP T
+	                    WHERE T.CUSTNO = UB.ECCUSTNO) > 0 THEN
+	              (SELECT APPST FROM USER_APPCVSITP UA WHERE UA.CUSTNO = UB.ECCUSTNO)
+	             ELSE
+	              ''
+	           END AS APPST_NAME,
+	           UA.CHKFLAG,
+	           NVL(DC.INVPRTP, UB.INVPRTP) INVPRTP,
+	           NVL(DC.INVPRTP, UB.INVPRTP) INVPRTP_NAME,
+	           L.EVALANSWER,
+	           L.OLD_RISKLEVEl,
+	           C.SPECRISKLEVEL
+	          FROM (SELECT DISTINCT (CUSTNO) FROM TRADEACCOINFO TT) T,
+	               (SELECT FUNDACCT, CUSTNO
+	                  FROM TRADEACCORELA
+	                 WHERE FUNDACCT IS NOT NULL
+	                 GROUP BY FUNDACCT, CUSTNO) R,
+	               (SELECT BAS.CMFUSERID, BAS.INVPRTP, BAS.INVPRTPSCORE, A.ECCUSTNO
+	                  FROM USER_BASEINFO BAS, USER_ACCORLA A
+	                 WHERE A.CMFUSERID(+) = BAS.CMFUSERID) UB,
+	               USER_APPCVSITP UA,
+	               CUSTINFO C,
+	               CUSTRISKLEVEL L,
+	               CUSTINFOEX CE,
+	               DS_CUSTCLASSINFO DC
+	         WHERE T.CUSTNO = R.CUSTNO(+)
+	           AND T.CUSTNO = C.CUSTNO
+	           AND T.CUSTNO = L.CUSTNO(+)
+	           AND T.CUSTNO = UA.CUSTNO(+)
+	           AND CE.CUSTNO = T.CUSTNO
+	           AND T.CUSTNO = DC.CUSTNO(+)
+	           AND T.CUSTNO = UB.ECCUSTNO(+)
+	           ]]>
+	      <if test=" null != sp.invnm  and '' != sp.invnm">
+		  		 AND C.INVNM LIKE '%'||#{sp.invnm}||'%' 
+		    </if>
+		    <if test=" null != sp.invtp  and '' != sp.invtp">
+		  		 AND C.INVTP = #{sp.invtp}
+		    </if>
+		    <if test=" null != sp.custno  and '' != sp.custno">
+		  		 AND C.CUSTNO = #{sp.custno}
+		    </if> 
+			<if test=" null != sp.risklevel and '999' == sp.risklevel and '' != sp.risklevel">
+				AND L.RISKLEVEL IS NULL
+			</if>
+			<if test=" null != sp.risklevel and '' != sp.risklevel and sp.risklevel != '999'">
+				AND L.RISKLEVEL = #{sp.risklevel}
+				AND C.SPECRISKLEVEL <![CDATA[<>]]> '1'
+			</if>
+			<if test=" null != sp.fundacct and '' != sp.fundacct">
+				AND R.FUNDACCT LIKE  '%'||#{sp.fundacct}||'%' 
+			</if>
+			<if test=" null != sp.invprtp and '' != sp.invprtp">
+				AND DC.INVPRTP = #{sp.invprtp}
+			</if>
+			<if test=" null != sp.specRiskLevel and '' != sp.specRiskLevel">
+				AND C.SPECRISKLEVEL = '1'
+			</if>
+			<if test="null != sp.beginDate and '' != sp.beginDate">
+				AND L.EVALDATE <![CDATA[>=]]> #{sp.beginDate}
+			</if>
+			<if test="null != sp.endDate and '' != sp.endDate">
+				AND L.EVALDATE <![CDATA[<=]]> #{sp.endDate}
+			</if>
+			ORDER BY OUTDATE ASC
+										
+	</select>
+	
+	<select id="getRiskLevelInfoListTotal" parameterType="sparam" resultType="int">
+		SELECT COUNT(*) 
+	          FROM (SELECT DISTINCT (CUSTNO) FROM TRADEACCOINFO TT) T,
+	               (SELECT FUNDACCT, CUSTNO
+	                  FROM TRADEACCORELA
+	                 WHERE FUNDACCT IS NOT NULL
+	                 GROUP BY FUNDACCT, CUSTNO) R,
+	               (SELECT BAS.CMFUSERID, BAS.INVPRTP, BAS.INVPRTPSCORE, A.ECCUSTNO
+	                  FROM USER_BASEINFO BAS, USER_ACCORLA A
+	                 WHERE A.CMFUSERID(+) = BAS.CMFUSERID) UB,
+	               USER_APPCVSITP UA,
+	               CUSTINFO C,
+	               CUSTRISKLEVEL L,
+	               CUSTINFOEX CE,
+	               DS_CUSTCLASSINFO DC
+	         WHERE T.CUSTNO = R.CUSTNO(+)
+	           AND T.CUSTNO = C.CUSTNO
+	           AND T.CUSTNO = L.CUSTNO(+)
+	           AND T.CUSTNO = UA.CUSTNO(+)
+	           AND CE.CUSTNO = T.CUSTNO
+	           AND T.CUSTNO = DC.CUSTNO(+)
+	           AND T.CUSTNO = UB.ECCUSTNO(+)
+		   <if test=" null != sp.invnm  and '' != sp.invnm">
+		  		 AND C.INVNM LIKE '%'||#{sp.invnm}||'%' 
+		    </if>
+		    <if test=" null != sp.invtp  and '' != sp.invtp">
+		  		 AND C.INVTP = #{sp.invtp}
+		    </if>
+		    <if test=" null != sp.custno  and '' != sp.custno">
+		  		 AND C.CUSTNO = #{sp.custno}
+		    </if> 
+			<if test=" null != sp.risklevel and '999' == sp.risklevel and '' != sp.risklevel">
+				AND L.RISKLEVEL IS NULL
+			</if>
+			<if test=" null != sp.risklevel and '' != sp.risklevel and sp.risklevel != '999'">
+				AND L.RISKLEVEL = #{sp.risklevel}
+				AND C.SPECRISKLEVEL <![CDATA[<>]]> '1'
+			</if>
+			<if test=" null != sp.fundacct and '' != sp.fundacct">
+				AND R.FUNDACCT LIKE  '%'||#{sp.fundacct}||'%' 
+			</if>
+			<if test=" null != sp.invprtp and '' != sp.invprtp">
+				AND DC.INVPRTP = #{sp.invprtp}
+			</if>
+			<if test=" null != sp.specRiskLevel and '' != sp.specRiskLevel">
+				AND C.SPECRISKLEVEL = '1'
+			</if>
+			<if test="null != sp.beginDate and '' != sp.beginDate">
+				AND L.EVALDATE <![CDATA[>=]]> #{sp.beginDate}
+			</if>
+			<if test="null != sp.endDate and '' != sp.endDate">
+				AND L.EVALDATE <![CDATA[<=]]> #{sp.endDate}
+			</if>
+	</select>
+	
+	<select id="getRiskLevelInfoByCustNo" parameterType="String" resultMap="riskLevelMap">
+		SELECT T.CUSTNO,
+	           C.INVTP,
+	           DECODE(C.INVTP,'0','机构客户','1','个人客户') AS INVTP_NAME,
+	           C.INVNM,
+	           R.FUNDACCT,
+	           L.EVALDATE,
+	           CASE
+	             WHEN UB.ECCUSTNO IS NOT NULL THEN
+	              '网上'
+	             ELSE
+	              '网下'
+	           END AS REGIONCODE_NAME,
+	           CASE WHEN C.SPECRISKLEVEL = '1' THEN 
+	                '0 C0-最低'
+	                ELSE 
+	                   CONCAT(CONCAT(L.RISKLEVEL,' '),IBF_GET_PARAMNAME('SYSTEM','CUSTRISKLEVEL',L.RISKLEVEl))
+	           END AS RISKLEVEL_NAME,        
+	           CASE WHEN NVL(DC.INVPRTP, UB.INVPRTP) = '0' THEN 
+	                ''
+	                ELSE 
+	                   IBF_GET_PARAMNAME('SYSTEM','OLD_RISKLEVEL',L.OLD_RISKLEVEl)
+	           END AS OLD_RISKLEVEL_NAME,         
+	           L.RISKLEVEL,
+	           L.EVALTIME,
+	           L.EVALTYPE,
+	           (SELECT CONCAT((TO_CHAR(TO_NUMBER(SUBSTR(L.EVALDATE,0,4)) + 1)),SUBSTR(L.EVALDATE,5)) FROM DUAL) OUTDATE,
+<!-- 	           (SELECT OPNAME AS OPNM FROM LGI_OPERATOR WHERE TRIM(OPID) = L.TERMINALINFO) OPNM,-->	           
+  	           (SELECT EMNAME AS OPNM FROM T_ECC_EMPLOYEE WHERE TRIM(EMPID) = L.TERMINALINFO) OPNM,
+			   L.TERMINALINFO,
+	           UB.ECCUSTNO,
+	           CE.VOICERECORD,
+	           UA.APPTP,
+	           UA.APPTP AS APPTP_NAME,
+	           UA.APDT,
+	           CASE
+	             WHEN UB.INVPRTP = '0' AND UB.INVPRTPSCORE >= 60 THEN
+	              ''
+	             WHEN (SELECT COUNT(1)
+	                     FROM USER_APPCVSITP T
+	                    WHERE T.CUSTNO = UB.ECCUSTNO) > 0 THEN
+	              (SELECT APPST FROM USER_APPCVSITP UA WHERE UA.CUSTNO = UB.ECCUSTNO)
+	             ELSE
+	              ''
+	           END AS APPST,
+	           CASE
+	             WHEN UB.INVPRTP = '0' AND UB.INVPRTPSCORE >= 60 THEN
+	              ''
+	             WHEN (SELECT COUNT(1)
+	                     FROM USER_APPCVSITP T
+	                    WHERE T.CUSTNO = UB.ECCUSTNO) > 0 THEN
+	              (SELECT APPST FROM USER_APPCVSITP UA WHERE UA.CUSTNO = UB.ECCUSTNO)
+	             ELSE
+	              ''
+	           END AS APPST_NAME,
+	           UA.CHKFLAG,
+	           NVL(DC.INVPRTP, UB.INVPRTP) INVPRTP,
+	           NVL(DC.INVPRTP, UB.INVPRTP) INVPRTP_NAME,
+	           L.EVALANSWER,
+	           L.OLD_RISKLEVEl,
+	           C.SPECRISKLEVEL
+	          FROM (SELECT DISTINCT (CUSTNO) FROM TRADEACCOINFO TT) T,
+	               (SELECT FUNDACCT, CUSTNO
+	                  FROM TRADEACCORELA
+	                 WHERE FUNDACCT IS NOT NULL
+	                 GROUP BY FUNDACCT, CUSTNO) R,
+	               (SELECT BAS.CMFUSERID, BAS.INVPRTP, BAS.INVPRTPSCORE, A.ECCUSTNO
+	                  FROM USER_BASEINFO BAS, USER_ACCORLA A
+	                 WHERE A.CMFUSERID(+) = BAS.CMFUSERID) UB,
+	               USER_APPCVSITP UA,
+	               CUSTINFO C,
+	               CUSTRISKLEVEL L,
+	               CUSTINFOEX CE,
+	               DS_CUSTCLASSINFO DC
+	         WHERE T.CUSTNO = R.CUSTNO(+)
+	           AND T.CUSTNO = C.CUSTNO
+	           AND T.CUSTNO = L.CUSTNO(+)
+	           AND T.CUSTNO = UA.CUSTNO(+)
+	           AND CE.CUSTNO = T.CUSTNO
+	           AND T.CUSTNO = DC.CUSTNO(+)
+	           AND T.CUSTNO = UB.ECCUSTNO(+)
+	      	   AND T.CUSTNO = #{custNo}
+	</select>
+</mapper>

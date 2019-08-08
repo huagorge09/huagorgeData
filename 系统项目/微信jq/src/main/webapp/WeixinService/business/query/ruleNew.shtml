@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/bannerStyleNew.css">
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscrollNew.js"></script>
+<script src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscroll-probeNew.js"></script>
+
+</head>
+<body>
+	<section class="page">
+
+		<div id="wrapper">
+			<div id="scroller">
+				<!--#include virtual="/WeixinService/headerOrFooter/headerNew.shtml"-->
+				<section>
+					<div>
+						<div class='rule'>
+							<h2><img width='20px' src='/WeixinWeb/WeixinWeb_Images/images/wechat_icon_shouyi.png'></img> <span>收益规则</span></h2>
+						</div>
+						<div class='rule-text'></div>
+						<div class='rule'>
+							<h2><img width='20px' src='/WeixinWeb/WeixinWeb_Images/images/wechat_icon_quchu.png'></img> <span>取出规则</span></h2>
+						</div>
+						<div class='rule-text'></div>
+						<div class='rule'>
+							<h2></h2>
+						</div>
+						<div class='rule-text'></div>
+					</div>
+					<!-- <a href="javascript:goToFund();" class="check-order" style="margin-top: 20px;">我知道了</a> -->
+					 <a href="javascript:toBack();" class="check-order" style="margin-top: 20px;">我知道了</a>
+				</section>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

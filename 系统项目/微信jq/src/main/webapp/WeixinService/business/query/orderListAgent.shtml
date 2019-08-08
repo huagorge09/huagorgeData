@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+   	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/bannerStyle.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscroll.js"></script>
+	
+    
+</head>
+<body>
+
+<section class="page">
+
+<div id="wrapper">
+        <div id="scroller">
+    <!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->
+    
+    <div class="center-mynav-a centerothernav-a">
+    	<ul>
+            <li><a href="javascript:showOrderList('0')" class="act">全部</a></li>
+            <li><a href="javascript:showOrderList('1')">存续中</a></li>
+            <li><a href="javascript:showOrderList('2')">已到期</a></li>
+        </ul>
+    </div> 
+    
+    
+    <section id="section_01">
+        
+    </section>  
+
+
+    <section id="section_02" style="display: none;">
+
+    </section> 
+
+
+    <section id="section_03" style="display: none;">
+		
+    </section>   
+
+
+</div></div>  
+</section>
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/orderListAgent.min.js"></script> -->
+<script type="text/javascript">
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/orderListAgent.min.js?version='+new Date().getTime()+'"><\/script>');
+</script>
+</body>
+</html>

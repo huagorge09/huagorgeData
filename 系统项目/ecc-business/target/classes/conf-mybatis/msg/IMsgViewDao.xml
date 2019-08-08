@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cmwa.ecc.business.dao.msg.IMsgViewDao">
+
+	<resultMap id="MsgViewVo" type="MsgViewVo">
+		<result property="id" column="id" />
+		<result property="msgConfId" column="msg_Conf_Id" />
+		<result property="empId" column="emp_Id" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="stat" column="stat" />
+		<result property="createId" column="create_Id" />
+		<result property="createDate" column="create_Date" />
+		<result property="viewerId" column="viewer_Id" />
+		<result property="viewDate" column="view_Date" />
+		<result property="targetId1" column="target_Id1" />
+		<result property="targetId2" column="target_Id2" />
+		<result property="targetId3" column="target_Id3" />
+		<result property="targetId4" column="target_Id4" />
+		<result property="sourceId" column="source_Id" />
+		<result property="standardDate" column="standard_Date" />
+		<result property="flag" column="flag" />
+		
+	</resultMap>
+
+	<select id="msgViewListPage" parameterType="sparam" resultMap="MsgViewVo">
+		select * from T_ECC_MSG_KM msg where emp_id = #{sp.empId}
+		<if test="sp.title != null and sp.title !='' ">
+			and msg.title like '%'||#{sp.title}||'%'
+		</if>
+		<if test="sp.theDate != null and sp.theDate !='' ">
+			and to_char(msg.create_date,'YYYY-MM-DD') = #{sp.theDate}
+		</if>
+		<if test="sp.stat != null and sp.stat !='' ">
+			and msg.stat = #{sp.stat}
+		</if>
+		<if test="sp.flag != null and sp.flag !='' ">
+			and msg.flag = #{sp.flag}
+		</if>
+		order by msg.create_Date desc
+	</select>
+	
+	<select id="newestListPage" resultMap="MsgViewVo">
+		select msg.id,
+	       msg.emp_id,
+	       msg.title,
+	       msg.content,
+	       msg.stat,
+	       msg.create_id,
+	       to_char(msg.create_date,'mm-dd hh24:mi:ss') as create_date,
+	       msg.viewer_id,
+	       msg.view_date,
+	       msg.standard_date,
+	       msg.flag
+	  	from T_ECC_MSG_KM msg
+		where emp_id = #{sp.empId} 
+		and msg.stat = 'INIT' order by msg.create_Date desc
+	</select>
+	
+	<select id="unreadMsgCount" resultType="Integer">
+		select count(*)
+	  	from T_ECC_MSG_KM msg
+		where emp_id = #{empId} 
+		and msg.stat = 'INIT' order by msg.create_Date desc
+	</select>
+	
+	<select id="flagListPage" resultMap="MsgViewVo">
+		select msg.id,
+	       msg.emp_id,
+	       msg.title,
+	       msg.content,
+	       msg.stat,
+	       msg.create_id,
+	       to_char(msg.create_date,'mm-dd hh24:mi:ss') as create_date,
+	       msg.viewer_id,
+	       msg.view_date,
+	       msg.standard_date,
+	       msg.flag
+	  	from T_ECC_MSG_KM msg
+		where emp_id = #{sp.empId} 
+		and msg.flag = '1' order by msg.create_Date desc
+	</select>
+	
+	<update id="updateForView">
+		update T_ECC_MSG_KM t set stat = 'VIEWED', viewer_id = t.emp_id, view_date = sysdate where t.id = #{msgId} and t.stat = 'INIT'
+	</update> 
+	
+	<update id="updateForFlag">
+		update T_ECC_MSG_KM t set flag = #{flag} WHERE t.id = #{msgId}
+	</update> 
+	
+	<delete id="deleteMsg">
+		delete from T_ECC_MSG_KM where id = #{msgId}
+	</delete>
+	
+	<delete id="batchDeleteMsg" parameterType = "java.util.List">
+		delete from T_ECC_MSG_KM where id in
+		<foreach collection="msgIdList" item="msgId" index="index"  open="(" close=")" separator="," >
+			 #{msgId}
+		</foreach>
+	</delete>
+	
+	<insert id="addMsg" parameterType="MsgViewVo">
+		insert into T_ECC_MSG_KM
+		  (id,
+		   msg_conf_id,
+		   emp_id,
+		   title,
+		   content,
+		   stat,
+		   create_id,
+		   create_date,
+		   viewer_id,
+		   view_date,
+		   target_id1,
+		   target_id2,
+		   target_id3,
+		   target_id4,
+		   source_id,
+		   standard_date,
+		   flag)
+		values
+		  ((SELECT ECC_GET_KMSEQ_SEQNO(TO_CHAR(SYSDATE,'YYYYMMDDHH24')) as id from dual),
+		   #{msg.msgConfId},
+		   #{msg.empId},
+		   #{msg.title},
+		   #{msg.content},
+		   #{msg.stat},
+		   #{msg.createId},
+		   SYSDATE,
+		   #{msg.viewerId},
+		   to_date(#{msg.viewDate},'YYYY-MM-DD HH24:mi:SS'),
+		   #{msg.targetId1},
+		   #{msg.targetId2},
+		   #{msg.targetId3},
+		   #{msg.targetId4},
+		   #{msg.sourceId},
+		   to_date(#{msg.standardDate},'YYYY-MM-DD'),
+		   #{msg.flag})
+	</insert>
+	
+	<insert id="batchAddMsg" parameterType = "java.util.List">
+		<foreach collection="msgList" item="item" index="index" open="begin"
+			close=";end;" separator=";">
+			insert into T_ECC_MSG_KM
+			  (id,
+			   msg_conf_id,
+			   emp_id,
+			   title,
+			   content,
+			   stat,
+			   create_id,
+			   create_date,
+			   viewer_id,
+			   view_date,
+			   target_id1,
+			   target_id2,
+			   target_id3,
+			   target_id4,
+			   source_id,
+			   standard_date,
+			   flag)
+			values
+			  ((SELECT ECC_GET_KMSEQ_SEQNO(TO_CHAR(SYSDATE,'YYYYMMDDHH24')) as id from dual)),
+			   #{item.msgConfId},
+			   #{item.empId},
+			   #{item.title},
+			   #{item.content},
+			   #{item.stat},
+			   SYSDATE,
+			   SYSDATE,
+			   #{item.viewerId},
+			   to_date(#{item.viewDate},'YYYY-MM-DD HH24:mi:SS'),
+			   #{item.targetId1},
+			   #{item.targetId2},
+			   #{item.targetId3},
+			   #{item.targetId4},
+			   #{item.sourceId},
+			   to_date(#{item.standardDate},'YYYY-MM-DD'),
+			   #{item.flag})
+		</foreach>
+	</insert>
+	
+</mapper>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.activity.ShareInfoDao">
+
+	<resultMap id="ShareInfoMap" type="com.cmwa.ec.weixin.dto.ShareInfoDto">
+		<result property="shareId" column="SHARE_ID"/>
+		<result property="activityId" column="ACTIVITY_ID"/>
+		<result property="nickName" column="NICK_NAME"/>
+		<result property="fromNickName" column= "FROM_NICK_NAME"/>
+		<result property="createdDate" column="CREATED_DATE"/>
+	</resultMap>
+	
+	<select id="queryUserRelation" parameterType="string" resultType="map">
+	     select case t.from_openid
+              when #{openId} then
+               1
+              else
+               0
+            end as "type",
+            t.from_openid "from_openid",
+            t.openid "openid",
+            to_char(t.created_date,'yyyy-MM-dd HH24:mi:ss') "created_date"
+       from cmwa_wx_act_share_info t
+      where t.from_openid = #{openId}
+         or t.openid = #{openId}
+	</select>
+	
+	<select id="querUserRelationLimit" parameterType="string" resultType="map">
+		<![CDATA[
+		select t1.type as "type",t1.from_openid as "from_openid",t1.openid as "openid" from (select case t.from_openid
+              when #{openId} then
+               1
+              else
+               0
+            end as type,
+            t.from_openid,
+            t.openid,
+            rownum rw
+       from cmwa_wx_act_share_info t
+      where t.from_openid = #{openId}
+         or t.openid = #{openId} order by t.created_date desc) t1 where t1.rw <10]]>;
+	</select>	
+	
+	<select id="queryShareInfoList" parameterType="java.util.Map" resultMap="ShareInfoMap">
+		SELECT 
+     		B.share_id,B.activity_id,
+     		(select nickname from cmwa_wx_user_info where openid = B.from_openid) as FROM_NICK_NAME,(select nickname from cmwa_wx_user_info where openid = B.openid) as NICK_NAME,B.created_date
+		FROM  
+		  (  
+		  SELECT A.*, ROWNUM RN  
+		  FROM (
+		       select 
+		              *
+		       from 
+		              cmwa_wx_act_share_info
+		       where
+		       	<choose>
+	                <when test="map.type == 0">
+	                    from_openid = #{map.openId}
+	                </when>
+	                <otherwise>
+	                    openid = #{map.openId}
+	                </otherwise>
+            	</choose>
+		       and
+		              activity_id = #{map.activityId}
+		       ORDER BY CREATED_DATE DESC
+		       ) A
+		       WHERE #{map.endNumber} >= ROWNUM
+		  )B
+		WHERE RN >= #{map.startNumbern}
+	</select>	
+	
+</mapper>

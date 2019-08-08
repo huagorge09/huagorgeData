@@ -1,0 +1,43 @@
+<table class="table table-bordered" width="100%">
+	<tr>
+		<td align=center width=5% style="background-color:orange;">序号</td>
+		<td align=center  style="background-color:orange;">子产品简称</td>
+		<td align=center width=7% style="background-color:orange;">基金代码</td>
+		<td align=center width=10% style="background-color:orange;">子产品成立日</td>
+		<td align=center width=10% style="background-color:orange;">子产品到期日</td>
+		<td align=center width=7% style="background-color:orange;">子产品过程状态</td>
+		<td align=center width=7% style="background-color:orange;">费用/收益类型</td>
+		<td align=center width=7% style="background-color:orange;">费用/收益名称</td>
+		<td align=center width=7% style="background-color:orange;">费率/业绩比较基准类型</td>
+		<td align=center width=7% style="background-color:orange;">费率/业绩比较基准(%)</td>
+		<td align=center width=7% style="background-color:orange;">费用/收益总金额</td>
+		<td align=center width=7% style="background-color:orange;">PO数据状态</td>
+		<td align=center width=7% style="background-color:orange;">FA数据状态</td>
+		<td align=center width=7% style="background-color:orange;">操作类型</td>
+	</tr>
+	#if ($subProductFeeVoList.size() > 0)
+		#foreach($subProductFeeVo in $subProductFeeVoList)
+			<tr>
+				<td align=center>$!{velocityCount}</td>
+				<td align=center>$!subProductFeeVo.subFundSName</td>
+				<td align=center>$!subProductFeeVo.fundCode</td>
+				<td align=center>$!subProductFeeVo.expectedIntBegDate</td>
+				<td align=center>$!subProductFeeVo.expectedEndDate</td>
+				<td align=center>$!subProductFeeVo.subPrdPrcStatusName</td>
+				<td align=center>$!subProductFeeVo.feeCodeName</td>
+				<td align=center>$!subProductFeeVo.feeName</td>
+				<td align=center>$!subProductFeeVo.feeTypeName</td>
+				<td align=center>$!subProductFeeVo.feeRate</td>
+				<td align=center>$!subProductFeeVo.feeAmount</td>
+				<td align=center>$!subProductFeeVo.poCheckSatName</td>
+				<td align=center>$!subProductFeeVo.faCheckSatName</td>
+				<td align=center>$!subProductFeeVo.operTypeName</td>
+			</tr>
+		#end
+    #else
+        <tr>
+        	<td align=center colspan="13">无复核数据!</td>
+        </tr>
+    #end
+	　
+</table>

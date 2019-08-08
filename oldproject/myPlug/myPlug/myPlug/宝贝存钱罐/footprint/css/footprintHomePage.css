@@ -1,0 +1,91 @@
+.contain{
+    padding-top: 0;
+}
+/*广告*/
+.guangGao{
+    line-height: 0.7rem;
+    font-size: 0.26rem;
+    color: #333;
+    padding: 0 0.3rem;
+    background-color: #ffe370;
+    display: -webkit-flex;
+    display: flex;
+}
+.guangGao .text{
+    display: block;
+    -webkit-flex: 1;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.guangGao .goTo{
+    display: block;
+    margin-left: 0.8rem;
+    color: #333;
+}
+/*主页信息*/
+.home{
+    margin-bottom: 0.2rem;
+    padding: 0.65rem 0.3rem 0.35rem 0.5rem;
+    background-color: #ffda44;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.home .head{
+    margin-right: 0.2rem;
+}
+.home .head img{
+    border: solid 0.03rem #fff;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+}
+.home .info{
+    padding-right: 0.5rem;
+}
+.home .info .name{
+    font-size: 0.3rem;
+    color: #333;
+    line-height: 0.4rem;
+}
+.home .info .dengJi{
+    font-size: 0.22rem;
+    color: #333;
+    line-height: 0.48rem;
+    padding-left: 0.57rem;
+    background: url("../image/icon/footprintHomePage/dengJi.png") no-repeat left;
+    background-size: 0.44rem 0.23rem;
+}
+.home .songList{
+     -webkit-flex: 1;
+     flex: 1;
+ }
+.songList{
+    position: relative;
+}
+.songList .item{
+    padding: 0.05rem 0;
+    line-height: 0.35rem;
+    text-align: center;
+    font-size: 0.24rem;
+    color: #333;
+}
+.songList:before{
+    position: absolute;
+    content: "";
+    display: block;
+    width: 1px;
+    height: 0.4rem;
+    background-color: #333;
+    left: 0;
+    top:50%;
+    margin-top: -0.2rem;
+}
+.songList .item .name{
+    display: inline-block;
+    width: 1rem;
+    text-align: left;
+}

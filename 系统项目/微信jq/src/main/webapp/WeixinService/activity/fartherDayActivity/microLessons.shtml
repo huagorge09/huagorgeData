@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>微课堂</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/microLessons.css">
+</head>
+<body>
+    <div class="news">
+        <a href="http://e.eqxiu.com/s/3T8XBxGS?eqrcode=1&from=singlemessage&isappinstalled=0">
+            <img src="/WeixinWeb/WeixinWeb_Images/activity/microLessons_1.png" />
+            <h2>深证监微课堂：<br>审慎投资私募基金 谨防“飞单”风险</h2>
+        </a>
+    </div>
+    <div class="news">
+        <a href="http://viewer.maka.im/pcviewer/NZXJN1VU?DSCKID=32f88aa9-e98a-4410-a1a9-3e89daabb262&DSTIMESTAMP=1467630153564">
+            <img src="/WeixinWeb/WeixinWeb_Images/activity/microLessons_2.png" />
+            <h2>定增不能不说的秘密（上）</h2>
+        </a>
+    </div>
+    <div class="news">
+        <a href="http://viewer.maka.im/pcviewer/CE6GB5FZ?DSCKID=20b5f14f-6867-4c87-acde-39c380de71ea&DSTIMESTAMP=1467624693153">
+            <img src="/WeixinWeb/WeixinWeb_Images/activity/microLessons_3.jpg" />
+            <h2>定增不得不说的秘密（中）</h2>
+        </a>
+    </div>
+    <div class="news">
+        <a href="/WeixinService/business/special/microLessonsRedirect.shtml">
+            <img src="/WeixinWeb/WeixinWeb_Images/activity/microLessons_4.jpg" />
+            <h2>定增不得不说的秘密（下）</h2>
+        </a>
+    </div>
+</body>
+</html>

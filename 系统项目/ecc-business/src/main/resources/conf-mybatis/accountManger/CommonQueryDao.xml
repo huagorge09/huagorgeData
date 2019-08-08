@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.accountManger.CommonQueryDao">
+	
+	<!-- 备案客户资料信息 -->
+	<resultMap id="bakCustMap" type="com.cmwa.ecc.business.entity.accountManger.BakCustDto">
+		<result property="custno" column="UCCUSTNO"/>
+		<result property="invnm" column="UCCUSTNAME"/>
+		<result property="rcdcustrole" column="UCCUSTROLE"/>
+		<result property="status" column="STATUS"/>
+		<result property="idtp" column="IDTP"/>
+		<result property="idno" column="IDNO"/>
+		<result property="idvalidate" column="IDVALIDDATE"/>
+		<result property="tel" column="TELNO"/>
+		<result property="mobile" column="MOBILENO"/>
+		<result property="postcode" column="POSTCODE"/>
+		<result property="addr" column="ADDR"/>
+		<result property="instrepnm" column="INSTREPRNAME"/>
+		<result property="instrepidtp" column="INSTREPRIDTP"/>
+		<result property="instrepidno" column="INSTREPRIDNO"/>
+		<result property="instrepnation" column="INSTREPRNATION"/>
+		<result property="instrepvalidate" column="INSTREPDATE"/>
+		<result property="principalname" column="PRINCIPALNAME"/>
+		<result property="principalnation" column="PRINCIPALNATION"/>
+		<result property="principalidtp" column="PRINCIPALTYPE"/>
+		<result property="principalidno" column="PRINCIPALNO"/>
+		<result property="principalvalidt" column="PRINCIPALVALIDATE"/>
+		<result property="contactgrant" column="BROKERPRIV"/>
+		<result property="contact" column="BROKERNAME"/>
+		<result property="contactnation" column="BROKERNATION"/>
+		<result property="contidtp" column="BROKERIDTP"/>
+		<result property="contidno" column="BROKERIDNO"/>
+		<result property="contvalidate" column="BROKERVALIDDATE"/>
+		<result property="contphone" column="BROKEROFFICETEL"/>
+		<result property="contfax" column="BROKERFAX"/>
+		<result property="contmobile" column="BROKERMOBILE"/>
+		<result property="contemail" column="BROKEREMAIL"/>
+		<result property="contAddr" column="BROKERADDR"/>
+		<result property="contPostcode" column="BROKERPOSTCODE"/>
+		<result property="riskLevel" column="RISKLEVEL"/>
+		<result property="operatorId" column="OPID" />
+	</resultMap>
+	
+	<!-- 经办人信息 -->
+	<resultMap id="contactInfoMap" type="com.cmwa.ecc.business.entity.accountManger.ContactInfoDto">
+		<result property="contactgrant" column="BROKERPRIV"/>
+		<result property="contact" column="BROKERNAME"/>
+		<result property="contactnation" column="BROKERNATION"/>
+		<result property="contidtp" column="BROKERIDTP"/>
+		<result property="contidno" column="BROKERIDNO"/>
+		<result property="contvalidate" column="BROKERVALIDDATE"/>
+		<result property="contphone" column="BROKEROFFICETEL"/>
+		<result property="contfax" column="BROKERFAX"/>
+		<result property="contmobile" column="BROKERMOBILE"/>
+		<result property="contemail" column="BROKEREMAIL"/>
+		<result property="contactflag" column="MAINBROKERFLAG"/>
+		<result property="contAddr" column="BROKERADDR"/>
+		<result property="contPostcode" column="BROKERPOSTCODE"/>
+		<result property="idtp" column="OTHERIDTP"/>
+		<result property="idno" column="OTHERIDNO"/>
+		<result property="idvalidate" column="OTHERIDVALIDDT"/>
+		<result property="infoflag" column="INFOFLAG"/>
+		<result property="mainbrokerflag" column="MAINBROKERFLAG"/>
+		
+	</resultMap>
+	
+	<!-- 客户资料信息/及扩展信息 -->
+	<resultMap id="custInfoMap" type="com.cmwa.ecc.business.entity.accountManger.OpenAccountDto">
+		<result property="custno" column="CUSTNO"/>
+		<result property="invnm" column="INVNM"/>
+		<result property="idtp" column="IDTP"/>
+		<result property="idtpnm" column="IDTPNM"/>
+		<result property="idno" column="IDNO"/>
+		<result property="invtp" column="INVTP"/>
+		<result property="bnkNo" column="BANKNO"/>
+		<result property="openName" column="BANKLONGNAME"/>
+		<result property="openAddr" column="BANKADDR"/>
+		<result property="openBankCity" column="BANKADDRCITY"/>
+		<result property="bankAccoNm" column="BANKACNM"/>
+		<result property="bankAcco" column="BANKACCO"/>
+		<result property="mobile" column="MOBILENO"/>
+		<result property="email" column="EMAIL"/>
+		<result property="custrisklevl" column="RISKLEVEL"/>
+		<result property="specriskLevel" column="SPECRISKLEVEL"/>
+		<result property="amlrisktype" column="AMLRISKTYPE"/>
+		<result property="fxqremark" column="AMLRISKNOTE"/>
+		<result property="acctabbr" column="CUSTABBRCODE"/>
+		<result property="instrepcode" column="CUSTINSTREPRCODE"/>
+		<result property="businesstp" column="BUSINESSTP"/>
+		<result property="industryType" column="COMPANYTP"/>
+		<result property="regiontp" column="REGIONCODE"/>
+		<result property="invprtp" column="INVPRTP"/>
+		<result property="taxType" column="TAXTYPE"/>
+		<result property="taxTypeDecl" column="TAXTYPEDECL"/>
+		<result property="investProInstType" column="INVESTPROINSTTYPE"/>
+		<result property="investProInstSecond" column="INVESTPROINSTSECOND"/>
+		<result property="oneYearEndNetAsset" column="ONEYEARENDNETASSET"/>
+		<result property="oneYearEndFinAsset" column="ONEYEARENDFINASSET"/>
+		<result property="investExperience" column="INVESTEXPERIENCE"/>
+		<result property="negativeNotFinaInst" column="NEGATIVENOTFINAINST"/>
+		<result property="controlPerTaxDecl" column="CONTROLPERTAXDECL"/>
+		<result property="threeAnnualIncome" column="THREEANNUALINCOME"/>
+		<result property="financialAsset" column="FINANCIALASSET"/>
+		<result property="indInvExperience" column="INDINVEXPERIENCE"/>
+		<result property="relatedWorkExp" column="RELATEDWORKEXP"/>
+		<result property="finProfessions" column="FINPROFESSIONS"/>
+		<result property="tel" column="OFFICETEL"/>
+		<result property="housetel" column="HOMETEL"/>
+		<result property="fax" column="FAXNO"/>
+		<result property="faxdelegate" column="FAXTRUST"/>
+		<result property="postcode" column="POSTCODE"/>
+		<result property="addr" column="ADDR"/>
+		<result property="idvalidate" column="IDNOLIMIT"/>
+		<result property="sex" column="SEX"/>
+		<result property="nationalitycode" column="NATION"/>
+		<result property="edlevel" column="EDLEVEL"/>
+		<result property="voccode" column="VOCCODE"/>
+		<result property="income" column="INCOME"/>
+		<result property="instrepnm" column="INSTREPRNAME"/>
+		<result property="instrepnation" column="INSTREPRNATION"/>
+		<result property="instrepidtp" column="INSTREPRIDTP"/>
+		<result property="instrepidno" column="INSTREPRIDNO"/>
+		<result property="instrepvalidate" column="INSTREPDATE"/>
+		<result property="principalname" column="PRINCIPALNAME"/>
+		<result property="principalnation" column="PRINCIPALNATION"/>
+		<result property="principalidtp" column="PRINCIPALTYPE"/>
+		<result property="principalidno" column="PRINCIPALNO"/>
+		<result property="principalvalidt" column="PRINCIPALVALIDATE"/>
+		<result property="holdingname" column="HOLDINGNAME"/>
+		<result property="holdingidtp" column="HOLDINGIDTYPE"/>
+		<result property="holdingidno" column="HOLDINGIDNO"/>
+		<result property="holdingvalidate" column="HOLDINGIDVALIDATE"/>
+		<result property="beneficiary" column="BENEFICIARY"/>
+		<result property="shsecacc" column="SHSECACC"/>
+		<result property="szsecacc" column="SZSECACC"/>
+		<result property="contactgrant" column="BROKERPRIV"/>
+		<result property="contact" column="BROKERNAME"/>
+		<result property="contactnation" column="BROKERNATION"/>
+		<result property="contidtp" column="BROKERIDTP"/>
+		<result property="contidno" column="BROKERIDNO"/>
+		<result property="contvalidate" column="BROKERVALIDDATE"/>
+		<result property="contphone" column="BROKEROFFICETEL"/>
+		<result property="contfax" column="BROKERFAX"/>
+		<result property="contmobile" column="BROKERMOBILE"/>
+		<result property="contemail" column="BROKEREMAIL"/>
+		<result property="contAddr" column="BROKERADDR"/>
+		<result property="contPostcode" column="BROKERPOSTCODE"/>
+		<result property="ifalldocument" column="ISFULL"/>
+		<result property="ifsaved" column="FILED"/>
+		<result property="ifOriginal" column="ORIGINAL"/>
+		<result property="isupload" column="ATTACH"/>
+		<result property="isscan" column="ISSCAN"/>
+		<result property="keepaddress" column="KEEPADDRESS"/>
+		<result property="salesaccmanager" column="SALESACCMANAGER"/>
+		<result property="remarkinfo" column="REMARK"/>
+		<result property="docbusinesstp" column="APTYPE"/>
+		<result property="custdocument" column="CUSTINFOID"/>
+		<result property="existsflag" column="EXISTSFLAG"/>
+		<result property="businesstp" column="BUSINESSTP"/>
+		<result property="organType" column="INSTTYPE"/>
+	</resultMap>
+	
+	<!-- 线下一对一 客户资料信息 -->
+	<resultMap id="cbpOffLineOTOInvestMap" type="com.cmwa.ecc.business.entity.accountManger.CbpOffLineOTOInvestDto">
+		<result property="offInvSerialno" column="OFFINVSERIALNO"/>
+		<result property="offInvName" column="OFFINVNAME"/>
+		<result property="offInvType" column="OFFINVTYPE"/>
+		<result property="offInvIdtp" column="OFFINVIDTP"/>
+		<result property="offInvIdno" column="OFFINVIDNO"/>
+		<result property="offCounterIdNo" column="OFFCOUNTERIDNO"/>
+	</resultMap>
+	
+	<!-- 基金份额信息实体类 -->
+	<resultMap id="fundBalanceMap" type="com.cmwa.ecc.business.entity.accountManger.FundBalanceDto">
+		<result property="fundacct" column="FUNDACCT"/>
+		<result property="invnm" column="INVNM"/>
+		<result property="custtp" column="CUSTTP"/>
+		<result property="tradeacco" column="TRADEACCO"/>
+		<result property="bankno" column="BANKNO"/>
+		<result property="bankacco" column="BANKACCO"/>
+		<result property="bankacnm" column="BANKACNM"/>
+		<result property="fundid" column="FUNDID"/>
+		<result property="fundnm" column="FUNDNM"/>
+		<result property="balance" column="BALANCE"/>
+		<result property="available" column="AVAILABLE"/>
+		<result property="frozen" column="FROZEN"/>
+		<result property="hfrozen" column="HFROZEN"/>
+		<result property="abnmfrozen" column="ABNMFROZEN"/>
+		<result property="nav" column="NAV"/>
+	</resultMap>
+	
+	<!-- 交易账号实体类 -->
+	<resultMap id="tradeInfoMap" type="com.cmwa.ecc.business.entity.accountManger.TradeAccDto">
+		<result property="tradeAcco" column="TRADEACCO"/>
+		<result property="bankNo" column="BANKNO"/>
+		<result property="bankAcNm" column="BANKACNM"/>
+		<result property="bankAcco" column="BANKACCO"/>
+		<result property="openAddr" column="BANKADDR"/>
+		<result property="openBankCity" column="BANKADDRCITY"/>
+		<result property="openName" column="BANKLONGNAME"/>
+		<result property="tano" column="TANO"/>
+		<result property="fundAcco" column="FUNDACCT"/>
+	</resultMap>
+	
+	<!-- 基金账号实体类 -->
+	<resultMap id="fundInfoMap" type="com.cmwa.ecc.business.entity.accountManger.FundAcctDto">
+		<result property="fundacco" column="FUNDACCT"/>
+		<result property="tano" column="TANO"/>
+	</resultMap>
+	
+	<!-- 客户税收居民信息 -->
+	<resultMap id="userTaxInfoMap" type="com.cmwa.ecc.business.entity.accountManger.UserTaxInfoDto">
+		<result property="custNo" column="CUSTNO"/>
+		<result property="cmfUserId" column="CMFUSERID"/>
+		<result property="taxNationality" column="TAX_NATIONALITY"/>
+		<result property="taxArea" column="TAX_AREA"/>
+		<result property="taxPayerCode" column="TAX_PAYERCODE"/>
+		<result property="taxNotCodeCause" column="TAX_NOTCODECAUSE"/>
+		<result property="taxnotGetCause" column="TAX_NOTGETCAUSE"/>
+		<result property="sortNo" column="SORT_NO"/>
+		<result property="insertTime" column="INSERTTIME"/>
+		<result property="updateTime" column="UPDATETIME"/>
+		<result property="taxBirthNation" column="BIRTH_NATION"/>
+		<result property="taxBirthRegion" column="BIRTH_REGION"/>
+		<result property="taxBirthAddress" column="BIRTH_ADDRESS"/>
+		<result property="taxResideNation" column="RESIDE_NATION"/>
+		<result property="taxResideRegion" column="RESIDE_REGION"/>
+		<result property="taxResideAddress" column="RESIDE_ADDRESS"/>
+		<result property="taxResideAddressEnglish" column="RESIDE_ADDRESS_ENGLISH"/>
+		<result property="firstName" column="ENGLISH_SURNAME"/>
+		<result property="englishName" column="ENGLISH_NAME"/>
+		<result property="chineseName2" column="CHINESENAME2"/>
+		<result property="englishFamliyName3" column="ENGLISHFAMLIYNAME3"/>
+		<result property="englishFirstName3" column="ENGLISHFIRSTNAME3"/>
+		<result property="controllerType" column="CONTROLLERTYPE"/>
+		<result property="conNonResiFlag" column="CONNONRESIFLAG"/>
+		<result property="conShareRatio" column="CONSHARERATIO"/>
+		<result property="livingCountry2" column="LIVINGCOUNTRY2"/>
+		<result property="livingAddress5" column="LIVINGADDRESS5"/>
+		<result property="livingAddress7" column="LIVINGADDRESS7"/>
+		<result property="birthDate2" column="BIRTHDATE2"/>
+		<result property="birthCountry2" column="BIRTHCOUNTRY2"/>
+		<result property="birthCity2" column="BIRTHCITY2"/>
+		<result property="taxCountry2" column="TAXCOUNTRY2"/>
+		<result property="taxCountry2Code" column="TAXCOUNTRY2CODE"/>
+		<result property="taxID2" column="TAXID2"/>
+		<result property="specification2" column="SPECIFICATION2"/>
+		<result property="specificationCode" column="SPECIFICATIONCODE"/>
+		<result property="livingCountry2Code" column="LIVINGCOUNTRY2CODE"/>
+		<result property="regRegionCode2" column="REGREGIONCODE2"/>
+		<result property="regRegionCode2Code" column="REGREGIONCODE2CODE"/>
+		<result property="birthCountry2Code" column="BIRTHCOUNTRY2CODE"/>
+		<result property="sex" column="SEX"/>
+		<result property="birthDate" column="BIRTHDATE"/>
+	</resultMap>
+	
+	<!-- 查询最大的文件编号 -->
+	<select id="getMaxFileNo" resultType="java.lang.String">
+		SELECT 'NO.' ||
+		       NVL((SELECT REPLACE(LPAD((MAX(SUBSTR(T.FILENO, 4, 5)) + 1), 5),
+		                          ' ',
+		                          '0')
+		             FROM DS_CUSTINFODATA T),
+		           (SELECT SUBSTR(T.PMCO, 4, 5)
+		              FROM PARAMETER T
+		             WHERE T.PMST = 'SYSTEM'
+		               AND T.PMKY = 'FILENO'
+		               AND T.PMCO != '******'))
+		  FROM DUAL
+	</select>
+	
+	<!-- 查询开户文件编号 -->
+	<select id="getOpenFileNo" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT D.FILENO
+		  FROM APPFDACBLOTTER A, DS_CUSTINFODATA D
+		 WHERE A.SERIALNO = D.APPSERIALNO
+		   AND A.APKIND = '001'
+		   AND A.CUSTNO = #{custno}
+		 GROUP BY D.FILENO
+	</select>
+	
+	<!-- 查询开户文件编号 -->
+	<select id="getCustFileInfo" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT SUBSTRB(T.FILENO, 1, 8) || '改' ||
+		       (CASE
+		          WHEN SUBSTRB(T.FILENO, 10, 12) IS NULL THEN
+		           '1'
+		          ELSE
+		           TO_CHAR(SUBSTRB(T.FILENO, 10, 12) + 1)
+		        END) AS FILENO
+		  FROM DS_CUSTINFODATA T
+		 WHERE SUBSTRB(T.KEEPADDRESS, 2, 5) =
+		       (SELECT MAX(SUBSTRB(KEEPADDRESS, 2, 5))
+		          FROM DS_CUSTINFODATA
+		         WHERE CUSTNO = #{custno})
+		   AND T.FILENO =
+		       (SELECT MAX(FILENO) FROM DS_CUSTINFODATA WHERE CUSTNO = #{custno})
+		   AND ROWNUM = 1
+		   AND T.CUSTNO = #{custno}
+	</select>
+	
+	<!-- 查询最大的文件编号 -->
+	<select id="getMaxKeepAddress" resultType="java.lang.String">
+		SELECT MAX(KEEPADDRESS) || ',' || COUNT(*) AS COUNTROW
+		  FROM (SELECT KEEPADDRESS, CUSTNO
+		          FROM DS_CUSTINFODATA
+		         WHERE KEEPADDRESS =
+		               (SELECT KEEPADDRESS
+		                  FROM DS_CUSTINFODATA
+		                 WHERE SUBSTRB(FILENO, 1, 8) =
+		                       (SELECT MAX(SUBSTRB(FILENO, 1, 8)) FROM DS_CUSTINFODATA)
+		                   AND ROWNUM = 1)
+		         GROUP BY CUSTNO, KEEPADDRESS)
+	</select>
+	
+	<!-- 查询最大的文件编号 -->
+	<select id="getFileNo" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM DS_CUSTINFODATA T WHERE FILENO = #{fileNo}
+	</select>
+	
+	<!-- 备案客户信息查询 -->
+	<select id="queryBakCust" parameterType="sparam" statementType="CALLABLE">
+        { CALL DS_OQP_UCCUSTINFO(
+				#{sp.custno,jdbcType=VARCHAR,mode=IN},
+				#{sp.role,jdbcType=VARCHAR,mode=IN},
+	    		#{sp.errcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.errmsg,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.bakCustList,resultMap=bakCustMap,jdbcType=CURSOR,mode=OUT},
+	    		#{sp.contactList,resultMap=contactInfoMap,jdbcType=CURSOR,mode=OUT}
+			)
+		}
+	</select>
+	
+	<!-- 开户信息查询 -->
+	<select id="queryAccoByfundAcc" parameterType="sparam" statementType="CALLABLE">
+        { CALL DS_OQP_OPEN(
+				#{sp.fundAcc,jdbcType=VARCHAR,mode=IN},
+				#{sp.tradeAcc,jdbcType=VARCHAR,mode=IN},
+				#{sp.custno,jdbcType=VARCHAR,mode=IN},
+	    		#{sp.errcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.errmsg,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.custInfo,resultMap=custInfoMap,jdbcType=CURSOR,mode=OUT},
+	    		#{sp.custInfoex,resultMap=custInfoMap,jdbcType=CURSOR,mode=OUT},
+	    		#{sp.contInfo,resultMap=contactInfoMap,jdbcType=CURSOR,mode=OUT},
+	    		#{sp.docInfo,resultMap=custInfoMap,jdbcType=CURSOR,mode=OUT}
+			)
+		}
+	</select>
+	
+	<!-- 查询综合业务平台 银行信息 -->
+	<select id="queryWaspUserBankInfo" parameterType="java.lang.String" resultMap="custInfoMap">
+		SELECT A.ACC_NAME		BANKLONGNAME,
+			   A.ACC_BANK_NAME	BANKACNM,
+			   A.ACC_CODE		BANKACCO
+		  FROM WASP.T_BANK_ACCOUNT A
+		 WHERE 1 = 1
+		   AND A.ACC_NAME LIKE '%' || #{accName} || '%'
+	</select>
+	
+	<!-- 查询客户信息 -->
+	<select id="queryOpenUserInfo" parameterType="sparam" resultMap="custInfoMap">
+		SELECT 
+			   *
+		  FROM CUSTINFO
+		 WHERE 1=1
+		   AND INVNM = #{sp.userName}
+	</select>
+	
+	<!-- 查询线下一对一 客户资料信息 -->
+	<select id="queryCbpOffLineOTOInvInfo" parameterType="sparam" resultMap="cbpOffLineOTOInvestMap">
+		SELECT MAN.ID AS OFFINVSERIALNO,
+		       MAN.MANDATOR_NAME AS OFFINVNAME,
+		       MAN.MANDATOR_TYPE AS OFFINVTYPE,
+		       MAN.MANDATOR_CODE_TYPE AS OFFINVIDTP,
+		       MAN.MANDATOR_CODE AS OFFINVIDNO,
+		       MAN.COUNTER_CODE AS OFFCOUNTERIDNO
+		  FROM SYNC_CBP_VW_MANDATOR_INFO MAN
+		 WHERE NOT EXISTS (SELECT 1
+		          FROM ECC_MANDATORBLOTTER ECM
+		         WHERE ECM.ID = MAN.ID
+		           AND ECM.APPLYST IN ('N', 'Y'))
+		<if test="sp.offInvName != null and sp.offInvName !='' ">
+		   AND MAN.MANDATOR_NAME LIKE '%' || #{sp.offInvName} || '%'
+		</if>
+		<if test="sp.offInvType == 1">
+		   AND TRIM(MAN.MANDATOR_TYPE) = '0'
+		</if>
+		<if test="sp.offInvType == 2 or sp.offInvType == 3">
+		   AND TRIM(MAN.MANDATOR_TYPE) IN ('1','2')
+		</if>
+		<if test="sp.offInvType != 1 and sp.offInvType != 2 and sp.offInvType != 3">
+		   AND 1 = 2
+		</if>
+	</select>
+		
+	<!-- 基金余额查询 -->
+	<select id="queryFundBalance" parameterType="sparam" statementType="CALLABLE">
+        { CALL OQP_FUNDBALANCE(
+				#{sp.fundacct,jdbcType=VARCHAR,mode=IN},
+				#{sp.invnm,jdbcType=VARCHAR,mode=IN},
+				#{sp.regioncode,jdbcType=VARCHAR,mode=IN},
+				#{sp.tano,jdbcType=VARCHAR,mode=IN},
+	    		#{sp.errcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.errmsg,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.fundBalanceList,resultMap=fundBalanceMap,jdbcType=CURSOR,mode=OUT}
+			)
+		}
+	</select>
+		
+	<!-- 客户信息查询 -->
+	<select id="tradeaccoQry" parameterType="sparam" statementType="CALLABLE">
+        { CALL DS_OQP_CUSTINFO(
+				#{sp.custno,jdbcType=VARCHAR,mode=IN},
+				#{sp.fundacco,jdbcType=VARCHAR,mode=IN},
+				#{sp.tradeacco,jdbcType=VARCHAR,mode=IN},
+	    		#{sp.errcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.errmsg,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.custInfoList,resultMap=custInfoMap,jdbcType=CURSOR,mode=OUT},
+	    		#{sp.custInfoexList,resultMap=custInfoMap,jdbcType=CURSOR,mode=OUT},
+	    		#{sp.fundInfoList,resultMap=fundInfoMap,jdbcType=CURSOR,mode=OUT},
+	    		#{sp.tradeInfoList,resultMap=tradeInfoMap,jdbcType=CURSOR,mode=OUT},
+	    		#{sp.contInfoList,resultMap=contactInfoMap,jdbcType=CURSOR,mode=OUT},
+	    		#{sp.categoryInfoList,resultMap=custInfoMap,jdbcType=CURSOR,mode=OUT},
+	    		#{sp.docInfoList,resultMap=custInfoMap,jdbcType=CURSOR,mode=OUT}
+			)
+		}
+	</select>
+	
+	<!-- 通过基金账号，证件号查询客户号 -->
+	<select id="getCustnoByIdnoAndFundAcco" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT CI.CUSTNO CUSTNO
+		  FROM CUSTINFO CI
+		  LEFT JOIN TRADEACCORELA TAR ON CI.CUSTNO = TAR.CUSTNO
+		 WHERE TAR.FUNDACCT = NVL(#{fundacct}, TAR.FUNDACCT)
+		   AND CI.IDNO = NVL(#{idno}, CI.IDNO)
+		   AND ROWNUM = 1
+	</select>
+		
+	<!-- 客户信息查询 -->
+	<select id="getAccountBycustNo" parameterType="sparam" statementType="CALLABLE">
+        { CALL OQP_GET_CUSTINFO(
+				#{sp.custno,jdbcType=VARCHAR,mode=IN},
+	    		#{sp.errcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.custno,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.invnm,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.idtp,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.idno,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.mobileno,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.hometel,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.faxno,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.email,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.postcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.addr,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.provicecode,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.cityname,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.birthday,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.marriage,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.voccode,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.income,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.edlevel,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.exprience,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.idnoLimit,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.sex,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.registertime,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.nation,jdbcType=VARCHAR,mode=OUT}
+			)
+		}
+	</select>
+	
+	<!-- 通过客户号查询基金账号 -->
+	<select id="getFundAccount" parameterType="java.lang.String" resultType="com.cmwa.ecc.business.entity.accountManger.FundAcctDto">
+		SELECT F.FUNDACCT	fundacco,
+	           F.TANO		tano
+	      FROM FUNDACCOINFO F
+	     WHERE F.CUSTNO = #{custno}
+	       AND F.FDACST = 'N'
+	</select>
+	
+	<!-- 查询Ta类型信息 -->
+	<select id="queryTaInfo" parameterType="java.lang.String" resultType="com.cmwa.ecc.business.entity.accountManger.TaInfoDto">
+		SELECT TANO	tano,
+			   TANM tanm
+		  FROM TAINFO
+		 WHERE 1 = 1
+		 <if test="tano != null and tano !='' ">
+		   AND TANO = #{tano}
+		</if>
+	</select>
+	
+	<!-- 客户信息查询 -->
+	<select id="accountModifyQuery" parameterType="sparam" statementType="CALLABLE">
+        { CALL DS_OQP_CUST_INVTP(
+				#{sp.fundAcco,jdbcType=VARCHAR,mode=IN},
+	    		#{sp.custType,jdbcType=VARCHAR,mode=IN},
+	    		#{sp.option,jdbcType=VARCHAR,mode=IN},
+	    		#{sp.custsimpnm,jdbcType=VARCHAR,mode=IN},
+	    		#{sp.instrepcode,jdbcType=VARCHAR,mode=IN},
+	    		#{sp.errcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.errmsg,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.custInfoList,resultMap=custInfoMap,jdbcType=CURSOR,mode=OUT}
+			)
+		}
+	</select>
+	
+	
+	<!-- 查询税收居民信息 -->
+	<select id="queryUserTaxInfoByList" parameterType="java.lang.String" resultMap="userTaxInfoMap">
+		SELECT CUSTNO,
+		       CMFUSERID,
+		       TAX_NATIONALITY,
+		       TAX_AREA,
+		       TAX_PAYERCODE,
+		       TAX_NOTCODECAUSE,
+		       TAX_NOTGETCAUSE,
+		       SORT_NO,
+		       BIRTH_NATION,
+		       BIRTH_REGION,
+		       BIRTH_ADDRESS,
+		       RESIDE_NATION,
+		       RESIDE_REGION,
+		       RESIDE_ADDRESS,
+		       RESIDE_ADDRESS_ENGLISH,
+		       ENGLISH_SURNAME,
+		       ENGLISH_NAME,
+		       CHINESENAME2,
+		       ENGLISHFAMLIYNAME3,
+		       ENGLISHFIRSTNAME3,
+		       CONTROLLERTYPE,
+		       CONNONRESIFLAG,
+		       TO_CHAR(CONSHARERATIO,'FM9,999,999,999,999,990.00') CONSHARERATIO,
+		       LIVINGCOUNTRY2,
+		       LIVINGADDRESS5,
+		       LIVINGADDRESS7,
+		       BIRTHDATE2,
+		       BIRTHCOUNTRY2,
+		       BIRTHCITY2,
+		       TAXCOUNTRY2,
+		       TAXID2,
+		       SPECIFICATION2,
+		       LIVINGCOUNTRY2CODE,
+		       REGREGIONCODE2CODE,
+		       REGREGIONCODE2,
+		       BIRTHCOUNTRY2CODE,
+		       SEX,
+		       BIRTHDATE,
+		       TAXCOUNTRY2CODE,
+		       SPECIFICATIONCODE
+		  FROM CUST_TAX_RESIDENT_INFO T
+		 WHERE 1 = 1
+		   AND CUSTNO = #{custno}
+		 ORDER BY SORT_NO ASC
+	</select>
+	
+</mapper>

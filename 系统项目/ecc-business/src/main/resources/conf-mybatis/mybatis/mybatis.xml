@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<settings>
+        <setting name="logImpl" value="LOG4J"/>
+        <setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	<!-- 配置扫描如下目录下的entity中@Alias注解 -->
+	<typeAliases>
+		<package name="com.cmwa.ecc.business"/>
+	</typeAliases>
+	
+	<plugins>
+		<plugin interceptor="com.cmwa.ecc.business.interceptor.paging.PageInterceptor">
+			<property name="dialect" value="oracle"/>
+			<property name="pageSqlId" value=".*ListPage.*"/>
+		</plugin>
+	</plugins>
+</configuration>

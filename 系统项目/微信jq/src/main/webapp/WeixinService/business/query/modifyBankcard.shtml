@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+   	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/bannerStyle.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	
+</head>
+<body>
+
+<section class="page">
+
+    <!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->
+	
+	
+	<div style="display: none;">
+		<input type="hidden" id="serialno" value="" />
+		<input type="hidden" id="tradeAcco" value="" />
+		<input type="hidden" id="fundId" value="" />
+		<input type="hidden" id="orderType" value="" />
+		<input type="hidden" id="subamt" value="" />
+		<input type="hidden" id="moneyZero" value="" />
+	</div>
+	
+	<section>
+        <div class="registe-point">
+            <span>请选择用于支付的银行卡</span>
+        </div>
+        <div class="box-input registe box-pay-password upadatebox-pay-password">            
+            <div class="input-password line clear">
+               <label for="bank">银行卡</label>
+               <span class="bank-info bank-infoNO" id="payCardInfo" onclick="showTips('showCards')"></span>
+            </div>
+            <div class="password mid">
+                <label for="password fl">安全码</label>
+                <input type="password" id="tPassWord" placeholder="请输入安全码">
+                <a href="/WeixinService/business/user/resetTPassword.shtml" class="forget-password fr">忘记安全码？</a>
+             </div>            
+        </div>
+        
+        <div class="box-input indentify indentifyud">
+	        <div class="input-text">
+	             <label for="indentify" style="width:20%;">验证码</label>
+	             <input type="text" id="randomCode" placeholder="请输入验证码" style="width:40%;" />
+	             <span class="indentifyimg">
+	            		<img src="/WeixinService/buildimageservlet.xhtml" id="rondomCodeImg" onclick="getRandomCode()" class="code_pic" />
+	             </span>
+	         </div> 
+        </div>
+        
+        <div class="buy buy_btn order-bottom">
+            <div class="left fl">
+                <a href="javascript:modifyAppointRequest();">确认修改</a>
+            </div>
+            <div class="right fr">
+                 <a href="javascript:toBack();">放弃</a>
+            </div>
+        </div>
+    </section> 
+    
+</section>
+
+<div class="cover-bg" id="showCards" style="display: none;">
+   <div class="cover-content updatecover-content">
+       <h2>选择银行卡<i onclick="closeTips('showCards')"></i></h2>
+       <div class="content-bank">
+         <ul id="bankInfo">
+          
+         </ul>
+         <span class="add-bank" onclick="addBank()">添加银行卡</span>
+       </div>       
+   </div>
+</div>
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/modifyBankcard.min.js"></script> -->
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/modifyBankcard.js"></script> -->
+<script type="text/javascript">
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/modifyBankcard.min.js?version='+new Date().getTime()+'"><\/script>');
+</script>
+</body>
+</html>

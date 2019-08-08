@@ -1,0 +1,302 @@
+html,body{
+    background-color: #f6f6f6;
+}
+/*设置*/
+.setUp{
+    position: relative;
+    border-bottom: solid 1px #f1f1f1;
+    padding: 0.2rem 0.3rem 0.2rem 0.2rem;
+    background-color: #f8f8f8;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content:space-between;
+    justify-content:space-between;
+    font-size: 0.3rem;
+}
+.setUp .date{
+    padding-right: 0.4rem;
+    background:url("../image/icon/my/dropDown.png") no-repeat right;
+    background-size: 0.32rem;
+    color: #333;
+    font-size: 0.32rem;
+}
+.setUp .date-current{
+    color: #ffc000;
+    background:url("../image/icon/my/dropDown-A.png") no-repeat right;
+    background-size: 0.32rem;
+}
+.setUp .screen{
+    padding-left: 0.38rem;
+    float: right;
+    background: url("../image/icon/my/screen.png") no-repeat left;
+    background-size: 0.28rem !important;
+    font-size: 0.32rem;
+    color: #333;
+}
+.setUp .screen-active{
+    color: #ffc000;
+    background: url("../image/icon/my/screen-a.png") no-repeat left;
+}
+/*筛选框*/
+.screenBlock{
+    position: relative;
+    display: none;
+}
+.screenBlock .wrap{
+    padding: 0.3rem;
+    background-color: #f8f8f8;
+}
+.screenBlock .shouSuo{
+    position: relative;
+    height: 0.7rem;
+    background-color: #fff;
+}
+.screenBlock .shouSuo .shouSuoButton{
+    position: absolute;
+    width: 100%;
+    top:0;
+    left: 0;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    text-align: center;
+    color: #a7a7a7;
+    background-color: #fff;
+    z-index: 100;
+}
+.screenBlock .shouSuo .shouSuoButton:before{
+    content: "";
+    display: inline-block;
+    width: 0.32rem;
+    height: 0.32rem;
+    background: url("../image/icon/my/search.png") no-repeat center;
+    background-size: 0.32rem 0.32rem;
+    vertical-align: middle;
+    margin-right: 0.1rem;
+    margin-top: -0.05rem;
+}
+.screenBlock .shouSuo input{
+    display: block;
+    width: 100%;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 0.6rem;
+    padding-right: 0.8rem;
+    background: url("../image/icon/my/search.png") no-repeat 0.2rem center;
+    background-size: 0.32rem 0.32rem;
+    font-size: 0.3rem;
+    color: #333;
+}
+.screenBlock .shouSuo .delete{
+    position: absolute;
+    top: 0.2rem;
+    right: 0.2rem;
+    width: 0.3rem;
+    height: 0.32rem;
+    background: url("../image/icon/public/close2.png") no-repeat center;
+    background-size: 0.3rem 0.3rem;
+    display: none;
+}
+.screenBlock .select{
+    margin-top: 0.3rem;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content:space-between;
+    justify-content:space-between;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.screenBlock .select .option{
+    display: block;
+    width: 1.5rem;
+    height: 0.6rem;
+    background-color: #fff;
+    margin-bottom: 0.25rem;
+    border-radius: 0.3rem;
+    text-align: center;
+    font-size: 0.28rem;
+    color: #666;
+    line-height: 0.6rem;
+}
+.screenBlock .select .current{
+    color: #333;
+    background-color: #ffea96;
+}
+.screenBlock .button{
+    -webkit-justify-content:space-between;
+    justify-content:space-between;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-top: 0.55rem;
+    margin-bottom: 0.4rem;
+    display: none;
+}
+.screenBlock .button div{
+    width: 45%;
+    height: 0.8rem;
+    text-align: center;
+    font-size: 0.32rem;
+    color: #333;
+    line-height: 0.8rem;
+    border-radius: 0.07rem;
+}
+.screenBlock .button .reset{
+    background-color: #fff;
+    border: solid 1px #e0e0e0;
+}
+.screenBlock .button .confirm{
+    background-color: #ffda44;
+    border: solid 1px #ffda44;
+}
+.screenBlock .close{
+    position: absolute;
+    top: 6.45rem;
+    width: 0.6rem;
+    height: 0.6rem;
+    background: url("../image/icon/my/close.png") no-repeat center;
+    background-size: 0.6rem;
+    left: 50%;
+    margin-left: -0.3rem;
+}
+/*内容*/
+.contain{
+    padding-top: 1.82rem;
+    background-color: #f6f6f6;
+}
+/*新消息*/
+.newMessage{
+    text-align: center;
+    margin: 0.38rem auto 0.2rem auto;
+    display: block;
+}
+.newMessage .wrap{
+    display: inline-block;
+    background-color: #bcbcbc;
+    -webkit-border-radius: 0.36rem;
+    border-radius: 0.36rem;
+    padding: 0.03rem 0.32rem 0.03rem 0.03rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.newMessage .wrap img{
+    height: 0.66rem;
+    width: 0.66rem;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 0.27rem;
+}
+.newMessage .wrap .text{
+    line-height: 0.66rem;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0.3rem;
+    color: #fff;
+}
+.newMessage .wrap .text:after{
+    content: ">";
+    margin-left: 0.15rem;
+    color: #dadada;
+}
+/*月列表*/
+.monthList{
+
+}
+.monthItem .title{
+    padding-left: 0.2rem;
+    line-height: 0.6rem;
+    font-size: 0.3rem;
+}
+/*我的足迹广告*/
+.myAd{
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+.myAd .context{
+    padding-right: 0.3rem;
+}
+.myAd .block{
+    position: relative;
+    height: 1.88rem;
+    padding: 0 0.25rem;
+    display: -webkit-flex;
+    display: flex;
+    overflow: hidden;
+    color: #fff;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.myAd .block:before{
+    display: block;
+    position: absolute;
+    content: "";
+    width: 0.98rem;
+    height: 0.99rem;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    top:-0.15rem;
+    left: -0.15rem;
+}
+.myAd .topic{
+    background-image: -moz-linear-gradient( -40deg, #ffd05d 0%, #fbcc19 50%, #f9c700 100%);
+    background-image: -webkit-linear-gradient( -40deg, #ffd05d 0%, #fbcc19 50%, #f9c700 100%);
+    background-image: -ms-linear-gradient( -40deg, #ffd05d 0%, #fbcc19 50%, #f9c700 100%);
+}
+.myAd .topic:before{
+    background-image: url("../image/icon/my/topic.png");
+}
+.myAd .memory{
+    background-image: -moz-linear-gradient( -40deg, #71f7ed 0%, #15eddf 50%, #20e9dd 100%);
+    background-image: -webkit-linear-gradient( -40deg, #71f7ed 0%, #15eddf 50%, #20e9dd 100%);
+    background-image: -ms-linear-gradient( -40deg, #71f7ed 0%, #15eddf 50%, #20e9dd 100%);
+}
+.myAd .growUp{
+    background-image: -moz-linear-gradient( -40deg, rgb(133,228,255) 0%, rgb(146,218,255) 38%, rgb(158,208,255) 100%);
+    background-image: -webkit-linear-gradient( -40deg, rgb(133,228,255) 0%, rgb(146,218,255) 38%, rgb(158,208,255) 100%);
+    background-image: -ms-linear-gradient( -40deg, rgb(133,228,255) 0%, rgb(146,218,255) 38%, rgb(158,208,255) 100%);
+}
+.myAd .growUp:before{
+    background-image: url("../image/icon/my/growUp.png");
+}
+.myAd .festival{
+    background-image: -moz-linear-gradient( -40deg, #ffb14c 0%, #ffab3f 38%, #ff9f23 100%);
+    background-image: -webkit-linear-gradient( -40deg, #ffb14c 0%, #ffab3f 38%, #ff9f23 100%);
+    background-image: -ms-linear-gradient( -40deg, #ffb14c 0%, #ffab3f 38%, #ff9f23 100%);
+}
+.myAd .festival:before{
+    background-image: url("../image/icon/my/festival.png");
+}
+.myAd .memory:before,
+.myAd .growUp:before,
+.myAd .festival:before{
+    background-image: url("../image/icon/my/growUp.png");
+}
+.myAd .context .text{
+    font-size: 0.26rem;
+    line-height: 0.4rem;
+}
+.myAd .navigation{
+    position: absolute;
+    right: 0.3rem;
+    bottom: 0.13rem;
+    text-align: right;
+    font-size: 0.26rem;
+    line-height: 0.4rem;
+}
+/*筛选无足迹*/
+.notContain{
+    display: none;
+    padding-top: 4.44rem;
+    font-size: 0.3rem;
+    color: #999;
+    text-align: center;
+}
+.notContain span{
+    color: #ffbf01;
+}
+
+
+

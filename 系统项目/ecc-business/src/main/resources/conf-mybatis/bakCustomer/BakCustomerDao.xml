@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.bakCustomer.BakCustomerDao">
+	
+	<!-- 复核备案客户  -->
+	<select id="queryBakCustomerCheck" parameterType="sparam" statementType="CALLABLE">
+		{ CALL DS_OQP_FH_UCCUSTINFO(
+				#{sp.custno,jdbcType=VARCHAR,mode=IN},
+				#{sp.checkflag,jdbcType=VARCHAR,mode=IN},
+				#{sp.opertp,jdbcType=VARCHAR,mode=IN},
+				#{sp.errcode,jdbcType=VARCHAR,mode=OUT},
+				#{sp.errmsg,jdbcType=VARCHAR,mode=OUT},
+				#{sp.bakCustList,resultMap=bakCustMap,jdbcType=CURSOR,mode=OUT},
+	    		#{sp.contactList,resultMap=contactInfoMap,jdbcType=CURSOR,mode=OUT}
+			)
+		}
+	</select>
+	<!-- 复核备案客户  -->
+	<select id="checkBakCustomer" parameterType="sparam" statementType="CALLABLE">
+		{ CALL DS_OAP_UCCUSTINFO_CHECK(
+				#{sp.permissionId,jdbcType=VARCHAR,mode=IN},
+				#{sp.operatorId,jdbcType=VARCHAR,mode=IN},
+				#{sp.checkflag,jdbcType=VARCHAR,mode=IN},
+				#{sp.custno,jdbcType=VARCHAR,mode=IN},
+				#{sp.errcode,jdbcType=VARCHAR,mode=OUT},
+				#{sp.errmsg,jdbcType=VARCHAR,mode=OUT}
+			)
+		}
+	</select>
+	
+	<!-- 新增备案客户  -->
+	<select id="manageBakCustomer" parameterType="bakCustDto" statementType="CALLABLE">
+		{ CALL DS_OAP_MAN_UCCUSTINFO(
+				#{permissionId,jdbcType=VARCHAR,mode=IN},
+				#{serialno,jdbcType=VARCHAR,mode=IN},
+				#{opertp,jdbcType=VARCHAR,mode=IN},
+				#{custno,jdbcType=VARCHAR,mode=IN},
+ 				#{rcdcustrole,jdbcType=VARCHAR,mode=IN},
+	    		#{invnm,jdbcType=VARCHAR,mode=IN},
+	    		#{idtp,jdbcType=VARCHAR,mode=IN},
+	    		#{idno,jdbcType=VARCHAR,mode=IN},
+	    		#{idvalidate,jdbcType=VARCHAR,mode=IN},
+	    		#{addr,jdbcType=VARCHAR,mode=IN},
+	    		#{postcode,jdbcType=VARCHAR,mode=IN},
+	    		#{instrepnm,jdbcType=VARCHAR,mode=IN},
+	    		#{instrepidtp,jdbcType=VARCHAR,mode=IN},
+	    		#{instrepidno,jdbcType=VARCHAR,mode=IN},
+	    		#{instrepvalidate,jdbcType=VARCHAR,mode=IN},
+	    		#{instrepnation,jdbcType=VARCHAR,mode=IN},
+	    		#{principalname,jdbcType=VARCHAR,mode=IN},
+	    		#{principalidtp,jdbcType=VARCHAR,mode=IN},
+	    		#{principalidno,jdbcType=VARCHAR,mode=IN},
+	    		#{principalvalidt,jdbcType=VARCHAR,mode=IN},
+	    		#{principalnation,jdbcType=VARCHAR,mode=IN},
+	    		#{newOcontStr,jdbcType=VARCHAR,mode=IN},
+	    		#{newOidStr,jdbcType=VARCHAR,mode=IN},
+	    		#{operatorId,jdbcType=VARCHAR,mode=IN},
+	    		#{riskLevel,jdbcType=VARCHAR,mode=IN},
+	    		#{errcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{errmsg,jdbcType=VARCHAR,mode=OUT}
+			)
+		}
+	</select>
+</mapper>

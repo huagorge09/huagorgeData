@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="shortcut icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+    <meta name="keyword" content="新闻资讯、投研观点、公司新闻动态、市场解读" />
+    <meta name="description" content="招商财富公司新闻提供最新的招商财富公司动态、荣获奖项、行业资讯、投资方向研判等，更多关于招商财富公司新闻精彩详情请访问招商财富官网" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <!--[if IE]>
+    <script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageJs/html5.js"></script>
+    <![endif]-->
+    <!--[if IE 6]>
+    <script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageJs/DD_belatedPNG_0.0.8a.min.js"></script>
+    <script>
+        DD_belatedPNG.fix('*');
+    </script>
+    <![endif]-->
+</head>
+<body>
+
+<!-- header -->
+<!--#include virtual="/AppService/public/header.shtml"-->
+
+
+
+<div class="info-content mid">
+    <div class="detail-left fl">
+        <a href="/AppService/article/newsList.shtml" class="href-back" id="pageContext">< 新闻资讯</a>
+        <h1 class="title" id="title"></h1>
+        <span class="date"><i id="publishDate"></i></span>
+        <div class="detail-left-con" id="content">
+
+        </div>
+    </div>
+    <!-- <div class="detail-right fr">
+        <h1 class="title">热门产品推荐</h1>
+        <div class="detail-right-con">
+            <h1 id="adname"></h1>
+            <div class="parameter" id="profit">
+
+            </div>
+            <div class="point"><span>固收利器</span><span class="rule">|</span><span>理财首选</span></div>
+            <a id="fundLink" href="" class="check">立即查看</a>
+        </div>
+    </div> -->
+</div>
+
+
+<!-- footer -->
+<!--#include virtual="/AppService/public/footer.shtml"-->
+<!--<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/newsDetail.js"></script>-->
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/newsDetail.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/slider.js"></script>
+    <style type="text/css">
+	.header{
+		position: fixed;
+    	top: 0px;
+	}
+	section{
+		margin-top: 60px;
+	}
+</style>
+</head>
+<body style="background-color: rgb(245, 245, 245);">
+<section class="page" id="specialty_context">
+	<div id="scroller"></div>
+    <!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->
+	<section class="title" id="section_03">
+		<div style="background: #fff;margin-top: 10px;padding-bottom: 10px;">
+		  <h2 style="font-size: 14px;border-bottom: 1px solid #F2F2F2;height: 45px;line-height: 45px; margin: 0 20px 0 20px;color: #4c4c4c;">
+			专业投资者（个人）须同时符合以下条件：
+		  </h2>
+		  <p style="margin: 5px 20px 5px 20px; line-height: 23px;font-size: 14px;color: #a1a1a1;">
+			● 金融资产不低于500万元，或者最近3年个人年均收入不低于50万元。<br>
+			● 具有2年以上证券、基金、期货、黄金、外汇等投资经历，或者具有2年以上金融产品设计、投资、风险管理及相关工作经历，或者属于经有关监管部门设立的金融机构、经行业协会备案或登记的证券、期货公司子公司，私募基金管理人的高级管理人员，获得职业资格认证的从事金融相关业务的注册会计师和律师。
+		  </p>
+		</div>
+		<div style="background: #fff;margin-top: 10px;padding-bottom: 10px;">
+		  <h2 style="font-size: 14px;border-bottom: 1px solid #F2F2F2;height: 45px;line-height: 45px; margin: 0 20px 0 20px;color: #4c4c4c;">
+			专业投资者（个人）的权力与义务：
+		  </h2>
+		  <p style="margin: 5px 20px 5px 20px; line-height: 23px;font-size: 14px;color: #a1a1a1;">
+		  	 ● 专业投资者需要依据自己的专业投资知识，查看、购买所有产品，我们不再做任何强制性的风险提示；<br>
+		  	 ● 专业投资者可以申请转为普通投资者，重新享有信息告知、风险警示、适当性匹配等方面的特殊保护。
+		  </p>
+		</div>
+		<br><a href="javascript:applyInvestor();" class="check-order">继续申请</a><br>
+		<a href="javascript:cacelApply();" class="check-order" style="background: #d3d3d3;margin-bottom: 20px;">放弃</a>
+	</section>
+</section>
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/riskLevel.js"></script> -->
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/riskLevel.min.js"></script> -->
+<script type="text/javascript">
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/riskLevel.min.js?version='+new Date().getTime()+'"><\/script>');
+</script>
+
+<script>
+$(document).ready(function(e) {
+	loadInvestorInfo();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/slider.js"></script>
+    <style type="text/css">
+	.bg-state span.point{
+		width: 80%;
+    	line-height: 30px;
+    	margin: 0 auto;
+    	text-align: left;
+	}
+	</style>
+</head>
+<body style="background-color: rgb(245, 245, 245);">
+<section class="page" id="specialty_context">
+	<div id="scroller"></div>
+    <!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->
+	<section class="title" id="section_0">
+		<div class="bg-state">
+			<div class="state-icon waiting">
+			<img src="/WeixinWeb/WeixinWeb_Images/images/img_name_success.png" alt="" /></div>
+			<span class="point">
+			请您准备以下资料，投递至我司邮箱：cmwa@cmwachina.com。客服人员将在5个工作日内和您联系确认信息。<br>
+			　　（1）金融资产证明或个人年收入证明<br>
+			　　（2）投资经历证明或工作证明、职业资格证书<br>
+			如遇任何问题，随时联系我们：400-8878-555（周一至周五 09:00-17:30）
+			</span>
+		</div>
+		<br><a href="javascript:cacelApply();" class="check-order">我知道了</a>
+	</section>
+</section>
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/riskLevel.js"></script> -->
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/riskLevel.min.js"></script> -->
+<script type="text/javascript">
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/riskLevel.min.js?version='+new Date().getTime()+'"><\/script>');
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>招商财富-关注二维码</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/qrCode.css">
+</head>
+
+<body>
+ 
+ 	<div id="qrCodeImgDiv" class="code_bg">
+   		<!-- 生产 -->
+		<img id="qrCodeImg" class="code_img" src="/WeixinWeb/WeixinWeb_Images/qrcode/staticQrCode.png">
+		<!-- 测试 -->
+		<!-- <img id="qrCodeImg" class="code_img" src="/WeixinWeb/WeixinWeb_Images/qrcode/test1.jpg"> -->
+    </div>
+</body>
+</html>
+
+
+
+ 
+ 
+

@@ -1,0 +1,137 @@
+@charset "utf-8";
+
+body{
+	overflow: hidden;
+	font-family: "Helvetica Neue",Helvetica,Tahoma,Arial,sans-serif;
+    font-size: 13px;
+    line-height: 1.53846154;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Helvetica Neue",Helvetica,Tahoma,Arial,sans-serif;
+    font-weight: 700;
+    line-height: 1.1;
+    color: inherit;
+}
+
+#container {
+	margin: 10% auto 0 auto;
+}
+
+#login-panel{
+	margin: 0 auto;
+    width: 1080px;
+    min-height: 400px;
+    background: url(../images/login_middle.jpg) no-repeat;
+}
+
+#login-panel .panel-content table {
+    width: 770px;
+    margin: 145px 0 0 160px;
+    position: absolute;
+}
+
+#login-panel .panel-content table tr {
+    height: 45px;
+}
+
+.form-condensed .table-form td, .form-condensed .table-form th {
+    padding: 5px;
+    font-size: 12px;
+    color: #141414;
+    border: 0px solid;
+}
+
+.table-form th{
+    font-size: 13px;
+    font-family: -webkit-pictograph;
+    font-weight: 600;
+}
+
+.table-form>tbody>tr>th, .table-form>tbody>tr>td {
+    border: 0;
+}
+.table-form>tbody>tr>td {
+    vertical-align: middle;
+    border: 0;
+}
+
+.table-form>tbody>tr>th {
+    text-align: right;
+    vertical-align: middle;
+    border: 0;
+}
+
+.table td, .table th {
+    padding: 8px;
+    line-height: 1.53846154;
+    vertical-align: top;
+    border-bottom: 1px solid #ddd;
+    -webkit-transition: background .3s cubic-bezier(.175,.885,.32,1);
+    -o-transition: background .3s cubic-bezier(.175,.885,.32,1);
+    transition: background .3s cubic-bezier(.175,.885,.32,1);
+}
+
+.table-form>tbody>tr>td .form-control {
+    vertical-align: middle;
+    margin: 0;
+}
+
+.form-control {
+    padding: 4px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #DDDDDD;
+    background: #FFFFDD;
+    color: #666666;
+    width: 200px;
+    height: 30px;
+    vertical-align: middle;
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.form-condensed .btn {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 0;
+}
+
+.btn-primary {
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+    background-color: #1a4f85;
+    border-color: #164270;
+}
+
+.btn {
+    font-size: 13px;
+    line-height: 1.3;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    -webkit-transition: all .5s;
+    width: 80px;
+    background-color: #fe7f27;
+    border-color: #fe7f27;
+}
+
+.message_div{
+	width: 100%;
+    height: 30px;
+    left: 498px;
+    bottom: 0;
+    position: absolute;
+}
+
+.message_text{
+	color: red;
+	font-size: 12px;
+}

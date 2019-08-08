@@ -1,0 +1,9 @@
+.statistics_content{margin: 10px;padding: 10px;}
+.statistics_content a{margin-right: 10px;}
+.statistics_content span font {color: #FF8000;}
+.clear{ clear:both;}
+ul.project-tab{ height:70px;}
+ul.project-tab,ul.project-tab li{list-style:none;}
+ul.project-tab li{ float:left; margin-right:10px;}
+.project-search{margin-bottom: 10px;margin-left: 20px;}
+.file-index-label{background-color:#E6D1E3;}

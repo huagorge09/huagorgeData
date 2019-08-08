@@ -1,0 +1,963 @@
+/* 蒙层 */
+.backLayer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000000;
+	opacity: 0.55;
+	z-index: 1;
+}
+
+
+
+.error {
+	color: red;
+	margin-left: 13px;
+}
+.head span {
+	display: inline-block;
+}
+
+.content span {
+	display: inline-block;
+}
+
+.head a {
+	display: inline-block;
+}
+
+.content a {
+	display: inline-block;
+}
+
+.integralIndex header {
+	background: url("/AppWeb/AppWeb_Images/images/mgm/blueBanner.png")no-repeat;
+	background-size: cover;
+	width: 758px;
+	height: 201px;
+	position: relative;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+
+.integralIndex header .scoreNum {
+	font-size: 38px;
+	height: 35px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+	margin: 10px auto 0 auto;
+}
+
+.top p {
+	font-size: 16px;
+	text-align: center;
+	color: #ffffff;
+	margin: 0 auto;
+}
+
+.top .title {
+	padding-top: 35px;
+}
+
+.useButton {
+	margin: 30px auto 0 auto;
+	text-align: center;
+}
+
+.useButton a {
+	font-size: 15px;
+	color: #ffffff;
+	border: 1px solid #ffffff;
+	width: 118px;
+	height: 43px;
+	text-align: center;
+	line-height: 43px;
+	border-radius: 59px;
+}
+
+/* .useButton .useIntegral {
+	position: absolute;
+	left: 233px;
+}
+
+.useButton .integralRecord {
+	position: absolute;
+	right: 242px;
+} */
+
+.activityRules {
+	background: url('/AppWeb/AppWeb_Images/images/mgm/giftBack.png') no-repeat;
+	background-size: 758px 170px;
+	width: 758px;
+	height: 170px;
+	margin-top: 21px;
+	margin-left: 20px;
+}
+
+.activityRules .line1 {
+	color: #ff7554;
+	font-size: 26px;
+	padding-top: 47px;
+	margin-left: 59px;
+}
+
+.activityRules .line2 {
+	font-size: 24px;
+	padding-top: 20px;
+	margin-left: 21px;
+
+}
+
+.activityRules .line2 span:nth-child(1) {
+	color: #2e2e2e;
+}
+
+.activityRules .line2 span:nth-child(2) {
+	color: #ff5501;
+}
+
+.activityRules_btn {
+	color: #ffffff;
+	font-size: 16px;
+	width: 88px;
+	height: 27px;
+	background: #ff453f;
+	border-radius: 44px;
+	text-align: center;
+	line-height: 27px;
+	position: absolute;
+	right: 62px;
+	top: 314px;
+	cursor: pointer;
+}
+
+.inventFriend {
+	background: url('/AppWeb/AppWeb_Images/images/mgm/recomenderBack.png') no-repeat;
+	background-size: 758px 81px;
+	width: 758px;
+	height: 81px;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+.inventFriend .title1 {
+	color: #000000;
+	font-size: 20px;
+
+}
+
+.inventFriend .recommendLine1 {
+	color: #3c92ce;
+	font-size: 20px;
+	padding-left: 118px;
+	padding-top: 31px;
+	cursor: pointer;
+}
+
+.inventFriend .myRecommender_btn {
+	width: 86px;
+	height: 27px;
+	background: #2780f4;
+	border-radius: 43px;
+	text-align: center;
+	line-height: 27px;
+	color: #ffffff;
+	position: absolute;
+	right: 61px;
+	margin-top: 31px;
+	cursor: pointer;
+}
+
+.content .title1 {
+	font-size: 20px;
+	color: #000000;
+	margin-top: 17px;
+	margin-left: 31px;
+}
+
+/* 蓝色小块 */
+.blueBlock {
+	background-color: #1890ed;
+	display: inline-block;
+	width: 4px;
+	height: 20px;
+	display: inline-block;
+	position: relative;
+	left: 20px;
+	top: 3.8px;
+}
+
+
+.myRecommenderPop span {
+	display: inline-block;
+}
+
+.myRecommenderPop .popHead {
+	height: 52px;
+	width: 100%;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.myRecommender_title {
+	text-align: center;
+	font-size: 20px;
+	color: #000000;
+	position: absolute;
+	left: 152px;
+	top: 12px;
+}
+
+.closeIcon {
+	background: url('/AppWeb/AppWeb_Images/images/mgm/closeIcon.png')no-repeat;
+	background-size: cover;
+	width: 18px;
+	height: 18px;
+	position: absolute;
+	right: 20px;
+	top: 18px;
+	cursor: pointer;
+}
+
+.recommenderDetail {
+	margin-left: 32px;
+	width: 320px;
+}
+
+.recommenderDetail .front {
+	height: 83px;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.front .headPhoto {
+	background: url('/AppWeb/AppWeb_Images/images/mgm/recommenderPohto.png') no-repeat;
+	width: 60px;
+	height: 60px;
+	background-size: cover;
+	margin-top: 10px;
+}
+
+.front .recommenderName {
+	 font-size: 22px;
+    color: #000000;
+    position: absolute;
+    top: 60px;
+    left: 110px;
+
+}
+
+.front .yourRecommender {
+	font-size: 14px;
+    background: #ff758f;
+    border-radius: 30px;
+    height: 21px;
+    width: 96px;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 21px;
+    margin-left: 8px;
+    position: absolute;
+    top: 100px;
+}
+}
+
+.recommenderDetail .phoneBox {
+	height: 41px;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.phoneBox {
+	border-bottom: 1px solid #e5e5e5;
+	height: 40px;
+}
+
+.phoneBox .phoneTit {
+	font-size: 15px;
+	color: #616574;
+	margin-top: 12px;
+
+}
+
+.phoneBox .recommendPhone {
+	margin-left: 50px;
+}
+
+.wxBox {
+	border-bottom: 1px solid #e5e5e5;
+	height: 40px;
+}
+
+.wxBox .wxName {
+	margin-left: 50px;
+}
+
+.wxBox .wxTit {
+	font-size: 15px;
+	color: #616574;
+	margin-top: 12px;
+}
+
+.phoneBox .phoneIcon {
+	width: 20px;
+	height: 20px;
+	background: url('/AppWeb/AppWeb_Images/images/mgm/teleIcon.png') no-repeat;
+	background-size: cover;
+	position: absolute;
+	right: 39px;
+	margin-top: 18px;
+	cursor: pointer;
+}
+
+.wxBox .moreIcon {
+	width: 15px;
+	height: 15px;
+	background: url('/AppWeb/AppWeb_Images/images/mgm/moreIcon.png') no-repeat;
+	background-size: cover;
+	position: absolute;
+	right: 39px;
+	margin-top: 18px;
+	cursor: pointer;
+}
+
+.inventToFriend {
+	margin-left: 7px;
+	color: #1890ed;
+	font-size: 15px;
+}
+
+.blueTit {
+	width: 4px;
+	height: 17px;
+	background: #2c98eb;
+	margin-top: 19px;
+}
+
+.fontBox {
+	height: 35px;
+	width: 314px;
+	border: 1px solid #f3f3f3;
+	line-height: 35px;
+}
+
+
+.friendNameBox {
+	margin-top: 30px;
+}
+
+.friendPhoneBox {
+	margin-top: 14px;
+}
+
+.font_lab {
+	margin-left: 12px;
+}
+
+
+/* 以下弹出框内容 */
+
+/*
+活动规则弹框
+*/
+
+.actRuleBox{
+	width: 550px;
+	height: 439px;
+	border-radius: 8px;
+	background-color: white;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 50;
+	margin-left: -275px;
+	margin-top: -219px;
+}
+
+.actRuleBox .content{
+	width: 93%;
+	margin: 3.5%;
+
+}
+.actRuleBox.content p{
+	font-size: 13px;
+}
+
+.actRuleBox .exHead .tit{
+	display: block;
+	font-size: 20px;
+	color: #000000;
+	text-align: center;
+	padding-top: 12px;
+}
+
+/*   我的顾问推荐提示框 */
+.recommendReturn {
+	width: 400px;
+	height: 280px;
+	border-radius: 8px;
+	background-color: white;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 50;
+	margin-top: -140px;
+	margin-left: -200px;
+}
+
+
+
+footer span {
+	display: inline-block;
+}
+
+.integralExBox .exHead {
+	width: 100%;
+	height: 53px;
+	border-bottom: 1px solid #E5E5E5;
+}
+
+.integralExBox .exHead .tit {
+	margin-left: 183px;
+	margin-top: 16px;
+	font-size: 20px;
+	color: #000000;
+}
+
+
+
+.tipWord2 {
+	font-size: 16px;
+	color: #666666;
+	padding-bottom: 15px;
+}
+
+.warnWord{
+	margin-top: 40px;
+}
+
+
+.successExBox{
+	text-align: center;
+}
+.closeRe{
+	background: url('/AppWeb/AppWeb_Images/images/mgm/closeIcon.png')no-repeat;
+	background-size: cover;
+	width: 18px;
+	height: 18px;
+	position: absolute;
+	right: 20px;
+	top: 18px;
+}
+/* 蒙层 */
+.backLayer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000000;
+	opacity: 0.55;
+	z-index: 1;
+}
+
+.head span {
+	display: inline-block;
+}
+
+.content span {
+	display: inline-block;
+}
+
+.head a {
+	display: inline-block;
+}
+
+.content a {
+	display: inline-block;
+}
+
+.integralIndex header {
+	background: url("/AppWeb/AppWeb_Images/images/mgm/blueBanner.png")no-repeat;
+	background-size: cover;
+	width: 758px;
+	height: 201px;
+	position: relative;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+.px15{
+    font-size: 15px;
+   }
+
+
+
+.top p {
+	font-size: 16px;
+	text-align: center;
+	color: #ffffff;
+	margin: 0 auto;
+}
+
+.top .title {
+	padding-top: 35px;
+}
+
+.useButton {
+	margin: 30px auto 0 auto;
+	text-align: center;
+}
+
+.useButton a {
+	font-size: 15px;
+	color: #ffffff;
+	border: 1px solid #ffffff;
+	width: 118px;
+	height: 43px;
+	text-align: center;
+	line-height: 43px;
+	border-radius: 59px;
+}
+
+.useButton .useIntegral {
+	position: absolute;
+	left: 233px;
+}
+
+.useButton .integralRecord {
+	position: absolute;
+	right: 242px;
+}
+
+.activityRules {
+	background: url('/AppWeb/AppWeb_Images/images/mgm/giftBack.png') no-repeat;
+	background-size: 758px 170px;
+	width: 758px;
+	height: 170px;
+	margin-top: 21px;
+	margin-left: 20px;
+}
+
+.activityRules .line1 {
+	color: #ff7554;
+	font-size: 26px;
+	padding-top: 47px;
+	margin-left: 59px;
+}
+
+.activityRules .line2 {
+	font-size: 24px;
+	padding-top: 20px;
+	margin-left: 21px;
+
+}
+
+.activityRules .line2 span:nth-child(1) {
+	color: #2e2e2e;
+}
+
+.activityRules .line2 span:nth-child(2) {
+	color: #ff5501;
+}
+
+.activityRules_btn {
+	color: #ffffff;
+	font-size: 16px;
+	width: 88px;
+	height: 27px;
+	background: #ff453f;
+	border-radius: 44px;
+	text-align: center;
+	line-height: 27px;
+	position: absolute;
+	right: 62px;
+	top: 314px;
+	cursor: pointer;
+}
+
+
+.inventFriend .title1 {
+	color: #000000;
+	font-size: 20px;
+
+}
+
+.inventFriend .recommendLine1 {
+	color: #3c92ce;
+	font-size: 20px;
+	padding-left: 118px;
+	padding-top: 31px;
+}
+
+.inventFriend .myRecommender_btn {
+	width: 86px;
+	height: 27px;
+	background: #2780f4;
+	border-radius: 43px;
+	text-align: center;
+	line-height: 27px;
+	color: #ffffff;
+	position: absolute;
+	right: 61px;
+	margin-top: 31px;
+	cursor: pointer;
+}
+
+.content .title1 {
+	font-size: 20px;
+	color: #000000;
+	margin-top: 17px;
+	margin-left: 31px;
+}
+
+/* 蓝色小块 */
+.blueBlock {
+	background-color: #1890ed;
+	display: inline-block;
+	width: 4px;
+	height: 20px;
+	display: inline-block;
+	position: relative;
+	left: 20px;
+	top: 3.8px;
+}
+.actRuleBox .content h5{
+    font-size: 15px;
+}
+.actRuleBox .lastExplain{
+	font-size: 12px;
+	margin-top: 11px;
+}
+
+/* 我的顾问弹框 */
+.myRecommenderPop {
+	width: 380px;
+	height: auto;
+	background: #FFFFFF;
+	border-radius: 8px;
+	position: fixed;
+	z-index: 99;
+	top: 50%;
+	left: 50%;
+	margin-left: -190px;
+	margin-top: -232px;
+}
+
+
+.myRecommenderPop span {
+	display: inline-block;
+}
+
+.myRecommenderPop .popHead {
+	height: 52px;
+	width: 100%;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.myRecommender_title {
+	text-align: center;
+	font-size: 20px;
+	color: #000000;
+	position: absolute;
+	left: 152px;
+	top: 12px;
+}
+
+.closeIcon {
+	background: url('/AppWeb/AppWeb_Images/images/mgm/closeIcon.png')no-repeat;
+	background-size: cover;
+	width: 18px;
+	height: 18px;
+	position: absolute;
+	right: 20px;
+	top: 18px;
+}
+
+.recommenderDetail {
+	margin-left: 32px;
+	width: 320px;
+}
+
+.recommenderDetail .front {
+	height: 83px;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.front .headPhoto {
+	background: url('/AppWeb/AppWeb_Images/images/mgm/recommenderPohto.png') no-repeat;
+	width: 60px;
+	height: 60px;
+	background-size: contain;
+	margin-top: 10px;
+	display: inline-block;
+	border-radius: 50%;
+}
+
+
+
+.recommenderDetail .phoneBox {
+	height: 41px;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.phoneBox {
+	border-bottom: 1px solid #e5e5e5;
+	height: 40px;
+}
+
+.phoneBox .phoneTit {
+	font-size: 15px;
+	color: #616574;
+	margin-top: 12px;
+
+}
+
+.phoneBox .recommendPhone {
+	margin-left: 50px;
+}
+
+.wxBox {
+	border-bottom: 1px solid #e5e5e5;
+	height: 40px;
+}
+
+.wxBox .wxName {
+	margin-left: 50px;
+}
+
+.wxBox .wxTit {
+	font-size: 15px;
+	color: #616574;
+	margin-top: 12px;
+}
+
+.phoneBox .phoneIcon {
+	width: 20px;
+	height: 20px;
+	background: url('/AppWeb/AppWeb_Images/images/mgm/teleIcon.png') no-repeat;
+	background-size: cover;
+	position: absolute;
+	right: 39px;
+	margin-top: 18px;
+}
+
+.wxBox .moreIcon {
+	width: 15px;
+	height: 15px;
+	background: url('/AppWeb/AppWeb_Images/images/mgm/moreIcon.png') no-repeat;
+	background-size: cover;
+	position: absolute;
+	right: 39px;
+	margin-top: 18px;
+}
+
+.inventToFriend {
+	margin-left: 7px;
+	color: #1890ed;
+	font-size: 15px;
+}
+
+.blueTit {
+	width: 4px;
+	height: 17px;
+	background: #2c98eb;
+	margin-top: 19px;
+}
+
+.fontBox {
+	height: 35px;
+	width: 314px;
+	border: 1px solid #f3f3f3;
+	line-height: 35px;
+}
+
+.fontBox input {
+	outline: none;
+	height: 28px;
+	width: 220px;
+	margin-left: 12px;
+	border: none;
+}
+
+.friendNameBox {
+	margin-top: 30px;
+}
+
+.friendPhoneBox {
+	margin-top: 14px;
+}
+
+.font_lab {
+	margin-left: 12px;
+}
+
+.inventButton {
+	width: 295px;
+	height: 40px;
+	background: #f26a10;
+	border-radius: 8px;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 40px;
+	font-size: 16px;
+	cursor: pointer;
+	margin-left: 10px;
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+
+/* 以下弹出框内容 */
+
+
+
+.recommendReturn .exContent{
+	height: 135px;
+}
+
+.recommendReturn span {
+	display: inline-block;
+}
+
+.recommendReturn .exHead {
+	width: 100%;
+	height: 53px;
+	border-bottom: 1px solid #E5E5E5;
+}
+
+.recommendReturn .exHead .tit {
+    display: block;
+    font-size: 20px;
+    color: #000000;
+    text-align: center;
+    padding-top: 12px;
+}
+
+footer span {
+	display: inline-block;
+}
+
+.integralExBox .exHead {
+	width: 100%;
+	height: 53px;
+	border-bottom: 1px solid #E5E5E5;
+}
+
+.integralExBox .exHead .tit {
+	/* margin-left: 183px;
+	margin-top: 16px; */
+	font-size: 20px;
+	color: #000000;
+}
+
+.tipWord1 {
+	font-size: 20px;
+	color: #000000;
+	padding-bottom:20px;
+}
+
+.tipWord2 {
+	font-size: 16px;
+	color: #666666;
+	padding-bottom: 15px;
+}
+
+.warnWord{
+	margin-top: 40px;
+}
+
+.warnWord p{
+	text-align: center;
+}
+.exBtnBox{
+	width: 100%;
+	height: 55px;
+	border-top: 1px solid #E5E5E5;
+	display: flex;
+	position: absolute;
+	bottom: 0px;
+}
+
+.exBtnBox .exCancel{
+	border-right: 1px solid #e5e5e5;
+}
+.exBtnBox span{
+	cursor: pointer;
+}
+
+.successExBox{
+	text-align: center;
+}
+.closeRe{
+	background: url('/AppWeb/AppWeb_Images/images/mgm/closeIcon.png')no-repeat;
+	background-size: cover;
+	width: 18px;
+	height: 18px;
+	position: absolute;
+	right: 20px;
+	top: 18px;
+}
+
+.phoneAndName_error{
+	height: 200px;
+	width: 300px;
+	background: red;
+	color: #000000;
+	font-size: 18px;
+	position: relative;
+	border-radius:10px;
+}
+.phoneAndName_error .error_text{
+	text-align: center;
+	padding-top: 70px;
+}
+.actRule{
+    position: absolute;
+    bottom: -20px;
+}
+
+.toRealText{
+	position: relative;
+	top: 63px;
+}
+.closeRe, .exSure{
+	cursor: pointer !important;
+}
+/*弹出微信提示框*/
+.wechat-box{
+	width: 270px;
+	height: 246px;
+	left: 50%;
+	top: 50%;
+	border: 1px solid #eee;
+	background-color: #FFFFFF;
+	border-radius: 8px;
+	position: fixed;
+	z-index: 99;
+	margin-left: -135px;
+	margin-top: -123px;
+}
+.box-wx{
+	margin: 0 auto;
+    width: 180px;
+    height: 160px;
+    margin-top: 22px;
+}
+.box-p{
+	margin: 0 auto;
+    border-radius: 8px;
+    width: 125px;
+    height: 40px;
+    background-color:#f26a10;
+    text-align: center;
+    line-height: 40px;
+	margin-top: 10px;
+	color:#fff;
+	cursor: pointer;
+}
+
+.inner{
+	height: 340px;
+	overflow: hidden;
+}

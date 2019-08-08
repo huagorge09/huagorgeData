@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.ParameterDao">
+	<select id="queryByAccessToken" resultType="com.cmwa.ec.weixin.dto.ParameterDto">
+		SELECT PMST, PMKY, PMCO, PMNM, PMV1,
+			   PMV2, PMV3,PMV4,PMV5,
+			   TO_CHAR(INSERTTIMESTAMP,'YYYY-MM-DD HH24:MI:SS') AS insertTime,
+			   TO_CHAR(UPDATETIMESTAMP,'YYYY-MM-DD HH24:MI:SS') AS updateTime 
+		  FROM CMF_WEIXIN_PARAMETER 
+		 WHERE PMST = 'CONFIG' AND PMKY = 'PUBLIC' AND PMCO='accessToken' 
+	</select>
+	
+	<select id="list"  resultType="com.cmwa.ec.weixin.dto.ParameterDto">
+		SELECT PMST, PMKY, PMCO, PMNM, PMV1,
+			   PMV2, PMV3,PMV4,PMV5,
+			   TO_CHAR(INSERTTIMESTAMP,'YYYY-MM-DD HH24:MI:SS') AS insertTime,
+			   TO_CHAR(UPDATETIMESTAMP,'YYYY-MM-DD HH24:MI:SS') AS updateTime 
+		  FROM CMF_WEIXIN_PARAMETER 
+	</select>
+	
+	 	<!-- 获取参数 -->
+	<select id="getParameter" parameterType="string" resultType="com.cmwa.ec.weixin.dto.ParameterDto">
+		SELECT PMST, PMKY, PMCO, PMNM, PMV1, PMV2, PMV3, PMV4, PMV5,INSERTTIMESTAMP, UPDATETIMESTAMP ,
+			 (SELECT COUNT(1) FROM PARAMETER T1 WHERE PMST ='SYSTEM' AND PMKY ='DS_CITYCODE' AND T1.PMV1 = T2.PMCO)LEAFNUM
+		 FROM PARAMETER T2
+		WHERE  PMCO NOT LIKE '%****%'
+		<if test="dto.pmst != null and dto.pmst != '' ">
+			AND PMST =#{dto.pmst}
+		</if>
+		<if test="dto.pmky != null and dto.pmky != '' ">
+			AND PMKY =#{dto.pmky}
+		</if>
+		<if test="dto.pmco != null and dto.pmco != '' ">
+			AND PMCO =#{dto.pmco}
+		</if>
+		<if test="dto.pmv1 != null and dto.pmv1 != '' ">
+			AND pmv1 =#{dto.pmv1}
+		</if>
+		<if test="dto.pmv2 != null and dto.pmv2 != '' ">
+			AND pmv2 =#{dto.pmv2}
+		</if>
+	</select>
+	
+	<select id="getParameterDto"  resultType="com.cmwa.ec.weixin.dto.ParameterDto">
+		SELECT PMST, PMKY, PMCO, PMNM, PMV1, PMV2, PMV3
+		FROM PARAMETER
+		WHERE  
+			PMST =#{dto.pmst}
+		AND PMKY =#{dto.pmky}
+		AND PMCO =#{dto.pmco}
+	</select>
+	
+	<update id="updateParameter" parameterType="com.cmwa.ec.weixin.dto.ParameterDto" >
+		UPDATE PARAMETER
+		   SET PMNM = PMNM -1
+		 WHERE PMST =#{dto.pmst}
+		 AND PMKY =#{dto.pmky}
+		 AND PMCO =#{dto.pmco}
+		 AND to_number(PMNM) >0
+	</update>
+	
+	<update id="updatePmco" parameterType="com.cmwa.ec.weixin.dto.ParameterDto" >
+		 UPDATE PARAMETER
+		  	SET PMCO = PMCO -1
+		 WHERE 
+			 PMKY =#{dto.pmky}
+	</update>
+
+</mapper>

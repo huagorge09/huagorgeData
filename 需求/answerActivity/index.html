@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="x5-orientation" content="portrait" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no">
+	<title>投资知识竞赛</title>
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/animate.css" />
+</head>
+<body>
+   <div class="wrap bg1">
+   	   <div class="drawIndex">
+   	   	  <div class="silkBag" onclick="operation.showBag();"></div>
+   	   	  <div class="opeartion">
+   	   	  	 <p>准备好唤醒大脑超能力了吗？<br>调整好姿势</p>
+	   	   	  <div class="btn">
+	   	   	  	  <div class="btnAct btnAnsw" onclick="operation.btnAnsw();">我要答题</div>
+	   	   	  	  <div class="btnAct btnDraw" onclick="operation.btnDraw();" style="display: none;">我要抽奖</div>
+	   	   	  </div>
+   	   	  </div>
+   	   </div>
+   </div>
+   <!-- 没有关注的情况下弹窗-->
+   <div class="popup follow" style="display: none;">
+     	<div class="mask"></div>
+     	<div class="ermCode center"></div>
+   </div>
+   <!-- 活动时间结束弹窗-->
+   <div class="popup period" style="display: none;">
+     	<div class="mask"></div>
+     	<div class="content center">
+     		<h2>活动已结束，感谢参与</h2>
+     		<img src="images/expried.png" alt="" />
+     	</div>
+   </div>
+   <!-- 用户分享指引弹窗-->
+   <div class="popup share" style="display: none;">
+     	<div class="mask"></div>
+     	<div class="img"></div>
+   </div>
+   <!--抽奖机会已经用完，用户分享指引弹窗-->
+   <div class="popup share2" style="display: none;">
+     	<div class="mask"></div>
+     	<div class="img"></div>
+   </div>
+   <!-- 锦嚷提示弹窗-->
+   <div class="popup silk" style="display: none;">
+      	<div class="mask"> </div>
+      	<div class="content">
+	        <div class="img"></div>
+	        <div class="know" onclick="operation.iKnow()"></div>
+      	</div>
+   </div>
+   <!-- 用户答题弹窗-->
+   <div class="popup answer" style="display: none;">
+   	    <div class="mask"> </div>
+   	    <div class="userImg">
+   	    	<img src="images/userImg.png" class="wxUserImg" >
+   	    	<span class="score">0分</span>
+   	    </div>
+   	    <!--<div class="music"></div>-->
+   	    <div class="content center">
+	         <div class="answerGather">
+	         </div>
+      	</div>
+   </div>
+   <!-- 答题结果反馈闯关成功-->
+   <div class="popup feedBack cgsuccess" style="display: none;">
+   	   <div class="mask"></div>
+   	   <div class="content">
+   	   	   <div class="block">
+	   	   	   	<div class="shine"></div>
+	   	   	    <img src="" class="userImg wxUserImg">
+   	   	   </div>
+   	   	   <div class="success">
+   	   	   	    <h2></h2>
+   	   	   	    <p>您的成绩为：<span id="currentScore">60分</span></p>
+   	   	   	    <p>最佳成绩<em id="maxScore"></em>分<br>今天还有<span id="maxChange"></span>次机会抽奖</p>
+   	   	   </div>
+   	   	   <div class="btnGroup">
+   	   	   	    <div class="btn btn1" onclick="operation.goDraw()">赶快去抽奖</div>
+   	   	   	    <div class="btn btn2" onclick="operation.goIndex()">返回首页</div>
+   	   	   </div>
+   	   </div>
+   </div>
+   <!-- 答题结果反馈闯关失败-->
+   <div class="popup feedBack cgerror" style="display: none;">
+   	   <div class="mask"></div>
+   	   <div class="content">
+   	   	   <div class="block">
+	   	   	   	<div class="shine"></div>
+	   	   	    <img src="" class="userImg wxUserImg">
+   	   	   </div>
+   	   	   <div class="success">
+   	   	   	    <h2></h2>
+   	   	   	    <p>您的成绩为：<span class="score">50分</span><br>成绩必须达到60分才能抽奖哦~</p>
+   	   	   </div>
+   	   	   <div class="btnGroup">
+   	   	   	    <div class="btn btn1" onclick="operation.againAnswer()">再答一次吧</div>
+   	   	   	    <div class="btn btn2" onclick="operation.goIndex()">返回首页</div>
+   	   	   </div>
+   	   </div>
+   </div>
+   
+   <!-- 抽奖摇动弹窗-->
+   <div class="popup draw" style="display: none;">
+   	   <div class="mask"></div>
+   	   <div class="content center">
+   	   	  
+   	   </div>
+   </div>
+   
+   <!-- 信息弹窗-->
+   <div class="popup infoTips" style="display: none;">
+   	   <div class="mask"></div>
+   	   <div class="content center">
+   	   	    <h2>您今天的抽奖机会已用完了</h2>
+   	   	    <!--<p>把活动传递给好友将获得1次抽奖机会<br>（仅限首次分享有效）</p>-->
+   	   	    <p>没关系，明天还可以继续来抽奖哦！</p>
+   	   	    <a href="javascript:;" onclick="operation.tipsIknow()">我知道了</a>
+   	   </div>
+   </div>
+   
+   <!-- 中奖了弹窗-->
+   <div class="popup winPrize winSuc" style="display: none;">
+   	   <div class="mask"></div>
+   	   <div class="content center">
+   	   	    <div class="prizeBox rotation"></div>
+   	   	    <div class="prizeBoxImg a-bouncein"></div>
+   	   	    <h2>恭喜你，中奖了~</h2>
+   	   	    <p class="t1">去“活动锦囊”-“我的奖券”中查看吧！</p>
+   	   	    <p class="t2">分享好友，再获得一次抽奖机会<br>（仅每日首次分享有效）</p>
+   	   	    <div class="btnGroup">
+   	   	    	<a href="javascript:operation.sucContinueDraw();">继续抽奖</a>
+   	   	    	<a href="javascript:operation.seeMyPrizeList();">查看奖品</a>
+   	   	    </div>
+   	   	    <div class="return" onclick="operation.goIndex()">返回首页</div>
+   	   </div>
+   </div>
+   
+   <!-- 没奖了弹窗-->
+   <div class="popup winPrize winErr" style="display: none;">
+   	   <div class="mask"></div>
+   	   <div class="content center">
+   	   	    <div class="prizeBox"></div>
+   	   	    <h2>差一点就中奖了，好气~</h2>
+   	   	    <p class="t1">没关系！明天还可以继续来参与哦</p>
+   	   	    <p class="t2">分享好友，再获得一次抽奖机会<br>（仅每日首次分享有效）</p>
+   	   	    <div class="return btnk" onclick="operation.sucContinueDraw()">继续抽奖</div>
+   	   	    <div class="return"  onclick="operation.goIndex()">返回首页</div>
+   	   </div>
+   </div>
+   <!--活动说明及我的奖品-->
+   <div class="popup explain" style="display: none;">
+   	  <div class="mask"></div>
+   	  <div class="wrap">
+   	  	 <ul class="tabChange dswkb">
+   	  	 	<li class="flex1 current"><span>活动说明</span><i class="line"></i></li>
+   	  	 	<li class="flex1"><span>我的奖品</span><i class="close" onclick="operation.closeExplain();"></i></li>
+   	  	 </ul>
+   	  	 <div class="tabContent">
+   	  	 	<div class="activeExplain" style="display: block;">
+   	  	 		<h2>嗨翻攻略-共赴远大“钱”程</h2>
+   	  	 		<p>活动时间：2018年5月11 日00:00-2018年5月17日 15:30</p>
+   	  	 		<div class="explain1">
+   	  	 			<div class="title">及格赢首礼</div>
+   	  	 			<div class="text">奖励金额分为100元、50元、30元、20元4个面额答题分数达到60分即可抽奖，每人每天有1次抽奖机会，奖项设置为： 50元3人，30元7人，20元10人，每日中奖名额3人</div>
+   	  	 		</div>
+   	  	 		<div class="explain1">
+   	  	 			<div class="title">学霸拼手气</div>
+   	  	 			<div class="text">活动最后一天18:00我们将会在答题满分名单中，随机抽取1名用户发放奖励金100元</div>
+   	  	 		</div>
+   	  	 		<div class="explain1">
+   	  	 			<div class="title">分享齐赚钱</div>
+   	  	 			<div class="rules">
+   	  	 				<h2>完成以下任务即有机会将奖励翻倍，完成最多者奖励再升级</h2>
+   	  	 				<p><span>a</span>转发朋友圈，定向发好友都是不错的选择，每天可额外获得1次抽奖机会；</p>
+   	  	 				<p><span>b</span>活动最后一天15:00前，转发分享次数最多者，可获得“最佳理财传播达人”称号并获得100元奖励金。</p>
+   	  	 				<div>PS：以上奖励可叠加，助你红包嗨翻天！</div>
+   	  	 			</div>
+   	  	 		</div>
+   	  	 		<div class="tips">
+   	  	 			<p><span></span>奖励发放：本活动奖励将于活动结束后7个工作日内发放，请至<em>“活动锦囊”</em>-<em>“我的奖券”</em>中查看。</p>
+   	  	 		</div>
+   	  	 		<div class="interpretation">*每个ID仅限参加一次，如发现刷奖行为，取消活动资格，所得奖励不予承兑。活动最终解释权归“招商财富“所有。</div>
+   	  	 	</div>
+   	  	 	<div class="myPrizeList" style="display: none;">
+   	  	 		<!--有奖品的情况下-->
+   	  	 		<ul class="hasPrize" style="display: block;">
+   	  	 			<li class="status status1 dswkb">
+   	  	 				<div class="money">
+   	  	 					<div><em>￥</em>100</div>
+   	  	 					<div>现金券</div>
+   	  	 				</div>
+   	  	 				<div class="offerIn">
+   	  	 					<p>恭喜您中奖啦！</p>
+   	  	 					<p>2018-05-11至2018-05-31使用</p>
+   	  	 				</div>
+   	  	 				<div class="offerStatus" data-id="aga132ag12a"> 去兑换</div>
+   	  	 			</li>
+   	  	 			<li class="status status2 dswkb">
+   	  	 				<div class="money">
+   	  	 					<div><em>￥</em>100</div>
+   	  	 					<div>现金券</div>
+   	  	 				</div>
+   	  	 				<div class="offerIn">
+   	  	 					<p>恭喜您中奖啦！</p>
+   	  	 					<p>2018-05-11至2018-05-31使用</p>
+   	  	 				</div>
+   	  	 				<div class="offerStatus"> </div>
+   	  	 			</li>
+                    <li class="status status3 dswkb">
+   	  	 				<div class="money">
+   	  	 					<div><em>￥</em>100</div>
+   	  	 					<div>现金券</div>
+   	  	 				</div>
+   	  	 				<div class="offerIn">
+   	  	 					<p>恭喜您中奖啦！</p>
+   	  	 					<p>2018-05-11至2018-05-31使用</p>
+   	  	 				</div>
+   	  	 				<div class="offerStatus"> </div>
+   	  	 			</li>
+   	  	 		</ul>
+   	  	 		<!--没有奖品的情况下-->
+   	  	 		<div class="noPrize" style="display: none;">
+   	  	 		    <div class="img"></div>
+   	  	 		    <p>暂无中奖记录<br>分享可以多一次抽奖机会哦~</p>
+   	  	 		</div>
+   	  	 		 <!--用户信息，有则显示，无则隐藏-->
+		       <div class="userInfo" style="display: none;">
+		      	  <div class="userLine"><span>联系信息</span></div>
+		      	  <div class="userBox">
+		      	  	<p>姓名：<span id="UName"></span></p>
+		      	  	<p>联系电话：<span id="UTel"></span></p>
+		      	  </div>
+		       </div>
+   	  	 	</div>
+   	  	 </div>
+   	  </div>
+   	  
+   </div>
+    <!--信息填写-->
+    <div class="popup reserves" style="display: none;">
+   	    <div class="mask"></div>
+        <div class="content center">
+			 <h2>联系方式<span class="close"></span></h2>
+			 <div class="form">
+			 	<ul>
+				 	<li>
+				 	   <div class="inputBox">
+				 	  	   <span>姓名:</span> <input type="text" id="userName" name="userName">
+				 	   </div>	
+				       <p style="display: none;"></p>
+				 	</li>
+				 	<li class="foucs">
+				 		<div class="inputBox">
+				 	        <span>电话:</span> <input type="tel" id="mobilePhone" name="mobilePhone" maxlength="11"> 
+				 		</div>
+				 		<p style="display: none;"></p>
+				 	</li>
+				 	
+				 </ul>
+				 <button id="saveBtn" class="disabled" >提交</button>
+			 </div>
+		</div>
+    </div>
+   <!--信息提交成功-->
+   <div class="popup reservesSuc" style="display: none;">
+   	   <div class="mask"></div>
+   	   <div class="content center">
+   	   		<span class="close"></span>
+		 	<div class="successIcon"></div>
+		 	<h2>兑奖成功</h2>
+		 	<p>客户经理将尽快与您联系，请保持电话畅通</p>
+   	   </div>
+   </div>
+     <!--音乐特效-->
+   <audio id="bgm">
+	   <source src="audio/music.mp3" type="audio/mpeg" />
+   </audio> 
+   	<script type="text/javascript" src="js/flexible.min.js" ></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+    <script type="text/javascript" src="js/jweixin-1.0.0.js"></script>
+    
+    <script type="text/javascript" src="js/config.js" ></script>
+    <script type="text/javascript" src="js/share.js" ></script>
+    <script type="text/javascript" src="js/public.js" ></script>
+    <script type="text/javascript" src="js/index.js" ></script>  
+    <script type="text/javascript" src="js/questionAnswer.js" ></script>
+</body>
+</html>

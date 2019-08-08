@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<mappers>
+		<mapper resource="conf-mybatis/mybatis-parameter.xml"/>
+		<mapper resource="conf-mybatis/mybatis-userinfoex.xml"/>
+		<mapper resource="conf-mybatis/mybatis-userinfo.xml"/>
+		<mapper resource="conf-mybatis/mybatis-userchannel.xml"/>
+		<mapper resource="conf-mybatis/mybatis-activitydao.xml"/>
+		<mapper resource="conf-mybatis/mybatis-awardinfodao.xml"/>
+		<mapper resource="conf-mybatis/mybatis-customerawarddao.xml"/>
+		<mapper resource="conf-mybatis/mybatis-activityuserinfodao.xml" />
+		<mapper resource="conf-mybatis/mybatis-shareinfodao.xml" />
+		<mapper resource="conf-mybatis/mybatis-shorturldao.xml" />
+		<mapper resource="conf-mybatis/mybatis-synchronousData.xml"/>
+		<mapper resource="conf-mybatis/mybatis-drainageUserInfo.xml"/>
+		<mapper resource="conf-mybatis/mybatis-sinoActAwardDao.xml"/>
+		<mapper resource="conf-mybatis/mybatis-sinoActPhoneCardDao.xml"/>
+		<mapper resource="conf-mybatis/mybatis-activityawardstore.xml"/>
+	</mappers>	
+	
+</configuration>

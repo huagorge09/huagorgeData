@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.menu.MenuDao">
+	<resultMap  id="menuVo" type="menuVo">
+		<result column="MENUID"  property="menuId" />
+		<result column="MLEVEL"  property="level" />
+		<result column="MNAME"  property="name" />
+		<result column="MSEQUENCE"  property="sequence" />
+		<result column="MURL"  property="url" />
+		<result column="PARENTID"  property="parentId" />
+		<result column="MDESC"  property="desc" />
+		<result column="MCODE"  property="code" />
+		<result column="MICON"  property="icon" />
+		<result column="MTYPE"  property="type" />
+		<result column="STATUS"  property="status" />
+		<result column="CREATEID"  property="createId" />
+		<result column="CREATETIME" property="createTime" />
+		<result column="SYSTEM_CLASSIFY" property="systemClassify" />
+	</resultMap>
+	
+	
+	<!-- 三级菜单Mapping -->
+	<resultMap id="threeLevelMenuVo"  type="menuVo" extends="menuVo">
+		<collection property="childs" ofType="menuVo" javaType="ArrayList">
+			<result column="MENUID1"  property="menuId" />
+			<result column="MLEVEL1"  property="level" />
+			<result column="MNAME1"  property="name" />
+			<result column="MSEQUENCE1"  property="sequence" />
+			<result column="MURL1"  property="url" />
+			<result column="PARENTID1"  property="parentId" />
+			<result column="MCODE1"  property="code" />
+			<result column="MDESC1"  property="desc" />
+			<result column="MICON1"  property="icon" />
+			<result column="MTYPE1"  property="type" />
+			<result column="STATUS1"  property="status" />
+			<result column="CREATEID1"  property="createId" />
+			<result column="CREATETIME1" property="createTime" />
+			<collection property="childs" ofType="menuVo" javaType="ArrayList">
+				<result column="MENUID2"  property="menuId" />
+				<result column="MLEVEL2"  property="level" />
+				<result column="MNAME2"  property="name" />
+				<result column="MSEQUENCE2"  property="sequence" />
+				<result column="MURL2"  property="url" />
+				<result column="PARENTID2"  property="parentId" />
+				<result column="MCODE2"  property="code" />
+				<result column="MICON2"  property="icon" />
+				<result column="MTYPE2"  property="type" />
+				<result column="STATUS2"  property="status" />
+				<result column="CREATEID2"  property="createId" />
+				<result column="CREATETIME2" property="createTime" />
+				<collection property="childs" ofType="menuVo" javaType="ArrayList">
+					<result column="MENUID3"  property="menuId" />
+					<result column="MLEVEL3"  property="level" />
+					<result column="MNAME3"  property="name" />
+					<result column="MSEQUENCE3"  property="sequence" />
+					<result column="MURL3"  property="url" />
+					<result column="PARENTID3"  property="parentId" />
+					<result column="MCODE3"  property="code" />
+					<result column="MICON3"  property="icon" />
+					<result column="MTYPE3"  property="type" />
+					<result column="STATUS3"  property="status" />
+					<result column="CREATEID3"  property="createId" />
+					<result column="CREATETIME3" property="createTime" />
+				</collection>
+			</collection>
+		</collection>
+	</resultMap>
+	
+   <!-- 查询菜单列表数据 -->
+	<select id="menuListPage" parameterType="sparam"  resultMap="menuVo" >
+		SELECT M.MENUID,M.MLEVEL,M.MNAME,M.MSEQUENCE,M.MURL,M.PARENTID,M.MICON,M.MTYPE,SYSTEM_CLASSIFY　FROM T_ECC_MENU M 
+		 <where> 
+		    	M.STATUS = '1' 
+		    AND M.MTYPE='0'
+		  <if test="sp.parentId != null and sp.parentId != ''">
+			AND  M.PARENTID=#{sp.parentId}
+		  </if>
+		 <if test="sp.name != null and sp.name != ''">
+	     	AND M.MNAME LIKE '%' || #{sp.name} || '%'     
+	   	 </if>
+	   	  <if test="sp.level != null and sp.level != ''">
+	     	AND M.MLEVEL =#{sp.level}     
+	   	 </if>
+	   	 </where>
+	   	 ORDER BY M.MSEQUENCE
+	</select>
+	
+
+	
+	<!--  查询包含三级的菜单列表数据 -->
+	<select id="queryThreeLevelMenuList"   resultMap="threeLevelMenuVo" >
+    <!--  SELECT M.MENUID,M.MLEVEL,M.MNAME,M.MSEQUENCE,M.MURL,M.PARENTID,M.MICON,M.MTYPE,M.MCODE,MM.MENUID1,MM.PARENTID1,MM.MNAME1,MM.MSEQUENCE1,MM.MCODE1,MM.MENUID2,MM.PARENTID2,MM.MNAME2,MM.MSEQUENCE2,MM.MCODE2　FROM T_ECC_MENU M 
+      LEFT JOIN (SELECT M1.MENUID MENUID1,M1.PARENTID PARENTID1,M1.MNAME MNAME1,M1.MSEQUENCE MSEQUENCE1,M1.STATUS STATUS1,M1.MCODE MCODE1,M2.MENUID MENUID2,M2.PARENTID PARENTID2,M2.MNAME MNAME2,M2.MSEQUENCE MSEQUENCE2,M2.STATUS STATUS2,M2.MCODE MCODE2 FROM T_ECC_MENU M1 
+      LEFT JOIN  T_ECC_MENU M2 on M1.MENUID=M2.PARENTID AND M1.MTYPE='0' AND M2.MTYPE='0' AND M2.STATUS='1'  WHERE M1.STATUS='1' 
+        ) MM 
+        ON M.MENUID=MM.PARENTID1 AND MM.STATUS1='1'
+         WHERE M.PARENTID=0  AND M.STATUS='1' -->
+        SELECT M.MENUID,
+		       M.MLEVEL,
+		       M.MNAME,
+		       M.MSEQUENCE,
+		       M.MURL,
+		       M.PARENTID,
+		       M.MICON,
+		       M.MTYPE,
+		       M.MCODE,
+		       MM.MENUID1,
+		       MM.PARENTID1,
+		       MM.MNAME1,
+		       MM.MSEQUENCE1,
+		       MM.MCODE1,
+		       MM.MENUID2,
+		       MM.PARENTID2,
+		       MM.MNAME2,
+		       MM.MSEQUENCE2,
+		       MM.MCODE2,
+		       MM.MENUID3,
+		       MM.PARENTID3,
+		       MM.MNAME3,
+		       MM.MSEQUENCE3,
+		       MM.MCODE3
+		       　FROM T_ECC_MENU M
+		  LEFT JOIN (SELECT M1.MENUID    MENUID1,
+		                    M1.PARENTID  PARENTID1,
+		                    M1.MNAME     MNAME1,
+		                    M1.MSEQUENCE MSEQUENCE1,
+		                    M1.STATUS    STATUS1,
+		                    M1.MCODE     MCODE1,
+		                    M2.MENUID    MENUID2,
+		                    M2.PARENTID  PARENTID2,
+		                    M2.MNAME     MNAME2,
+		                    M2.MSEQUENCE MSEQUENCE2,
+		                    M2.STATUS    STATUS2,
+		                    M2.MCODE     MCODE2,
+		                    M3.MENUID    MENUID3,
+		                    M3.PARENTID  PARENTID3,
+		                    M3.MNAME     MNAME3,
+		                    M3.MSEQUENCE MSEQUENCE3,
+		                    M3.STATUS    STATUS3,
+		                    M3.MCODE     MCODE3
+		               FROM T_ECC_MENU M1
+		               LEFT JOIN T_ECC_MENU M2 on M1.MENUID = M2.PARENTID AND M1.MTYPE = '0' AND M2.MTYPE = '0' AND M2.STATUS = '1'
+		               LEFT JOIN T_ECC_MENU M3 on M2.MENUID = M3.PARENTID AND M2.MTYPE = '0' AND M3.MTYPE = '0' AND M3.STATUS = '1'
+		              WHERE M1.STATUS = '1') MM ON M.MENUID = MM.PARENTID1
+		                                       AND MM.STATUS1 = '1'
+		 WHERE M.PARENTID = '0'
+		   AND M.STATUS = '1'
+	</select>
+	
+	<!-- 根据父ID查询子菜单 -->
+	<select id="queryMenuByParentId" parameterType="String"  resultMap="menuVo" >
+		SELECT M.MENUID,M.MLEVEL,M.MNAME,M.MSEQUENCE,M.MURL,M.PARENTID,M.MICON,M.MTYPE,M.SYSTEM_CLASSIFY　FROM T_ECC_MENU M 
+		  WHERE M.PARENTID=#{parentId}
+	</select>
+	
+	<!-- 根据ID查询菜单 -->
+	<select id="queryMenuById" parameterType="String"  resultMap="menuVo" >
+		SELECT M.MENUID,M.MLEVEL,M.MNAME,M.MSEQUENCE,M.MURL,M.PARENTID,M.MDESC,M.MCODE,M.MICON,M.MTYPE,M.SYSTEM_CLASSIFY　FROM T_ECC_MENU M 
+		  WHERE M.MENUID=#{menuId}
+	</select>
+	
+	<!-- 根据url查询菜单 -->
+	<select id="queryMenuByUrl" parameterType="String"  resultMap="menuVo" >
+		SELECT M.MENUID,M.MLEVEL,M.MNAME,M.MSEQUENCE,M.MURL,M.PARENTID,M.MDESC,M.MCODE,M.MICON,M.MTYPE,M.SYSTEM_CLASSIFY　FROM T_ECC_MENU M 
+		  WHERE M.MURL=#{url}
+	</select>
+	
+	<!-- 查询全部有效的菜单 -->
+	<select id="queryAllMenu" resultMap="menuVo" >
+		SELECT M.MENUID,M.MLEVEL,M.MNAME,M.MSEQUENCE,M.MURL,M.PARENTID,M.MDESC,M.MCODE,M.MICON,M.MTYPE,M.SYSTEM_CLASSIFY　FROM T_ECC_MENU M 
+		  WHERE M.STATUS='1' AND SYSTEM_CLASSIFY = 'BUSINESS' ORDER BY  M.MSEQUENCE
+	</select>
+	<!-- 查询最大序列号加一 -->
+	<select id="queryNextSequence" resultType="Integer" >
+		SELECT MAX(M.MSEQUENCE)+1 AS NEXT_SEQUENCE FROM T_ECC_MENU M 
+	</select>
+	
+	<!--根据名称，查询匹配的菜单列表 -->
+	<select id="queryMatchMenuList" resultMap="menuVo" >
+	  SELECT M.MENUID,M.MLEVEL,M.MNAME,M.MSEQUENCE,M.MURL,M.PARENTID,M.MICON,M.MTYPE,SYSTEM_CLASSIFY　FROM T_ECC_MENU M 
+     	 WHERE M.MNAME LIKE '%'||#{menuNM}||'%'
+     	   <!-- AND SYSTEM_CLASSIFY = 'BUSINESS' -->
+	</select>
+	
+	<!-- 查询重名的菜单数量 -->
+	<select id="queryRepeatMenuNMCount" parameterType="String"  resultType="Integer" >
+		SELECT COUNT(1) AS COUNT FROM T_ECC_MENU M WHERE M.STATUS = '1' AND M.MTYPE='0'  AND  M.MNAME=#{menuNM}
+		 <if test="menuId != null and menuId != ''">
+		 	AND	M.MENUID <![CDATA[ <> ]]> #{menuId}
+		 </if>
+	</select>
+	
+	<!-- 查询重URL的菜单数量 -->
+	<select id="queryRepeatURL" parameterType="String"  resultType="Integer" >
+		SELECT COUNT(1) AS COUNT FROM T_ECC_MENU M WHERE M.STATUS = '1'   AND  M.MURL=#{url}
+		 <if test="menuId != null and menuId != ''">
+		  AND	M.MENUID <![CDATA[ <> ]]> #{menuId}
+		 </if>
+	</select>
+	
+	<!-- 是否有子类菜单 -->
+	<select id="querySubMenuCount" parameterType="String"  resultType="Integer" >
+		 SELECT  COUNT(1) FROM T_ECC_MENU M   WHERE M.MTYPE='0' AND  M.STATUS = '1' AND M.PARENTID=#{parentId}
+	</select>
+	
+	<!-- 根据选择的菜单ID，查询这些菜单之下的全部按钮级别的菜单列表 -->
+	<select id="queryAllButtonMenuByMenuIds" parameterType="String"  resultMap="threeLevelMenuVo" >
+		 SELECT P.MENUID,P.MLEVEL,P.MNAME,P.MSEQUENCE,P.MURL,P.PARENTID,P.MDESC,P.MCODE,P.MICON,P.MTYPE,M.MENUID MENUID1,M.MLEVEL MLEVEL1,M.MNAME MNAME1,M.MSEQUENCE MSEQUENCE1,M.MURL MURL1,M.PARENTID PARENTID1,M.MDESC MDESC1,M.MCODE MCODE1,M.MICON MICON1,M.MTYPE MTYPE1　
+		 	FROM T_ECC_MENU P JOIN T_ECC_MENU M ON M.PARENTID=P.MENUID   WHERE M.MTYPE='1' AND  M.STATUS = '1'
+ 		   <if test="inSQL != null and inSQL != ''">
+	     	AND ${inSQL}     
+	   	 </if>
+	   	 ORDER BY M.PARENTID,M.MENUID
+	</select>
+	
+	<!-- 根据选择的菜单ID，查询这些菜单之下的全部按钮级别的菜单列表 -->
+	<select id="queryButtonListByMenuIds" parameterType="String"  resultMap="menuVo" >
+		SELECT M.MENUID,M.MLEVEL,M.MNAME,M.MSEQUENCE,M.MURL,M.PARENTID,M.MDESC,M.MCODE,M.MICON,M.MTYPE,M.SYSTEM_CLASSIFY　FROM T_ECC_MENU M
+ 		 WHERE M.MTYPE='1' AND  M.STATUS = '1'
+ 		   <if test="inSQL != null and inSQL != ''">
+	     	AND ${inSQL}     
+	   	 </if>
+	   	  ORDER BY M.PARENTID,M.MENUID
+	</select>
+	
+	<!-- 根据用户ID查询 用户-菜单关联表中的菜单-->
+	<select id="queryMenuListByEmp" resultMap="menuVo" >
+		SELECT  M.MENUID,M.MLEVEL,M.MNAME,M.MSEQUENCE,M.MURL,M.PARENTID,M.MDESC,M.MCODE,M.MICON,M.MTYPE,M.SYSTEM_CLASSIFY FROM T_ECC_EMP_MENU EM
+			JOIN T_ECC_MENU M ON EM.MENUID =M.MENUID
+			WHERE  M.STATUS = '1' AND  EM.EMPID=#{empId}
+	</select>
+	<!--根据用户ID查找用户所在的岗位中， 岗位-菜单关联表中的菜单 -->
+	<select id="queryMenuListByOrmember" resultMap="menuVo" >
+		SELECT  M.MENUID,M.MLEVEL,M.MNAME,M.MSEQUENCE,M.MURL,M.PARENTID,M.MDESC,M.MCODE,M.MICON,M.MTYPE FROM T_ECC_ORMEMBER O
+			JOIN T_ECC_ORMEMBER_MENU OM ON  O.ORGID=OM.ORGID AND O.TITLEID=OM.TITLEID AND OM.STATUS='1' AND O.STAT='STAR'
+			JOIN T_ECC_MENU M ON M.MENUID=OM.MENUID
+		 WHERE  M.STATUS = '1' AND O.EMPID=#{empId}
+	</select>
+	
+	<!--  -->
+	<select id="queryEmpDefaultSelectedButtonMenu" parameterType="String"  resultMap="menuVo" >
+	  SELECT  M.MENUID,M.MLEVEL,M.MNAME,M.MSEQUENCE,M.MURL,M.PARENTID,M.MDESC,M.MCODE,M.MICON,M.MTYPE FROM T_ECC_EMP_MENU EM JOIN T_ECC_MENU M ON M.MENUID = EM.MENUID 
+	   WHERE M.MTYPE='1' AND  M.STATUS = '1' AND EM.EMPID=#{empId}
+	</select>
+	<!--  -->
+	<select id="queryOrmemberDefaultSelectedButtonMenu" parameterType="String"  resultMap="menuVo" >
+	  SELECT  M.MENUID,M.MLEVEL,M.MNAME,M.MSEQUENCE,M.MURL,M.PARENTID,M.MDESC,M.MCODE,M.MICON,M.MTYPE FROM T_ECC_ORMEMBER_MENU OM  
+		  JOIN T_ECC_MENU M ON OM.MENUID =M.MENUID
+		  WHERE  M.MTYPE='1' AND  M.STATUS = '1' AND OM.ORGID =#{orgId} AND OM.TITLEID =#{titleId}
+	</select>
+	
+	<!-- 根据代码查询按钮菜单 -->
+	<select id="queryMenuByCode" parameterType="String"  resultMap="menuVo" >
+	 SELECT M.MENUID,M.MLEVEL,M.MNAME,M.MSEQUENCE,M.MURL,M.PARENTID,M.MDESC,M.MCODE,M.MICON,M.MTYPE　FROM T_ECC_MENU M 
+		  WHERE M.MCODE = #{code}
+	</select>
+	
+	<!-- 更新保存菜单数据 -->
+	<update id="updateMenu" parameterType="menuVo">
+		UPDATE T_ECC_MENU M
+		 SET
+		 M.MLEVEL = #{level},
+		 M.MNAME = #{name},
+		 M.MSEQUENCE = #{sequence},
+		 M.MURL = #{url},
+		 M.PARENTID = #{parentId},
+		 M.MDESC = #{desc}	 ,
+		 M.MCODE = #{code}   ,
+		 M.MICON = #{icon},
+		 M.MTYPE = #{type},
+		 M.SYSTEM_CLASSIFY = #{systemClassify}
+		<where>
+			M.MENUID = #{menuId}
+		</where>
+	</update>
+	
+	<!-- 逻辑删除菜单 -->
+	<update id="deleteMenuWithStatus" parameterType="String">
+		UPDATE T_ECC_MENU M
+		 SET  M.STATUS = '0'
+		<where>
+			M.MENUID = #{menuId}
+		</where>
+	</update>
+	
+	<!-- 保存菜单 -->
+	<insert id="saveMenu" parameterType="menuVo">
+		<selectKey resultType="String" order="BEFORE" keyProperty="menuId">
+			SELECT TO_CHAR(SYSDATE, 'YYYY') || LPAD(ECC_SEQ_MENU_NO.NEXTVAL, 6, '0') FROM DUAL
+		</selectKey>
+		 INSERT INTO T_ECC_MENU(
+			  MENUID   ,
+			  MLEVEL   ,
+			  MNAME    ,
+			  MSEQUENCE,
+			  MURL     ,
+			  PARENTID ,
+			  MDESC	   ,
+			  MCODE    ,
+			  MICON    ,
+			  MTYPE   ,
+			  STATUS  ,
+			  CREATEID  ,
+			  CREATETIME,
+			  SYSTEM_CLASSIFY
+		    ) VALUES(
+			 #{menuId},
+			 #{level},
+			 #{name},
+			 #{sequence},
+			 #{url},
+			 #{parentId},
+			 #{desc},
+			 #{code},
+			 #{icon},
+			 #{type},
+			 #{status},
+			 #{createId},
+			 SYSDATE,
+			 #{systemClassify}
+			)
+	</insert>
+</mapper>

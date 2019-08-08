@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.resource.ResourceRoleRelationsDao">
+	<resultMap type="resourceRoleRelationsVo" id="resourceRoleRelationsVo">
+		<result column="RES_ID" property="resId"/>
+		<result column="ROLE_ID" property="roleId"/>
+		<result column="CREATE_ID" property="createId"/>
+		<result column="CREATE_NAME" property="createName"/>
+		<result column="CREATE_TIME" property="createTime"/>
+		<result column="MODIFY_ID" property="modifyId"/>
+		<result column="MODIFY_TIME" property="modifyTime"/>
+		<result column="MODIFY_NAME" property="modifyName"/>
+	</resultMap>
+	
+	<insert id="batchInsert">
+      BEGIN 
+      	<foreach collection="sp.roleIds" item="roleId">
+      		DELETE T_ECC_RES_ROLE_REL WHERE RES_ID = #{sp.resId} AND ROLE_ID = #{roleId};
+      		INSERT INTO T_ECC_RES_ROLE_REL (
+        		RES_ID,    
+        		ROLE_ID,   
+        		CREATE_ID,
+        		CREATE_TIME,
+        		MODIFY_ID,
+        		MODIFY_TIME
+       		)VALUES(
+       			#{sp.resId}, 
+       			#{roleId},
+       			#{sp.createId},
+       			SYSDATE, 
+       			#{sp.createId},
+       			SYSDATE
+       		);
+      	</foreach>
+      END;
+	</insert>
+	
+	<insert id="batchInsertByResIds">
+      BEGIN 
+      	<foreach collection="sp.resIds" item="resId">
+      		INSERT INTO T_ECC_RES_ROLE_REL (
+        		RES_ID,    
+        		ROLE_ID,   
+        		CREATE_ID,
+        		CREATE_TIME,
+        		MODIFY_ID,
+        		MODIFY_TIME
+       		)VALUES(
+       			#{resId}, 
+       			#{sp.roleId},
+       			#{sp.createId},
+       			SYSDATE, 
+       			#{sp.createId},
+       			SYSDATE
+       		);
+      	</foreach>
+      END;
+	</insert>
+	
+	
+	<select id="queryAllResRoleList" resultMap="resourceRoleRelationsVo">
+		SELECT WRR.RES_ID,
+		       WRR.ROLE_ID,
+		       WRR.CREATE_ID,
+		       WRR.CREATE_TIME,
+		       WRR.MODIFY_ID,
+		       WRR.MODIFY_TIME
+		  FROM T_ECC_RES_ROLE_REL WRR
+		  WHERE 1=1
+		  	<if test="sp.resId != null and sp.resId != '' ">
+		  		AND WRR.RES_ID = #{sp.resId}
+		  	</if>
+		  	<if test="sp.roleId != null and sp.roleId != '' ">
+		  		AND WRR.ROLE_ID = #{sp.roleId}
+		  	</if>
+	</select>
+	
+	<delete id="deleteResourceRoleRelationsByResOrRoleId">
+		DELETE T_ECC_RES_ROLE_REL WHERE RES_ID = #{resId} OR ROLE_ID = #{roleId}
+	</delete>
+	
+</mapper>

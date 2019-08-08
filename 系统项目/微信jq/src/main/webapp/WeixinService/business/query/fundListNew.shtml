@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+   	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/bannerStyleNew.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/weiLaiAutomobileTwo/swiper.minNew.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedomNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1New.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/sliderNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscrollNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/DataStatisJsNew.js"></script>
+		<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/weiLaiAutomobileTwo/swiperNew.min.js"></script>
+</head>
+<body onload="loaded()">
+<div class="page">
+	<!--#include virtual="/WeixinService/headerOrFooter/otherHeaderNew.shtml"-->
+	<div id="wrapper" style="bottom: 70px;">
+		<div id="scroller">
+				 <div class="header" style="border-bottom: 0">
+			        <div class="top hide">
+			        </div>
+			    </div>
+				<section>
+			        <div id="bannerDiv" class="flexslider">
+			            <ul class="slides">
+			            </ul>
+			        </div>
+					
+					 <!-- Swiper -->
+				  <div class="swiper-container tab_box">
+					<div class="swiper-wrapper">
+					  <div class="swiper-slide"><a id="type5" class="act" href="javascript:showAndHideDivFundType('0')">热销产品</a></div>
+					  <div class="swiper-slide"><a id="type1" href="javascript:showAndHideDivFundType('1')">定期理财</a></div>
+					  <div class="swiper-slide"><a id="type4" href="javascript:showAndHideDivFundType('2')">活期理财</a></div>
+					  <div class="swiper-slide"><a id="type3" href="javascript:showAndHideDivFundType('4')">权益投资</a></div>
+					  <div class="swiper-slide"><a id="type2" href="javascript:showAndHideDivFundType('3')">另类投资</a></div>
+					</div>
+				  </div>
+
+					<!--热销产品-->
+                    <div class="pro-list upadatepro-list clear" id="fundTypeDiv5" ></div> 
+					<!--定期理财-->
+					<div class="pro-list upadatepro-list clear" id="fundTypeDiv1" style="display: none;"></div>
+					
+					<!--活期理财-->
+					<div class="pro-list upadatepro-list clear" id="fundTypeDiv2" style="display: none;"></div>
+					
+					<!--另类投资-->
+					<div class="pro-list upadatepro-list clear" id="fundTypeDiv3" style="display: none;"></div>
+					
+					<!--权益投资-->
+				    <div class="pro-list upadatepro-list clear" id="fundTypeDiv4" style="display: none;"></div> 
+				</section>
+		</div>
+	</div>	
+	
+	<div class="cover-bg" id="tips_invest_update" style="display: none;z-index: 110">
+	    <div class="cover-point">
+	        <div class="cover-point-text mid">
+	            <p><em id="weixinRiskHtml">您已是专业投资者，自行做出投资决定并自主承担投资风险。</em></p>
+	        </div>
+			<div class="left fl"
+				style="width: 50%; height: 50px; line-height: 50px; background: #ca132c; margin-left: 0;">
+				<a style="display: block; width: 100%; height: 100%; text-align: center; padding: 0; 
+					margin: 0; background: none; color: #fff; font-size: 1.6rem;" onclick="updateUserInvprtpAlert()">我知道了</a>
+			</div>
+			<div class="right fr"
+				style="width: 50%; height: 50px; line-height: 50px; background: #ededed;">
+				<a href="/WeixinService/business/user/userInfoNew.shtml" onclick="updateUserInvprtpAlert()" style="display: block; width: 100%; color: #4c4c4c; height: 100%; text-align: center; font-size: 1.6rem;">申请转换</a>
+			</div>
+	    </div>
+	</div>
+	
+	<div class="cover-bg" id="tips_risk_timeout" style="display: none;z-index: 101">
+	    <div class="cover-point">
+	        <div class="cover-point-text mid">
+	            <p><em id="weixinRiskHtml">您的风险承受能力调查问卷已过有效期，还请重新测评。</em></p>
+	        </div>
+			<div class="left fl"
+				style="width: 50%; height: 50px; line-height: 50px; background:#ededed; ; margin-left: 0;">
+				<a style="display: block; width: 100%; height: 100%; text-align: center; padding: 0; 
+					margin: 0; background: none; color: #4c4c4c; font-size: 1.6rem;" href="javascript:closeTips('tips_risk_timeout')">我再看看</a>
+			</div>
+			<div class="right fr" style="width: 50%; height: 50px; line-height: 50px; background:#ca132c ">
+				<a href="javascript:closeTips('tips_risk_timeout');checkUserBaseInfoIsExist();" style="display: block; width: 100%; color:#fff ; height: 100%; text-align: center; font-size: 1.6rem;">重新测评</a>
+			</div>
+	    </div>
+	</div>
+	
+	<!--#include virtual="/WeixinService/headerOrFooter/footerNew.shtml"-->
+</div>
+<!-- 尚未完成操作弹窗-->
+    <div class="cover_bg" id="noOperation" style="display: none;z-index: 99;">
+    	 <!-- 尚未完成风险评测-->
+    	 <div class="content risk" id="riskContent" style="display: none;">
+    	 	  <h2></h2>
+    	 	  <p>哎呀！您尚未完成风险测评</p>
+    	 	  <div class="tips">
+    	 	  	  <h3>温馨提示：</h3>
+    	 	  	  <p>根据监管要求，为保护投资者权益，需要了解您的相关信息和风险等级，以实现对您的最大保障。</p>
+    	 	  	  <p class="yearReport">
+    	 	  	  	 动动小指尖， 30秒完成风险测评，轻松查看产品信息
+    	 	  	  </p>
+    	 	  <div style="text-align: center;">
+				  <a href="javascript:void(0);" id="goRisk" class="btn">我要测评</a>
+				  <a href="javascript:void(0);" id="iKnow" class="btn" style="margin-left: 20px;" onclick="iKnow()">先看看</a>
+             </div> 
+			 </div>
+			 
+    	 </div>
+    	 
+    	  <!-- 重新测评-->
+    	 <div class="content rNameRisk" id="reRiskContent"  style="display: none;">
+    	 	  <h2></h2>
+    	 	  <p>根据监管要求，您的风险测评已过有效期，还请重新测评</p>
+    	 	   <a href="javascript:void(0);" id="reRisk" class="btn" >确定</a>
+    	 </div>
+    </div>
+    <style>
+    	.tab_box ul li{
+    		width: 25%;
+    	}
+    	.currentProduct{
+    		height: 62px !important;
+    	}
+    	.currentProduct .income{
+            width: 41% !important
+    	}
+    	.currentProduct dt{
+    		padding-left:8px;
+    	}
+    	#noOperation .btn{
+		    width: 100px!important;
+		    display: inline-block;
+    	}
+		.pro-list h2{
+			position: relative;
+		}
+		.pro-list h2 i{
+			position: absolute;
+			top: 14px;
+		}
+		.pro-list.upadatepro-list .pro-box h2 a{
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			width: 53%;
+		}
+		.schedule{
+			display: none;
+		}
+		#noOperation .rNameRisk{
+		    text-align: center;
+		}
+    </style>
+    <script>
+    	function iKnow(){
+    		location.href="/WeixinService/business/user/queryAccountNew.shtml";
+    	}
+	</script> 
+	<style>
+		.type0210 .asset dl:nth-child(0),.type0210 .asset dl:nth-child(1){
+			width: 45%
+		}
+		.tab_box{
+		  width: 100%;
+		  height: 50px;
+		  background: #fff;
+		  overflow: hidden;
+		}
+		.tab_box  .swiper-slide{
+		  float: left;
+		  width: 33.3%;
+		  height: 14px;
+		  line-height: 14px;
+		  text-align: center;
+		  margin-top: 19px;
+		  background: url(/WeixinWeb/WeixinWeb_Images/images/ic_line.png) no-repeat right center;
+		}
+		.tab_box .swiper-slide a{
+		  font-size: 1.7rem;
+		  color: #3f3f3f;
+		  padding-bottom: 12px;
+		}
+		.tab_box .swiper-slide a.act{
+		  color: #ca132c;
+		  border-bottom: 2.5px solid #ca132c;
+		}
+	</style>
+ <script type="text/javascript">
+ 
+
+var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 4,
+      spaceBetween: 0,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+
+  //document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/fundListNew.js?version='+jsversion+'"><\/script>'); 
+ document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/fundListNew.min.js?version='+jsversion+'"><\/script>');
+</script>
+</body>
+</html>

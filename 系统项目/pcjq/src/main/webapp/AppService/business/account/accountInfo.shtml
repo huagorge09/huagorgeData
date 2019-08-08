@@ -1,0 +1,272 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="/AppWeb/AppWeb_Css/ui-select.css" rel="stylesheet" type="text/css"/>
+<link href="/AppWeb/AppWeb_Css/account/queryMySafeInfo.css" rel="stylesheet" type="text/css"/>
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" href="/AppWeb/AppWeb_Css/jquery.mCustomScrollbar.css">
+<link rel="stylesheet" type="text/css" href="/AppWeb/AppWeb_Css/dialog.css" />
+</head>
+<body>
+	<input type="hidden" id="pageId" value="accountInfoId"/>
+	<div class="head-info">
+		<div class="head-info-box">
+			<dl>
+				<dt>
+					持仓份额<em><img src="/AppWeb/AppWeb_Images/images/ic_help.png" height="14" width="14" alt=""></em>
+				</dt>
+				<dd id="asstes">--</dd>
+			</dl>
+		</div>
+		<div class="head-info-box">
+		     <dl>
+			     <dt> 持仓市值(元)<em>
+			       <img src="/AppWeb/AppWeb_Images/images/ic_help.png" id="qHoldImg" height="14" width="14" alt=""></em>
+			     </dt> 
+			     <dd id="asstes2">--</dd>
+		      </dl></div>
+		<div class="head-info-box end">
+			<dl>
+				<dt>
+					已分配收益<em><img src="/AppWeb/AppWeb_Images/images/ic_help.png" height="14" width="14" alt=""></em>
+				</dt>
+				<dd id="profitExp">--</dd>
+			</dl>
+		</div>
+		<div class="head-nextcollection none" id="nextNoFund">
+             <span class="nextcollection-none" style="height:24px"><!--还没购买产品哦！--></span>
+             <a href="/AppService/business/fund/fundList.shtml" class="nextcollection-more">查看产品</a>                
+        </div> 
+        <div class="head-nextcollection" id="nextLoadFund">
+             <span class="nextcollection-none">正在努力加载中.....</span>
+             <a href="/AppService/business/fund/fundList.shtml" class="nextcollection-more">查看产品</a>                
+        </div> 
+		<div class="head-nextcollection none" id="nextFund">
+			<div class="nextcollection-mid">
+				<h1>下一产品到期日</h1>
+				<div class="nextcollection-date fl">
+					<h3></h3>
+					<span></span>
+				</div>
+				<div class="nextcollection-info fl">
+					<dl>
+						<dt>待收金额</dt>
+						<dd id="nextMoney">
+						</dd>
+					</dl>
+					<dl>
+						<dt>待收项目</dt>
+						<dd id="fundName"></dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="myorder" id="orderList">
+		<span class="title">
+			<h3 class="fl">我的订单</h3> <a href="javascript:changeOrderList(0)" class="fr">其它订单查询</a>
+		</span>
+		<div class="myorder-con clear">
+			<div class="myorder-con-nav">
+				<ul>
+ 					<li class="act"><a href="javascript:showOrderList(0)">全部</a></li> 
+					<!--<li><a href="javascript:showOrderList(1)">未支付</a></li> 
+ 					<li><a href="javascript:showOrderList(2)">已支付</a></li> 
+ 					<li><a href="javascript:showOrderList(3)">存续中</a></li> 
+ 					<li><a href="javascript:showOrderList(4)">已到期</a></li>-->
+				</ul>
+			</div>
+			<div class="myorder-list" id="section_01">
+			</div>
+			<div class="myorder-list none" id="section_02">
+			</div>
+			<div class="myorder-list none" id="section_03">
+			</div>
+			<div class="myorder-list none" id="section_04">
+			</div>
+			<div class="myorder-list none" id="section_05">
+			</div>
+		</div>
+ 	</div>
+	<div class="myorder otherorder none" id="otherOrderList">
+		<span class="title">
+			<a href="javascript:changeOrderList(1)" class="fl act ordertag">< 我的订单 &nbsp;|</a> <h3 class="fl">其它订单查询</h3>
+		</span>
+		<div class="myorder-con clear">
+			<div class="myorder-con-nav">
+				<ul>
+					<li class="act"><a href="javascript:showOtherOrderList(0)">全部</a></li>
+					<li><a href="javascript:showOtherOrderList(1)">存续中</a></li>
+					<li><a href="javascript:showOtherOrderList(2)">已到期</a></li>
+					<li id="black" style="display: none"><a href="javascript:showOtherOrderList(3)">白名单</a></li>
+				</ul>
+			</div>
+			<div class="myorder-list" id="other_01"></div>
+			<div class="myorder-list none" id="other_02"></div>
+			<div class="myorder-list none" id="other_03"></div>
+			<div class="myorder-list none" id="other_04"></div>
+		</div>
+	</div>
+	
+	<!-- 修改用户持仓分配方式操作确认弹窗-->
+	<div class="cover_bg none" id="updateFundType" style="z-index: 99; display: none;">
+        <div class="cover-con pop-up-three recoverpassword-cover">
+            <i class="close"></i>
+            <span class="cover-con-text act" style="text-align: center;">
+            			该订单赎回日期为：<em id="maturityDate"></em>
+            			您是否确认选择 “<em id="sourceType"></em>”
+            			</span>
+            <input class="cover-con-btn registe" id="updateFundTypeBtn" type="button" value="是" >
+            <input class="cover-con-btn close" type="button" value="否">
+        </div>
+    </div>
+    
+	<!-- 尚未完成操作弹窗-->
+    <div class="cover_bg" id="noOperation" style="display: none;">
+    	 <!-- 尚未完成风险评测-->
+    	 <div class="content risk"  style="display: none;" style="">
+    	 	  <h2></h2>
+    	 	  <p>哎呀！您尚未完成风险测评</p>
+    	 	  <div class="tips">
+    	 	  	  <h3>温馨提示：</h3>
+    	 	  	  <p>根据监管要求，为保护投资者权益，需要了解您的相关信息和风险等级，<br>以实现对您的最大保障。</p>
+    	 	  	  <p class="yearReport">
+    	 	  	  	 动动小指尖， 30秒完成风险测评，轻松查看<span class="noOperation_text">产品</span>信息
+    	 	  	  </p>
+    	 	  </div>
+    	 	   <a class="btn" data-page="activeId" data-event="event_active_expiredId">我要测评</a>
+    	 </div>
+    	 <!-- 重新测评-->
+    	 <div class="content anewRisk"  style="display: none; width: 515px; height: 341px;">
+    	 	  <h2></h2>
+    	 	  <p style="line-height: 30px;height:auto; font-size:18px;padding-left:0;">根据监管要求，您的风险测评<br>已过有效期，还请重新测评。</p>
+    	 	  <a class="btn" style="margin-top: 25px;" data-page="activeId"  data-event="event_active_expiredId">确定</a>
+    	 </div>
+    </div>
+
+	<!-- 持仓市值提示弹框-->
+	<div id="holdAmountPop" class="holdAmountPop" style="display: none">
+		<span class="closeIcon" id="closeAct"></span>
+		<p class="amountFont">持仓市值通过昨日市值计算，与实际市值可能有所偏差</p>
+		<p class="knowActBtn" id="knowActBtn">知道了</p>
+	</div>
+	<div class="backLayer" style="display: none;"></div>
+	<style>
+	.head-info-box{width:33.3%;float:left;}
+		/* 蒙层 */
+		.backLayer {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #000000;
+			opacity: 0.55;
+			z-index: 1;
+		}
+		.foursWidth{
+			width: 189.5px !important;
+		}
+		/* 持仓市值弹框*/
+		.holdAmountPop {
+			z-index: 99;
+			width: 320px;
+			height: 170px;
+			background: white;
+			border-radius: 5px;
+			position: fixed;
+			top: 32%;
+			left: 50%;
+			margin-left: -160px;
+		}
+
+		.knowActBtn {
+			width: 80px;
+			height: 30px;
+			background-color: #ef6016;
+			text-align: center;
+			font-size: 16px;
+			color: white;
+			margin: 0 auto;
+			line-height: 30px;
+			margin-top: 30px;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+		.amountFont {
+			width: 60%;
+			margin-left: 20%;
+			margin-top: 43px;
+		}
+
+		.closeIcon {
+			background: url(/AppWeb/AppWeb_Images/images/mgm/closeIcon.png)no-repeat;
+			background-size: cover;
+			width: 18px;
+			height: 18px;
+			position: absolute;
+			right: 20px;
+			top: 18px;
+			cursor: pointer;
+		}
+	</style>
+    <style>
+    	.gudieBox{width: 622px;height: 530px;background: #fff;border-radius: 10px;position: absolute;left: 50%;top: 50%;margin-left: -279px;margin-top: -265px;padding-top: 29px;}
+        .gudieBox h2{height: 39px;line-height: 39px;text-align: center;margin-bottom: 20px;background: url(/AppWeb/AppWeb_Images/images/guide3.png) top center no-repeat;color: #fff;font-size: 20px;}
+        .gudieBox .text{padding-left: 42px;}
+        .gudieBox p{font-size: 16px; line-height: 28px; }
+        .gudieBox .pt1{margin-bottom: 35px;margin-top: 35px;}
+        .gudieBox .pt2{color: #717e8c;}
+        .gudieBox .btn{width: 194px; height: 42px;line-height: 42px; font-size: 20px;text-align: center; border-radius: 5px;color: #fff;border: none; cursor: pointer; background: #ca132c; margin: 60px auto 0;outline: none;}
+        .gudieBox .icon{position: absolute; display: inline-block;width: 164px;height: 151px;background: url(/AppWeb/AppWeb_Images/images/guide4.png) no-repeat; bottom: 0; right: 0;background-size: 100% 100%;}
+        .nextGuide .w{margin: 0 auto; width: 1000px; position: relative;}
+        .nextGuide .see{width:375px;height: 41px; background: url(/AppWeb/AppWeb_Images/images/guide1.png) no-repeat; position: absolute;top: 120px;left: 332px;}
+        .nextGuide .know{width:112px;height: 47px; cursor: pointer; background: url(/AppWeb/AppWeb_Images/images/guide2.png) no-repeat;position: absolute;top: 163px;left: 444px;}
+    	
+    	#noOperation .content{width: 594px;height: 476px;position: absolute;left: 50%;top:50%;margin-top: -238px;margin-left: -279px; background: #fff;border-radius: 5px;}
+        #noOperation h2{width:193px;height: 157px;background: url(/AppWeb/AppWeb_Images/images/noOper1.png) no-repeat;  background-size: 100% 100%; margin: 22px auto 2px auto;}
+        #noOperation .content>p{height: 40px;line-height: 40px; font-size: 20px; color: #212121; text-align: center;}
+        #noOperation .tips{    padding-top: 28px;padding-left: 30px;}
+        #noOperation h3{background: url(/AppWeb/AppWeb_Images/images/noOper2.png) no-repeat;padding-left: 23px;margin-bottom: 3px; font-size: 18px; color: #212121;}
+        #noOperation p{font-size: 16px; color: #666666;line-height: 26px;padding-left: 22px;}
+        #noOperation .yearReport{height: 49px;line-height: 42px; width: 504px; color: #47a1f0;margin-left: 21px;background: url(/AppWeb/AppWeb_Images/images/noOper3.png) no-repeat;margin-top: 12px;text-align: center;padding: 0;}
+        #noOperation .btn{display: block; width: 194px; height: 42px;line-height: 42px; font-size: 20px;text-align: center; border-radius: 5px;color: #fff;border: none; cursor: pointer; background: #ca132c; margin: 15px auto 0;outline: none;}
+        #noOperation p.once{text-align: center; font-size: 18px; color: #999999;    line-height: 22px;}
+        #noOperation .realName{height: 450px;margin-top: -225px;}
+		.float-right{
+        float:right;
+        width: 138px;
+        height: 28px;
+        background: url(/AppWeb/AppWeb_Images/images/ic_p.png) no-repeat center;
+        color:#3f95ff;
+        font-size: 14px;
+        cursor: pointer;
+        line-height: 28px;
+        text-indent: 30px;
+        margin-top: 6px;
+    }
+	.myorder-list-box .box-type{
+		right: 21px;
+	}
+	.withdraw{
+		cursor: pointer;
+		background: url(/AppWeb/AppWeb_Images/images/ann01_03.png) no-repeat center top !important;
+	}
+    </style>
+    <!-- 2018032新增E -->
+	
+	
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/dialog.min.js"></script>
+<!-- 测试用  -->
+<!-- <script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/accountInfo.js"></script> -->
+<!-- 生产用  -->
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/accountInfo.min.js"></script>
+	
+	<script src="/AppWeb/AppWeb_JSLibrary/jquery-ui.min.js"></script>    
+	<script src="/AppWeb/AppWeb_JSLibrary/jquery.mousewheel.min.js"></script>     
+	<script src="/AppWeb/AppWeb_JSLibrary/jquery.mCustomScrollbar.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+   	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/bannerStyle.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscroll.js"></script>
+	
+</head>
+<body>
+
+<section class="page">
+
+<div id="wrapper">
+        <div id="scroller">
+    <!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->
+    
+    
+   <section id="articleDetail">
+        <!-- <div class="box-news">
+            <h2>
+                <span>恭喜您，成功认购了xxxx理财计划，招商财富与您共享财富人生。</span>
+                <i>2016-4-12</i>
+            </h2>
+            <div class="box-news-detail">
+                <p>
+                    恭喜您，成功认购了xxxx理财计划，招商财富与您共享财富人生。恭喜您，成功认购了xxxx理财计划，招商财富与您共享财富人生。恭喜您，成功认购了xxxx理财计划，招商财富与您共享财富人生。恭喜您，成功认购了xxxx理财计划，招商财富与您共享财富人生。恭喜您，成功认购了xxxx理财计划，招商财富与您共享财富人生。恭喜您，成功认购了xxxx理财计划，招商财富与您共享财富人生。
+                </p>
+                <p>
+                    恭喜您，成功认购了xxxx理财计划，招商财富与您共享财富人生。恭喜您，成功认购了xxxx理财计划，招商财富与您共享财富人生。恭喜您，成功认购了xxxx理财计划，招商财富与您共享财富人生。恭喜您，成功认购了xxxx理财计划，招商财富与您共享财富人生。恭喜您，成功认购了xxxx理财计划，招商财富与您共享财富人生。恭喜您，成功认购了xxxx理财计划，招商财富与您共享财富人生。
+                </p>
+            </div>
+        </div> -->
+    </section>   
+    
+	
+	
+</div></div>  
+</section>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/articleContent.min.js"></script>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

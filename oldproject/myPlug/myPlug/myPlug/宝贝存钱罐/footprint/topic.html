@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no">
+    <title>童言话题</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/square.css">
+    <link rel="stylesheet" href="css/topic.css">
+    <script src="js/library/jquery-3.2.1.min.js"></script>
+    <script src="js/library/swiper.min.js"></script>
+    <script src="js/library/common.js"></script>
+    <script src="js/public.js"></script>
+    <script src="js/topic.js"></script>
+</head>
+<body>
+<div class="page">
+    <!--内容-->
+    <div class="contain">
+        <!--推荐-->
+        <div class="block tuiJian">
+            <a class="block-context" href="tape.html">
+                <div class="tuWen">
+                    <img class="bg" src="image/picture/img3.png">
+                    <div class="luYin"></div>
+                </div>
+                <p class="miaoShu">现在开始，你发现你的内心变得很平静，好像你已经进入另外一个奇妙的世界，远离了世俗，你只会听到我的声音和背景音乐的我的声音音乐的...</p>
+            </a>
+        </div>
+        <div class="block zuJi">
+            <div class="title">
+                <span class="num">已有123条足迹</span>
+            </div>
+            <div class="block-context" id="dayContext">
+                <div class="square-tab" id="square-tab">
+                    <div class="option current">精华</div>
+                    <div class="option">最新</div>
+                    <div class="option">我的</div>
+                </div>
+                <!--足迹列表-->
+                <div class="dayList clearFloat">
+                    <div class="dayItem">
+                        <div class="context">
+                            <div class="wrap">
+                                <div class="top clearFloat">
+                                    <!--用户信息-->
+                                    <div class="user">
+                                        <img class="head" src="image/picture/img1.png">
+                                        <div class="name">微信昵称</div>
+                                    </div>
+                                    <!--孩子-->
+                                    <div class="childrenWrap">
+                                        <div class="children">
+                                            <span class="childrenInfo">
+                                                <span class="name">大宝宝</span>
+                                                <span class="year">4岁</span>
+                                                <span class="sameAge">同龄</span>
+                                            </span>
+                                        </div>
+                                        <div class="children">
+                                            <span class="childrenInfo">
+                                                <span class="name">大宝宝</span>
+                                                <span class="year">4岁</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!--加精-->
+                                    <div class="fabulous"></div>
+                                </div>
+                                <div class="text">凝望着校园的春景，我又走进难忘的青春记忆，那曾是绿草如织繁花似锦的世界，也是当今党和人民的关怀。</div>
+                                <!--图片=========>此处需判断图片的个数，1个需添加singlePicture类-->
+                                <div class="picture clearFloat">
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                </div>
+                                <!--录音-->
+                                <div class="record">
+                                    <audio src="http://pic.ibaotu.com/00/22/50/22t888piCF8X.mp3"></audio>
+                                    <!--音频播放器-->
+                                    <div class="BarAudioPlayer">
+                                        <div class="currentTime">00:00</div>
+                                        <div class="scheduleBar">
+                                            <div class="currentSchedule"></div>
+                                            <div class="button"></div>
+                                        </div>
+                                        <div class="endTime">00:00</div>
+                                    </div>
+                                </div>
+                                <div class="topic-theme">
+                                    <!--主题-->
+                                    <span class="text navigateTheme">#你愿意用肾换iphoneX吗#</span>
+                                </div>
+                                <div class="time">2017.08.21<span>17:00</span></div>
+                            </div>
+                            <div class="bottom may">
+                                <div class="daShang">打赏(20)</div>
+                                <div class="pingLun">评论(30)</div>
+                                <div class="dianZan">点赞(50)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dayItem">
+                        <div class="context">
+                            <div class="wrap">
+                                <div class="top clearFloat">
+                                    <!--用户信息-->
+                                    <div class="user">
+                                        <img class="head" src="image/picture/img1.png">
+                                        <div class="name">微信昵称</div>
+                                    </div>
+                                    <!--孩子-->
+                                    <div class="childrenWrap">
+                                        <div class="children">
+                                <span class="childrenInfo">
+                                    <span class="name">大宝宝</span>
+                                    <span class="year">4岁</span>
+                                    <span class="sameAge">同龄</span>
+                                </span>
+                                        </div>
+                                        <div class="children">
+                                <span class="childrenInfo">
+                                    <span class="name">大宝宝</span>
+                                    <span class="year">4岁</span>
+                                </span>
+                                        </div>
+                                    </div>
+                                    <!--加精-->
+                                    <div class="fabulous"></div>
+                                </div>
+                                <div class="text">凝望着校园的春景，我又走进难忘的青春记忆，那曾是绿草如织繁花似锦的世界，也是当今党和人民的关怀。</div>
+                                <!--图片=========>此处需判断图片的个数，1个需添加singlePicture类-->
+                                <div class="picture clearFloat">
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                    <div class="imgWrap">
+                                        <img src="image/picture/img2.png" onload='common.pictureImgLoad(this)' >
+                                    </div>
+                                </div>
+                                <!--录音-->
+                                <div class="record">
+                                    <audio src="http://pic.ibaotu.com/00/22/50/22t888piCF8X.mp3"></audio>
+                                    <!--音频播放器-->
+                                    <div class="BarAudioPlayer">
+                                        <div class="currentTime">00:00</div>
+                                        <div class="scheduleBar">
+                                            <div class="currentSchedule"></div>
+                                            <div class="button"></div>
+                                        </div>
+                                        <div class="endTime">00:00</div>
+                                    </div>
+                                </div>
+                                <div class="topic-theme">
+                                    <!--主题-->
+                                    <span class="text navigateTheme">#你愿意用肾换iphoneX吗#</span>
+                                </div>
+                                <div class="time">2017.08.21<span>17:00</span></div>
+                            </div>
+                            <div class="bottom may">
+                                <div class="daShang">打赏(20)</div>
+                                <div class="pingLun">评论(30)</div>
+                                <div class="dianZan">点赞(50)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--滑至顶部按钮-->
+<div class="pageUp" id="pageUp"></div>
+<!--音频播放器-->
+<div class="circleAudioPlayer">
+    <canvas></canvas>
+    <div class="button"></div>
+    <div class="close"></div>
+</div>
+<!--打赏猪币-->
+<div class="hintBox centerHintBox rewardBox zhubi" id="rewarZhubiBox" style="display: none">
+    <div class="close"></div>
+    <h3>宝贝前途无量！我打赏猪币</h3>
+    <div class="moneySelect">
+        <div class="option one current">1</div>
+        <div class="option two">5</div>
+        <div class="option three">自定义</div>
+    </div>
+    <div class="inputDiv">
+        <input type="number" placeholder="自定义猪币数 ，上限为1523">
+        <div class="delete"></div>
+    </div>
+    <div class="tips"></div>
+    <div class="button">打赏1猪币</div>
+    <span class="switch">我想打赏红包 ></span>
+</div>
+<!--打赏红包-->
+<div class="hintBox centerHintBox rewardBox hongbao" id="rewarHongbaoBox" style="display: none">
+    <div class="close"></div>
+    <h3>宝贝棒棒哒！我打赏红包</h3>
+    <div class="moneySelect">
+        <div class="option one current"><sup>¥</sup><span>1</span></div>
+        <div class="option two"><sup>¥</sup><span>2</span></div>
+        <div class="option three">自定义</div>
+    </div>
+    <div class="inputDiv">
+        <input type="number" placeholder="自定义金额，至少1元">
+        <div class="delete"></div>
+    </div>
+    <div class="tips">至少1元哦  ~</div>
+    <div class="button">打赏1元</div>
+    <p class="tip">金额将存入王小二的宝贝存钱罐</p>
+    <span class="switch">我想打赏猪币 ></span>
+</div>
+<!--音频播放器-->
+<div class="circleAudioPlayer">
+    <canvas></canvas>
+    <div class="button"></div>
+    <div class="close"></div>
+</div>
+</body>
+</html>

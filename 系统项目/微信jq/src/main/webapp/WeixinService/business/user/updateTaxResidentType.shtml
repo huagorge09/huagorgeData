@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/slider.js"></script>
+	<style type="text/css">
+		.header{
+			position: fixed;
+	    	top: 0px;
+		}
+		section{
+			margin-top: 60px;
+		}
+	</style>
+</head>
+
+<body style="background-color: rgb(245, 245, 245);">
+<section class="page">
+ 	<input type="hidden" id="taxResidentData"/>
+ 	<input type="hidden" id="taxResidentType"/>
+ 	
+	<div id="scroller"></div>
+    <!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->
+	<section class="title" id="section_01">
+    	<div class="center-accountset">
+    		<a class="href-point" data-value="1" data-text="仅为中国税收居民">仅为中国税收居民</a>
+    		<a class="href-point" data-value="2" data-text="仅为非居民">仅为非居民<em></em></a>
+    		<a class="href-point" data-value="3" data-text="既是中国又是其他类型税收居民">既是中国又是其他类型税收居民<em></em></a>
+       </div>
+	</section> 
+</section>
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/updateTaxType.min.js"></script> -->
+<script type="text/javascript">
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/updateTaxType.min.js?version='+new Date().getTime()+'"><\/script>');
+</script>
+<script>
+	$(".header .top-a h2").html("选择税收居民类型");
+	saveQueryStringToEle();
+	bindTaxResidentTypeClick();
+</script>
+</body>
+</html>

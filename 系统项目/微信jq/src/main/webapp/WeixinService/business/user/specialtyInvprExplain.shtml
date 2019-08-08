@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/slider.js"></script>
+    <style type="text/css">
+	
+	</style>
+</head>
+<body style="background-color: rgb(245, 245, 245);">
+<section class="page" id="specialty_context">
+	<div id="scroller"></div>
+    <!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->
+	<section class="title" id="section_0">
+		<div style="background: #fff;margin-top: 10px;padding-bottom: 10px;">
+		  <h2 style="font-size: 15px;border-bottom: 1px solid #F2F2F2;height: 45px;line-height: 45px; margin: 0 20px 0 20px;color: #4c4c4c;">
+			专业投资者说明：
+		  </h2>
+		  <p style="margin: 5px 20px 5px 20px; line-height: 23px;font-size: 14px;color: #a1a1a1;">
+		  　　专业投资者需要依据自己的专业投资知识，查看、购买所有产品，我们不再做任何强制性的风险提示；
+		  </p>
+		  <p style="margin: 5px 20px 5px 20px; line-height: 23px;font-size: 14px;color: #a1a1a1;">
+		  　　专业投资者可以申请转为普通投资者，重新享有信息告知、风险警示、适当性匹配等方面的特殊保护。
+		  </p>
+		</div>
+		<br><a href="javascript:goRiskPage();" class="check-order">申请转换</a><br>
+		<a href="javascript:backUserInfoPage();" class="check-order" style="background: #d3d3d3;margin-bottom: 20px;">个人首页</a>
+	</section>
+</section>
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/riskLevel.js"></script> -->
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/riskLevel.min.js"></script> -->
+<script>
+$(function(){
+	$(".header .top-a h2").html("投资者说明");
+	document.title="投资者说明";
+})
+
+/**
+ * 跳转至专业投资者申请页面
+ */
+function goRiskPage(){
+	window.location.href="/WeixinService/business/user/riskLevel.shtml?invprtp=1&eventId=event_wx_professionId&pageSource=wx_professionId";
+}
+
+/**
+ * 返回用户管理页面
+ */
+function backUserInfoPage(){
+	window.location.href="/WeixinService/business/user/userInfo.shtml";
+}
+</script>
+</body>
+</html>

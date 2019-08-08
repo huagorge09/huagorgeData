@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="x5-orientation" content="portrait" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no">
+	<title>demo</title>
+	<link rel="stylesheet" href="wappublic.css" />
+	<script type="text/javascript" src="flexible.min.js" ></script>
+    <script type="text/javascript" src="jquery-3.2.1.min.js" ></script>
+    <script type="text/javascript" src="art-template.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+    	     <style>
+    	     	[v-cloak] {
+		            display: none;
+		        }
+	     	.line{text-decoration: underline;}
+	     </style>
+</head>
+<body>
+	
+	<input type="file" id="file" />
+	<script>
+		$(function(){
+			$('#file').on('change',function(){
+			  if(this.files && this.files.length>0){
+			    console.log(this.files);
+			    var fileReader=new FileReader();
+			    fileReader.readAsDataURL(this.files[0]);
+			    fileReader.onprogress=function(){
+			    	console.log("读取中")
+			    }
+			    fileReader.onloadstart=function(){
+			    	console.log("读取开始时触发")
+			    }
+			    fileReader.onload=function(event){
+			    	console.log(this.result)
+			    }
+			  }
+			});
+		})
+	</script>
+	
+	
+	<div id="app" v-cloak>
+		
+		
+		<input type="file" />
+		<h2>------------------todoList--------------------</h2>
+		 <input type="text" v-model="val" v-on:keyup.enter="submit"/>
+	     <ul>
+	     	<li v-for="item in listToDdo"  v-bind:class="{line:item.isFished}">
+	     		<span v-on:click="listClick(item)"> {{item.msg}} </span>
+	     		<span v-on:click="del(item)">删除</span>
+	     	</li>
+	     </ul>
+		<div v-bind:id="id">{{msg}}</div>
+		<div>{{reversedmsg}}</div>
+		<div>{{vueCom}}</div>
+		<div v-if="ddd" class="myTRUE" @click="clickMe" v-bind:style="styleObject">我的</div>
+		<div v-bind:style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }">{{watchInp}}</div>
+		<input v-model="watchInp" />
+		<div class="read">{{read}}</div>
+		<div v-bind:class="[{ active: isActive }, errorClass]">mmmmmmmmmmmmmmmmmm</div>
+		<div v-show="isHide">hrthyeherher</div>
+        <ul><li v-for="(item,index) in productLists">{{item.name}}</li></ul>
+        <ul>
+        	<li v-for="(item,index) in arrNum" v-on:remove="arrNum.splice(index, 1)">{{item}}</li>
+        </ul>
+        <button @click="counte+=1" v-bind:style="styleObject">点我</button>
+        <button v-on:click="say('awrwaetgawetawegtawegt', $event)" v-bind:style="styleObject">点我说话</button>
+        <div>第{{counte}}次</div>
+        <input  v-on:keyup.enter="addNewTodo"/>
+        <input  v-on:keyup.left="addB" class="ddddde"/>
+        <input type="text" v-model="modelInput" />
+        <div>{{modelInput}}</div>
+        
+        
+        <input type="checkbox" v-model="checked"  style="width:20px;height: 20px; border:1px #000000 solid"/>
+        <label for="checkbox">{{ checked }}</label>
+        
+        
+        <div id="example-4">
+		  <input type="radio" id="one" value="One" v-model="picked">
+		  <label for="one">One</label>
+		  <br>
+		  <input type="radio" id="two" value="Two" v-model="picked">
+		  <label for="two">Two</label>
+		  <br>
+		  <span>Picked: {{ picked }}</span>
+		</div>
+		
+		<select v-model="selected">
+			<option value="11111111111">11111111111</option>
+			<option value="22222222222">22222222222</option>
+			<option value="43333333333333">43333333333333</option>
+		</select>
+		<span>{{selected}}</span>
+		
+		
+		<select v-model="optionSelected">
+			<option v-for="option in options" v-bind:value="option.name">
+				 {{option.name}}
+			</option>
+		</select>
+		<div>{{optionSelected}}</div>
+		
+		<select v-model="city">
+			<option value="aaaa">aaaa</option>
+			<option value="bbbb">bbbb</option>
+			<option value="cccc">cccc</option>
+			<option value="dddd">dddd</option>
+			<option value="eeee">eeee</option>
+		</select>
+	   <div>{{city}}</div>
+		
+		 <input v-model.trim="modelInput" type="text">      
+     <style>
+     	[v-cloak] {
+			  display: none;
+		}
+     </style>   
+        <mycomponent></mycomponent>
+        <sider></sider>
+      <!--<component></component>-->
+        <!--<mySecond></mySecond>-->
+	</div>
+	<script>
+//		Vue.component('mycomponent', {
+//		  template: ''
+//		})
+//		Vue.component("sider",{
+//		  template:'<p>我的第二个组件</p>'
+//		})
+//		Vue.component('mySecond',{
+//			template:'<a href="">我的第4个组件</a>'
+//		})
+//		局部注册
+//      var second={
+//      	 template:'<p>我的第三个组件</p>'
+//      }
+		new Vue({
+			el:"#app",
+			components:{  
+//              'mycomponent':mycomponent,  
+//              'sider':sider
+            },  
+			data:{
+				msg:"asdfghjkl",
+				id:false,
+				ddd:true,
+				watchInp:"",
+				read:"",
+				city:"aaaa",
+				isActive:true,
+				errorClass:"error",
+				styleObject:{
+					 color: 'red',
+                     fontSize: '13px',
+                     width:'120px',
+                     height:'45px'
+				},
+				counte:0,
+				isHide:true,
+				productLists:[],
+				arrNum:[324,523,345,36,1,44,63,73,53,745,345],
+				modelInput:"",
+				checked:false,
+				picked:"",
+				selected:"22222222222",
+				options:[
+				    {"name":"张三"},
+					{"name":"李四"},
+					{"name":"王五"}
+				],
+				optionSelected:"李四",
+				age:"",
+				val:"",
+				listToDdo:[]
+			},
+			methods:{
+				submit:function(){
+					this.listToDdo.push({
+					    "msg":this.val,
+					     isFished:true
+					})
+					this.val="";
+//					console.log(this.listToDdo)
+				},
+				listClick:function(item){
+					item.isFished=!item.isFished
+				},
+				del:function(item){
+					alert("dd")
+					for(var i=0;i<this.listToDdo.length;i++){
+						if(this.listToDdo[i]==item){
+							this.listToDdo.splice(i,1);
+						}
+					}
+				},
+				clickMe:function(e){
+					this.productLists=[
+						   {"name":"张三"},
+						   {"name":"李四"},
+						   {"name":"王五"}
+					]
+					this.arrNum.splice(6)
+				},
+				setValue:function(){
+					this.read="正在读写中"+new Date();
+					this.productLists.push({
+						"name":this.getNowDate(new Date())
+					})
+				},
+				getNowDate:function(time){
+					var year=time.getFullYear();
+					var month=time.getMonth()+1;
+					var day=time.getDay();
+					var hour=time.getHours();
+					var second=time.getSeconds();
+					var minutes=time.getMinutes()
+					return year+"-"+(month>9?month:"0"+month)+"-"+(day>9?day:"0"+day)+" "+(hour>9?hour:+"0"+hour)+":"+second+":"+minutes;
+				},
+				addNewTodo:function(){
+					alert("测试回车")
+				},
+				say:function(mess,event){
+					alert(mess)
+					console.log(event)
+					if(event){
+						event.preventDefault()
+					}
+				},
+				addB:function(){
+					alert("dddd")
+				}
+			},
+			computed:{  //计算
+				reversedmsg:function(){
+				    return "this.msg.split('').reverse().join('')";
+				},
+				vueCom:function(){
+					return Date.now()+this.msg+this.id+this.ddd;
+				}
+			    
+			},
+			watch:{  //
+				watchInp:function(a, b){
+					console.log(a, b)
+					this.setValue();
+				}
+			}
+		})
+		
+		
+		
+
+	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+    <button id="aaaa">3333</button>
+    <div id="hTitle"></div>
+	<script id="tpl-title" type="text/html">
+		   {{each list as val}} 
+		      {{if val.name==3}}
+				  <li>这里是第一个条件为3的时候{{val.name }}</li>
+			  {{else if val.name==4}}
+				  <li>这里是第一个条件为4的时候  {{val.name}}</li>
+			  {{else if val.name==5}}
+				  <li>这里是第一个条件为5的时候   {{val.name}}</li>
+			  {{else if val.name==6}}
+			      <li>这里是第一个条件为6的时候   {{val.name}}</li>
+			  {{else if val.name==2}}
+			      <li>这里是第一个条件为2的时候   {{val.name}}</li>
+			  {{else}}
+			       <li>其他 {{val.name}}</li>
+			  {{/if}}
+		   {{/each}} 
+	</script>
+	
+	
+   <script>
+   	
+   	var data = {
+	    list:[
+	       {"name":"1"}
+	      ,{"name":"2"}
+	      ,{"name":"3"}
+	      ,{"name":"4"}
+	      ,{"name":"5"}
+	      ,{"name":"6"}
+	    ]
+	};
+	var html=template("tpl-title",data);
+	$("#hTitle").html(html)
+	
+   	   var name= getUrlParm("re");
+   	   function getUrlParm(name){
+		    var str=window.location.href;
+		    var val="";
+		    if(str.indexOf("?")>-1){
+		    	var num=str.indexOf("?");
+		        var strParm=str.substr(num+1)
+		        var strArry=strParm.split("&");
+		        for (var i=0;i<strArry.length;i++) {
+		        	var strName=strArry[i].split("=");
+		        	if(name==strName[0]){
+		        		val=strName[1];
+		        	}
+		        }
+		    }
+		    return decodeURI(val);
+   	   }
+   	   var arr=[51,45,1,45,35,15,485,10,0,225,151,15,15,15,15,15,15,4,20,2,21,2,102,12,1,21,1,1,1,1,1,1,1,1,1,1,1,1,1];
+   	   sortArr(arr);
+   	   function sortArr(arr){
+   	   	  if(arr instanceof Array){
+   	   	     for(var i=0;i<arr.length;i++) {  //排序
+   	   	     	for(var j=i+1;j<arr.length;j++){
+   	   	     		if(arr[i]>arr[j]){
+   	   	     			var temp=arr[i];
+   	   	     			arr[i]=arr[j];
+   	   	     			arr[j]=temp;
+   	   	     		}
+   	   	     	}
+   	   	     }
+   	   	     for(var k=0;k<arr.length;k++) {  //去重复
+   	   	     	for(var p=k+1;p<arr.length;p++){
+   	   	     		if(arr[k]==arr[p]){
+   	   	     			arr.splice(p,1)
+   	   	     		    p--;
+   	   	     		}
+   	   	     	}
+   	   	     }
+   	   	     return arr;
+   	   	  }else{
+   	   	  	 return false;
+   	   	  } 
+   	   }
+   	   
+   	   $(function(){
+   	   	$("#aaaa").click(function(){
+   	   		countDown({
+	   	   	  elem:"#aaaa",
+	   	   	  disable:"current",
+	   	   	  time:5
+	   	   })
+   	   	})
+   	   })
+   	   
+   	   function countDown(object){
+   	   	   var elem=object.elem;
+   	   	   var disable=object.disable;
+   	   	   var time=parseInt(object.time);
+   	   	   var txt=$(elem).text();
+   	   	   if(!$(elem).hasClass(disable)){
+   	   	   	  $(elem).addClass(disable);
+   	   	   	  timeDowm()
+   	   	   	  var delay=setInterval(timeDowm,1000);
+   	   	   	  function timeDowm(){
+   	   	   	  	 time--;
+   	   	   	  	 $(elem).text(time + "s");
+   	   	   	  	 if(time<1){
+   	   	   	  	 	$(elem).text(txt);
+   	   	   	  	 	$(elem).removeClass(disable);
+   	   	   	  	 	clearInterval(delay);
+   	   	   	  	 }
+   	   	   	  }
+   	   	   }
+   	   }
+   	   
+   //单例模式
+   var singLeton=(function(){
+   	   var instantiated;
+   	   function init(){
+   	   	   return {
+   	   	   	  publicMethod:function(){
+   	   	   	  	  console.log("dddd")
+   	   	   	  },
+   	   	   	  publicProperty:"ddddddd"
+   	   	   }
+   	   }
+   	   return {
+   	   	    getInstance:function(){
+   	   	    	if(!instantiated){
+   	   	    		instantiated=init();
+   	   	    	}
+   	   	    	return instantiated;
+   	   	    }
+   	   }
+   })()
+   singLeton.getInstance().publicMethod();
+   
+   
+
+   </script>
+</body>
+</html>
+
+
+
+

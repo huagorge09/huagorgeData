@@ -1,0 +1,1339 @@
+﻿var myScroll;
+//是否显示七天开关
+var seven ='0';
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿var fundId = "";
+var period = "";
+var applyst = "";
+try{
+	seven = queryParamList("SYSTEM","SHOWNETVALUE","")[0].pmco;
+}catch(err){
+	console.log("开关查询失败");
+}
+$(document).ready(function (e) {
+    $(".header .top-a h2").html("我的订单");
+    document.title = "我的订单";
+    myScroll = new IScroll('#wrapper', {
+        scrollbars: true,
+        mouseWheel: true,
+        interactiveScrollbars: true,
+        shrinkScrollbars: 'scale',
+        fadeScrollbars: true
+    });
+    fundId = getUrlParameter('fundId');
+	fundId = fundId.replace('#', "");
+	period = getUrlParameter('period');
+	period = period.replace('#', "");
+	applyst = getUrlParameter('applyst');
+	applyst = applyst.replace('#', "");
+    queryTradeInfoList(fundId,period,applyst);
+    getUserRequest("order-list0");
+    /* 此处subPath为页面内行为 */
+    var index = getUrlParameter("item");
+    if (index != null && index != "") {
+        showOrderList(index);
+    }
+});
+
+document.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+}, false);
+/* 全部/未支付/已支付/存续/已到期 互相切换 */
+function showOrderList(index) {
+
+    $(".center-mynav-a ul li a").removeClass("act");
+    $(".center-mynav-a ul li:eq(" + index + ") a").addClass("act");
+
+    $("section section").hide();
+    $("section section:eq(" + index + ")").show();
+    getUserRequest("order-list" + index);
+    /* 此处subPath为页面内行为 */
+    myScroll.refresh();
+}
+/* 查询订单列表 */
+function queryTradeInfoList(fundId,period,applyst) {
+    $.ajax({
+        async: true,
+        url: "/WeixinService/business/queryTradeInfoList.xhtml",
+        data : {
+			"fundId" : fundId,
+			//"period" : period,
+			"applyst" : applyst
+		},
+        dataType: "json",
+        cache: false,
+        type: "post",
+        error: function (textStatus, errorThrown) {
+        },
+        success: function (data) {
+            var htmls1 = "";
+            var htmls2 = "";
+            var htmls3 = "";
+            var htmls4 = "";
+            var htmls5 = "";
+            var list = data.list;
+            var uList = data.uList;
+            var pList = data.pList;
+            var gList = data.gList;
+            var zList = data.zList;
+
+            /* 全部订单 */
+            if (list != null && list.length > 0) {
+
+                $.each(list, function (i, item) {
+                    var appointEndDate = item.fundInfoDtoV2.appointEndDate;//预约开始日
+                    var currentWorkdate = item.fundInfoDtoV2.currentWorkdate;
+                    /*当前工作日*/
+                    var isAppointDate = false;
+
+                    if (item.orderType != null && item.orderType == "6") {/* 已失效 */
+                   	    if(item.fundInfoDtoV2.typeId == '0500'){
+	               	    	 if (item.orderType != null && item.orderType == "1"){
+	               	    	 	htmls1 += "<div class='box-order expire' onclick='toOrderDetail(\"" + item.serialno + "\")'>";
+	               	    	 } else {
+	               	    		htmls1 += "<div class='box-order' onclick='tofundDetail(\"" + item.fundid + "\",\"" + item.period + "\",\"" + item.tradeacco + "\")'>";
+	               	    	 }
+                   	    }else{
+                   	    	htmls1 += "<div class='box-order expire' onclick='toOrderDetail(\"" + item.serialno + "\")'>";
+                   	    }
+                    } else {
+                    	// if((item.fundInfoDtoV2.typeId == '0500' || item.fundInfoDtoV2.typeId == '0400' || item.fundInfoDtoV2.typeId == '0110') && item.apkind == '024' && item.orderType == "5") {
+                        if((item.fundInfoDtoV2.typeId == '0500' || item.fundInfoDtoV2.typeId == '0400' || item.fundInfoDtoV2.typeId == '0110') && ((item.apkind == '024' && item.orderType == "5")||(item.apkind == '025' && item.orderType == "9"))) {
+                    		htmls1 += "<div class='box-order'>"
+                    	} else{
+	                    	if(item.fundInfoDtoV2.typeId == '0500'){
+	                    		if (item.orderType != null && item.orderType == "1"||item.orderType == "7"){
+	                    		 	htmls1 += "<div class='box-order' onclick='toOrderDetail(\"" + item.serialno + "\")'>"
+		                		}else{
+		                		    htmls1 += "<div class='box-order' onclick='tofundDetail(\"" + item.fundid + "\",\"" + item.period + "\",\"" + item.tradeacco + "\")'>";
+		                		}
+	                   	    }else{
+	                   	    	htmls1 += "<div class='box-order' onclick='toOrderDetail(\"" + item.serialno + "\")'>";
+	                   	    }
+                    	}
+                    }
+                    htmls1 += "<h2>";
+                    htmls1 += "<span class='fl'>" + item.fundInfoDtoV2.adname + "</span>";
+                    if (item.orderType != null && item.orderType == "1") {/* 待付款 */
+                        if (daysBetween(currentWorkdate, appointEndDate) <= 0) {
+                            htmls1 += "<span class='fr appoint-succ'>预约成功</span>";
+                            isAppointDate = true;
+                        } else {
+                            htmls1 += "<span class='fr obligations'>" + item.orderTypeDesc + "</span>";
+                        }
+                    } else if (item.orderType != null && item.orderType == "2") {/* 已支付 */
+                        htmls1 += "<span class='fr paid'>" + item.orderTypeDesc + "</span>";
+                    } else if (item.orderType != null && item.orderType == "3") {/* 排队中 */
+                        htmls1 += "<span class='fr orderlineup'>" + item.orderTypeDesc + "</span>";
+                    } else if (item.orderType != null && item.orderType == "4") {/* 存续中 */
+                        htmls1 += "<span class='fr surviving'>" + item.orderTypeDesc + "</span>";
+                    } else if (item.orderType != null && item.orderType == "5" && item.apkind == '024') {/* 赎回单 */
+                   	   if(item.fundInfoDtoV2.typeId == '0500' || item.fundInfoDtoV2.typeId == '0400' || item.fundInfoDtoV2.typeId == '0110') {
+                           htmls1 += "<span class='fr hasexpired'>赎回</span>";
+                       }else{
+                           htmls1 += "<span class='fr hasexpired'>" + item.orderTypeDesc + "</span>";
+                       }
+                    } else if (item.orderType != null && item.orderType == "5" && item.apkind != '024') {
+                    	if(item.fundInfoDtoV2.typeId == '0500' || item.fundInfoDtoV2.typeId == '0400' ) {  //电商货币类产品
+                            htmls1 += "<span class='fr hasexpired'>已到期</span>";
+                        }else{
+                            htmls1 += "<span class='fr hasexpired'>" + item.orderTypeDesc + "</span>";
+                        }
+                    } else if (item.orderType != null && item.orderType == "6") {/* 已失效 */
+                        htmls1 += "<span class='fr expired'>" + item.orderTypeDesc + "</span>";
+                    } else if (item.orderType != null && item.orderType == "7") {/* 待确认 */
+                        htmls1 += "<span class='fr orderconfirm'>" + item.orderTypeDesc + "</span>";
+                    }else if(item.orderType != null && item.orderType == "9"){
+                        // htmls1 += "<span class='fr hasexpired'>" + item.orderTypeDesc + "</span>";
+                        htmls1 += '<div class="frdiv">'+
+                           '<div class="click-box" style="width: 100%;height: 100%;position: absolute;left: 0;top: 0;z-index: 1;"></div>'+
+                           '<div class="redemption-box" style="display: none;"></div> '+
+                           '<div class="hasexpiredSpan"></div>'+
+                           '<div class="bj-color" style="display: none;">'+
+                                '<div style="width:100%;height:0.01rem;margin-bottom: 0.6rem;"></div>'+
+                               '<p><span class="spannth withdrawal" dataOrderId='+item.serialno+'  dataCustno='+item.custno+'>撤单</span></p>'+
+                               '<p><span class="hasexpiredT">赎回</span></p>'+
+                            '</div>'+
+                           ' </div>';     
+                        
+                    }else if(item.orderType != null && item.orderType == "A"){
+                    	htmls1 += "<span class='fr hasexpired'>" + item.orderTypeDesc + "</span>";
+                    }else if(item.orderType != null && item.orderType == "B"){
+                    	htmls1 += "<span class='fr hasexpired'>" + item.orderTypeDesc + "</span>";
+                    }
+                    htmls1 += "</h2>";
+                    // 针对0210产品隐藏产品期限
+                    if(item.fundInfoDtoV2.typeId=="0210"){
+                        htmls1 += "<div class='income upadateorder-income type0210'>";
+                    }else{
+                        htmls1 += "<div class='income upadateorder-income'>";
+                    }
+
+                    if (item.orderType != null && item.orderType == "1") {/* 待付款 */
+                        htmls1 += "<dl>";
+                        if ((item.fundInfoDtoV2.typeId == '0110' || item.fundInfoDtoV2.typeId == '0210' || item.fundInfoDtoV2.typeId == '0220') && item.fundInfoDtoV2.fundState == '0') {
+                            htmls1 += "<dt>最新净值</dt>";
+                            var str =item.fundInfoDtoV2.latestNewValue?item.fundInfoDtoV2.latestNewValue:"1.0000";
+                            htmls1 += "<dd><i>" + str + "</i></dd>";
+                        } else if(item.fundInfoDtoV2.typeId == '0500') {  //电商货币类产品
+							// var sevenDayAnnualy="--"
+                        	// if(item.fundInfoDtoV2.sevenDayAnnualy&&item.fundInfoDtoV2.sevenDayAnnualy!="0.00%"){
+                        	// 	sevenDayAnnualy=item.fundInfoDtoV2.sevenDayAnnualy
+                        	// }
+                        	// htmls1 += "<dt>七日年化收益</dt>";
+                        	// htmls1 += "<dd><i>"+sevenDayAnnualy+"</i></dd>";
+
+                             htmls1 += "<dt>买入日期</dt>";
+                             htmls1 += "<dd><b>"+item.apdt+"</b></dd>";
+                        }else if(item.fundInfoDtoV2.typeId == '0400'){   //七天产品
+                        	if(seven == '1'){
+                        		var sevenDayAnnualy="--"
+	                        	if(item.fundInfoDtoV2.sevenDayAnnualy&&item.fundInfoDtoV2.sevenDayAnnualy!="0.00%"){
+	                        		sevenDayAnnualy=item.fundInfoDtoV2.sevenDayAnnualy
+	                        	}
+                        		if(item.fundInfoDtoV2.state == '1') {
+                					sevenDayAnnualy = '--';
+                				}
+	                        	htmls1 += "<dt>七日年化收益</dt>";
+	                        	htmls1 += "<dd><i>"+sevenDayAnnualy+"</i></dd>";
+                        	}else{
+			                    var latestNewValue=item.fundInfoDtoV2.latestNewValue ;
+			                    if(!latestNewValue){
+			                    	latestNewValue = '1.0000';
+			                    }
+			                    htmls1 += "<dt>最新净值</dt>";
+			                    htmls1 += "<dd><b>" + latestNewValue + "</b></dd>";
+                        	}
+                        }
+                        else {
+                            if(item.fundInfoDtoV2.typeId == '0110'){
+                                htmls1 += "<dt>计提基准</dt>";
+                            }else{
+                                htmls1 += "<dt>计提基准</dt>";
+                            }
+                            if (parseInt(item.fundInfoDtoV2.profit) == item.fundInfoDtoV2.profit && parseInt(item.fundInfoDtoV2.profit) == 0) {
+                                htmls1 += "<dd><i>浮动收益</i></dd>";
+                            } else {
+                                htmls1 += "<dd><i>" + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[0] + "</i><b>." + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[1] + "</b><em style='font-size:1.2rem'>%</em></dd>";
+                            }
+                        }
+                        htmls1 += "</dl>";
+                        htmls1 += "<dl>";
+                        if(item.fundInfoDtoV2.typeId == '0500') {  //电商货币类产品
+		                    htmls1 += "<dt>最新净值</dt>";
+		                    var latestNewValue=item.fundInfoDtoV2.latestNewValue ;
+		                    if(!latestNewValue){
+		                    	latestNewValue = '1.0000';
+		                    }
+		                    htmls1 += "<dd><b>" + latestNewValue + "</b></dd>";
+                        }else{
+                        	htmls1 += "<dt>理财期限</dt>";
+                            htmls1 += "<dd><b>" + item.fundInfoDtoV2.term + item.fundInfoDtoV2.termUnit + "</b></dd>";
+                        }
+                        htmls1 += "</dl>";
+                        htmls1 += "<dl>";
+                        if (isAppointDate) {
+                            htmls1 += "<dt>预约金额</dt>";
+                        } else {
+                            htmls1 += "<dt>待支付金额</dt>";
+                        }
+                        if (item.fee != null && item.fee > 0) {
+                            htmls1 += "<dd class='delectTop'><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b>";
+                            htmls1 += "<em style='font-size:1.2rem'>+" + item.fee + "（认购费）</em>";
+                        } else {
+                            htmls1 += "<dd><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b>";
+                        }
+                    } else if (item.orderType != null && item.orderType == "2") {/* 已支付 */
+                        htmls1 += "<dl>";
+                        if ((item.fundInfoDtoV2.typeId == '0110' || item.fundInfoDtoV2.typeId == '0210' || item.fundInfoDtoV2.typeId == '0220') && item.fundInfoDtoV2.fundState == '0') {
+                            htmls1 += "<dt>最新净值</dt>";
+                            var numlate = new Number(item.fundInfoDtoV2.latestNewValue).toFixed(4);
+                            var str = numlate.split('.');
+                            htmls1 += "<dd><i>" + str[0] + "</i><b>." + str[1] + "</b></dd>";
+                        }else if(item.fundInfoDtoV2.typeId == '0500') {  //电商货币类产品
+							// var sevenDayAnnualy="--"
+                        	// if(item.fundInfoDtoV2.sevenDayAnnualy&&item.fundInfoDtoV2.sevenDayAnnualy!="0.00%"){
+                        	// 	sevenDayAnnualy=item.fundInfoDtoV2.sevenDayAnnualy
+                        	// }
+                        	// htmls1 += "<dt>七日年化收益</dt>";
+                        	// htmls1 += "<dd><i>"+sevenDayAnnualy+"</i></dd>";
+                            htmls1 += "<dt>买入日期</dt>";
+                            htmls1 += "<dd><b>"+item.apdt+"</b></dd>";
+                        }else if(item.fundInfoDtoV2.typeId == '0400'){  //七天产品
+                    	   if(seven == '1'){
+                        		var sevenDayAnnualy="--"
+	                        	if(item.fundInfoDtoV2.sevenDayAnnualy&&item.fundInfoDtoV2.sevenDayAnnualy!="0.00%"){
+	                        		sevenDayAnnualy=item.fundInfoDtoV2.sevenDayAnnualy
+	                        	}
+                        		if(item.fundInfoDtoV2.state == '1') {
+                					sevenDayAnnualy = '--';
+                				}
+	                        	htmls1 += "<dt>七日年化收益</dt>";
+	                        	htmls1 += "<dd><i>"+sevenDayAnnualy+"</i></dd>";
+                        	}else{
+			                    var latestNewValue=item.fundInfoDtoV2.latestNewValue ;
+			                    if(!latestNewValue){
+			                    	latestNewValue = '1.0000';
+			                    }
+			                    htmls1 += "<dt>最新净值</dt>";
+			                    htmls1 += "<dd><b>" + latestNewValue + "</b></dd>";
+                        	}
+                        }
+                        else {
+                            if(item.fundInfoDtoV2.typeId == '0110'){
+                                htmls1 += "<dt>计提基准</dt>";
+                            }else{
+                                htmls1 += "<dt>计提基准</dt>";
+                            }
+                            if (parseInt(item.fundInfoDtoV2.profit) == item.fundInfoDtoV2.profit && parseInt(item.fundInfoDtoV2.profit) == 0) {
+                                htmls1 += "<dd><i>浮动收益</i></dd>";
+                            } else {
+                                htmls1 += "<dd><i>" + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[0] + "</i><b>." + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[1] + "</b><em style='font-size:1.2rem'>%</em></dd>";
+                            }
+                        }
+                        htmls1 += "</dl>";
+
+                        htmls1 += "<dl>";
+                        if(item.fundInfoDtoV2.typeId == '0500') {  //电商货币类产品
+                        	var latestNewValue = item.fundInfoDtoV2.latestNewValue;
+							if(!latestNewValue){
+								latestNewValue = '1.0000';
+							}
+                            var numlate = new Number(latestNewValue);
+	                        htmls1 += "<dt>最新净值</dt>";
+	                        htmls1 += "<dd><b>" + numlate.toFixed(4) + "</b></dd>";
+	                        htmls1 += "</dl>";
+                        }else{
+                        	if(item.fundInfoDtoV2.typeId == '0400'||item.fundInfoDtoV2.typeId == '0500'){
+                        		htmls1 += "<dt>预估起息日</dt>";
+                        	}else{
+                        		htmls1 += "<dt>起息日</dt>";
+                        	}
+	                        if(item.fundInfoDtoV2.typeId == '0400' && (item.apkind =='022' || item.apkind =='722' || item.apkind =='822')){
+	                        	htmls1 += "<dd><b>" + item.fundInfoDtoV2.interestDate1 + "</b></dd>";
+	                        }else{
+	                            htmls1 += "<dd><b>" + item.fundInfoDtoV2.interestDate + "</b></dd>";
+	                        }
+	                        htmls1 += "</dl>";
+                        }
+                        htmls1 += "<dl>";
+                        htmls1 += "<dt>买入金额</dt>";
+                        if (item.fee != null && item.fee > 0) {
+                            htmls1 += "<dd class='delectTop'><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b>";
+                            htmls1 += "<em style='font-size:1.2rem'>+" + item.fee + "（认购费）</em>";
+                        } else {
+                            htmls1 += "<dd><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b>";
+                        }
+                    } else if (item.orderType != null && item.orderType == "3") {/* 排队中 */
+                        htmls1 += "<dl>";
+                        if ((item.fundInfoDtoV2.typeId == '0110' || item.fundInfoDtoV2.typeId == '0210' || item.fundInfoDtoV2.typeId == '0220') && item.fundInfoDtoV2.fundState == '0') {
+                            htmls1 += "<dt>最新净值</dt>";
+                            var numlate = new Number(item.fundInfoDtoV2.latestNewValue).toFixed(4);
+                            var str = numlate.split('.');
+                            htmls1 += "<dd><i>" + str[0] + "</i><b>." + str[1] + "</b></dd>";
+                        } else if(item.fundInfoDtoV2.typeId == '0500'){
+                        	// var sevenDayAnnualy="--"
+                        	// if(item.fundInfoDtoV2.sevenDayAnnualy&&item.fundInfoDtoV2.sevenDayAnnualy!="0.00%"){
+                        	// 	sevenDayAnnualy=item.fundInfoDtoV2.sevenDayAnnualy
+                        	// }
+                        	// htmls1 += "<dt>七日年化收益</dt>";
+                        	// htmls1 += "<dd><i>"+sevenDayAnnualy+"</i></dd>";
+                            htmls1 += "<dt>买入日期</dt>";
+                            htmls1 += "<dd><b>"+item.apdt+"</b></dd>";
+                        } else if (item.fundInfoDtoV2.typeId == '0400') {
+                           if(seven == '1'){
+                        		var sevenDayAnnualy="--"
+	                        	if(item.fundInfoDtoV2.sevenDayAnnualy&&item.fundInfoDtoV2.sevenDayAnnualy!="0.00%"){
+	                        		sevenDayAnnualy=item.fundInfoDtoV2.sevenDayAnnualy
+	                        	}
+                        		if(item.fundInfoDtoV2.state == '1') {
+                					sevenDayAnnualy = '--';
+                				}
+	                        	htmls1 += "<dt>七日年化收益</dt>";
+	                        	htmls1 += "<dd><i>"+sevenDayAnnualy+"</i></dd>";
+                        	}else{
+			                    var latestNewValue=item.fundInfoDtoV2.latestNewValue ;
+			                    if(!latestNewValue){
+			                    	latestNewValue = '1.0000';
+			                    }
+			                    htmls1 += "<dt>最新净值</dt>";
+			                    htmls1 += "<dd><b>" + latestNewValue + "</b></dd>";
+                        	}
+                        } else {
+                            if(item.fundInfoDtoV2.typeId == '0110'){
+                                htmls1 += "<dt>计提基准</dt>";
+                            }else{
+                                htmls1 += "<dt>计提基准</dt>";
+                            }
+                            if (parseInt(item.fundInfoDtoV2.profit) == item.fundInfoDtoV2.profit && parseInt(item.fundInfoDtoV2.profit) == 0) {
+                                htmls1 += "<dd><i>浮动收益</i></dd>";
+                            } else {
+                                htmls1 += "<dd><i>" + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[0] + "</i><b>." + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[1] + "</b><em style='font-size:1.2rem'>%</em></dd>";
+                            }
+                        }
+                        htmls1 += "</dl>";
+                        htmls1 += "<dl>";
+                        if(item.fundInfoDtoV2.typeId == '0500') {  //电商货币类产品
+		                    htmls1 += "<dt>最新净值</dt>";
+		                    var latestNewValue=item.fundInfoDtoV2.latestNewValue ;
+		                    if(!latestNewValue){
+		                    	latestNewValue = '1.0000';
+		                    }
+		                    htmls1 += "<dd><b>" + latestNewValue + "</b></dd>";
+                        }else{
+	                        htmls1 += "<dt>理财期限</dt>";
+	                        htmls1 += "<dd><b>" + item.fundInfoDtoV2.term + item.fundInfoDtoV2.termUnit + "</b></dd>";
+                        }
+                        htmls1 += "</dl>";
+                        htmls1 += "<dl>";
+                        htmls1 += "<dt>待支付金额</dt>";
+                        if (item.fee != null && item.fee > 0) {
+                            htmls1 += "<dd class='delectTop'><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b>";
+                            htmls1 += "<em style='font-size:1.2rem'>+" + item.fee + "（认购费）</em>";
+                        } else {
+                            htmls1 += "<dd><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b>";
+                        }
+                    } else if (item.orderType != null && item.orderType == "4") {/* 存续中 */
+                        htmls1 += "<dl>";
+                        if (item.fundInfoDtoV2.typeId == '0110' || item.fundInfoDtoV2.typeId == '0210' || item.fundInfoDtoV2.typeId == '0220') {
+                            htmls1 += "<dt>最新净值</dt>";
+                            var numlate = new Number(item.fundInfoDtoV2.latestNewValue).toFixed(4);
+                            var str = numlate.split('.');
+                            htmls1 += "<dd><i>" + str[0] + "</i><b>." + str[1] + "</b></dd>";
+                        } else if (item.fundInfoDtoV2.typeId == '0400') {
+                            if(seven == '1'){
+                        		var sevenDayAnnualy="--"
+	                        	if(item.fundInfoDtoV2.sevenDayAnnualy&&item.fundInfoDtoV2.sevenDayAnnualy!="0.00%"){
+	                        		sevenDayAnnualy=item.fundInfoDtoV2.sevenDayAnnualy
+	                        	}
+                        		if(item.fundInfoDtoV2.state == '1') {
+                					sevenDayAnnualy = '--';
+                				}
+	                        	htmls1 += "<dt>七日年化收益</dt>";
+	                        	htmls1 += "<dd><i>"+sevenDayAnnualy+"</i></dd>";
+                        	}else{
+			                    var latestNewValue=item.fundInfoDtoV2.latestNewValue ;
+			                    if(!latestNewValue){
+			                    	latestNewValue = '1.0000';
+			                    }
+			                    htmls1 += "<dt>最新净值</dt>";
+			                    htmls1 += "<dd><b>" + latestNewValue + "</b></dd>";
+                        	}
+                        }else if(item.fundInfoDtoV2.typeId == '0500') {  //电商货币类产品
+                        	// var sevenDayAnnualy="--"
+                        	// if(item.fundInfoDtoV2.sevenDayAnnualy&&item.fundInfoDtoV2.sevenDayAnnualy!="0.00%"){
+                        	// 	sevenDayAnnualy=item.fundInfoDtoV2.sevenDayAnnualy
+                        	// }
+                        	// htmls1 += "<dt>七日年化收益</dt>";
+                        	// htmls1 += "<dd><i>"+sevenDayAnnualy+"</i></dd>";
+                            htmls1 += "<dt>买入日期</dt>";
+                            htmls1 += "<dd><b>"+item.apdt+"</b></dd>";
+                        } else {
+                            if(item.fundInfoDtoV2.typeId == '0110'){
+                                htmls1 += "<dt>计提基准</dt>";
+                            }else{
+                                htmls1 += "<dt>计提基准</dt>";
+                            }
+                            if (parseInt(item.fundInfoDtoV2.profit) == item.fundInfoDtoV2.profit && parseInt(item.fundInfoDtoV2.profit) == 0) {
+                                htmls1 += "<dd><i>浮动收益</i></dd>";
+                            } else {
+                                htmls1 += "<dd><i>" + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[0] + "</i><b>." + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[1] + "</b><em style='font-size:1.2rem'>%</em></dd>";
+                            }
+                        }
+                        htmls1 += "</dl>";
+                        htmls1 += "<dl>";
+
+                        if(item.fundInfoDtoV2.typeId == '0500') {  //电商货币类产品
+                            var latestNewValue = item.fundInfoDtoV2.latestNewValue;
+							if(!latestNewValue){
+								latestNewValue = '1.0000';
+							}
+                            var numlate = new Number(latestNewValue);
+                            htmls1 += "<dt>最新净值</dt>";
+                            htmls1 += "<dd><b>" + numlate.toFixed(4) + "</b></dd>";
+                        }else{
+                        	if (item.fundInfoDtoV2.typeId == '0110') {
+	                            /*财富宝产品*/
+	                            htmls1 += "<dt>下一到期日</dt>";
+	                        } else {
+	                            htmls1 += "<dt>到期日</dt>";
+	                        }
+                        	if(item.fundInfoDtoV2.maturityDate){
+                        		htmls1 += "<dd><b>" + item.fundInfoDtoV2.maturityDate + "</b></dd>";
+                        	}else{
+                        		htmls1 += "<dd><b>--</b></dd>";
+                        	}
+                        }
+
+                        htmls1 += "</dl>";
+                        htmls1 += "<dl>";
+                        htmls1 += "<dt>买入金额</dt>";
+
+                        htmls1 += "<dd><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b>";
+                    } else if (item.orderType != null && item.orderType == "5") {/* 已到期 */
+                        htmls1 += "<dl>";
+
+                        if((item.fundInfoDtoV2.typeId=='0500' || item.fundInfoDtoV2.typeId == '0400' || item.fundInfoDtoV2.typeId=='0110') && item.apkind =='024'){
+							htmls1 += "<dt>赎回份额</dt>";
+							htmls1 += "<dd>" + item.subquty  + "<em>份</em></dd>";
+							htmls1 += "<dt></dt>";
+							htmls1 += "</dl>";
+
+							htmls1 += "<dl>";
+							htmls1 += "<dt>赎回日期</dt>";
+							htmls1 += "<dd>" + item.apdt  + "</dd>";
+							htmls1 += "<dt></dt>";
+							htmls1 += "</dl>";
+
+							var prepareAptm = item.aptm.substring(0,2)+":"+item.aptm.substring(2,4)+":"+item.aptm.substring(4,6);
+							htmls1 += "<dl>";
+							htmls1 += "<dt>赎回时间</dt>";
+							htmls1 += "<dd>" + prepareAptm  + "</dd>";
+							htmls1 += "<dt></dt>";
+						} else {
+	                        if (item.fundInfoDtoV2.typeId == '0110' || item.fundInfoDtoV2.typeId == '0210' || item.fundInfoDtoV2.typeId == '0220') {
+	                            htmls1 += "<dt>最新净值</dt>";
+	                            var numlate = new Number(item.fundInfoDtoV2.latestNewValue).toFixed(4);
+	                            var str = numlate.split('.');
+	                            htmls1 += "<dd><i>" + str[0] + "</i><b>." + str[1] + "</b></dd>";
+	                        } else if(item.fundInfoDtoV2.typeId == '0500') {  //电商货币类产品
+	                        	// var sevenDayAnnualy="--"
+	                        	// if(item.fundInfoDtoV2.sevenDayAnnualy&&item.fundInfoDtoV2.sevenDayAnnualy!="0.00%"){
+	                        	// 	sevenDayAnnualy=item.fundInfoDtoV2.sevenDayAnnualy
+	                        	// }
+	                        	// htmls1 += "<dt>七日年化收益</dt>";
+	                        	// htmls1 += "<dd><i>"+sevenDayAnnualy+"</i></dd>";
+                                htmls1 += "<dt>买入日期</dt>";
+                                htmls1 += "<dd><b>"+item.apdt+"</b></dd>";
+	                        }else if(item.fundInfoDtoV2.typeId == '0400'){  //七天产品
+	                        	if(seven == '1'){
+	                        		var sevenDayAnnualy="--"
+		                        	if(item.fundInfoDtoV2.sevenDayAnnualy&&item.fundInfoDtoV2.sevenDayAnnualy!="0.00%"){
+		                        		sevenDayAnnualy=item.fundInfoDtoV2.sevenDayAnnualy
+		                        	}
+	                        		if(item.fundInfoDtoV2.state == '1') {
+	                					sevenDayAnnualy = '--';
+	                				}
+		                        	htmls1 += "<dt>七日年化收益</dt>";
+		                        	htmls1 += "<dd><i>"+sevenDayAnnualy+"</i></dd>";
+	                        	}else{
+	                        		  var latestNewValue=item.fundInfoDtoV2.latestNewValue ;
+					                  if(!latestNewValue){
+					                    	latestNewValue = '1.0000';
+					                   }
+					             	 htmls1 += "<dt>最新净值</dt>";
+	                                 htmls1 += "<dd><b>"+latestNewValue+"</b></dd>";
+	                        	}
+	                        }else {
+                                if(item.fundInfoDtoV2.typeId == '0110'){
+                                    htmls1 += "<dt>计提基准</dt>";
+                                }else{
+                                    htmls1 += "<dt>计提基准</dt>";
+                                }
+	                            if (parseInt(item.fundInfoDtoV2.profit) == item.fundInfoDtoV2.profit && parseInt(item.fundInfoDtoV2.profit) == 0) {
+	                                htmls1 += "<dd><i>浮动收益</i></dd>";
+	                            } else {
+	                                htmls1 += "<dd><i>" + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[0] + "</i><b>." + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[1] + "</b><em style='font-size:1.2rem'>%</em></dd>";
+	                            }
+
+	                        }
+	                        htmls1 += "</dl>";
+	                        htmls1 += "<dl>";
+	                        if(item.fundInfoDtoV2.typeId == '0500') {  //电商货币类产品
+			                    htmls1 += "<dt>最新净值</dt>";
+			                    var latestNewValue=item.fundInfoDtoV2.latestNewValue ;
+			                    if(!latestNewValue){
+			                    	latestNewValue = '1.0000';
+			                    }
+			                    htmls1 += "<dd><b>" + latestNewValue + "</b></dd>";
+	                        }else if(item.fundInfoDtoV2.typeId == '0400'){
+	                        	 htmls1 += "<dt>到期日</dt>";
+	                        	 htmls1 += "<dd>"+ item.fundInfoDtoV2.maturityDate+"</dd>";
+	                        } else {
+	                        	htmls1 += "<dt>买入金额</dt>";
+			                    htmls1 += "<dd><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b></dd>";
+	                        }
+	                        htmls1 += "</dl>";
+	                        htmls1 += "<dl>";
+	                        if(item.fundInfoDtoV2.typeId == '0500'||item.fundInfoDtoV2.typeId == '0400'){ //电商货币类产品
+	                    		htmls1 += "<dt>买入金额</dt>";
+	                            htmls1 += "<dd><b>"+formatNumber(format(numDiv(item.subamt || 0, 10000))) +"万</b></dd>";
+	                        } else if (item.fundInfoDtoV2.typeId == '0400'){
+	                        	htmls1 += "<dt>最新净值</dt>";
+	                        	var latestNewValue=item.fundInfoDtoV2.latestNewValue ;
+			                    if(!latestNewValue){
+			                    	latestNewValue = '1.0000';
+			                    }
+	                            htmls1 += "<dd><b>"+latestNewValue+"</b></dd>";
+	                        } else{
+		                        htmls1 += "<dt>投资收益</dt>";
+		                        if (isNaN(item.benefit) || isNaN(parseFloat(item.benefit)) || item.benefit == 0) {/* 存续中 */
+		                            htmls1 += "<dd><b>浮动收益</b></dd>";
+		                        } else {
+		                        	if(item.fundInfoDtoV2.typeId == '0400'){
+		                        		htmls1 += "<dd><b>--</b>";
+		                        	}else{
+		                        		htmls1 += "<dd><b>" + parseFloat(item.benefit).toFixed(2) + "元</b>";
+		                        	}
+		                        }
+	                        }
+						}
+                    } else if(item.orderType != null && item.orderType == "9"){/*预约赎回*/
+                    	 htmls1 += "<dl>";
+                         if(item.fundInfoDtoV2.typeId=='0500'){
+ 							htmls1 += "<dt>赎回份额</dt>";
+ 							htmls1 += "<dd>" + item.subquty  + "<em>份</em></dd>";
+ 							htmls1 += "<dt></dt>";
+ 							htmls1 += "</dl>";
+
+ 							htmls1 += "<dl>";
+ 							htmls1 += "<dt>赎回日期</dt>";
+ 							htmls1 += "<dd>" + item.apdt  + "</dd>";
+ 							htmls1 += "<dt></dt>";
+ 							htmls1 += "</dl>";
+
+ 							var prepareAptm = item.aptm.substring(0,2)+":"+item.aptm.substring(2,4)+":"+item.aptm.substring(4,6);
+ 							htmls1 += "<dl>";
+ 							htmls1 += "<dt>赎回时间</dt>";
+ 							htmls1 += "<dd>" + prepareAptm  + "</dd>";
+ 							htmls1 += "<dt></dt>";
+ 						}
+                    } else if(item.orderType != null && item.orderType == "A"){/*已撤单*/
+	                   	 htmls1 += "<dl>";
+	                     if(item.fundInfoDtoV2.typeId=='0500'){
+							htmls1 += "<dt>赎回份额</dt>";
+							htmls1 += "<dd>" + item.subquty  + "<em>份</em></dd>";
+							htmls1 += "<dt></dt>";
+							htmls1 += "</dl>";
+
+							htmls1 += "<dl>";
+							htmls1 += "<dt>赎回日期</dt>";
+							htmls1 += "<dd>" + item.apdt  + "</dd>";
+							htmls1 += "<dt></dt>";
+							htmls1 += "</dl>";
+
+							var prepareAptm = item.aptm.substring(0,2)+":"+item.aptm.substring(2,4)+":"+item.aptm.substring(4,6);
+							htmls1 += "<dl>";
+							htmls1 += "<dt>赎回时间</dt>";
+							htmls1 += "<dd>" + prepareAptm  + "</dd>";
+							htmls1 += "<dt></dt>";
+						}
+                } else if(item.orderType != null && item.orderType == "B"){/*已处理*/
+	               	 htmls1 += "<dl>";
+	                 if(item.fundInfoDtoV2.typeId=='0500'){
+						htmls1 += "<dt>赎回份额</dt>";
+						htmls1 += "<dd>" + item.subquty  + "<em>份</em></dd>";
+						htmls1 += "<dt></dt>";
+						htmls1 += "</dl>";
+
+						htmls1 += "<dl>";
+						htmls1 += "<dt>赎回日期</dt>";
+						htmls1 += "<dd>" + item.apdt  + "</dd>";
+						htmls1 += "<dt></dt>";
+						htmls1 += "</dl>";
+
+						var prepareAptm = item.aptm.substring(0,2)+":"+item.aptm.substring(2,4)+":"+item.aptm.substring(4,6);
+						htmls1 += "<dl>";
+						htmls1 += "<dt>赎回时间</dt>";
+						htmls1 += "<dd>" + prepareAptm  + "</dd>";
+						htmls1 += "<dt></dt>";
+					}
+            }else if (item.orderType != null && item.orderType == "6") {/* 已失效 */
+                        htmls1 += "<dl>";
+                        if (item.fundInfoDtoV2.typeId == '0110' || item.fundInfoDtoV2.typeId == '0210' || item.fundInfoDtoV2.typeId == '0220') {
+                            htmls1 += "<dt>最新净值</dt>";
+                            var numlate = new Number(item.fundInfoDtoV2.latestNewValue).toFixed(4);
+                            var str = numlate.split('.');
+                            htmls1 += "<dd><i>" + str[0] + "</i><b>." + str[1] + "</b></dd>";
+                        } else if (item.fundInfoDtoV2.typeId == '0400') {
+                            if(seven == '1'){
+                        		var sevenDayAnnualy="--"
+	                        	if(item.fundInfoDtoV2.sevenDayAnnualy&&item.fundInfoDtoV2.sevenDayAnnualy!="0.00%"){
+	                        		sevenDayAnnualy=item.fundInfoDtoV2.sevenDayAnnualy
+	                        	}
+                        		if(item.fundInfoDtoV2.state == '1') {
+                					sevenDayAnnualy = '--';
+                				}
+	                        	htmls1 += "<dt>七日年化收益</dt>";
+	                        	htmls1 += "<dd><i>"+sevenDayAnnualy+"</i></dd>";
+                        	}else{
+			                    var latestNewValue=item.fundInfoDtoV2.latestNewValue ;
+			                    if(!latestNewValue){
+			                    	latestNewValue = '1.0000';
+			                    }
+			                    htmls1 += "<dt>最新净值</dt>";
+			                    htmls1 += "<dd><b>" + latestNewValue + "</b></dd>";
+                        	}
+                        }else if(item.fundInfoDtoV2.typeId == '0500'){
+                        	// var sevenDayAnnualy="--"
+                        	// if(item.fundInfoDtoV2.sevenDayAnnualy&&item.fundInfoDtoV2.sevenDayAnnualy!="0.00%"){
+                        	// 	sevenDayAnnualy=item.fundInfoDtoV2.sevenDayAnnualy
+                        	// }
+                        	// htmls1 += "<dt>七日年化收益</dt>";
+                        	// htmls1 += "<dd><i>"+sevenDayAnnualy+"</i></dd>";
+                            htmls1 += "<dt>买入日期</dt>";
+                            htmls1 += "<dd><b>"+item.apdt+"</b></dd>";
+                        }
+                        else {
+                            if(item.fundInfoDtoV2.typeId == '0110'){
+                                htmls1 += "<dt>计提基准</dt>";
+                            }else{
+                                htmls1 += "<dt>计提基准</dt>";
+                            }
+                            if (parseInt(item.fundInfoDtoV2.profit) == item.fundInfoDtoV2.profit && parseInt(item.fundInfoDtoV2.profit) == 0) {
+                                htmls1 += "<dd><i>浮动收益</i></dd>";
+                            } else {
+                                htmls1 += "<dd><i>" + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[0] + "</i><b>." + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[1] + "</b><em style='font-size:1.2rem'>%</em></dd>";
+                            }
+                        }
+                        htmls1 += "</dl>";
+                        htmls1 += "<dl>";
+                        if (item.payst != null && item.payst == "Y") {/* 已支付 */
+                            if(item.fundInfoDtoV2.typeId == '0400'||item.fundInfoDtoV2.typeId == '0500'){
+                        		htmls1 += "<dt>预估起息日</dt>";
+                        	}else{
+                        		htmls1 += "<dt>起息日</dt>";
+                        	}
+                            if(item.fundInfoDtoV2.typeId == '0400' && (item.apkind =='022' || item.apkind =='722' || item.apkind =='822')){
+                            	htmls1 += "<dd><b>" + item.fundInfoDtoV2.interestDate1 + "</b></dd>";
+                            }else{
+                                htmls1 += "<dd><b>" + item.fundInfoDtoV2.interestDate + "</b></dd>";
+                            }
+                            htmls1 += "</dl>";
+                            htmls1 += "<dl>";
+                            htmls1 += "<dt>买入金额</dt>";
+                            if (item.fee != null && item.fee > 0) {
+                                htmls1 += "<dd class='delectTop'><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b>";
+                                htmls1 += "<em style='font-size:1.2rem'>+" + item.fee + "（认购费）</em>";
+                            } else {
+                                htmls1 += "<dd><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b>";
+                            }
+                        } else {/* 待付款 */
+	                       	if(item.fundInfoDtoV2.typeId == '0500' ) {  //电商货币类产品
+		                        var sevenDayAnnualy="--"
+		                    	if(item.fundInfoDtoV2.sevenDayAnnualy&&item.fundInfoDtoV2.sevenDayAnnualy!="0.00%"){
+		                    		sevenDayAnnualy=item.fundInfoDtoV2.sevenDayAnnualy
+		                    	}
+		                    	htmls1 += "<dt>七日年化收益</dt>";
+		                    	htmls1 += "<dd><i>"+sevenDayAnnualy+"</i></dd>";
+	                        }else if(item.fundInfoDtoV2.typeId == '0400'){
+	                        	if(seven == '1'){
+	                        		var sevenDayAnnualy="--"
+		                        	if(item.fundInfoDtoV2.sevenDayAnnualy&&item.fundInfoDtoV2.sevenDayAnnualy!="0.00%"){
+		                        		sevenDayAnnualy=item.fundInfoDtoV2.sevenDayAnnualy
+		                        	}
+	                        		if(item.fundInfoDtoV2.state == '1') {
+	                					sevenDayAnnualy = '--';
+	                				}
+		                        	htmls1 += "<dt>七日年化收益</dt>";
+		                        	htmls1 += "<dd><i>"+sevenDayAnnualy+"</i></dd>";
+	                        	}else{
+				                    var latestNewValue=item.fundInfoDtoV2.latestNewValue ;
+				                    if(!latestNewValue){
+				                    	latestNewValue = '1.0000';
+				                    }
+				                    htmls1 += "<dt>最新净值</dt>";
+				                    htmls1 += "<dd><b>" + latestNewValue + "</b></dd>";
+	                        	}
+	                        }else{
+	                            htmls1 += "<dt>理财期限</dt>";
+	                            htmls1 += "<dd><b>" + item.fundInfoDtoV2.term + item.fundInfoDtoV2.termUnit + "</b></dd>";
+	                        }
+                            htmls1 += "</dl>";
+                            htmls1 += "<dl>";
+                            htmls1 += "<dt>待支付金额</dt>";
+                            if (item.fee != null && item.fee > 0) {
+                                htmls1 += "<dd class='delectTop'><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b>";
+                                htmls1 += "<em style='font-size:1.2rem'>+" + item.fee + "（认购费）</em>";
+                            } else {
+                                htmls1 += "<dd><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b>";
+                            }
+                        }
+                    } else if (item.orderType != null && item.orderType == "7") {/* 待确认 */
+						htmls1 += "<dl>";
+						if(item.fundInfoDtoV2.typeId == '0400') {  //电商货币类产品
+							if(seven == '1'){
+								var sevenDayAnnualy="--"
+	                        	if(item.fundInfoDtoV2.sevenDayAnnualy&&item.fundInfoDtoV2.sevenDayAnnualy!="0.00%"){
+	                        		sevenDayAnnualy=item.fundInfoDtoV2.sevenDayAnnualy
+	                        	}
+								if(item.fundInfoDtoV2.state == '1') {
+                					sevenDayAnnualy = '--';
+                				}
+	                        	htmls1 += "<dt>七日年化收益</dt>";
+	                        	htmls1 += "<dd><i>"+sevenDayAnnualy+"</i></dd>";
+							}else{
+								htmls1 += "<dt>最新净值</dt>";
+			                    var latestNewValue=item.fundInfoDtoV2.latestNewValue ;
+			                    if(!latestNewValue){
+			                    	latestNewValue = '1.0000';
+			                    }
+			                    htmls1 += "<dd><b>" + latestNewValue + "</b></dd>";
+							}
+                        }
+						else{
+                            if(item.fundInfoDtoV2.typeId == '0500'){
+                                var latestNewValue=item.fundInfoDtoV2.latestNewValue ;
+                                if(!latestNewValue){
+                                    latestNewValue = '1.0000';
+                                }
+                                htmls1 += "<dt>最新净值</dt>";
+                                htmls1 += "<dd><b>" + latestNewValue + "</b></dd>";
+                            }else{
+                                if(item.fundInfoDtoV2.typeId == '0110'){
+                                    htmls1 += "<dt>计提基准</dt>";
+                                }else{
+                                    htmls1 += "<dt>计提基准</dt>";
+                                }
+                                if (parseInt(item.fundInfoDtoV2.profit) == item.fundInfoDtoV2.profit && parseInt(item.fundInfoDtoV2.profit) == 0) {
+                                    htmls1 += "<dd><b>浮动收益</b></dd>";
+                                } else {
+                                    htmls1 += "<dd><i>" + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[0] + "</i><b>." + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[1] + "</b><em style='font-size:1.2rem'>%</em></dd>";
+                                }
+                            }
+						}
+                        htmls1 += "</dl>";
+                        htmls1 += "<dl>";
+                        if(item.fundInfoDtoV2.typeId == '0500') {  //电商货币类产品
+                            // var sevenDayAnnualy="--"
+                            // if(item.fundInfoDtoV2.sevenDayAnnualy&&item.fundInfoDtoV2.sevenDayAnnualy!="0.00%"){
+                            // 	sevenDayAnnualy=item.fundInfoDtoV2.sevenDayAnnualy
+                            // }
+                            // htmls1 += "<dt>七日年化收益</dt>";
+                            // htmls1 += "<dd><i>"+sevenDayAnnualy+"</i></dd>";
+                            htmls1 += "<dt>买入日期</dt>";
+                            htmls1 += "<dd><b>"+item.apdt+"</b></dd>";
+	                    }else{
+	                        htmls1 += "<dt>理财期限</dt>";
+	                        htmls1 += "<dd><b>" + item.fundInfoDtoV2.term + item.fundInfoDtoV2.termUnit + "</b></dd>";
+                        }
+                        htmls1 += "</dl>";
+                        htmls1 += "<dl>";
+                        htmls1 += "<dt>待支付金额</dt>";
+                        if (item.fee != null && item.fee > 0) {
+                            htmls1 += "<dd class='delectTop'><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b>";
+                            htmls1 += "<em style='font-size:1.2rem'>+" + item.fee + "（认购费）</em>";
+                        } else {
+                            htmls1 += "<dd><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b>";
+                        }
+                    } else if (item.orderType != null && item.orderType == "8") {/* 受理中 */
+                        htmls1 += "<dl>";
+                        if (item.fundInfoDtoV2.typeId == '0110' || item.fundInfoDtoV2.typeId == '0210' || item.fundInfoDtoV2.typeId == '0220') {
+                            htmls1 += "<dt>最新净值</dt>";
+                            var numlate = new Number(item.fundInfoDtoV2.latestNewValue).toFixed(4);
+                            var str = numlate.split('.');
+                            htmls1 += "<dd><i>" + str[0] + "</i><b>." + str[1] + "</b></dd>";
+                         }else if (item.fundInfoDtoV2.typeId == '0400') {
+                             if(seven == '1'){
+                        		var sevenDayAnnualy="--"
+	                        	if(item.fundInfoDtoV2.sevenDayAnnualy&&item.fundInfoDtoV2.sevenDayAnnualy!="0.00%"){
+	                        		sevenDayAnnualy=item.fundInfoDtoV2.sevenDayAnnualy
+	                        	}
+                        		if(item.fundInfoDtoV2.state == '1') {
+                					sevenDayAnnualy = '--';
+                				}
+	                        	htmls1 += "<dt>七日年化收益</dt>";
+	                        	htmls1 += "<dd><i>"+sevenDayAnnualy+"</i></dd>";
+                        	}else{
+			                    var latestNewValue=item.fundInfoDtoV2.latestNewValue ;
+			                    if(!latestNewValue){
+			                    	latestNewValue = '1.0000';
+			                    }
+			                    htmls1 += "<dt>最新净值</dt>";
+			                    htmls1 += "<dd><b>" + latestNewValue + "</b></dd>";
+                        	}
+                        }
+                        else {
+                            if(item.fundInfoDtoV2.typeId == '0110'){
+                                htmls1 += "<dt>计提基准</dt>";
+                            }else{
+                                htmls1 += "<dt>计提基准</dt>";
+                            }
+                            if (parseInt(item.fundInfoDtoV2.profit, 10) == item.fundInfoDtoV2.profit && parseInt(item.fundInfoDtoV2.profit, 10) == 0) {
+                                htmls1 += "<dd>浮动收益</dd>";
+                            } else {
+                                htmls1 += "<dd>" + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[0] + "."
+                                    + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[1] + "%</dd>";
+                            }
+                        }
+                        htmls1 += "</dl>";
+                        htmls1 += "<dl>";
+                        if(item.fundInfoDtoV2.typeId == '0500') {
+                            // var sevenDayAnnualy="--"
+                            // if(item.fundInfoDtoV2.sevenDayAnnualy&&item.fundInfoDtoV2.sevenDayAnnualy!="0.00%"){
+                            // 	sevenDayAnnualy=item.fundInfoDtoV2.sevenDayAnnualy
+                            // }
+                            // htmls1 += "<dt>七日年化收益</dt>";
+                            // htmls1 += "<dd><i>"+sevenDayAnnualy+"</i></dd>";
+                            htmls1 += "<dt>买入日期</dt>";
+                            htmls1 += "<dd><b>"+item.apdt+"</b></dd>";
+	                    }else{
+	                        htmls1 += "<dt>理财期限</dt>";
+	                        htmls1 += "<dd>" + item.fundInfoDtoV2.term + item.fundInfoDtoV2.termUnit + "</dd>";
+                        }
+                        htmls1 += "</dl>";
+                        htmls1 += "<dl>";
+                        htmls1 += "<dt>买入金额</dt>";
+                        if (item.fee != null && item.fee > 0) {
+                            htmls1 += "<dd class='delectTop'><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b>";
+                            htmls1 += "<em style='font-size:1.2rem'>+" + item.fee + "（认购费）</em>";
+                        } else {
+                            htmls1 += "<dd><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b>";
+                        }
+                        htmls1 += "</dl>";
+                    }
+                    htmls1 += "</dd>";
+                    htmls1 += "</dl>";
+                    htmls1 += "</div>";
+                    htmls1 += "<div class='box-order-bottom clear'>";
+                    htmls1 += "<span class='fl'>交易编号：<em>" + item.serialno + "</em></span>";
+                    htmls1 += "<span class='fr'>" + item.apdt + "</span>";
+                    htmls1 += "</div>";
+                    if (item.fundInfoDtoV2.typeId == '0110' && item.orderType != null && item.orderType == "4") {  //续存中的财富宝产品订单显示到期赎回和到期续投份额
+                    	var redemptionShare = (!item.redemptionShare && item.renew == "N") ? item.subquty : item.redemptionShare;
+						redemptionShare = redemptionShare ? redemptionShare : "0";
+						var nextSubquty = parseFloat(item.subquty) - parseFloat(redemptionShare);
+                    	if(item.redeemState == '0') {
+                    		
+                    		htmls1 += "<div style='height: 44px;position: relative;' class='box-order-bottom clear' id='goToRedeem' onclick='event.cancelBubble=true,goToRedeem(\"" + item.fundid + "\",\"" + item.period + "\",\"" + item.serialno + "\");'>";
+                    	}else {
+                    		htmls1 += "<div style='height: 44px;position: relative;' class='box-order-bottom clear' id='goToRedeem'>";
+                    	}
+                    	htmls1 += "<a href='#'>";
+                        htmls1 += "<div style='display: inline-block;width: 45%;text-align: center;'><p style='margin-top: 5px;'>到期赎回</p><p style=''><em style='color:#000;'>" + formatNumber(parseFloat(redemptionShare).toFixed(2)) + "</em><em style='color:#000;'>份</em></p></div>"
+						htmls1 += `<p style='border:1px solid #e2e2e2; height:23px;display:inline-block;margin-top: 10px;opacity: 0.4;'></p>`
+                    	htmls1 += "<div style='display: inline-block;width: 45%;text-align: center;'><p style='margin-top: 5px;'>到期滚存</p><p ><em style='color:#000;'>" + formatNumber(parseFloat(nextSubquty).toFixed(2)) + "</em><em style='color:#000;'>份</em></p></div>"
+                    	htmls1 += "</a><img class='jt' src='/WeixinWeb/WeixinWeb_Images/images/ic_next.png' style='position: absolute;right: 8%;top: 50%;margin-top: -7px;width: 8px;height: 15px;'>";
+                    	htmls1 += "</div>";
+                    }
+                    if (isAppointDate) { // 前面已经判断过 是否预约期 保持一致
+                        htmls1 += "<div class='appPayMoneyBg'>";
+                        htmls1 += "<span class='appPayMoneyStrong'>温馨提示：请您于募集期进行打款操作，锁定产品额度。</span>";
+                        htmls1 += "</div>";
+                    }
+                    htmls1 += "</div>";
+                });
+            } else {
+                htmls1 += "<div class='bulletin'>";
+                htmls1 += "<img class='bulletin-icon' src='/WeixinWeb/WeixinWeb_Images/images/none-gray.png' />";
+                htmls1 += "<span>暂无数据,快去下单吧...</span>";
+                htmls1 += "</div>";
+            }
+
+
+            /* 未支付订单 */
+            if (uList != null && uList.length > 0) {
+                $.each(uList, function (i, item) {
+                    var appointEndDate = item.fundInfoDtoV2.appointEndDate;//预约开始日
+                    var currentWorkdate = item.fundInfoDtoV2.currentWorkdate;
+                    /*当前工作日*/
+                    var isAppointDate = false;
+                    if(item.fundInfoDtoV2.typeId == '0500'){
+                    	htmls2 += "<div class='box-order' onclick='tofundDetail(\"" + item.fundid + "\",\"" + item.period + "\")'>";
+                    }else{
+                    	htmls2 += "<div class='box-order' onclick='toOrderDetail(\"" + item.serialno + "\")'>";
+                    }
+                    htmls2 += "<h2>";
+                    htmls2 += "<span class='fl'>" + item.fundInfoDtoV2.adname + "</span>";
+                    if (item.orderType != null && item.orderType == "1") {/* 待付款 */
+                        if (daysBetween(currentWorkdate, appointEndDate) <= 0) {
+                            htmls2 += "<span class='fr appoint-succ'>预约成功</span>";
+                            isAppointDate = true;
+                        } else {
+                            htmls2 += "<span class='fr obligations'>" + item.orderTypeDesc + "</span>";
+                        }
+                    } else if (item.orderType != null && item.orderType == "3") {/* 排队中 */
+                        htmls2 += "<span class='fr orderlineup'>" + item.orderTypeDesc + "</span>";
+                    } else if (item.orderType != null && item.orderType == "7") {/* 待确认 */
+                        htmls2 += "<span class='fr orderconfirm'>" + item.orderTypeDesc + "</span>";
+                    }
+                    htmls2 += "</h2>";
+                    htmls2 += "<div class='income upadateorder-income'>";
+                    htmls2 += "<dl>";
+                    if ((item.fundInfoDtoV2.typeId == '0110' || item.fundInfoDtoV2.typeId == '0210' || item.fundInfoDtoV2.typeId == '0220') && item.fundInfoDtoV2.fundState == '0') {
+                        htmls2 += "<dt>最新净值</dt>";
+                        var numlate = new Number(item.fundInfoDtoV2.latestNewValue).toFixed(4);
+                        var str = numlate.split('.');
+                        htmls2 += "<dd><i>" + str[0] + "</i><b>." + str[1] + "</b></dd>";
+                    } else if (item.fundInfoDtoV2.typeId == '0400') {
+                        htmls2 += "<dt>最新净值</dt>";
+                        var latestNewValue = item.fundInfoDtoV2.latestNewValue;
+						if(!latestNewValue){
+							latestNewValue = '1.0000';
+						}
+                        var numlate = new Number(latestNewValue);
+                        htmls2 += "<dd><i>" + numlate.toFixed(4) + "</i></dd>";
+                    } else {
+                        htmls2 += "<dt>计提基准</dt>";
+                        if (parseInt(item.fundInfoDtoV2.profit) == item.fundInfoDtoV2.profit && parseInt(item.fundInfoDtoV2.profit) == 0) {
+                            htmls2 += "<dd><i>浮动收益</i></dd>";
+                        } else {
+                            htmls2 += "<dd><i>" + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[0] + "</i><b>." + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[1] + "</b><em style='font-size:1.2rem'>%</em></dd>";
+                        }
+                    }
+                    htmls2 += "</dl>";
+                    htmls2 += "<dl>";
+
+                    if(item.fundInfoDtoV2.typeId == '0500') {  //电商货币类产品
+	                    htmls2 += "<dt>最新净值</dt>";
+	                    var latestNewValue=item.fundInfoDtoV2.latestNewValue ;
+	                    if(!latestNewValue){
+	                    	latestNewValue = '1.0000';
+	                    }
+	                    htmls2 += "<dd><b>" + latestNewValue + "</b></dd>";
+	                }else{
+	                    htmls2 += "<dt>理财期限</dt>";
+	                    htmls2 += "<dd><b>" + item.fundInfoDtoV2.term + item.fundInfoDtoV2.termUnit + "</b></dd>";
+                    }
+                    htmls2 += "</dl>";
+                    htmls2 += "<dl>";
+                    if (isAppointDate) {
+                        htmls2 += "<dt>预约金额</dt>";
+                    } else {
+                        htmls2 += "<dt>待支付金额</dt>";
+                    }
+                    if (item.fee != null && item.fee > 0) {
+                        htmls2 += "<dd class='delectTop'><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b>";
+                        htmls2 += "<em style='font-size:1.2rem'>+" + item.fee + "（认购费）</em>";
+                    } else {
+                        htmls2 += "<dd><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b>";
+                    }
+                    htmls2 += "</dd>";
+                    htmls2 += "</dl>";
+                    htmls2 += "</div>";
+                    htmls2 += "<div class='box-order-bottom clear'>";
+                    htmls2 += "<span class='fl'>交易编号：<em>" + item.serialno + "</em></span>";
+                    htmls2 += "<span class='fr'>" + item.apdt + "</span>";
+                    htmls2 += "</div>";
+                    if (isAppointDate) { // 前面已经判断过 是否预约期 保持一致
+                        htmls2 += "<div class='appPayMoneyBg'>";
+                        htmls2 += "<span class='appPayMoneyStrong'>温馨提示：请您于募集期进行打款操作，锁定产品额度。</span>";
+                        htmls2 += "</div>";
+                    }
+                    htmls2 += "</div>";
+                });
+            } else {
+                htmls2 += "<div class='bulletin'>";
+                htmls2 += "<img class='bulletin-icon' src='/WeixinWeb/WeixinWeb_Images/images/none-gray.png' />";
+                htmls2 += "<span>暂无数据,快去下单吧...</span>";
+                htmls2 += "</div>";
+            }
+
+            /* 已支付订单 */
+            if (pList != null && pList.length > 0) {
+
+                $.each(pList, function (i, item) {
+                	if(item.fundInfoDtoV2.typeId == '0500'){
+                    	htmls3 += "<div class='box-order' onclick='tofundDetail(\"" + item.fundid + "\",\"" + item.period + "\")'>";
+                    }else{
+                    	htmls3 += "<div class='box-order' onclick='toOrderDetail(\"" + item.serialno + "\")'>";
+                    }
+                    htmls3 += "<h2>";
+                    htmls3 += "<span class='fl'>" + item.fundInfoDtoV2.adname + "</span>";
+                    htmls3 += "<span class='fr paid'>" + item.orderTypeDesc + "</span>";
+                    htmls3 += "</h2>";
+                    htmls3 += "<div class='income upadateorder-income'>";
+                    htmls3 += "<dl>";
+                    if ((item.fundInfoDtoV2.typeId == '0110' || item.fundInfoDtoV2.typeId == '0210' || item.fundInfoDtoV2.typeId == '0220') && item.fundInfoDtoV2.fundState == '0') {
+                        htmls3 += "<dt>最新净值</dt>";
+                        var numlate = new Number(item.fundInfoDtoV2.latestNewValue).toFixed(4);
+                        var str = numlate.split('.');
+                        htmls3 += "<dd><i>" + str[0] + "</i><b>." + str[1] + "</b></dd>";
+                    } else if (item.fundInfoDtoV2.typeId == '0400') {
+                        htmls3 += "<dt>最新净值</dt>";
+                        var latestNewValue = item.fundInfoDtoV2.latestNewValue;
+						if(!latestNewValue){
+							latestNewValue = '1.0000';
+						}
+                        var numlate = new Number(latestNewValue);
+                        htmls3 += "<dd><i>" + numlate.toFixed(4) + "</i></dd>";
+                    }
+                    else {
+                        htmls3 += "<dt>计提基准</dt>";
+                        if (parseInt(item.fundInfoDtoV2.profit) == item.fundInfoDtoV2.profit && parseInt(item.fundInfoDtoV2.profit) == 0) {
+                            htmls3 += "<dd><i>浮动收益</i></dd>";
+                        } else {
+                            htmls3 += "<dd><i>" + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[0] + "</i><b>." + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[1] + "</b><em style='font-size:1.2rem'>%</em></dd>";
+                        }
+                    }
+                    htmls3 += "</dl>";
+                    htmls3 += "<dl>";
+
+                    if (item.fundInfoDtoV2.typeId == '0500') { //电商货币类产品
+                    	var latestNewValue = item.fundInfoDtoV2.latestNewValue;
+						if(!latestNewValue){
+							latestNewValue = '1.0000';
+						}
+                        var numlate = new Number(latestNewValue);
+	                    htmls3 += "<dt>最新净值</dt>";
+	                    htmls3 += "<dd><b>" + numlate.toFixed(4) + "</b></dd>";
+                    }else{
+                    	if(item.fundInfoDtoV2.typeId == '0400'||item.fundInfoDtoV2.typeId == '0500'){
+                    		htmls3 += "<dt>预估起息日</dt>";
+                    	}else{
+                    		htmls3 += "<dt>起息日</dt>";
+                    	}
+	                    if(item.fundInfoDtoV2.typeId == '0400' && (item.apkind =='022' || item.apkind =='722' || item.apkind =='822')){
+	                    	htmls3 += "<dd><b>" + item.fundInfoDtoV2.interestDate1 + "</b></dd>";
+	                    }else{
+	                        htmls3 += "<dd><b>" + item.fundInfoDtoV2.interestDate + "</b></dd>";
+	                    }
+                    }
+                    htmls3 += "</dl>";
+                    htmls3 += "<dl>";
+                    htmls3 += "<dt>买入金额</dt>";
+                    if (item.fee != null && item.fee > 0) {
+                        htmls3 += "<dd class='delectTop'><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b>";
+                        htmls3 += "<em style='font-size:1.2rem'>+" + item.fee + "（认购费）</em>";
+                    } else {
+                        htmls3 += "<dd><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b>";
+                    }
+                    htmls3 += "</dd>";
+                    htmls3 += "</dl>";
+                    htmls3 += "</div>";
+                    htmls3 += "<div class='box-order-bottom clear'>";
+                    htmls3 += "<span class='fl'>交易编号：<em>" + item.serialno + "</em></span>";
+                    htmls3 += "<span class='fr'>" + item.apdt + "</span>";
+                    htmls3 += "</div>";
+                    htmls3 += "</div>";
+                });
+            } else {
+                htmls3 += "<div class='bulletin'>";
+                htmls3 += "<img class='bulletin-icon' src='/WeixinWeb/WeixinWeb_Images/images/none-gray.png' />";
+                htmls3 += "<span>暂无数据,快去下单吧...</span>";
+                htmls3 += "</div>";
+            }
+
+
+            /* 存续期订单 */
+            if (gList != null && gList.length > 0) {
+
+                $.each(gList, function (i, item) {
+                	if(item.fundInfoDtoV2.typeId == '0500'){
+                    	htmls4 += "<div class='box-order' onclick='tofundDetail(\"" + item.fundid + "\",\"" + item.period + "\",\"" + item.tradeacco + "\")'>";
+                    }else{
+                        htmls4 += "<div class='box-order' onclick='toOrderDetail(\"" + item.serialno + "\")'>";
+                    }
+                    htmls4 += "<h2>";
+                    htmls4 += "<span class='fl'>" + item.fundInfoDtoV2.adname + "</span>";
+                    htmls4 += "<span class='fr surviving'>" + item.orderTypeDesc + "</span>";
+                    htmls4 += "</h2>";
+                    htmls4 += "<div class='income upadateorder-income'>";
+                    htmls4 += "<dl>";
+                    if (item.fundInfoDtoV2.typeId == '0110' || item.fundInfoDtoV2.typeId == '0210' || item.fundInfoDtoV2.typeId == '0220') {
+                        htmls4 += "<dt>最新净值</dt>";
+                        var numlate = new Number(item.fundInfoDtoV2.latestNewValue).toFixed(4);
+                        var str = numlate.split('.');
+                        htmls4 += "<dd><i>" + str[0] + "</i><b>." + str[1] + "</b></dd>";
+                    } else if (item.fundInfoDtoV2.typeId == '0400') {
+                        htmls4 += "<dt>最新净值</dt>";
+                        var latestNewValue = item.fundInfoDtoV2.latestNewValue;
+						if(!latestNewValue){
+							latestNewValue = '1.0000';
+						}
+                        var numlate = new Number(latestNewValue);
+                        htmls4 += "<dd><i>" + numlate.toFixed(4) + "</i></dd>";
+                    }
+                    else {
+                        htmls4 += "<dt>计提基准</dt>";
+                        if (parseInt(item.fundInfoDtoV2.profit) == item.fundInfoDtoV2.profit && parseInt(item.fundInfoDtoV2.profit) == 0) {
+                            htmls4 += "<dd><i>浮动收益</i></dd>";
+                        } else {
+                            htmls4 += "<dd><i>" + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[0] + "</i><b>." + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[1] + "</b><em style='font-size:1.2rem'>%</em></dd>";
+                        }
+                    }
+                    htmls4 += "</dl>";
+                    htmls4 += "<dl>";
+
+                    if(item.fundInfoDtoV2.typeId == '0500') {  //电商货币类产品
+                        var latestNewValue = item.fundInfoDtoV2.latestNewValue;
+						if(!latestNewValue){
+							latestNewValue = '1.0000';
+						}
+                        var numlate = new Number(latestNewValue);
+                        htmls4 += "<dt>最新净值</dt>";
+                        htmls4 += "<dd><b>" + numlate.toFixed(4) + "</b></dd>";
+                    }else{
+                    	if (item.fundInfoDtoV2.typeId == '0110') {
+	                        /*财富宝产品*/
+	                        htmls4 += "<dt>下一到期日</dt>";
+	                    } else {
+	                        htmls4 += "<dt>到期日</dt>";
+	                    }
+	                    htmls4 += "<dd><b>" + item.fundInfoDtoV2.maturityDate + "</b></dd>";
+                    }
+                    htmls4 += "</dl>";
+                    htmls4 += "<dl>";
+                    htmls4 += "<dt>买入金额</dt>";
+                    if (item.fundInfoDtoV2.typeId == '0110') {
+                        htmls4 += "<dd><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b></dd>";
+                    } else {
+                        htmls4 += "<dd><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b></dd>";
+                    }
+                    htmls4 += "</dd>";
+                    htmls4 += "</dl>";
+                    htmls4 += "</div>";
+                    htmls4 += "<div class='box-order-bottom clear'>";
+                    htmls4 += "<span class='fl'>交易编号：<em>" + item.serialno + "</em></span>";
+                    htmls4 += "<span class='fr'>" + item.apdt + "</span>";
+                    htmls4 += "</div>";
+                    htmls4 += "</div>";
+                });
+            } else {
+                htmls4 += "<div class='bulletin'>";
+                htmls4 += "<img class='bulletin-icon' src='/WeixinWeb/WeixinWeb_Images/images/none-gray.png' />";
+                htmls4 += "<span>暂无数据,快去下单吧...</span>";
+                htmls4 += "</div>";
+            }
+
+            /* 已到期订单 */
+            if (zList != null && zList.length > 0) {
+
+                $.each(zList, function (i, item) {
+                	if(item.fundInfoDtoV2.typeId == '0500'){
+                    	htmls5 += "<div class='box-order' onclick='tofundDetail(\"" + item.fundid + "\",\"" + item.period + "\")'>";
+                    }else{
+                    	htmls5 += "<div class='box-order' onclick='toOrderDetail(\"" + item.serialno + "\")'>";
+                    }
+                    htmls5 += "<h2>";
+                    htmls5 += "<span class='fl'>" + item.fundInfoDtoV2.adname + "</span>";
+                    htmls5 += "<span class='fr hasexpired'>" + item.orderTypeDesc + "</span>";
+                    htmls5 += "</h2>";
+                    htmls5 += "<div class='income upadateorder-income'>";
+                    htmls5 += "<dl>";
+                    if (item.fundInfoDtoV2.typeId == '0110' || item.fundInfoDtoV2.typeId == '0210' || item.fundInfoDtoV2.typeId == '0220') {
+                        htmls5 += "<dt>最新净值</dt>";
+                        var numlate = new Number(item.fundInfoDtoV2.latestNewValue).toFixed(4);
+                        var str = numlate.split('.');
+                        htmls5 += "<dd><i>" + str[0] + "</i><b>." + str[1] + "</b></dd>";
+                    }else if (item.fundInfoDtoV2.typeId == '0400') {
+                        htmls5 += "<dt>最新净值</dt>";
+                        var latestNewValue = item.fundInfoDtoV2.latestNewValue;
+						if(!latestNewValue){
+							latestNewValue = '1.0000';
+						}
+                        var numlate = new Number(latestNewValue);
+                        htmls5 += "<dd><i>" + numlate.toFixed(4) + "</i></dd>";
+                    }
+                    else {
+                        htmls5 += "<dt>计提基准</dt>";
+                        if (parseInt(item.fundInfoDtoV2.profit) == item.fundInfoDtoV2.profit && parseInt(item.fundInfoDtoV2.profit) == 0) {
+                            htmls5 += "<dd><i>浮动收益</i></dd>";
+                        } else {
+                            htmls5 += "<dd><i>" + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[0] + "</i><b>." + parseFloat(numMulti((item.fundInfoDtoV2.profit || 0), 100)).toFixed(2).split('.')[1] + "</b><em style='font-size:1.2rem'>%</em></dd>";
+                        }
+                    }
+                    htmls5 += "</dl>";
+                    htmls5 += "<dl>";
+                    htmls5 += "<dt>买入金额</dt>";
+                    htmls5 += "<dd><b>" + formatNumber(format(numDiv(item.subamt || 0, 10000))) + "万</b></dd>";
+                    htmls5 += "</dl>";
+                    htmls5 += "<dl>";
+                    htmls5 += "<dt>投资收益</dt>";
+                    if (isNaN(item.benefit) || isNaN(parseFloat(item.benefit)) || item.benefit == 0) {/* 存续中 */
+                        htmls5 += "<dd><b>浮动收益</b></dd>";
+                    } else {
+                        htmls5 += "<dd><b>" + parseFloat(item.benefit).toFixed(2) + "元</b>";
+                    }
+                    htmls5 += "</dd>";
+                    htmls5 += "</dl>";
+                    htmls5 += "</div>";
+                    htmls5 += "<div class='box-order-bottom clear'>";
+                    htmls5 += "<span class='fl'>交易编号：<em>" + item.serialno + "</em></span>";
+                    htmls5 += "<span class='fr'>" + item.apdt + "</span>";
+                    htmls5 += "</div>";
+                    htmls5 += "</div>";
+                });
+            } else {
+                htmls5 += "<div class='bulletin'>";
+                htmls5 += "<img class='bulletin-icon' src='/WeixinWeb/WeixinWeb_Images/images/none-gray.png' />";
+                htmls5 += "<span>暂无数据,快去下单吧...</span>";
+                htmls5 += "</div>";
+            }
+
+            $("#section_01").html(htmls1);
+            $("#section_02").html(htmls2);
+            $("#section_03").html(htmls3);
+            $("#section_04").html(htmls4);
+            $("#section_05").html(htmls5);
+
+            myScroll.refresh();
+        }
+    });
+}
+
+function toOrderDetail(serialno) {
+    if (serialno != null && serialno != "") {
+        redirectUrl("/WeixinService/business/query/orderDetail.shtml?serialno=" + serialno)
+    } else {
+        return;
+    }
+}
+
+function tofundDetail(fundid,period,tradeacco){
+	redirectUrl("/WeixinService/business/query/fundInfo.shtml?fundId=" + fundid+"&period="+period+"&tradeacco="+tradeacco)
+}
+
+function goToRedeem(fundId,period,serialNo){
+	//redirectUrl("userRedeem.shtml?fundId="+fundId+"&period=1"+"&serialNo="+ serialNo);
+	redirectUrl("userRedeem.shtml?fundId="+fundId+"&period="+period+"&serialNo="+ serialNo);
+}
+
+
+// 2019/06/06 我的撤回按钮添加
+$(document).on('click','.hasexpiredT',function(event){
+    event.preventDefault();
+    $('.redemption-box,.bj-color').hide(); 
+});
+$(document).on('click','.redemption-box',function(event){
+    event.preventDefault();
+    $('.redemption-box,.bj-color').hide(); 
+});
+
+
+$(document).on('click','.click-box',function(){
+    event.preventDefault();
+    $(this).next('.redemption-box').show();
+    $(this).siblings('.bj-color').show();
+});
+
+
+$(document).on("click",".withdrawal",function(){
+	var dataOrderId=$(this).attr("dataOrderId");
+	var custno=$(this).attr("dataCustno");
+    event.preventDefault();
+    var dialog = $(document).dialog({
+        type : 'confirm',
+        closeBtnShow: false,
+        content: '是否确定取消该笔赎回订单',
+        buttonTextConfirm:"取消",
+        buttonTextCancel:"确认",
+        onClickConfirmBtn: function(){
+            $('.redemption-box,.bj-color').hide(); 
+            dialog.close()
+        },
+        onClickCancelBtn : function(){
+        	$.ajax({
+                async: true,
+                url: "/WeixinService/business/revokeRedeemOrder.xhtml",
+                data : {
+        			"serialNo" : dataOrderId,
+        			"custno" : custno
+        		},
+                dataType: "json",
+                cache: false,
+                type: "post",
+                success: function (data) {
+                	if(data.returnCode == '0000'){
+                		$(document).dialog({
+                			 content: '撤单成功!',
+                			 onClickConfirmBtn:function(){
+                				 queryTradeInfoList(fundId,period,applyst);
+                			 }
+                		})
+                	}
+                }
+           });       	
+        }
+    });
+    $('.redemption-box,.bj-color').hide(); 
+});

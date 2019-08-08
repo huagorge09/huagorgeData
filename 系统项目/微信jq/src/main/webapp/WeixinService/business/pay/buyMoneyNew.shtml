@@ -1,0 +1,649 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/dialogNew.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jsNew.js"></script>
+    <!-- 常用JS文件 -->
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedomNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/numberToCapitalNew.js"></script>
+	<!--  滚动条js  -->
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscrollNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/dialogNew.min.js"></script>
+</head>
+
+<style type="text/css">
+
+	#inCome {
+		display: block;
+		width: 100%;
+		height: 46px;
+	}
+
+	#inCome:before,
+	#inCome:after {
+		display: table;
+		content: '';
+		clear: both;
+	}
+
+	#inCome li {
+		width: 50%;
+		height: 46px;
+		line-height: 46px;
+		float: left;
+		background: url(../../../WeixinWeb/WeixinWeb_Images/images/icon_select_normal.png) no-repeat left 1px;
+		background-size: 18px 18px;
+		background-position: 0 14px;
+		text-indent: 24px;
+		font-size: 14px;
+	}
+
+	#inCome li.act {
+		background: url(../../../WeixinWeb/WeixinWeb_Images/images/icons_zhifuliucheng__xuanzhongquang_pre.png) no-repeat left 1px;
+		background-size: 18px 18px;
+		background-position: 0 14px;
+	}
+
+	.inCome-tips {
+		width: 100%;
+		background: #f9f9f9;
+		padding: 5px 0;
+	}
+
+	.inCome-tips p {
+		margin-left: 5%;
+		width: 90%;
+		line-height: 20px;
+	}
+
+	.cover-point-con {
+		position: fixed;
+		left: 50%;
+		z-index: 1000;
+		width: 81%;
+		margin-left: -40.5%;
+		border-radius: 3px;
+		background: #fff;
+	}
+
+	.cover-point-con h3 {
+		text-align: center;
+		color: #ca132c;
+		height: 50px;
+		line-height: 50px;
+		border-bottom: 2px solid #f2f2f2;
+
+	}
+
+	.cover-point-text {
+		margin: 10px auto;
+	}
+
+	.cover-point-con .cover-point-text p {
+		width: 100%;
+		display: inline-block;
+		line-height: 25px;
+		color: #4c4c4c;
+	}
+
+	@media only screen and (max-device-width: 360px) {
+		.cover-point-con {
+			top: 18px;
+			height: 440px;
+		}
+
+		.cover-point-context {
+			height: 55%;
+		}
+	}
+
+	@media only screen and (min-device-width: 361px) {
+		.cover-point-con {
+			top: 10%;
+			height: 440px;
+		}
+
+		.cover-point-con .cover-point-text p {
+			font-size: 1.4rem;
+		}
+
+		.cover-point-context {
+			height: 55%;
+		}
+	}
+
+	p.MsoNormal {
+		font-weight: bold;
+	}
+
+	.pay-head {
+		height: auto;
+	}
+	.pay-head h3{
+		overflow: hidden;
+		width: 100%;
+		padding-left: 5%;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-right: 1px;
+	}
+	.pay-head h3 span.fl{
+        height: auto;
+		line-height: 23px;
+	}
+
+
+
+
+
+
+
+
+
+	.pay_box{
+        position: absolute;
+        left: 5%;
+    	top: 18%;
+        /* margin: -155px 0 0 -185px; */
+        width: 90%;
+        /* height: 445px; */
+		height: 320;
+        border-radius: 8px;
+        background-color: #fff;
+    }
+    #div_06 h2{
+        width: 100%;
+        height: 55px;
+        line-height: 55px;
+        font-size:17px;
+        text-align: center;
+        
+    }
+    .reveal_box{
+        width: 100%;
+        /* height:335px; */
+		height: 209px;
+        font-size: 12px;
+        color:#666;
+        border-top:1px solid #e8e8e8;
+        border-bottom:1px solid #e8e8e8;
+        overflow-y: auto;
+    }
+            /*滚动条样式*/
+    .reveal_box::-webkit-scrollbar {/*滚动条整体样式*/
+        width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
+        height: 4px;
+    }
+    .reveal_box::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+        border-radius: 5px;
+        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        background: rgba(0,0,0,0.2);
+    }
+    .reveal_box::-webkit-scrollbar-track {/*滚动条里面轨道*/
+        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        border-radius: 0;
+        /* background: rgba(0,0,0,0.1); */
+        background: rgba(213,213,213,0.2);
+    }
+    
+    .reveal_box ul li{
+        margin-top: 15px;
+        margin-bottom:5px;
+		padding-top: 5px;
+        overflow: hidden;
+    }
+    .li_input{
+        float: left;
+        width: 10%;
+    }
+    .li_input input{
+        margin-left: 25px;
+        zoom: 100%;
+		width: 8px;
+    	height: 8px;
+		position: absolute;
+    	top: 0px;
+		opacity:0.1;
+    }
+    /**/
+    label {
+        position: relative;
+        cursor: pointer;
+        /* margin-left: 20px; */
+    }
+  input {
+    cursor: pointer;
+  }
+
+  input:checked + .show-box {
+    background: #0066ff;
+  }
+
+  .show-box {
+    position: absolute;
+    /* top: 0px;
+    left: 24px; */
+	top: 0px;
+    left: 25px;
+    /* width: 14px;
+    height: 14px; */
+	width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    border: 1px solid #d8d8d8;
+    background: white;
+  }
+  .show-box:before { 
+      content: ''; 
+      position: absolute;
+      /* top: 1px;
+      left: 5px; */
+	  top: 0px;
+      left: 4px;
+      width: 3px; 
+      height: 8px;
+      border: solid white;
+      border-width: 0 2px 2px 0; 
+      transform: rotate(45deg); 
+    }
+
+    /**/
+
+    .li_p{
+        float: right;
+        width: 80%;
+        margin-right: 15px; 
+    }
+    .li_p p{
+        width: 100%;
+        display:block;
+        word-break: break-all;
+        word-wrap: break-word;
+    }
+    .box_bottom{
+        width: 100%;
+        height: 55px;
+        line-height: 53px;
+        font-size:17px;
+        text-align: center;
+        overflow: hidden;
+    }
+    .box_bottom span{
+        display: inline-block;
+        width: 100%;
+        height:100%;
+    }
+    .bottom_left{
+        float:left;
+        width: 50%;
+        height:55px;
+        cursor: pointer;
+        border-right:1px solid #e8e8e8;
+        color:#999;
+    }
+    .bottom_right{
+        float:right;
+        width: 50%;
+        height:55px;
+        cursor: pointer;
+        color:#ca132c;
+    }
+</style>
+<script type="text/javascript">
+</script>
+<body>
+<section class="page">
+	<!--#include virtual="/WeixinService/headerOrFooter/headerNew.shtml"-->    
+	<div id="scroller">
+  	<!-- 购买金额页  正文-->
+  	<section id="buyMoneySection">
+	    <section>
+	       <div class="pay-head">
+	         <h3>
+	            <span class="fl">
+	               <em>买入</em>
+	               <a id="fundName" href="javascript:goToFundInfo();" class="buyin"></a>
+	            </span>
+	         </h3>
+	       </div>
+	       <div class="buy-money clear">
+	           <div class="h2bg">
+	               <h2>
+	                  <span class="fl">买入金额</span>
+	                  <span id="buyRemark" class="fr"></span>
+	               </h2>
+	           </div>
+	           <div class="buy-money-input">
+	               <em>￥</em><input id="money" type="text" placeholder="0" onchange="checkedMoney()"/>
+	           </div>
+	            <div id="payMethod" class="buy-money-bottom">
+	               <ul id="inCome" style="display:none;"><!-- <b>业绩报酬计提基准：</b><em id="expectInCome">--</em> -->
+                       <li id="" data-value="Y"><!-- <input type="radio" id="renew" value="Y"/> -->到期自动续投</li>
+                       <li data-value="N"><!-- <input type="radio" id="renew" value="N"/> -->到期赎回本息</li>
+	               </ul>
+	           </div>
+	          <!-- 
+			           <div class="buy-money-bottom">
+		               <span id="inCome" class="fl"><!-- <b>业绩报酬计提基准：</b><em id="expectInCome">--</em> -->
+		            <!--  <input type="radio" id="renew" value="Y"/>到期自动续投<input type="radio" id="renew" value="N"/>到期赎回本息</span>
+		               <span class="fr"><b>认购费：</b><em>￥</em><em id="fundRate">0</em></span>
+		           </div>
+	            -->
+	       </div>
+	         <div class="inCome-tips none" id="inComeTips0">
+               <p>产品到期后，本金及收益自动续投下一期产品。</p>
+           </div>
+           <div class="inCome-tips none" id="inComeTips1">
+               <p>产品到期后，本金及收益自动赎回至银行卡。</p>
+           </div>
+	       
+           <div class="buy-money-bottom " id="fee" >
+	              	       <!--  <span  id="XnCome"  style="display:none;">  <b>业绩报酬计提基准：</b><em id="expectInCome">--</em> </span> -->
+              	        <span class="fr"><b>认购费：</b><em>￥</em><em id="fundRate">0</em></span>
+           </div>
+	       
+	       <div class="pay-money updatepay-money clear">
+	           <h2>
+	               <span class="fl">支付金额</span>
+	               <span class="fr" style="width:70%;" id="countMoneySpan"><b id="countMoney">0元</b><em id="countMoneyText">零</em></span>
+	           </h2> 
+	           <div class="pay-money-bottom updatepay-money-bottom">
+	               <input id="isok" type="checkbox">
+	               <span  id="econtract">同意</span>
+	           </div>
+	       </div>
+	    </section>   
+	    <a href="javascript:checkUserRiskLever();" id="btn_01" class="paybtn buy_btn">去下单</a>
+    </section>
+    </div>
+    
+    <!-- 选择银行卡页  正文-->
+    <section id="selectBankSection" class="hide">
+	    <section>       
+	       <div class="pay-money updatepay-money money-bank clear">
+	           <h2>
+	               <span class="fl">支付金额</span>
+	               <span class="fr" id="moneyText"></span>
+	           </h2>
+	           <div class="pay-money-bank mid clear">
+	               <span class="fl">银行卡</span>
+	               <div id="bank_x" class="bank-input fr">                    
+	                    <span class="select" id="cardNums"></span>
+	                    <span class="point">目前仅支持线下汇款</span>
+	               </div>
+	           </div>
+	       </div>
+	       <div class="pay-way">
+	           <h2>支付方式</h2>
+	           <div class="choice-pay-way">
+	             <span class="choice-online-pay none">线上支付</span>
+	             <span class="choice-offline-pay act">线下汇款</span>
+	           </div>
+			   <div class="fund7Day" class="display:none">
+				   <h2>到期安排</h2>
+				   <div class="choice-pay-way">
+					   <span class="choice-online-pay act">赎回到银行卡</span>
+					   <span class="choice-online-pay">滚存入下一期</span>
+				   </div>
+			   </div>
+			   <span id="redeemTips" class="point block" style="color: red;">我们将在<em></em>为您发起赎回申请，预计资金将于<em></em>到账</span>
+	           <span class="point online none"><p>线上支付：通过线上支付快捷、方便。目前仅支持：招商银行、兴业银行、广发银行、浦发银行。</p></span>
+	           <span class="point offline block"><p>线下汇款：请使用选定的银行卡给招商财富对公账户汇款，网银操作安全、放心</p></span>
+	       </div>
+	    </section>   
+	    
+	    <div class="cover-bg hide" id="selection-bank-list">
+		   <div class="cover-content updatecover-content">
+		       <h2>选择银行卡<i id="cover-content-x"></i></h2>
+		       <div class="content-bank">
+		         <ul id="bankList_off">
+		           <!-- <li class="act">招商银行（尾号1234）<span>仅支持线下汇款</span></li> -->
+		         </ul>
+		         <ul id="bankList_on" style="display: none;">
+					<!-- <li>中国建设银行（3224）</li> -->
+				 </ul>
+		         <!-- <span class="add-bank" onclick="redirectUrl('/WeixinService/business/bank/addBankNew.shtml')">添加银行卡</span> -->
+		         <span class="add-bank" onclick="goToAddBank()">添加银行卡</span> 
+		       </div>       
+		   </div>
+		</div>
+		<a href="javascript:goToVerifyPassword();" id="btn_02" class="paybtn buy_btn">下一步</a>   
+    </section>
+    
+	<!-- 验证安全码页 线下 -->
+    <section id="verifyPasswordSection" class="hide">
+        <!--<div class="pay-password-point"><span>请输入安全码，完成订单</span></div>-->
+        <!--<div class="box-pay-password updatebox-pay-password">-->
+             <!--<div class="password mid">-->
+                <!--<label for="password fl">安全码</label>-->
+                <!--<input id="tPassword" type="password" placeholder="请输入安全码" />-->
+                <!--<a href="/WeixinService/business/user/resetTPasswordNew.shtml" class="forget-password fr">忘记安全码？</a>-->
+             <!--</div>-->
+        <!--</div>-->
+        <div class="pay-addr-info">
+            <h2 class="mid">请按以下信息，尽快完成汇款，我们会根据汇款时间为您锁定产品份额。</h2>
+            <span><em>收款银行：</em><b>招商银行总行营业部</b></span>
+            <span><em>收款账户：</em><b>招商财富资产管理有限公司</b></span>
+            <span><em>收款账号：</em><b>9551 0827 0000 009</b></span>
+		</div>
+		<div class="box-pay-password updatebox-pay-password inviterClass"  style="display:none">
+			<div class="password mid">
+					<label for="password fl" style="width:30%">推荐好友手机</label>
+					<input name="inviterPhone" id="inviterPhone" type="tel" placeholder="非必填"> 
+			</div>
+	    </div>
+        <div class="custom"><i class="mid">如有问题，请咨询客服热线：<em>400-8878-555</em></i></div> 
+        <a href="javascript:fundTrade();" id="btn_03" class="paybtn buy_btn">提交订单</a>
+    </section>   
+    
+    <!-- 验证安全码页 线下 -->
+    <section id="verifyPasswordSectionOnLine" class="hide">
+        <div class="box-pay-password updatebox-pay-password">
+             <div class="password mid">
+                <label for="password fl">安全码</label>
+                <input type="password" placeholder="请输入安全码" />
+                <a href="/WeixinService/business/user/resetTPasswordNew.shtml" class="forget-password fr">忘记安全码？</a>
+             </div>
+             <div class="password identify mid">
+                <label for="password fl">验证码</label>
+                <input type="text" placeholder="请输入手机验证码" />
+                <a href="#" class="forget-identify fr">获取验证码</a>
+             </div>
+             <div class="point clear"><span class="mid">已经验证码发至您银行卡绑定的手机号：<em></em></span></div>
+        </div>
+        <a href="#" class="paybtn buy_btn" id="btn_04">下一步</a>
+    </section>  
+    
+	<!-- 线下支付成功页面 -->
+    <section id="offLineSuccessSection" class="hide">
+        <div class="bg-state">
+            <div class="state-icon waiting"><img src="/WeixinWeb/WeixinWeb_Images/images/icons_zhifuliucheng_dengdaihuikuang_iconsbg.png" alt="" /></div>
+            <h1>等待汇款中</h1>
+            <span class="point">下单成功！请使用尾号为<em id="offLineBankNo"></em>的<label id="offLineBankName"></label>卡尽快完成汇款。</span>
+        </div>
+        <a href="javascript:redirectUrl('/WeixinService/business/query/orderListNew.shtml')" class="check-order">查看订单</a>
+    </section>
+    
+    <!-- 线上支付失败页面 银行卡余额不足 -->
+    <section id="onLineErrorSection" class="hide">
+        <div class="bg-state">
+            <div class="state-icon waiting"><img src="/WeixinWeb/WeixinWeb_Images/images/icons_zhifuliucheng_zhifuchenggong_iconsbg.png" alt="" /></div>
+            <h1>支付遇到问题</h1>
+            <span class="point">您的银行卡余额不足，请核对后重新支付！</span>
+        </div>
+        <a href="#" class="check-order">重新支付</a>
+        <a href="javascript:redirectUrl('/WeixinService/business/query/orderListNew.shtml')" class="check-order02">查看订单</a>
+    </section> 
+    
+    <!-- 线上支付成功页面  已受理-->
+    <section id="onLineSuccessReqSection" class="hide">
+        <div class="bg-state">
+            <div class="state-icon waiting"><img src="/WeixinWeb/WeixinWeb_Images/images/icons_zhifuliucheng_chenggongshouli_iconsbg.png" alt="" /></div>
+            <h1>成功受理</h1>
+            <span class="point">支付申请已受理。由于金额较大，请稍后查询支付结果</span>
+        </div>
+        <a href="javascript:redirectUrl('/WeixinService/business/query/orderListNew.shtml')" class="check-order">查看订单</a>
+    </section>
+    
+     <!-- 线上支付成功页面  扣款成功-->
+    <section id="onLineSuccessSection" class="hide">
+        <div class="bg-state">
+            <div class="state-icon waiting"><img src="/WeixinWeb/WeixinWeb_Images/images/icons_zhifuliucheng_zhifuchenggong_iconsbg.png" alt="" /></div>
+            <h1>支付成功</h1>
+            <span class="point">恭喜！您已成功支付<em>1,000,000</em>元。</span>
+        </div>
+        <a href="javascript:redirectUrl('/WeixinService/business/query/orderListNew.shtml')" class="check-order">查看订单</a>
+    </section> 
+    
+    
+    
+	<input type="hidden" id="fundId">
+	<input type="hidden" id="apkind">
+	<input type="hidden" id="adName">
+	<input type="hidden" id="typeId">
+	<input type="hidden" id="productMoney">
+	<input type="hidden" id="moneyStep">
+	<input type="hidden" id="displayLimit">
+	<input type="hidden" id="reNew"> 	<!--是否续投-->
+	<input type="hidden" id="bankNo">
+	<!-- 购买类型   1:预约单   2：认购单   3：待确认单   4：排队单  -->
+	<input type="hidden" id="buyType">
+	<input type="hidden" id="scale">
+	<input type="hidden" id="profit">
+	<input type="hidden" id="startDate">
+	<input type="hidden" id="endDate">
+	<input type="hidden" id="appointEndDate">
+	<input type="hidden" id="appointDate">
+	<input type="hidden" id="salesDate">
+    <input type="hidden" id="subdeadLine">
+	<input type="hidden" id="templetId">
+	<input type="hidden" id="contractVer">
+	<input type="hidden" id="commro">
+	<input type="hidden" id="feeMode">
+	<input type="hidden" id="tradeAmt">
+	<input type="hidden" id="serialNo">
+	<input type="hidden" id="payType" value="1">
+	<input type="hidden" id="fundRateInput" value="0">
+	<input type="hidden" id="termInDay" value="0"><!-- 存续期限，以天为单位 -->
+	<input type="hidden" id="fundRisklevel"><!-- 产品风险等级 -->
+	<input type="hidden" id="riskLevel"><!-- 用户风险等级 -->
+	<input type="hidden" id="invprtp" value=""><!-- 投资者类型 -->
+	<input type="hidden" id="invprtpScore" value=""><!-- 投资者类型 分数 -->
+	<input type="hidden" id="highRiskExplain" value=""><!-- 高风险提示内容 -->
+    <input type="hidden" id="isControl" value=""><!-- 是否存在控制关系 -->
+    <input type="hidden" id="isNotBeneficiary" value=""><!-- 是否不是实际受益人 -->
+    <input type="hidden" id="isBadHonesty" value=""><!-- 是否有不良诚信 -->
+    <input type="hidden" id="specialRiskLevel" value=""><!-- 特殊用户风险等级 -->
+    <input type="hidden" id="sartBuying" value=""><!-- 起购金额 -->
+    <input type="hidden" id="maturityDate" value=""><!-- 起购金额 -->
+	<input type="hidden" id="contractStatus" value="Y"> <!-- 合同状态  Y:可用  N：不可用 -->
+	<input type="hidden" id="moneyZero" value="">
+
+</section>
+	
+	<!-- 错误提示 -->
+	<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+		<span id="errorRemark">请输入正确的金额</span>
+	</div>
+	
+	<div class="cover-bg" id="tips_01" style="display: none;">
+	    <div class="cover-point">
+	        <h3>风险提示</h3>
+	        <div class="cover-point-text mid">
+	            <p><em id="weixinRiskHtml"></em></p>
+	        </div>
+<!-- 			<div class="left fl" -->
+<!-- 				style="width: 39.2%; height: 50px; line-height: 50px; background: #ededed; margin-left: 0;"> -->
+<!-- 				<a id='weixinRiskBtn' style="display: block; width: 100%; height: 100%; text-align: center; padding: 0; margin: 0; background: none; color: #4c4c4c; font-size: 1.6rem;">我再看看</a> -->
+<!-- 			</div> -->
+			<div class="right fr"
+				style="width: 100%; height: 50px; line-height: 50px; background: #ca132c;">
+				<a href="javascript:;" 
+					onclick='toMyaccount();' style="display: block; width: 100%; color: #fff; height: 100%; text-align: center; font-size: 1.6rem;">重新测评</a>
+			</div>
+			<!-- <span class="cover-point-bottom" onclick="redirectUrl('/WeixinService/business/user/riskLevelNew.shtml')">重新评测</span> -->
+	    </div>
+	</div>
+	<!-- 二次风险揭示 -->
+	<div class="cover-bg" id="risk_againTips" style="display: none;">
+	    <div class="cover-point">
+	        <div class="cover-point-text mid">
+	            <span>产品的风险等级高于您的风险承受能力，继续购买可能导致您承担超出自身承受能力的损失和不利后果，请审慎决策。</span>
+	        </div>
+			<div class="left fl"
+				style="width: 39.2%; height: 50px; line-height: 50px; background: #ededed; margin-left: 0;">
+				<a id='riskAgainBtn' style="display: block; width: 100%; height: 100%; text-align: center; padding: 0; margin: 0; background: none; color: #4c4c4c; font-size: 1.6rem;">继续购买</a>
+			</div>
+			<div class="right fr"
+				style="width: 60.8%; height: 50px; line-height: 50px; background: #ca132c;">
+				<a href="javascript:history.go(-1)" style="display: block; width: 100%; color: #fff; height: 100%; text-align: center; font-size: 1.6rem;">我再看看</a>
+			</div>
+	    </div>
+	</div>
+
+	<!--中基协风险揭示书 提示框 S-->
+<div class="cover_bg" id="bocPay_div_03" style="display: none; left:0; top:0;">
+    <div id="div_06" class="pay_box">
+        <h2>风险揭示书</h2>
+        <div class="reveal_box">
+             <ul id="revelation_data">
+          
+            </ul>
+        </div>
+        <div class="box_bottom">
+            <div class="bottom_left"><span>取消</span></div>
+            <div class="bottom_right"><span class="allReading">全部阅读</span><span class="confirm" style="display: none;">确认</span></div>
+        </div>
+    </div>
+</div>
+
+<!--中基协风险揭示书 提示框 E-->
+
+	
+	<!--  -->
+	<div class="cover-bg" id="risk_properTips" style="display: none;">
+	    <div class="cover-point">
+	        <div class="cover-point-text mid">
+	            <span>温馨提示：符合以下条件之一（存在实际控制关系、实际受益人不是本人、拥有不良诚信记录）的投资者不可购买招商财富产品。 </span>
+	        </div>
+			<div class="left fl"
+				style="width: 39.2%; height: 50px; line-height: 50px; background: #ededed; margin-left: 0;">
+				<a href="javascript:history.go(-1)" id='riskProperBtn' style="display: block; width: 100%; height: 100%; text-align: center; padding: 0; margin: 0; background: none; color: #4c4c4c; font-size: 1.6rem;">我再看看</a>
+			</div>
+			<div class="right fr"
+				style="width: 60.8%; height: 50px; line-height: 50px; background: #ca132c;">
+				<a href="javascript:;" 
+					onclick='toMyaccount();' style="display: block; width: 100%; color: #fff; height: 100%; text-align: center; font-size: 1.6rem;">重新测评</a>
+			</div>
+	    </div>
+	</div>
+	<!--  -->
+	
+	<div class="cover-bg" id="high_risk_tips_02" style="display: none;">
+	    <div class="cover-point-con">
+	        <h3>风险说明</h3>
+	        <div class="cover-point-text mid">
+	            <p>您购买的产品为<span style="color:red;">高风险</span>产品，请详细阅读以下风险说明：</p>
+	        </div>
+	        <div id="high_risk_content" class="cover-point-text cover-point-context mid" style="overflow-y: scroll;">
+	        </div>
+	        <span>
+	        	<a id='highRiskBtn' style="width: 126px;height: 37px;line-height: 37px;background: #666;color: #fff;display: block;text-align: center;border-radius: 4px;margin: 0 auto;margin-top: 20px;"></a>
+	        </span>
+			<!-- <span class="cover-point-bottom" onclick="redirectUrl('/WeixinService/business/user/riskLevelNew.shtml')">重新评测</span> -->
+	    </div>
+	</div>
+
+</body>
+<script type="text/javascript">
+//document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/buyMoneyNew.js?version='+jsversion+'"><\/script>'); 
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/buyMoneyNew.min.js?version='+jsversion+'"><\/script>');
+</script>
+</html>

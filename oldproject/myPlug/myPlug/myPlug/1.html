@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>select 测试</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+</head>
+<body>
+
+<div>
+    <h1>单选测试</h1>
+    <select id="single_select" style="width: 400px;">
+        <option value="a">a</option>
+        <option value="b">b</option>
+        <option value="cc">cc</option>
+        <option value="dd">dd</option>
+    </select>
+    <button type="button" onClick="search1();">查询</button>
+</div>
+
+<div>
+    <h1>多选测试</h1>
+    <select id="multi_select" style="width: 400px;" multiple="multiple">
+        <option value="a">a</option>
+        <option value="b">b</option>
+        <option value="cc">cc</option>
+        <option value="dd">dd</option>
+    </select>
+    <button type="button" onClick="search2();">查询</button>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+</body>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        $("#single_select").select2({
+        	 tags: true  
+        });
+        $("#multi_select").select2({
+        	 tags: true  
+        });
+    });
+
+    function search1() {
+        alert($("#single_select").val());
+    }
+
+    function search2() {
+        alert($("#multi_select").val());
+    }
+
+</script>
+
+</html>

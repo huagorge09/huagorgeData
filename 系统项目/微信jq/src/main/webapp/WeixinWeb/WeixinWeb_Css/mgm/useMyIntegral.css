@@ -1,0 +1,299 @@
+body{
+	background-color:#f1f0f6;
+}
+span{
+	display: inline-block;
+}
+a{
+	display: inline-block;
+}
+/* 蒙层 */
+.backLayer{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color:#000000;
+	opacity: 0.5;
+	z-index: 1;
+}
+header{
+	background:url("/WeixinWeb/WeixinWeb_Images/mgm/blueBanner.png")no-repeat;
+	background-size: cover;
+	width: 100%;
+	height: 185px;
+	position: relative;
+	padding-top: 18px;
+}
+
+.top a{
+    display: inline-block;
+    position: absolute;
+    left: 20px;
+    font-size: 14px;
+    color: #ffffff;
+    width: 100px;
+    height: 28px;
+    background: url(/WeixinWeb/WeixinWeb_Images/mgm/leftTip.png) no-repeat;
+    background-size: 7.5px 12.5px;
+    background-position-y: 4px;
+    padding-left: 16px;
+
+}
+header .scoreNum{
+    font-size: 50px;
+    height: 40px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 40px;
+    margin: 43px auto 0 auto;
+    background-image: -webkit-linear-gradient(bottom,#c2dcff,#ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+
+}
+footer{
+
+}
+.top p{
+	font-size: 16px;
+	text-align: center;
+	color: #ffffff;
+	margin: 0 auto;
+}
+.totalNum{
+	width: 50px;
+	font-size: 15px;
+	color: #ffffff;
+	margin: 18px auto 0 auto;
+}
+.greyBar{
+	width: 100%;
+	height: 10px;
+	background-color: #f1f0f6;
+}
+
+
+section{
+	background-color:#ffffff;
+	width: 100%;
+}
+section span{
+	float: left;
+	margin-top:10px ;
+	text-align: center;
+	padding-top: 7px;
+}
+.jdicon{
+	background: url('/WeixinWeb/WeixinWeb_Images/mgm/jdIcon.png') no-repeat;
+	background-size: 41px;
+}
+.phoneRateIcon{
+	background: url('/WeixinWeb/WeixinWeb_Images/mgm/phoneRate.png') no-repeat;
+	background-size: 41px;
+}
+.prizeIcon{
+	width: 41px;
+	height: 41px;
+	margin-left:4%;
+}
+
+.prizeName{
+	font-size: 15px;
+	color: #000000;
+	margin-left:6.26% ;
+}
+
+.prizekAmount{
+	font-size: 16px;
+	color: #6e757e;
+	position: absolute;
+	left: 43%;
+}
+.toExchange{
+    width: 76px;
+    height: 26px;
+    line-height: 12px;
+    position: absolute;
+    right: 6%;
+    margin-top: 16px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 15px;
+    background: #3085f4;
+    border-radius: 20px;
+
+}
+section div{
+	height: 59px;
+	width: 100%;
+	border-bottom: 1px solid #f1f0f6;
+}
+
+.isSureExchange{
+    width: 89%;
+    background: #ffffff;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    z-index: 20;
+    margin-top: -125px;
+}
+.popTip{
+	font-size:15px ;
+	color: #000000;
+}
+.popHead{
+    height: 40px;
+    width: 100%;
+    background: #f0f0f0;
+    font-size: 15.5px;
+    color: #000000;
+    border-radius: 10px;
+}
+
+.popTitle{
+	text-align: center;
+	margin: 0 auto;
+	position: absolute;
+	right: 45%;
+	padding-top: 10px;
+}
+.closeIcon{
+    background: url(/WeixinWeb/WeixinWeb_Images/mgm/closeIcon.png) no-repeat;
+    background-size: 18px;
+    width: 18px;
+    height: 20px;
+    position: absolute;
+    right: 4%;
+    margin-top: 12px;
+
+}
+.warningIcon{
+	background: url('/WeixinWeb/WeixinWeb_Images/mgm/warnIcon.png') no-repeat;
+	width: 45px;
+	height: 45px;
+	background-size: 45px;
+	margin: 25px auto 0 auto;
+}
+
+.popTip .tipDetail{
+    width: 100%;
+    position: absolute;
+    /* left: 23%; */
+    margin-top: 19px;
+    text-align: center;
+}
+.popTip .tipDetail span{
+	display: block;
+}
+.tipDetail .actively{
+    padding-top: 3px;
+}
+
+.popBottom{
+	width: 100%;
+	height: 40px;
+	border-top: 1px solid #f1f0f6 ;
+	margin-top: 91px;
+	font-size:16px ;
+}
+.popBottom span{
+	width: 50%;
+	text-align: center;
+	margin-top: 8px;
+	height: 25px;
+}
+.popBottom .cancel{
+	color: #999999;
+	border-right:1px solid #f1f0f6 ;
+}
+.popBottom .submit{
+	color: #ff0000;
+}
+
+.successIcon{
+    background: url(/WeixinWeb/WeixinWeb_Images/mgm/successIcon.png) no-repeat;
+    background-size: 40px;
+    width: 40px;
+    height: 40px;
+    margin: 48px auto 0 auto;
+}
+.successWindow{
+    background: #ffffff;
+    width: 89%;
+    height: 250px;
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    border-radius: 8px;
+    z-index: 100;
+    margin-top: -150px;
+
+}
+.success_confirm{
+	color: #ff0000;
+	text-align: center;
+	position: absolute;
+	left: 25%;
+}
+.seccessDetail{
+	font-size:15px ;
+	color: #000000;
+	position: relative;
+
+}
+.successDetail .tipDetail{
+	width: 272px;
+	text-align: center;
+	margin: 0 auto;
+}
+.successDetail .tipDetail span{
+	margin-bottom: 8px;
+}
+.successWindow .popBottom{
+	position: absolute;
+	bottom: 0;
+}
+
+.exError {
+    text-align: center;
+    position: relative;
+    top: 65px;
+}
+#intggralNoth{
+	background: #ffffff;
+    width: 89%;
+    height: 140px;
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    border-radius: 8px;
+    z-index: 100;
+    margin-top: -70px;
+}
+#intggralNoth p{
+	text-align: center;
+    height: 50px;
+    line-height: 57px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

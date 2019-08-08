@@ -1,0 +1,58 @@
+<div class="footer clear">
+    <div class="footer-con mid">
+        <div class="footer-list-item list-item01">
+            <h3>新手指南</h3>
+            <span class="icon01">
+                <a href="/AppService/article/openAccountProcess.shtml">线上交易开户流程</a>
+                <a class="last" href="/AppService/article/faq.shtml">常见问题Q&A</a>
+            </span>
+        </div>
+        <div class="footer-list-item list-item02">
+            <h3>常用查询</h3>
+            <span class="icon01">
+                <a href="/AppService/article/cooperation.shtml#consignment">销售机构</a>
+                <a class="last" href="/AppService/article/cooperation.shtml#cooperation">项目合作方</a>
+            </span>
+        </div>
+        <div class="footer-list-item list-item03">
+            <h3>下载中心</h3>
+            <span class="icon01">
+                <a href="/AppService/article/fileDownloadCenter.shtml">账号业务申请表(个人)</a>
+                <a class="last" href="/AppService/article/fileDownloadCenter.shtml">交易业务申请表(个人)</a>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="foot clear">
+    <div class="foot-con mid">
+        <div class="foot-list-item list-item01">
+            <a href="/AppService/article/aboutUs.shtml#aboutMap">联系我们</a>
+            <a href="/AppService/article/aboutUs.shtml#joinUs">加入我们</a>
+            <a href="/AppService/index.shtml">首页</a>
+            <a href="/AppService/article/complaintProposal.shtml">意见反馈</a>
+            <a class="last" href="/AppService/siteMap.shtml">网站地图</a>
+        </div>
+        <div class="foot-contact">
+            <span class="foot-contact-phone">客服热线：400-8878-555，销售热线：0755-23988886（周一至周五 09:00-17:30）</span>
+			<a class="foot-contact-email" href="mailto:cmwa@cmwachina.com">cmwa@cmwachina.com</a>
+        </div>        
+		<a target="_black" href="http://szcert.ebs.org.cn/003bb1c2-b088-46d3-a622-38f915cded61" class="foot-code">
+			<img title="深圳市市场监督管理局企业主体身份公示" class="foot-code-img" src="/AppWeb/AppWeb_Images/images/govIcon.png" height="50" />
+		</a> 
+			
+		<span class="license">ICP许可证号：粤ICP备13033404号-1 版权所有 ©<script type="text/javascript"> document.write(new Date().getFullYear());</script> 招商财富资产管理有限公司</span>
+    </div>
+</div>
+<script>
+	    var url=location.href;
+		if(url.indexOf("cmwachina")>-1){
+			var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "https://hm.baidu.com/hm.js?4cecec6a2dd32592976a8e9ae121b703";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+		}
+</script>
+ 	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/qiyukefu.js"></script>

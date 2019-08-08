@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="x5-orientation" content="portrait" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no">
+    <title>签到</title>
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/signIn/style.css" />
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/signIn/dialog.css" />
+</head>
+
+<body>
+    <div class="banner"> 
+        <ul>
+            <li class="dswkb">
+               <span>您的姓名：</span> <input class="flex1" type="text" id="userName" name="name" placeholder="请输入您的姓名">
+            </li>
+            <li class="dswkb">
+                <span>您的手机：</span> <input  class="flex1" type="tel" id="mobilePhone" name="tel" maxlength="11" placeholder="请输入您的手机号码">
+            </li>
+            <button id="saveBtn">提交签到</button>
+        </ul>
+    </div>
+    <div class="cover-bg success" style="display: none">
+        <div class="content center">
+            <p></p>
+            <h2>签到成功</h2>
+        </div>
+   </div>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/signIn/flexible.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/signIn/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/signIn/dialog.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/signIn/share.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/signIn/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+    <script>
+        var apiHost=""  //https://192.168.8.183:18891
+        var userId = getUrlSearchParams("userid") ? getUrlSearchParams("userid") : decodeURI(getCookie("userId"));
+        addCookie("userId", userId);
+        var pageId = "signIn";
+        var pagesource =userId
+        if (userId == null || userId == "") {
+            location.href = host + "/auth/proxy-silent.html?scope=snsapi_base&target_url="+host+"/WeixinService/H5modules/H5Content/signIn/index.html"
+        } 
+        $(function () {
+            if (userId) {
+                operatingRecord(pagesource, "openSignIn", pageId, "", "", "", "")
+            }
+            $("#saveBtn").click(function(){
+                saveAppointInfo()
+            })
+        })
+        //点击信息提交
+        function saveAppointInfo(){
+                var userName=$.trim($("input[name=name]").val());
+                var mobilePhone=$.trim($("input[name=tel]").val());
+                var flag=true;
+                if(userName==""||!ischinese(userName)){
+                    $(document).dialog({type : 'notice',infoText: '请输入2-10字中文姓名',autoClose: 1500,position: 'center'});
+                    flag=false;
+                }
+                else if (!isMobile(mobilePhone)) {
+                    $(document).dialog({type : 'notice',infoText: '请输入正确的手机号码',autoClose: 1500,position: 'center'});
+                    flag=false;
+                }
+                else if(flag){
+                    userDateSumbit(userName,mobilePhone);
+                }
+        }
+        function ischinese(name){
+            return /^[\u2E80-\u9FFF]{2,10}$/.test(name)
+        }
+
+        //验证手机号
+        function  isMobile(phone) {
+                return /^0?(13[0-9]|15[0123456789]|18[0123456789]|14[0123456789]|17[0123456789])[0-9]{8}$/.test(phone);
+        }
+        /*
+        * 用户信息提交
+        */
+        function userDateSumbit(userName,mobilePhone){
+            var toast=$(document).dialog({
+			        type : 'toast',
+			        infoIcon: '/WeixinWeb/WeixinWeb_Images/H5modules/invitation/loading.gif',
+			        infoText: '签到中'
+			});
+            $.ajax({
+                    async : true,
+                    url:apiHost + "/api/insertAppointInfo",
+                    type : "post",
+                    dataType : 'json',
+                    data : {
+                        "userName":userName,
+                        "mobilePhone":mobilePhone,
+                        "productType":"singIn",
+                        "userId":"",
+                        "cmfUserId":""
+                    },
+                    success : function(data) {
+                        toast.close()
+                        if(data.success){
+                            $(".success").fadeIn();
+                            $("input").val("")
+                            setTimeout(function(){
+                                $(".success").fadeOut();
+                            },3000)
+                        }
+                    }
+                });
+        }
+        function getUrlSearchParams(_name) {
+            var name, value = '';
+            var str = window.location.href;
+            var num = str.indexOf("?");
+            str = str.substr(num + 1);
+            var arr = str.split("&");
+            for (var i = 0; i < arr.length; i++) {
+                num = arr[i].indexOf("=");
+                if (num > 0) {
+                    name = arr[i].substring(0, num);
+                    if (name.replace(/^\s+|\s+$/g, "") == _name) {
+                        value = arr[i].substr(num + 1);
+                        break;
+                    }
+                }
+            }
+            return decodeURI(value);
+        }
+
+        function addCookie(name, value, path, expiresHours) {
+            var cookieString = name + "=" + escape(value);
+            //判断是否设置过期时间
+            if (expiresHours > 0) {
+                var date = new Date();
+                date.setTime(date.getTime() + expiresHours * 3600 * 1000);
+                cookieString = cookieString + "; expires=" + date.toGMTString();
+            }
+            cookieString += "; path=" + (path ? path : "/");
+            document.cookie = cookieString;
+        }
+
+        function getCookie(name) {
+            var strCookie = document.cookie;
+            var arrCookie = strCookie.split("; ");
+            for (var i = 0; i < arrCookie.length; i++) {
+                var arr = arrCookie[i].split("=");
+                if (arr[0] == name) return arr[1];
+            }
+            return "";
+        }
+    </script>
+</body>
+
+</html>

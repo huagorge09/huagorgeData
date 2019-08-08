@@ -1,0 +1,332 @@
+﻿body {
+	color: #333;
+	margin: 0 auto;
+	font-family: Arial, "Microsoft YaHei";
+	font-size: 50px;
+	background: #2a0603;
+}
+.center {
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+
+.clearFloat:after,
+.clearFloat:before {
+	content: "";
+	display: table;
+}
+
+.clearFloat:after {
+	clear: both;
+}
+#errorRemark{
+	font-size: .28rem;
+}
+
+.banner{
+	height: 11.23rem;
+	background: url(../../WeixinWeb_Images/activity/heli/bannerBg.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.recommendBox{
+	width: 6.96rem;
+	height: 6.37rem;
+	margin: 0 auto;
+	background: url(../../WeixinWeb_Images/activity/heli/productBox.png) no-repeat;
+	background-size: 100% 100%;
+	margin-top: -4.35rem;
+	margin-bottom: .3rem;
+}
+.recommendBox>h2{
+	font-size: .36rem;
+	text-align: center;
+	color: #fff;
+	line-height: .67rem;
+}
+.item li{
+	width: 6.48rem;
+	margin: 0 auto;
+	margin-bottom: .32rem;
+}
+.item li:last-child{
+	margin-bottom: 0;
+}
+.item h2{
+	font-size: .4rem;
+	line-height: .98rem;
+	padding-left: .5rem;
+	color: #802d2a;
+	margin-top: .24rem;
+}
+.item .proInfo{
+	padding: 0 .2rem 0 .5rem;
+}
+.item .info{
+	float: left;
+	position: relative;
+}
+.item .info>p{
+	font-size: .28rem;
+	line-height: .55rem;
+}
+
+.item .info .line{
+	position: absolute;
+	height: .86rem;
+	width: 2px;
+	right: 0;
+	top:.1rem;
+	border-right: 1px #eedec8 solid;
+}
+.item .info:nth-child(1){
+	width: 30%;
+}
+.item .info:nth-child(2){
+	width: 38%;
+	text-align: center;
+}
+.item .info:nth-child(3){
+	width: 32%;
+	text-align: center;
+}
+
+.item .info:nth-child(2) p:nth-child(1){
+	font-size: .5rem;
+	color: #e42a12;
+}
+
+.info p:nth-child(1){
+	font-size:.4rem;
+	color: #42362c;
+}
+.info p:nth-child(2) span{
+	font-size: .24rem;
+         color: #a4743a;
+}
+.info p:nth-child(2){
+	font-size: .24rem;
+	color: #a0876a;
+}
+.item .tips{
+	padding-top: .38rem;
+}
+.item .tips p:nth-child(1){
+    font-size: .26rem;
+    line-height: .4rem;
+    color: #999;
+    padding-left: .6rem;
+    background: url(../../WeixinWeb_Images/activity/heli/time.png) no-repeat;
+    background-size: .26rem .29rem;
+    background-position: .28rem;
+}
+.item .tips p:nth-child(2){
+	font-size: .24rem;
+	line-height: .33rem;
+	color: #2e2d2d;
+	padding-left: .08rem;
+    margin-top: .2rem;
+    margin-bottom: .05rem;
+}
+.item .tips p:nth-child(3){
+	font-size: .24rem;
+	color: #782332;
+	line-height: .32rem;
+	padding-left: .34rem;
+	background: url(../../WeixinWeb_Images/activity/heli/star.png) no-repeat;
+	background-size: .2rem .19rem;
+	background-position: .08rem .085rem;
+}
+.recommendBox>p{
+    color: #956122;
+    line-height: .65rem;
+    font-size: .22rem;
+    padding-left: .36rem;
+    margin-top: .1rem;
+}
+.recommendBox .once{
+	display: block;
+	margin: 0 auto;
+	width: 6.5rem;
+	height: .82rem;
+	line-height: .82rem;
+	background: url(../../WeixinWeb_Images/activity/heli/btn.png) no-repeat;
+	background-size: 100% 100%;
+	text-align: center;
+	font-size: .34rem;
+	margin-top: .18rem;
+	color: #ffea00;
+}
+.advantage{
+	width: 7rem;
+	height: 8.28rem;
+	margin: 0 auto;
+	background: url(../../WeixinWeb_Images/activity/heli/advantage.png) no-repeat;
+	background-size: 100% 100%;
+}
+.advantage h2{
+	font-size: .36rem;
+	color: #fff;
+	line-height: .7rem;
+	text-align: center;
+}
+.advantage h3{
+	font-size: .26rem;
+	color: #c19550;
+	text-align: center;
+	margin-top: .05rem;
+}
+.advantage li{
+    padding-bottom: .35rem;
+    padding: .18rem 0 .25rem 1.84rem;
+}
+.advantage li:nth-child(1){
+	background: url(../../WeixinWeb_Images/activity/heli/icon1.png) no-repeat .36rem;
+	background-size: 1.26rem 1.26rem;
+}
+.advantage li:nth-child(2){
+	background: url(../../WeixinWeb_Images/activity/heli/icon2.png) no-repeat .36rem;
+	background-size: 1.26rem 1.26rem;
+}
+.advantage li:nth-child(3){
+	background: url(../../WeixinWeb_Images/activity/heli/icon3.png) no-repeat .36rem;
+	background-size: 1.26rem 1.26rem;
+}
+.advantage li:nth-child(4){
+	background: url(../../WeixinWeb_Images/activity/heli/icon4.png) no-repeat .36rem;
+	background-size: 1.26rem 1.26rem;
+}
+.advantage li p{
+	font-size: .32rem;
+	color: #c02713;
+	line-height: .5rem;
+	padding-top: .18rem;
+	    margin-bottom: .04rem;
+}
+.advantage li div{
+	font-size: .26rem;
+	color: #787878;
+	line-height: .36rem;
+}
+.follow{
+	width: 6.97rem;
+	height: 2.24rem;
+	margin: 0 auto;
+	margin: .3rem auto;
+	background: url(../../WeixinWeb_Images/activity/heli/follow.png) no-repeat;
+	background-size: 100% 100%;
+}
+/*预约信息弹窗*/
+.reserves .content{
+	width: 90%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	background: #fff;
+	border-radius: 5px;
+} 
+.reserves h2{
+	width: 100%;
+	height: .9rem;
+	line-height: .9rem;
+	background: #f0f0f0;
+	position: relative;
+	font-size: .36rem;
+	color: #000;
+	text-align: center;
+	margin-bottom: .4rem;
+}
+.reserves h2 span,.success span{
+	display: inline-block;
+    width: .23rem;
+    height: .22rem;
+    background: url(../../WeixinWeb_Images/activity/heli/close.png) no-repeat;
+	background-size: 100% 100%;
+	position: absolute;
+	right:.3rem;
+	top:.3rem;
+}
+.reserves .form{
+	padding: 0 .32rem .4rem .32rem;
+}
+.reserves .inputBox{
+	line-height: .88rem;
+	border:1px #dedede solid;
+	border-radius: 3px;
+	margin-bottom: .3rem;
+}
+.reserves .inputBox span{
+	display: inline-block;
+	width: 1.32rem;
+	text-align: center;
+	color: #666;
+	font-size: .3rem;
+}
+.reserves .inputBox input{
+   border: 0;
+   padding-left: .2rem;
+   color: #212121;
+   padding: .2rem 0;
+   font-size:  .3rem;
+} 
+.reserves .inputBox.foucs{
+	border-color: #59aaf3;
+}
+.reserves ul p{
+	font-size: .22rem;
+	color: #ca132a;
+	line-height: .3rem;
+	margin-bottom: .25rem;
+}
+.reserves button{
+	width: 100%;
+	border:0;
+	height: .8rem;
+	line-height: .8rem;
+	border-radius: 3px;
+	font-size: .32rem;
+	color: #fff;
+	background: #ca132a;
+}
+.reserves button.disabled{
+	background: #cecece;
+}
+/*预约成功*/
+.success .content{
+	height: 2.75rem;
+	width: 90%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	background: #fff;
+	border-radius: 5px;
+}
+.success .successIcon{
+	width: .92rem;
+	height: .92rem;
+	background: url(../../WeixinWeb_Images/activity/heli/success.png) no-repeat;
+	background-size: 100% 100%;
+	margin: .34rem auto .23rem auto;
+}
+.success h2{
+	line-height: .5rem;
+	font-size: .32rem;
+	color: #212121;
+	text-align: center;
+}
+.success p{
+	font-size: .28rem;
+	text-align: center;
+	color: #666;
+	line-height: .44rem;
+}
+
+

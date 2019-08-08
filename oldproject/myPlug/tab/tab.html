@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="style.css" />
+		<script type="text/javascript" src="jquery.min.js"></script>
+		<script type="text/javascript" src="jQueryTab.js"></script>
+	</head>
+
+	<body>
+
+		<div id="tab" class="js-tab">
+			<ul class="tab-nav">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<ul class="tab-wrap">
+				<li class="tab-item"></li>
+				<li class="tab-item"></li>
+				<li class="tab-item"></li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			$(function() {
+				var tab1 = new tab($("#tab"), ({
+					"type": "mouseover",   //促发的类型 （click：点击，否则则为鼠标经过）
+					"effect": "fade",  //切换的方式（fade：淡入淡出）
+					"show": 3, //初始显示第几个
+					"auto": 1500  //是否自动切换
+				}));
+//              $("#tab").tab({
+//                	"type": "mouseover",   //促发的类型 （click：点击，否则则为鼠标经过）
+//					"effect": "fade",  //切换的方式（fade：淡入淡出）
+//					"show": 3, //初始显示第几个
+//					"auto": 1500  //是否自动切换
+//              });
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/slider.js"></script>
+   	<style type="text/css">
+	.header{
+		position: fixed;
+    	top: 0px;
+	}
+	section{
+		margin-top: 60px;
+	}
+</style> 
+</head>
+<body style="background-color: rgb(245, 245, 245);">
+		<input type="hidden" id="nation" />
+    	<input type="hidden" id="nationNM" />
+    	<input type="hidden" id="province" />
+    	<input type="hidden" id="provinceNM" />
+    	<input type="hidden" id="provinceNM" />
+    	<input type="hidden" id="city" />
+    	<input type="hidden" id="cityNM" />
+    	<input type="hidden" id="address" />
+   	   	<input type="hidden" id="dateOfBirth"/>
+	 	<input type="hidden" id="taxResidentType"/>
+	 	<input type="hidden" id="taxResidentTypeNM"/>
+	 	<input type="hidden" id="taxResidentData"/>
+	 	<input type="hidden" id="viewType"/>
+	   	
+<section class="page">
+	<div id="scroller"></div>
+   
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/DataStatisJs.js"></script>
+    
+
+
+	<div id="maskDiv" class="maskDiv">
+		<div id="gifImgDiv" class="gifImgDiv"></div>
+	</div>
+	
+	<div id="otherIEHeader" class="hide">
+		
+	<div class="header">
+        <div class="top-a">
+            <a id="titleBack" href="javascript:toBack();" class="come-back"></a>
+            <h2></h2>
+            
+        </div>
+        
+    </div>
+
+	</div>
+
+	<div id="wxIEHeader" class="hide">
+		
+	</div>
+	
+	<!-- 错误提示 -->
+	<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+		<span id="errorRemark"></span>
+	</div>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+
+	<section class="title" id="section_01">
+    	<div class="center-accountset"></div>
+	</section>
+</section>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/fundProfessionInfo.js"></script>
+</body>
+</html>

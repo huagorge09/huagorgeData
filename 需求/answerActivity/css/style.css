@@ -1,0 +1,1014 @@
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-appearance: none;
+	outline: none;
+	word-break: break-all;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+*:not(input, textarea) {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+}
+
+html,
+body {
+	color: #333;
+	margin: 0 auto;
+	font-family: Arial, "Microsoft YaHei";
+	font-size: 50px;
+	background: #fff;
+	height: 100%;	
+}
+
+input {
+	-webkit-user-select: initial;
+	font-family: Arial, "Microsoft YaHei";
+	border: none;
+}
+
+i {
+	font-style: normal
+}
+
+a {
+	text-decoration: none;
+	color: #ffffdd;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a:active {
+	text-decoration: none;
+}
+
+em {
+	font-style: normal
+}
+
+ul,
+ol,
+li {
+	list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: normal;
+}
+
+img {
+	border: 0;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.clearFloat:after,
+.clearFloat:before {
+	content: "";
+	display: table;
+}
+
+.clearFloat:after {
+	clear: both;
+}
+
+.dswkb {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-box;
+	display: box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-box-align: center;
+	-moz-box-align: center;
+	-ms-box-align: center;
+	box-align: center;
+	position: relative;
+}
+
+.flex1 {
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	-ms-box-flex: 1;
+	box-flex: 1;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.center {
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+zindex999{
+	z-index:999;
+}
+/*遮罩层*/
+.mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 1;
+}
+.popup .content{
+	position: fixed;
+	left: 50%;
+    top: 50%;
+}
+
+.bg1{
+	height: 100%;
+	background: url(../images/bg.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+
+.silkBag{
+	position: absolute;
+	top: .14rem;
+	right: .17rem;
+	width: 1.22rem;
+	height: 1.16rem;
+	background: url(../images/silkBag.png) no-repeat;
+	background-size: 100% 100%;
+	z-index: 1;
+}
+.drawIndex .opeartion{
+	position: absolute;
+	bottom: .5rem;
+	left: 0;
+	width: 100%;
+}
+.drawIndex p{
+	color: #ffedec;
+	font-size: .35rem;
+	text-align: center;
+	bottom:1.45rem ;
+}
+.drawIndex .btn{
+	text-align: center;
+}
+.drawIndex .btnAct{
+	display: inline-block;
+	width: 3.43rem;
+	height: .8rem;
+	line-height: .8rem;
+
+	font-size: .4rem;
+	text-align: center;
+	color: #f32f16;
+	margin-top: .26rem;
+}
+.drawIndex .btnAnsw{
+		background: url(../images/answerBtn.png) no-repeat;
+	background-size: 100% 100%;
+}
+.drawIndex .btnDraw{
+	background: url(../images/drawBtn.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+
+/*指引弹窗*/
+.silk .content{
+    position: absolute;
+    left: 10%;
+    top: 11%;
+    width: 5.44rem;
+    text-align: center;
+}
+.silk .mask{
+	z-index: 2;
+}
+.silk .content{
+	z-index: 88;
+}
+.silk .img{
+	width: 6.09rem;
+	height: 1.65rem;
+	background: url(../images/knowText.png) no-repeat;
+	background-size: 6.09rem 1.65rem;
+}
+.silk .know{
+	width: 1.8rem;
+	height: .88rem;
+	background: url(../images/iKnow.png) no-repeat;
+	background-size:  1.8rem .88rem;
+	margin-left: .2rem;	
+}
+/*答题弹窗*/
+.answer .content{
+	position: absolute;
+	left: 50%;
+	top:50%;
+	width: 6.62rem;
+	background: #fff;
+	border:.2rem #e3563f solid;
+	border-radius: 10px;
+	padding: 0 .29rem;
+	    z-index: 4;
+}
+.answer .content>div{
+	border-radius: 10px;
+}
+/*.answer .mask{
+	z-index: 0;
+}*/
+.filter{
+	 filter: blur(3px);
+}
+.answer .serize{
+	width: .98rem;
+	height: .49rem;
+	line-height: .49rem;
+	text-align: center;
+	font-size: .24rem;
+	color: #fff;
+	background: url(../images/serize.png) no-repeat;
+	background-size: .98rem .49rem;
+	margin: 0 auto;
+}
+.answer h2{
+	font-size: .32rem;
+	color: #000;
+}
+.answer p{
+	background: #f4f4f4;
+	height: .44rem;
+	line-height: .44rem;
+	font-size: .22rem;
+	border-radius: 5px;
+	margin-top: .21rem;
+	margin-bottom: .39rem;
+}
+.answer p span{
+   display: inline-block;
+    color: #69c96e;
+
+}
+.answer p span:nth-child(1){
+	background: url(../images/true.png) no-repeat;
+    background-size: .29rem .25rem;
+    padding-left: .35rem;
+    background-position-y: .1rem;
+}
+.answer p span:nth-child(2){
+	background: url(../images/error.png) no-repeat;
+    background-size: .29rem .25rem;
+    padding-left: .35rem;
+    background-position-y: .1rem;
+    color: #d74434;
+}
+.answer li{
+	cursor: pointer;
+	position: relative;
+	min-height: 1.2rem;
+	font-size: .28rem;
+	color: #666666;
+	padding: .2rem .78rem .2rem .22rem;
+	border:1px #e3e3e3 solid;
+	margin-bottom: .28rem;
+	border-radius: 9px;
+	-moz-box-shadow:-1px 1px 6px #A8A8A8; -webkit-box-shadow:-1px 1px 6px #A8A8A8; box-shadow:-1px 1px 6px #A8A8A8;
+}
+.answer li.true{
+	border:1px #69c96e solid;
+	color: #69c96e;
+	background: url(../images/true.png) no-repeat;
+    background-size: .29rem .25rem;
+    background-position-x: 5rem;
+    background-position-y: 50%;
+    -moz-box-shadow:-1px 1px 6px #9EFFA8; -webkit-box-shadow:-1px 1px 6px #9EFFA8; box-shadow:-1px 1px 6px #9EFFA8;
+}
+.answer li.error{
+	border:1px #d74434 solid;
+	color: #d74434;
+	background: url(../images/error.png) no-repeat;
+    background-size: .29rem .25rem;
+    background-position-x: 5rem;
+    background-position-y: 50%;
+    -moz-box-shadow:-1px 1px 6px #FF8F87; -webkit-box-shadow:-1px 1px 6px #FF8F87; box-shadow:-1px 1px 6px #FF8F87;
+}
+.userImg{
+	position: absolute;
+	left:.3rem;
+	top:.3rem;
+	width: 1.3rem;
+	height: 1.3rem;
+	border-radius: 50%;
+	    z-index: 4;
+}
+.answer .score{
+	display: inline-block;
+	width: 1.08rem;
+	text-align: center;
+	position: absolute;
+	font-size: .32rem;
+	color: #fff;
+	top: .35rem;
+}
+.answer .legend{
+	    height: .44rem;
+}
+.userImg img{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.music{
+	position: absolute;
+	right:.3rem;
+	top:.45rem;
+	width: .74rem;
+	height: .75rem;
+	background: url(../images/music.png) no-repeat;
+    background-size: .74rem .75rem;
+        z-index: 4;
+}
+/*没有关注弹窗*/
+.follow .mask{
+	z-index: 999;
+}
+.follow .ermCode{
+	width: 6.4rem;
+	height: 7.52rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background: url(../images/ewm.png) no-repeat;
+    background-size: 6.4rem 7.52rem;
+    z-index: 99999;
+}
+/*用户分享指引弹窗*/
+.share .mask{
+	z-index: 2;
+}
+.share .img{
+	width: 6.7rem;
+	height: 2.39rem;
+	position: absolute;
+    top: 8%;
+    left: 5%;
+	background: url(../images/share.png) no-repeat;
+    background-size: 6.7rem 2.39rem;
+    z-index: 99999;
+}
+.share2 .mask{
+	    z-index: 88;
+}
+.share2 .img{
+	width: 6.86rem;
+	height: 2.89rem;
+	position: absolute;
+    top: 3%;
+    left: 5%;
+	background: url(../images/share2.png) no-repeat;
+    background-size:  6.86rem 2.89rem;
+    z-index: 999;
+}
+
+
+/*答题结果反馈*/
+.feedBack .content{
+	position: absolute;
+    top: 2%;
+    left: 5%;
+	width: 6.87rem;
+	z-index: 8;
+}
+.feedBack .shine{
+	width: 3.53rem;
+	height:3.53rem;
+	margin: 0 auto;
+	background: url(../images/shine.png) no-repeat;
+    background-size: 3.53rem 3.53rem;
+    -webkit-transform: rotate(360deg);
+	animation: rotation 3s linear infinite;
+	-moz-animation: rotation 3s linear infinite;
+	-webkit-animation: rotation 3s linear infinite;
+	-o-animation: rotation 3s linear infinite;
+}
+.feedBack .userImg{
+	height: 1.60rem;
+	width: 1.57rem;
+	border: .06rem #f4563d solid;
+	margin-left: 2.45rem;
+    margin-top: 0.6rem;
+}
+.feedBack h2{
+    width: 6.74rem;
+	height: 1.63rem;
+	background: url(../images/successTips.png) no-repeat;
+    background-size: 6.74rem 1.63rem;
+    margin-top: -.4rem;
+} 
+.cgerror  h2{
+	background: url(../images/errorTips.png) no-repeat;
+    background-size: 6.74rem 1.63rem;
+}
+.cgerror .shine{
+	background: none;
+}
+.feedBack p{
+	font-size: .32rem;
+	text-align: center;
+	margin-top: .2rem;
+}
+.feedBack p:nth-child(2){
+	color: #fff;
+}
+.feedBack p:nth-child(3){
+	color: #ffd800;
+	line-height: .5rem;
+}
+.feedBack .btnGroup{
+	width: 5.21rem;
+	margin: .78rem  auto 0 auto;
+}
+.feedBack .btn{
+	width: 5.21rem;
+	height: .88rem;
+	text-align:center;
+	line-height:.88rem;
+	border-radius: 5px;
+	color: #fff;
+}
+.feedBack .btn1{
+	background: #ea8a24;
+}
+.feedBack .btn2{
+	border: .02rem #fff solid;
+	margin-top: .36rem;
+}
+.cgsuccess .mask,.cgerror .mask{
+	z-index: 4;
+}
+.cgsuccess .content,.cgerror .content{
+	z-index: 10;
+}
+/*抽奖摇动弹窗*/
+.draw .mask{
+	z-index: 66;
+}
+.draw .content{
+	width: 4.57rem;
+	height:7.67rem;
+	background: url(../images/draw.png) no-repeat;
+    background-size: 4.57rem 7.67rem;
+    z-index: 999;
+}
+
+/*信息提示弹窗*/
+.infoTips .mask{
+	z-index: 100;
+}
+.infoTips .content{
+	width: 6.2rem;
+	height: 3.5rem;
+	background: #fff;
+	z-index: 3;
+	border-radius: 7px;
+	padding-top: .45rem;
+	z-index: 999;
+}
+.infoTips h2{
+	font-size: .32rem;
+	line-height: .62rem;
+	color: #000;
+	text-align: center;
+}
+.infoTips p{
+	text-align: center;
+	font-size: .28rem;
+	line-height: .4rem;
+	margin-top: .4rem;
+}
+.infoTips a{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+    display: inline-block;
+    width: 100%;
+    height: .8rem;
+    line-height: .8rem;
+    text-align: center;
+    border-top: 1px #e5e5e5 solid;
+    color: #17a71a;
+    margin-top: 0.4rem;
+}
+/*中奖了弹窗*/
+.winPrize .mask{
+	z-index: 10;
+}
+.winPrize .content{
+	width: 5.3rem;
+	z-index: 10;
+}
+.winPrize .prizeBox{
+	width: 5.7rem;
+	height: 5.58rem;
+	background: url(../images/winPrize.png) no-repeat;
+    background-size: 5.7rem 5.58rem;
+}
+.winPrize h2{
+	margin-top: -1.2rem;
+	text-align: center;
+	font-size: .46rem;
+	color: #fead07;
+}
+.winPrize .t1{
+	font-size: .28rem;
+	text-align: center;
+	color: #fff;
+	margin-top: .2rem;
+}
+.winPrize .t2{
+	font-size: .32rem;
+	text-align: center;
+	color: #fdec30;
+	margin-top: .52rem;
+}
+.winPrize .btnGroup{
+	margin-top: .6rem;
+}
+.winPrize .btnGroup a{
+	display: inline-block;
+	width: 2.4rem;
+	text-align: center;
+	background: #ea8a24;
+	color: #fff;
+	border-radius: 5px;
+	line-height:.88rem ;
+}
+.winPrize .btnGroup a:nth-child(2){
+	margin-left: .4rem;
+}
+.winPrize .return{
+	width: 100%;
+	height: .85rem;
+	line-height: .76rem;
+	color: #fff;
+	border:2px #fff solid;
+	border-radius: 5px;
+	text-align: center;
+	margin-top: .36rem;
+}
+.winPrize .prizeBoxImg{
+	width: 4.56rem;
+	height: 3.21rem;
+	position: absolute;
+    left: .6rem;
+    top: 1rem;
+	background: url(../images/winPrize2.png) no-repeat;
+    background-size: 4.56rem 3.21rem;
+    z-index: 88;
+}
+.winErr .prizeBox{
+	width: 5.21rem;
+	height: 3.21rem;
+	background: url(../images/winErr.png) no-repeat;
+    background-size: 5.21rem 3.21rem;
+}
+.winErr h2{
+	margin-top: 0;
+}
+.winErr .btnk{
+	background: #ea8a24;
+	border: 2px #ea8a24 solid;
+}
+
+/*活动时间过期*/
+.period .content{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 6.2rem;
+	height: 5.62rem;
+	z-index: 666;
+	background: #fff;
+	border-radius: 6px;
+}
+.period h2{
+	font-size: .32rem;
+	color: #000;
+	text-align:center;
+	line-height: 1.1rem;
+}
+.period img{
+	display: block;
+	width: 3.52rem;
+	height: 4.21rem;
+	margin:0 auto;
+}
+
+/*活动说明及我的奖品*/
+.explain .mask{
+	z-index: 999;
+}
+.explain .wrap{
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: 0 .22rem;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+}
+.explain .tabChange{
+	border-bottom: 1px #fff solid;
+}
+.explain .tabChange>li{
+	color: #fff;
+	font-size: .32rem;
+	line-height: .88rem;
+	text-align: center;
+	position: relative;
+}
+.explain span{
+	display: inline-block;
+	width: 1.8rem;
+}
+.explain .line{
+    position: absolute;
+    display: block;
+    right: 0;
+    top: .3rem;
+    width: .18rem;
+    height: .34rem;
+    border-right: 1px #523936 solid;
+}
+.explain .close{
+	position: absolute;
+    display: block;
+    right: 0;
+    top: .25rem;
+    width: .44rem;
+    height: .41rem;
+    background: url(../images/close.png) no-repeat;
+    background-size: .44rem .41rem;
+}
+
+
+.explain li.current span{
+    height: .88rem;
+    background: url(../images/border.png) no-repeat;
+    background-size: 1.28rem .12rem;
+    background-position-y: .8rem;
+    background-position-x: .28rem;
+}
+
+.explain .activeExplain {
+	color: #fff;
+	padding: 0 .23rem;
+}
+.explain .activeExplain>h2{
+	font-size: .4rem;
+	color: #f8b500;
+	margin-top: .2rem;
+}
+.explain .activeExplain>p{
+	font-size: .22rem;
+}
+.explain .activeExplain .title{
+	width: 2.46rem;
+	height: .5rem;
+	background: url(../images/explain-tip.png) no-repeat;
+    background-size: 2.46rem .5rem;
+    padding-left: .24rem;
+    font-size: .3rem;
+    color: #e30a0a;
+    line-height: .5rem;
+    margin-top: .17rem;
+    margin-bottom: .11rem;
+}
+.explain .activeExplain .text{
+	font-size: .28rem;
+}
+.explain .rules{
+   width: 6.72rem;
+    /* height: 3.71rem; */
+    background: #fff4dc;
+    border-radius: 6px;
+    margin-top: .3rem;
+    padding: .14rem .24rem .1rem .24rem;
+}
+.explain .rules>h2{
+	font-size: .3rem;
+	color: #5c5c5c;
+	line-height: .4rem;
+	margin-bottom: .18rem;
+}
+.explain .rules p{
+	position: relative;
+	font-size: .26rem;
+	line-height: .36rem;
+	margin-bottom: .15rem;
+	color: #7b7b7b;
+	padding-left: .52rem;
+}
+.explain .rules p span{
+	display: block;
+	position: absolute;
+	left: 0;
+	top:0;
+	width: .38rem;
+	height: .38rem;
+	text-align: center;
+	line-height: .38rem;
+	border: 1px #7b7b7b solid;
+	border-radius: 50%;
+	font-size: .24rem;
+}
+.explain .rules div{
+	font-size: .22rem;
+	color: #9f0000;
+}
+.explain .tips p{
+	position: relative;
+	font-size: .26rem;
+	margin-top: .25rem;
+	 padding-left: .25rem;
+	 line-height: .32rem;
+}
+.explain .tips em{
+	color: #f9ab09;
+}
+.explain .tips p span{
+	display: block;
+	position: absolute;
+	left: 0;
+	top:.02rem;
+	width: .18rem;
+	height: .18rem;
+	background: url(../images/star.png) no-repeat;
+    background-size: .18rem .18rem;
+  
+}
+.explain .interpretation{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	line-height: .28rem;
+	color: #ececec;
+	padding: .12rem .25rem;
+	font-size: .22rem;
+	background: #a5a5a5;
+}
+/*我的奖品*/
+.myPrizeList li{
+	width: 100%;
+	height: 1.88rem;
+	margin-top:.34rem ;
+}
+.myPrizeList .status .money {
+	width: 2.18rem;
+	text-align: center;
+}
+.myPrizeList .status .money div:nth-child(1){
+	font-size: .6rem;
+	color: #e30a0a;
+}
+.myPrizeList .status .money div:nth-child(2){
+	font-size: .26rem;
+	color: #e30a0a;
+}
+.myPrizeList .status .money div:nth-child(1) em{
+	font-size: .4rem;
+}
+
+.myPrizeList .status1{
+	background: url(../images/offer.png) no-repeat;
+    background-size: 100% 100%;
+}
+.myPrizeList .status2{
+	background: url(../images/offer.png) no-repeat;
+    background-size: 100% 100%;
+}
+.myPrizeList .status3{
+	background: url(../images/offerExpired.png) no-repeat;
+    background-size: 100% 100%; 
+}
+.status3 .money div,.status3 .offerIn p{
+	color: #a4a4a4 !important;
+}
+
+.myPrizeList .offerIn{
+	width: 2.59rem;
+	margin-left: .3rem;
+}
+.myPrizeList .offerIn p:nth-child(1){
+	font-size: .36rem;
+	color: #241e1f;
+}
+.myPrizeList .offerIn p:nth-child(2){
+	font-size: .2rem;
+	color: #625658;
+	margin-top: .1rem;
+}
+.myPrizeList .status1 .offerStatus{
+	width: 1.5rem;
+	height: .5rem;
+	text-align: center;
+	line-height: .5rem;
+	background: #e30a0a;
+	border-radius: 15px;
+	color: #fff;
+	margin-left: .2rem;
+}
+.myPrizeList .status2 .offerStatus{
+	width: 1.7rem;
+	height:1.67rem;
+	background: url(../images/offerIcon2.png) no-repeat;
+    background-size: 100% 100%;
+    margin-left: .1rem;
+}
+.myPrizeList .status3 .offerStatus{
+	width: 1.7rem;
+	height:1.67rem;
+	background: url(../images/offerIcon.png) no-repeat;
+    background-size: 100% 100%;
+    margin-left: .1rem;
+}
+
+.explain .userInfo{
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom: .5rem;
+	color: #fff;
+	z-index: 999;
+	padding: 0 .18rem;
+}
+.explain .userInfo .userLine{
+	text-align: center;
+	margin-bottom: .3rem;
+	position: relative;
+		background: url(../images/contact.png) no-repeat;
+    background-size: 100% 100%;
+}
+.explain .userInfo p{
+	font-size: .3rem;
+}
+.explain .userInfo p:nth-child(1){
+	margin-bottom: .1rem;
+}
+
+/*没有奖品*/
+.noPrize .img{
+	width: 1.49rem;
+	height: 1.5rem;
+	background: url(../images/noPrize.png) no-repeat;
+    background-size: 100% 100%;
+    margin: .87rem auto .24rem auto;
+}
+.noPrize p{
+	color: #fff;
+	text-align: center;
+	line-height: .4rem;
+}
+/*提交信息*/
+.reserves .mask{
+	z-index: 999;
+}
+.reserves .content{
+	width: 90%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	background: #fff;
+	border-radius: 5px;
+	z-index: 1000;
+} 
+.reserves h2{
+	width: 100%;
+	height: .9rem;
+	line-height: .9rem;
+	background: #f0f0f0;
+	position: relative;
+	font-size: .36rem;
+	color: #000;
+	text-align: center;
+	margin-bottom: .4rem;
+}
+.reserves h2 span,.reservesSuc span{
+	display: inline-block;
+    width: .23rem;
+    height: .22rem;
+    background: url(../images/close2.png) no-repeat;
+	background-size: 100% 100%;
+	position: absolute;
+	right:.3rem;
+	top:.3rem;
+}
+.reserves .form{
+	padding: 0 .32rem .4rem .32rem;
+}
+.reserves .inputBox{
+	line-height: .88rem;
+	border:1px #dedede solid;
+	border-radius: 3px;
+	margin-bottom: .3rem;
+}
+.reserves .inputBox span{
+	display: inline-block;
+	width: 1.32rem;
+	text-align: center;
+	color: #666;
+	font-size: .3rem;
+}
+.reserves .inputBox input{
+   border: 0;
+   padding-left: .2rem;
+   color: #212121;
+   padding: .2rem 0;
+   font-size:  .3rem;
+} 
+.reserves .inputBox.foucs{
+	border-color: #59aaf3;
+}
+.reserves ul p{
+	font-size: .22rem;
+	color: #ca132a;
+	line-height: .3rem;
+	margin-bottom: .25rem;
+}
+.reserves button{
+	width: 100%;
+	border:0;
+	height: .8rem;
+	line-height: .8rem;
+	border-radius: 3px;
+	font-size: .32rem;
+	color: #fff;
+	background: #ca132a;
+}
+.reserves button.disabled{
+	background: #cecece;
+}
+
+.reservesSuc .content{
+	height: 2.75rem;
+	width: 90%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	background: #fff;
+	border-radius: 5px;
+	z-index: 1000;
+}
+.reservesSuc .successIcon{
+	width: .92rem;
+	height: .92rem;
+	 background: url(../images/success.png) no-repeat;
+	background-size: 100% 100%;
+	margin: .34rem auto .23rem auto;
+}
+.reservesSuc h2{
+	line-height: .5rem;
+	font-size: .32rem;
+	color: #212121;
+	text-align: center;
+}
+.reservesSuc p{
+	font-size: .28rem;
+	text-align: center;
+	color: #666;
+	line-height: .44rem;
+}
+.reservesSuc .mask{
+	z-index: 999;
+}

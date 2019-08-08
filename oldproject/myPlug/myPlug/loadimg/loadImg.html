@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script>
+			window.onscroll=function(){
+					imgLoader()
+			}
+			function imgLoader(){
+				$("img").each(function() {
+					if($(this).attr("src") == "") {
+						if(($(this).offset().top + $(this).height() / 2) < ($(window).height() + $(window).scrollTop())) {
+							$(this).attr("src", $(this).attr("src-x"));
+						}
+					}
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<img src="http://www.wonhero.com/Images/banner1.jpg" src=""/>
+		<img src="http://www.wonhero.com/Images/banner2.jpg" src=""/>
+		<img src="http://www.wonhero.com/Images/banner3.jpg" src=""/>
+		<img src="http://www.wonhero.com/images/sjsj-1.jpg" src=""/><br/>
+		<img src="http://www.wonhero.com/images/sjsj-2.jpg" src=""/><br/>
+		<img src="http://www.wonhero.com/images/sjsj-3.jpg" src=""/><br />
+		<img src-x="http://www.wonhero.com/images/jztc-1.jpg" src=""/><br />
+		<img src-x="http://www.wonhero.com/images/jztc-2.jpg" src=""/><br />
+		<img src-x="http://www.wonhero.com/images/jztc-3.jpg" src=""/><br />
+		<select  onchange="bao(this.options[this.options.selectedIndex].value)">
+			<option value="">请选择
+			<option value="1">Item 1
+			<option value="2">Item 2
+			<option value="3">Item 3
+		</select>
+		<script>
+		function bao(s)
+		{
+		    txt.value=s;
+		    //选择后,让第一项被选中,这样,就有Change啦.
+		    document.all.sel.options[0].selected=true;
+		    alert("d")
+		}
+		</script>
+		<textarea id=txt></textarea>
+	</body>
+</html>

@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.accountManger.AccountCheckDao">
+	
+	<!-- 账户类复核查询VO -->
+	<resultMap id="accountInfoMap" type="com.cmwa.ecc.business.entity.accountManger.TradeDto">
+		<result property="fundacco" column="FUNDACCT"/>
+		<result property="tradeacco" column="TRADEACCO"/>
+		<result property="serialno" column="SERIALNO"/>
+		<result property="workdate" column="WORKDATE"/>
+		<result property="dsapkind" column="APKIND"/>
+		<result property="dsapkindnm" column="APKINDNM"/>
+		<result property="oldserialno" column="APPNO"/>
+		<result property="invnm" column="INVNM"/>
+		<result property="invtp" column="INVTP"/>
+		<result property="invtpnm" column="INVTPNM"/>
+		<result property="idtp" column="IDTP"/>
+		<result property="idtpnm" column="IDTPNM"/>
+		<result property="idno" column="IDNO"/>
+		<result property="contact" column="BROKERNAME"/>
+		<result property="contidtp" column="BROKERIDTP"/>
+		<result property="contidtpnm" column="BROKERIDTPNM"/>
+		<result property="contidno" column="BROKERIDNO"/>
+		<result property="checkFlag" column="CHKFLAG"/>
+		<result property="checkFlagNM" column="CHKFLAGNM"/>
+		<result property="tano" column="TANO"/>
+		<result property="operatorId" column="OPID"/>
+		<result property="applyst" column="APPLYST"/>
+		<result property="applystnm" column="APPLYSTNM"/>
+	</resultMap>
+	
+	<!-- 经办人信息 -->
+	<resultMap id="contactInfoDtoMap" type="com.cmwa.ecc.business.entity.accountManger.ContactInfoDto">
+		<result property="contactgrant" column="BROKERPRIV"/>
+		<result property="contact" column="BROKERNAME"/>
+		<result property="contactnation" column="BROKERNATION"/>
+		<result property="contidtp" column="BROKERIDTP"/>
+		<result property="contidno" column="BROKERIDNO"/>
+		<result property="contvalidate" column="BROKERVALIDDATE"/>
+		<result property="contphone" column="BROKEROFFICETEL"/>
+		<result property="contfax" column="BROKERFAX"/>
+		<result property="contmobile" column="BROKERMOBILE"/>
+		<result property="contemail" column="BROKEREMAIL"/>
+		<result property="contactflag" column="MAINBROKERFLAG"/>
+		<result property="contAddr" column="BROKERADDR"/>
+		<result property="contPostcode" column="BROKERPOSTCODE"/>
+		<result property="idtp" column="OTHERIDTP"/>
+		<result property="idno" column="OTHERIDNO"/>
+		<result property="idvalidate" column="OTHERIDVALIDDT"/>
+		<result property="infoflag" column="INFOFLAG"/>
+		<result property="mainbrokerflag" column="MAINBROKERFLAG"/>
+		
+	</resultMap>
+	
+	<!-- 客户资料信息/及扩展信息 -->
+	<resultMap id="accountDtoMap" type="com.cmwa.ecc.business.entity.accountManger.OpenAccountDto">
+		<result property="serialno" column="SERIALNO"/>
+		<result property="tano" column="TANO"/>
+		<result property="custno" column="CUSTNO"/>
+		<result property="invnm" column="INVNM"/>
+		<result property="idtp" column="IDTP"/>
+		<result property="idtpnm" column="IDTPNM"/>
+		<result property="idno" column="IDNO"/>
+		<result property="invtp" column="INVTP"/>
+		<result property="bnkNo" column="BANKNO"/>
+		<result property="openName" column="BANKLONGNAME"/>
+		<result property="openAddr" column="BANKADDR"/>
+		<result property="openBankCity" column="BANKADDRCITY"/>
+		<result property="bankAccoNm" column="BANKACNM"/>
+		<result property="bankAcco" column="BANKACCO"/>
+		<result property="mobile" column="MOBILENO"/>
+		<result property="email" column="EMAIL"/>
+		<result property="custrisklevl" column="RISKLEVEL"/>
+		<result property="specriskLevel" column="SPECRISKLEVEL"/>
+		<result property="amlrisktype" column="AMLRISKTYPE"/>
+		<result property="fxqremark" column="AMLRISKNOTE"/>
+		<result property="acctabbr" column="CUSTABBRCODE"/>
+		<result property="instrepcode" column="CUSTINSTREPRCODE"/>
+		<result property="businesstp" column="BUSINESSTP"/>
+		<result property="companytp" column="COMPANYTP"/>
+		<result property="regiontp" column="REGIONCODE"/>
+		<result property="invprtp" column="INVPTP"/>
+		<result property="taxType" column="TAXTYPE"/>
+		<result property="taxTypeDecl" column="TAXTYPEDECL"/>
+		<result property="investProInstType" column="INVESTPROINSTTYPE"/>
+		<result property="investProInstSecond" column="INVESTPROINSTSECOND"/>
+		<result property="oneYearEndNetAsset" column="ONEYEARENDNETASSET"/>
+		<result property="oneYearEndFinAsset" column="ONEYEARENDFINASSET"/>
+		<result property="investExperience" column="INVESTEXPERIENCE"/>
+		<result property="negativeNotFinaInst" column="NEGATIVENOTFINAINST"/>
+		<result property="controlPerTaxDecl" column="CONTROLPERTAXDECL"/>
+		<result property="threeAnnualIncome" column="THREEANNUALINCOME"/>
+		<result property="financialAsset" column="FINANCIALASSET"/>
+		<result property="indInvExperience" column="INDINVEXPERIENCE"/>
+		<result property="relatedWorkExp" column="RELATEDWORKEXP"/>
+		<result property="finProfessions" column="FINPROFESSIONS"/>
+		<result property="tel" column="OFFICETEL"/>
+		<result property="housetel" column="HOMETEL"/>
+		<result property="fax" column="FAXNO"/>
+		<result property="faxdelegate" column="FAXTRUST"/>
+		<result property="postcode" column="POSTCODE"/>
+		<result property="addr" column="ADDR"/>
+		<result property="idvalidate" column="IDNOLIMIT"/>
+		<result property="sex" column="SEX"/>
+		<result property="nationalitycode" column="NATION"/>
+		<result property="edlevel" column="EDLEVEL"/>
+		<result property="voccode" column="VOCCODE"/>
+		<result property="income" column="INCOME"/>
+		<result property="instrepnm" column="INSTREPRNAME"/>
+		<result property="instrepnation" column="INSTREPRNATION"/>
+		<result property="instrepidtp" column="INSTREPRIDTP"/>
+		<result property="instrepidno" column="INSTREPRIDNO"/>
+		<result property="instrepvalidate" column="INSTREPDATE"/>
+		<result property="principalname" column="PRINCIPALNAME"/>
+		<result property="principalnation" column="PRINCIPALNATION"/>
+		<result property="principalidtp" column="PRINCIPALTYPE"/>
+		<result property="principalidno" column="PRINCIPALNO"/>
+		<result property="principalvalidt" column="PRINCIPALVALIDATE"/>
+		<result property="holdingname" column="HOLDINGNAME"/>
+		<result property="holdingidtp" column="HOLDINGIDTYPE"/>
+		<result property="holdingidno" column="HOLDINGIDNO"/>
+		<result property="holdingvalidate" column="HOLDINGIDVALIDATE"/>
+		<result property="beneficiary" column="BENEFICIARY"/>
+		<result property="shsecacc" column="SHSECACC"/>
+		<result property="szsecacc" column="SZSECACC"/>
+		<result property="contactgrant" column="BROKERPRIV"/>
+		<result property="contact" column="BROKERNAME"/>
+		<result property="contactnation" column="BROKERNATION"/>
+		<result property="contidtp" column="BROKERIDTP"/>
+		<result property="contidno" column="BROKERIDNO"/>
+		<result property="contvalidate" column="BROKERVALIDDATE"/>
+		<result property="contphone" column="BROKEROFFICETEL"/>
+		<result property="contfax" column="BROKERFAX"/>
+		<result property="contmobile" column="BROKERMOBILE"/>
+		<result property="contemail" column="BROKEREMAIL"/>
+		<result property="contAddr" column="BROKERADDR"/>
+		<result property="contPostcode" column="BROKERPOSTCODE"/>
+		<result property="ifalldocument" column="ISFULL"/>
+		<result property="ifsaved" column="FILED"/>
+		<result property="ifOriginal" column="ORIGINAL"/>
+		<result property="isupload" column="ATTACH"/>
+		<result property="isscan" column="ISSCAN"/>
+		<result property="keepaddress" column="KEEPADDRESS"/>
+		<result property="salesaccmanager" column="SALESACCMANAGER"/>
+		<result property="remarkinfo" column="REMARK"/>
+		<result property="docbusinesstp" column="APTYPE"/>
+		<result property="custdocument" column="CUSTINFOID"/>
+		<result property="existsflag" column="EXISTSFLAG"/>
+		<result property="businesstp" column="APTYPE"/>
+		<result property="organType" column="INSTTYPE"/>
+		<result property="sendingroute" column="DELIVERWAY"/>
+		<result property="dsapkind" column="APKIND"/>
+		<result property="dsapkindnm" column="APKINDNM"/>
+		<result property="fundacct" column="FUNDACCT"/>
+		<result property="tradeacco" column="TRADEACCO"/>
+		<result property="tel" column="TELNO"/>
+	</resultMap>
+	
+	<!--  账户类复核查询  -->
+	<select id="accountCheckQry" parameterType="sparam" statementType="CALLABLE">
+        { CALL DS_OQP_APPFDACBLOTTER(
+				#{sp.custno,jdbcType=VARCHAR,mode=IN},
+				#{sp.fundAcco,jdbcType=VARCHAR,mode=IN},
+				#{sp.tradeAcco,jdbcType=VARCHAR,mode=IN},
+				#{sp.appType,jdbcType=VARCHAR,mode=IN},
+				#{sp.checkStatus,jdbcType=VARCHAR,mode=IN},
+				#{sp.serialno,jdbcType=VARCHAR,mode=IN},
+				#{sp.type,jdbcType=VARCHAR,mode=IN},
+				#{sp.operatorId,jdbcType=VARCHAR,mode=IN},
+				
+ 				#{sp.errcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.errmsg,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.tradeInfoList,resultMap=accountInfoMap,jdbcType=CURSOR,mode=OUT}
+			)
+		}
+	</select>
+	
+	<!-- 账户类复核明细查询  -->
+	<select id="accountCheckDetailQry" parameterType="sparam" statementType="CALLABLE">
+        { CALL DS_OQP_CHECK(
+				#{sp.serialno,jdbcType=VARCHAR,mode=IN},
+				
+ 				#{sp.errcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.errmsg,jdbcType=VARCHAR,mode=OUT},
+	    		
+	    		#{sp.appList,resultMap=accountDtoMap,jdbcType=CURSOR,mode=OUT},
+	    		#{sp.custinfoList,resultMap=accountDtoMap,jdbcType=CURSOR,mode=OUT},
+	    		#{sp.custInfoexList,resultMap=accountDtoMap,jdbcType=CURSOR,mode=OUT},
+	    		#{sp.tradeAccoInfoList,resultMap=accountDtoMap,jdbcType=CURSOR,mode=OUT},
+	    		#{sp.contInfoList,resultMap=contactInfoDtoMap,jdbcType=CURSOR,mode=OUT},
+	    		#{sp.statInfoList,resultMap=accountDtoMap,jdbcType=CURSOR,mode=OUT}
+			)
+		}
+	</select>
+	
+	
+	<!-- 账户类复核  -->
+	<select id="accountInfoCheck" parameterType="sparam" statementType="CALLABLE">
+        { CALL DS_OAP_CHECK(
+				#{sp.permissionId,jdbcType=VARCHAR,mode=IN},
+				#{sp.serialno,jdbcType=VARCHAR,mode=IN},
+				#{sp.checkst,jdbcType=VARCHAR,mode=IN},
+				#{sp.operatorId,jdbcType=VARCHAR,mode=IN},
+				#{sp.granteeId,jdbcType=VARCHAR,mode=IN},
+ 				#{sp.errcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.errmsg,jdbcType=VARCHAR,mode=OUT}
+			)
+		}
+	</select>
+	
+	<!-- 账户类复核  -->
+	<select id="accountRejectModify" parameterType="com.cmwa.ecc.business.entity.accountManger.OpenAccountDto" statementType="CALLABLE">
+        { CALL DS_OAP_CHECK_MODIFY(
+				#{permissionId,jdbcType=VARCHAR,mode=IN},
+				#{serialno,jdbcType=VARCHAR,mode=IN},
+				#{trustType,jdbcType=VARCHAR,mode=IN},
+				#{tano,jdbcType=VARCHAR,mode=IN},
+				#{invtp,jdbcType=VARCHAR,mode=IN},
+				#{invnm,jdbcType=VARCHAR,mode=IN},
+				#{idtp,jdbcType=VARCHAR,mode=IN},
+				#{idno,jdbcType=VARCHAR,mode=IN},
+				#{acctabbr,jdbcType=VARCHAR,mode=IN},
+				#{password,jdbcType=VARCHAR,mode=IN},
+				#{bnkNo,jdbcType=VARCHAR,mode=IN},
+				#{openName,jdbcType=VARCHAR,mode=IN},
+				#{bankAccoNm,jdbcType=VARCHAR,mode=IN},
+				#{bankAcco,jdbcType=VARCHAR,mode=IN},
+				#{openAddr,jdbcType=VARCHAR,mode=IN},
+				#{provincecode,jdbcType=VARCHAR,mode=IN},
+				#{citycode,jdbcType=VARCHAR,mode=IN},
+				#{addr,jdbcType=VARCHAR,mode=IN},
+				#{postcode,jdbcType=VARCHAR,mode=IN},
+				#{mobile,jdbcType=VARCHAR,mode=IN},
+				#{email,jdbcType=VARCHAR,mode=IN},
+				#{tel,jdbcType=VARCHAR,mode=IN},
+				#{housetel,jdbcType=VARCHAR,mode=IN},
+				#{tel,jdbcType=VARCHAR,mode=IN},
+				#{fax,jdbcType=VARCHAR,mode=IN},
+				#{voccode,jdbcType=VARCHAR,mode=IN},
+				#{edlevel,jdbcType=VARCHAR,mode=IN},
+				#{income,jdbcType=VARCHAR,mode=IN},
+				#{sex,jdbcType=VARCHAR,mode=IN},
+				#{marriedflag,jdbcType=VARCHAR,mode=IN},
+				#{birthday,jdbcType=VARCHAR,mode=IN},
+				#{attr3,jdbcType=VARCHAR,mode=IN},
+				#{idvalidate,jdbcType=VARCHAR,mode=IN},
+				#{sendingroute,jdbcType=VARCHAR,mode=IN},
+				#{corpropertiy,jdbcType=VARCHAR,mode=IN},
+				#{registCapital,jdbcType=VARCHAR,mode=IN},
+				#{industryType,jdbcType=VARCHAR,mode=IN},
+				#{instrepnm,jdbcType=VARCHAR,mode=IN},
+				#{instrepidtp,jdbcType=VARCHAR,mode=IN},
+				#{instrepidno,jdbcType=VARCHAR,mode=IN},
+				#{instrepvalidate,jdbcType=VARCHAR,mode=IN},
+				#{instrepnation,jdbcType=VARCHAR,mode=IN},
+				#{principalname,jdbcType=VARCHAR,mode=IN},
+				#{principalidtp,jdbcType=VARCHAR,mode=IN},
+				#{principalidno,jdbcType=VARCHAR,mode=IN},
+				#{principalvalidt,jdbcType=VARCHAR,mode=IN},
+				#{principalnation,jdbcType=VARCHAR,mode=IN},
+				#{trustType,jdbcType=VARCHAR,mode=IN},
+				#{trustType1,jdbcType=VARCHAR,mode=IN},
+				#{trustType2,jdbcType=VARCHAR,mode=IN},
+				#{faxdelegate,jdbcType=VARCHAR,mode=IN},
+				#{trustType,jdbcType=VARCHAR,mode=IN},
+				#{trustType6,jdbcType=VARCHAR,mode=IN},
+				#{holdingname,jdbcType=VARCHAR,mode=IN},
+				#{holdingidtp,jdbcType=VARCHAR,mode=IN},
+				#{holdingidno,jdbcType=VARCHAR,mode=IN},
+				#{holdingvalidate,jdbcType=VARCHAR,mode=IN},
+				#{beneficiary,jdbcType=VARCHAR,mode=IN},
+				#{acctabbr,jdbcType=VARCHAR,mode=IN},
+				#{instrepcode,jdbcType=VARCHAR,mode=IN},
+				#{businesstp,jdbcType=VARCHAR,mode=IN},
+				#{companytp,jdbcType=VARCHAR,mode=IN},
+				#{regiontp,jdbcType=VARCHAR,mode=IN},
+				#{custrisklevl,jdbcType=VARCHAR,mode=IN},
+				#{custriskscore,jdbcType=VARCHAR,mode=IN},
+				#{amlrisktype,jdbcType=VARCHAR,mode=IN},
+				#{operatorId,jdbcType=VARCHAR,mode=IN},
+				#{docbusinesstp,jdbcType=VARCHAR,mode=IN},
+				#{newDocStr,jdbcType=VARCHAR,mode=IN},
+				#{newOcontStr,jdbcType=VARCHAR,mode=IN},
+				#{newOidStr,jdbcType=VARCHAR,mode=IN},
+				#{ifalldocument,jdbcType=VARCHAR,mode=IN},
+				#{ifOriginal,jdbcType=VARCHAR,mode=IN},
+				#{ifsaved,jdbcType=VARCHAR,mode=IN},
+				#{oserialno,jdbcType=VARCHAR,mode=IN},
+				#{flag,jdbcType=VARCHAR,mode=IN},
+				#{fxqremark,jdbcType=VARCHAR,mode=IN},
+				#{nationalitycode,jdbcType=VARCHAR,mode=IN},
+				#{openBankCity,jdbcType=VARCHAR,mode=IN},
+				#{isupload,jdbcType=VARCHAR,mode=IN},
+				#{szsecacc,jdbcType=VARCHAR,mode=IN},
+				#{shsecacc,jdbcType=VARCHAR,mode=IN},
+				#{remarkinfo,jdbcType=VARCHAR,mode=IN},
+				#{organType,jdbcType=VARCHAR,mode=IN},
+				#{isscan,jdbcType=VARCHAR,mode=IN},
+				#{keepaddress,jdbcType=VARCHAR,mode=IN},
+				#{salesaccmanager,jdbcType=VARCHAR,mode=IN},
+				#{invprtp,jdbcType=VARCHAR,mode=IN},
+				#{taxType,jdbcType=VARCHAR,mode=IN},
+				#{taxTypeDecl,jdbcType=VARCHAR,mode=IN},
+				#{investProInstType,jdbcType=VARCHAR,mode=IN},
+				#{investProInstSecond,jdbcType=VARCHAR,mode=IN},
+				#{oneYearEndNetAsset,jdbcType=VARCHAR,mode=IN},
+				#{oneYearEndFinAsset,jdbcType=VARCHAR,mode=IN},
+				#{investExperience,jdbcType=VARCHAR,mode=IN},
+				#{negativeNotFinaInst,jdbcType=VARCHAR,mode=IN},
+				#{controlPerTaxDecl,jdbcType=VARCHAR,mode=IN},
+				#{threeAnnualIncome,jdbcType=VARCHAR,mode=IN},
+				#{financialAsset,jdbcType=VARCHAR,mode=IN},
+				#{indInvExperience,jdbcType=VARCHAR,mode=IN},
+				#{relatedWorkExp,jdbcType=VARCHAR,mode=IN},
+				#{finProfessions,jdbcType=VARCHAR,mode=IN},
+				#{specriskLevel,jdbcType=VARCHAR,mode=IN},
+				#{errcode,jdbcType=VARCHAR,mode=OUT},
+				#{errmsg,jdbcType=VARCHAR,mode=OUT}
+			)
+		}
+	</select>
+	
+	<!-- 获取账户复核记录数 -->
+	<select id="getTradeCount" resultType="com.cmwa.ecc.business.entity.accountManger.TradeDto">
+		SELECT NVL((SUM(DECODE(A.CHKFLAG || A.APPLYST, 'NN', 1, 0))), 0) AS ncount,
+		       NVL((SUM(DECODE(A.CHKFLAG || A.APPLYST, 'YN', 1, 0))), 0) AS ycount,
+		       NVL((SUM(DECODE(A.CHKFLAG, 'C', 1, 0))), 0) AS ccount,
+		       NVL((SUM(DECODE(A.APPLYST || A.CHKFLAG, 'NR', 1, 0))), 0) AS fcount,
+		       NVL((SUM(DECODE(A.APPLYST, 'C', 1, 0))), 0) AS cancelcount,
+		       NVL((COUNT(*)), 0) AS totalcount
+		  FROM APPFDACBLOTTER A
+		 WHERE A.REGIONCODE = '0001'
+		   AND A.WORKDATE = (SELECT RTRIM(KYDATE)
+		                       FROM SYSALTER
+		                      WHERE KEY1 = 'EC'
+		                        AND KEY2 = 'SYS'
+		                        AND KEY3 = 'WORKDATE')
+	</select>
+</mapper>

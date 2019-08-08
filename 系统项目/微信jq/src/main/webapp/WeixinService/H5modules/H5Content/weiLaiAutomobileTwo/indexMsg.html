@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="x5-orientation" content="portrait" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no">
+    <title>招商财富·蔚来汽车</title>
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/weiLaiAutomobileTwo/style.css" />
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/weiLaiAutomobileTwo/animation.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/weiLaiAutomobileTwo/dialog.css">
+</head>
+
+<body>
+    <div id="pageContain">
+        <div class="section page1">
+            <div class="logo pag"></div>
+            <div class="pag page3-1"></div>
+            <ul class="pag form">
+                <li>
+                    <span>姓名:</span>
+                    <input type="text" placeholder="请输入您的姓名" name="name">
+                </li>
+                <li>
+                    <span>电话:</span>
+                    <input type="text" placeholder="请输入您的电话" name="tel" maxlength="11">
+                </li>
+                <li>
+                    <div class="input-left">
+                    <input type="number" id="vrfCode" placeholder="验证码" maxlength="6" name="vrfCode">
+                    </div>
+                    <div class="input-right examination-box">获取验证码</div>
+                </li>
+                <!-- <li>
+                    <div class="data-right">参加蔚来汽车试驾活动<em></em></div>
+                    <div class="data-left">
+                        <p class="left-yes" data-val="0">是</p>
+                        <p class="left-no" data-val="1">否</p>
+                    </div>
+                </li> -->
+                <li onclick="saveAppointInfo()">提交</li>
+            </ul>
+            <!-- <div class="arrow"></div> -->
+        </div>
+
+
+    </div>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/weiLaiAutomobileTwo/flexible.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/weiLaiAutomobileTwo/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/weiLaiAutomobileTwo/dialog.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/weiLaiAutomobileTwo/jweixin-1.0.0.js"></script>
+    <!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/weiLaiAutomobileTwo/share.js"></script> -->
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/weiLaiAutomobileTwo/jquery.fullPage.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+    <script>
+    var host = window.location.protocol + "//" + window.location.host;
+    var userid = getUrlSearchParams("userid") ? getUrlSearchParams("userid") : localStorage.getItem("userid");
+    var index = {
+        userId: "",
+        userAward: "",
+        initPageData: function () { /*初始化页面数据*/
+            var _self = this;
+            this.userId = getUrlSearchParams("userid") ? getUrlSearchParams("userid") : decodeURI(localStorage.getItem("userid"));
+            if (this.userId == null || this.userId == "" || this.userId == "null") {
+                location.href = host + "/auth/proxy-silent.html?scope=snsapi_base&target_url=" + host + "/WeixinService/H5modules/H5Content/weiLaiAutomobileTwo/index.html";
+            } else {
+                localStorage.setItem("userid", this.userId);
+            }
+            this.queryUserInfo();
+        },
+        queryUserInfo:function() {
+
+            if (!!userid) {  //如果有userid
+                $.ajax({
+                    url: apiHost + "/api/wxuserinfo",
+                    async: false,
+                    type: "get",
+                    data: {
+                        userId: userid
+                    },
+                    dataType: "json",
+                    success: function (res) {
+                        //alert(userid)
+                        if (res.success) {
+                            userId = res.response.userId;
+                            localStorage.setItem("userId", userId);
+                            localStorage.setItem("userid", userid);
+                        } else {
+                            //errorRemark("解密失败");
+                            localStorage.removeItem("userId", userId);
+                            localStorage.removeItem("userid", userid);
+                            location.href = host + "/auth/proxy-silent.html?scope=snsapi_base&target_url=" + host + "/WeixinService/H5modules/H5Content/weiLaiAutomobileTwo/index.html";
+                        }
+                    },
+                    error: function () {
+                        errorRemark("接口获取userid服务器异常，请稍后再试。");
+                    }
+                })
+            }
+        
+        }
+
+    };
+    index.initPageData();
+
+        // --------------------------------------------------------------------------
+        var pageSource=getUrlParams("tel").tel;
+        var pageId="invitation";
+        $(function () {
+            if (pageSource) {
+                operatingRecord(pageSource, "openInvitation", pageId, "", "", "", "")
+            }
+            $(".page1 .pag").show()
+            $('body,html').height(document.body.clientHeight);
+            $('#pageContain').fullpage({
+                afterLoad: function (anchorLink, index) {
+                    $.fn.fullpage.setAllowScrolling(true, 'up');
+                    var ele = ".page" + index + " .pag"
+                    $(".logo").addClass("animate")
+                    $(ele).addClass("animate").show();
+                },
+                onLeave: function (index, direction) {
+                    var ele = ".page" + index + " .pag"
+                    $(".logo").removeClass("animate")
+                    $(ele).removeClass("animate").hide()
+                }
+            });
+
+        })
+        // 点击获取验证码
+        $(function(){
+            $(".examination-box").click(function(){
+                if (!$(".examination-box").hasClass("disabled")) {
+                    if($("input[name=name]").val() != ""){
+                        var mobilePhone = $.trim($("input[name=tel]").val());
+                        if (mobilePhone == "") {
+                            $(document).dialog({ type: 'notice', infoText: '手机号码不能为空', autoClose: 1500, position: 'center' });
+                        }
+                        else if (!(/^1[34578]\d{9}$/.test(mobilePhone))) {
+                            $(document).dialog({ type: 'notice', infoText: '请输入正确的手机号码', autoClose: 1500, position: 'center' });
+                        } else {
+                            verification(mobilePhone); 
+                        }
+                        }else{
+                            $(document).dialog({ type: 'notice', infoText: '姓名不能为空', autoClose: 1500, position: 'center' });
+                        }
+                }
+
+            })
+        })
+        var sessionID ='';
+        function verification(phone) {
+            $.ajax({
+                async: true,
+                url: '/WeixinService/setUp/getMobileVerifyCodeForHABX.xhtml',
+                data: {
+                    mobile: phone
+                },
+                dataType: "json",
+                type: "POST",
+                success: function (data) {
+                    if (data.returnCode == "0000") {
+                        countDown({
+                            elem: ".examination-box",
+                            disable: "disabled",
+                            time: 60
+                        })
+                        sessionID = data.sessionID
+                    } else {
+                        $(document).dialog({ type: 'notice', infoText: '系统异常', autoClose: 1500, position: 'center' });
+                    }
+                },
+                error: function () {
+                }
+            });
+
+        }
+        //点击信息提交
+        function saveAppointInfo() {
+            var userName = $.trim($("input[name=name]").val());
+            var mobilePhone = $.trim($("input[name=tel]").val());
+            var verificationCode = $.trim($("input[name=vrfCode]").val());
+            var flag = true;
+            if (userName == "" || !ischinese(userName)) {
+                $(document).dialog({
+                    type: 'notice',
+                    infoText: '请输入2-10字中文姓名',
+                    autoClose: 1500,
+                    position: 'center'
+                });
+                flag = false;
+            } else if (!isMobile(mobilePhone)) {
+                $(document).dialog({
+                    type: 'notice',
+                    infoText: '请输入正确的手机号码',
+                    autoClose: 1500,
+                    position: 'center'
+                });
+                flag = false;
+            } else if(verificationCode == ''){
+                $(document).dialog({
+                    type: 'notice',
+                    infoText: '验证码不能为空',
+                    autoClose: 1500,
+                    position: 'center'
+                });
+                flag = false;
+
+            }else if(!checkNumber(verificationCode)) {
+                console.log('verificationCode', verificationCode)
+                $(document).dialog({
+                    type: 'notice',
+                    infoText: '请输入正确的验证码',
+                    autoClose: 1500,
+                    position: 'center'
+                });
+                flag = false;
+
+            }if (flag) {
+                userDateSumbit(userName, mobilePhone, verificationCode);
+            }
+        }
+
+        function ischinese(name) {
+            return /^[\u2E80-\u9FFF]{2,10}$/.test(name)
+        }
+
+        //验证手机号
+        function isMobile(phone) {
+            return /^0?(13[0-9]|15[0123456789]|18[0123456789]|14[0123456789]|17[0123456789])[0-9]{8}$/.test(phone);
+        }
+        //验证字符串是否是数字
+        function checkNumber(theObj) {
+            var reg = /^[0-9]+.?[0-9]*$/;
+            if (reg.test(theObj)) {
+            return true;
+            }
+            return false;
+        }
+        /*
+         * 用户信息提交
+         */
+        var userId = window.localStorage.getItem("userid");
+        function userDateSumbit(userName, mobilePhone, verificationCode) {
+            var toast = $(document).dialog({
+                type: 'toast',
+                infoIcon: '/WeixinWeb/WeixinWeb_Images/H5modules/invitation/loading.gif',
+                infoText: '提交中'
+            });
+            $.ajax({
+                async: false,
+                // url: apiHost + "/api/insertAppointInfo",
+                url: '/WeixinService/wlqc/saveUserLotteryNum.xhtml',
+                type: "post",
+                dataType: 'json',
+                data: {
+                    "sessionID": sessionID,
+                    "smsCode": verificationCode,
+                    "activityId": 'E83BF320190530E101D1ACD3E399D1CD',
+                    "mobile": mobilePhone,
+                    "name": userName,
+                    "userId": userId
+                },
+                success: function (data) {
+                    toast.close()
+                    if(data.returnCode == 0000){
+                        // sendMessages(mobilePhone)
+                        // if (userId) {
+                        //     operatingRecord(pagesource, "submitUserInvitation", pageId, "", "", "", "")
+                        // }
+                        $(document).dialog({
+                            type: 'notice',
+                            infoText: '信息提交成功',
+                            autoClose: 5000,
+                            position: 'center'
+                        });
+                        $(".data-left > p").removeClass('bacgBj');
+                        $("input").val("")
+                        wx.closeWindow()
+                    }else{
+                        if(data.returnCode == 2){
+                            $(document).dialog({
+                                type: 'notice',
+                                infoText: "该号码已获取过抽奖码",
+                                autoClose: 2000,
+                                position: 'center'
+                            });
+                        }
+                        if(data.returnCode == 9996){
+                            $(document).dialog({
+                                type: 'notice',
+                                infoText: "验证码错误",
+                                autoClose: 2000,
+                                position: 'center'
+                            });
+                        }
+                        // errorRemark(data.returnCode);
+                    }
+                }
+            });
+        }
+        // 提交信息成功后发送短信通知用户
+        function sendMessages(mobilePhone){
+            $.ajax({
+                async: false,
+                url: '/WeixinService/activity/sendMessage.xhtml',
+                type: "post",
+                dataType: 'json',
+                data: {
+                    "mobile": mobilePhone,
+                    "msgType": 73
+                },
+                success: function (data) {
+                }
+            });
+        }
+        function getUrlSearchParams(_name) {
+            var name, value = '';
+            var str = window.location.href;
+            var num = str.indexOf("?");
+            str = str.substr(num + 1);
+            var arr = str.split("&");
+            for (var i = 0; i < arr.length; i++) {
+                num = arr[i].indexOf("=");
+                if (num > 0) {
+                    name = arr[i].substring(0, num);
+                    if (name.replace(/^\s+|\s+$/g, "") == _name) {
+                        value = arr[i].substr(num + 1);
+                        break;
+                    }
+                }
+            }
+            return decodeURI(value);
+        }
+
+        function addCookie(name, value, path, expiresHours) {
+            var cookieString = name + "=" + escape(value);
+            //判断是否设置过期时间
+            if (expiresHours > 0) {
+                var date = new Date();
+                date.setTime(date.getTime() + expiresHours * 3600 * 1000);
+                cookieString = cookieString + "; expires=" + date.toGMTString();
+            }
+            cookieString += "; path=" + (path ? path : "/");
+            document.cookie = cookieString;
+        }
+
+        function getCookie(name) {
+            var strCookie = document.cookie;
+            var arrCookie = strCookie.split("; ");
+            for (var i = 0; i < arrCookie.length; i++) {
+                var arr = arrCookie[i].split("=");
+                if (arr[0] == name) return arr[1];
+            }
+            return "";
+        }
+
+        function countDown(object) {  //验证码倒计时
+            var elem = object.elem;
+            var disable = object.disable;
+            var time = parseInt(object.time);
+            var txt = $(elem).text();
+            if (!$(elem).hasClass(disable)) {
+                $(elem).addClass(disable);
+                timeDowm()
+                var delay = setInterval(timeDowm, 1000);
+                function timeDowm() {
+                    time--;
+                    $(elem).text(time + "s后重新发送");
+                    if (time < 1) {
+                        $(elem).text(txt);
+                        $(elem).removeClass(disable);
+                        clearInterval(delay);
+                    }
+                }
+            }
+        }
+
+
+ 
+    </script>
+</body>
+
+</html>

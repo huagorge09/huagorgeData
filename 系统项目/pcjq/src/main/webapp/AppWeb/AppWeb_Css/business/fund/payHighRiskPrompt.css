@@ -1,0 +1,178 @@
+/* .cover_bg{
+	left: 0;
+} */
+.high_risk_registe-con {
+    width: 40%;
+    background-color: #fff;
+    height: 450px;
+    padding: 0;
+    margin: auto;
+    margin-top: 5%;
+    border-radius: 4px;
+    position: relative;
+}
+
+.high_risk_explain{
+	text-align: center;
+    width: auto;
+    font-size: 22px;
+    padding-top: 30px;
+    color: red;
+}
+
+.high_risk_title{
+    width: 86%;
+    margin: 0 auto;
+    border-radius: 4px;
+    text-align: left;
+    margin-top: 45px;
+}
+.high_risk_title span{
+	font-size: 18px;
+    color: #3f3f3f;
+}
+
+.high_risk_content{
+    width: 82%;
+    padding: 0 11px;
+    height: 275px;
+    border: 1px solid #ccc;
+    overflow-y: scroll;
+    margin: 0 auto;
+}
+.high_risk_content h2,.high_risk_content h3{
+	color: #000;
+	font-size: 16px;
+}
+
+.high_risk_registe-con ul li{
+	margin-bottom: 0px;
+}
+.high_risk_registe-con ul li .div-cover{
+	width: 250px;
+	position: relative;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 4px;
+    margin: 26px 0 0px 125px;
+}
+
+.high_risk_registe-con ul li label{
+	width: 113px;
+}
+
+.high_risk_registe-con .registe-con-btn a{
+    width: 126px;
+    height: 37px;
+    line-height: 37px;
+    background: #666;
+    color: #fff;
+    display: block;
+    text-align: center;
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+input#detailAddress{
+	width: 237px;
+    height: 72px;
+    padding: 0;
+    margin-top: 6px;
+    border-radius: 4px;
+}
+.close_high_risk{
+	position: absolute;
+    right: 20px;
+    width: 14px;
+    height: 14px;
+    top: 15px;
+    background: url(/AppWeb/AppWeb_Images/images/pic_close_name.png);
+    cursor: pointer;
+    z-index: 2;
+}
+.ui-select-wrap{
+	width: 228px;
+    min-width: 237px;
+    left: -3px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 4px;
+    margin: 0;
+    padding: 0;
+}
+.error_msg{
+	top: 87%;
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: red;
+}
+
+.alert-frame {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.shadow-bg {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.5;
+}
+
+.alert-box {
+  width: 480px;
+  height: 220px;
+  border-radius: 5px;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  margin: -110px 0 0 -240px;
+}
+
+.alert-box .alert-con {
+  width: 440px;
+  height: 48px;
+  margin: 72px auto 0;
+}
+
+.alert-box .alert-con p {
+  color: #3f3f3f;
+  font-size: 22px;
+  line-height: 24px;
+}
+
+.alert-box .alert-con p.align-center {
+  text-align: center;
+}
+
+.alert-box .btn-close-alert {
+  display: block;
+  width: 220px;
+  height: 42px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  background: #ca132c;
+  margin: 38px auto 0;
+  outline: none;
+}
+
+.referTotalA {
+    position: relative;
+    top: 12px;
+}
+.redeemAmount{
+    width: 200px;
+    height: 12px;
+    position: relative;
+    top: 54px;
+}

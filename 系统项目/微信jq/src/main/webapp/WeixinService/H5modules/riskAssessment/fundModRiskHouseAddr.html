@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1.min.js"></script>
+	<!--  滚动条js  -->
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscroll.js"></script>
+	<!-- <script src="/WeixinWeb/WeixinWeb_JSLibrary/datePicketer/laydate.dev.js"></script> -->
+	<!--  滚动条js  -->
+	<!-- 日期控件 S -->
+	<link href="/WeixinWeb/WeixinWeb_Css/calendar.css" rel="stylesheet" type="text/css">
+	<script src="/WeixinWeb/WeixinWeb_JSLibrary/calendar.js"></script>
+	<!-- 日期控件 E -->
+	<style type="text/css">
+		.cancel-address{
+			display: block;
+		    width: 90%;
+		    height: 50px;
+		    line-height: 50px;
+		    text-align: center;
+		    margin: 0 auto;
+		    color: #fff;
+		    font-size: 1.7rem;
+		    border-radius: 3px;
+		    background: #d3d3d3;
+		}
+
+		.house-input{
+			margin-left: 10%;
+		    width: 66%;
+		    border: 0px;
+		    color: #999;
+		}
+		.tax_decl{
+			height: 31px;
+		    width: 90%;
+		    margin: 0 auto;
+    	}
+    	.tax_decl a{
+		    color: #2061a2;
+		    text-decoration: underline;
+		    line-height: 31px;
+    	}
+    	
+    	.fund_cover_bg .fund_cover-con .span{
+		        position: relative;
+			    font-weight: bold;
+			    padding: initial;
+			    color: #ca132c;
+			    font-size: 1.5rem;
+			    display: inline-block;
+			    width: 197px;
+		}
+		
+		.fund_cover_bg .fund_cover-con .fund_quesiton{
+		    background: #f3f3f3;
+		    line-height: 25px;
+		}
+		.riskDecl{
+		    width: 90%;
+	   		margin: 0 auto;
+		    height: auto;
+		}
+	</style>
+</head>
+
+<body>
+<section class="page">
+<div id="wrapper">
+    <div id="scroller">
+ 
+	
+	<div id="maskDiv" class="maskDiv">
+		<div id="gifImgDiv" class="gifImgDiv"></div>
+	</div>
+	
+	<div id="otherIEHeader" class="hide">
+		
+	<div class="header">
+        <div class="top-a">
+            <a id="titleBack" href="javascript:toBack();" class="come-back"></a>
+            <h2></h2>
+            
+        </div>
+        
+    </div>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/otherIEHeader.js"></script>
+
+	</div>
+
+	<div id="wxIEHeader" class="hide">
+	
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/DataStatisJs.js"></script>
+
+	</div>
+	
+	<!-- 错误提示 -->
+	<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+		<span id="errorRemark"></span>
+	</div>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+
+    <div class="registe-point" style="font-size: 16px;">
+		<span>请先完成基础信息填写：</span>
+	</div>
+    <section>
+    	<input type="hidden" id="nation" />
+    	<input type="hidden" id="nationNM" />
+    	<input type="hidden" id="province" />
+    	<input type="hidden" id="provinceNM" />
+    	<input type="hidden" id="city" />
+    	<input type="hidden" id="cityNM" />
+    	<input type="hidden" id="vocCode" />
+    	<input type="hidden" id="vocName" />
+    	<input type="hidden" id="dateOfBirth"/>
+    	<input type="hidden" id="taxResidentType"/>
+    	<input type="hidden" id="taxResidentTypeNM"/>
+    	
+    	<input type="hidden" id="taxResidentData"/>
+    	<input type="hidden" id="viewType"/>
+    	
+    	<input type="hidden" id="eventId"/>
+    	<input type="hidden" id="pageSource"/>
+    	<!-- <input type="hidden" id="taxArea"/>
+    	<input type="hidden" id="taxPayerCode"/>
+    	<input type="hidden" id="taxNotCodeCause"/>
+    	<input type="hidden" id="taxnotGetCause"/>
+    	<input type="hidden" id="taxBirthNation"/>
+    	<input type="hidden" id="taxBirthRegion"/>
+    	<input type="hidden" id="taxBirthAddress"/>
+    	<input type="hidden" id="taxResidentType"/>
+    	<input type="hidden" id="taxResidentType"/> -->
+    	
+       <div class="center-accountset" style="margin-top: 0px;">
+       		<a href="#" class="href-point">出生日期
+       			<input type="text" name="dateOfBirth" class="calendars" format="YYYY-MM-DD" readonly="readonly" id="dispDateOfBirth" placeholder="请选择出生日期" style="padding-left: 28px;width: 184px; height: 90%; border: 0px;"/>
+       		</a>
+       		<a href="javascript:goFundProfessionInfoView()" class="href-point">您的职业<i id="vocNameText">请选择</i><em></em></a>
+       		<!-- 点击跳转到地址选择界面 -->
+            <a href="javascript:goFundNationInfoView()" class="href-point">所在地区
+				<input id="area" class="house-input" placeholder="请选择" readonly="readonly"/><em></em>
+			</a>
+			<div class="input-text">
+	           	<label style="width:87px;font-size: 1.3rem;">详细地址</label>
+	           	<input type="text" id="address" placeholder="请输入详细地址">
+	        </div>
+	        
+			<a href="javascript:goFundTaxResidentTypeView()" class="href-point" style="font-size: 12px;">
+				税收居民类型
+				<i id="taxResidentText" style="width: 61%;overflow: hidden;height: 45px;padding-left: 0px;text-align: right;margin-right: 15px;">请选择</i>
+				<em></em>
+			</a>
+       </div>
+    </section> 
+    <div class="tax_decl">
+    	<a href="javascript:show_taxResidentDecl()" style="color: #2061a2;text-decoration: underline;">《中国税收居民说明》</a>
+    </div>
+	<br>
+	<div class="riskDecl">
+   		&nbsp;&nbsp;&nbsp;&nbsp;
+    	<input type="checkbox" name="fundRiskDeclConfirm" id="fundRiskDeclConfirm"/>
+   		<label for="fundRiskDeclConfirm" style="cursor: pointer;" >&nbsp;本人了解个人合格投资者须满足个人金融资产不低于500万元或者最近三年个人年均收入不低于40万元的条件，并承诺符合上述条件。本人保证提供的信息真实、准确、完整，知晓并确认若提供的信息不真实、不准确、不完整的，应依法承担相应的法律责任。本人已知晓并确认提供信息发生重要变化、可能影响投资者分类的，应当及时进行更新并告知招商财富资产管理有限公司。对于税收居民类型相关内容变更的，本人承诺将在30日内通知招商财富，否则本人承担由此造成的不利后果。</label>
+	</div>
+	<br>
+	<a href="javascript:saveAddress();" class="check-order">继续评测</a><br>
+	<a href="javascript:cacelAddressUpdate();" class="cancel-address">放弃</a>
+</div>
+</div>
+<div id='taxResidentDecl_tip' class="fund_cover_bg"  style="display:none;z-index: 100">
+	    <div class='fund_cover-con' style="overflow-y: auto;">
+			<span class='span' style='text-align:center'>中国税收居民说明</span>
+			<div class='fund_quesiton'>
+				<span>
+		  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;税收居民类型包括中国税收居民、非居民以及既是中国又是其他类型税收居民。<br/>
+					1.中国税收居民：指在中国境内有住所，或者无住所而在境内居住满一年的个人。 在中国境内有住所是指因户籍、家庭、经济利益关系而在中国境内习惯性居住。 在境内居住满一年，是指在一个纳税年度中在中国境内居住365日。临时离境的，不扣减日数。 临时离境，是指在一个纳税年度中一次不超过30日或者多次累计不超过90日离境。<br/>
+					2.非居民：指中国税收居民以外的个人。其他类型税收居民身份认定规则及纳税识别号相关信息请参见国家税收务总局网站<br/>
+					（http://www.chinatax.gov.cn/aeoi_index.html）
+		  		</span>
+			</div>
+			<div class="boxs-btn">
+				<a href="javascript:closeTips('taxResidentDecl_tip')" class="check-order">确定</a>
+			</div>
+	</div>
+	</div>
+</section>
+
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/fundModRiskHouseAddr.js"></script>
+<script>
+	queryAddressInfo();
+</script>
+</body>
+</html>

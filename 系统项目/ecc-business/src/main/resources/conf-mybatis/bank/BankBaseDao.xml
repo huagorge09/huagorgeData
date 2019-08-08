@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cmwa.ecc.business.dao.bank.BankBaseDao">
+		<resultMap type="com.cmwa.ecc.business.entity.bank.BankBnkbaseVo" id="bankBnkbaseVo">
+			<result column="BNK_NO" property="bnkNo" jdbcType="VARCHAR" />
+			<result column="BNK_NM" property="bnkNm" jdbcType="VARCHAR" />
+			<result column="WEB_SITE" property="webSite" jdbcType="VARCHAR" />
+			<result column="EBNK_URL" property="ebnkUrl" jdbcType="VARCHAR" />
+			<result column="BALANCE_URL" property="balanceUrl" jdbcType="VARCHAR" />
+			<result column="TEL_BNK" property="telBnk" jdbcType="VARCHAR" />
+			<result column="LINK_MAN" property="linkMan" jdbcType="VARCHAR" />
+			<result column="LINK_MAN_TEL" property="linkManTel" jdbcType="VARCHAR" />
+			<result column="LINK_MAN_FAX" property="linkManFax" jdbcType="VARCHAR" />
+			<result column="LINK_MAN_EMAIL" property="linkManEmail" jdbcType="VARCHAR" />
+			<result column="DIS_ORDER" property="disOrder" jdbcType="VARCHAR" />
+			<result column="DIS_FLG" property="disFlg" jdbcType="VARCHAR" />
+			<result column="C_TIME" property="cTime" jdbcType="DATE" />
+			<result column="C_MAN" property="cMan" jdbcType="VARCHAR" />
+			<result column="E_TIME" property="eTime" jdbcType="DATE" />
+			<result column="E_MAN" property="eMan" jdbcType="VARCHAR" />
+			<result column="STATUS" property="status" jdbcType="VARCHAR" />
+			<result column="BNK_NM_ABBR" property="bnkNmAbbr" jdbcType="VARCHAR" />
+		</resultMap>
+		
+		<parameterMap type="com.cmwa.ecc.business.entity.bank.BankBnkbaseVo" id="bankBnkbaseVo">
+			<parameter jdbcType="VARCHAR" property="bnkNo"/>
+			<parameter jdbcType="VARCHAR" property="bnkNm"/>
+			<parameter jdbcType="VARCHAR" property="webSite"/>
+			<parameter jdbcType="VARCHAR" property="telBnk"/>
+			<parameter jdbcType="VARCHAR" property="ebnkUrl"/>
+			<parameter jdbcType="VARCHAR" property="balanceUrl"/>
+			<parameter jdbcType="VARCHAR" property="linkMan"/>
+			<parameter jdbcType="VARCHAR" property="linkManTel"/>
+			<parameter jdbcType="VARCHAR" property="linkManFax"/>
+			<parameter jdbcType="VARCHAR" property="linkManEmail"/>
+			<parameter jdbcType="INTEGER" property="disOrder"/>
+			<parameter jdbcType="VARCHAR" property="disFlg"/>
+			<parameter jdbcType="VARCHAR" property="cMan"/>
+			<parameter jdbcType="VARCHAR" property="eMan"/>
+			<parameter jdbcType="VARCHAR" property="status"/>
+			<parameter jdbcType="VARCHAR" property="bnkNmAbbr"/>
+		</parameterMap>
+	
+		<select id="queryBankBaseInfoListPage" parameterType="sparam" resultMap="bankBnkbaseVo">
+				SELECT BNK_NO,
+			       BNK_NM,
+			       WEB_SITE,
+			       EBNK_URL,
+			       BALANCE_URL,
+			       TEL_BNK,
+			       LINK_MAN,
+			       LINK_MAN_TEL,
+			       LINK_MAN_FAX,
+			       LINK_MAN_EMAIL,
+			       DIS_ORDER,
+			       DIS_FLG,
+			       C_TIME,
+			       C_MAN,
+			       E_TIME,
+			       E_MAN,
+			       STATUS,
+			       BNK_NM_ABBR
+				   FROM BANK_BNKBASE
+				   WHERE 1 = 1
+				   <if test=" null != sp.bnkNo  and '' != sp.bnkNo">
+				   AND BNK_NO = #{sp.bnkNo}
+				   </if>
+				   <if test=" null != sp.bankName  and '' != sp.bankName">
+				   AND BNK_NM  LIKE CONCAT(CONCAT('%', #{sp.bankName}),'%')  
+				   </if>
+				   ORDER BY DIS_ORDER
+		</select>
+		<select id="queryBankBaseInfoList" parameterType="sparam" resultMap="bankBnkbaseVo">
+				SELECT BNK_NO,
+			       BNK_NM,
+			       WEB_SITE,
+			       EBNK_URL,
+			       BALANCE_URL,
+			       TEL_BNK,
+			       LINK_MAN,
+			       LINK_MAN_TEL,
+			       LINK_MAN_FAX,
+			       LINK_MAN_EMAIL,
+			       DIS_ORDER,
+			       DIS_FLG,
+			       C_TIME,
+			       C_MAN,
+			       E_TIME,
+			       E_MAN,
+			       STATUS,
+			       BNK_NM_ABBR
+				   FROM BANK_BNKBASE
+				   WHERE 1 = 1
+				   <if test=" null != sp.bnkNo  and '' != sp.bnkNo">
+				   AND BNK_NO = #{sp.bnkNo}
+				   </if>
+				   <if test=" null != sp.bankName  and '' != sp.bankName">
+				   AND BNK_NM  LIKE CONCAT(CONCAT('%', #{sp.bankName}),'%')  
+				   </if>
+				   ORDER BY DIS_ORDER
+		</select>
+		
+		<select id="queryBankBaseInfoListTotal" parameterType="sparam" resultType="int">
+				SELECT COUNT(*)
+				   FROM BANK_BNKBASE
+				   WHERE 1 = 1 
+				   <if test=" null != sp.bnkNo  and '' != sp.bnkNo">
+				   	AND BNK_NO = #{sp.bnkNo}
+				   </if>
+				   <if test=" null != sp.bankName  and '' != sp.bankName">
+				   	AND BNK_NM  LIKE CONCAT(CONCAT('%', #{sp.bankName}),'%')  
+				   </if>
+				   ORDER BY DIS_ORDER
+		</select>
+		
+		<delete id="delBankBase" parameterType="String">
+			DELETE FROM BANK_BNKBASE WHERE BNK_NO = #{bnkNo}
+		</delete>
+		
+		<insert id="addBankBaseInfo" parameterMap="bankBnkbaseVo">
+			 INSERT INTO BANK_BNKBASE
+				   (BNK_NO,
+				    BNK_NM,
+				    WEB_SITE,
+				    EBNK_URL,
+				    BALANCE_URL,
+				    TEL_BNK,
+				    LINK_MAN,
+				    LINK_MAN_TEL,
+				    LINK_MAN_FAX,
+				    LINK_MAN_EMAIL,
+				    DIS_ORDER,
+				    DIS_FLG,
+				    C_TIME,
+				    C_MAN,
+				    E_TIME,
+				    E_MAN,
+				    STATUS,
+				    BNK_NM_ABBR)
+				 VALUES
+				   (#{bnkNo,jdbcType=VARCHAR},
+				    #{bnkNm,jdbcType=VARCHAR},
+				    #{webSite,jdbcType=VARCHAR},
+				    #{ebnkUrl,jdbcType=VARCHAR},
+				    #{balanceUrl,jdbcType=VARCHAR},
+				    #{telBnk,jdbcType=VARCHAR},
+				    #{linkMan,jdbcType=VARCHAR},
+				    #{linkManTel,jdbcType=VARCHAR},
+				    #{linkManFax,jdbcType=VARCHAR},
+				    #{linkManEmail,jdbcType=VARCHAR},
+				    #{disOrder,jdbcType=INTEGER},
+				    #{disFlg,jdbcType=CHAR},
+				    sysdate,
+				    #{cMan,jdbcType=VARCHAR},
+				    sysdate,
+				    #{eMan,jdbcType=VARCHAR},
+				    #{status,jdbcType=VARCHAR},
+				    #{bnkNmAbbr,jdbcType=VARCHAR})
+		</insert>
+		
+		<update id="updateBankBaseInfo" parameterMap="bankBnkbaseVo">
+				UPDATE BANK_BNKBASE
+				   SET BNK_NM         = #{bnkNm,jdbcType=VARCHAR},
+				       WEB_SITE       = #{webSite,jdbcType=VARCHAR},
+				       EBNK_URL       = #{ebnkUrl,jdbcType=VARCHAR},
+				       BALANCE_URL    = #{balanceUrl,jdbcType=VARCHAR},
+				       TEL_BNK        = #{telBnk,jdbcType=VARCHAR},
+				       LINK_MAN       = #{linkMan,jdbcType=VARCHAR},
+				       LINK_MAN_TEL   = #{linkManTel,jdbcType=VARCHAR},
+				       LINK_MAN_FAX   = #{linkManFax,jdbcType=VARCHAR},
+				       LINK_MAN_EMAIL = #{linkManEmail,jdbcType=VARCHAR},
+				       DIS_ORDER      = #{disOrder,jdbcType=INTEGER},
+				       DIS_FLG        = #{disFlg,jdbcType=CHAR},
+				       E_TIME         = sysdate,
+				       E_MAN          = #{eMan,jdbcType=VARCHAR},
+				       STATUS         = #{status,jdbcType=CHAR},
+				       BNK_NM_ABBR    = #{bnkNmAbbr,jdbcType=VARCHAR}
+				 WHERE BNK_NO = #{bnkNo,jdbcType=VARCHAR}
+		</update>
+		
+		
+		<select id="queryDsBankBase" resultMap="bankBnkbaseVo" parameterType="sparam">
+					SELECT BNK_NO,BNK_NM FROM DS_BANK_BNKBASE WHERE STATUS = 'Y' 
+					<if test=" null != sp.bankName  and '' != sp.bankName">
+				     AND BNK_NM  LIKE CONCAT(CONCAT('%', #{sp.bankName}),'%')  
+				   </if>
+		</select>
+</mapper>

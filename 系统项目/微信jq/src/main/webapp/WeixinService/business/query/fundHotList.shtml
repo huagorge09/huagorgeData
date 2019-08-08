@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+   	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/bannerStyle.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<!--  滚动条js  -->
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscroll.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/slider.js"></script> 
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/DataStatisJs.js"></script>
+    
+	
+</head>
+<body>
+<div class="page">
+	<!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->
+	<div id="wrapper" style="margin-top: 50px;">
+		<div id="scroller">
+				
+				 <div class="header" style="border-bottom: 0">
+			        <div class="top">
+			           <!--  <a id="back" href="javascript:toBack();" class="come-back"></a>
+			            <a href="/WeixinService/business/query/orderList.shtml" class="nav-home">订单查询</a> -->
+			        </div>
+			    </div>
+				<section>
+					<!--热销产品-->
+					<div class="pro-list upadatepro-list clear" id="fundTypeDiv1"></div>
+				</section>
+				
+		</div>
+	</div>	
+</div>
+<!--<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/fundHotList.js"></script>-->
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/fundHotList.min.js"></script> -->
+<script type="text/javascript">
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/fundHotList.min.js?version='+new Date().getTime()+'"><\/script>');
+</script>
+</body>
+</html>

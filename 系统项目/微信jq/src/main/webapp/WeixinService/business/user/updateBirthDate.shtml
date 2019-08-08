@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1.min.js"></script>
+	<!--  滚动条js  -->
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscroll.js"></script>
+	
+	<!-- datepicker S -->
+	<!-- <link rel="stylesheet" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css"> -->
+    <!-- <link href="/WeixinWeb/WeixinWeb_Css/datepicker/foundation.min.css" rel="stylesheet" type="text/css"> -->
+	<!-- <link href="/WeixinWeb/WeixinWeb_Css/datepicker/foundation-datepicker.css" rel="stylesheet" type="text/css"> -->
+	<!-- <script src="/WeixinWeb/WeixinWeb_JSLibrary/datepicker/foundation-datepicker.js"></script> -->
+	<!-- <script src="/WeixinWeb/WeixinWeb_JSLibrary/datepicker/locales/foundation-datepicker.zh-CN.js"></script> -->
+	
+	
+	<link href="/WeixinWeb/WeixinWeb_Css/LCalendar.css" rel="stylesheet" type="text/css">
+	<script src="/WeixinWeb/WeixinWeb_JSLibrary/LCalendar.min.js"></script>
+	
+	<!-- <script src="/WeixinWeb/WeixinWeb_JSLibrary/datePicketer/laydate.js"></script> -->
+	<!-- <script src="/WeixinWeb/WeixinWeb_JSLibrary/laydate/laydate.js"></script> -->
+	<!-- datepicker E -->
+	
+	
+	<style type="text/css">
+		.cancel-address{
+			display: block;
+		    width: 90%;
+		    height: 50px;
+		    line-height: 50px;
+		    text-align: center;
+		    margin: 0 auto;
+		    color: #fff;
+		    font-size: 1.7rem;
+		    border-radius: 3px;
+		    background: #d3d3d3;
+		}
+		
+		.house-input{
+			margin-left: 10%;
+		    width: 66%;
+		    border: 0px;
+		    color: #999;
+		}
+		
+		@media only screen and (min-device-width: 360px){
+			.input-text label, .input-password label {
+			    font-size: 1.5rem;
+			}
+			.addressTitle{
+				    width: 85px !important;
+			}
+			.input-text{
+				margin: 0 auto;
+			}
+		}
+		
+		@media only screen and (max-device-width: 359.9px){
+			.input-text label, .input-password label {
+			    font-size: 1.3rem;
+			}
+			.addressTitle{
+				    width: 65px !important;
+			}
+			.input-text{
+				margin: 0 0 0 10px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+<section class="page">
+<div id="wrapper">
+    <div id="scroller">
+    <!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->
+    <section>
+       <div class="center-accountset">
+            <div class="input-text">
+	           	<label class="addressTitle">出生日期：</label>
+       			<input type="text" class="calendars"  readonly="readonly" id="birthDate" onfocus="this.blur()" style="color: #999;padding-left: 10px;" placeholder="请选择出生日期">
+	        </div>
+       </div>
+    </section> 
+	<br>
+	<a href="javascript:saveBirthDate();" class="check-order">保存修改</a>
+	<br>
+	<a href="javascript:cacelBirthDateUpdate();" class="cancel-address">放弃</a>
+</div></div>
+</section> 
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/updateBirthDate.js"></script> -->
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/updateBirthDate.min.js"></script>
+
+
+<script>
+/* laydate.render({
+	  elem: '#birthDate' //指定元素
+	}); */
+
+$(document).ready(function(e) {
+	queryBirthDateInfo();
+         var calendar = new LCalendar();
+	calendar.init({
+		'trigger': '#birthDate', //标签id
+		'type': 'date', //date 调出日期选择 datetime 调出日期时间选择 time 调出时间选择 ym 调出年月选择,
+		'minDate': '1900-1-1', //最小日期
+		'maxDate': (new Date().getFullYear()) + '-' + 12 + '-' + 31 //最大日期
+	});
+      });
+</script>
+</body>
+</html>

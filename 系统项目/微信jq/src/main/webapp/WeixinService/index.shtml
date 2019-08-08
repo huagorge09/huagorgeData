@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>招商财富</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+    
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscroll.js"></script>
+	
+    
+</head>
+<body onload="loaded()">
+    
+<section class="page">
+<!--#include virtual="/WeixinService/headerOrFooter/otherHeader.shtml"-->
+<div id="wrapper" style="bottom: 70px;">
+	<div id="scroller">
+				<div class="header" style="border-bottom: 0">
+					<div class="top hide">
+						<!-- <a id="back" href="javascript:toBack();" class="come-back"></a> <a href="/WeixinService/business/query/orderList.shtml" class="nav-home">订单查询</a> -->
+					</div>
+				</div>
+				<div class="home-head" id="loginType_01" style="display: none;">
+        <!-- <a href="javascript:redirectUrl('/WeixinService/business/query/orderList.shtml')" class="center-home">订单查询</a> -->
+        <div class="home-banner">
+            <img src="/WeixinWeb/WeixinWeb_Images/images/bg_home_banner.jpg" class="home-banner-img" />
+            <div class="home-logologin">
+                <img src="/WeixinWeb/WeixinWeb_Images/images/icon_home_logo.png" class="logo">
+                <div class="login-registe">
+                    <a href="javascript:goToLogin()" class="login">登录</a>
+                    <a href="javascript:goToRegister()" class="registe">注册</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    	
+	<div class="home-head" id="loginType_02" style="display: none;">
+		<!-- <a href="javascript:redirectUrl('/WeixinService/business/query/orderList.shtml')" class="center-home">订单查询</a> -->
+        <div class="home-banner">
+            <img src="/WeixinWeb/WeixinWeb_Images/images/bg_home_banner.jpg" class="home-banner-img" />
+            <div class="home-logologin">
+                <img src="/WeixinWeb/WeixinWeb_Images/images/icon_home_logo.png" class="logo">
+                <div class="login-registe">
+                    <a href="javascript:redirectUrl('/WeixinService/business/user/queryAccount.shtml')" class="login">我的财富</a>
+                    <a href="javascript:exit();" class="registe">退出</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <section class="clear">
+        <div class="home-con con1" onclick="prodocType(0)">
+            <div class="home-con-text">
+                <h2><em><b>定期</b>理财</em><span>理财是随心所欲的洒脱</span></h2>
+                <span class="point">定期理财，资金灵活</span>
+            </div>
+            <img src="/WeixinWeb/WeixinWeb_Images/images/bg_home_tip_img.png" class="home-con-bg" />
+        </div>
+        <div class="home-con con4" onclick="prodocType(1)">
+            <div class="home-con-text">
+                <h2><em><b>另类</b>投资</em><span>理财是超越极限的信仰</span></h2>
+                <span class="point">长期持有，尊贵尽享</span>
+            </div>
+            <img src="/WeixinWeb/WeixinWeb_Images/images/bg_home_tip_img.png" class="home-con-bg" />
+        </div>
+        <div class="home-con con2" onclick="prodocType(2)">
+            <div class="home-con-text">
+                <h2><em><b>权益</b>投资</em><span>理财是无所牵挂的坚实</span></h2>
+                <span class="point">权益投资，收益稳健</span>
+            </div>    
+            <img src="/WeixinWeb/WeixinWeb_Images/images/bg_home_tip_img.png" class="home-con-bg" />
+        </div>
+    </section>
+    
+</div></div>
+
+</section>   
+    
+    <!--#include virtual="/WeixinService/headerOrFooter/footer.shtml"-->
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/index.js"></script> -->
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/index.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

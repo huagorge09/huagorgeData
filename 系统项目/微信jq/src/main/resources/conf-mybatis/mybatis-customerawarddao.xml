@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.activity.CustomerAwardDao">
+	<resultMap id="customerAwardMap" type="com.cmwa.ec.weixin.dto.CustomerAwardDto">
+		<result property="cusAwardId" column="CUS_AWARD_ID"/>
+		<result property="awardId" column="AWARD_ID"/>
+		<result property="activityId" column="ACTIVITY_ID"/>
+		<result property="openId" column="OPENID"/>
+		<result property="awardName" column="award_name"/>
+		<result property="getState" column="GET_STATE"/>
+		<result property="awardFrom" column= "AWARD_FROM"/>
+		<result property="customerIp" column="CUSTOMER_IP"/>
+		<result property="createdDate" column="CREATED_DATE"/>
+	</resultMap>
+	
+	<!-- 查询用户中奖列表 -->
+	<select id="queryCustomerAwardList" parameterType="java.util.Map" resultMap="customerAwardMap">
+		select 
+		  	c.cus_award_id,
+		  	c.activity_id,
+		  	c.award_id,
+		  	c.openid,
+		  	c.get_state,
+		  	c.award_from,
+		  	c.customer_ip,
+		  	a.award_name,
+		  	c.created_date
+		from 
+		  	cmwa_wx_act_customer_award c , cmwa_wx_act_award_info a
+		where 
+		  	c.award_id = a.award_id
+		and 
+		   	c.activity_id = #{map.activityId}
+		and 
+			c.openid = #{map.openId}
+		and 
+			a.award_state = 0 
+		<if test="map.awardId != null and map.awardId != ''">
+			and c.award_id = #{map.awardId}
+		</if>
+		<if test="map.getState != null and map.getState != ''">
+			and c.get_state = #{map.getState}
+		</if>
+		<if test="map.awardType != null and map.awardType != ''">
+			<choose>
+                <when test="map.awardType != '-1' ">
+                    and a.award_type = #{map.awardType}
+                </when>
+                <otherwise>
+                    and a.award_type != 2
+                </otherwise>
+            </choose>
+		</if>
+		<if test="map.awardFrom != null and map.awardFrom != ''">
+			and award_from = #{map.awardFrom}
+		</if>
+		<if test="map.sameDay != null and map.sameDay != ''">
+			and to_char(c.created_date,'dd')=to_char(SYSDATE,'dd')
+		</if>
+		<if test="map.boxState != null and map.boxState != ''">
+			and a.award_pid = (
+				select a1.award_id
+				from cmwa_wx_act_award_info a1
+				where a1.award_name = #{map.boxState}
+			)
+		</if>
+		order by  a.award_sort
+	</select>
+	
+	<!-- 新增用户中奖信息 -->
+	<insert id="createCustomerAward"  parameterType="com.cmwa.ec.weixin.dto.CustomerAwardDto">
+		insert into cmwa_wx_act_customer_award 
+		(
+			CUS_AWARD_ID , 
+			ACTIVITY_ID ,   
+			AWARD_ID , 
+			OPENID ,
+			GET_STATE ,
+			AWARD_FROM , 
+			CREATED_BY , 
+			CREATED_DATE , 
+			UPDATED_BY , 
+			UPDATED_DATE,
+			STORE_ID,
+			USER_NAME,
+			USER_MOBILE
+		)
+		values(
+			#{dto.cusAwardId,jdbcType=VARCHAR},
+			#{dto.activityId,jdbcType=VARCHAR},
+			#{dto.awardId,jdbcType=VARCHAR},
+			#{dto.openId,jdbcType=VARCHAR},
+			#{dto.getState,jdbcType=VARCHAR},
+			#{dto.awardFrom,jdbcType=VARCHAR},
+			#{dto.createdBy,jdbcType=VARCHAR},
+			SYSDATE,
+			#{dto.updatedBy,jdbcType=VARCHAR},
+			SYSDATE,
+			#{dto.storeId,jdbcType=VARCHAR},
+			#{dto.userName,jdbcType=VARCHAR},
+			#{dto.telePhone,jdbcType=VARCHAR}
+		)
+	
+	</insert>
+	
+	<update id="updateCustomerAward" parameterType="string">
+		UPDATE cmwa_wx_act_customer_award
+		   SET UPDATED_DATE = SYSDATE,
+		   	   GET_STATE=#{getState}
+		 WHERE CUS_AWARD_ID = #{cusAwardId}
+	</update>
+	
+	
+	<!-- 查询用户签到记录 -->
+	<select id="checkUserCanSignIn" parameterType="string" resultType="com.cmwa.ec.weixin.dto.CustomerAwardDto">
+		SELECT 
+			CUS_AWARD_ID as cusAwardId,
+			ACTIVITY_ID as avivityId,
+			AWARD_ID as awardId,
+			OPENID as openId,
+			GET_STATE as getState,
+			CUSTOMER_IP as customerIp,
+			AWARD_FROM as awardFrom,
+			CREATED_BY as createdBy,
+			CREATED_DATE as createdDate,
+			UPDATED_BY as updateBy,
+			UPDATED_DATE as updateDate,
+			REMARK as remark
+		  FROM CMWA_WX_ACT_CUSTOMER_AWARD T
+		 WHERE T.OPENID = #{openId}
+		  <![CDATA[
+		   AND T.CREATED_DATE > TRUNC(SYSDATE)
+		   AND T.CREATED_DATE < TRUNC(SYSDATE + 1)
+		   AND T.AWARD_FROM = '0'
+		 ORDER BY CREATED_DATE DESC ]]>
+	</select>
+	
+	<!-- 查询用户中奖纪录 -->
+	<select id="queryUserAwardRecordOnFatherDay" parameterType="map" resultType="com.cmwa.ec.weixin.dto.QueryUserAwardDto">
+		
+		select 
+			t.get_state 	awardState,
+			t1.award_price 	awardPrice,
+			t1.invalid_date	invalidDate,
+			t1.award_id     awardId,
+			t.cus_award_id 	cusAwardId,
+			t1.AWARD_NAME 	awardName,
+			T2.store_id     storeId,
+			T2.AWARD_NUM	awardNum
+ 			from CMWA_WX_ACT_CUSTOMER_AWARD t,CMWA_WX_ACT_AWARD_STORE T2,
+ 			(select t.award_id,t.AWARD_PRICE,t.INVALID_DATE,t.AWARD_NAME from cmwa_wx_act_award_info t where
+ 			 t.activity_id = #{param.activityId,jdbcType=VARCHAR}
+ 			 	<if test="param.awardName != null">
+	 			  and t.award_name like '%'||#{param.awardName,jdbcType=VARCHAR}||'%'
+ 			 	</if>
+	            <if test="param.awardType!=null">
+	           	 and t.AWARD_TYPE = #{param.awardType,jdbcType=VARCHAR}
+	           </if>
+	         ) t1
+           <![CDATA[where t.award_id = t1.award_id  and t.openid = #{param.openid,jdbcType=VARCHAR}
+           	AND T.store_id = t2.store_id(+)]]>
+     </select>
+	
+	<select id="querySameDayCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select 
+		  	count(1)
+		from 
+		  	cmwa_wx_act_customer_award c
+		where 
+		   	c.activity_id = #{map.activityId}
+		and 
+			c.openid = #{map.openId}
+		<if test="map.awardId != null and map.awardId != ''">
+			and c.award_id = #{map.awardId}
+		</if>
+		<if test="map.getState != null and map.getState != ''">
+			and c.get_state = #{map.getState}
+		</if>
+		<if test="map.sameDay != null and map.sameDay != ''">
+			and to_char(c.created_date,'yyyy-mm-dd')=to_char(SYSDATE,'yyyy-mm-dd')
+		</if>
+	</select>
+	
+	<select id="queryUserAwardByCusAwardId" parameterType="string" resultMap="customerAwardMap">
+		select * from cmwa_wx_act_customer_award t where t.cus_award_id = #{cusAwardId} and t.openid = #{openId}
+	</select>
+	
+	<select id="querySystemNotice" resultType = "com.cmwa.ec.weixin.dto.SystemNoticeDto">
+		<![CDATA[
+		select t2.award_name as awardName,
+       t1.nickname,
+       0 as msgType,
+       '' as otherUserName,
+       case when award_source = 'TONGBOX' then '铜宝箱' when award_source = 'YINBOX' then '银宝箱' when award_source = 'JINBOX' then '金宝箱' end  as awardSource
+  from cmwa_wx_user_info t1,
+       (select rownum rw, page.openid, page.award_name,t1.award_name as award_source
+          from (select t.openid, t1.award_name, t1.award_pid as award_id
+                  from cmwa_wx_act_customer_award t,
+                       cmwa_wx_act_award_info     t1
+                 where t.award_id = t1.award_id
+                   and (t1.award_type = '1' or t1.award_type = '0')
+                 order by t.created_date desc) page,
+               Cmwa_Wx_Act_Award_Info t1
+         where t1.award_id = page.award_id
+           and rownum <= 10) t2
+ where t1.openid = t2.openid
+    union all
+    select '' as awardName,
+           t4.nickname as nickname,
+           1 as msgType,
+           t5.nickname as otherUserName,
+           '' as awardSource
+      from (select t.*, rownum rw
+              from (SELECT *
+                      FROM cmwa_wx_act_share_info t
+                     order by t.created_date) t
+             where rownum <= 10) t3
+     INNER JOIN cmwa_wx_user_info t4 ON t3.openid = t4.openid
+     INNER JOIN cmwa_wx_user_info t5 ON t3.FROM_OPENID = t5.openid ]]>
+	</select>
+	
+	<!-- 查询用户中奖纪录 -->
+	<select id="queryUserAwardRecordsOnFatherDay" parameterType="map" resultType="map">
+		select page.* from (select 
+			t.get_state 	"awardState",
+			t1.award_price 	"awardPrice",
+			t1.invalid_date	"invalidDate",
+			t.cus_award_id 	"cusAwardId",
+			t1.award_id     "awardId",
+			t1.AWARD_NAME 	"awardName",
+			t.openid        "openid",
+			rownum          rw
+ 			from CMWA_WX_ACT_CUSTOMER_AWARD t ,
+ 			(select t.award_id,t.AWARD_PRICE,t.INVALID_DATE,t.AWARD_NAME from cmwa_wx_act_award_info t where
+ 			 t.activity_id = #{param.activityId,jdbcType=VARCHAR}
+ 			 	<if test="param.awardName != null">
+	 			  and t.award_name like '%'||#{param.awardName,jdbcType=VARCHAR}||'%'
+ 			 	</if>
+	            <if test="param.awardType!=null">
+	           	 and t.AWARD_TYPE = #{param.awardType,jdbcType=VARCHAR}
+	           </if>
+	         ) t1
+           where t.award_id = t1.award_id and <![CDATA[sysdate < t1.invalid_date]]>  
+           <if test="param.list != null and param.list.size > 0">
+ 				and t.openid in(
+	           <foreach collection="param.list" close=")" item="str" open="" separator=",">
+	           		#{str}
+	           </foreach>
+           </if>
+           order by t.created_date desc) page where <![CDATA[page.rw<10]]>
+	</select>
+	
+	<select id="queryShareInfo" parameterType="string" resultType="com.cmwa.ec.weixin.dto.ShareConfigDto">
+		select 
+		CONFIG_ID as CONFIGID,
+		ACTIVITY_ID as ACTIVITYID,
+		SHARE_TITLE as SHARETITLE,
+		SHARE_IMGURL as SHAREIMGURL,
+		SHARE_DESC as SHAREDESC,
+		SHARE_LINK as SHARELINK,
+		CREATED_BY as CREATEDBY,
+		CREATED_DATE as CREATEDDATE,
+	 	UPDATED_BY as UPDATEDBY,
+		CREATED_DATE as UPDATEDDATE,
+		REMARK ,
+		CHANNEL 
+		from CMWA_WX_ACT_SHARE_CONF t where t.ACTIVITY_ID =#{activityId} and t.CHANNEL=#{channel}
+	</select>
+	
+	<select id="getShareInfo" parameterType="string" resultType="com.cmwa.ec.weixin.dto.ShareInfoDto">
+		SELECT 
+		       T.SHARE_ID AS shareId,
+		       T.ACTIVITY_ID AS activityId,
+		       T.FROM_OPENID AS fromOpenid,
+		       T.OPENID AS openId
+		FROM 
+		       CMWA_WX_ACT_SHARE_INFO T
+		WHERE 
+		       T.ACTIVITY_ID = #{activityId}
+		  AND  T.FROM_OPENID = #{openId}
+		  AND  ROWNUM =1
+	</select>
+	<!-- 新增分享记录 -->
+	<insert id="createShareRecored"  parameterType="com.cmwa.ec.weixin.dto.ShareInfoDto">
+		insert into cmwa_wx_act_share_info 
+		(
+			SHARE_ID , 
+			ACTIVITY_ID ,   
+			FROM_OPENID , 
+			OPENID ,
+			CREATED_BY ,
+			CREATED_DATE , 
+			UPDATED_BY , 
+			UPDATED_DATE
+		)
+		values(
+			#{dto.shareId,jdbcType=VARCHAR},
+			#{dto.activityId,jdbcType=VARCHAR},
+			#{dto.fromOpenid,jdbcType=VARCHAR},
+			#{dto.openId,jdbcType=VARCHAR},
+			#{dto.createdBy,jdbcType=VARCHAR},
+			SYSDATE,
+			#{dto.updatedBy,jdbcType=VARCHAR},
+			SYSDATE
+		)
+	</insert>
+	
+	
+	<select id ="queryAllUserAwardInfo" parameterType="map" resultType="map">
+		select t4.award_name  "awardName", t4.nickname "nickname",t4.created_date "createdDate"
+         from (select t2.award_name,
+                      t3.nickname,
+                      to_char(t1.created_date,'YYYY-MM-DD HH24:MI:SS') as created_date,
+                      rownum rw
+                 from cmwa_wx_act_customer_award t1,
+                      cmwa_wx_act_award_info     t2,
+                      cmwa_wx_user_info          t3
+                where t1.award_id = t2.award_id
+                  <if test="param.awardType!=null">
+					   and t2.award_type = #{param.awardType,jdbcType=VARCHAR}
+				  </if>
+                  and t1.activity_id = #{param.activityId,jdbcType=VARCHAR}
+                  and t1.openid = t3.openid
+                  <![CDATA[and rownum <=#{param.endIdx,jdbcType=VARCHAR}]]>
+                order by t1.created_date desc) t4 where t4.rw >= #{param.beginIdx,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="queryAllUserAwardInfoCount" parameterType="map" resultType="int">
+		select count(1)
+		  from cmwa_wx_act_customer_award t1,
+		       cmwa_wx_act_award_info     t2,
+		       cmwa_wx_user_info          t3
+		 where t1.award_id = t2.award_id
+		   <if test="param.awardType!=null">
+			   and t2.award_type = #{param.awardType,jdbcType=VARCHAR}
+		   </if>
+		   and t1.activity_id = #{param.activityId,jdbcType=VARCHAR}
+		   and t1.openid = t3.openid
+		 order by t1.created_date desc
+	</select>
+	
+	<select id="queryAllWinningCount" parameterType="map" resultType="int">
+		select count(1)
+		 from cmwa_wx_act_customer_award t1
+		where t1.activity_id = #{param.activityId,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="queryUserAwardByTelephone" parameterType="map" resultMap="customerAwardMap">
+			select 
+			  	c.cus_award_id,
+			  	c.activity_id,
+			  	c.award_id,
+			  	c.openid,
+			  	c.get_state,
+			  	c.award_from,
+			  	c.customer_ip,
+			  	c.created_date
+			from 
+			  	cmwa_wx_act_customer_award c
+			where 
+			   	c.activity_id = #{param.activityId,jdbcType=VARCHAR}
+			and 
+				c.USER_MOBILE = #{param.telephone,jdbcType=VARCHAR}
+	</select>
+</mapper>

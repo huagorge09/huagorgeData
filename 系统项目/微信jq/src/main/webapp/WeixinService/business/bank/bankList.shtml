@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+    <!--  滚动条js  -->
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscroll.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	
+</head>
+<body>
+<section class="page">
+	<div id="wrapper">
+		<div id="scroller">
+			<!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->
+		
+		    <section>
+		        <div id="bankList">
+		        	<!-- <div class="center-mybank n1">
+			            <span class="mybank-icon"></span>
+			            <h1>招商银行</h1>
+			            <span class="mybankid">4682  ****  ****  9123</span>
+			            <span class="mybankid-delect"><em>删除卡片</em></span>
+			        </div>-->
+		        </div> 
+		        <a id="addBankCard" class="center-addbank">添加银行卡</a>
+		    </section>
+		    
+		    <div id="cancelBindDiv" class="cover-bg hide">
+			    <div class="warning">
+			        <span class="warning-con">确认删除银行卡</span>
+			        <div class="warning-bottom"><a href="javascript:closeCanelBindDiv();" class="fl">取消</a><a id="cancelBtn" href="#" class="fr">确认</a></div>
+			    </div>
+			</div>
+		    
+		</div>
+	</div>
+</section>
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/bankList.min.js"></script> -->
+<script>
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/bankList.min.js?version='+new Date().getTime()+'"><\/script>');
+</script>
+</body>
+</html>

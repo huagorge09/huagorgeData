@@ -1,0 +1,1144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.fundinfo.FundInfoDao">
+	<resultMap type="fundInfoVo" id="fundInfoVo">
+		<result column="FUNDID" property="fundId"></result>
+		<result column="FUNDNM" property="fundNm"></result>
+		<result column="FUNDSNM" property="fundShortNm"></result>
+		<result column="FUNDENNM" property="fundEnglishNm"></result>
+		<result column="CURRENCYTYPE" property="currencyType"></result>
+		<result column="FUNDST" property="fundSt"></result>
+		<result column="FUNDSTNAME" property="fundStNm"></result>
+		<result column="TANO" property="taNo"></result>
+		<result column="TANAME" property="taNm"></result>
+		<result column="DISPLAYORDER" property="displayOrder"></result>
+		<result column="NAV" property="nav"></result>
+		<result column="NAVDT" property="navDate"></result>
+		<result column="INSERTTIMESTAMP" property="insertTime"></result>
+		<result column="UPDATETIMESTAMP" property="updateTime"></result>
+		<result column="FUNDTP" property="fundType"></result>
+	</resultMap>
+	
+	<!-- 老柜台 产品实体 映射 start -->
+	<resultMap type="fundInfoVo" id="eccFundInfoVo">
+		<result column="FUNDID" property="fundId"></result>	
+		<result column="FUNDCHINESENM" property="fundShortNm"></result>
+		<result column="FUNDNM" property="fundNm"></result>
+		<result column="FUNDENGLISHNM" property="fundEnglishNm"></result>
+		<result column="INVESTTYPE" property="investType"></result>
+		<result column="FACEVALUE" property="fundDenomina"></result>
+		<result column="CURRENCYTYPE" property="currencyType"></result>
+		<result column="CURRENCYTYPENM" property="currencyTypeNm"></result>
+		<result column="MANAGERNAME" property="managerNm"></result>	
+		<result column="MANAGERRATIO" property="managerRates"></result>	
+		<result column="TANM" property="taNm"></result>	
+		<result column="NAV" property="nav"></result>	
+		<result column="NAVDT" property="navDate"></result>	
+		<result column="MINSUBAMT" property="minSubAmt" ></result>	
+		<result column="MINBIDAMT" property="minBidAmt" ></result>	
+		<result column="MINREDAMT" property="minRedAmt" ></result>	
+		<result column="MINCONVAMT" property="minConvAmt" ></result>	
+		<result column="MINRSPAMT" property="minRspAmt" ></result>	
+		<result column="TANO" property="taNo"></result>	
+		<result column="CYCLETP" property="cycletp"></result>	
+		<result column="CYCLELEN" property="cyclelen"></result>	
+		<result column="FUNDTP" property="fundType"></result>
+		<result column="FUNDTPNM" property="fundTypeNm"></result>
+		<result column="FUNDDISPTP" property="fundDispType"></result>	
+		<result column="FUNDRISKLEVEL" property="fundRiskLevel"></result>	
+		<result column="FUNDEVALDATE" property="fundEvalDate"></result>	
+		<result column="FUNDST" property="fundSt"></result>
+		<result column="FUNDSTNM" property="fundStNm"></result>
+		<result column="NAVFRACNUM" property="navFracNum"></result>	
+		<result column="NAVFRACMODE" property="navFracMode"></result>	
+		<result column="INDIMAXPURCHASE" property="indiMaxPurchase"></result>	
+		<result column="TRUSTEENAME" property="trusteeNm"></result>	
+		<result column="ISSUEPRICE" property="issuePrice"></result>	
+		<result column="ISSUEDATE" property="issueDate"></result>	
+		<result column="SETUPDATE" property="setUpDate"></result>	
+		<result column="TRANSFERDAYS" property="redeemToAcctDays"></result>	
+		<result column="MELONDAYS" property="redMelonDays"></result>	
+		<result column="SUBDAYS" property="subDays"></result>
+		<result column="PARENTFUNDID" property="parentFundid"></result>
+		<result column="PROCESSOR" property="processor"></result>
+		<result column="CHECKSTATUS" property="checkstatus"></result>
+		<result column="MINCONVERTINBYINST" property="inconvertinbyinst"></result>
+		<result column="KEEPLIMIT" property="keepLimit"></result>
+		<result column="FUNDSIZE" property="fundSize"></result>
+		<result column="INSERTTIMESTAMP" property="insertTime"></result>
+		<result column="UPDATETIMESTAMP" property="updateTime"></result>
+		<result column="DISPLAYORDER" property="displayOrder"></result>
+		<result column="ECMAXPURCHASE" property="ecmaxPurchase"></result>
+		<result column="NEXTISSUEDATE" property="nextIssueDate"></result>
+		<result column="FEATURE" property="feature"></result>
+		<result column="PRODUCTTIMELIMIT" property="productTimeLimit"></result>
+		<result column="ISUNFUND" property="isUnFund"></result>
+	</resultMap>
+	
+	<resultMap id="fundStopMap" type="fundStopVo">
+		<result property="checkdt" column="CHECKDT"/>
+		<result property="status" column="STATUS"/>
+		<result property="remark" column="REMARK"/>
+		<result property="serialno" column="SERIALNO"/>
+		<result property="fundid" column="FUNDID"/>
+		<result property="apkind" column="APKIND"/>
+		<result property="begindt" column="BEGINDT"/>
+		<result property="enddt" column="ENDDT"/>
+		<result property="opid" column="OPID"/>
+		<result property="checkerid" column="CHECKERID"/>
+		<result property="checkflag" column="CHECKFLAG"/>
+	</resultMap>
+	
+	<resultMap id="fundbalanceMap" type="com.cmwa.ecc.business.entity.accountManger.FundBalanceDto">
+		<result property="fundid" column="FUNDID"/>
+		<result property="fundnm" column="FUNDNM"/>
+		<result property="balance" column="BALANCE"/>
+		<result property="available" column="AVAILABLE"/>
+		<result property="cycleenddt" column="CYCLEENDDT"/>
+		<result property="balamt" column="BALAMT"/>
+		<result property="bankno" column="BANKNO"/>
+		<result property="bankacco" column="BANKACCO"/>
+		<result property="tradeacco" column="TRADEACCO"/>
+	</resultMap>
+	
+	<!-- 老柜台 产品实体 映射 end -->
+	
+	<select id="queryMatchFundInfoList" resultMap="fundInfoVo" parameterType="sparam">
+		SELECT F.FUNDID, NVL(FE.FUNDCHINESENM, F.FUNDNM) AS FUNDNM
+		  FROM FUNDINFO F
+		  LEFT JOIN FUNDINFOEX FE ON (F.FUNDID = FE.FUNDID)
+		 WHERE 
+		       F.FUNDID NOT IN (SELECT PMCO
+		                          FROM PARAMETER
+		                         WHERE PMST = 'SYSTEM'
+		                           AND PMKY = 'UNFUNDID')
+			  <if test="sp.limit != null and sp.limit !='' ">
+				  AND ROWNUM <![CDATA[<=]]> #{sp.limit}
+			  </if>
+		      <if test="sp.fundNm != null and sp.fundNm !='' ">
+		       	AND (F.FUNDNM LIKE '%'||#{sp.fundNm}||'%' 
+		       		 OR FE.FUNDCHINESENM LIKE '%'||#{sp.fundNm}||'%'
+		       		 OR F.FUNDID LIKE '%'||#{sp.fundNm}||'%'
+		       		 )
+		      </if>
+       	ORDER BY F.DISPLAYORDER ASC
+	</select>
+	
+	<!-- 老柜台 产品 查询  start -->
+	<!-- 增加基金信息 -->
+	<insert id="addFundInfo" parameterType="fundInfoVo">
+		BEGIN
+		INSERT INTO FUNDINFO
+			(FUNDID,
+			 FUNDNM,
+			 CURRENCYTYPE,
+			 FUNDST,
+			 TANO,
+			 DISPLAYORDER,
+			 INSERTTIMESTAMP,
+			 UPDATETIMESTAMP,
+			 NAVDT,
+			 NAV)
+		VALUES(
+			 #{fundId},
+			 #{fundNm},
+			 #{currencyType},
+			 #{fundSt},
+			 #{taNo},
+			 (SELECT MAX(DISPLAYORDER)+1 FROM FUNDINFO),
+			 SYSDATE,
+			 SYSDATE,
+			 #{navDate},
+			 #{nav}
+			);
+			
+		INSERT INTO FUNDINFOEX
+			(FUNDID,
+			 FUNDCHINESENM,
+			 FUNDENGLISHNM,
+			 INVESTTYPE,
+			 FUNDTP,
+			 FUNDRISKLEVEL,
+			 ISSUEPRICE,
+			 FACEVALUE,
+			 MANAGERNAME,
+			 TRUSTEENAME,
+			 TANM,
+			 ISSUEDATE,
+			 SETUPDATE,
+			 MANAGERRATIO,
+			 NAVFRACNUM,
+			 NAVFRACMODE,
+			 MINSUBAMT,
+			 MINBIDAMT,
+			 MINREDAMT,
+			 MINCONVAMT,
+			 MINRSPAMT,
+			 INSERTTIMESTAMP,
+			 UPDATETIMESTAMP,
+			 TRANSFERDAYS,
+			 FUNDEVALDATE,
+			 MELONDAYS,
+			 SUBDAYS,
+			 CYCLETP,
+			 CYCLELEN,
+			 FUNDDISPTP,
+			 PARENTFUNDID)
+		  VALUES(
+			 #{fundId},
+			 #{fundNm},
+			 #{fundEnglishNm},
+			 #{investType},
+			 #{fundType},
+			 #{fundRiskLevel},
+			 #{issuePrice},
+			 #{fundDenomina},
+			 #{managerNm},
+			 #{trusteeNm},
+			 #{taNm},
+			 #{issueDate},
+			 #{setUpDate},
+			 #{managerRates},
+			 #{navFracNum},
+			 #{navFracMode},
+			 #{minSubAmt},
+			 #{minBidAmt},
+			 #{minRedAmt},
+			 #{minConvAmt},
+			 #{minRspAmt},
+			 SYSDATE,
+			 SYSDATE,
+			 #{redeemToAcctDays},
+			 #{fundEvalDate},
+			 #{redMelonDays},
+			 #{subDays},
+			 #{cycletp},
+			 #{cyclelen},
+			 #{fundDispType},
+			 #{parentFundid});
+		 END;
+	</insert>
+	
+	<!-- 删除一个基金 -->
+	<delete id="delChkFundInfo"  parameterType="java.lang.String">
+		UPDATE FUNDINFO_PRE 
+		   SET DELETEST='Y',
+			   PROCESSOR=#{processor},
+			   CHECKSTATUS='I'
+		 WHERE FUNDID=#{fundId}
+	</delete>
+	
+	<!-- 修改未复核的基金信息 -->
+	<update id="modifyChkFundInfo" parameterType="fundInfoVo">
+		BEGIN
+		UPDATE FUNDINFO_PRE 
+		   SET FUNDNM=#{fundNm},
+			   CURRENCYTYPE=#{currencyType},
+			   FUNDST=#{fundSt},
+			   TANO=#{taNo},
+			   UPDATETIMESTAMP=SYSDATE,
+			   NAVDT=#{navDate},
+			   NAV=#{nav},
+			   PROCESSOR=#{processor},
+			   CHECKSTATUS='I'
+		 WHERE FUNDID=#{fundId};
+		 
+		UPDATE FUNDINFOEX_PRE
+		   SET FUNDCHINESENM      = #{fundShortNm},
+			   FUNDENGLISHNM      = #{fundEnglishNm},
+			   INVESTTYPE         = #{investType},
+			   FUNDTP             = #{fundType},
+			   FUNDRISKLEVEL      = #{fundRiskLevel},
+			   ISSUEPRICE         = #{issuePrice},
+			   FACEVALUE          = #{fundDenomina},
+			   MANAGERNAME        = #{managerNm},
+			   TRUSTEENAME        = #{trusteeNm},
+			   TANM               = #{taNm},
+			   ISSUEDATE          = #{issueDate},
+			   SETUPDATE          = #{setUpDate},
+			   MANAGERRATIO       = #{managerRates},
+			   NAVFRACNUM         = #{navFracNum},
+			   NAVFRACMODE        = #{navFracMode},
+			   MINSUBAMT          = #{minSubAmt},
+			   MINBIDAMT          = #{minBidAmt},
+			   MINREDAMT          = #{minRedAmt},
+			   MINCONVAMT         = #{minConvAmt},
+			   MINRSPAMT          = #{minRspAmt},
+			   UPDATETIMESTAMP    = SYSDATE,
+			   TRANSFERDAYS       = #{redeemToAcctDays},
+			   FUNDEVALDATE       = #{fundEvalDate},
+			   MINCONVERTINBYINST = #{inconvertinbyinst},
+			   MELONDAYS          = #{redMelonDays},
+			   SUBDAYS            = #{subDays},
+			   CYCLETP            = #{cycletp},
+			   CYCLELEN           = #{cyclelen},
+			   FUNDDISPTP         = #{fundDispType},
+			   PARENTFUNDID       = #{parentFundid},
+			   KEEPLIMIT          = #{keepLimit},
+			   FUNDSIZE           = #{fundSize},
+			   INDIMAXPURCHASE    = #{indiMaxPurchase},
+			   ECMAXPURCHASE      = #{ecmaxPurchase},
+			   NEXTISSUEDATE      = #{nextIssueDate},
+			   FEATURE            = #{feature},
+			   PRODUCTTIMELIMIT   = #{productTimeLimit},
+			   ISUNFUND           = #{isUnFund}
+		 WHERE FUNDID = #{fundId};
+		 END;
+	</update>
+	
+	<!-- 修改基金信息 -->
+	<update id="modifyFundInfo" parameterType="fundInfoVo">
+		BEGIN
+		UPDATE FUNDINFO 
+		   SET FUNDNM=#{fundNm},
+			   CURRENCYTYPE=#{currencyType},
+			   FUNDST=#{fundSt},
+			   TANO=#{taNo},
+			   UPDATETIMESTAMP=SYSDATE,
+			   NAVDT=#{navDate},
+			   NAV=#{nav}
+		 WHERE FUNDID=#{fundId};
+		 
+		UPDATE FUNDINFOEX_PRE
+		   SET FUNDCHINESENM      = #{fundShortNm},
+			   FUNDENGLISHNM      = #{fundEnglishNm},
+			   INVESTTYPE         = #{investType},
+			   FUNDTP             = #{fundType},
+			   FUNDRISKLEVEL      = #{fundRiskLevel},
+			   ISSUEPRICE         = #{issuePrice},
+			   FACEVALUE          = #{fundDenomina},
+			   MANAGERNAME        = #{managerNm},
+			   TRUSTEENAME        = #{trusteeNm},
+			   TANM               = #{taNm},
+			   ISSUEDATE          = #{issueDate},
+			   SETUPDATE          = #{setUpDate},
+			   MANAGERRATIO       = #{managerRates},
+			   NAVFRACNUM         = #{navFracNum},
+			   NAVFRACMODE        = #{navFracMode},
+			   MINSUBAMT          = #{minSubAmt},
+			   MINBIDAMT          = #{minBidAmt},
+			   MINREDAMT          = #{minRedAmt},
+			   MINCONVAMT         = #{minConvAmt},
+			   MINRSPAMT          = #{minRspAmt},
+			   UPDATETIMESTAMP    = SYSDATE,
+			   TRANSFERDAYS       = #{redeemToAcctDays},
+			   FUNDEVALDATE       = #{fundEvalDate},
+			   MINCONVERTINBYINST = #{inconvertinbyinst},
+			   MELONDAYS          = #{redMelonDays},
+			   SUBDAYS            = #{subDays},
+			   CYCLETP            = #{cycletp},
+			   CYCLELEN           = #{cyclelen},
+			   FUNDDISPTP         = #{fundDispType},
+			   PARENTFUNDID       = #{parentFundid}
+		 WHERE FUNDID = #{fundId};
+		 END;
+	</update>
+	
+	<!-- 获取所有的基金信息 -->
+	<select id="getAllFundInfo" resultMap="eccFundInfoVo">
+		SELECT T1.FUNDID,
+			   T2.FUNDCHINESENM,
+			   T1.CURRENCYTYPE,
+			   T1.NAV,
+			   T2.MINSUBAMT,
+			   T2.MINBIDAMT,
+			   T2.MINREDAMT,
+			   T2.MINCONVAMT,
+			   T2.MINRSPAMT,
+			   T2.INDIMAXPURCHASE,
+			   T1.TANO,
+			   T2.FUNDTP,
+			   T2.FUNDDISPTP,
+			   T2.FUNDRISKLEVEL,
+			   T2.FUNDEVALDATE,
+			   T1.FUNDST,
+			   T2.NAVFRACNUM,
+			   T2.NAVFRACMODE,
+			   T2.CYCLETP,
+			   T2.CYCLELEN,
+			   T2.TRUSTEENAME,
+			   T2.ISSUEPRICE,
+			   T2.ISSUEDATE,
+			   T2.SETUPDATE, --ADDED BY ZENGXY 20130902 托管人名称 发行价格 募集开始、结束日
+			   CASE
+				 WHEN T1.TANO = '98' THEN
+				  (SELECT KYDATE FROM SYSALTER S WHERE S.KEY3 = 'LASTDATE')
+				 WHEN T1.TANO = '17' THEN
+				  (SELECT T1.NAVDT FROM FUNDINFO T3 WHERE T3.FUNDID = T2.FUNDID)
+			   END AS NAVDT
+		  FROM FUNDINFO T1, FUNDINFOEX T2
+		 WHERE T2.FUNDID = T1.FUNDID
+		   AND T1.FUNDID NOT IN (SELECT PMCO
+								   FROM PARAMETER
+								  WHERE PMST = 'SYSTEM'
+									AND PMKY = 'UNFUNDID')
+		 ORDER BY T1.DISPLAYORDER ASC
+	</select>
+	
+	<!-- 获取专户产品的基金信息 -->
+	<select id="getSpecProFundInfo" resultMap="fundInfoVo">
+		SELECT F.FUNDID,
+			   F.FUNDNM,
+			   F.NAV,
+			   F.NAVDT
+		  FROM FUNDINFO F, FUNDINFOEX FF
+		 WHERE F.FUNDID = FF.FUNDID
+		   AND FF.FUNDDISPTP = '9'
+	</select>
+	
+	<!-- 获取所有的基金信息,根据基金代码，基金名称 -->
+	<select id="getAllFundInfoListPage" parameterType="sparam" resultMap="fundInfoVo">
+		SELECT T.FUNDID          FUNDID,
+			   T.FUNDNM          FUNDNM,
+			   T.CURRENCYTYPE    CURRENCYTYPE,
+			   (SELECT PMNM FROM PARAMETER T WHERE T.PMST = 'SYSTEM' AND T.PMKY = 'CURRENCYTYPE' AND T.PMCO = T.CURRENCYTYPE) CURRENCYTYPENM,
+			   T.FUNDST          FUNDST,
+			   (SELECT PMNM FROM PARAMETER T WHERE T.PMST = 'SYSTEM' AND T.PMKY = 'FUNDST' AND T.PMCO = T.FUNDST) FUNDSTNM,
+			   T.TANO            TANO,
+			   T.NAV             NAV,
+			   TO_CHAR(T.UPDATETIMESTAMP,'YYYY-MM-DD hh24:mi:ss') UPDATETIMESTAMP,
+			   T.DISPLAYORDER    DISPLAYORDER,
+			   T2.ISSUEPRICE     ISSUEPRICE,
+			   T2.FUNDTP         FUNDTP,
+			   (SELECT PMNM FROM PARAMETER T WHERE T.PMST = 'SYSTEM' AND T.PMKY = 'FUNDTP' AND T.PMCO = T2.FUNDTP) FUNDTPNM,
+			   T2.FUNDRISKLEVEL  FUNDRISKLEVEL,
+			   T2.FUNDEVALDATE   FUNDEVALDATE,
+			   T2.FUNDDISPTP     FUNDDISPTP
+		  FROM FUNDINFO T, FUNDINFOEX T2
+		 WHERE T.FUNDID = T2.FUNDID
+		 <if test="sp.fundid != null and sp.fundid != ''">
+			AND T.FUNDID LIKE '%' || #{sp.fundid} || '%'
+		 </if>
+		 <if test="sp.fundname != null and sp.fundname != ''">
+			AND T.FUNDNM LIKE '%' || #{sp.fundname} || '%'
+		 </if>
+		 ORDER BY DISPLAYORDER ASC
+	</select>
+	
+	<!-- 获取指定基金代码的基金信息 -->
+	<select id="getChkFundInfo" parameterType="java.lang.String" resultMap="fundInfoVo">
+		SELECT 
+			   T.FUNDID,
+			   T.FUNDNM,
+			   T.CURRENCYTYPE,
+			   T.FUNDST,
+			   T.TANO,
+			   T.DISPLAYORDER,
+			   T.INSERTTIMESTAMP,
+			   T.UPDATETIMESTAMP,
+			   T.NAVDT,
+			   T.NAV,
+			   T2.FUNDCHINESENM,
+			   T2.FUNDENGLISHNM,
+			   T2.INVESTTYPE,
+			   T2.FUNDTP,
+			   T2.ISSUEPRICE,
+			   T2.FACEVALUE,
+			   T2.MANAGERNAME,
+			   T2.TRUSTEENAME,
+			   T2.TANM,
+			   <!-- T2.ISSUEDATE,
+			   T2.SETUPDATE, -->
+			   TO_CHAR(TO_DATE(T2.ISSUEDATE,'YYYY-MM-DD'),'YYYY-MM-DD') ISSUEDATE,
+			   TO_CHAR(TO_DATE(T2.SETUPDATE,'YYYY-MM-DD'),'YYYY-MM-DD') SETUPDATE,
+			   T2.MANAGERRATIO,
+			   T2.MINSUBAMT,
+			   T2.MINBIDAMT,
+			   T2.MINREDAMT,
+			   T2.MINCONVAMT,
+			   T2.MINRSPAMT,
+			   TRANSFERDAYS,
+			   FUNDRISKLEVEL,
+			   NAVFRACNUM,
+			   NAVFRACMODE,
+			   FUNDEVALDATE,
+			   MINCONVERTINBYINST,
+			   MELONDAYS,
+			   INDIMAXPURCHASE,
+			   CYCLETP,
+			   CYCLELEN,
+			   PARENTFUNDID,
+			   FUNDDISPTP,
+			   PARENTFUNDID,
+			   SUBDAYS,
+			   KEEPLIMIT,
+			   FUNDSIZE,
+			   ECMAXPURCHASE,
+			   NEXTISSUEDATE,
+			   FEATURE,
+			   PRODUCTTIMELIMIT,
+			   ISUNFUND
+		  FROM FUNDINFO_PRE T,FUNDINFOEX_PRE T2 WHERE T.FUNDID = T2.FUNDID
+		   AND T.FUNDID = #{fundId}
+	</select>
+	
+	<!-- 获取指定基金代码的基金信息 -->
+	<select id="getFundInfo" parameterType="java.lang.String" resultMap="fundInfoVo">
+		SELECT 
+			   T.FUNDID,
+			   T.FUNDNM,
+			   T.CURRENCYTYPE,
+			   T.FUNDST,
+			   T.TANO,
+			   T.DISPLAYORDER,
+			   T.INSERTTIMESTAMP,
+			   T.UPDATETIMESTAMP,
+			   T.NAVDT,
+			   T.NAV,
+			   T2.FUNDCHINESENM,
+			   T2.FUNDENGLISHNM,
+			   T2.INVESTTYPE,
+			   T2.FUNDTP,
+			   T2.ISSUEPRICE,
+			   T2.FACEVALUE,
+			   T2.MANAGERNAME,
+			   T2.TRUSTEENAME,
+			   T2.TANM,
+			   <!-- T2.ISSUEDATE,
+			   T2.SETUPDATE, -->
+			   TO_CHAR(TO_DATE(T2.ISSUEDATE,'YYYY-MM-DD'),'YYYY-MM-DD') ISSUEDATE,
+			   TO_CHAR(TO_DATE(T2.SETUPDATE,'YYYY-MM-DD'),'YYYY-MM-DD') SETUPDATE,
+			   T2.MANAGERRATIO,
+			   T2.MINSUBAMT,
+			   T2.MINBIDAMT,
+			   T2.MINREDAMT,
+			   T2.MINCONVAMT,
+			   T2.MINRSPAMT,
+			   TRANSFERDAYS,
+			   FUNDRISKLEVEL,
+			   NAVFRACNUM,
+			   NAVFRACMODE,
+			   FUNDEVALDATE,
+			   MINCONVERTINBYINST,
+			   MELONDAYS,
+			   INDIMAXPURCHASE,
+			   CYCLETP,
+			   CYCLELEN,
+			   PARENTFUNDID,
+			   FUNDDISPTP,
+			   PARENTFUNDID,
+			   SUBDAYS,
+			   KEEPLIMIT,
+			   FUNDSIZE,
+			   ECMAXPURCHASE,
+			   NEXTISSUEDATE,
+			   FEATURE,
+			   PRODUCTTIMELIMIT,
+			   ISUNFUND
+		  FROM FUNDINFO T,FUNDINFOEX T2 WHERE T.FUNDID = T2.FUNDID
+		   AND T.FUNDID = #{fundId}
+	</select>
+	
+	<!-- 新增基金级暂停交易数据 -->
+	<insert id="addFundStop" parameterType="fundStopVo">
+		INSERT INTO FUND_APKIND_STOP
+			(SERIALNO,
+			 FUNDID,
+			 APKIND,
+			 BEGINDT,
+			 ENDDT,
+			 OPID,
+			 CHECKERID,
+			 CHECKFLAG,
+			 STATUS,
+			 REMARK)
+	   VALUES(
+			 #{serialno},
+			 #{fundid},
+			 #{apkind},
+			 #{begindt},
+			 #{enddt},
+			 #{opid},
+			 '',
+			 'N',
+			 'Y',
+			 #{remark}
+			 )
+	</insert>
+	
+	<!-- 基金级暂停交易复核 -->
+	<update id="checkFundStop" parameterType="fundStopVo">
+		UPDATE FUND_APKIND_STOP 
+		   SET CHECKERID=#{checkerid},
+			   CHECKFLAG=#{checkflag},
+			   CHECKDT=#{checkdt},
+			   STATUS=#{status} 
+		 WHERE SERIALNO=#{serialno}
+	</update>
+	
+	<!-- 基金级暂停交易删除 -->
+	<delete id="deleteFundStop" parameterType="fundStopVo">
+		UPDATE FUND_APKIND_STOP 
+		   SET STATUS='N',
+			   REMARK=#{remark}
+		 WHERE SERIALNO=#{serialno}
+	</delete>
+	
+	<!-- 基金级暂停交易修改 -->
+	<update id="updateFundStop" parameterType="fundStopVo">
+		UPDATE FUND_APKIND_STOP
+		   SET BEGINDT=#{begindt},
+			   ENDDT=#{enddt},
+			   CHECKFLAG='N',
+			   OPID=#{opid},
+			   REMARK=#{remark}
+		 WHERE SERIALNO=#{serialno}
+	</update>
+	
+	<!-- 获取所有基金(包括限制基金) -->
+	<select id="getAllSubFundsArray" parameterType="java.lang.String" resultMap="eccFundInfoVo">
+		SELECT T1.FUNDID,
+			   T2.FUNDCHINESENM,
+			   T1.CURRENCYTYPE,
+			   T1.NAV,
+			   T2.MINSUBAMT,
+			   T2.MINBIDAMT,
+			   T2.MINREDAMT,
+			   T2.MINCONVAMT,
+			   T2.MINRSPAMT,
+			   T1.TANO,
+			   T2.FUNDTP,
+			   T2.FUNDDISPTP,
+			   T2.FUNDRISKLEVEL,
+			   T2.FUNDEVALDATE,
+			   T1.FUNDST,
+			   T2.NAVFRACNUM,
+			   T2.NAVFRACMODE,
+			   CASE
+				 WHEN T1.TANO = '98' THEN
+				  (SELECT KYDATE FROM SYSALTER S WHERE S.KEY3 = 'LASTDATE')
+				 WHEN T1.TANO = '17' THEN
+				  (SELECT T1.NAVDT FROM FUNDINFO T3 WHERE T3.FUNDID = T2.FUNDID)
+			   END AS NAVDT
+		  FROM FUNDINFO T1, FUNDINFOEX T2
+		 WHERE T2.FUNDID = T1.FUNDID
+		 <if test="fundst != null and fundst != ''">
+		   AND t1.FUNDST in (${fundst})
+		 </if>
+		 <if test="tano != null and tano != ''">
+		   AND T1.TANO = #{tano}
+		 </if>
+		 ORDER BY T1.DISPLAYORDER ASC
+	</select>
+	
+	<!-- 同步成立日期 -->
+	<select id="syschonizeSetUpDate" parameterType="sparam" statementType="CALLABLE">
+		{
+			call OSP_UPDATE_BALCONSBOOKING(
+				#{sp.fundid,jdbcType=VARCHAR,mode=IN},
+				#{sp.resultCode,jdbcType=VARCHAR,mode=OUT},
+				#{sp.resultMessage,jdbcType=VARCHAR,mode=OUT}
+			)
+		}
+	</select>
+	
+	<!-- 获取所有待复核的基金信息 -->
+	<select id="getAllChkFundInfoListPage" parameterType="sparam" resultMap="fundInfoVo">
+		SELECT T.FUNDID          FUNDID,
+			   T.FUNDNM          FUNDNM,
+			   T.CURRENCYTYPE    CURRENCYTYPE,
+			   (SELECT PMNM FROM PARAMETER T WHERE T.PMST = 'SYSTEM' AND T.PMKY = 'CURRENCYTYPE' AND T.PMCO = T.CURRENCYTYPE) CURRENCYTYPENM,
+			   T.FUNDST          FUNDST,
+			   (SELECT PMNM FROM PARAMETER T WHERE T.PMST = 'SYSTEM' AND T.PMKY = 'FUNDST' AND T.PMCO = T.FUNDST) FUNDSTNM,
+			   T.TANO            TANO,
+			   T.NAV             NAV,
+			   TO_CHAR(T.UPDATETIMESTAMP,'YYYY-MM-DD hh24:mi:ss') UPDATETIMESTAMP,
+			   T.DISPLAYORDER    DISPLAYORDER,
+			   T2.ISSUEPRICE     ISSUEPRICE,
+			   T2.FUNDTP         FUNDTP,
+			   (SELECT PMNM FROM PARAMETER T WHERE T.PMST = 'SYSTEM' AND T.PMKY = 'FUNDTP' AND T.PMCO = T2.FUNDTP) FUNDTPNM,
+			   T2.FUNDRISKLEVEL  FUNDRISKLEVEL,
+			   T2.FUNDEVALDATE   FUNDEVALDATE,
+			   T2.FUNDDISPTP     FUNDDISPTP,
+			   PROCESSOR,
+			   CHECKTIMESTAMP,
+			   CHECKER,
+			   CHECKSTATUS
+		  FROM FUNDINFO_PRE T, FUNDINFOEX_PRE T2
+		 WHERE T.FUNDID = T2.FUNDID
+		   AND T.CHECKSTATUS = 'I'
+		 <if test="sp.fundid != null and sp.fundid != ''">
+			AND T.FUNDID LIKE '%' || #{sp.fundid} || '%'
+		 </if>
+		 <if test="sp.fundname != null and sp.fundname != ''">
+			AND T.FUNDNM LIKE '%' || #{sp.fundname} || '%'
+		 </if>
+		ORDER BY FUNDID ASC
+	</select>
+	
+	<!-- 增加未复核的基金信息 -->
+	<insert id="addChkFundInfo" parameterType="fundStopVo">
+		BEGIN
+		INSERT INTO FUNDINFO_PRE
+			  (FUNDID,
+			   FUNDNM,
+			   CURRENCYTYPE,
+			   FUNDST,
+			   TANO,
+			   DISPLAYORDER,
+			   INSERTTIMESTAMP,
+			   UPDATETIMESTAMP,
+			   NAVDT,
+			   NAV,
+			   PROCESSOR,
+			   CHECKSTATUS)
+			VALUES(
+				#{fundId},
+				#{fundNm},
+				#{currencyType},
+				#{fundSt},
+				#{taNo},
+				(SELECT MAX(DISPLAYORDER)+1 FROM FUNDINFO_PRE),
+				SYSDATE,
+				SYSDATE,
+				#{navDate},
+				#{nav},
+				#{processor},
+				'I'
+			);
+		INSERT INTO FUNDINFOEX_PRE
+			(FUNDID,
+			 FUNDCHINESENM,
+			 FUNDENGLISHNM,
+			 INVESTTYPE,
+			 FUNDTP,
+			 FUNDRISKLEVEL,
+			 ISSUEPRICE,
+			 FACEVALUE,
+			 MANAGERNAME,
+			 TRUSTEENAME,
+			 TANM,
+			 ISSUEDATE,
+			 SETUPDATE,
+			 MANAGERRATIO,
+			 NAVFRACNUM,
+			 NAVFRACMODE,
+			 MINSUBAMT,
+			 MINBIDAMT,
+			 MINREDAMT,
+			 MINCONVAMT,
+			 MINRSPAMT,
+			 INSERTTIMESTAMP,
+			 UPDATETIMESTAMP,
+			 TRANSFERDAYS,
+			 FUNDEVALDATE,
+			 MELONDAYS,
+			 SUBDAYS,
+			 CYCLETP,
+			 CYCLELEN,
+			 FUNDDISPTP,
+			 PARENTFUNDID,
+			 KEEPLIMIT,
+			 FUNDSIZE,
+			 INDIMAXPURCHASE,
+			 ECMAXPURCHASE,
+			 NEXTISSUEDATE,
+			 FEATURE,
+			 PRODUCTTIMELIMIT,
+			 ISUNFUND)
+		  VALUES(
+			 #{fundId},
+			 #{fundShortNm},
+			 #{fundEnglishNm},
+			 #{investType},
+			 #{fundType},
+			 #{fundRiskLevel},
+			 #{issuePrice},
+			 #{fundDenomina},
+			 #{managerNm},
+			 #{trusteeNm},
+			 #{taNm},
+			 #{issueDate},
+			 #{setUpDate},
+			 #{managerRates},
+			 #{navFracNum},
+			 #{navFracMode},
+			 #{minSubAmt},
+			 #{minBidAmt},
+			 #{minRedAmt},
+			 #{minConvAmt},
+			 #{minRspAmt},
+			 SYSDATE,
+			 SYSDATE,
+			 #{redeemToAcctDays},
+			 #{fundEvalDate},
+			 #{redMelonDays},
+			 #{subDays},
+			 #{cycletp},
+			 #{cyclelen},
+			 #{fundDispType},
+			 #{parentFundid},
+			 #{keepLimit},
+			 #{fundSize},
+			 #{indiMaxPurchase},
+			 #{ecmaxPurchase},
+			 #{nextIssueDate},
+			 #{feature},
+			 #{productTimeLimit},
+			 #{isUnFund}
+			);
+		END;
+	</insert>
+	
+	<!-- 复核基金信息 -->
+	<select id="checkFundInfo" parameterType="sparam" statementType="CALLABLE">
+		{ call OTP_FUNDINFO_CHECK(
+				#{sp.fundId,jdbcType=VARCHAR,mode=IN},
+				#{sp.checker,jdbcType=VARCHAR,mode=IN},
+				#{sp.checkstatus,jdbcType=VARCHAR,mode=IN},
+				#{sp.resultCode,jdbcType=VARCHAR,mode=OUT},
+				#{sp.resultMessage,jdbcType=VARCHAR,mode=OUT}
+			) 
+		}
+	</select>
+	
+	<!-- 短期理财产品余额查询 -->
+	<select id="getFinanceBalance" parameterType="sparam" statementType="CALLABLE">
+		{ call OQP_GET_BALCONS(
+				#{sp.custno,jdbcType=VARCHAR,mode=IN},
+				#{sp.tradeAcco,jdbcType=VARCHAR,mode=IN},
+				#{sp.cycleenddt,jdbcType=VARCHAR,mode=IN},
+				#{sp.fundId,jdbcType=VARCHAR,mode=IN},
+				#{sp.quryType,jdbcType=VARCHAR,mode=IN},
+				#{sp.resultCode,jdbcType=VARCHAR,mode=OUT},
+				#{sp.resultMessage,jdbcType=VARCHAR,mode=OUT},
+				#{sp.fundbalanceList,resultMap=fundbalanceMap,jdbcType=CURSOR,mode=OUT}
+			)
+		}
+	</select>
+	
+	<!-- 查看客服代下单产品详情列表 -->
+	<select id='getOrderFundList' parameterType="sparam" resultType="productInfoDto">
+		SELECT CONCAT(PRO.FUNDID,PRO.PERIOD) as keyvalue,PRO.NAME,
+		PRO.FUNDID as funcode,
+		PRO.TYPEID,
+		PRO.GROUPID,
+		PD.ID AS
+		id,
+		PD.D_NAME AS DNAME,
+		PRO.TERM,
+		PRO.PAYMENTINTER,
+		PRO.TERMUNIT,
+		PRO.TERMINDAY as theTerm,
+		PRO.ISHOT,
+		PRO.DISORDER,
+		PRO.PREFIX,
+		PRO.OFFLINELIMIT,
+		PRO.ONLINELIMIT,
+		PRO.SCALE,
+		PRO.MONEY,
+		PRO.period,
+		(CASE
+		WHEN
+		PRO.PROFIT IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(PRO.PROFIT * 100)
+		END) AS PROFIT,
+		PRO.STATE AS states,
+		PRO.ADNAME,
+		PRO.TEMPLETID,
+		PRO.OFFLINESALELIMIT,
+		PRO.SUSPENSIONLIMIT,
+		TE.TEMPLET_NAME AS TEMPLETNAME,
+		TE.CONTRACTVERSION,
+		PRO.ADTEXT,
+		PRO.FUNDRISKLEVEL,
+		PRO.MSGDATE,
+		(CASE
+		WHEN
+		PRO.APPOINTDATE IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(TO_DATE(PRO.APPOINTDATE,
+		'YYYYMMDD'), 'YYYY-MM-DD')
+		END) AS APPOINTDATE,
+		PRO.DISPLAYLIMIT,
+		(case when PRO.remainamt > 0 then PRO.Remainamt else 0 end) remainamt,
+		PRO.MONEYSTEP,
+		(CASE
+		WHEN PRO.SUBDEADLINE IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(TO_DATE(PRO.SUBDEADLINE, 'YYYYMMDD'), 'YYYY-MM-DD')
+		END) AS
+		SUBDEADLINE,
+		(CASE
+		WHEN PRO.INTERESTDATE IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(TO_DATE(PRO.INTERESTDATE, 'YYYYMMDD'), 'YYYY-MM-DD')
+		END) AS
+		INTERESTDATE,
+		(CASE
+		WHEN PRO.SALESDATE IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(TO_DATE(PRO.SALESDATE, 'YYYYMMDD'), 'YYYY-MM-DD')
+		END) AS
+		SALESDATE,
+		(CASE
+		WHEN PRO.MATURITYDATE IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(TO_DATE(PRO.MATURITYDATE, 'YYYYMMDD'), 'YYYY-MM-DD')
+		END) AS
+		MATURITYDATE,
+		IBF_GET_LASTNWORKDAY2(PRO.SALESDATE, 1, '') AS
+		APPOINTENDDATE,
+		IBF_GET_CURRENT_WORKDATE(decode(PRO.STATE,
+		'0',
+		'022',
+		'1',
+		'020',
+		'XXX')) AS currentWorkdate， (SELECT T.TITLE
+		FROM
+		CMWA_FUNDELEMENT T
+		WHERE T.FUNDID =
+		PRO.FUNDID AND T.PERIOD=PRO.PERIOD
+		AND T.SORTNO = '1' 
+		AND
+		T.ELETYPE =
+		'220'
+		AND T.STATUS = 'Y') AS TEXTTITLE1,
+		(SELECT T.TITLE
+		FROM
+		CMWA_FUNDELEMENT T
+		WHERE T.FUNDID = PRO.FUNDID AND T.PERIOD=PRO.PERIOD
+		AND T.SORTNO = '2'
+		AND
+		T.ELETYPE = '220'
+		AND T.STATUS = 'Y') AS TEXTTITLE2,
+		(SELECT T.TITLE
+		FROM CMWA_FUNDELEMENT T
+		WHERE T.FUNDID = PRO.FUNDID AND T.PERIOD=PRO.PERIOD
+		AND T.SORTNO = '3'
+		AND T.ELETYPE = '220'
+		AND T.STATUS = 'Y') AS TEXTTITLE3,
+		(SELECT
+		T.CONTENT
+		FROM CMWA_FUNDELEMENT T
+		WHERE T.FUNDID = PRO.FUNDID AND T.PERIOD=PRO.PERIOD
+		AND
+		T.SORTNO = '1'
+		AND T.ELETYPE = '220'
+		AND T.STATUS = 'Y') AS
+		TEXTCONTENT1,
+		(SELECT T.CONTENT
+		FROM CMWA_FUNDELEMENT T
+		WHERE T.FUNDID =
+		PRO.FUNDID	AND T.PERIOD=PRO.PERIOD
+		AND T.SORTNO = '2'
+		AND T.ELETYPE = '220'
+		AND T.STATUS = 'Y')
+		AS TEXTCONTENT2,
+		(SELECT T.CONTENT
+		FROM CMWA_FUNDELEMENT T
+		WHERE T.FUNDID
+		= PRO.FUNDID	AND T.PERIOD=PRO.PERIOD
+		AND T.SORTNO = '3'
+		AND T.ELETYPE = '220'
+		AND T.STATUS = 'Y')
+		AS TEXTCONTENT3
+		FROM CMWA_FUND PRO, CMWA_PRODUCT_DEPARTMENT PD,
+		CONTRACT_TEMPLETS TE
+		WHERE PRO.GROUPID = PD.ID(+)
+		AND PRO.TEMPLETID =
+		TE.TEMPLET_ID(+)
+		AND LENGTH(PRO.FUNDID) = '6'
+		<if test=" sp.fundid !=null and sp.fundid !=''  ">
+			AND PRO.FUNDID =#{sp.fundid}
+		</if>
+		<if test="sp.dname !=null and sp.dname !='' ">
+			AND PRO.ADNAME LIKE CONCAT(CONCAT('%', #{sp.dname}),'%')
+		</if>
+		<if test="sp.state !=null and sp.state='Y' ">
+			AND STATE IN ('0','1')
+		</if>
+		order by PRO.INSERTTIMESTAMP desc
+	</select>
+	
+	<select id='getOrderFundListTotal' parameterType="sparam"
+		resultType="int">
+		SELECT COUNT(*)
+		FROM CMWA_FUND PRO, CMWA_PRODUCT_DEPARTMENT PD,
+		CONTRACT_TEMPLETS TE
+		WHERE PRO.GROUPID = PD.ID(+)
+		AND PRO.TEMPLETID =
+		TE.TEMPLET_ID(+)
+		AND LENGTH(PRO.FUNDID) = '6'
+		<if test=" sp.fundid !=null and sp.fundid !=''  ">
+			AND PRO.FUNDID LIKE CONCAT(CONCAT('%', #{sp.fundid}),'%')
+		</if>
+		<if test="sp.dname !=null and sp.dname !='' ">
+			AND PRO.ADNAME LIKE CONCAT(CONCAT('%', #{sp.dname}),'%') 
+		</if>
+		<if test="sp.state !=null and sp.state='Y' ">
+			AND STATE IN ('0','1')
+		</if>
+		<if test="sp.custName !=null and sp.custName!='' ">
+			AND PRO.FUNDID IN(
+			SELECT
+		    APPS.FUNDID 
+		    FROM
+		    CMWA_FUND PRS
+		    INNER JOIN APPOINTREQUEST APPS
+		    ON (PRS.FUNDID = APPS.FUNDID)
+		    INNER JOIN CUSTINFO CUS
+		    ON (APPS.CUSTNO = CUS.CUSTNO)
+		    WHERE APPS.PAYST = '0'
+				AND APPS.APPLYST = 'R'
+				AND APPS.CHANNELID = '04'
+				AND APPS.TRANSST = 'N'
+				AND
+				APPS.APKIND IN ('820', '822', '722', '720')
+				AND CUS.INVNM  LIKE CONCAT(CONCAT('%', #{sp.custName}),'%')
+			)
+		</if>
+	</select>
+	
+	<!-- 短期理财产品余额查询 -->
+	<select id="getFinanceBalcons" parameterType="sparam" statementType="CALLABLE">
+		{ call OQP_GET_FUNDBALCONS(
+				#{sp.custno,jdbcType=VARCHAR,mode=IN},
+				#{sp.tradeAcco,jdbcType=VARCHAR,mode=IN},
+				#{sp.cycleenddt,jdbcType=VARCHAR,mode=IN},
+				#{sp.fundId,jdbcType=VARCHAR,mode=IN},
+				#{sp.quryType,jdbcType=VARCHAR,mode=IN},
+				#{sp.resultCode,jdbcType=VARCHAR,mode=OUT},
+				#{sp.resultMessage,jdbcType=VARCHAR,mode=OUT},
+				#{sp.fundbalanceList,resultMap=com.cmwa.ecc.business.dao.fundinfo.FundInfoDao.fundbalanceMap,jdbcType=CURSOR,mode=OUT}
+			)
+		}
+	</select>
+	
+			<!-- 查询往后退两个工作日可赎回的所有份额 -->
+	<select id="queryAllowedBalcons" resultType="java.util.Map"  parameterType="java.util.Map">
+		SELECT 
+              CUSTNO,
+              TRADEACCO,
+              FUNDID,
+              SHARETYPE,         
+              CUSTNO,
+              FUNDACCT,
+              INVNM,
+              EMAIL,
+              FUNDCHINESENM,
+              nvl(SUM(BALANCE),0) - nvl(SUM(ABNMFROZEN),0) - nvl(SUM(CHANGEQUTY),0) as  BALANCE,
+              SUM(ABNMFROZEN)  as  ABNMFROZEN  
+        FROM (
+        SELECT T.TRADEACCO,         
+               T.FUNDID,            
+               T.SHARETYPE,
+               T.CUSTNO,             
+               T.FUNDACCT,           
+               T.BALANCE,           
+               T.ABNMFROZEN,            
+               CI.INVNM,             
+               dc.brokeremail AS email,
+               FI.fundnm as FUNDCHINESENM,
+               tq.CHANGEQUTY             
+          FROM FUNDBALCONS T
+          LEFT JOIN CUSTINFO CI ON  T.CUSTNO = CI.CUSTNO 
+          LEFT JOIN (
+                 SELECT C.CUSTNO,C.BROKERNAME,C.BROKEROFFICETEL,c.brokeremail
+                   FROM DS_CUSTINFOADD C
+                  WHERE C.BROKERPRIV IN ('2', '0') --'0':全部 ；'1':账户； '2'：交易
+                    AND C.INFOFLAG = 'B' --'I':证件信息，'B':经办人信息
+                    AND C.MAINBROKERFLAG = 1
+        )  DC   ON  t.custno  = DC.CUSTNO
+          LEFT JOIN FUNDINFO FI  ON T.FUNDID = FI.FUNDID
+          LEFT JOIN (
+                    SELECT TRADEACCO, FUNDID, SUM(CHANGEQUTY) AS CHANGEQUTY
+                      FROM TRADEREQUEST_QTRACE
+                     GROUP BY TRADEACCO, FUNDID
+          )   tq   ON t.tradeacco = tq.tradeacco AND t.fundid = tq.fundid  
+          WHERE BALANCE > 0
+           AND dc.brokeremail is not null
+           AND IBF_GET_CYCLEENDDT(T.FUNDID, T.CYCLEINIDT, #{allowedRedeemDt,jdbcType=VARCHAR} ) = #{allowedRedeemDt,jdbcType=VARCHAR}
+           )       
+           GROUP BY CUSTNO, TRADEACCO,FUNDACCT,FUNDID,SHARETYPE,INVNM,EMAIL,FUNDCHINESENM 	
+	</select>
+	
+	<!-- 查询某一天最大赎回金额 -->
+	<select id="queryAllBalconsByDate" resultType="java.util.Map"  parameterType="java.util.Map">
+			  SELECT      
+		           T.FUNDID            as FUNDID ,
+		           FI.fundnm           as FUNDCHINESENM,
+		           SUM(T.BALANCE)      as BALANCE           
+		      FROM FUNDBALCONS T
+		      LEFT JOIN  FUNDINFO FI  ON T.FUNDID=FI.FUNDID
+		      WHERE BALANCE > 0 
+		       AND IBF_GET_CYCLEENDDT(T.FUNDID, T.CYCLEINIDT, #{allowedRedeemDt,jdbcType=VARCHAR}) =  #{allowedRedeemDt,jdbcType=VARCHAR}
+		       GROUP BY T.FUNDID,fi.fundnm
+			</select>
+			<!-- 老柜台 产品 查询  end  -->	
+	<select id="queryBalanceDifference" resultType="java.util.Map">
+	
+	<![CDATA[ 
+	    WITH T1 AS
+		  ( 
+		   SELECT TRADEACCO TRADEACCO,
+		           FUNDACCT FUNDACCT,
+		           FUNDID FUNDID,
+		           NVL(BALANCE, 0) BALANCE
+		     FROM (SELECT T2.TRADEACCO,
+		                   T2.FUNDACCT,
+		                   T2.FUNDID,
+		                   T2.BALANCE,
+		                   ROW_NUMBER() OVER(PARTITION BY TRADEACCO, FUNDACCT, FUNDID ORDER BY CLEARDT DESC , t2.update_date desc) ROW_NUMBER
+		              FROM WAECUSER.HS_FUNDBALANCE T2
+		           )
+		    WHERE ROW_NUMBER = 1)
+		
+		 SELECT TRADEACCO,
+		        FUNDACCT,
+		        FUNDID,
+		        MAX(SALE_BALANCE) AS SALEBALANCE,
+		        MAX(TA_BALANCE) AS TABALANCE
+		   FROM (
+		
+		         SELECT TRADEACCO,
+		                 FUNDACCT,
+		                 FUNDID,
+		                 BALANCE   AS SALE_BALANCE,
+		                 0         AS TA_BALANCE
+		           FROM (SELECT T2.TRADEACCO,
+		                         T2.FUNDACCT,
+		                         T2.FUNDID,
+		                         NVL(T2.BALANCE, 0) BALANCE
+		                    FROM WAECUSER.FUNDBALANCE T2
+		                  MINUS
+		                  SELECT * FROM T1)
+		
+		         UNION ALL
+		
+		         SELECT TRADEACCO,
+		                FUNDACCT,
+		                FUNDID,
+		                0         AS SALE_BALANCE,
+		                BALANCE   AS TA_BALANCE
+		           FROM (
+		
+		                 SELECT *
+		                   FROM T1
+		
+		                 MINUS
+		
+		                 SELECT T2.TRADEACCO,
+		                        T2.FUNDACCT,
+		                        T2.FUNDID,
+		                        NVL(T2.BALANCE, 0) BALANCE
+		                   FROM WAECUSER.FUNDBALANCE T2
+		                 ))
+		  WHERE SALE_BALANCE <> TA_BALANCE
+		  GROUP BY TRADEACCO, FUNDACCT, FUNDID
+		  ORDER BY TRADEACCO, FUNDACCT, FUNDID
+	 ]]>
+	    
+	</select>
+	
+	
+	
+</mapper>

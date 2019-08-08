@@ -1,0 +1,202 @@
+/*初始化样式*/
+
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-appearance: none;
+	outline: none;
+	word-break: break-all;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+*:not(input, textarea) {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+}
+
+html,
+body {
+	color: #333;
+	margin: 0 auto;
+	font-family: Arial, "Microsoft YaHei";
+	font-size: 50px;
+	background: #fff;
+}
+
+input {
+	-webkit-user-select: initial;
+	font-family: Arial, "Microsoft YaHei";
+	border: none;
+}
+
+i {
+	font-style: normal
+}
+
+a {
+	text-decoration: none;
+	color: #ffffdd;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a:active {
+	text-decoration: none;
+}
+
+em {
+	font-style: normal
+}
+
+ul,
+ol,
+li {
+	list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: normal;
+}
+
+img {
+	border: 0;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.clearFloat:after,
+.clearFloat:before {
+	content: "";
+	display: table;
+}
+
+.clearFloat:after {
+	clear: both;
+}
+
+.dswkb {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-box;
+	display: box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-box-align: center;
+	-moz-box-align: center;
+	-ms-box-align: center;
+	box-align: center;
+	position: relative;
+}
+
+.flex1 {
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	-ms-box-flex: 1;
+	box-flex: 1;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.center {
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+
+/*totast弹窗样式*/
+
+.tipBox {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 999;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.autoBox {
+	background-color: rgba(0, 0, 0, 0.7);
+	width: 60%;
+	padding: 0.2rem;
+	color: #fff;
+	font-size: 0.28rem;
+	text-align: left;
+	line-height: 0.4rem;
+	vertical-align: middle;
+	-webkit-border-radius: 0.1rem;
+	border-radius: 0.1rem;
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+	-o-transition: 0.5s;
+	transition: 0.5s;
+}
+.loadIcon1{
+    position: fixed;
+    top:50%;
+    left: 45%;
+    z-index: 9999;
+    width: .64rem;
+    height: .64rem;
+    background:url("../images/load.png") no-repeat;
+    background-size:100% 100%;
+    -webkit-transform: rotation 2s linear infinite;
+	animation: rotation 2s linear infinite;
+	-moz-animation: rotation 2s linear infinite;
+	-webkit-animation: rotation 2s linear infinite;
+	-o-animation: rotation 2s linear infinite;
+}
+.loadIcon2{
+    position: fixed;
+    top:50%;
+    left: 50%;
+    z-index: 9999;
+    width: 2rem;
+    height: 2rem;
+    background:url("../images/load.gif") no-repeat center;
+    -webkit-background-size:80% 80%;
+    background-size:80% 80%;
+}
+.transition{
+     transition: all 1s ease-in-out;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+}

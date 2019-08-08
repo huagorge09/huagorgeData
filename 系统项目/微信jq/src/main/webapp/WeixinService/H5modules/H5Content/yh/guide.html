@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>招商财富-远航系列 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/yh/yh.css">
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-init.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/flexible.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+
+
+</head>
+<body>
+<div class="guide">
+	<div class="guide1">
+		<p>固收精选-远航五号</p>
+		<p>强大增信方，AAA主体担保；<br>投资信托计划优先级受益权，<br>基础资产小而分散，助力资产<br>稳中求胜！</p>
+	</div>
+	<div class="guide2">
+		<div class="product">
+			<h2>远航五号 <span>募集截止：2018年07月06日</span></h2>
+			<ul class="clearFloat">
+				<li>
+					<p>7<span>个月</span></p>
+					<p>产品期限</p>
+					<div class="line"></div>
+				</li>
+				<li>
+					<p><span>登录可见</span></p>
+					<p>业绩计提基准</p>
+					<div class="line"></div>
+				</li>
+				<li>
+					<p>100<span>万</span></p>
+					<p>理财起点</p>
+				</li>
+			</ul>
+			<p class="t1">风险提示：投资有风险,本产品风险等级为R4，适合风险承受能力为C4及以上的投资者</p>
+			<p class="t2">市场有风险，投资需谨慎</p>
+			<a href="javascript:;" class="loginSee" onclick="seeProduct()">登录可见产品详情</a>
+			<p class="t3">应监管要求，产品详情登陆可见。为保护您的权益和更好地进行产品适配，过程中需要了解您的相关信息和风险等级</p>
+		</div>
+	</div>
+</div>
+<div class="bottom clearFloat">
+	<a href="javascript:;" onclick="bussiness();" id="myBtn1">我感兴趣</a>
+	<a href="javascript:;" onclick="myAdviser();" id="myBtn2">我的顾问</a>
+</div>
+
+<!--预约信息填写-->
+<div class="cover-bg reserves hide">
+	<div class="content">
+		<span class="close"></span>
+		<h1>一键预约享专属服务<br>让投资无后顾之忧</h1>
+		<h3>我们的专属顾问将24小时内给您回电</h3>
+		<div class="form">
+			<ul>
+				<li>
+					<div class="inputBox">
+						<span></span> <input type="text" id="userName" name="userName" placeholder="请输入您的姓名"/>
+					</div>
+					<p style="display: none;"></p>
+				</li>
+				<li class="foucs">
+					<div class="inputBox">
+						<span></span> <input type="tel" id="mobilePhone" name="mobilePhone" maxlength="11" placeholder="请输入您的手机号码"/>
+					</div>
+					<p  style="display: none;"></p>
+				</li>
+
+			</ul>
+			<button id="saveBtn"  class="disabled">立即提交</button>
+		</div>
+	</div>
+</div>
+<!-- 错误提示 -->
+<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+	<span id="errorRemark"></span>
+</div>
+<!--预约成功-->
+<div class="cover-bg success hide">
+	<div class="content center">
+		<span class="close"></span>
+		<div class="successIcon"></div>
+		<h2>预约成功</h2>
+		<p>客户经理将尽快与您联系，请保持电话畅通</p>
+	</div>
+</div>
+<script>
+	var pageId="wx_yh91No10_guidePageId"
+</script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/yh/index.js"></script>
+</body>
+</html>

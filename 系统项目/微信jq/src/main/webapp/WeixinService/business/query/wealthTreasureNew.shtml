@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>财富宝</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/activity/wealthTreasureNew.css">
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/flexibleNew.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedomNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/headerNew.min.js"></script>
+	<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/wealthTreasureNew.js"></script> -->
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/wealthTreasureNew.min.js"></script> 
+</head>
+<body>
+	
+	<div class="warpper">
+		<div class="banner"></div>
+		<div class="recommendBox">
+			<h2>春风十里，不如投资一笔</h2>
+			<ul class="item">
+				<li eventId="event_wx_01cfbId" params="fundId=17D911&period=1">
+					<h2>财富宝364天理财30号</h2>
+					<div class="proInfo clearFloat">
+						<div class="info">
+							<p>业绩计提基准</p>
+							<p>6.10<span>%</span></p>
+							<div class="line"></div>
+						</div>
+						<div class="info">
+							<p>产品期限</p>
+							<p>364<span>天</span></p>
+						</div>
+					</div>
+					<div class="tips">
+						<p>募集截止：2018年4月16日 15:00</p>
+						<p>产品风险等级为R2，适合C2中低风险承受能力以及以上客群</p>
+					</div>
+				</li>
+			</ul>
+			<p>注：产品排期如有变动，以财富宝实际上架为准</p>
+			<a href="javascript:;" class="once">立即咨询</a>
+		</div>
+		<div class="advantage">
+			<h2>四大核心优势</h2>
+			<h3>给你1万个选择财富宝的理由</h3>
+			<ul>
+				<li>
+					<p>权威团队-为您的资金保驾护航</p>
+					<div>累计管理规模超过350亿元，投资的<br>标准资产至今无一亏损</div>
+				</li>
+				<li>
+					<p>最优配置-投研精英匠心设计</p>
+					<div>财富宝系列发行200余期，运作稳健，<br>业绩表现优良</div>
+				</li>
+				<li>
+					<p>超额收益-力争实现资产的保值增值</p>
+					<div>让利于民，与客户分享10%超额收益</div>
+				</li>
+				<li>
+					<p>灵活认购-资金进出畅通无阻</p>
+					<div>每个运作期结束后开放申赎，兼顾流动性<br>与增值性</div>
+				</li>
+			</ul>
+		</div>
+	    <div class="follow"></div>
+	</div>
+	<!--预约信息填写-->
+	<div class="cover-bg reserves hide">
+		<div class="content">
+			 <h2>预约咨询<span class="close"></span></h2>
+			 <div class="form">
+			 	<ul>
+				 	<li>
+				 	   <div class="inputBox">
+				 	  	   <span>姓名:</span> <input type="text" id="userName" name="userName"/>
+				 	   </div>	
+				       <p style="display: none;"></p>
+				 	</li>
+				 	<li class="foucs">
+				 		<div class="inputBox">
+				 	        <span>电话:</span> <input type="tel" id="mobilePhone" name="mobilePhone" maxlength="11"/> 
+				 		</div>
+				 		<p  style="display: none;"></p>
+				 	</li>
+				 	
+				 </ul>
+				 <button id="saveBtn"  class="disabled">提交</button>
+			 </div>
+		</div>
+	</div>
+	<!-- 错误提示 -->
+	<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+		<span id="errorRemark"></span>
+	</div>
+	<!--预约成功-->
+	<div class="cover-bg success hide">
+		 <div class="content center">
+		 	<span class="close"></span>
+		 	<div class="successIcon"></div>
+		 	<h2>预约成功</h2>
+		 	<p>客户经理将尽快与您联系，请保持电话畅通</p>
+		 </div>
+	</div>
+</body>
+</html>

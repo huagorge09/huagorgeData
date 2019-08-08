@@ -1,0 +1,301 @@
+﻿body {
+	color: #333;
+	margin: 0 auto;
+	font-family: Arial, "Microsoft YaHei";
+	font-size: 50px;
+	background: #342606;
+}
+.center {
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+
+.clearFloat:after,
+.clearFloat:before {
+	content: "";
+	display: table;
+}
+
+.clearFloat:after {
+	clear: both;
+}
+#errorRemark{
+	font-size: .28rem;
+}
+
+.banner{
+	height: 11.23rem;
+	background: url(../../WeixinWeb_Images/activity/wealthTreasure/bannerBg.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.recommendBox{
+	width: 6.98rem;
+	height: 6.63rem;
+	margin: 0 auto;
+	background: url(../../WeixinWeb_Images/activity/wealthTreasure/productBox.png) no-repeat;
+	background-size: 100% 100%;
+	margin-top: -5rem;
+	margin-bottom: .2rem;
+}
+.recommendBox>h2{
+	font-size: .34rem;
+	text-align: center;
+	color: #a4743a;
+	line-height: 1.34rem;
+}
+.item li{
+	width: 6.28rem;
+	margin: 0 auto;
+	margin-bottom: .32rem;
+}
+.item li:last-child{
+	margin-bottom: 0;
+}
+.item h2{
+	font-size: .36rem;
+	line-height: 1.2rem;
+	padding-left: .3rem;
+	color: #a4743a;
+}
+.item .proInfo{
+	padding: 0 .3rem;
+}
+.item .info{
+	width: 50%;
+	float: left;
+	position: relative;
+}
+.item .info>p{
+	font-size: .28rem;
+	line-height: .55rem;
+}
+
+.item .info:nth-child(2){
+	padding-left: 1.37rem;
+}
+.item .info .line{
+	position: absolute;
+	height: .72rem;
+	width: 2px;
+	right: 0;
+	top:.19rem;
+	border-right: 1px #d6c9bb solid;
+}
+.info p:nth-child(1){
+	color: #979797;
+}
+.info p:nth-child(2) span{
+	font-size: .24rem;
+         color: #a4743a;
+}
+.info p:nth-child(2){
+	font-size:.42rem;
+	color: #a4743a;
+}
+.item .tips{
+	padding-left: .3rem;
+	padding-top: .26rem;
+}
+.item .tips p:nth-child(1){
+	font-size: .26rem;
+	line-height: .4rem;
+        color:#999;
+}
+.item .tips p:nth-child(2){
+	font-size: .22rem;
+	line-height: .33rem;
+	color: #ddad3c;
+}
+.recommendBox>p{
+    color: #956122;
+    line-height: .65rem;
+    font-size: .22rem;
+    padding-left: .36rem;
+    margin-top: .1rem;
+}
+.recommendBox .once{
+	display: block;
+	margin: 0 auto;
+	width: 2.79rem;
+	height: .64rem;
+	line-height: .64rem;
+	background: url(../../WeixinWeb_Images/activity/wealthTreasure/btn.png) no-repeat;
+	background-size: 100% 100%;
+	text-align: center;
+	font-size: .32rem;
+	color: #f8d78a;
+}
+.advantage{
+	width: 7rem;
+	height: 8.28rem;
+	margin: 0 auto;
+	background: url(../../WeixinWeb_Images/activity/wealthTreasure/advantage.png) no-repeat;
+	background-size: 100% 100%;
+	padding-top: .43rem;
+}
+.advantage h2{
+	font-size: .34rem;
+	color: #a4743a;
+	line-height: .46rem;
+	text-align: center;
+}
+.advantage h3{
+	font-size: .26rem;
+	color: #c19550;
+	text-align: center;
+	margin-top: .05rem;
+}
+.advantage li{
+	padding-bottom: .35rem;
+	padding: .1rem 0 .35rem 1.84rem
+}
+.advantage li:nth-child(1){
+	background: url(../../WeixinWeb_Images/activity/wealthTreasure/icon1.png) no-repeat .36rem;
+	background-size: 1.26rem 1.26rem;
+}
+.advantage li:nth-child(2){
+	background: url(../../WeixinWeb_Images/activity/wealthTreasure/icon2.png) no-repeat .36rem;
+	background-size: 1.26rem 1.26rem;
+}
+.advantage li:nth-child(3){
+	background: url(../../WeixinWeb_Images/activity/wealthTreasure/icon3.png) no-repeat .36rem;
+	background-size: 1.26rem 1.26rem;
+}
+.advantage li:nth-child(4){
+	background: url(../../WeixinWeb_Images/activity/wealthTreasure/icon4.png) no-repeat .36rem;
+	background-size: 1.26rem 1.26rem;
+}
+.advantage li p{
+	font-size: .3rem;
+	color: #000;
+	line-height: .5rem;
+	padding-top: .18rem;
+}
+.advantage li div{
+	font-size: .26rem;
+	color: #999;
+	line-height: .32rem;
+}
+.follow{
+	width: 6.97rem;
+	height: 2.34rem;
+	margin: 0 auto;
+	margin: .2rem auto;
+	background: url(../../WeixinWeb_Images/activity/wealthTreasure/follow.png) no-repeat;
+	background-size: 100% 100%;
+}
+/*预约信息弹窗*/
+.reserves .content{
+	width: 90%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	background: #fff;
+	border-radius: 5px;
+} 
+.reserves h2{
+	width: 100%;
+	height: .9rem;
+	line-height: .9rem;
+	background: #f0f0f0;
+	position: relative;
+	font-size: .36rem;
+	color: #000;
+	text-align: center;
+	margin-bottom: .4rem;
+}
+.reserves h2 span,.success span{
+	display: inline-block;
+    width: .23rem;
+    height: .22rem;
+    background: url(../../WeixinWeb_Images/activity/wealthTreasure/close.png) no-repeat;
+	background-size: 100% 100%;
+	position: absolute;
+	right:.3rem;
+	top:.3rem;
+}
+.reserves .form{
+	padding: 0 .32rem .4rem .32rem;
+}
+.reserves .inputBox{
+	line-height: .88rem;
+	border:1px #dedede solid;
+	border-radius: 3px;
+	margin-bottom: .3rem;
+}
+.reserves .inputBox span{
+	display: inline-block;
+	width: 1.32rem;
+	text-align: center;
+	color: #666;
+	font-size: .3rem;
+}
+.reserves .inputBox input{
+   border: 0;
+   padding-left: .2rem;
+   color: #212121;
+   padding: .2rem 0;
+   font-size:  .3rem;
+} 
+.reserves .inputBox.foucs{
+	border-color: #59aaf3;
+}
+.reserves ul p{
+	font-size: .22rem;
+	color: #ca132a;
+	line-height: .3rem;
+	margin-bottom: .25rem;
+}
+.reserves button{
+	width: 100%;
+	border:0;
+	height: .8rem;
+	line-height: .8rem;
+	border-radius: 3px;
+	font-size: .32rem;
+	color: #fff;
+	background: #ca132a;
+}
+.reserves button.disabled{
+	background: #cecece;
+}
+/*预约成功*/
+.success .content{
+	height: 2.75rem;
+	width: 90%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	background: #fff;
+	border-radius: 5px;
+}
+.success .successIcon{
+	width: .92rem;
+	height: .92rem;
+	background: url(../../WeixinWeb_Images/activity/wealthTreasure/success.png) no-repeat;
+	background-size: 100% 100%;
+	margin: .34rem auto .23rem auto;
+}
+.success h2{
+	line-height: .5rem;
+	font-size: .32rem;
+	color: #212121;
+	text-align: center;
+}
+.success p{
+	font-size: .28rem;
+	text-align: center;
+	color: #666;
+	line-height: .44rem;
+}
+
+

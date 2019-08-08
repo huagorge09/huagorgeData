@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no">
+	<title></title>
+	<link rel="stylesheet" href="css/public.css" />
+	<link rel="stylesheet" href="imgCompose.css" />
+	<script type="text/javascript" src="../lib/jquery-3.2.1.min.js" ></script>
+	<script type="text/javascript" src="../lib/flexible.js" ></script>
+	<script type="text/javascript" src="js/qrcode.js"></script>
+	<script>
+		//屏幕适配
+		(function (doc, win) {
+		    var docEl = doc.documentElement,
+		        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+		        recalc = function () {
+		            var clientWidth = docEl.clientWidth;
+		            if(clientWidth > 1024){
+		                clientWidth = 1024;
+		            }
+		            if (!clientWidth) return;
+		            docEl.style.fontSize = 100 * (clientWidth /750) + 'px';
+		        };
+		    if (!doc.addEventListener) return;
+		    win.addEventListener(resizeEvt, recalc, false);
+		    doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+	</script>
+	
+    <style>
+    	body>img{
+    		width: 100%;
+    		height: 100%;
+    		display: block;
+    	}
+    </style>
+</head>
+<body>
+     <img src="" id="imgDiv"/>
+	 <script type="text/javascript" src="js/imgCompose.js"></script>
+	 <script>
+	    var img = new imgCompose("imgDiv",{
+	    	imgUrl:"img/1.jpg",
+	    	name:"陈广华",
+	    	Position:"前端开发工程师",
+	    	phone:"17093420247",
+	    	logoUrl:"img/logo.jpg",
+            lifeMotto:"相信自己，一切皆有可能"
+	    });
+	 </script>
+</body>
+</html>
+
+

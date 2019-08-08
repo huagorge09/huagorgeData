@@ -1,0 +1,177 @@
+@font-face {
+    font-family: finePingFang;
+    src: url("../font/pingfang.TTF");
+}
+.page{
+    width: 100%;
+    background-color: #fff;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+.page {
+    width: 100%;
+    height: 100%;
+}
+
+.contain {
+    position: relative;
+    height: 50%;
+    background: url("../image/tape/bg.jpg") no-repeat bottom #ffda44;
+    background-size: 100% auto;
+    padding: 0 0.6rem 0.8rem 0.6rem;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.contain :before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    top: -0.8rem;
+    display: block;
+    height: 0.5rem;
+    left: 0;
+    box-shadow: 0 0 0.8rem #ffda44;
+}
+
+.contain :after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    bottom: 0;
+    display: block;
+    height: 0.8rem;
+    left: 0;
+    box-shadow: 0 0 0.8rem #ffda44;
+}
+
+/*没有预设 */
+.preinstall-no {
+    position: relative;
+    height: 100%;
+    font-size: 0.32rem;
+}
+
+.preinstall-no .wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.preinstall-no p {
+    text-align: center;
+    line-height: .5rem;
+    color: #cba612;
+}
+
+.preinstall-no p.mt50 {
+    margin-top: .5rem;
+}
+
+/*有预设*/
+
+.preinstall {
+    padding-top: 0.45rem;
+    padding-bottom: 0.8rem;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow-y: scroll;
+}
+
+.preinstall .mean {
+    margin-bottom: .38rem;
+}
+
+.preinstall .title {
+    width: 1.2rem;
+    height: .37rem;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-size: .24rem;
+    border: 1px #333 solid;
+    border-radius: 2px;
+    text-align: center;
+    margin-bottom: .1rem;
+}
+
+.preinstall p {
+    line-height: .4rem;
+    font-size: .28rem;
+    color: #333;
+}
+
+/*录音操作*/
+
+.tapebox {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 55%;
+    background-size: 100% 100%;
+}
+
+.tapebox .showtime {
+    padding-top: .3rem;
+    font-size: 1.1rem;
+    margin: 0 auto;
+    text-align: center;
+    color: #666;
+    font-family: finePingFang;
+}
+
+.tapebox .total {
+    text-align: center;
+    font-size: 0.28rem;
+    color: #9a9a9a;
+}
+
+.btncommom {
+    display: block;
+    margin: .25rem auto 0 auto;
+    width: 2.36rem;
+    height: 2.36rem;
+    text-align: center;
+    line-height: 2.36rem;
+    color: #fff;
+    font-size: .4rem;
+}
+
+.tapeBtn .start {
+    background: url(../image/icon/tape/tapebtn.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.nonsupport {
+    text-align: center;
+    font-size: 0.28rem;
+    line-height: 0.6rem;
+    margin-top: 0.15rem;
+    display: none;
+}
+
+.tip {
+    color: #ed5233;
+}
+
+.goTo {
+    color: #333;
+}
+
+.goTo a {
+    color: #437baf;
+    text-decoration: underline;
+}

@@ -1,0 +1,160 @@
+@charset "utf-8";
+body{ font-size:12px;font-family: Arial,Helvetica,sans-serif,"Microsoft YaHei";margin:0;padding:0;}
+input{ font-size:12px;font-family: Arial,Helvetica,sans-serif,"Microsoft YaHei";}
+select{ font-size:12px;font-family: Arial,Helvetica,sans-serif,"Microsoft YaHei";}
+ul,li {
+  margin:0;
+  padding:0 0 ;
+  list-style:none;  
+}
+.clear:before,
+.clear:after {
+  display: table;
+  content: '';
+  clear: both;
+}
+
+.choose-frame {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.shadow-bg {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.5;
+}
+
+.choose-box {
+    width: 630px;
+    height: 500px;
+    border-radius: 5px;
+    background: #fff;
+    position: relative;
+    top: 20%;
+    margin: 0 auto;
+}
+
+.choose-box div.btn-close {
+  background: url(../../AppWeb_Images/images/bt_close.png) no-repeat;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.choose-box h2{
+  text-align: center;
+  font-size: 22px;
+  color: #ca132c;
+  display: inline-block;
+  margin: 20px auto;
+  width: 100%;
+}
+
+.choose-box .tips {
+  width: 570px;
+  height: 42px;
+  margin: 0 auto;
+  border-radius: 4px;
+  background: #f1f1f1;
+}
+
+.choose-box .tips p {
+  font-size: 14px;
+  color: #313131;
+  padding: 0 11px;
+  line-height: 42px;
+}
+
+.choose-box .choose-con {
+  width: 570px;
+  height: 270px;
+  margin: 10px auto 0;
+}
+
+.choose-box .choose-con .section {
+  width: 100%;
+  height: 180px;
+  border-right: dashed 1px #ccc;
+  float: left;
+}
+
+.choose-con .section ul li {
+  display: inline-block;
+  color: #313131;
+  font-size: 14px;
+  height: 24px;
+  line-height: 24px;
+  border: solid 1px #fff;
+  margin: 15px 0 0 15px;
+  padding: 0 3px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 30%;
+  text-align: center;
+}
+
+.choose-con .section ul li.active {
+  color: #fff;
+  background-color: #ca132c;
+}
+
+.choose-con .section ul li.notactive {
+  border: solid 1px #a9a9a9;
+}
+
+.choose-con .section ul li span.btn-close {
+  display: none;
+  width: 10px;
+  height: 10px;
+  background: url(../../AppWeb_Images/images/btn_close_little.png) no-repeat;
+  margin-left: 2px; 
+}
+
+.choose-con .section ul li.active span.btn-close {
+  display: inline-block;
+}
+
+.choose-con .section:first-child ul li {
+  margin-left: 10px;
+}
+
+.choose-con .section:last-child {
+  border-right: dashed 1px #fff;
+}
+
+.choose-box .btn-confirm {
+  display: block;
+  width: 126px;
+  height: 37px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  background: #ca132c;
+  outline: none;
+}
+
+.sureSubmit{
+  display: block;
+    width: 126px;
+    height: 37px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    background: #ca132c;
+    outline: none;
+    position: absolute;
+    left: 39%;
+    bottom: 15px;
+}

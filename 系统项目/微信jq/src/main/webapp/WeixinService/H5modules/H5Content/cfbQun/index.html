@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>招商财富-产品系列 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/cfb206/cfb.css">
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-init.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/flexible.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+
+</head>
+<body class="guide">
+<div class="wrapper">
+	 <div class="banner"></div>
+	 <div class="productList">
+ 		<div class="pr pr1" >
+ 			  <h1>固收王者 财富宝+</h1>
+ 			  <h2 style="  margin-bottom: .35rem; padding-top: .2rem;">财富宝206号理财</h2>
+ 			  <p class="time" style="margin-top: .1rem;">认购期：2019/4/19-2019/4/26</p>
+ 			  <p class="keyword">
+ 			  	 <span><i></i>王牌固收</span>
+ 			  	 <span><i></i>聚焦头部房企</span>
+ 			  </p>
+ 			  <ul>
+ 			  	<li>
+ 			  		<p><span>6.0</span>%</p>
+ 			  		<p>业绩报酬计提基准</p>
+ 			  	</li>
+ 			  	<li>
+ 			  		<p><span>9</span>个月</p>
+ 			  		<p>产品期限</p>
+ 			  	</li>
+ 			  </ul>
+ 			  <a href="javascript:seeProductDetailCfb()" class="see">查看详情</a>
+ 		</div>
+ 		<div class="pr pr2">
+ 			<h1>群星灵动  绽放牛熊市</h1>
+ 			  <h2>群星1号</h2>
+ 			  <p class="solgan">寻求高收益风险比的多策略组合基金</p>
+ 			  <p class="time">开放期：2019/4/23-2019/4/29</p>
+ 			  <p class="keyword">
+ 			  	 <span><i></i>基金严选</span>
+ 			  	 <span><i></i>灵活配置</span>
+ 			  	 <span><i></i>捕捉A股机会</span>
+ 			  </p>
+ 			  <div class="profix">
+ 			  	  <p><span>19.48</span>%</p>
+	 			  <p>成立以来收益情况</p>
+ 			  </div>
+ 			  <a href="javascript:seeProductDetailQunxing()" class="see">查看详情</a>
+ 		</div>
+	 </div>
+	 <div class="exp">
+	 </div>
+</div>
+	  <div class="bottom clearFloat">
+    	<a href="javascript:;" onclick="bussiness();" id="myBtn1">我感兴趣</a>
+    	<a href="javascript:;" onclick="myAdviser();" id="myBtn2">我的顾问</a>
+    </div>
+	<!--预约信息填写-->
+	<div class="cover-bg reserves hide">
+		<div class="content">
+			 <span class="close"></span>
+			 <h1>一键预约享专属服务<br>让投资无后顾之忧</h1>
+			 <h3>我们的专属顾问将24小时内给您回电</h3>
+			 <div class="form">
+			 	<ul>
+				 	<li>
+				 	   <div class="inputBox">
+				 	  	   <span></span> <input type="text" id="userName" name="userName" placeholder="请输入姓名"/>
+				 	   </div>	
+				       <p style="display: none;"></p>
+				 	</li>
+				 	<li class="foucs">
+				 		<div class="inputBox">
+				 	        <span></span> <input type="tel" id="mobilePhone" name="mobilePhone" maxlength="11" placeholder="请输入手机号码"/> 
+				 		</div>
+				 		<p  style="display: none;"></p>
+				 	</li>
+				 	
+				 </ul>
+				 <button id="saveBtn"  class="disabled">立即提交</button>
+			 </div>
+		</div>
+	</div>
+	<!-- 错误提示 -->
+	<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+		<span id="errorRemark"></span>
+	</div>
+	<!--预约成功-->
+	<div class="cover-bg success hide">
+		 <div class="content center">
+		 	<span class="close"></span>
+		 	<div class="successIcon"></div>
+		 	<h2>预约成功</h2>
+		 	<p>客户经理将尽快与您联系，请保持电话畅通</p>
+		 </div>
+	</div>
+	 <!-- 尚未完成操作弹窗-->
+    <div class="cover_bg" id="noOperation" style="display: none;">
+    	 <!-- 尚未完成风险评测-->
+    	 <div class="content risk" id="riskContent" style="display: none;">
+    	 	  <h2></h2>
+    	 	  <p>哎呀！您尚未完成风险测评</p>
+    	 	  <div class="tips">
+    	 	  	  <h3>温馨提示：</h3>
+    	 	  	  <p>根据监管要求，为保护投资者权益，需要了解您的相关信息和风险等级，以实现对您的最大保障。</p>
+    	 	  	  <p class="yearReport">
+    	 	  	  	 动动小指尖， 30秒完成风险测评，轻松查看产品信息
+    	 	  	  </p>
+    	 	  </div>
+    	 	 <a href="javascript:void(0);" id="goRisk" class="btn">我要测评</a>
+    	 </div>
+    	 <!-- 重新测评-->
+    	 <div class="content rNameRisk" id="reRiskContent"  style="display: none;">
+    	 	  <h2></h2>
+    	 	  <p>根据监管要求，您的风险测评已过有效期，还请重新测评</p>
+    	 	   <a href="javascript:void(0);" id="reRisk" class="btn">确定</a>
+    	 </div>
+	</div>
+	<input type="hidden" name='typeId'>
+     <script>
+    	 var pageId="wx_cfbQun_h5PageId"
+    </script>
+     <script src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/activityCommon1.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/cfb206/index.js"></script>
+    
+</body>
+</html>

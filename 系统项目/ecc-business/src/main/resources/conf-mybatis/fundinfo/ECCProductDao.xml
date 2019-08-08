@@ -1,0 +1,1200 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cmwa.ecc.business.dao.fundinfo.ECCProductDao">
+	<resultMap type="eccProductProDto" id="productProDto">
+		<result property="id" column="ID" />
+		<result property="dName" column="D_NAME" />
+		<result property="creatDate" column="CREAT_DATE" />
+		<result property="updateDate" column="UPDATE_DATE" />
+		<result property="reserve1" column="RESERVE1" />
+		<result property="reserve2" column="RESERVE2" />
+		<result property="reserve3" column="RESERVE3" />
+		<result property="description" column='DESCRIPTION' />
+	</resultMap>
+
+	<!-- 获取产品系列列表 -->
+	<select id="getProductProList" resultMap="productProDto" parameterType="sparam">
+		SELECT * FROM CMWA_PRODUCT_DEPARTMENT WHERE 1=1 
+		<if test=" sp.dname !=null and sp.dname !=''  ">
+			AND  D_NAME LIKE CONCAT(CONCAT('%', #{sp.dname}),'%')
+		</if>
+		<if test="null != sp.id and ''!=sp.id">
+			AND ID LIKE CONCAT(CONCAT('%', #{sp.id}),'%')
+		</if>
+		order by id
+	</select>
+
+	<select id="getProductProCount" resultType="int">
+		SELECT COUNT(*) FROM
+		CMWA_PRODUCT_DEPARTMENT
+	</select>
+
+	<!--删除产品系列 -->
+	<delete id="deleteProdcutPro" parameterType="sparam">
+		DELETE FROM
+		CMWA_PRODUCT_DEPARTMENT WHERE ID = #{sp.id,jdbcType=VARCHAR}
+	</delete>
+
+	<update id="modProductName" parameterType="sparam">
+		UPDATE
+		CMWA_PRODUCT_DEPARTMENT SET D_NAME=#{sp.dName} WHERE
+		ID=#{sp.id,jdbcType=VARCHAR}
+	</update>
+
+	<insert id="addProductPro" parameterType="sparam">
+		INSERT INTO
+		CMWA_PRODUCT_DEPARTMENT(ID,D_NAME) select ( case when max(id) is
+		null
+		then 10000 else max(id)+1 end),#{sp.dName,jdbcType=VARCHAR} FROM
+		CMWA_PRODUCT_DEPARTMENT
+	</insert>
+
+	<!-- 查看新增产品列表 -->
+	<select id='getProductList' parameterType="sparam" resultType="productInfoDto">
+		SELECT PRO.NAME,
+		PRO.FUNDID AS funcode,
+		PRO.TYPEID,
+		PRO.GROUPID,
+		PD.ID AS id,
+		PD.D_NAME AS DNAME,
+		PRO.TERM,
+		PRO.PAYMENTINTER,
+		PRO.TERMUNIT,
+		PRO.TERMINDAY as theTerm,
+		PRO.ISHOT,
+		PRO.DISORDER,
+		PRO.PREFIX,
+		PRO.OFFLINELIMIT,
+		PRO.ONLINELIMIT,
+		PRO.SCALE,
+		PRO.MONEY,
+		PRO.OFFLINEFUND,
+		(CASE
+		WHEN
+		PRO.PROFIT IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(PRO.PROFIT * 100)
+		END) AS PROFIT,
+		PRO.STATE AS states,
+		PRO.CREATED_BY,
+		PRO.REVIEW_STATUS,
+		PRO.ADNAME,
+		PRO.TEMPLETID,
+		TE.TEMPLET_NAME AS TEMPLETNAME,
+		PRO.ADTEXT,
+		PRO.FUNDRISKLEVEL,
+		HIGHRISKEXPLAIN,
+		VENDCHANNELS,
+		PRO.MSGDATE,
+		(CASE
+		WHEN PRO.APPOINTDATE IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(TO_DATE(PRO.APPOINTDATE, 'YYYYMMDD'), 'YYYY-MM-DD')
+		END)
+		AS
+		APPOINTDATE,
+		PRO.DISPLAYLIMIT,
+		(case when PRO.remainamt > 0 then PRO.Remainamt else 0 end) remainamt,
+		PRO.MONEYSTEP,
+		(CASE
+		WHEN
+		PRO.SUBDEADLINE IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(TO_DATE(PRO.SUBDEADLINE,
+		'YYYYMMDD'), 'YYYY-MM-DD')
+		END) AS SUBDEADLINE,
+		(CASE
+		WHEN
+		PRO.INTERESTDATE IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(TO_DATE(PRO.INTERESTDATE,
+		'YYYYMMDD'), 'YYYY-MM-DD')
+		END) AS INTERESTDATE,
+		(CASE
+		WHEN PRO.SALESDATE
+		IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(TO_DATE(PRO.SALESDATE, 'YYYYMMDD'),
+		'YYYY-MM-DD')
+		END) AS SALESDATE,
+		(CASE
+		WHEN PRO.MATURITYDATE IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(TO_DATE(PRO.MATURITYDATE, 'YYYYMMDD'), 'YYYY-MM-DD')
+		END) AS MATURITYDATE,
+		IBF_GET_LASTNWORKDAY2(PRO.SALESDATE, 1, '') AS
+		APPOINTENDDATE,
+		IBF_GET_CURRENT_WORKDATE('') AS currentWorkdate,
+		(SELECT T.TITLE
+		FROM CMWA_FUNDELEMENT T
+		WHERE T.FUNDID = PRO.FUNDID AND T.PERIOD=PRO.PERIOD
+		AND
+		T.SORTNO = '1'
+		AND T.ELETYPE = '220'
+		AND T.STATUS = 'Y') AS TEXTTITLE1,
+		(SELECT T.TITLE
+		FROM CMWA_FUNDELEMENT T
+		WHERE T.FUNDID = PRO.FUNDID AND T.PERIOD=PRO.PERIOD
+		AND
+		T.SORTNO = '2'
+		AND T.ELETYPE = '220'
+		AND T.STATUS = 'Y') AS TEXTTITLE2,
+		(SELECT T.TITLE
+		FROM CMWA_FUNDELEMENT T
+		WHERE T.FUNDID = PRO.FUNDID AND T.PERIOD=PRO.PERIOD
+		AND
+		T.SORTNO = '3'
+		AND T.ELETYPE = '220'
+		AND T.STATUS = 'Y') AS TEXTTITLE3,
+		(SELECT T.CONTENT
+		FROM CMWA_FUNDELEMENT T
+		WHERE T.FUNDID = PRO.FUNDID AND T.PERIOD=PRO.PERIOD
+		AND T.SORTNO = '1'
+		AND T.ELETYPE = '220'
+		AND T.STATUS = 'Y') AS
+		TEXTCONTENT1,
+		(SELECT T.CONTENT
+		FROM CMWA_FUNDELEMENT T
+		WHERE T.FUNDID =
+		PRO.FUNDID AND T.PERIOD=PRO.PERIOD
+		AND T.SORTNO = '2'
+		AND T.ELETYPE = '220'
+		AND T.STATUS = 'Y')
+		AS TEXTCONTENT2,
+		(SELECT T.CONTENT
+		FROM CMWA_FUNDELEMENT T
+		WHERE T.FUNDID
+		= PRO.FUNDID AND T.PERIOD=PRO.PERIOD
+		AND T.SORTNO = '3'
+		AND T.ELETYPE = '220'
+		AND T.STATUS = 'Y')
+		AS TEXTCONTENT3,
+		PRO.PERIOD
+		FROM CMWA_FUND_REVIEW PRO,
+		CMWA_PRODUCT_DEPARTMENT PD,
+		CONTRACT_TEMPLETS TE
+		WHERE PRO.GROUPID = PD.ID(+)
+		AND PRO.TEMPLETID =
+		TE.TEMPLET_ID(+)
+		AND LENGTH(PRO.FUNDID) = '6'
+		<if test=" sp.fundid !=null and sp.fundid !=''  ">
+			AND PRO.FUNDID =#{sp.fundid}
+		</if>
+		<if test="sp.dname !=null and sp.dname !='' ">
+			AND PRO.ADNAME   LIKE CONCAT(CONCAT('%', #{sp.dname}),'%')
+		</if>
+		<if test=" sp.funcode !=null and sp.funcode !=''  ">
+			AND PRO.FUNDID LIKE CONCAT(CONCAT('%',#{sp.funcode}),'%')
+		</if>
+		<if test="sp.period !=null and sp.period !='' ">
+			AND PRO.PERIOD  = #{sp.period, jdbcType = NUMERIC} 
+		</if>
+		order by PRO.INSERTTIMESTAMP desc
+	</select>
+
+	<select id="getProductInfoCount" parameterType="sparam"
+		resultType="int">
+		select count(*) from CMWA_FUND_REVIEW WHERE LENGTH(FUNDID) = '6'
+		<if test=" sp.fundid !=null and sp.fundid !=''  ">
+			AND FUNDID LIKE CONCAT(CONCAT('%', #{sp.fundid}),'%')
+		</if>
+		<if test="sp.dname !=null and sp.dname !='' ">
+			AND ADNAME  LIKE CONCAT(CONCAT('%', #{sp.dname}),'%')
+		</if>
+	</select>
+
+
+	<resultMap type="questionDto" id="requestionDto">
+		<result property="wentId" column="W_ID" />
+		<result property="id" column="ID" />
+		<result property="wenTi" column="W_WENTI" />
+		<result property="daAn" column="W_DAAN" />
+		<result property="fundcode" column="FUNCODE" />
+	</resultMap>
+
+	<select id="getProductQuestionList" parameterType="sparam" resultMap="requestionDto">
+		SELECT W_ID,ID,W_WENTI,W_DAAN,FUNCODE FROM CMWA_WENTI WHERE 1=1
+		<if test=" sp.funcode!=null  and sp.funcode!='' ">
+			AND FUNCODE = #{sp.funcode}
+		</if>
+		<if test=" sp.fundid!=null  and sp.fundid!='' ">
+			AND FUNCODE = #{sp.fundid}
+		</if>
+		<if test="sp.period >0">
+			and period = #{sp.period}
+		</if>
+		ORDER BY ID ASC
+	</select>
+
+	<delete id="delFunQuestion" parameterType="String">
+		DELETE FROM CMWA_WENTI
+		WHERE FUNCODE = #{funcode}
+		<if test="period > 0">
+			and period = #{period}
+		</if>
+	</delete>
+
+	<delete id="delFundelement" parameterType="String">
+		DELETE FROM
+		cmwa_fundelement WHERE FUNDID=#{funcode} 
+		AND ELETYPE in('220','110','120','240','230') AND STATUS='Y'
+		<if test=" period >0  ">
+			AND PERIOD=#{period}
+		</if>
+	</delete>
+
+	<delete id="delProductReview" parameterType="String">
+		DELETE FROM
+		CMWA_FUND_REVIEW WHERE FUNDID=#{funcode} AND REVIEW_STATUS != 'Y'
+		<if test=" period >0 ">
+			AND PERIOD=#{period}
+		</if>
+	</delete>
+
+	<select id="queryTAConfrim" parameterType="sparam"
+		resultType="int">
+		SELECT COUNT(*) FROM FUNDINFO F,FUNDINFOEX FE WHERE
+		F.FUNDID=FE.FUNDID AND F.FUNDID=#{sp.fundid}
+	</select>
+
+	<update id="checkProductReview" parameterType="java.util.HashMap">
+		UPDATE
+		CMWA_FUND_REVIEW SET
+		REVIEW_STATUS=#{status},REVIEW_BY=#{operatorId},UPDATETIMESTAMP=SYSDATE
+		WHERE FUNDID=#{fundid} 
+		<if test=" period >0 ">
+			AND PERIOD=#{period}
+		</if>
+	</update>
+
+	<insert id="insertFundElement" parameterType="java.util.List">
+		INSERT ALL
+		<foreach collection="list" item="item" index="index"
+			separator=" ">
+			INTO CMWA_FUNDELEMENT
+			(FUNDID,
+			SORTNO,
+			TITLE,
+			CONTENT,
+			CONTENTTYPE,
+			TYPENAME,
+			ELETYPE,
+			INSERTTIMESTAMP,
+			UPDATETIMESTAMP,
+			STATUS,PIC,PERIOD)
+			VALUES
+			(#{item.fundid,jdbcType=VARCHAR},
+			#{item.sortno,jdbcType=INTEGER},
+			#{item.title,jdbcType=VARCHAR},
+			#{item.content,jdbcType=VARCHAR},
+			#{item.contenttype,jdbcType=INTEGER},
+			#{item.typename,jdbcType=VARCHAR},
+			#{item.eletype,jdbcType=INTEGER},
+			SYSDATE, SYSDATE,
+			#{item.status,jdbcType=CHAR},
+			#{item.pic,jdbcType=BLOB},
+			#{item.period,jdbcType=NUMERIC})
+		</foreach>
+		SELECT 1 FROM DUAL
+	</insert>
+	<insert id="insertFundQuestion" parameterType="questionDto">
+		call
+		DS_OQP_INSERT_QUESTION(#{fundcode,jdbcType=VARCHAR},#{period,jdbcType=NUMERIC},#{id,jdbcType=VARCHAR},#{wenTi,jdbcType=VARCHAR},#{daAn,jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="addCmwaFund" parameterType="java.util.HashMap">
+		INSERT INTO CMWA_FUND(
+			FUNDID,
+			NAME,
+			ADNAME,
+			ADTEXT,
+			TYPEID,
+			GROUPID,
+			PROFIT,
+			TERMINDAY,
+			TERM,
+			TERMUNIT,
+			PAYMENTINTER,
+			SCALE,
+			MONEY,
+			MONEYSTEP,
+			SALESDATE,
+			SUBDEADLINE,
+			INTERESTDATE,
+			MATURITYDATE,
+			REMAINAMT,
+			STATE,
+			FUNDRISKLEVEL,
+			HIGHRISKEXPLAIN,
+			VENDCHANNELS,
+			MSGDATE,
+			DISPLAYLIMIT,
+			APPOINTDATE,
+			TEMPLETID,
+			INSERTTIMESTAMP,
+			OFFLINELIMIT,
+			ONLINELIMIT,
+			DISORDER,
+			ISHOT,
+			PREFIX,
+			OFFLINESALELIMIT,
+			CREATED_USER,
+			OFFLINEFUND,
+			PERIOD
+		)
+		SELECT 
+			FUNDID,
+			NAME,
+			ADNAME,
+			ADTEXT,
+			TYPEID,
+			GROUPID,
+			PROFIT,
+			TERMINDAY,
+			TERM,
+			TERMUNIT,
+			PAYMENTINTER,
+			SCALE,
+			MONEY,
+			MONEYSTEP,
+			SALESDATE,
+			SUBDEADLINE,
+			INTERESTDATE,
+			MATURITYDATE,
+			REMAINAMT,
+			STATE,
+			FUNDRISKLEVEL,
+			HIGHRISKEXPLAIN,
+			VENDCHANNELS,
+			MSGDATE,
+			DISPLAYLIMIT,
+			APPOINTDATE,
+			TEMPLETID,
+			SYSDATE,
+			OFFLINELIMIT,
+			ONLINELIMIT,
+			DISORDER,
+			ISHOT,
+			PREFIX,
+			OFFLINESALELIMIT,
+			#{operatorId},
+			OFFLINEFUND,
+			PERIOD
+		FROM CMWA_FUND_REVIEW
+		WHERE FUNDID = #{fundid} AND period = #{period}
+	</insert>
+
+
+	<insert id="addFundReview" parameterType="productInfoDto">
+		INSERT INTO
+		CMWA_FUND_REVIEW
+		(FUNDID,
+		NAME,
+		ADNAME,
+		ADTEXT,
+		TYPEID,
+		GROUPID,
+		PROFIT,
+		TERMINDAY,
+		TERM,
+		TERMUNIT,
+		PAYMENTINTER,
+		SCALE,
+		MONEY,
+		MONEYSTEP,
+		SALESDATE,
+		SUBDEADLINE,
+		INTERESTDATE,
+		MATURITYDATE,
+		REMAINAMT,
+		STATE,
+		FUNDRISKLEVEL,
+		HIGHRISKEXPLAIN,
+		VENDCHANNELS,
+		MSGDATE,
+		DISPLAYLIMIT,
+		APPOINTDATE,
+		TEMPLETID,
+		INSERTTIMESTAMP,
+		OFFLINELIMIT,
+		ONLINELIMIT,
+		REVIEW_STATUS,
+		CREATED_BY,
+		DISORDER,
+		ISHOT,
+		PREFIX,
+		OFFLINESALELIMIT,
+		OFFLINEFUND,
+		PERIOD)
+		VALUES
+		(#{funcode},
+		#{name},
+		#{adname},
+		#{adtext},
+		#{typeId,jdbcType=VARCHAR},
+		#{id,jdbcType=NUMERIC},
+		#{profit,jdbcType=NUMERIC},
+		#{theTerm,jdbcType=NUMERIC},
+		#{term},
+		#{termunit},
+		#{paymentinter,jdbcType=NUMERIC},
+		#{scale,jdbcType=NUMERIC},
+		#{money,jdbcType=NUMERIC},
+		#{moneyStep,jdbcType=NUMERIC},
+		#{salesDate},
+		#{subdeadline},
+		#{interestdate},
+		#{maturitydate},
+		#{remainamt,jdbcType=NUMERIC},
+		#{states,jdbcType=CHAR},
+		#{fundriskLevel,jdbcType=NUMERIC},
+		#{highRiskExplain,jdbcType=CLOB},
+		#{vendChannels},
+		#{msgdate},
+		#{displaylimit,jdbcType=NUMERIC},
+		#{appointdate},
+		#{templetid,jdbcType=NUMERIC},
+		SYSDATE,
+		#{offlinelimit,jdbcType=NUMERIC},
+		#{onlinelimit,jdbcType=NUMERIC},
+		'N',
+		#{created_by},
+		#{disorder,jdbcType=NUMERIC},
+		#{isHot,jdbcType=CHAR},
+		#{prefix},
+		#{offlinelimit,jdbcType=NUMERIC},
+		#{offlineFund,jdbcType=VARCHAR},
+			#{period,jdbcType=NUMERIC})
+	</insert>
+
+	<!-- 查看产品详情列表 -->
+	<select id='getFundList' parameterType="sparam"
+		resultType="productInfoDto">
+		SELECT PRO.NAME,
+		PRO.FUNDID as funcode,
+		PRO.TYPEID,
+		PRO.GROUPID,
+		PD.ID AS
+		id,
+		PD.D_NAME AS DNAME,
+		PRO.TERM,
+		PRO.PAYMENTINTER,
+		PRO.TERMUNIT,
+		PRO.TERMINDAY as theTerm,
+		PRO.ISHOT,
+		PRO.DISORDER,
+		PRO.PREFIX,
+		PRO.OFFLINELIMIT,
+		PRO.ONLINELIMIT,
+		PRO.SCALE,
+		PRO.MONEY,
+		PRO.OFFLINEFUND,
+		(CASE
+		WHEN
+		PRO.PROFIT IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(PRO.PROFIT * 100)
+		END) AS PROFIT,
+		PRO.STATE AS states,
+		PRO.ADNAME,
+		PRO.TEMPLETID,
+		(case when PRO.offlinesalelimit>=0 then PRO.offlinesalelimit else 0 end) as offlinesalelimit,
+		PRO.SUSPENSIONLIMIT,
+		TE.TEMPLET_NAME AS TEMPLETNAME,
+		TE.CONTRACTVERSION,
+		PRO.ADTEXT,
+		PRO.FUNDRISKLEVEL,
+		PRO.HIGHRISKEXPLAIN,
+		PRO.VENDCHANNELS,
+		PRO.MSGDATE,
+		(CASE
+		WHEN
+		PRO.APPOINTDATE IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(TO_DATE(PRO.APPOINTDATE,
+		'YYYYMMDD'), 'YYYY-MM-DD')
+		END) AS APPOINTDATE,
+		PRO.DISPLAYLIMIT,
+	(case when PRO.remainamt > 0 then PRO.Remainamt else 0 end) remainamt,
+		PRO.MONEYSTEP,
+		(CASE
+		WHEN PRO.SUBDEADLINE IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(TO_DATE(PRO.SUBDEADLINE, 'YYYYMMDD'), 'YYYY-MM-DD')
+		END) AS
+		SUBDEADLINE,
+		(CASE
+		WHEN PRO.INTERESTDATE IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(TO_DATE(PRO.INTERESTDATE, 'YYYYMMDD'), 'YYYY-MM-DD')
+		END) AS
+		INTERESTDATE,
+		(CASE
+		WHEN PRO.SALESDATE IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(TO_DATE(PRO.SALESDATE, 'YYYYMMDD'), 'YYYY-MM-DD')
+		END) AS
+		SALESDATE,
+		(CASE
+		WHEN PRO.MATURITYDATE IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(TO_DATE(PRO.MATURITYDATE, 'YYYYMMDD'), 'YYYY-MM-DD')
+		END) AS
+		MATURITYDATE,
+		IBF_GET_LASTNWORKDAY2(PRO.SALESDATE, 1, '') AS
+		APPOINTENDDATE,
+		IBF_GET_CURRENT_WORKDATE(decode(PRO.STATE,
+		'0',
+		'022',
+		'1',
+		'020',
+		'XXX')) AS currentWorkdate， (SELECT T.TITLE
+		FROM
+		CMWA_FUNDELEMENT T
+		WHERE T.FUNDID =
+		PRO.FUNDID AND T.PERIOD = PRO.PERIOD
+		AND T.SORTNO = '1'
+		AND
+		T.ELETYPE =
+		'220'
+		AND T.STATUS = 'Y') AS TEXTTITLE1,
+		(SELECT T.TITLE
+		FROM
+		CMWA_FUNDELEMENT T
+		WHERE T.FUNDID = PRO.FUNDID AND T.PERIOD = PRO.PERIOD
+		AND T.SORTNO = '2'
+		AND
+		T.ELETYPE = '220'
+		AND T.STATUS = 'Y') AS TEXTTITLE2,
+		(SELECT T.TITLE
+		FROM CMWA_FUNDELEMENT T
+		WHERE T.FUNDID = PRO.FUNDID AND T.PERIOD = PRO.PERIOD
+		AND T.SORTNO = '3'
+		AND T.ELETYPE = '220'
+		AND T.STATUS = 'Y') AS TEXTTITLE3,
+		(SELECT
+		T.CONTENT
+		FROM CMWA_FUNDELEMENT T
+		WHERE T.FUNDID = PRO.FUNDID AND T.PERIOD = PRO.PERIOD
+		AND	
+		T.SORTNO = '1'
+		AND T.ELETYPE = '220'
+		AND T.STATUS = 'Y') AS
+		TEXTCONTENT1,
+		(SELECT T.CONTENT
+		FROM CMWA_FUNDELEMENT T
+		WHERE T.FUNDID =
+		PRO.FUNDID 	AND T.PERIOD = PRO.PERIOD
+		AND T.SORTNO = '2'
+		AND T.ELETYPE = '220'
+		AND T.STATUS = 'Y')
+		AS TEXTCONTENT2,
+		(SELECT T.CONTENT
+		FROM CMWA_FUNDELEMENT T
+		WHERE T.FUNDID
+		= PRO.FUNDID AND T.PERIOD = PRO.PERIOD
+		AND T.SORTNO = '3'
+		AND T.ELETYPE = '220'
+		AND T.STATUS = 'Y')
+		AS TEXTCONTENT3,
+		PRO.PERIOD
+		FROM CMWA_FUND PRO, CMWA_PRODUCT_DEPARTMENT PD,
+		CONTRACT_TEMPLETS TE
+		WHERE PRO.GROUPID = PD.ID(+)
+		AND PRO.TEMPLETID =
+		TE.TEMPLET_ID(+)
+		AND LENGTH(PRO.FUNDID) = '6'
+		<if test=" sp.fundid !=null and sp.fundid !=''  ">
+			AND PRO.FUNDID =#{sp.fundid}
+		</if>
+		<if test=" sp.period >= 1   ">
+			AND PRO.period =#{sp.period}
+		</if>
+		<if test=" sp.funcode !=null and sp.funcode !=''  ">
+			AND PRO.FUNDID  LIKE CONCAT(CONCAT('%', #{sp.funcode}),'%') 
+		</if>
+		<if test="sp.dname !=null and sp.dname !='' ">
+			AND PRO.ADNAME LIKE CONCAT(CONCAT('%', #{sp.dname}),'%') 
+		</if>
+		<if test="sp.state !=null and sp.state!='' ">
+			<if test="sp.state='Y' ">
+			AND STATE IN ('0','1')
+			</if>
+		</if>
+		order by PRO.UPDATETIMESTAMP desc,PRO.INSERTTIMESTAMP desc
+	</select>
+	
+	
+	<select id='getFundListTotal' parameterType="sparam"
+		resultType="int">
+		SELECT COUNT(*)
+		FROM CMWA_FUND PRO, CMWA_PRODUCT_DEPARTMENT PD,
+		CONTRACT_TEMPLETS TE
+		WHERE PRO.GROUPID = PD.ID(+)
+		AND PRO.TEMPLETID =
+		TE.TEMPLET_ID(+)
+		AND LENGTH(PRO.FUNDID) = '6'
+		<if test=" sp.fundid !=null and sp.fundid !=''  ">
+			AND PRO.FUNDID LIKE CONCAT(CONCAT('%', #{sp.fundid}),'%')
+		</if>
+		<if test="sp.dname !=null and sp.dname !='' ">
+			AND PRO.ADNAME LIKE CONCAT(CONCAT('%', #{sp.dname}),'%') 
+		</if>
+		<if test="sp.state !=null and sp.state!='' ">
+			<if test="sp.state='Y' ">
+			AND STATE IN ('0','1')
+			</if>
+		</if>
+	</select>
+	
+	
+	<!-- 查看客服代下单产品详情列表 -->
+	<select id='getOrderFundList' parameterType="sparam"
+		resultType="productInfoDto">
+		SELECT CONCAT(PRO.FUNDID,PRO.PERIOD) as keyvalue,PRO.NAME,
+		PRO.FUNDID as funcode,
+		PRO.TYPEID,
+		PRO.GROUPID,
+		PD.ID AS
+		id,
+		PD.D_NAME AS DNAME,
+		PRO.TERM,
+		PRO.PAYMENTINTER,
+		PRO.TERMUNIT,
+		PRO.TERMINDAY as theTerm,
+		PRO.ISHOT,
+		PRO.DISORDER,
+		PRO.PREFIX,
+		PRO.OFFLINELIMIT,
+		PRO.ONLINELIMIT,
+		PRO.SCALE,
+		PRO.MONEY,
+		PRO.period,
+		(CASE
+		WHEN
+		PRO.PROFIT IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(PRO.PROFIT * 100)
+		END) AS PROFIT,
+		PRO.STATE AS states,
+		PRO.ADNAME,
+		PRO.TEMPLETID,
+		PRO.OFFLINESALELIMIT,
+		PRO.SUSPENSIONLIMIT,
+		TE.TEMPLET_NAME AS TEMPLETNAME,
+		TE.CONTRACTVERSION,
+		PRO.ADTEXT,
+		PRO.FUNDRISKLEVEL,
+		PRO.MSGDATE,
+		(CASE
+		WHEN
+		PRO.APPOINTDATE IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(TO_DATE(PRO.APPOINTDATE,
+		'YYYYMMDD'), 'YYYY-MM-DD')
+		END) AS APPOINTDATE,
+		PRO.DISPLAYLIMIT,
+		(case when PRO.remainamt > 0 then PRO.Remainamt else 0 end) remainamt,
+		PRO.MONEYSTEP,
+		(CASE
+		WHEN PRO.SUBDEADLINE IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(TO_DATE(PRO.SUBDEADLINE, 'YYYYMMDD'), 'YYYY-MM-DD')
+		END) AS
+		SUBDEADLINE,
+		(CASE
+		WHEN PRO.INTERESTDATE IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(TO_DATE(PRO.INTERESTDATE, 'YYYYMMDD'), 'YYYY-MM-DD')
+		END) AS
+		INTERESTDATE,
+		(CASE
+		WHEN PRO.SALESDATE IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(TO_DATE(PRO.SALESDATE, 'YYYYMMDD'), 'YYYY-MM-DD')
+		END) AS
+		SALESDATE,
+		(CASE
+		WHEN PRO.MATURITYDATE IS NULL THEN
+		''
+		ELSE
+		TO_CHAR(TO_DATE(PRO.MATURITYDATE, 'YYYYMMDD'), 'YYYY-MM-DD')
+		END) AS
+		MATURITYDATE,
+		IBF_GET_LASTNWORKDAY2(PRO.SALESDATE, 1, '') AS
+		APPOINTENDDATE,
+		IBF_GET_CURRENT_WORKDATE(decode(PRO.STATE,
+		'0',
+		'022',
+		'1',
+		'020',
+		'XXX')) AS currentWorkdate， (SELECT T.TITLE
+		FROM
+		CMWA_FUNDELEMENT T
+		WHERE T.FUNDID =
+		PRO.FUNDID AND T.PERIOD=PRO.PERIOD
+		AND T.SORTNO = '1' 
+		AND
+		T.ELETYPE =
+		'220'
+		AND T.STATUS = 'Y') AS TEXTTITLE1,
+		(SELECT T.TITLE
+		FROM
+		CMWA_FUNDELEMENT T
+		WHERE T.FUNDID = PRO.FUNDID AND T.PERIOD=PRO.PERIOD
+		AND T.SORTNO = '2'
+		AND
+		T.ELETYPE = '220'
+		AND T.STATUS = 'Y') AS TEXTTITLE2,
+		(SELECT T.TITLE
+		FROM CMWA_FUNDELEMENT T
+		WHERE T.FUNDID = PRO.FUNDID AND T.PERIOD=PRO.PERIOD
+		AND T.SORTNO = '3'
+		AND T.ELETYPE = '220'
+		AND T.STATUS = 'Y') AS TEXTTITLE3,
+		(SELECT
+		T.CONTENT
+		FROM CMWA_FUNDELEMENT T
+		WHERE T.FUNDID = PRO.FUNDID AND T.PERIOD=PRO.PERIOD
+		AND
+		T.SORTNO = '1'
+		AND T.ELETYPE = '220'
+		AND T.STATUS = 'Y') AS
+		TEXTCONTENT1,
+		(SELECT T.CONTENT
+		FROM CMWA_FUNDELEMENT T
+		WHERE T.FUNDID =
+		PRO.FUNDID	AND T.PERIOD=PRO.PERIOD
+		AND T.SORTNO = '2'
+		AND T.ELETYPE = '220'
+		AND T.STATUS = 'Y')
+		AS TEXTCONTENT2,
+		(SELECT T.CONTENT
+		FROM CMWA_FUNDELEMENT T
+		WHERE T.FUNDID
+		= PRO.FUNDID	AND T.PERIOD=PRO.PERIOD
+		AND T.SORTNO = '3'
+		AND T.ELETYPE = '220'
+		AND T.STATUS = 'Y')
+		AS TEXTCONTENT3
+		FROM CMWA_FUND PRO, CMWA_PRODUCT_DEPARTMENT PD,
+		CONTRACT_TEMPLETS TE
+		WHERE PRO.GROUPID = PD.ID(+)
+		AND PRO.TEMPLETID =
+		TE.TEMPLET_ID(+)
+		AND LENGTH(PRO.FUNDID) = '6'
+		<if test=" sp.fundid !=null and sp.fundid !=''  ">
+			AND PRO.FUNDID =#{sp.fundid}
+		</if>
+		<if test="sp.dname !=null and sp.dname !='' ">
+			AND PRO.ADNAME LIKE CONCAT(CONCAT('%', #{sp.dname}),'%')
+		</if>
+		<if test="sp.state !=null and sp.state='Y' ">
+			AND STATE IN ('0','1')
+		</if>
+		order by PRO.INSERTTIMESTAMP desc
+	</select>
+	<select id='getOrderFundListTotal' parameterType="sparam"
+		resultType="int">
+		SELECT COUNT(*)
+		FROM CMWA_FUND PRO, CMWA_PRODUCT_DEPARTMENT PD,
+		CONTRACT_TEMPLETS TE
+		WHERE PRO.GROUPID = PD.ID(+)
+		AND PRO.TEMPLETID =
+		TE.TEMPLET_ID(+)
+		AND LENGTH(PRO.FUNDID) = '6'
+		<if test=" sp.fundid !=null and sp.fundid !=''  ">
+			AND PRO.FUNDID LIKE CONCAT(CONCAT('%', #{sp.fundid}),'%')
+		</if>
+		<if test="sp.dname !=null and sp.dname !='' ">
+			AND PRO.ADNAME LIKE CONCAT(CONCAT('%', #{sp.dname}),'%') 
+		</if>
+		<if test="sp.state !=null and sp.state='Y' ">
+			AND STATE IN ('0','1')
+		</if>
+		<if test="sp.custName !=null and sp.custName!='' ">
+			AND PRO.FUNDID IN(
+			SELECT
+		    APPS.FUNDID 
+		    FROM
+		    CMWA_FUND PRS
+		    INNER JOIN APPOINTREQUEST APPS
+		    ON (PRS.FUNDID = APPS.FUNDID)
+		    INNER JOIN CUSTINFO CUS
+		    ON (APPS.CUSTNO = CUS.CUSTNO)
+		    WHERE APPS.PAYST = '0'
+				AND APPS.APPLYST = 'R'
+				AND APPS.CHANNELID = '04'
+				AND APPS.TRANSST = 'N'
+				AND
+				APPS.APKIND IN ('820', '822', '722', '720')
+				AND CUS.INVNM  LIKE CONCAT(CONCAT('%', #{sp.custName}),'%')
+			)
+		</if>
+	</select>
+
+	<select id="getCmwaFundCount" parameterType="sparam"
+		resultType="int">
+		SELECT COUNT(*) FROM CMWA_FUND PRO WHERE 1=1
+		<if test=" sp.fundid !=null and sp.fundid !=''  ">
+			AND PRO.FUNDID = #{sp.fundid}
+		</if>
+		<if test="sp.dname !=null and sp.dname !='' ">
+			AND PRO.ADNAME = #{sp.dname}
+		</if>
+		<if test="sp.period !=null ">
+			AND PRO.period = #{sp.period,jdbcType=NUMERIC}
+		</if>
+	</select>
+
+	<update id="updateProductReview" parameterType="productInfoDto">
+		UPDATE
+		CMWA_FUND_REVIEW
+		SET NAME = #{name,jdbcType=VARCHAR},
+		ADNAME = #{adname,jdbcType=VARCHAR},
+		ADTEXT =
+		#{adtext,jdbcType=VARCHAR},
+		TYPEID = #{typeId,jdbcType=VARCHAR},
+		GROUPID = #{id,jdbcType=NUMERIC},
+		PROFIT =
+		#{profit,jdbcType=NUMERIC},
+		TERMINDAY = #{theTerm,jdbcType=NUMERIC},
+		TERM = #{term},
+		TERMUNIT = #{termunit},
+		PAYMENTINTER =
+		#{paymentinter,jdbcType=NUMERIC},
+		SCALE = #{scale,jdbcType=NUMERIC},
+		MONEY = #{money,jdbcType=NUMERIC},
+		MONEYSTEP =
+		#{moneyStep,jdbcType=NUMERIC},
+		SALESDATE =
+		#{salesDate,jdbcType=NUMERIC},
+		SUBDEADLINE = #{subdeadline},
+		INTERESTDATE = #{interestdate},
+		MATURITYDATE = #{maturitydate},
+		REMAINAMT = #{remainamt,jdbcType=NUMERIC},
+		STATE =
+		#{states,jdbcType=CHAR},
+		FUNDRISKLEVEL = #{fundriskLevel,jdbcType=NUMERIC},
+		HIGHRISKEXPLAIN = #{highRiskExplain,jdbcType=CLOB},
+		VENDCHANNELS = #{vendChannels},
+		MSGDATE = #{msgdate},
+		DISPLAYLIMIT =
+		#{displaylimit,jdbcType=NUMERIC},
+		APPOINTDATE = #{appointdate},
+		TEMPLETID = #{templetid,jdbcType=NUMERIC},
+		UPDATETIMESTAMP = SYSDATE,
+		OFFLINELIMIT =
+		#{offlinelimit,jdbcType=NUMERIC},
+		ONLINELIMIT =
+		#{onlinelimit,jdbcType=NUMERIC},
+		REVIEW_STATUS = 'N',
+		REVIEW_BY =
+		#{created_by},
+		DISORDER = #{disorder,jdbcType=NUMERIC},
+		ISHOT =
+		#{isHot,jdbcType=CHAR},
+		PREFIX = #{prefix},
+		OFFLINESALELIMIT =
+		#{offlinelimit,jdbcType=NUMERIC},
+		OFFLINEFUND=
+		#{offlineFund,jdbcType=VARCHAR},
+		PERIOD=#{period,jdbcType=NUMERIC}
+		WHERE FUNDID = #{funcode}
+		<if test="oldPeriod > 0">
+			AND PERIOD = #{oldPeriod}
+		</if>
+	</update>
+
+	<update id="updateFundDetail" parameterType="productInfoDto">
+		UPDATE CMWA_FUND
+		SET
+		NAME = #{name},
+		ADNAME = #{adname},
+		ADTEXT = #{adtext},
+		TYPEID =
+		#{typeId,jdbcType=VARCHAR},
+		GROUPID = #{id,jdbcType=NUMERIC},
+		PROFIT =
+		#{profit,jdbcType=NUMERIC},
+		TERMINDAY = #{theTerm,jdbcType=NUMERIC},
+		TERM = #{term},
+		TERMUNIT = #{termunit},
+		PAYMENTINTER =
+		#{paymentinter,jdbcType=NUMERIC},
+		SCALE = #{scale,jdbcType=NUMERIC},
+		MONEY = #{money,jdbcType=NUMERIC},
+		MONEYSTEP =
+		#{moneyStep,jdbcType=NUMERIC},
+		SALESDATE =
+		#{salesDate,jdbcType=NUMERIC},
+		SUBDEADLINE = #{subdeadline},
+		INTERESTDATE = #{interestdate},
+		MATURITYDATE = #{maturitydate},
+		REMAINAMT = #{remainamt,jdbcType=NUMERIC},
+		STATE =
+		#{states,jdbcType=CHAR},
+		FUNDRISKLEVEL =
+		#{fundriskLevel,jdbcType=NUMERIC},
+		HIGHRISKEXPLAIN = #{highRiskExplain,jdbcType=CLOB},
+		VENDCHANNELS = #{vendChannels},
+		MSGDATE = #{msgdate},
+		DISPLAYLIMIT =
+		#{displaylimit,jdbcType=NUMERIC},
+		APPOINTDATE = #{appointdate},
+		TEMPLETID = #{templetid,jdbcType=NUMERIC},
+		UPDATETIMESTAMP = SYSDATE,
+		OFFLINELIMIT =
+		#{offlinelimit,jdbcType=NUMERIC},
+		ONLINELIMIT =
+		#{onlinelimit,jdbcType=NUMERIC},
+		UPDATED_USER = #{created_by},
+		DISORDER
+		= #{disorder,jdbcType=NUMERIC},
+		ISHOT = #{isHot,jdbcType=CHAR},
+		PREFIX =
+		#{prefix},
+		OFFLINESALELIMIT = #{offlinesalelimit,jdbcType=NUMERIC},
+		OFFLINEFUND=
+		#{offlineFund,jdbcType=VARCHAR},
+		PERIOD=#{period,jdbcType=NUMERIC}
+		WHERE FUNDID = #{funcode}
+		<if test="oldPeriod >0 ">
+			AND PERIOD = #{oldPeriod}
+		</if>
+	</update>
+
+	<resultMap type="fundEstimateDto"
+		id="fundEstimateDto">
+		<result property="funcode" column="funcode" />
+		<result property="estimateDate" column="estimate_date"
+			/>
+		<result property="theDate" column="the_date" />
+		<result property="netValue" column="net_value" jdbcType='NUMERIC' />
+		<result property="accNetValue" column="acc_net_value" jdbcType='NUMERIC' />
+	</resultMap>
+
+
+	<select id="queryFundEstimateList" parameterType="sparam"
+		resultMap="fundEstimateDto">
+		select funcode,
+		TO_CHAR(estimate_date, 'YYYY-MM-DD') as estimate_date,
+		TO_CHAR(the_date, 'YYYY-MM-DD') as the_date
+		,to_char(net_value,'fm9999999990.0000') as
+		net_value ,to_char(acc_net_value,'fm9999999990.0000') as acc_net_value
+		from CMWA_PRODUCT_ESTIMATE
+		where 1=1
+		<if test="null!=sp.fundid and ''!=sp.fundid">
+			AND funcode = #{sp.fundid}
+		</if>
+		<if test="null!=sp.estimateDate and ''!=sp.estimateDate">
+			AND estimate_date=TO_DATE(#{sp.estimateDate},'yyyy-mm-dd
+			hh24:mi:ss')
+		</if>
+		order by estimate_date desc
+	</select>
+	<select id="getMatchFundEstimateList" parameterType="String"
+		resultMap="fundEstimateDto">
+		select distinct funcode
+		from CMWA_PRODUCT_ESTIMATE
+		<if test="null != funcode and  ''!=funcode">
+	    WHERE funcode LIKE CONCAT(CONCAT('%', #{funcode}),'%') 
+		</if>
+	</select>
+	<select id="getFundEstimateCount" parameterType="sparam"
+		resultType="int">
+		select count(*)
+		from CMWA_PRODUCT_ESTIMATE a
+		where 1=1
+		<if test="null!=sp.fundid and ''!=sp.fundid">
+			AND funcode = #{sp.fundid}
+		</if>
+	</select>
+
+	<update id="updateFundEstimate" parameterType="fundEstimateDto">
+		UPDATE
+		CMWA_PRODUCT_ESTIMATE
+		SET estimate_date
+		=TO_DATE(#{estimateDate},'yyyy-mm-dd hh24:mi:ss'),
+		the_date =
+		TO_DATE(#{theDate},'yyyy-mm-dd hh24:mi:ss'),
+		net_value =
+		#{netValue,jdbcType = NUMERIC},
+		acc_net_value=#{accNetValue, jdbcType =
+		NUMERIC},
+		UPDATED_USER = #{updatedUser},
+		UPDATED_DATE = SYSDATE
+		WHERE
+		FUNCODE = #{funcode} AND estimate_date=TO_DATE(#{oldTheDate},'yyyy-mm-dd
+		hh24:mi:ss')
+	</update>
+	<update id="addFundEstimate" parameterType="fundEstimateDto">
+		INSERT INTO
+		CMWA_PRODUCT_ESTIMATE
+		(FUNCODE,
+		THE_DATE,
+		ESTIMATE_DATE,
+		NET_VALUE,
+		ACC_NET_VALUE,
+		CREATED_USER,
+		CREATED_DATE,
+		UPDATED_USER,
+		UPDATED_DATE)
+		VALUES(
+		#{funcode,jdbcType=VARCHAR},
+		TO_DATE(#{theDate},'yyyy-mm-dd hh24:mi:ss'),
+		TO_DATE(#{estimateDate},'yyyy-mm-dd hh24:mi:ss'),
+		#{netValue,jdbcType=NUMERIC},
+		#{accNetValue, jdbcType =NUMERIC},
+		#{createdUser,jdbcType=VARCHAR},
+		SYSDATE,
+		#{updatedUser,jdbcType=VARCHAR},
+		SYSDATE
+		)
+
+	</update>
+
+	<delete id="deleteFundEstimate" parameterType="String">
+		DELETE FROM
+		CMWA_PRODUCT_ESTIMATE WHERE FUNCODE=#{funcode} AND
+		estimate_date=TO_DATE(#{estimateDate},'yyyy-mm-dd hh24:mi:ss')
+	</delete>
+
+	<select id="getFundInfoList" resultType="productInfoDto">
+		SELECT FUND.FUNDID AS
+		funcode, FUND.FUNDNM AS name
+		FROM (SELECT F1.FUNDID,
+		F1.FUNDNM,
+		TO_CHAR(F1.INSERTTIMESTAMP, 'YYYYMMDD HH24:MI:SS ') AS INSERTDATE
+		FROM
+		FUNDINFO F1
+		WHERE F1.FUNDST IN ('0', '1', 'q', 'p')
+		UNION ALL
+		SELECT
+		F2.FUNDID,
+		F2.NAME AS FUNDNM,
+		TO_CHAR(TO_DATE(F2.INTERESTDATE,
+		'YYYY-MM-DD HH24:MI:SS'),
+		'YYYYMMDD HH24:MI:SS') AS INSERTDATE
+		FROM
+		CMWA_FUND F2
+		WHERE F2.STATE IN ('0', '1', 'q', 'p')) FUND
+		<if test="null != funcode and  ''!=funcode">
+			WHERE FUND.FUNDID LIKE CONCAT(CONCAT('%', #{sp.funcode}),'%') 
+		</if>
+		<if test="null != funcode and  ''!=funcode">
+			OR FUND.FUNDNM LIKE CONCAT(CONCAT('%', #{funcode}),'%') 
+		</if>
+		ORDER BY
+		FUND.INSERTDATE DESC NULLS LAST
+		
+	</select>
+	
+	<select id="getFunType" parameterType="String" resultType="productInfoDto">
+		SELECT FUNDID AS funcode
+		FROM CMWA_FUND WHERE TYPEID in ('0210','0220','0110')
+		<if test="null != funcode and  ''!=funcode">
+			AND FUNDID LIKE CONCAT(CONCAT('%', #{funcode}),'%') 
+		</if>
+	</select>
+	
+	
+	
+	<select id="getMatchEleContractFundInfo"  parameterType="String" resultType="productInfoDto">
+		SELECT distinct FUND.FUNDID AS funcode, FUND.FUNDNM AS　name
+		  FROM (SELECT F1.FUNDID,
+		               F1.FUNDNM,
+		               TO_CHAR(F1.INSERTTIMESTAMP, 'YYYYMMDD HH24:MI:SS ') AS INSERTDATE
+		          FROM FUNDINFO F1
+		         WHERE F1.FUNDST IN ('0', '1', 'q', 'p')
+		        UNION ALL
+		        SELECT F2.FUNDID,
+		               F2.NAME AS FUNDNM,
+		               TO_CHAR(TO_DATE(F2.INTERESTDATE, 'YYYY-MM-DD HH24:MI:SS'),
+		                       'YYYYMMDD HH24:MI:SS') AS INSERTDATE
+		          FROM CMWA_FUND F2
+		         WHERE F2.STATE IN ('0', '1', 'q', 'p')) FUND
+		         <if test="null != funcode and  ''!=funcode">
+					WHERE FUND.FUNDNM LIKE CONCAT(CONCAT('%', #{funcode}),'%') 
+				</if>
+	</select>
+	<select id="queryFundElement" parameterType="String" resultType="fundElementDto">
+			select F.*,(case when eletype='110' then '小标题'    when eletype='120' then '大标题' when eletype='230' then 'PC图片' 
+			when eletype='240' then 'WX图片' end) as eletypeText  from CMWA_FUNDELEMENT F where  
+			fundid=#{fundid} and 
+			<if test=" type ==1 ">
+				eletype in('110','120','230','240')
+			</if>
+			<if test=" type==2 ">
+				eletype in('230','240')
+			</if>
+			<if test=" period!=null">
+				AND F.period= #{period}
+			</if>			
+	</select>
+	<select id="test" resultType="fundElementDto">
+			SELECT 	  T1.TITLE,
+				  T1.CONTENT,
+				  T1.CONTENTTYPE,
+				  T1.TYPENAME,
+				  T1.ELETYPE,
+				  T1.PIC
+		  FROM CMWA_FUNDELEMENT T1
+		 WHERE 1=1
+		   AND T1.FUNDID =#{fundid}
+		   AND T1.STATUS = 'Y'
+	    ORDER BY ELETYPE, SORTNO
+	</select>
+	<select id="getFundElementPng"  resultType="fundElementDto">
+			select F.*,(case when eletype='110' then '小标题'    when eletype='120' then '大标题' when eletype='230' then 'PC图片' 
+			when eletype='240' then 'WX图片' end) as eletypeText  from CMWA_FUNDELEMENT F where  
+			fundid=#{fundid} and  eletype=#{eletype,jdbcType=INTEGER} and sortno=#{sortno,jdbcType=INTEGER}
+	</select>
+	<select id="getFundWithSell" resultType="productInfoDto">
+		  select  FUNDID as funcode from cmwa_fund where typeId='0110' 
+	</select>
+	<resultMap type="tradeOrderDto" id="TradeOrderMap">
+		<result property="idtp" column="idtp" />
+		<result property="idno" column="idno" />
+		<result property="custName" column="invnm" />
+		<result property="fundid" column="fundid" />
+		<result property="fundname" column="name" />
+		<result property="subamt" column="subamt" />
+		<result property="mobileNo" column="mobileno" />
+		<result property="typeId" column="typeId" />
+		<result property="custNo" column="custno" />
+		<result property="serialno" column="serialno" />
+		<result property="period" column="period" />
+		<result property="oldappno" column="oldappno" />
+	</resultMap>
+	
+	<!-- 查看产品详情列表 -->
+	<select id='getDsFundInfoList' parameterType="sparam" resultType="productInfoDto">
+		SELECT FUNDID AS funcode , FUNDNM AS name
+		  FROM FUNDINFO
+		 WHERE FUNDID NOT IN (SELECT PMCO FROM PARAMETER WHERE PMST = 'SYSTEM' AND PMKY = 'UNFUNDID')
+		 <if test=" sp.fundid !=null and sp.fundid !=''  ">
+			AND FUNDID =#{sp.fundid}
+		</if>
+		 ORDER BY DISPLAYORDER ASC
+	</select>
+</mapper>

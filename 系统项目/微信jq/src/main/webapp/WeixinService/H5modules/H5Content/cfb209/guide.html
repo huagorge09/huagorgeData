@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>招商财富-固收王者财富宝</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/cfb209/cfb.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-init.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/flexible.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+
+
+</head>
+<body class="guide">
+<div class="wrapper" style="background-color: #230200;">
+	 <div class="banner bannerTwo"></div>
+	 <div class="productList">
+ 		<div class="pr pr1">
+ 			  <h1>固收王者 财富宝+</h1>
+ 			  <h2 style="height: .4rem;"></h2>
+ 			  <p class="time">认购期：截止 <span id="subdeadLineA"></span></p>
+ 			  <ul style="padding-bottom: 0.2rem;">
+ 			  	<li>
+ 			  		<p>登录可见</p>
+ 			  		<p>业绩报酬计提基准</p>
+ 			  	</li>
+ 			  	<li>
+ 			  		<p><span>9.5</span>个月</p>
+ 			  		<p>产品期限</p>
+ 			  	</li>
+ 			  </ul>
+               <a href="javascript:seeProduct()" class="see">登录可见详情</a>
+               <div style="font-size: 0.2rem;width: 100%;margin: 0 auto;color:#d86147;padding-top: 0.1rem;">*投资有风险，本产品风险等级为R3中风险，适合风险承受能力C3 及以上的投资者。</div>
+ 		</div>
+
+     </div>
+     <!----->
+     <div class="productList">
+        <div class="pr pr12">
+            <p style="width:100%;height:0.01rem;"></p>
+              <h1>固收理财就选财富宝</h1>
+              <h2 style="height: .4rem;"></h2>
+              <p class="time">开放期：2019年05月29日</p>
+              <ul style="padding-bottom: 0.2rem;">
+                  <li>
+                      <p>登录可见</p>
+                      <p>业绩报酬计提基准</p>
+                  </li>
+                  <li>
+                      <p><span>126</span>天</p>
+                      <p>产品期限</p>
+                  </li>
+              </ul>
+              <a href="javascript:seeProduct()" class="see">登录可见详情</a>
+              <div style="font-size: 0.2rem;width: 100%;margin: 0 auto;color: #d86147;padding-top: 0.1rem;">*投资有风险，本产品风险等级为R2中低风险，适合风险承受能力C2 及以上的投资者。</div>
+        </div>
+
+    </div>
+     <!------>
+	 <div class="exp">
+	 </div>
+</div>
+<div class="bottom clearFloat">
+    <a href="javascript:;" onclick="bussiness();" id="myBtn1">我感兴趣</a>
+    <a href="javascript:;" onclick="myAdviser();" id="myBtn2">我的顾问</a>
+</div>
+
+<!--预约信息填写-->
+<div class="cover-bg reserves hide">
+    <div class="content">
+        <span class="close"></span>
+        <h1>一键预约享专属服务<br>让投资无后顾之忧</h1>
+        <h3>我们的专属顾问将24小时内给您回电</h3>
+        <div class="form">
+            <ul>
+                <li>
+                    <div class="inputBox">
+                        <span></span> <input type="text" id="userName" name="userName" placeholder="请输入您的姓名"/>
+                    </div>
+                    <p style="display: none;"></p>
+                </li>
+                <li class="foucs">
+                    <div class="inputBox">
+                        <span></span> <input type="tel" id="mobilePhone" name="mobilePhone" maxlength="11"
+                                             placeholder="请输入您的手机号码"/>
+                    </div>
+                    <p style="display: none;"></p>
+                </li>
+
+            </ul>
+            <button id="saveBtn" class="disabled">立即提交</button>
+        </div>
+    </div>
+</div>
+<!-- 错误提示 -->
+<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+    <span id="errorRemark"></span>
+</div>
+<!--预约成功-->
+<div class="cover-bg success hide">
+    <div class="content center">
+        <span class="close"></span>
+        <div class="successIcon"></div>
+        <h2>预约成功</h2>
+        <p>客户经理将尽快与您联系，请保持电话畅通</p>
+    </div>
+</div>
+<style>
+	.pr1 {
+	    width: 100%;
+	    height: 5.36rem;
+	    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb209/DL03_02.jpg) no-repeat;
+	    background-size: 100% 100%;
+	}
+</style>
+<script>
+    var pageId="wx_cfb209_guidePageId"
+</script>
+
+
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/cfb209/index.js"></script>
+</body>
+</html>

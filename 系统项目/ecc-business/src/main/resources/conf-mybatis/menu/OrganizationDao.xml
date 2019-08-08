@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.menu.OrganizationDao">
+	
+	<resultMap type="organizationVo" id="organizationVo">
+		<result column="REORGID" property="reOrgId"/>
+		<result column="REORGNAME" property="reOrgName"/>
+		<result column="ORGID" property="orgId"/>
+		<result column="ORGNAME" property="orgName"/>
+		<result column="TITLEID" property="titleId"/>
+		<result column="TITLENAME" property="titleName"/>
+	</resultMap>
+
+	
+	<select id="queryOrganizationListByParentId" parameterType="String" resultMap="organizationVo">
+	   SELECT A.REORGID   AS REORGID ,
+	          A.REORGNAME AS REORGNAME,
+	          A.ORGID ORGID,
+	          A.ORGNAME ORGNAME 
+		 FROM T_ECC_ORRELA A
+		WHERE A.STAT='STAR' 
+		  <if test="parentId !=null and parentId !='' ">
+		    AND  A.REORGID=#{parentId}
+		  </if>
+		  <if test='parentId !=null and parentId !="0" '>
+		  	ORDER BY A.ORGID DESC
+		  </if>
+	</select>
+	
+	
+	
+	<select id="queryStationListByOrgId" parameterType="String" resultMap="organizationVo">
+	     SELECT B.ORGID, B.TITLEID, B.TITLENAME
+	        FROM T_ECC_ORMEMBER B
+	       WHERE B.STAT = 'STAR'
+		  <if test="orgId !=null and orgId !='' ">
+		    AND  B.ORGID=#{orgId}
+		  </if>
+	       GROUP BY B.ORGID, B.TITLEID, B.TITLENAME
+	       ORDER BY B.ORGID DESC, B.TITLEID
+	</select>
+	
+	
+	<select id="queryOrgByEmpId" parameterType="String" resultMap="organizationVo">
+	  SELECT
+		  A.ORGID   AS ORGID,
+		  A.ORGNAME AS ORGNAME,
+		  C.EMPID,
+		  C.EMNAME
+		FROM T_ECC_ORRELA A,
+		  T_ECC_ORMEMBER C, T_ECC_EMPLOYEE EMP
+		WHERE C.ORGID = A.ORGID AND EMP.EMPID = C.EMPID AND A.STAT = 'STAR' AND EMP.STAT = 'STAR' AND C.STAT = 'STAR'
+		 <if test="empId !=null and empId!='' ">
+			 AND EMP.EMPID=#{empId}
+		 </if>
+	</select>
+</mapper>

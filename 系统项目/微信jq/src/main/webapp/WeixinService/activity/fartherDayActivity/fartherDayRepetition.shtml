@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>父亲节活动-已经领取过</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/activity.css">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/swiper.min.css">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/swiper.min.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+</head>
+<body>
+	<!--#include virtual="/WeixinService/headerOrFooter/otherHeader.shtml"-->
+	<div class="href success page">
+		<img src="/WeixinWeb/WeixinWeb_Images/activity/podium.jpg" alt="" class="big">
+		<div class="number">
+			<span><label for="">奖券号1：</label><em id="ticket1"></em></span> 
+			<span><label for="">奖券号2：</label><em id="ticket2"></em></span>
+		</div>
+	</div>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/fartherDayRepetition.min.js"></script>
+</body>
+</html>

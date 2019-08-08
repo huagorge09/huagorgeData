@@ -1,0 +1,38 @@
+package com.cmwa.ecc.business.utils;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+public class ContextHolderUtil {
+	/**
+	 * SpringMvc下获取request
+	 * 
+	 * @return
+	 */
+	public static HttpServletRequest getRequest() {
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		return request;
+	}
+
+	/**
+	 * SpringMvc下获取session
+	 * 
+	 * @return
+	 */
+	public static HttpSession getSession() {
+		HttpSession session = getRequest().getSession();
+		return session;
+	}
+
+	/**
+	 * 获取ServeltContext
+	 * @return
+	 */
+	public static ServletContext getServletContext() {
+		return getSession().getServletContext();
+	}
+}

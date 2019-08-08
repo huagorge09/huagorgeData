@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.SharePageInfoDao">
+
+	<select id="queryAllPage" resultType="com.cmwa.ec.weixin.dto.SharePageInfoDto">
+		select  PAGECODE as pageCode,
+				SUBCODE as subCode, 
+				SHARETITLE as shareTitle,   
+				SHAREPAGEDESC as sharePageDesc, 
+				SHAREPAGEIMGURL as sharePageImgUrl,
+				SHAREPAGEURL as sharePageUrl,
+				SHAREPAGETYPE as sharePageType,
+				PAGETYPE as pageType,
+				ISSHARE as isShare,
+				STATUS as status,
+				TO_CHAR(INSERTTIME,'YYYY-MM-DD HH24:MI:SS') AS insertTime
+				FROM SHARE_PAGE_INFO
+				WHERE STATUS='Y'
+	</select>
+	
+</mapper>

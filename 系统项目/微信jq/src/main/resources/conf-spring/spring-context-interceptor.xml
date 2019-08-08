@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-autowire="byName"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-3.0.xsd
+						http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	
+	<bean id="dbInterfaceLogSender" class="com.cmwa.ec.log.asynlog.core.engine.DbLogSender"
+		lazy-init="false">
+		<property name="dataSource" ref="ecLogDataSource" />
+		<property name="logSql" value="insert into EC_SERVICE_LOG values(?,?,?,?,?,?,?,?,?,SYSTIMESTAMP)"/>
+	</bean>
+	
+	<bean id="dbUserBehaviourLogSender" class="com.cmwa.ec.log.asynlog.core.engine.DbLogSender"
+		lazy-init="false">
+		<property name="dataSource" ref="ecLogDataSource" />
+		<property name="logSql" value="insert into USER_BEHAVIOUR_LOG values(to_char(sysdate,'YYYYMMDD-HH24MISS'),?,?,?,?,?,?,?,?,?,?,SYSTIMESTAMP,?,?,?)"/>
+	</bean>
+	
+	<!-- 活动页面访问统计 -->
+	<bean id="dbActivityLogSender" class="com.cmwa.ec.log.asynlog.core.engine.DbLogSender"
+		lazy-init="false">
+		<property name="dataSource" ref="ecLogDataSource" />
+		<property name="logSql" value="insert into ACTIVITY_STATISTICAL_LOG values(?,?,?,?,to_char(sysdate,'YYYYMMDD-HH24MISS'),?)"/>
+	</bean>
+	
+	<bean class="com.cmwa.ec.log.asynlog.connector.AsynLogger" lazy-init="false">
+		<property name="dbLogSenderMaps">
+			<map>
+				<entry key="INTERFACELOGGER" value-ref="dbInterfaceLogSender" />
+				<entry key="BEHAVIOUR" value-ref="dbUserBehaviourLogSender" />
+				<entry key="ACTIVITY" value-ref="dbActivityLogSender"/>
+			</map>
+		</property>
+	</bean>
+
+	<bean
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="proxyTargetClass">
+			<value>true</value>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<idref bean="interfaceLoggerInterupter" />
+			</list>
+		</property>
+		<property name="beanNames">
+			<list>
+				<value>*ServiceClient</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- TRACE:0; DEBUG:10; INFO:20; WARN:30; ERROR:40; -->
+	<bean id="realInterfaceLogger" class="com.cmwa.ec.base.interfaces.impl.InterfaceLoggerImpl" >
+		<!-- value <= DEBUG(10) will log -->
+		<property name="logInLevel">
+			<value>0</value>
+		</property>
+		<!-- value <= INFO(20) will log -->
+		<property name="logOutLevel">
+			<value>0</value>
+		</property>
+		<property name="sysName">
+			<value>WXAPP</value>
+		</property>
+	</bean>
+
+	<bean id="interfaceLoggerInterupter" class="com.cmwa.ec.log.interupter.InterfaceLoggerInterupter" >
+		<property name="interfaceLogger">
+			<ref bean="realInterfaceLogger" />
+		</property>
+	</bean>
+
+
+</beans>

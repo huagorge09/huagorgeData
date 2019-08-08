@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.dsReport.DsReportDao">
+	<select id = "getUrlByCode" parameterType = "java.lang.String" resultType = "String">
+		SELECT REPORTURL FROM LGI_TRANSINFO WHERE TRANSCD= #{opCode}
+	</select>
+	<select id = "getSSOKey" resultType = "String">
+		SELECT PMNM FROM PARAMETER WHERE PMST='SYSTEM' AND PMKY='SSOCFG' AND PMCO='SSOKEY'
+	</select>
+	<select id = "getCustId" parameterType = "java.lang.String" resultType = "String">
+<!-- 	SELECT LOGINID FROM LGI_OPERATOR WHERE TRIM(OPID)= #{opid}-->	
+		SELECT LOGIN FROM T_ECC_EMPLOYEE WHERE TRIM(EMPID) = #{opid}
+	</select>
+</mapper>

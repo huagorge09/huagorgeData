@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>财富故事_招商财富   关于我们、联系我们 </title>
+<link rel="shortcut icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+<link rel="icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+<meta name="keyword" content="招商财富客服电话、招商财富公司介绍、招商财富公司地址、招聘信息、联系我们 " />
+<meta name="description" content="招商财富财富故事提供详细的招商财富公司简介、招聘信息及公司地址。 招商财富资产管理有限公司为招商基金旗下全资子公司，经营特定客户资产管理业务、资产证券化业务以及中国证监会许可的其他业务。规模排名稳居基金子公司前三。更多关于招商财富公司介绍就在招商财富官网！" /> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<!--[if IE]>
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageJs/html5.js"></script>
+<![endif]-->
+<!--[if IE 6]>
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageJs/DD_belatedPNG_0.0.8a.min.js"></script>
+	<script>
+		DD_belatedPNG.fix('*');
+	</script>
+<![endif]-->
+</head>
+<body>
+	
+<!-- header -->
+<!--#include virtual="/AppService/public/header.shtml"-->
+
+<div style="display: none;">
+	<input type="text" id="page" value="1" hidden="true" />
+	<input type="text" id="maxPages" value="1" hidden="false" />
+</div>
+
+<div class="center-content-bg">
+    <img src="/AppWeb/AppWeb_Images/images/about_bg_top.jpg" width="100%" height="250" alt="财富故事" class="banner-about">
+    <div class="about-nav">
+        <ul>
+            <li><a href="#aboutUs" class="act" onclick="changeRequest('1')">关于我们</a><span>|</span></li>
+            <li><a href="#joinUs" onclick="changeRequest('2')">加入财富</a><span>|</span></li>
+            <li><a href="#aboutMap" onclick="changeRequest('3')">联系我们</a></li>
+        </ul>
+    </div>
+    <div class="aboutus-bg">
+        <div class="aboutus" id="aboutUs">
+            <h1>关于我们</h1>
+            <div class="aboutus-con">
+                <div class="aboutus-detail">
+                    <p>
+                        招商财富资产管理有限公司于2013年2月21日由招商基金管理有限公司发起设立，注册地为深圳前海，注册资本17.4亿元，经营特定客户资产管理业务、资产证券化业务以及中国证监会许可的其他业务。
+                    </p>
+                    <p>
+                        招商财富一直以来坚持“诚信、专业、理性、协作、成长”的企业文化，积极进取，稳健经营，致力于为合作伙伴和客户带来高效的服务。招商财富作为首批获批基金子公司，在股东的支持与员工的努力下，四年间，稳步增长，迅速成为业内领先企业，规模排名稳居基金子公司前三。
+                    </p>
+                    <p>
+                        我们坚持以主动管理为主的战略定位，以投资管理和私募投行为驱动，专注固定收益、一级市场、MOM和资产证券化四大主动业务和方案解决型业务为主的五大业务协同发展格局，投资领域覆盖一二级市场，旨在以丰富的产品和差异化的定制服务，为客户提供多样化选择，满足客户全方位的资产管理需求。
+                    </p>
+                    <p>
+                        我们致力于布局全市场资金渠道，划分机构和渠道两条市场主线，目前我们已与数十家机构和渠道客户建立起持续深入的合作关系，旨在以专业细致的服务，聚焦重点，加强合作深度，搭建适合招商财富稳步发展的客户网络。
+                    </p>
+                </div>
+                <div class="aboutus-detail-right" style="margin: 0 0 0 45px;">
+                    <dl>
+                        <img src="/AppWeb/AppWeb_Images/images/about_icon_info_1.png" height="56" width="64" alt="">
+                        <dt>携手共赢</dt>
+                        <dd>我们做您的财富伙伴</dd>
+                    </dl>
+                    <dl>
+                        <img src="/AppWeb/AppWeb_Images/images/about_icon_info_2.png" height="56" width="64" alt="">
+                        <dt>公开透明</dt>
+                        <dd>我们对您坦诚相待</dd>
+                    </dl>
+                    <dl>
+                        <img src="/AppWeb/AppWeb_Images/images/about_icon_info_3.png" height="56" width="64" alt="">
+                        <dt>续写未来</dt>
+                        <dd>我们做您的心灵伙伴</dd>
+                    </dl>
+                    <dl>
+                        <img src="/AppWeb/AppWeb_Images/images/about_icon_info_4.png" height="56" width="64" alt="">
+                        <dt>人本至上</dt>
+                        <dd>我们和您一起成长</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <img class="bottom-arrow" src="/AppWeb/AppWeb_Images/images/about_bg_3jiao.png" alt="">
+    </div>
+    <div class="joinus-bg">
+        <div class="joinus" id="joinUs">
+            <h1>加入财富</h1>
+            <div class="table">
+                <div class="nav-table">
+                    <ul>
+                        <li class="begin act" onclick="querySocialRecruitment('1');"><a href="javascript:void(0);">社会招聘</a></li>
+                        <li onclick="queryCampusRecruitment('1');"><a href="javascript:void(0);">校园招聘</a></li>
+                        <li onclick="queryTraineeRecruitment('1');"><a href="javascript:void(0);">实习生招聘</a></li>
+                        <li class="end" onclick="queryCampusTalk('1','');"><a href="javascript:void(0);">校园宣讲</a></li>
+                    </ul>
+                </div>
+                <div class="table-con" id="infos">
+                    
+                    
+                    
+                    
+                </div>            
+            </div>
+            <div class="page clear">
+               
+            </div>
+        </div>        
+        <img class="bottom-arrow" src="/AppWeb/AppWeb_Images/images/about_bg_4jiao.png" alt="">
+    </div>    
+    <div class="about-map" id="aboutMap">
+        <h1>联系我们</h1>
+        <div class="map-con">
+            <div class="fr contact">
+                <div class="contact-text address">
+                    <img src="/AppWeb/AppWeb_Images/images/about_icon_diZhi.png" width="20" height="23" alt="">
+                    <ul>
+                        <li class="first">
+                            <em>地址：</em>
+                            <span>深圳市福田区深南大道7888号东海国际中心B座3楼</span>
+                        </li>
+                        <li>
+                            <em>邮编：</em>
+                            <span>518040</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-text tel">
+                    <img src="/AppWeb/AppWeb_Images/images/about_icon_phone.png" width="20" height="23" alt="">
+                    <ul>
+                        <li class="first">
+                            <em>客服热线：400-8878-555</em>
+                        </li>
+                        <li class="first">
+
+                            <em>销售热线：0755-2398 8886</em>
+
+                        </li>
+                        <li>
+                            <em>总机：</em>
+                            <span>0755-2398 6999</span>
+                        </li>
+                        <li class="end">
+                            <em>传真：</em>
+                            <span>0755-2398 6935</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-text tel email">
+                    <img src="/AppWeb/AppWeb_Images/images/about_icon_mail.png" width="20" height="23" alt="">
+                    <ul>
+                        <li class="first">
+                            <em>网址：</em>
+                            <span><a href="http://www.cmwachina.com" target="_block">http://www.cmwachina.com</a></span>
+                        </li>
+                        <li class="end">
+                            <em>邮箱：</em>
+                            <span><a href="mailto:cmwa@cmwachina.com">cmwa@cmwachina.com</a></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- footer -->
+<!--#include virtual="/AppService/public/footer.shtml"-->
+<!--<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/aboutUs.js"></script>-->
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/aboutUs.min.js"></script>
+</body>
+</html>

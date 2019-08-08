@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>招财新年祝福</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/activity/springFestivalNew.css">
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/DataStatisJsNew.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/swiperNew.min.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/otherHeaderNew.min.js"></script>
+</head>
+<body>
+<input type="hidden" id="eventId" value="H0005">
+<div class="swiper-container" style="visibility: visible;">
+		<!-- swiper start -->
+        <div class="swiper-wrapper">
+			<!-- page01 start-->
+        	<div class="swiper-slide">
+				<section class="page page01 active">
+				
+						<div class="logo">
+						    <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival//page1/logo_cmwa.png">
+						  </div>
+						  <div class="bg-chicken">
+						    <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival//page1/pic_bg_chicken.png">
+						  </div>
+						  <div class="bg-red-packet">
+						    <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival//page1/pic_red_0.jpg">
+						  </div>
+						  <div class="packet-content">
+						    <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival//page1/pic_red_1.png">
+						  </div>
+						  <div class="packet-cover">
+						    <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival//page1/pic_red_2.png">
+						  </div>
+						  <div class="cloud">
+						    <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival//page1/pic_cloud.png">
+						  </div>
+						  <div class="rocket">
+						    <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival//page1/pic_aircraft.png">
+							</div>
+							<div class="div01_06">
+									<img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/btn01_arrow.png">
+							</div>
+
+							<div class='mainCloud'>
+	
+							</div>
+        		</section>
+        	</div>
+			<!-- page01 end -->
+
+			<!-- page02 start-->
+        	<div class="swiper-slide">
+				<section class="page page02">
+					<div class="bg-top">
+							    <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page2/pic_uo-red.png">
+							  </div>
+							  <div class="bless-1">
+							    <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page2/pic_100billion.png">
+							  </div>
+							  <div class="bless-2">
+							    <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page2/pic_million.png">
+							  </div>
+							  <div class="bless-3">
+							    <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page2/pic_insist.png">
+							  </div>
+							  <div class="bg-foot">
+							    <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page2/pic_red-bg-we.jpg">
+							  </div>
+							  <div class="foot-content">
+							    <img style='float:left;' src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page2/pic_text_we.png">
+							  </div>
+							 <div class="div02_06">
+									<img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/btn01_arrow.png">
+							</div>
+        		</section>
+        	</div>
+			<!-- page02 end -->
+			
+			<!-- page03 start  -->
+			<div class="swiper-slide">
+				<section class="page page03">
+						  <div class="bg">
+						    <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page3/pic_cock.jpg">
+						  </div>
+						  <div class="page3-top">
+						    <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page3/pic_red-bg-because.jpg">
+						  </div>
+						  <div class="page3-top-content">
+						    <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page3/pic_text_because.png">
+						  </div>
+						  <div class="scroll-box scroll-1">
+						    <div class="base-box">
+						      <div class="shelter-left"></div>
+						      <img class="scroll-left" src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page3/juanzhou_left.png">
+						      <div class="scroll-text">
+						        <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page3/pic_chance-1.png">  
+						      </div>
+						      <img class="scroll-right" src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page3/juanzhou_right.png">
+						      <div class="shelter-right"></div> 
+						    </div>
+						  </div>
+						  <div class="scroll-1-tips">
+						    <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page3/pic_chance-2.png">
+						  </div>
+						  <div class="scroll-box scroll-2">
+						    <div class="base-box">
+						      <div class="shelter-left"></div>
+						      <img class="scroll-left" src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page3/juanzhou_left.png">
+						      <div class="scroll-text">
+						        <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page3/pic_develop-1.png">  
+						      </div>
+						      <img class="scroll-right" src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page3/juanzhou_right.png">
+						      <div class="shelter-right"></div>
+						    </div>
+						  </div>
+						  <div class="scroll-2-tips">
+						    <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page3/pic_develop-2.png">
+						  </div>
+						  <div class="scroll-box scroll-3">
+						    <div class="base-box">
+						      <div class="shelter-left"></div>
+						      <img class="scroll-left" src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page3/juanzhou_left.png">
+						      <div class="scroll-text">
+						        <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page3/pic_service-1.png">  
+						      </div>
+						      <img class="scroll-right" src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page3/juanzhou_right.png">
+						      <div class="shelter-right"></div>
+						    </div>
+						  </div>
+						  <div class="scroll-3-tips">
+						    <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page3/pic_service-2.png">
+						  </div>
+						  <div class="btn-get-bless">
+						    <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page3/btn_newyear.png">
+						  </div>
+						  <div class="shadow"></div>
+						  <div class="shadow-content">
+						    <div class="bless-packet">
+						      <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page3/pic_bg.png">
+						    </div>
+						    <div class="packet-text">
+						      <img name ='textImg' src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/pic_text-final_1.png">
+						    </div>
+						    <div class="btn-fans">
+						      <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page3/btn_attention.png">
+						    </div>
+						    <div class="btn-share">
+						      <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page3/btn_share.png">
+						    </div>
+						    <div class="btn-close">
+						      <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page3/btn_close.png">
+						    </div>
+						  </div>
+						  <div class="shadow-2"></div>
+						  <div class="share">
+						    <img src="/WeixinWeb/WeixinWeb_Images/activity/springFestival/page3/5-share.png">
+						  </div>
+			</section>
+			</div>
+			<!-- page04 end -->
+        </div>
+</div>
+
+</body>
+
+<script type="text/javascript">
+ 		$(function(){
+	    	swiper.lockSwipes();
+	    })
+  		var swiper = new Swiper('.swiper-container', {
+    		direction : 'vertical',
+		    paginationClickable: true,
+		    onSlideChangeEnd:function(swiper){
+		    	if(swiper.activeIndex==0){
+					swiper.lockSwipes();
+		    	}
+	        	changePaged(swiper.activeIndex);
+	        },
+	        onSlideChangeStart:function(swiper){
+	        	// console.info("start"+swiper.activeIndex);
+	        // 	swiper.lockSwipeToNext();
+	        // 	if(swiper.activeIndex==1 && $('.rocket')New.css('visibility') == 'visible'){
+	        // 		$('.rocket').addClass('activity');
+		       //  	$('.mainCloud').addClass('activity');
+		       //  	$('.cloud').addClass('activity');
+		       //  	setTimeout(function(){
+		       //  		if(swiper.isEnd){
+		  					// // swiper.lockSwipeToNext();
+		  					// swiper.slideNext();
+		     		// 	}
+		     		// 	swiper.unlockSwipeToNext();
+		       //  		changePaged(swiper.activeIndex);
+		       //  	},2000);
+	        	// }
+	        },
+	        // onTouchMove : function(swiper){
+	        // 	if(swiper.activeIndex==0 && $('.rocket')New.css('visibility') == 'visible'){
+	        // 		$('.rocket').addClass('activity');
+		       //  	$('.mainCloud').addClass('activity');
+		       //  	$('.cloud').addClass('activity');
+		       //  	setTimeout(function(){
+		       //  		// if(swiper.isEnd){
+		  					// // swiper.lockSwipeToNext();
+		     		// 	// }
+		       //  		swiper.unlockSwipes();
+		       //  		swiper.slideNext();
+		       //  	},2000);
+	        // 	}
+	        // },
+	         onTouchEnd : function(swiper){
+	        	var timeStemp=new Date().getTime();
+	        	if(swiper.activeIndex==0 && $('.rocket')New.css('visibility') == 'visible'){
+	        		$('.rocket').addClass('activity');
+		        	$('.mainCloud').addClass('activity');
+		        	$('.cloud').addClass('activity');
+		        	setTimeout(function(){
+		        		swiper.unlockSwipes();
+		        		swiper.slideNext();
+		        		swiper.lockSwipeToNext();
+		        	},1500);
+		        	setTimeout(function(){
+		        		swiper.unlockSwipeToNext();
+		        	},3500);
+	        	}
+	        },
+	        onTouchStart:function(swiper){
+	        	 
+	        }
+	    }); 
+	    function changePaged(i){
+	    	$('.rocket').removeClass('activity');
+	        $('.mainCloud').removeClass('activity');
+	        $('.cloud').removeClass('activity');
+	    	$(".page0"+i+" div")New.css({visibility: "hidden"});//前一页动画元素隐藏
+	    	$(".page").removeClass("active");
+	    	i+=1;
+	    	if(i==3){
+	    		page3.init();
+	    	}	
+			$(".page0"+i+"").addClass("active");
+			$(".page0"+i+" div")New.css({ visibility: "visible"});
+			
+			$(".page0"+(i+1)+" div")New.css({visibility: "hidden"});//后一页动画元素隐藏
+			activityStatisticalLog("0"+i);
+	    }
+  		
+  		 var page3 = {
+  		    init: function () {
+  		      this.$btnBless = $('.btn-get-bless');
+  		      this.$btnShare = $('.btn-share');
+  		      this.$close = $('.btn-close');
+  		      this.$shadow = $('.shadow');
+  		      this.$shadow2 = $('.shadow-2');
+  		      this.$bless = $('.shadow-content');
+  		      this.$share = $('.share');
+  		      this.$scroll = $('.scroll-box');
+  		      this.$texts=$('.packet-text');
+  		      
+  		      this.$btnfans=$('.btn-fans');
+  		      this.scroll();
+  		      this.bind();
+  		    },
+  		    bind: function () {
+  		      this.$btnBless.on('click', $.proxy(this.openBless, this));
+  		      this.$close.on('click', $.proxy(this.closeBless, this));
+  		      this.$btnShare.on('click', $.proxy(this.toShare, this));
+  		      this.$shadow2.on('click', $.proxy(this.closeShare, this));
+  		      this.$share.on('click', $.proxy(this.closeShare, this));
+  		      this.$texts.on('click', $.proxy(this.closeInterval, this));
+  		      this.$btnfans.on('click', $.proxy(this.openCmwa, this));
+  		    },
+  		  	openCmwa:function(){
+  		  	  activityStatisticalLog("05");
+  			  window.location.href='https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MjM5NzY0ODk3NA==&scene=117#wechat_redirect'
+  		  	},
+  		    openBless: function () {
+  		      swapPic();
+  		      this.$shadow.show();
+  		      this.$bless.show();
+  		      activityStatisticalLog("04");
+  		      swiper.lockSwipes();
+  		    },
+  		    closeInterval:function(){
+  		    },
+  		    closeBless: function () {
+  		      this.$bless.hide();
+  		      this.$shadow.hide();
+  		      swiper.unlockSwipes();
+  		    },
+  		    toShare: function () {
+  		      activityStatisticalLog("06")
+  		      this.$shadow2.show();
+  		      this.$share.show();
+  		    },
+  		    closeShare: function () {
+  		      this.$share.hide();
+  		      this.$shadow2.hide();
+  		    },
+  		    scrollByTime: function(obj){
+			$.each(obj, function () {
+  		        var $left = $(this).find('.scroll-left');
+  		        var $right = $(this).find('.scroll-right');
+  		        var $leftWhite = $(this).find('.shelter-left');
+  		        var $rightWhite = $(this).find('.shelter-right');
+  		        $leftWhite.animate({
+  		            width: 0},
+  		            1500
+  		        );
+  		        $rightWhite.animate({
+  		            width: 0},
+  		            1500
+  		        );
+  		        $left.animate({
+  		            left: 0},
+  		            1500
+  		        );
+  		        $right.animate({
+  		            right: 0},
+  		            1500
+  		        );
+  		    })},
+  		    scroll: function () {
+  		    	$('.scroll-left')New.css('left','45%');
+  		    	$('.scroll-right')New.css('right','45%');
+  		    	$('.shelter-left')New.css('width','45%');
+  		    	$('.shelter-right')New.css('width','45%');
+  		     /* $.each(this.$scroll, function () {
+  		        var $left = $(this).find('.scroll-left');
+  		        var $right = $(this).find('.scroll-right');
+  		        var $leftWhite = $(this).find('.shelter-left');
+  		        var $rightWhite = $(this).find('.shelter-right');
+
+  		        $leftWhite.animate({
+  		            width: 0},
+  		            1500
+  		        );
+  		        $rightWhite.animate({
+  		            width: 0},
+  		            1500
+  		        );
+  		        $left.animate({
+  		            left: 0},
+  		            1500
+  		        );
+  		        $right.animate({
+  		            right: 0},
+  		            1500
+  		        );
+  		      });*/
+  		     page3.scrollByTime($('.scroll-1'));
+
+  		      setTimeout(function() {
+  		       page3.scrollByTime($('.scroll-2'));
+  		      }, 2000);
+  		      setTimeout(function() {
+  		       page3.scrollByTime($('.scroll-3'));
+  		      }, 4000);
+  		      setTimeout(function() {
+  		        $('.bg').animate({
+  		            opacity: 1},
+  		            1000
+  		        );
+  		      }, 5000);
+  		    }
+  		  };
+  		  function sleep(milliseconds){
+  		  	setTimeout(function() {
+  		        var start=new Date().getTime();
+  		  		while(true){
+  		  			if((new Date().getTime() - start )>milliseconds){
+  		  				console.info(new Date().getTime - start )
+  		  				break;
+  		  			}
+  		  		}
+  		      }, 0);
+  		  		
+  		  }
+
+
+  		    //图片随机切换
+  		 	var rand1 = 0;
+			var useRand = 0;
+			images = new Array;
+			images[1] = new Image();
+			images[1].src = "/WeixinWeb/WeixinWeb_Images/activity/springFestival/pic_text-final_1.png";
+			images[2] = new Image();
+			images[2].src = "/WeixinWeb/WeixinWeb_Images/activity/springFestival/pic_text-final_2.png";
+			images[3] = new Image();
+			images[3].src = "/WeixinWeb/WeixinWeb_Images/activity/springFestival/pic_text-final_3.png";
+			images[4] = new Image();
+			images[4].src = "/WeixinWeb/WeixinWeb_Images/activity/springFestival/pic_text-final_4.png";
+			images[5] = new Image();
+			images[5].src = "/WeixinWeb/WeixinWeb_Images/activity/springFestival/pic_text-final_5.png";
+			images[6] = new Image();
+			images[6].src = "/WeixinWeb/WeixinWeb_Images/activity/springFestival/pic_text-final_6.png";
+			images[7] = new Image();
+			images[7].src = "/WeixinWeb/WeixinWeb_Images/activity/springFestival/pic_text-final_7.png";
+			var svi=0;
+			
+			function swapPic() {
+					var imgnum = images.length - 1;
+					do {
+					var randnum = Math.random();
+					rand1 = Math.round((imgnum - 1) * randnum) + 1;
+					} while (rand1 == useRand);
+					useRand = rand1;
+					document.textImg.src = images[useRand].src;
+			}
+  		  </script>
+  		  <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+  		  <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jweixin-1.0.0New.js"></script>
+  		  <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/springFestivalShareNew.js"></script>
+</html>

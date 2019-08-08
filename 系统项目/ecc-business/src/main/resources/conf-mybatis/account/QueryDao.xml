@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.account.QueryDao" >
+
+	<resultMap id="contMap" type="contactDto">
+		<result property="contact" column="BROKERNAME"/> <!--经办人  -->
+		<result property="contphone" column="BROKEROFFICETEL"/>
+		<result property="contidtp" column="BROKERIDTP"/>
+		<result property="contidno" column="BROKERIDNO"/>
+		<result property="contvalidate" column= "BROKERVALIDDATE"/>
+		<result property="contfax" column="BROKERFAX"/>
+	</resultMap>
+	<resultMap id="fundbalanceInfoMap" type="fundBalanceDto">
+		<result property="tradeacco" column="TRADEACCO"/>
+		<result property="fundid" column="FUNDID"/>
+		<result property="fundst" column="FUNDST"/>
+		<result property="available" column="AVIABLE"/>
+	</resultMap>
+	
+	<resultMap id="tradeDtoMap" type="tradeDto">
+		<result property="custno" column="CUSTNO"/>
+		<result property="invnm" column="INVNM"/>
+		<result property="invtp" column="INVTP"/>
+		<result property="tradeacco" column="TRADEACCO"/>
+		<result property="fundacco" column="FUNDACCT"/>
+	</resultMap>
+	
+	<resultMap id="seatMap" type="seatDto">
+		<result property="seatno" column="SEATNO"/>
+		<result property="seatnm" column="SEATNM"/>
+	</resultMap>
+	
+	<!-- 通过客户号查询客户资料 -->
+	<select id="queryAccoByCust" parameterType="java.lang.String" resultType="openAccountDto">
+		SELECT F.FUNDACCT fundacco,
+		       C.CUSTNO	  custno,
+		       C.INVNM	  invnm,
+		       C.INVTP    invtp,
+		       C.IDTP	  idtp,
+		       C.IDNO	  idno,
+		       TE.BROKERNAME	brokername,
+		       TE.BROKERIDTP	brokeridtp,
+		       TE.BROKERIDNO	brokeridno
+		  FROM TRADEACCOINFO T, TRADEACCOINFOEX TE, CUSTINFO C, FUNDACCOINFO F
+		 WHERE C.CUSTNO = F.CUSTNO
+		   AND TE.TRADEACCO = T.TRADEACCO
+		   AND T.CUSTNO = F.CUSTNO
+		   AND F.FUNDACCT = #{custNo}
+	</select>
+	
+	<!-- 获取所有经纪人列表 -->
+	<select id="getBrokers" resultType="openListDto" statementType="CALLABLE">
+		{ 
+			call CMF_DS_OQP_CLIENTMANAGERFIND(
+	    		#{sp.resultCode,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.resultMessage,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.workdate,jdbcType=VARCHAR,mode=OUT}
+			)
+		}
+	</select>
+	
+	<!-- 分基金账号查询客户资料 -->
+	<select id="fundaccoQry" parameterType="openAccountDto" resultType="openAccountDto">
+		select f.fundacct,
+		       c.custno,
+		       c.invnm,
+		       c.invtp,
+		       c.idtp,
+		       c.idno,
+		       te.brokername,
+		       te.brokeridtp,
+		       te.brokeridno
+		  from tradeaccoinfo t, tradeaccoinfoex te, custinfo c, fundaccoinfo f
+		 where f.custno = t.custno
+		   and t.tradeacco = te.tradeacco
+		<if test="tradeacco != null and tradeacco != ''">
+		   and c.custno = t.custno
+		   and t.tradeacco = #{tradeacco}
+		</if>
+		<if test="fundacct != null and fundacct != ''">
+		   and c.custno = f.custno
+		   and f.fundacct = #{fundacct}
+		</if>
+	</select>
+	
+	<!-- 个人/机构资料查询 -->
+	<!-- resultType="openAccountDto"  -->
+	<select id="tradeaccoQry" parameterType="sparam" statementType="CALLABLE">
+		{ call DS_OQP_TRADECUSTINFO(
+				#{sp.tradeacco,jdbcType=VARCHAR,mode=IN},
+				#{sp.fundacco,jdbcType=VARCHAR,mode=IN},
+	    		#{sp.custno,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.tradeacco,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.invnm,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.invtp,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.idtp,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.idno,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.custrisklevl,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.email,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.mobile,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.instrepvalidate,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.trusttype4,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.trusttype1,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.trustType2,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.trustType3,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.trustType6,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.tdvalidate,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.bnkNo,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.openName,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.bankAcco,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.bankAccoNm,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.tano,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.custriskdate,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.custrisktime,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.invprtp,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.specriskLevel,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.errcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.errmsg,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.contList,resultMap=contMap,jdbcType=CURSOR,mode=OUT},
+	    		#{sp.fundbalanceList,resultMap=fundbalanceInfoMap,jdbcType=CURSOR,mode=OUT}
+			)
+		}
+	</select>
+	
+	<!-- 授权校验 -->
+	<select id="checkPermission" parameterType="sparam" statementType="CALLABLE">
+		{ 
+				#{sp.result,jdbcType=INTEGER,mode=OUT} = call DS_OAF_CHECK_MANAGER(
+				#{sp.checkno,jdbcType=VARCHAR,mode=IN},
+				#{sp.checkpwd,jdbcType=VARCHAR,mode=IN}
+			) 
+		}
+	</select>
+	
+	<!-- 查询是否需要授权 -->
+	<select id="queryPermission" parameterType="sparam" statementType="CALLABLE">
+		{ 
+			call DS_OBP_GET_IFNEEDGRANT(
+				#{sp.permissionId,jdbcType=VARCHAR,mode=IN},
+				#{sp.apkind,jdbcType=VARCHAR,mode=IN},
+				#{sp.errcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.errmsg,jdbcType=VARCHAR,mode=OUT},
+				#{sp.isPermission,jdbcType=VARCHAR,mode=OUT},
+			) 
+		}
+	</select>
+	
+	<!-- 查询折扣费率 -->
+	<select id="findDiscount" parameterType="java.lang.String" resultType="float">
+		SELECT IBF_GET_INSTCOMMRO(#{tradeacco},#{fundacco},#{fundid},#{apkind},#{subAmt}) AS DISCOUNT FROM DUAL
+	</select>
+	
+	<!--分红方式查询 -->
+	<select id="melonListQry" parameterType="sparam" statementType="CALLABLE">
+		{ 
+			call DS_OQP_GET_MELON(
+				#{sp.fundacco,jdbcType=VARCHAR,mode=IN},
+				#{sp.tradeacco,jdbcType=VARCHAR,mode=IN},
+				#{sp.firstCustGroup,jdbcType=VARCHAR,mode=IN},
+				#{sp.secondCustGroup,jdbcType=VARCHAR,mode=IN},
+				#{sp.errcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.errmsg,jdbcType=VARCHAR,mode=OUT},
+				#{sp.tradeList,resultMap=tradeDtoMap,jdbcType=CURSOR,mode=OUT}
+			)
+		}
+	</select>
+	
+	<!-- 查询所有销售机构 -->
+	<select id="getSeats" resultMap="seatMap">
+		SELECT SEATNO,SEATNM FROM SEAT
+	</select>
+	
+	<!-- 交易类复核查询 -->
+	<select id="tradeCheckQryListPage" parameterType="sparam" resultType="tradeCheckDto">
+		SELECT 
+			   F.SERIALNO		serialno,		
+		       F.CUSTNO			custno,
+		       F.FUNDACCT		fundacco,
+		       F.TRADEACCO		tradeacco,
+		       F.APKIND			dsapkind,
+           	   (SELECT PMNM FROM PARAMETER T1 WHERE T1.PMST = 'SYSTEM' AND T1.PMKY = 'APKIND' AND T1.PMV2 = 'T' AND T1.PMCO = F.APKIND) dsapkindnm,
+		       C.INVNM			invnm,
+		       F.BANKACCO		bankacco,
+		       F.CHKFLAG		chkflag,
+		       (SELECT PMNM FROM PARAMETER T1 WHERE T1.PMST = 'DS' AND T1.PMKY = 'CHKFLAG' AND T1.PMCO = F.CHKFLAG) chkflagnm,
+		       F.FUNDID			fundid,
+		       (SELECT T.FUNDNM FROM FUNDINFO T WHERE T.FUNDID = F.FUNDID) fundnm,
+		       TO_CHAR(F.SUBAMT,'FM9,999,999,999,999,990.00') subamt,
+           	   TO_CHAR(F.SUBQUTY,'FM9,999,999,999,999,990.00') subquty,
+		       TO_CHAR(TO_DATE(F.WORKDATE,'YYYY-MM-DD'),'YYYY-MM-DD')		workdate,
+		       F.APPLYST		applyst,
+		       (SELECT PMNM FROM PARAMETER T1 WHERE T1.PMST = 'DS' AND T1.PMKY = 'CHKFLAG' AND T1.PMCO = F.APPLYST) applystnm,
+		       F.OPID			operatorId,
+		       F.APPNO			appno
+		  FROM APPTRADEBLOTTER F, CUSTINFO C
+		 WHERE C.CUSTNO = F.CUSTNO
+		   AND F.ACCPTMD != '2'
+		<if test="sp.tradeacco != null and sp.tradeacco != ''">
+		   AND F.TRADEACCO = #{sp.tradeacco}
+		</if>
+		<if test="sp.fundacco != null and sp.fundacco != ''">
+		   AND F.FUNDACCT = #{sp.fundacco}
+		</if>
+		<if test="sp.serialno != null and sp.serialno != ''">
+		   AND F.SERIALNO = #{sp.serialno}
+		</if>
+		<if test="sp.dsapkind != null and sp.dsapkind != ''">
+		   AND F.APKIND = #{sp.dsapkind}
+		</if>
+		<if test="sp.checkst != null and sp.checkst != '' and sp.operatorType != '3' ">
+		   AND F.CHKFLAG = #{sp.checkst}
+		</if>
+		<if test="sp.begindate != null and sp.begindate != '' and sp.enddate != null and sp.enddate != ''">
+		   AND F.WORKDATE BETWEEN #{sp.begindate} AND #{sp.enddate}
+		</if>
+		<if test="sp.checkno != null and sp.checkno != ''">
+		   AND F.MANAGERNO = #{sp.checkno}
+		</if>
+		<if test="sp.trustType != null and sp.trustType != ''">
+		   AND F.ACCPTMD = #{sp.trustType}
+		</if>
+		<if test="sp.fundid != null and sp.fundid != ''">
+		   AND F.FUNDID = #{sp.fundid}
+		</if>
+		<if test="sp.operatorType != null and sp.operatorType != '' and sp.operatorType == '0'.toString()">
+		   AND F.OPID = #{sp.operatorId}
+		</if>
+		<if test="sp.batchoperatorId != null and sp.batchoperatorId != '' and sp.operatorType == '0'.toString() ">
+		   AND F.OPID != #{sp.batchoperatorId}
+		</if>
+		<if test="sp.batchoperatorId != null and sp.batchoperatorId != '' and sp.operatorType == '1'.toString() ">
+		   AND F.OPID != #{sp.batchoperatorId}
+		</if>
+		<if test="sp.operatorType == '3'.toString() and sp.checkst == 'N' ">
+		   AND F.CHKFLAG in ('N','R') and F.APPLYST != 'F'
+		</if>
+		<if test="sp.operatorType == '3'.toString() and sp.checkst != 'N' and sp.checkst != ''  and sp.checkst != null ">
+		   AND F.CHKFLAG = #{sp.checkst}
+		</if>
+		<if test="sp.operatorType == '3'.toString() and sp.batchoperatorId != null and sp.batchoperatorId != '' ">
+		   AND F.OPID = #{sp.batchoperatorId}
+		</if>
+		 ORDER BY DECODE(F.CHKFLAG,'N',1,'R',2,'C',3,'Y',4), F.INSERTTIMESTAMP
+	</select>
+	
+	<!-- 交易类复核记录数查询 -->
+	<select id="getTradeCheckCount" parameterType="sparam" resultType="tradeCheckDto">
+		SELECT SUM(DECODE(F.CHKFLAG, 'N', 1, 0)) ncount,
+		       SUM(DECODE(F.CHKFLAG || F.APPLYST, 'YN', 1, 0) +
+		           DECODE(F.CHKFLAG || F.APPLYST, 'YK', 1, 0)) ycount,
+		       SUM(DECODE(F.CHKFLAG, 'C', 1, 0)) fcount,
+		       SUM(DECODE(F.CHKFLAG, 'R', 1, 0)) ccount,
+		       SUM(DECODE(F.CHKFLAG || F.APPLYST, 'YC', 1, 0)) cancelcount
+		  FROM APPTRADEBLOTTER F, CUSTINFO C
+		 WHERE F.CUSTNO = C.CUSTNO
+		   AND F.ACCPTMD != '2'
+		   AND F.REGIONCODE = '0001'
+		   AND F.WORKDATE = (SELECT RTRIM(KYDATE)
+		                       FROM SYSALTER
+		                      WHERE KEY1 = 'EC'
+		                        AND KEY2 = 'SYS'
+		                        AND KEY3 = 'WORKDATE')
+		<if test="sp.batchoperatorId != null and sp.batchoperatorId != ''">
+		   AND F.OPID != #{sp.batchoperatorId}
+		</if>
+	</select>
+	
+	
+	<!-- 交易类复核记录数查询 -->
+	<select id="getBatchTradeCheckCount" parameterType="sparam" resultType="tradeCheckDto">
+		SELECT SUM(DECODE(F.CHKFLAG, 'N', 1, 0)) AS ncount,
+		       SUM(DECODE(F.CHKFLAG || F.APPLYST, 'YN', 1, 0) +
+		           DECODE(F.CHKFLAG || F.APPLYST, 'YK', 1, 0)) AS ycount,
+		       SUM(DECODE(F.CHKFLAG, 'C', 1, 0)) AS fcount,
+		       SUM(DECODE(F.CHKFLAG || F.APPLYST, 'RF', 1, 0)) AS rfcount,
+		       (SUM(DECODE(F.CHKFLAG, 'R', 1, 0)) -
+		       SUM(DECODE(F.CHKFLAG || F.APPLYST, 'RF', 1, 0))) AS rccount,
+		       SUM(DECODE(F.CHKFLAG, 'R', 1, 0)) AS ccount,
+		       SUM(DECODE(F.CHKFLAG || F.APPLYST, 'YC', 1, 0)) AS cancelcount
+		  FROM APPTRADEBLOTTER F, CUSTINFO C
+		 WHERE F.CUSTNO = C.CUSTNO
+		   AND F.ACCPTMD != '2'
+		   AND F.REGIONCODE = '0001'
+		   AND F.WORKDATE = (SELECT RTRIM(KYDATE) FROM SYSALTER WHERE KEY1 = 'EC' AND KEY2 = 'SYS' AND KEY3 = 'WORKDATE')
+		<if test="sp.batchoperatorId != null and sp.batchoperatorId != ''">
+		   AND F.OPID = #{sp.batchoperatorId}
+		</if>
+		<if test="sp.fundid != null and sp.fundid != ''">
+			AND F.FUNDID = #{sp.fundid}
+		</if>
+	</select>
+	
+	
+	<select id="tradeCheckDetailQry" parameterType="java.lang.String" resultType="tradeCheckDto">
+		SELECT 
+		       TO_CHAR(FT.AVIABLE,'FM9,999,999,999,999,990.00')          aviable,
+		       TO_CHAR(FT.BALANCE,'FM9,999,999,999,999,990.00')          balance,
+		       TO_CHAR(FT.ABNMFROZEN,'FM9,999,999,999,999,990.00')       abnmfrozen,
+		       F.CUSTNO            custno,
+		       F.FUNDACCT          fundacco,
+		       F.TRADEACCO         tradeacco,
+		       F.APKIND            dsapkind,
+		       (SELECT PMNM FROM PARAMETER T1 WHERE T1.PMST = 'SYSTEM' AND T1.PMKY = 'APKIND' AND T1.PMV2 = 'T' AND T1.PMCO = F.APKIND) dsapkindnm,
+		       F.INVTP             invtp,
+		       (SELECT PMNM FROM PARAMETER T1 WHERE T1.PMST = 'SYSTEM' AND T1.PMKY = 'INVTP' AND T1.PMCO = F.INVTP) invtpnm,
+		       C.INVNM             invnm,
+		       F.BANKACCO          bankacco,
+		       CHKFLAG             chkflag,
+		       (SELECT PMNM FROM PARAMETER T1 WHERE T1.PMST = 'DS' AND T1.PMKY = 'CHKFLAG' AND T1.PMCO = CHKFLAG) chkflagnm,
+		       F.FUNDID            fundid,
+		       (SELECT T.FUNDNM FROM FUNDINFO T WHERE T.FUNDID = F.FUNDID) fundnm,
+		       F.ACCPTMD           trustType,
+		       (SELECT PMNM FROM PARAMETER T1 WHERE T1.PMST = 'SYSTEM' AND T1.PMKY = 'ACCPTMD' AND T1.PMCO = F.ACCPTMD) trustTypenm,
+		       TO_CHAR(F.SUBAMT,'FM9,999,999,999,999,990.00')            subamt,
+		       TO_CHAR(F.SUBQUTY,'FM9,999,999,999,999,990.00')           subquty,
+		       F.OPID              operatorId,
+		       F.GRANTEEID         checkno,
+		       F.APDT              apdt,
+		       F.LARGEREDEEMFLAG   largeflag,
+		       (SELECT PMNM FROM PARAMETER T1 WHERE T1.PMST = 'SYSTEM' AND T1.PMKY = 'LARGEREDEEMFLAG' AND T1.PMCO = F.LARGEREDEEMFLAG) largeflagnm,
+		       F.OFUNDACCT         ofundacco,
+		       F.OTRADEACCO        otradeacco,
+		       F.OSEATNO           oseatno,
+		       (SELECT SEATNM FROM SEAT S WHERE S.SEATNO = F.OSEATNO) oseatnm,
+		       F.ONETPOINT         onetpoint,
+		       F.SERIALNO          serialno,
+		       F.OLDAPPNO          oldserialno,
+		       F.NETPOINT          netpoint,
+		       (SELECT SEATNM FROM SEAT S WHERE S.SEATNO = F.NETPOINT) netpointnm,
+		       F.SUMMARY           remark,
+		       F.OFUNDID           ofundid,
+		       (SELECT T.FUNDNM FROM FUNDINFO T WHERE T.FUNDID = F.OFUNDID) ofundnm,
+		       F.MELONMD           melonmd,
+		       (SELECT PMNM FROM PARAMETER T1 WHERE T1.PMST = 'SYSTEM' AND T1.PMKY = 'INVTP' AND T1.PMCO = F.MELONMD) melonmdnm,
+		       TO_CHAR(F.DIVIDENDRATE,'FM9,999,999,999,999,990.00')      melonpercent,
+		       F.CHECKER           checker,
+		       F.BROKER            broker
+		  FROM APPTRADEBLOTTER F,
+		       CUSTINFO        C,
+		       (SELECT FB.TRADEACCO AS TRADEACCO,
+		               FB.FUNDID AS FUNDID,
+		               FB.BALANCE,
+		               NVL(TQ.CHANGEQUTY, 0) + FB.ABNMFROZEN AS ABNMFROZEN,
+		               FB.BALANCE - FB.ABNMFROZEN - NVL(TQ.CHANGEQUTY, 0) AS AVIABLE
+		          FROM (SELECT t.TRADEACCO AS TRADEACCO,
+		                       T.FUNDID AS FUNDID,
+		                       NVL(SUM(CHANGEQUTY), 0) AS CHANGEQUTY
+		                  FROM TRADEREQUEST_QTRACE T
+		                 GROUP BY T.TRADEACCO, T.FUNDID) TQ,
+		               FUNDBALANCE FB
+		         WHERE FB.TRADEACCO = TQ.TRADEACCO(+)
+		           AND FB.FUNDID = TQ.FUNDID(+)) FT
+		 WHERE C.CUSTNO = F.CUSTNO
+		   AND F.SERIALNO = #{serialno}
+		   AND F.TRADEACCO = FT.TRADEACCO(+)
+		   AND F.FUNDID = FT.FUNDID(+)
+	</select>
+	
+	<!-- 查询批量处理列表 -->
+	<select id="queryBatchListPage" parameterType="sparam" resultType="tradeCheckDto">
+		SELECT 
+			   F.APKIND			dsapkind,
+			   (SELECT PMNM FROM PARAMETER T1 WHERE T1.PMST = 'SYSTEM' AND T1.PMKY = 'APKIND' AND T1.PMV2 = 'T' AND T1.PMCO = F.APKIND) dsapkindnm,
+		       F.FUNDID			fundid,
+		       (SELECT T.FUNDNM FROM FUNDINFO T WHERE T.FUNDID = F.FUNDID) fundnm,
+		       TO_CHAR(SUM(F.SUBAMT),'FM9,999,999,999,999,990.00')  	sumsubamt,
+		       TO_CHAR(TO_DATE(F.WORKDATE,'YYYY-MM-DD'),'YYYY-MM-DD')	workdate,
+		       TO_CHAR(SUM(F.SUBQUTY),'FM9,999,999,999,999,990.00') 	sumsubquty,
+		       F.OPID			operatorId,
+		       COUNT(*) 		totalRow,
+		       (SELECT COUNT(*)
+		          FROM APPTRADEBLOTTER A, CUSTINFO B
+		         WHERE A.CUSTNO = B.CUSTNO
+		           AND F.OPID = A.OPID
+		           AND F.APKIND = A.APKIND
+		           AND A.ACCPTMD != '2'
+		           AND A.FUNDID = F.FUNDID
+		           AND A.WORKDATE = F.WORKDATE
+		           AND A.CHKFLAG IN ('N', 'R')
+		           AND A.APPLYST != 'F') nopcount
+		  FROM APPTRADEBLOTTER F, CUSTINFO C
+		 WHERE C.CUSTNO = F.CUSTNO
+		   AND F.ACCPTMD != '2'
+		<if test="sp.fundid != null and sp.fundid != ''">
+		   AND F.FUNDID = #{sp.fundid}
+		</if>
+		<if test="sp.operatorId != null and sp.operatorId != ''">
+		   AND F.OPID = #{sp.operatorId}
+		</if>
+		<if test="sp.begindate != null and sp.begindate != '' and sp.enddate != null and sp.enddate != ''">
+		   AND F.WORKDATE BETWEEN #{sp.begindate} AND #{sp.enddate}
+		</if>
+		<if test="sp.dsapkind != null and sp.dsapkind != ''">
+		   AND F.APKIND = #{sp.dsapkind}
+		</if>
+		<if test="sp.checkst == 'N'.toString() ">
+		   AND F.CHKFLAG in ('N','R') and F.APPLYST != 'F'
+		</if>
+		<if test="sp.checkst != 'N'.toString() and sp.checkst != '' and sp.checkst != null">
+		   AND F.CHKFLAG = #{sp.checkst}
+		</if>
+		 GROUP BY F.APKIND, F.FUNDID, F.OPID, F.WORKDATE
+		 ORDER BY MAX(F.INSERTTIMESTAMP) ASC
+	</select>
+	
+	<!-- 交易撤单查询 -->
+	<select id="cancelQryListPage" parameterType="sparam" resultType="tradeDto">
+		SELECT 
+			   T1.FUNDACCT		fundacco,
+		       T1.TRADEACCO		tradeacco,
+		       TO_CHAR(TO_DATE(T1.WORKDATE,'YYYY-MM-DD'),'YYYY-MM-DD')	workdate,
+		       T1.SERIALNO		serialno,
+		       T1.APKIND		dsapkind,
+		       (SELECT PMNM FROM PARAMETER T1 WHERE T1.PMST = 'SYSTEM' AND T1.PMKY = 'APKIND' AND T1.PMV2 = 'T' AND T1.PMCO = T1.APKIND) dsapkindnm,
+		       T1.FUNDID		fundid,
+		       (SELECT T.FUNDNM FROM FUNDINFO T WHERE T.FUNDID = T1.FUNDID) fundnm,
+		       TO_CHAR(T1.SUBAMT,'FM9,999,999,999,999,990.00') subAmt,
+           	   TO_CHAR(T1.SUBQUTY,'FM9,999,999,999,999,990.00') subQuty,
+		       T1.CUSTNO		custno,
+		       C.INVNM			invnm,
+		       C.IDTP			idtp,
+		       (SELECT PMNM FROM PARAMETER T1 WHERE T1.PMST = 'SYSTEM' AND T1.PMKY = 'IDTP' AND T1.PMCO = C.IDTP) idtpnm,
+		       C.IDNO			idno,
+		       C.INVTP			invtp,
+		       (SELECT PMNM FROM PARAMETER T1 WHERE T1.PMST = 'SYSTEM' AND T1.PMKY = 'INVTP' AND T1.PMCO = C.INVTP) invtpnm,
+		       T1.BROKER		broker,
+		       T1.BKIDTP		contidtp,
+		       (SELECT PMNM FROM PARAMETER T1 WHERE T1.PMST = 'SYSTEM' AND T1.PMKY = 'IDTP' AND T1.PMCO = T1.BKIDTP) contidtpnm,
+		       T1.BKIDNO		contidno,
+		       T1.APPLYST		applyst,
+		       DECODE(T1.APPLYST, 'N', '正常', 'K', '正常', 'C', '已撤单', 'F', '已作废') applystnm,
+		       T1.OPID			operatorId
+		  FROM APPTRADEBLOTTER T1, CUSTINFO C, DS_CUSTCLASSINFO DS
+		 WHERE C.CUSTNO = T1.CUSTNO
+		   AND C.CUSTNO = DS.CUSTNO(+)
+		   AND T1.CHKFLAG = 'Y'
+		   AND T1.PAYST NOT IN ('Y', 'I')
+		   AND T1.SERIALNO NOT IN (SELECT SERIALNO
+		                             FROM BANK_STATEMENT_ACCOUNT
+		                            WHERE SERIALNO IS NOT NULL)
+		   AND T1.ACCPTMD != '1'
+		   AND APPLYST IN ('K', 'N', 'C')
+		<if test="sp.tradeacco != null and sp.tradeacco != ''">
+		   AND T1.TRADEACCO = #{sp.tradeacco}
+		</if>
+		<if test="sp.fundacco != null and sp.fundacco != ''">
+		   AND T1.FUNDACCT = #{sp.fundacco}
+		</if>
+		<if test="sp.firstCustGroup != null and sp.firstCustGroup != ''">
+		   AND ds.CUSTABBRCODE = nvl(#{sp.firstCustGroup},CUSTABBRCODE) 
+		</if>
+		<if test="sp.secondCustGroup != null and sp.secondCustGroup != ''">
+		   AND ds.CUSTINSTREPRCODE = nvl(#{sp.secondCustGroup},CUSTINSTREPRCODE)
+		</if>
+		   ORDER BY SERIALNO ASC
+	</select>
+</mapper>	

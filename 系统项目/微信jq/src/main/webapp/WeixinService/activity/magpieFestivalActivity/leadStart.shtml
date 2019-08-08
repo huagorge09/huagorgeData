@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>七夕活动-开始答题</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/qixi/qixiStyle.css">
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/DataStatisJs.js"></script>
+</head>
+<body>
+<section class="qx-page01-bg">
+    <img src="/WeixinWeb/WeixinWeb_Images/activity/qixi/start_bg.jpg" />
+</section>
+<section class="page">   
+<!--#include virtual="/WeixinService/headerOrFooter/otherHeader.shtml"-->
+	<input type="hidden" id="eventId" value="H0003"> 
+    <section>
+        <div class="bg-state">
+            <div class="qx-page01-head">
+                <img src="/WeixinWeb/WeixinWeb_Images/activity/qixi/start_pic.png" class="start-pic">
+                <section>
+                    <img class="qx-page01-star star01" src="/WeixinWeb/WeixinWeb_Images/activity/qixi/bg_star_1.png" />
+                    <img class="qx-page01-star star02" src="/WeixinWeb/WeixinWeb_Images/activity/qixi/bg_star_1.png" />
+                    <img class="qx-page01-star star03" src="/WeixinWeb/WeixinWeb_Images/activity/qixi/bg_star_1.png" />
+                </section>
+            </div>
+            <div class="qx-page01-con">
+                <img src="/WeixinWeb/WeixinWeb_Images/activity/qixi/text_pic_1.png" />
+            </div>
+        </div>
+        <div class="box-btn">
+            <a class="riskevaluation-btn" href="/WeixinService/activity/magpieFestivalActivity/magpieFestivalQA.shtml"><img src="/WeixinWeb/WeixinWeb_Images/activity/qixi/btn_start.png" alt=""></a>
+        </div>
+    </section>   
+    <!--#include virtual="/WeixinService/activity/magpieFestivalActivity/magpieFestivalShare.shtml"-->
+</section>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/leadStart.min.js"></script>
+</body>
+</html>

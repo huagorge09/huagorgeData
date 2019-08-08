@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>招商财富</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+   	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/bannerStyle.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+    $(function () {
+    	
+       
+    });
+</script>
+</head>
+<title>修改续投方式</title>
+<body>
+<section class="page">
+<!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->
+    <section>
+        <div class="registe-point">
+            <span>请重新选择续投方式</span>
+        </div>
+        <div style="display: none;">
+			<input type="hidden" id="serialno" value="" />
+			<input type="hidden" id="tradeAcco" value="" />
+			<input type="hidden" id="fundId" value="" />
+			<input type="hidden" id="orderType" value="" />
+			<input type="hidden" id="mobile" value="" />
+			<input type="hidden" id="oldRenew" value="" />
+			
+			<input type="hidden" id="oldMoney" value="" /><!-- 原订单金额 -->
+			
+			<input type="hidden" id="profit" value="" /><!-- 收益率 -->
+			<input type="hidden" id="termInDay" value="" /><!-- 存续期限，以天为单位 -->
+			<input type="hidden" id="scale" value="" /><!-- 产品规模 -->
+			<input type="hidden" id="displayLimit" value="" /><!-- 展示额度 -->
+			<input type="hidden" id="productMoney" value="" /><!-- 认购起点 -->
+			<input type="hidden" id="moneyStep" value="" /><!-- 认购步长 -->
+		</div>
+        <div class="select-way-box">
+            <div class="select-way-contain"">
+                <ul>
+                    <li data-value="Y" id='Y'>到期自动续投</li>
+                    <li data-value="N" id='N'>到期赎回本息</li>
+                </ul>
+            </div>
+            <div class="select-way-tips" id="selectWayTips0">
+                <p>产品到期后，本金及收益自动续投下一期产品。</p>
+            </div>
+            <div class="select-way-tips" id="selectWayTips1">
+                <p>产品到期后，本金及收益自动赎回至银行卡。</p>
+            </div>
+        </div>
+        <div class="box-input registe box-pay-password clear">
+            <div class="password mid">
+                <label for="password fl">安全码</label>
+                <input type="password" id="tPassWord" placeholder="请输入安全码" style="width:40%;margin:0 0 0 5%;">
+                <a href="/WeixinService/business/user/resetTPassword.shtml" class="forget-password fr">忘记安全码？</a>
+             </div>
+             <div class="input-text">
+               <label for="indentify">验证码</label>
+               <input type="text"  id="randomCode" placeholder="请输入验证码" style="width:40%;margin:0 0 0 5%;">
+               <span class="indentifyimg">
+               <img src="/WeixinService/buildimageservlet.xhtml" id="rondomCodeImg" onclick="getRandomCode()" class="code_pic" />
+               </span>
+            </div>            
+        </div>           
+        <div class="buy order-bottom buy_btn" style="top: 518px;">
+            <div class="left fl">
+                <a href="javascript:modifyAppointRequest();">确认修改</a>
+            </div>
+            <div class="right fr">
+                 <a href="javascript:toBack();">放弃</a>
+            </div>
+        </div>
+    </section>   
+</section>
+</body>
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/modifyPaymentWay.min.js"></script> -->
+<script type="text/javascript">
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/modifyPaymentWay.min.js?version='+new Date().getTime()+'"><\/script>');
+</script>
+</html>

@@ -1,0 +1,267 @@
+   <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <title>注册_招商财富  都市精英的私人银行、高净值人士专业资产管理平台</title>
+   <link rel="shortcut icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+	<meta name="keyword" content="资产配置、高端投资理财、资产管理、理财产品、固定收益、私募股权、债券、资产证券化、solution" />
+    <meta name="description" content="招商财富是招商旗下专业高端资产管理平台，主要经营特定客户资产管理业务。招商财富为高净值客户提供优质的金融投资理财产品、投资理财建议和专业的资产配置服务，满足客户全方位的资产管理需求。" /> 
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+	<div class="cover_bg" id="hintDiv" style="display: none;">
+		<div class="cover-con supportbank">
+			<h1>支持银行</h1>
+			<input type="hidden" id="pageId" value="userRegisteredId"/>
+			<i class="close" onclick="closeBank()"></i> <span class="cover-con-text" id="hintBanke">目前仅支持的银行有：招商银行、工商银行、广发银行、广发银行、广发银行、广发银行、广发银行、广发银行、广发银行、广发银行、广发银行、广发银行</span> <input class="pop-up-four-confirm" type="button"
+				value="确认" onclick="closeBank()">
+		</div>
+	</div>
+	
+	<!-- 去签约 -->
+	<div class="cover_bg" id="contractSign_div_02" style="display: none;">
+        <div class="cover-pay gopay">  
+            <i class="close" onclick="close_tips('contractSign_div_02')"></i>
+            <span class="cover-pay-text">您尚未签约，签约后即可使用线上支付。</span>
+            <span class="cover-pay-btn">
+                <a href="javascript:contractSign()" class="fl goon">去签约</a>
+                <a href="javascript:close_tips('contractSign_div_02')" class="fl back">算了，就用线下支付吧</a>
+            </span>
+        </div>
+    </div>
+    
+    <!-- 查询签约 -->
+    <div class="cover_bg" id="contractSign_div_03" style="display: none;">
+        <div class="cover-pay">
+            <i class="close" onclick="close_tips('contractSign_div_03')"></i>
+            <span class="cover-pay-text">签约成功？</span>
+            <span class="cover-pay-btn">
+                <a href="javascript:queryCommandByBankAccoNo();" class="fl goon">已签约</a>
+                <a href="javascript:close_tips('contractSign_div_03');" class="fl back problem">签约遇到问题</a>
+            </span>
+        </div>
+    </div>
+	<!-- header -->
+	<!--#include virtual="/AppService/public/header.shtml"-->
+
+	<!-- 隐藏项 -->
+	<div style="display: none;">
+		<input type="hidden" name="sessionID" id="sessionID" value="" /> 
+		<input type="hidden" id="page" value="0" /> 
+		<input type="hidden" id="maxPages" value="1" /> 
+		<input type="hidden" id="typeId" value="" /> 
+		<input type="hidden" id="fundId" value="" />
+		
+		
+		<input type="hidden" id="tradeAcct" value="" />
+		<input type="hidden" id="bankNo" value="" />
+	</div>
+	<div id='tip1' class="pay-schedule mid registe-schedule clear">
+		<div class="pay-order schedule01 current">
+			<span>1、填写注册信息</span>
+		</div>
+		<div class="pay-order schedule02">
+			<span>2、验证手机号</span>
+		</div>
+		<div class="pay-order schedule03">
+			<span>3、完成注册</span>
+		</div>
+	</div>
+	<div id='tip2' style='display:none' class="pay-schedule mid registe-schedule clear">
+		<div class="pay-order schedule04">
+			<span>1、验证身份</span>
+		</div>
+		<div class="pay-order schedule05">
+			<span>2、设置安全码</span>
+		</div>
+		<div class="pay-order schedule06">
+			<span>3、完成实名</span>
+		</div>
+	</div>
+	<div class="confirm-order place-holder-point registe-mid mid clear" id="basicMsg">
+		<div class="registe-con">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+			<ul>
+				<li>
+					<label for="phone">手机号码</label> 
+					<input type="text" class="phone" placeholder="请输入手机号码" id="mobile" name="mobile"> 
+					<span class="error-point phone none">手机号码有误</span>
+				</li>
+				<li>
+					<label for="password">登录密码</label> 
+					<input type="password" class="password" id="txtPassword" name="txtPassword" placeholder="请设置6-16位数字组成的登录密码"> 
+					<span class="error-point password none">设置6-16位数字密码</span>
+				</li>
+				<li>
+					<label for="repassword">确认登录密码</label> 
+					<input type="password" class="repassword" id="txtConfirmPassword" name="txtConfirmPassword" placeholder="请再次输入登录密码">
+					<span class="error-point repassword none">两次密码不一致</span>
+				</li>
+				<li>
+					<label for="repassword">验证码</label> 
+					<input type="text" class="identify-input" id="validateNumber" name="validateNumber" placeholder=""> 
+					<span class="indentifyimg">
+						<img src="/AppService/setUp/buildimageservlet.xhtml" id="rondomCodeImg" onclick="getRandomCode()" height="42" width="80" />
+					</span> 
+					<span class="identify-point">
+						<a onclick="getRandomCode()" id="aId"><em>看不清换一张</em></a></span> 
+				</li>
+				<li>
+					<label for="repassword">推荐好友手机</label> 
+					<input type="text" class="phone" id="inviterPhone" name="inviterPhone" placeholder="请输入推荐好友手机" maxlength="11"> 
+				
+				</li>
+				<li>
+					<input type="checkbox" class="checkbox" id="ischecked" name="ischecked"> 
+					<span class="agree_box">我已同意并阅读
+						<a href="/login/service.shtml" target="_blank">《招商财富用户服务协议》</a>
+						<a href="/login/commitment.shtml" target="_blank">《招商财富用户承诺协议》</a>
+						<a href="/login/registerRiskScript.shtml" target="_blank">《个人投资者告知函书》</a>
+					</span> 
+					<span class="error-point checkbox none">请阅读并同意用户协议</span>
+				</li>
+			</ul>
+			<span class="registe-con-btn"><a onclick="intoVerifyMobileCode()">下一步</a></span>
+		</div>
+	</div>
+	<div class="confirm-order registe-mid mid clear place-holder-point place-holder-point-validate none" id="verifyMobileDiv">
+		<div class="registe-con">
+			<ul>
+				<li><label for="phone">手机号码</label> <span class="phone-text" id="verifyMobile"></span></li>
+				<li><label for="repassword">验证码</label> <input type="text" class="identify-input phone" id="mobileCode" name="mobileCode" placeholder="短信验证码"> <span class="indentifyimg phone">
+						<input type="button" value="点击获取验证码" onclick="getMobileVerifyCode();" id="AgetCode" />
+				</span>
+					<div class="indentifyimg-point">
+						<span class="point-clickafter none" id="point-clickafter">验证码已发送至您的手机，请勿泄露；</span>
+					</div></li>
+			</ul>
+			<span class="registe-con-btn phone-indentifyimg"><a href="javascript:register()">立即注册</a></span>
+		</div>
+	</div>
+	<div class="confirm-pay pay-state registe-mid mid clear none" id="registerSuccess">
+		<img class="pay-state-img" src="/AppWeb/AppWeb_Images/images/registe-succe.png" />
+		<span class="state-con con01" style="color: black;font-size: 20px;margin: 0;">恭喜您，<em class="red" id="successMobile"></em>账号注册成功。</span>
+		<span class="state-con con03" style="height: 0px;">
+		    <span class="state-con con03" style="margin-top: -55px;padding-bottom: 0;">
+		    	<span class="state-con con02">10s完成
+				<a href="javascript:intoRiskLevel();" class="state-con02-a" style="margin:0;">风险测评</a>，立即开启财富人生!
+		</span>
+		    </span>
+		</span>
+		<span class="state-con" style="margin-top: -60px;">
+			<img src="/AppWeb/AppWeb_Images/images/ewm02.gif" height="110" width="110" style="border: 0;vertical-align: middle;">
+		</span>
+		
+		<span class="state-con " style="background: url(/AppWeb/AppWeb_Images/images/qcodeBg.png) no-repeat;width:110px;height: 33px;background-size: 100% 100%;line-height: 38px; color: #fff;margin:  0 auto;">
+    		<em class="red" id="successMobile"></em>扫码关注
+    	</span>
+	</div>
+	<div class="confirm-order registe-mid place-holder-point mid clear none place-holder-point-validate" id="realNameDiv">
+		<div class="registe-con">
+			<ul>
+				<li><label for="bankId">银行卡号</label> <input type="text" class="bankId" placeholder="请输入银行卡号" id="bankNumberTemp" name="bankNumberTemp" onkeyup="checkBankNumberLength()"> <input
+					type="hidden" id="bankNumber" name="bankNumber"> <input type="hidden" id="bankName"> <input type="hidden" id="channelNo"> <input type="hidden" id="bankNo"> <span class="error-point bankId none">银行卡号有误</span> <b onclick="querySupportBankList()">查看支持的银行</b></li>
+				<li class="nameIdLi"><label for="nameId">身份证号</label> <input type="text" class="nameId" placeholder="请输入身份证号" id="idNo" name="idNo"> <span class="error-point nameId none">身份证号有误</span></li>
+				<li><label for="name">姓名</label> <input type="text" class="name" placeholder="请输入真实姓名" id="userName" name="userName"> <span class="error-point name none">姓名格式不正确</span></li>
+				<li><label for="phone">手机号</label> <input type="text" class="phone" placeholder="请输入银行卡绑定手机号" id="bankPhone" name="bankPhone"> <span class="error-point phone none">手机号码有误</span></li>
+				<li><label for="repassword">验证码</label> <input type="text" class="identify-input phone-bank" placeholder="短信验证码" id="verifyCode"> <span class="indentifyimg phone"> <input type="button"
+						value="点击获取验证码" id="getVerifyCodeByBankCard" onclick="getMobileVerifyCode1()">
+				</span><div class="indentifyimg-point">
+						<span class="point-clickafter none" id="point-clickafter1">验证码已发送至您的手机，请勿泄露；</span>
+					</div></li>
+			</ul>
+			<span class="registe-con-btn" style="margin-top:44px;"><a href="javascript:checkVrfCode()">下一步</a></span>
+		</div>
+	</div>
+	<div class="confirm-order registe-mid place-holder-point mid clear none place-holder-point-validate" id="tPasswordDiv">
+		<div class="registe-con">
+			<span class="realname-point">请设置8位以上数字+字母组成的安全码。</span>
+			<ul>
+				<li><label for="password">设置安全码</label> <input type="password" class="password" placeholder="请设置安全码" id="Tpassword" name="Tpassword"> <span class="error-point repassword none">密码格式不正确</span>
+				</li>
+				<li><label for="repassword">确认安全码</label> <input type="password" class="repassword" placeholder="请再次输入安全码" id="rTpassword" name="rTpassword"> <span class="error-point repassword none">两次密码不一致</span>
+				</li>
+			</ul>
+			<span class="registe-con-btn"><a href="javascript:setPassword()">完成认证</a></span>
+		</div>
+	</div>
+	<div class="confirm-pay pay-state registe-mid mid clear none" id="successRealnameDiv">
+		<img class="pay-state-img" src="/AppWeb/AppWeb_Images/images/finshrealname.png" />
+		<h2>完成实名</h2>
+		<span class="state-con con01">恭喜您，<em id="successName"></em>。您已成为招商财富尊贵客户。
+		</span> <span class="state-con con02">立即开启财富人生吧！查看<a href="/AppService/business/fund/fundList.shtml" class="state-con02-a">产品超市</a></span>
+		<span class="registe-con-btn b2c" id="contractSign_span_01" style="display: none;"><a href="javascript:contractSign()">继续开通线上支付</a></span>
+	</div>
+	
+	
+	<FORM  name="order" id="contractSign_order" METHOD="post" ACTION="https://B2c.icbc.com.cn/servlet/EBConsignPayServlet" onsubmit="document.charset='GBK';" accept-charset="GBK" target="_blank">
+		<INPUT id="contractSign_interfaceName" NAME="interfaceName" TYPE="hidden" value="ICBC_PERBANK_EBConsignPay">
+		<INPUT id="contractSign_interfaceVersion" NAME="interfaceVersion" TYPE="hidden" value="1.0.0.0">
+		<INPUT id="contractSign_selserialNo" NAME="selserialNo" TYPE="hidden" value="BDP300241833"><!-- 协议编号 -->
+		
+		<INPUT id="contractSign_payNo" NAME="payNo" TYPE="hidden" value="201607200000026"><!-- 缴费编号 -->
+		
+		<INPUT id="contractSign_selpayType" NAME="selpayType" TYPE="hidden" value="扣费"><!-- 缴费种类 -->
+		
+		<INPUT id="contractSign_selcorpId" NAME="selcorpId" TYPE="hidden" value="40009000160441a"><!-- 企业编码 -->
+		
+		<INPUT id="contractSign_selaccountNo" NAME="selaccountNo" TYPE="hidden" value="4000023029200124946"><!-- 企业收费账号 -->
+		
+		<INPUT id="contractSign_regDate" NAME="regDate" TYPE="hidden" value="20151231"><!-- 签约日期 -->
+		
+		<INPUT id="contractSign_HSURL" NAME="HSURL" TYPE="hidden" value="http://127.0.0.1/test.jsp"><!-- 通知地址 -->
+		
+		<INPUT id="contractSign_merCertID" NAME="merCertID" TYPE="hidden" value="ncrp.y.4000"><!-- 证书ID -->
+		
+		<INPUT id="contractSign_Language" NAME="Language" TYPE="hidden" value="ZH_CN"><!-- 语言 -->
+		
+		<INPUT id="contractSign_certDate" NAME="certDate" TYPE="hidden" value="20160720152101"><!-- 交易日期时间（14位时间戳） -->
+		<INPUT id="contractSign_allowFinalDate" NAME="allowFinalDate" TYPE="hidden" value="0">
+		<INPUT id="contractSign_accountNo" NAME="accountNo" TYPE="hidden" value="6222024000799000076">
+		
+		<INPUT id="contractSign_certData" NAME="certData" TYPE="hidden" value="MIIFhQYJKoZIhvcNAQcCoIIFdjCCBXICAQExCzAJBgUrDgMCGgUAMIIBWgYJKoZIhvcNAQcBoIIBSwSCAUdpbnRlcmZhY2VOYW1lPUlDQkNfUEVSQkFOS19FQkNvbnNpZ25QYXkmaW50ZXJmYWNlVmVyc2lvbj0xLjAuMC4wJnNlbHNlcmlhbE5vPUJEUDMwMDI0MTgzMyZwYXlObz0yMDE2MDcyMDAwMDAwMjYmc2VscGF5VHlwZT1UVFQmc2VsY29ycElkPTQwMDA5MDAwMTYwNDQxYSZzZWxhY2NvdW50Tm89NDAwMDAyMzAyOTIwMDEyNDk0NiZyZWdEYXRlPTIwMTUxMjMxJkhTVVJMPWh0dHA6Ly8xMjcuMC4wLjEvdGVzdC5qc3AmbWVyQ2VydElEPW5jcnAueS40MDAwJmNlcnREYXRlPTIwMTYwNzIwMTUyMTAxJmFjY291bnRObz02MjIyMDI0MDAwNzk5MDAwMDc2JmFsbG93RmluYWxEYXRlPTCgggMPMIIDCzCCAfOgAwIBAgIKG5LKECVWAAJvczANBgkqhkiG9w0BAQUFADA7MR8wHQYDVQQDExZJQ0JDIFRlc3QgQ29ycG9yYXRlIENBMRgwFgYDVQQKEw90ZXN0aWNiYy5jb20uY24wHhcNMTUxMjMxMDMwNjQxWhcNMjAxMjMxMDMwNjQxWjA/MRQwEgYDVQQDEwtuY3JwLnkuNDAwMDENMAsGA1UECxMENDAwMDEYMBYGA1UEChMPdGVzdGljYmMuY29tLmNuMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCggAaIsLIQ0zFHBgkj+L2bqbLY/vdaxwHHVJBPIyq3IulSG10JA5pwLmTgEr59iRi4wV2myRDhYfioL/PeDm7GYMVzmuBtNX9BB35xPVfZuxHrO/RVsSrdoP4M0hWhm5E16dTy12wzJjjQUBcFM0eiNaJsG5ovmrvtnoqNEN9XWQIDAQABo4GQMIGNMB8GA1UdIwQYMBaAFER9t5AsN6TZ7WzipIdXZwq18E0UMEsGA1UdHwREMEIwQKA+oDykOjA4MQ4wDAYDVQQDEwVjcmwzMjEMMAoGA1UECxMDY3JsMRgwFgYDVQQKEw90ZXN0aWNiYy5jb20uY24wHQYDVR0OBBYEFCNmgyn2V5f9lFzawl8JxiiojQ7KMA0GCSqGSIb3DQEBBQUAA4IBAQAXwwrEH/vNMbpzX8+8EtjbgH2Jm8bEjxr9YU6thEnDR+gvySr4CkeA8PEgpeiCem4iUXPjRUuANbnbjvNPfU1xxKzZwxO9uiC0xX7YpyLI4wc/DzVIQcm7hsFoBjlHw/8pixk4DIlvBQyedZYo9VRURiIO/PQBEWmP9kI+gt7hOQT0id7+mj4VuXMfQAcZ88z5QZ2cKlSuBTi1RtKzPVsHWbimbxRqtCiSJU0Tyx5jcvMtl3WKwyjpOLZJuuxdgHr4QYKihY1W62DcaBnDmRjgmd/xQwNY9xf7ZZLz5AZr/7txBWGkCQrZANA41RHPZrNPNqdozIHPincCeBKldLR3MYHuMIHrAgEBMEkwOzEfMB0GA1UEAxMWSUNCQyBUZXN0IENvcnBvcmF0ZSBDQTEYMBYGA1UEChMPdGVzdGljYmMuY29tLmNuAgobksoQJVYAAm9zMAkGBSsOAwIaBQAwDQYJKoZIhvcNAQEBBQAEgYA5yfiqjmn40hEVeAIUJQltOavRIq+nNgYIeUpIloLwpZrwFUpdPEVjdJK2jEgTHPbkY+TgSwoKON+YbmvNCKKjNe4f+9HLigKg1iuu6/sfVEfY3fzXj4q34RjvdNz+9bv3feVzBYsNWVZIeFQMYPvMeuSj4feQcb93BeQTyV6L7w==">  <!-- 签名 -->
+		
+		<INPUT type="hidden" NAME="tipMsg"  value="欢迎在线签署《中国工商银行网上银行个人委托缴费协议》" > <!-- 提示信息 -->
+	</FORM>
+	<!-- 去招行支付 -->
+	<div class="cover_bg" id="cmb_01" style="display: none;">
+	    <div class="cover-pay gopay">
+	        <i class="close" onclick="cmb_lose('cmb_01')"></i>
+	        <span class="cover-pay-text">即将跳转到招商银行网银签约</span>
+	        <span class="cover-pay-btn">
+	            <a href="javascript:cmbSubmit()" class="fl goon" style="width: 215px;">去签约 </a>
+	            <a href="javascript:cmb_lose('cmb_01')" class="fl back">取消</a>
+	        </span>
+	    </div>
+	</div>
+	<!-- 招行签约成功 -->
+	<div class="cover_bg" id="cmb_02" style="display: none;">
+	    <div class="cover-pay">
+	        <i class="close" onclick="cmb_lose('cmb_02')"></i>
+	        <span class="cover-pay-text">是否完成签约？</span>
+	        <span class="cover-pay-btn">
+	            <a href="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&thirdCatId=ACCOUNT_BANK" class="fl goon">已签约</a>
+	            <a href="javascript:cmb_lose('cmb_02');" class="fl back problem">签约遇到问题</a>
+	        </span>
+	    </div>
+	</div>
+	<!--招行签约-->
+	<FORM name="cmbForm" id="cmbForm" action="" METHOD="post" onsubmit="document.charset='utf-8';" accept-charset="utf-8" target="_blank">
+		<INPUT id="merchant" NAME="merchant" TYPE="hidden" value="ICBC_PERBANK_EBConsignPay">
+		<INPUT id="uin" NAME="uin" TYPE="hidden" value="1.0.0.0">
+		<INPUT id="url" NAME="url" TYPE="hidden" value="BDP300241833">
+		<INPUT id="timeStamp" NAME="TimeStamp" TYPE="hidden" value="201607200000026">
+		<INPUT id="checkSum" NAME="CheckSum" TYPE="hidden" value="扣费">
+		<INPUT id="mcAccountNo" NAME="McAccountNo" TYPE="hidden" value="40009000160441a">
+		<INPUT id="username" NAME="username" TYPE="hidden" value="4000023029200124946">
+		<INPUT id="reserve1" NAME="reserve1" TYPE="hidden" value="20151231">
+		<INPUT id="reserve2" NAME="reserve2" TYPE="hidden" value="http://127.0.0.1/test.jsp">
+	</FORM>
+	<!-- footer -->
+	<!--#include virtual="/AppService/public/footer.shtml"-->
+	<!-- <script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/register.js"></script> -->
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/register.min.js"></script> 
+</body>
+</html>

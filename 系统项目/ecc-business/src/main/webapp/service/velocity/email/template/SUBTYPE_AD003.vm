@@ -1,0 +1,17 @@
+<TABLE CELLSPACING=0 CELLPADDING=0 WIDTH=""100%"">
+  <TR>
+  	<TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">子产品简称</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">一对一规模(金额)</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">产品费用与收益(存续规模)</TD>
+  </TR>
+  #foreach($resultVo in $result)
+  	<TR>
+  	 <TD ALIGN=CENTER WIDTH=7%><SPAN>$!resultVo.subFundSName</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!resultVo.sumActualRaiseAmt</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!resultVo.feeYieldRaiseAmt</SPAN></TD>
+   </TR>
+  #end
+  <TR>
+  	<TD ALIGN=CENTER colspan="3"><SPAN>$nullResult</SPAN></TD>
+  </TR>
+</TABLE>

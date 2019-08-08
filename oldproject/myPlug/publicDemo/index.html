@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 移动页面相关设置 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <!--apple应用模式-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!--apple应用状态栏样式-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏-->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏-->
+    <meta name="x5-fullscreen" content="true">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- 关闭Android/iPhone浏览器自动识别数字为电话号码 -->
+    <meta content="telephone=no" name="format-detection" />
+    <link rel="stylesheet" href="swiper.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="swiper.jquery.min.js"></script>
+    <script src="index.js"></script>
+    <style>
+        body{
+            font-size: 0.32rem;
+        }
+        button{
+            font-size: 0.28rem;
+        }
+        .demo{
+            padding: 0.2rem 0;
+            border-bottom: solid 1px #666;
+        }
+    </style>
+</head>
+<body>
+<div class="demo">
+    <div class="flexible" style="width: 6.4rem;background-color: red;font-size: 0.36rem">
+        <p>屏幕适配；设计稿：640；宽6.4rem；字体0.36rem</p>
+    </div>
+</div>
+<div class="demo">
+    <div class="code" id="code">获取验证码</div>
+    <style>
+        .code{
+            display: block;
+            width: 2rem;
+            height: 0.6rem;
+            line-height: 0.6rem; 
+            text-align: center;
+            font-size: 0.3rem;
+            background-color: green;
+            color: #fff;
+        }
+        .active{
+            background-color: gray;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("#code").click(function () {
+                sendCode("code","active",10);
+            });
+        });
+    </script>
+</div>
+<div class="demo">
+    <div id="activeBox1">主动提示框1</div>
+    <script>
+        $(function () {
+            $("#activeBox1").click(function () {
+                JXQ_msgTip.activeBox({
+                    type:1
+                });
+            });
+        });
+    </script>
+    <div id="activeBox2">主动提示框2</div>
+    <script>
+        $(function () {
+            $("#activeBox2").click(function () {
+                JXQ_msgTip.activeBox({
+                    type:2,
+                },  function a(){
+                       alert("ddd")
+                    });
+            });
+        });
+    </script>
+    <div id="autoBox1">自动提示框2</div>
+    <script>
+        $(function () {
+            $("#autoBox1").click(function () {
+                JXQ_msgTip.autoBox({
+                    contain:"提示信息",
+                    time:1000
+                });
+            });
+        });
+    </script>
+</div>
+<div class="demo">
+    <input data-select-type="age">
+    <input data-select-type="year">
+    <button id="selectbtn">改变select</button>
+    <script>
+        $(function () {
+            JXQ_select.selectBox({
+                age:[1,2,3,4,5,6,7,8,9,10],
+                year:["5年","10年","15年","20年"],
+                cancel:function (rel) {
+                    console.log(rel);
+                },
+                confirm:function (rel) {
+                    console.log(rel)
+                }
+            });
+            $("#selectbtn").click(function () {
+                JXQ_select.setSelectBox({
+                    age:[10,20,30,40,50,60,70,80,90,100],
+                    year:["50年","100年","150年","200年"]
+                });
+            });
+        });
+    </script>
+</div>
+<div class="demo">
+	<select style="width: 100px;" id="ageChange">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		<option value="9">9</option>
+		<option value="10">10</option>
+	</select>
+    <div class="slideContain" id="slideContain">
+        <div class="slide-bar">
+            <div class="slide-scale">
+                <div class="slide-schedule"></div>
+            </div>
+            <div class="slide-button">
+                <div class="slide-button-center"></div>
+                <div class="slide-value"></div>
+            </div>
+        </div>
+        <div class="slide-control">
+            <div class="slide-minus">-</div>
+            <div class="slide-plus">+</div>
+        </div>
+    </div>
+    <div style="margin-top: 0.6rem">
+        <button id="banSlider">禁止滑动</button>
+        <button id="banClick">禁止点击</button>
+    </div>
+    <script>
+        $(function () {
+//      	$("#ageChange").change(function(){
+//      		var val=$(this).val();
+//      		   new JXQ_slider("#slideContain",{
+//	                value:{
+//	                    min:0,
+//	                    max:10,
+//	                    current:val
+//	                },
+//	                getData:function (data) {
+//	                    $(".slide-value").text(data.value);
+//	                    $("#ageChange").find("option").attr("selected",false);
+//	                    $("#ageChange").find("option[value="+data.value+"]").attr("selected",true)
+//	                }
+//	            });
+//      	})
+//      	
+        	
+           var a=new JXQ_slider("#slideContain",{
+                value:{
+                    min:0,
+                    max:10,
+                    current:2
+                },
+                getData:function (data) {
+                    $(".slide-value").text(data.value);
+//                  $("#ageChange").find("option").attr("selected",false)
+//                   $("#ageChange").find("option[value="+data.value+"]").attr("selected",true)
+                }
+            });
+            
+            
+            
+            $("#banSlider").click(function () {
+                a.context.banSlider=true;
+            });
+            $("#banClick").click(function () {
+                a.context.banClick=true;
+            });
+        });
+    </script>
+</div>
+</body>
+</html>

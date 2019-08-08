@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cmwa.ecc.business.dao.query.MultipleQueryDao">
+	
+	<!-- 账户信息结果集  -->
+	<resultMap type="fundCustInfoVo" id="fundCustInfoMap">
+		<result column="FUNDACCT" property="fundacct" jdbcType="VARCHAR" />
+		<result column="INVTP" property="invtp" jdbcType="VARCHAR" />
+		<result column="INVTP_NAME" property="invtpName" jdbcType="VARCHAR" />
+		<result column="INVNM" property="invnm" jdbcType="VARCHAR" />
+		<result column="IDTP" property="idtp" jdbcType="VARCHAR" />
+		<result column="IDTP_NAME" property="idtpName" jdbcType="VARCHAR" />
+		<result column="IDNO" property="idno" jdbcType="VARCHAR" />
+		<result column="FDACST" property="fdacst" jdbcType="VARCHAR" />
+		<result column="FDACST_NAME" property="fdacstName" jdbcType="VARCHAR" />
+		<result column="OPENDT" property="opendt" jdbcType="VARCHAR" />
+		<result column="CUSTTP" property="custtp" jdbcType="VARCHAR" />
+		<result column="CUSTTP_Name" property="custtpName" jdbcType="VARCHAR" />
+		<result column="TRADEACCO" property="tradeacco" jdbcType="VARCHAR" />
+		<result column="BANKNAME" property="bankname" jdbcType="VARCHAR" />
+		<result column="BANKNO" property="bankno" jdbcType="VARCHAR" />
+		<result column="BANKACCO" property="bankacco" jdbcType="VARCHAR" />
+		<result column="TRADEACCOST" property="tradeaccost" jdbcType="VARCHAR" />
+		<result column="TRADEACCOST_NAME" property="tradeaccostName" jdbcType="VARCHAR" />
+		<result column="MELONMD" property="melonmd" jdbcType="VARCHAR" />
+		<result column="MELONMD_NAME" property="melonmdName" jdbcType="VARCHAR" />
+		<result column="NETPOINT" property="netpoint" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	
+	<!-- 基金净值结果集  -->
+	<resultMap type="fundNavVo" id="fundNavMap">
+		<result column="FUNDID" property="fundid" jdbcType="VARCHAR" />
+		<result column="FUNDNM" property="fundnm" jdbcType="VARCHAR" />
+		<result column="NAV" property="nav" jdbcType="NUMERIC" />
+		<result column="FACEVALUE" property="facevalue" jdbcType="NUMERIC" />
+		<result column="NAVDT" property="navdt" jdbcType="NUMERIC" />
+	</resultMap>
+	
+	<!-- 基金余额结果集  -->
+	<resultMap type="fundBalanceVoSrh" id="fundBalanceSrhMap">
+		<result column="FUNDACCT" property="fundacct" jdbcType="VARCHAR" />
+		<result column="INVNM" property="invnm" jdbcType="VARCHAR" />
+		<result column="CUSTTP" property="custtp" jdbcType="NUMERIC" />
+		<result column="CUSTTP_NAME" property="custtpName" jdbcType="NUMERIC" />
+		<result column="TRADEACCO" property="tradeacco" jdbcType="NUMERIC" />
+		<result column="BANKNO" property="bankno" jdbcType="NUMERIC" />
+		<result column="BANKACCO" property="bankacco" jdbcType="NUMERIC" />
+		<result column="BANKACNM" property="bankacnm" jdbcType="NUMERIC" />
+		<result column="FUNDID" property="fundid" jdbcType="NUMERIC" />
+		<result column="FUNDNM" property="fundnm" jdbcType="NUMERIC" />
+		<result column="BALANCE" property="balance" jdbcType="NUMERIC" />
+		<result column="AVAILABLE" property="available" jdbcType="NUMERIC" />
+		<result column="FROZEN" property="frozen" jdbcType="NUMERIC" />
+		<result column="HFROZEN" property="hfrozen" jdbcType="NUMERIC" />
+		<result column="ABNMFROZEN" property="abnmfrozen" jdbcType="NUMERIC" />
+		<result column="NAV" property="nav" jdbcType="NUMERIC" />
+		<result column="NETPOINT" property="netpoint" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<!--	账户信息    	  -->
+	<select id="queryFundCustInfoListPage" parameterType="sparam" resultMap="fundCustInfoMap">
+			SELECT 
+					 F.FUNDACCT,
+					 IBF_GET_PARAMNAME('SYSTEM','INVTP',C.INVTP) INVTP_NAME,
+			         C.INVTP,
+			         C.INVNM,
+					 IBF_GET_PARAMNAME('SYSTEM','IDTP',C.IDTP) IDTP_NAME,
+			         C.IDTP,
+			         C.IDNO,
+					 IBF_GET_PARAMNAME('SYSTEM','FDACST',F.FDACST) FDACST_NAME,
+			         F.FDACST,
+			         C.OPENDT,
+					 IBF_GET_PARAMNAME('SYSTEM','CUSTTP',E.CUSTTP) CUSTTP_NAME,
+			         E.CUSTTP,
+			         T.TRADEACCO,
+			         ECC_IBF_GET_BANK_NAME(T.BANKNO) BANKNAME,
+			         T.BANKNO,
+			         T.BANKACCO,
+			         R.TRADEFLAG AS TRADEACCOST,
+					 IBF_GET_PARAMNAME('SYSTEM','MELONMD',T.MELONMD) MELONMD_NAME,
+			         T.MELONMD,
+			         T.NETPOINT
+			    FROM TRADEACCOINFO T,
+			         FUNDACCOINFO F,
+			         TRADEACCORELA R,
+			         CUSTINFO C,
+			         CUSTINFOEX E
+			   WHERE R.CUSTNO = T.CUSTNO
+			     AND R.TRADEACCO = T.TRADEACCO
+			     AND R.CUSTNO = F.CUSTNO(+)
+			     AND R.FUNDACCT = F.FUNDACCT(+)
+			     AND R.TANO = F.TANO(+)
+			     AND R.CUSTNO = C.CUSTNO
+			     AND R.CUSTNO = E.CUSTNO
+			     	<if test=" null != sp.fundacct  and '' != sp.fundacct">
+				  		 AND TRIM(F.FUNDACCT) = #{sp.fundacct}
+				    </if>
+				    <if test=" null != sp.idno  and '' != sp.idno">
+				  		 AND C.IDNO = #{sp.idno}
+				    </if>
+				    <if test=" null != sp.invnm  and '' != sp.invnm">
+				  		 AND C.INVNM LIKE '%'||#{sp.invnm}||'%' 
+				    </if>
+				    <if test=" null != sp.custst  and '' != sp.custst">
+				  		 AND C.CUSTST = #{sp.custst}
+				    </if>
+				    <if test=" null != sp.qway  and '' != sp.qway">
+				  		 AND T.REGIONCODE = #{sp.qway}
+				    </if>
+				    <if test=" null != sp.netpoint  and '' != sp.netpoint">
+				  		 AND T.NETPOINT = #{sp.netpoint}
+				    </if>
+				    ORDER BY C.INVNM,C.OPENDT ASC
+	</select>
+		
+			    
+	<!--	账户信息分页总数  	  -->
+	<select id="queryFundCustInfoListTotal" parameterType="sparam" resultType="int">
+			SELECT 
+					COUNT(*)
+			    FROM TRADEACCOINFO T,
+			         FUNDACCOINFO F,
+			         TRADEACCORELA R,
+			         CUSTINFO C,
+			         CUSTINFOEX E
+			   WHERE R.CUSTNO = T.CUSTNO
+			     AND R.TRADEACCO = T.TRADEACCO
+			     AND R.CUSTNO = F.CUSTNO(+)
+			     AND R.FUNDACCT = F.FUNDACCT(+)
+			     AND R.TANO = F.TANO(+)
+			     AND R.CUSTNO = C.CUSTNO
+			     AND R.CUSTNO = E.CUSTNO
+			     <if test=" null != sp.fundacct  and '' != sp.fundacct">
+				  		 AND TRIM(F.FUNDACCT) = #{sp.fundacct}
+				    </if>
+				    <if test=" null != sp.idno  and '' != sp.idno">
+				  		 AND C.IDNO = #{sp.idno}
+				    </if>
+				    <if test=" null != sp.invnm  and '' != sp.invnm">
+				  		 AND C.INVNM LIKE '%'||#{sp.invnm}||'%' 
+				    </if>
+				    <if test=" null != sp.custst  and '' != sp.custst">
+				  		 AND C.CUSTST = #{sp.custst}
+				    </if>
+				    <if test=" null != sp.qway  and '' != sp.qway">
+				  		 AND T.REGIONCODE = #{sp.qway}
+				    </if>	
+				    <if test=" null != sp.netpoint  and '' != sp.netpoint">
+				  		 AND T.NETPOINT = #{sp.netpoint}
+				    </if>
+				    ORDER BY C.INVNM,C.OPENDT ASC
+	</select>
+	
+	<!--	账户信息导出  	  -->
+	<select id="queryFundCustInfoList" parameterType="sparam" resultMap="fundCustInfoMap">
+			SELECT 
+					 F.FUNDACCT,
+					 IBF_GET_PARAMNAME('SYSTEM','INVTP',C.INVTP) INVTP_NAME,
+			         C.INVTP,
+			         C.INVNM,
+					 IBF_GET_PARAMNAME('SYSTEM','IDTP',C.IDTP) IDTP_NAME,
+			         C.IDTP,
+			         C.IDNO,
+					 IBF_GET_PARAMNAME('SYSTEM','FDACST',F.FDACST) FDACST_NAME,
+			         F.FDACST,
+			         C.OPENDT,
+					 IBF_GET_PARAMNAME('SYSTEM','CUSTTP',E.CUSTTP) CUSTTP_NAME,
+			         E.CUSTTP,
+			         T.TRADEACCO,
+			         ECC_IBF_GET_BANK_NAME(T.BANKNO) BANKNAME,
+			         T.BANKNO,
+			         T.BANKACCO,
+			         (CASE 
+	                           WHEN R.TRADEFLAG = 'Y' THEN '正常'
+	                           WHEN R.TRADEFLAG = 'N' THEN '无效'
+                      END) TRADEACCOST_NAME, 
+			         R.TRADEFLAG AS TRADEACCOST,
+					 IBF_GET_PARAMNAME('SYSTEM','MELONMD',T.MELONMD) MELONMD_NAME,
+			         T.MELONMD,
+			         T.NETPOINT
+			    FROM TRADEACCOINFO T,
+			         FUNDACCOINFO F,
+			         TRADEACCORELA R,
+			         CUSTINFO C,
+			         CUSTINFOEX E
+			   WHERE R.CUSTNO = T.CUSTNO
+			     AND R.TRADEACCO = T.TRADEACCO
+			     AND R.CUSTNO = F.CUSTNO(+)
+			     AND R.FUNDACCT = F.FUNDACCT(+)
+			     AND R.TANO = F.TANO(+)
+			     AND R.CUSTNO = C.CUSTNO
+			     AND R.CUSTNO = E.CUSTNO
+			     	<if test=" null != sp.fundacct  and '' != sp.fundacct">
+				  		 AND TRIM(F.FUNDACCT) = #{sp.fundacct}
+				    </if>
+				    <if test=" null != sp.idno  and '' != sp.idno">
+				  		 AND C.IDNO = #{sp.idno}
+				    </if>
+				    <if test=" null != sp.invnm  and '' != sp.invnm">
+				  		 AND C.INVNM LIKE '%'||#{sp.invnm}||'%' 
+				    </if>
+				    <if test=" null != sp.custst  and '' != sp.custst">
+				  		 AND C.CUSTST = #{sp.custst}
+				    </if>
+				    <if test=" null != sp.qway  and '' != sp.qway">
+				  		 AND T.REGIONCODE = #{sp.qway}
+				    </if>
+				    <if test=" null != sp.netpoint  and '' != sp.netpoint">
+				  		 AND T.NETPOINT = #{sp.netpoint}
+				    </if>
+				    ORDER BY C.INVNM,C.OPENDT ASC
+	</select>
+	
+	<!--	基金净值    	  -->
+	<select id="queryFundNavListPage" parameterType="sparam" resultMap="fundNavMap">
+		 	SELECT 
+			 		 I.FUNDID,
+			         I.FUNDNM,
+			         I.NAV,
+			         E.FACEVALUE,
+			         I.NAVDT
+			    FROM FUNDINFO I,
+			         FUNDINFOEX E
+			   WHERE I.FUNDID = E.FUNDID
+			   	<if test=" null != sp.startDate  and '' != sp.startDate">
+		  		 AND I.NAVDT <![CDATA[>=]]> #{sp.startDate}
+			    </if>
+				<if test=" null != sp.endDate  and '' != sp.endDate">
+			  		 AND I.NAVDT <![CDATA[<=]]> #{sp.endDate}
+			    </if>
+			   ORDER BY I.FUNDNM ASC, NAVDT DESC, I.FUNDID ASC
+	</select>
+	
+	<!-- 基金净值分页总数  	 --> 
+	<select id="queryFundNavListTotal" parameterType="sparam" resultType="int">
+			SELECT 
+			 		 COUNT(*)
+			    FROM FUNDINFO I,
+			         FUNDINFOEX E
+			   WHERE I.FUNDID = E.FUNDID
+			   	<if test=" null != sp.startDate  and '' != sp.startDate">
+		  		 AND I.NAVDT <![CDATA[>=]]> #{sp.startDate}
+			    </if>
+				<if test=" null != sp.endDate  and '' != sp.endDate">
+			  		 AND I.NAVDT <![CDATA[<=]]> #{sp.endDate}
+			    </if>
+			   ORDER BY I.FUNDNM ASC, NAVDT DESC, I.FUNDID ASC
+	</select>
+	
+	<!-- 	基金余额    	 -->	
+	<select id="queryFundBalanceListPage" parameterType="sparam" resultMap="fundBalanceSrhMap">
+			SELECT 
+				 B.FUNDACCT,
+		         C.INVNM,
+		         E.CUSTTP,
+		         B.TRADEACCO,
+		         T.BANKNO,
+		         T.BANKACCO,
+		         T.BANKACNM,
+		         B.FUNDID,
+		         F.FUNDNM,
+		         B.BALANCE,
+		         TRUNC(B.BALANCE - NVL(QN.CHANGEQUTY,0) - NVL(QY.CHANGEQUTY,0) - B.ABNMFROZEN, 2) AS AVAILABLE,
+		         TRUNC(NVL(QN.CHANGEQUTY,0),2) AS FROZEN,
+		         TRUNC(NVL(QY.CHANGEQUTY,0),2) AS HFROZEN,
+		         B.ABNMFROZEN,
+		         F.NAV,
+		         T.NETPOINT
+		    FROM FUNDBALANCE B,
+		         CUSTINFO C,
+		         CUSTINFOEX E,
+		         TRADEACCOINFO T,
+		         FUNDINFO F,
+		         (SELECT TRADEACCO, FUNDID, SHARETYPE,
+		                 SUM(CHANGEQUTY) AS CHANGEQUTY
+		            FROM TRADEREQUEST_QTRACE
+		           WHERE TRANSST = 'N'
+		           GROUP BY TRADEACCO, FUNDID, SHARETYPE) QN,
+		         (SELECT TRADEACCO, FUNDID, SHARETYPE,
+		                 SUM(CHANGEQUTY) AS CHANGEQUTY
+		            FROM TRADEREQUEST_QTRACE
+		           WHERE TRANSST = 'Y'
+		           GROUP BY TRADEACCO, FUNDID, SHARETYPE) QY
+		   WHERE B.CUSTNO = C.CUSTNO
+		     AND B.CUSTNO = E.CUSTNO
+		     AND B.TRADEACCO = T.TRADEACCO
+		     AND B.FUNDID = F.FUNDID
+		     AND B.TRADEACCO = QN.TRADEACCO(+)
+		     AND B.FUNDID = QN.FUNDID(+)
+		     AND B.SHARETYPE = QN.SHARETYPE(+)
+		     AND B.TRADEACCO = QY.TRADEACCO(+)
+		     AND B.FUNDID = QY.FUNDID(+)
+		     AND B.SHARETYPE = QY.SHARETYPE(+)
+		    <if test=" null != sp.fundacct  and '' != sp.fundacct">
+		  		 AND TRIM(B.FUNDACCT) = #{sp.fundacct}
+		    </if>
+		    <if test=" null != sp.tano  and '' != sp.tano">
+		  		 AND F.TANO = #{sp.tano}
+		    </if>
+		    <if test=" null != sp.invnm  and '' != sp.invnm">
+		  		 AND C.INVNM LIKE '%'||#{sp.invnm}||'%' 
+		    </if>
+		    <if test=" null != sp.qway  and '' != sp.qway">
+		  		 AND T.REGIONCODE = #{sp.qway}
+		    </if>
+		    <if test=" null != sp.netpoint  and '' != sp.netpoint">
+		  		 AND T.NETPOINT = #{sp.netpoint}
+		    </if>
+	</select>
+	
+		<!-- 基金余额分页总数  	 --> 
+	<select id="queryFundBalanceListTotal" parameterType="sparam" resultType="int">
+			SELECT 
+				 COUNT(*)
+		    FROM FUNDBALANCE B,
+		         CUSTINFO C,
+		         CUSTINFOEX E,
+		         TRADEACCOINFO T,
+		         FUNDINFO F,
+		         (SELECT TRADEACCO, FUNDID, SHARETYPE,
+		                 SUM(CHANGEQUTY) AS CHANGEQUTY
+		            FROM TRADEREQUEST_QTRACE
+		           WHERE TRANSST = 'N'
+		           GROUP BY TRADEACCO, FUNDID, SHARETYPE) QN,
+		         (SELECT TRADEACCO, FUNDID, SHARETYPE,
+		                 SUM(CHANGEQUTY) AS CHANGEQUTY
+		            FROM TRADEREQUEST_QTRACE
+		           WHERE TRANSST = 'Y'
+		           GROUP BY TRADEACCO, FUNDID, SHARETYPE) QY
+		   WHERE B.CUSTNO = C.CUSTNO
+		     AND B.CUSTNO = E.CUSTNO
+		     AND B.TRADEACCO = T.TRADEACCO
+		     AND B.FUNDID = F.FUNDID
+		     AND B.TRADEACCO = QN.TRADEACCO(+)
+		     AND B.FUNDID = QN.FUNDID(+)
+		     AND B.SHARETYPE = QN.SHARETYPE(+)
+		     AND B.TRADEACCO = QY.TRADEACCO(+)
+		     AND B.FUNDID = QY.FUNDID(+)
+		     AND B.SHARETYPE = QY.SHARETYPE(+)
+		    <if test=" null != sp.fundacct  and '' != sp.fundacct">
+		  		 AND TRIM(B.FUNDACCT) = #{sp.fundacct}
+		    </if>
+		    <if test=" null != sp.tano  and '' != sp.tano">
+		  		 AND F.TANO = #{sp.tano}
+		    </if>
+		    <if test=" null != sp.invnm  and '' != sp.invnm">
+		  		 AND C.INVNM LIKE '%'||#{sp.invnm}||'%' 
+		    </if>
+		    <if test=" null != sp.qway  and '' != sp.qway">
+		  		 AND T.REGIONCODE = #{sp.qway}
+		    </if>
+		    <if test=" null != sp.netpoint  and '' != sp.netpoint">
+		  		 AND T.NETPOINT = #{sp.netpoint}
+		    </if>
+		    ORDER BY C.INVNM ASC
+	</select>
+	
+		<!-- 基金余额导出   -->	 
+	<select id="queryFundBalanceList" parameterType="sparam" resultMap="fundBalanceSrhMap">
+			SELECT 
+				 B.FUNDACCT,
+		         C.INVNM,
+		         E.CUSTTP,
+		         B.TRADEACCO,
+		         T.BANKNO,
+		         T.BANKACCO,
+		         T.BANKACNM,
+		         B.FUNDID,
+		         F.FUNDNM,
+		         B.BALANCE,
+		         TRUNC(B.BALANCE - NVL(QN.CHANGEQUTY,0) - NVL(QY.CHANGEQUTY,0) - B.ABNMFROZEN, 2) AS AVAILABLE,
+		         TRUNC(NVL(QN.CHANGEQUTY,0),2) AS FROZEN,
+		         TRUNC(NVL(QY.CHANGEQUTY,0),2) AS HFROZEN,
+		         B.ABNMFROZEN,
+		         F.NAV,
+		         T.NETPOINT
+		    FROM FUNDBALANCE B,
+		         CUSTINFO C,
+		         CUSTINFOEX E,
+		         TRADEACCOINFO T,
+		         FUNDINFO F,
+		         (SELECT TRADEACCO, FUNDID, SHARETYPE,
+		                 SUM(CHANGEQUTY) AS CHANGEQUTY
+		            FROM TRADEREQUEST_QTRACE
+		           WHERE TRANSST = 'N'
+		           GROUP BY TRADEACCO, FUNDID, SHARETYPE) QN,
+		         (SELECT TRADEACCO, FUNDID, SHARETYPE,
+		                 SUM(CHANGEQUTY) AS CHANGEQUTY
+		            FROM TRADEREQUEST_QTRACE
+		           WHERE TRANSST = 'Y'
+		           GROUP BY TRADEACCO, FUNDID, SHARETYPE) QY
+		   WHERE B.CUSTNO = C.CUSTNO
+		     AND B.CUSTNO = E.CUSTNO
+		     AND B.TRADEACCO = T.TRADEACCO
+		     AND B.FUNDID = F.FUNDID
+		     AND B.TRADEACCO = QN.TRADEACCO(+)
+		     AND B.FUNDID = QN.FUNDID(+)
+		     AND B.SHARETYPE = QN.SHARETYPE(+)
+		     AND B.TRADEACCO = QY.TRADEACCO(+)
+		     AND B.FUNDID = QY.FUNDID(+)
+		     AND B.SHARETYPE = QY.SHARETYPE(+)
+		    <if test=" null != sp.fundacct  and '' != sp.fundacct">
+		  		 AND TRIM(B.FUNDACCT) = #{sp.fundacct}
+		    </if>
+		    <if test=" null != sp.tano  and '' != sp.tano">
+		  		 AND F.TANO = #{sp.tano}
+		    </if>
+		    <if test=" null != sp.invnm  and '' != sp.invnm">
+		  		 AND C.INVNM LIKE '%'||#{sp.invnm}||'%' 
+		    </if>
+		    <if test=" null != sp.qway  and '' != sp.qway">
+		  		 AND T.REGIONCODE = #{sp.qway}
+		    </if>
+		     <if test=" null != sp.netpoint  and '' != sp.netpoint">
+		  		 AND T.NETPOINT = #{sp.netpoint}
+		    </if>
+		    ORDER BY C.INVNM ASC
+	</select>
+	<!--
+		定期扣款失败    	 
+	<select id="queryFundCostFasleListPage" parameterType="sparam" resultMap=""></select>
+	
+		定期扣款失败分页总数  	 
+	<select id="queryFundCostFasleList" parameterType="sparam" resultType="int"></select>
+	 -->
+</mapper>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>承诺协议</title>
+</head>
+<body>
+    <div class="ruleText">
+        <div class="rule_entry">
+            <h1 class="title">招商财富用户承诺协议</h1>
+            <p>依据国家相关法规和政策，招商财富资产管理有限公司的专项资产管理计划的合格投资者用户必须满足个人金融资产不低于500万元，或最近三年个人年均收入不低于50万元的条件。</p>
+            <p>本人慎重承诺，本人符合个人金融资产不低于500万元，或最近三年个人年均收入不低于40万元的条件。如因本人承诺不实，而造成的对招商财富资产管理有限公司和对应资产管理计划的影响和责任，由本人承担。</p>
+        </div>
+        <div class="bot_btn">
+            <a href="javascript:readed()">我已阅读</a>
+        </div>
+    </div>
+</body>
+</html>

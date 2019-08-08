@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>父亲节活动-招商财富</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/activityNew.css">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/swiper.minNew.css">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/swiperNew.min.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/DataStatisJsNew.js"></script>
+</head>
+<body>
+<!--#include virtual="/WeixinService/headerOrFooter/otherHeaderNew.shtml"-->
+	<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+	<input type="hidden" id="eventId" value="H0002">
+	<span id="errorRemark"></span>
+	</div>
+    <div id="loading" style="position: fixed; top: 5px; left: 50px; z-index: 1000; display: none;">1</div>
+    <script type="text/javascript">
+        function temp(x) {
+            var i = parseInt($("#loading").text());
+            if (i < 30) {
+                $("#loading").text(x);
+                setTimeout(temp(parseInt($("#loading").text()) + 1), 50);
+            }
+        }
+    </script>
+    <div class="swiper-container">
+        <div class="swiper-wrapper" style="height: 627px;">
+
+            <!-- page01 start-->
+            <div class="swiper-slide">
+                <section class="page page01 active">
+                    <div class="logo">
+                        <img src="/WeixinWeb/WeixinWeb_Images/activity/logo.png" alt="" class="fl">
+                    </div>
+                    <div class="con">
+                        <img src="/WeixinWeb/WeixinWeb_Images/activity/1_love-bg.png" alt="" class="con-bg-big"> <img src="/WeixinWeb/WeixinWeb_Images/activity/1_father'day-pinyin.png" alt=""
+                            class="con-text-head"> <img src="/WeixinWeb/WeixinWeb_Images/activity/1_father'day-wenzi.png" alt="" class="con-text">
+                    </div>
+                    <div class="up up01">
+                        <img src="/WeixinWeb/WeixinWeb_Images/activity/btn01_arrow.png">
+                    </div>
+                </section>
+            </div>
+
+            <script type="text/javascript">
+                test(30);
+                function temp(x) {
+                    var i = parseInt($("#loading").text());
+                    if (i < 50) {
+                        $("#loading").text(x);
+                        setTimeout(temp(parseInt($("#loading").text()) + 1), 50);
+                    }
+                }
+            </script>
+
+            <!-- page02 start-->
+            <div class="swiper-slide">
+                <section class="page page02">
+                    <div class="head">
+                        <img src="/WeixinWeb/WeixinWeb_Images/activity/2_bg.png" alt="" class="head-bg"> <img src="/WeixinWeb/WeixinWeb_Images/activity/logo.png" alt="" class="fr"> <img
+                            src="/WeixinWeb/WeixinWeb_Images/activity/2_wenzi-inpic.png" alt="" class="fl">
+                    </div>
+                    <div class="con">
+                        <img src="/WeixinWeb/WeixinWeb_Images/activity/2_ban.png" alt="" class="fr"> <img src="/WeixinWeb/WeixinWeb_Images/activity/2_wenzi-1.png" alt="" class="fl-page01"> <img
+                            src="/WeixinWeb/WeixinWeb_Images/activity/2_wenzi-2.png" alt="" class="fl-page02">
+                    </div>
+                     <div class="up up02">
+                        <img src="/WeixinWeb/WeixinWeb_Images/activity/btn01_arrow.png">
+                    </div>
+                </section>
+            </div>
+            <script type="text/javascript">
+                test(80);
+                function temp(x) {
+                    var i = parseInt($("#loading").text());
+                    if (i < 90) {
+                        $("#loading").text(x);
+                        setTimeout(temp(parseInt($("#loading").text()) + 1), 100);
+                    }
+                }
+            </script>
+
+            <!-- page03 start-->
+            <div class="swiper-slide">
+                <section class="page page03">
+                    <div class="head">
+                        <img src="/WeixinWeb/WeixinWeb_Images/activity/logo.png" alt="" class="fr">
+                    </div>
+                    <div class="con">
+                        <img src="/WeixinWeb/WeixinWeb_Images/activity/3_wenzi-1.png" alt="" class="fl-page01"> <img src="/WeixinWeb/WeixinWeb_Images/activity/3_wenzi-1.png.png" alt="" class="fl-page02">
+                    </div>
+                    <div class="bottom">
+                        <img src="/WeixinWeb/WeixinWeb_Images/activity/3_wenzi-inpic.png" alt="" class="page01">
+                    </div>
+                    <div class="up up03">
+                        <img src="/WeixinWeb/WeixinWeb_Images/activity/btn01_arrow.png">
+                    </div>
+                </section>
+            </div>
+            <script type="text/javascript">
+                test(100);
+            </script>
+
+            <!-- page04 start-->
+            <div class="swiper-slide">
+                <section class="page page04">
+                    <div class="logo">
+                        <img src="/WeixinWeb/WeixinWeb_Images/activity/logo.png" alt="" class="fl">
+                    </div>
+                    <div class="con">
+                        <img src="/WeixinWeb/WeixinWeb_Images/activity/4_wenzi-1.png" alt="" class="fl-page01"> <img src="/WeixinWeb/WeixinWeb_Images/activity/4_wenzi-2.png" alt="" class="fl-page02"> <img
+                            src="/WeixinWeb/WeixinWeb_Images/activity/4_pic-gewara.png" alt="" class="fl-page03">
+                    </div>
+                    <div class="btn-bottom"><a href="javascript:draw()" class="btn"><img src="/WeixinWeb/WeixinWeb_Images/activity/4_btn.png" alt=""></a></div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!--#include virtual="/WeixinService/activity/fartherDayActivity/shareNew.shtml"-->
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/fartherDayActivityNew.min.js"></script>
+</body>
+</html>

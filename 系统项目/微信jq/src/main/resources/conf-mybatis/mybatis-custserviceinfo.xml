@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.CustServiceInfoDao">
+		<resultMap type="com.cmwa.ec.weixin.dto.CustomerServiceDto" id="customerService">
+			<result column="CUSTSER_ID" jdbcType="VARCHAR"  property="custserId" />
+			<result column="CUSTSER_NAME" jdbcType="VARCHAR"  property="custserName" />
+			<result column="CUSTSER_ADDRESS" jdbcType="VARCHAR"  property="custserAddress" />
+			<result column="CUSTSER_MOBILE" jdbcType="VARCHAR"  property="custserMobile" />
+			<result column="CUSTSER_WORKYEAR" jdbcType="VARCHAR" property="custserWorkYear" />
+			<result column="CUSTSER_GRADUATE_SCHOOL"  jdbcType="VARCHAR" property="custserGraduateSchool" />
+			<result column="CUSTSER_PUBLICACC_QRCODE"  jdbcType="BLOB" property="custserPublicAccQrcode" />
+			<result column="CUSTSER_PERSONAL_QRCODE" jdbcType="BLOB" property="custserPersonalQrCode" />
+			<result column="CUSTSER_PHOTO" jdbcType="BLOB" property="custserPhoto" />
+			<result column="CREATE_DATE" jdbcType="DATE" property="createDate"/>
+			<result column="CREATE_USER" jdbcType="VARCHAR" property="createUser" />
+			<result column="UPDATE_DATE" jdbcType="DATE" property="updateDate"/>
+			<result column="UPDATE_USER" jdbcType="VARCHAR" property="updateUser" />
+			<result column="CUSTSER_DEFAULT" jdbcType="VARCHAR" property="custserDefault" />
+			<result column="CUSTSER_NICKNAME" jdbcType="VARCHAR" property="custserNickname" />
+		</resultMap>
+		
+		<resultMap type="com.cmwa.ec.weixin.dto.UserBaseInfoDto" id="userBaseMap">
+			<result column="CMFUSERID" jdbcType="VARCHAR"  property="cmfUserId" />
+			<result column="MOBILE" jdbcType="VARCHAR"  property="mobile" />
+			<result column="CUSTNAME" jdbcType="VARCHAR"  property="custName" />
+			<result column="IDTYPE" jdbcType="VARCHAR"  property="idType" />
+			<result column="IDNO" jdbcType="VARCHAR" property="idNo" />
+			<result column="EMAIL"  jdbcType="VARCHAR" property="email" />
+			<result column="USERTYPE"  jdbcType="VARCHAR" property="userType" />
+		</resultMap>
+	
+	<select id="queryServiceInfoById" resultMap="customerService">
+		SELECT * FROM CMWA_CUSTSERVICE_INFO T WHERE T.CUSTSER_ID = #{custserId,jdbcType=VARCHAR}
+	</select>
+	
+	
+	<select id="queryDefaultCustServiceInfo" resultMap="customerService">
+		SELECT * FROM CMWA_CUSTSERVICE_INFO T WHERE T.CUSTSER_DEFAULT = '1'
+	</select>
+	
+	<select id="queryCustServiceByCmfUserId" resultType="java.lang.String">
+		SELECT T.CUSTSER_ID FROM USER_BASEINFO T WHERE T.CMFUSERID = #{cmfuserid,jdbcType=VARCHAR}	
+	</select>
+	
+	<update id="updateCustServiceByCmfUserId">
+		UPDATE USER_BASEINFO SET CUSTSER_ID = #{custserId,jdbcType=VARCHAR},UPDATETIME = SYSDATE WHERE CMFUSERID = #{cmfuserid,jdbcType=VARCHAR}
+	</update>
+	
+	<select id="queryMobileNoByCmfUserId" resultType="java.lang.String">
+		SELECT T.Mobile FROM USER_BASEINFO T WHERE T.CMFUSERID = #{cmfuserid,jdbcType=VARCHAR}	
+	</select>
+	
+	<select id="queryUserBaseList" resultMap="userBaseMap">
+		    SELECT UB.CMFUSERID,
+		           UB.MOBILE,
+		           UB.CUSTNAME,
+		           UB.IDTYPE,
+		           UB.IDNO,
+		           UB.EMAIL,
+		           UB.USERTYPE
+		      FROM USER_BASEINFO UB, User_Risklevel UR
+		     WHERE UB.CMFUSERID = UR.CMFUSERID
+		       AND UB.MOBILE IS NOT NULL
+	     	<if test="userType !=null and userType !=''">
+				AND UR.RISKLEVEL IN ('3', '4', '5')
+	     	</if>
+	</select>
+</mapper>

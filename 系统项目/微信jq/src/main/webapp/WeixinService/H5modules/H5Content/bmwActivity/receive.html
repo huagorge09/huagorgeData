@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="x5-orientation" content="portrait" />
+    <meta name="apple-mobile-web-app-capable" content="no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no">
+    <title>招商财富&粤马会</title>
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/bmwActivity/style.css" />
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/bmwActivity/dialog.css" />
+</head>
+
+<body class="receiveBg">
+    <div class="content">
+        <div class="inputBox">
+            <p>领取免费高端洗牙护理套餐<br>只剩最后一步</p>
+            <ul class="form">
+                <li class="dswkb">
+                    <span>您的姓名</span>
+                    <input type="text" name="userName" placeholder="请输入您的真实姓名" class="flex1" />
+                </li>
+                <li class="dswkb">
+                    <span>手机号码</span>
+                    <input type="tel" name="telPhone" placeholder="请输入您的手机号码" class="flex1" maxlength="11" />
+                </li>
+                <li class="dswkb">
+                    <span>验证码</span>
+                    <input type="tel" maxlength="6" name="captcha" placeholder="请输入验证码" class="flex1" />
+                    <i id="getCaptcha" onclick="receive.sendMessage()">获取验证码</i>
+                </li>
+            </ul>
+            <div class="tips">*本次为粤马会车友专属福利，为确保权益顺利发放，请输入您的会员姓名及联系方式。我们承诺您填写的信息不会泄露。</div>
+            <a href="javascript:receive.submitBoothDate()" class="" id="getBtn">完成领取</a>
+        </div>
+        <p>如有疑问，欢迎致电招商财富咨询：<span>0755-23988886。</span> <br>
+            *活动涉及的牙科服务均由传承齿科提供，服务质量等问题与招商财富无关。 <br>
+            活动最终解释权归招商财富所有。
+         </p>
+    </div>
+
+    <script tyepe="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/bmwActivity/flexible.min.js"></script>
+    <script tyepe="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/bmwActivity/jquery-3.2.1.min.js"></script>
+    <script tyepe="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/bmwActivity/jweixin-1.0.0.js"></script>
+    <script tyepe="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/bmwActivity/dialog.min.js"></script>
+    <script tyepe="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/bmwActivity/config.js"></script>
+    <script tyepe="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/bmwActivity/share.js"></script>
+    <script tyepe="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/bmwActivity/public.js"></script>
+    <script tyepe="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/bmwActivity/receive.js"></script>
+    <script>
+            if(host.indexOf("wxtest1")<0){
+                var _hmt = _hmt || [];
+                (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?9020a7ab025ced56deb634244d8fb392";
+                var s = document.getElementsByTagName("script")[0]; 
+                s.parentNode.insertBefore(hm, s);
+                })();
+            }
+    </script>
+</body>
+
+</html>

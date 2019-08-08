@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>招商财富-晨利系列 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/chenli/cfb.css">
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-init.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/flexible.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+
+</head>
+<body>
+	<div class="warpper" style="padding-bottom: 1rem;">
+		<div class="banner"></div>
+		<div class="recommendBox">
+			<ul class="item">
+				<li>
+					<h2>招商财富 — — 晨利短债专享1号</h2>
+					<div class="proInfo clearFloat">
+						<div class="info">
+							<p><em id="benefitSinceCreated"></em>%</p>
+							<p>成立以来年化收益率</p>
+						</div>
+						<div class="info">
+							<p>1万</p>
+							<p>递增金额</p>
+						</div>
+						<div class="info">
+							<p><em id="startBuy">10</em><span>万起</span></p>
+							<p>起购金额</p>
+						</div>
+					</div>
+					<a href="javascript:;" class="once once1">立即购买</a>
+					<div class="tips">
+						<p class="t2">*本产品风险等级为R2中低风险，适合风险承受能力为C2及以上的投资者</p>
+						<p class="t2">*产品过往业绩并不预示其未来表现，产品实际运作情况以净值为准。投资须谨慎。</p>
+					</div>
+					
+				</li>
+			</ul>
+
+		</div>
+		<div class="img1"><img src="/WeixinWeb/WeixinWeb_Images/H5modules/chenli/img1.jpg" width="100%"></div>
+		 <div class="img2"><img src="/WeixinWeb/WeixinWeb_Images/H5modules/chenli/img2.jpg" width="100%"></div>
+		  <div class="img3"><img src="/WeixinWeb/WeixinWeb_Images/H5modules/chenli/img3.jpg" width="100%"></div>
+	    <div class="img4"><img src="/WeixinWeb/WeixinWeb_Images/H5modules/chenli/img4.jpg" width="100%"></div>
+	</div>
+	  <div class="bottom clearFloat">
+    	<a href="javascript:;" onclick="bussiness();" id="myBtn1">我感兴趣</a>
+    	<a href="javascript:;" onclick="myAdviser();" id="myBtn2">我的顾问</a>
+    </div>
+	<!--预约信息填写-->
+	<div class="cover-bg reserves hide">
+		<div class="content">
+			 <span class="close"></span>
+			 <h1>一键预约享专属服务<br>让投资无后顾之忧</h1>
+			 <h3>我们的专属顾问将24小时内给您回电</h3>
+			 <div class="form">
+			 	<ul>
+				 	<li>
+				 	   <div class="inputBox">
+				 	  	   <span></span> <input type="text" id="userName" name="userName" placeholder="请输入姓名"/>
+				 	   </div>	
+				       <p style="display: none;"></p>
+				 	</li>
+				 	<li class="foucs">
+				 		<div class="inputBox">
+				 	        <span></span> <input type="tel" id="mobilePhone" name="mobilePhone" maxlength="11" placeholder="请输入手机号码"/> 
+				 		</div>
+				 		<p  style="display: none;"></p>
+				 	</li>
+				 	
+				 </ul>
+				 <button id="saveBtn"  class="disabled">立即提交</button>
+			 </div>
+		</div>
+	</div>
+	<!-- 错误提示 -->
+	<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+		<span id="errorRemark"></span>
+	</div>
+	<!--预约成功-->
+	<div class="cover-bg success hide">
+		 <div class="content center">
+		 	<span class="close"></span>
+		 	<div class="successIcon"></div>
+		 	<h2>预约成功</h2>
+		 	<p>客户经理将尽快与您联系，请保持电话畅通</p>
+		 </div>
+	</div>
+	 <!-- 尚未完成操作弹窗-->
+    <div class="cover_bg" id="noOperation" style="display: none;">
+    	 <!-- 尚未完成风险评测-->
+    	 <div class="content risk" id="riskContent" style="display: none;">
+    	 	  <h2></h2>
+    	 	  <p>哎呀！您尚未完成风险测评</p>
+    	 	  <div class="tips">
+    	 	  	  <h3>温馨提示：</h3>
+    	 	  	  <p>根据监管要求，为保护投资者权益，需要了解您的相关信息和风险等级，以实现对您的最大保障。</p>
+    	 	  	  <p class="yearReport">
+    	 	  	  	 动动小指尖， 30秒完成风险测评，轻松查看产品信息
+    	 	  	  </p>
+    	 	  </div>
+    	 	 <a href="javascript:void(0);" id="goRisk" class="btn">我要测评</a>
+    	 </div>
+    	 <!-- 重新测评-->
+    	 <div class="content rNameRisk" id="reRiskContent"  style="display: none;">
+    	 	  <h2></h2>
+    	 	  <p>根据监管要求，您的风险测评已过有效期，还请重新测评</p>
+    	 	   <a href="javascript:void(0);" id="reRisk" class="btn">确定</a>
+    	 </div>
+    </div>
+     <script>
+    	 var pageId="wx_chenli_h5PageId"
+    </script>
+     <script src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/activityCommon1.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/chenli/index.js"></script>
+    
+</body>
+</html>

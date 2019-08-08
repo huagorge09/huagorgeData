@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1New.min.js"></script>
+	<!--  滚动条js  -->
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscrollNew.js"></script>
+	<!--  滚动条js  -->
+	<style type="text/css">
+		.cancel-address{
+			display: block;
+		    width: 90%;
+		    height: 50px;
+		    line-height: 50px;
+		    text-align: center;
+		    margin: 0 auto;
+		    color: #fff;
+		    font-size: 1.7rem;
+		    border-radius: 3px;
+		    background: #d3d3d3;
+		}
+
+		.house-input{
+			margin-left: 10%;
+		    width: 66%;
+		    border: 0px;
+		    color: #999;
+		}
+	</style>
+</head>
+
+<body>
+<section class="page">
+<div id="wrapper">
+    <div id="scroller">
+    <!--#include virtual="/WeixinService/headerOrFooter/headerNew.shtml"-->
+    <div class="registe-point" style="font-size: 16px;">
+		<span>请完成税收居民信息填写：</span>
+	</div>
+    <section>
+    	<input type="hidden" id="nation" />
+    	<input type="hidden" id="nationNM" />
+    	<input type="hidden" id="province" />
+    	<input type="hidden" id="provinceNM" />
+    	<input type="hidden" id="city" />
+    	<input type="hidden" id="cityNM" />
+    	<input type="hidden" id="vocCode" />
+    	<input type="hidden" id="vocName" />
+    	<input type="hidden" id="dateOfBirth" name= "dateOfBirth"/>
+    	<input type="hidden" id="address"/>
+    	<input type="hidden" id="taxResidentType"/>
+    	<input type="hidden" id="taxResidentTypeNM"/>
+    	<input type="hidden" id="birthNation"/>
+    	<input type="hidden" id="birthNationNM"/>
+    	<input type="hidden" id="birthArea"/>
+    	<input type="hidden" id="taxResidentData"/>
+    	<input type="hidden" id="sourceType"/>
+    	<input type="hidden" id="viewType"/>
+    	<input type="hidden" id="otherVocation"/>
+       <div class="center-accountset" style="margin-top: 0px;">
+       		<!-- 20180412 新增 START -->
+       		<div class="input-text">
+	           	<label style="width:87px;font-size: 1.3rem;">中文姓名</label>
+	           	<input type="text" id="userCustName" placeholder="" readonly="readonly">
+	        </div>
+	        <div class="input-text">
+	           	<label style="width:87px;font-size: 1.3rem;">First Name</label>
+	           	<input type="text" id="englishName" name="englishName" placeholder="First Name">
+	        </div>
+	         <div class="input-text">
+	           	<label style="width:87px;font-size: 1.3rem;">Last Name</label>
+	           	<input type="text" id="englishSurname" name="englishSurname" placeholder="Last Name">
+	        </div>
+	        <!-- 20180412 新增 END -->
+	        
+	        
+       		<a href="javascript:goFundTaxNationInfoView('birth')" class="href-point">出生地<i id="birthNationText">请选择</i><em></em></a>
+       		<div class="input-text">
+	           	<label style="width:87px;font-size: 1.3rem;">详细地址</label>
+	           	<input type="text" id="birthAddress" placeholder="请输入州、省、市，不少于5个字">
+	        </div>
+	        
+	        
+	        <!-- 20180412 新增 START -->
+	        <a href="javascript:goFundTaxNationInfoView('reside')" class="href-point">现居国家<i id="resideNationText">请选择</i><em></em></a>
+	        <input type="hidden" id="reside_nation" name="reside_nation"">
+	        <input type="hidden" id="reside_region" name="reside_region"">
+	        <input type="hidden" id="reside_nation_nm" name="reside_nation_nm"">
+	        <input type="hidden" id="reside_region_nm" name="reside_region_nm"">
+       		<div class="input-text">
+	           	<label style="width:87px;font-size: 1.3rem;">现居地址</label>
+	           	<input type="text" id="reside_address" name="reside_address" placeholder="请输入详细现居地址">
+	        </div>
+	        <div class="input-text">
+	           	<label style="width:87px;font-size: 1.3rem;">Address</label>
+	           	<input type="text" id="reside_address_english" name="reside_address_english" placeholder="Please enter your present address">
+	        </div>
+	        <!-- 20180412 新增 END -->
+	        
+	        <div id="tax_template" class= "tax_add_div" style="display: none">
+	        
+	        	<input type="hidden" name="taxNationality" />
+	        	<input type="hidden" name="taxArea" />
+	        	<input type="hidden" name="taxNationalityNM" />
+	        	<input type="hidden" name="notCodeCause" />
+	        	<input type="hidden" name="notCodeCauseNM" />
+    			
+		        <a href="#" class="href-point" style="overflow: hidden;">
+		        	税收居民国
+		        	<i name="taxNationEventTar" id="taxNationalityText" onclick="goFundTaxNationInfoView('tax')" 
+		        		style="float:right;width:57%;padding-left:0px;height:45px;margin-right:34px;text-align:right;" >请选择</i>
+		        	<em style="right:23px;"></em>
+		        	<img src="/WeixinWeb/WeixinWeb_Images/images/bt_add1.png" height="20" width="20" alt="" onclick="addTaxNation()" style="position: absolute;width: 20px;height: 20px;right: 0px;top: 42%;margin-top:-6px;">
+		        </a>
+		        <div class="input-text">
+		           	<label style="width:28%;font-size: 1.3rem;">纳税人识别号</label>
+		           	<input type="text" name="taxpayerCode" placeholder="请输入纳税人识别号" style="width: 57%;">
+		           	<label style="width: 15%;">
+		           		<input type="checkbox" name="isTaxpayerCode" style="width:30%;" onclick="isTaxpayerEvent(this)"/>无
+		           	</label>
+		        </div>
+		        
+		        <div style="display: none">
+			        <a name="notCodeCauseEventTar" href="javascript:goFundTaxNotCodeCauseView()" class="href-point" style="overflow: hidden;">无识别号的原因<i id="notCodeCauseText" style="width: 60%;height: 45px;text-align: right;padding-left: 0px;">请选择</i><em></em></a>
+			        
+			        <div style="display: none">
+			        <div class="input-text">
+			           	<label style="width:87px;font-size: 1.3rem;">未取得原因</label>
+			           	<input type="text" name="notGetCause" placeholder="请输入未取得的具体原因">
+			        </div>
+		        </div>
+		        </div>
+	        </div>
+       </div>
+    </section> 
+    <a href="javascript:saveUserTaxInfoToAddrView();" class="check-order-in" id="continueBtn">继续评测</a><br>
+</div></div>
+</section>
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/fundModRiskHouseAddrNew.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/fundModRiskHouseAddrNew.min.js"></script> -->
+<script type="text/javascript">
+/* document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/fundModRiskHouseAddrNew.js?version='+jsversion+'"><\/script>'); */
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/fundModRiskHouseAddrNew.min.js?version='+jsversion+'"><\/script>');
+</script>
+<script>
+	$(function(){
+		$(".header .top-a h2").html("完善税收居民信息");
+	});
+	taxInfoViewLoadGetParam();
+	loadTaxInfoByTaxResidentType();
+	showUserTaxInfo();
+	loadPageElementByParam();
+	//查询用户中文姓名
+	queryUserName();
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.activity.ActivityUserInfoDao">
+
+	<insert id="saveUserInfo" parameterType="com.cmwa.ec.weixin.dto.ActivityUserInfoDto">
+		insert into CMWA_WX_ACTIVITY_USERINFO (USERINFO_ID,OPENID,ACTIVITY_ID,USER_FULL_NAME,ADDRESS,MOBILE,CREATED_BY,CREATED_DATE,UPDATED_BY,UPDATED_DATE,ITEM_KEY,ITEM_VALUE)
+		values 
+		(#{userinfoId,jdbcType=VARCHAR},#{openid,jdbcType=VARCHAR},#{activityId,jdbcType=VARCHAR},#{userFullName,jdbcType=VARCHAR},#{address,jdbcType=VARCHAR},#{mobile,jdbcType=VARCHAR},#{createdBy,jdbcType=VARCHAR},sysdate,#{updatedBy,jdbcType=VARCHAR},sysdate,#{itemKey,jdbcType=VARCHAR},#{itemValue,jdbcType=VARCHAR})
+	</insert>
+	
+	
+	<select id="queryUserInfo" resultType="com.cmwa.ec.weixin.dto.ActivityUserInfoDto">
+	select  
+		USERINFO_ID userinfoId,
+		ACTIVITY_ID activityId,
+		USER_FULL_NAME userFullName,
+		ADDRESS address,
+		MOBILE mobile,
+		CREATED_BY createdBy,
+		CREATED_DATE createdDate,
+		UPDATED_DATE updatedDate,
+		UPDATED_BY updatedBy
+	from CMWA_WX_ACTIVITY_USERINFO t where t.ACTIVITY_ID = #{activityId,jdbcType=VARCHAR} and t.OPENID = #{openId,jdbcType=VARCHAR} order by t.created_date desc
+	</select>
+	
+	<select id="queryUserInfoByCondition" resultType="com.cmwa.ec.weixin.dto.ActivityUserInfoDto">
+	    SELECT  
+	       USERINFO_ID    USERINFOID,
+	       OPENID         OPENID,
+	       ACTIVITY_ID    ACTIVITYID,
+	       USER_FULL_NAME USERFULLNAME,
+	       ADDRESS        ADDRESS,
+	       MOBILE         MOBILE,
+	       ITEM_KEY       ITEMKEY,
+	       ITEM_VALUE     ITEMVALUE,
+	       CREATED_BY     CREATEDBY,
+	       TO_CHAR(CREATED_DATE,'yyyy-mm-dd hh24:mi:ss')  CREATEDTIME,
+	       TO_DATE(TO_CHAR(UPDATED_DATE,'yyyy-mm-dd hh24:mi:ss'),'yyyy-mm-dd hh24:mi:ss') UPDATEDDATE,
+	       UPDATED_BY     UPDATEDBY
+	    FROM CMWA_WX_ACTIVITY_USERINFO T 
+	    WHERE T.ACTIVITY_ID = #{activityId,jdbcType=VARCHAR} 
+	    <if test = "mobile != null and mobile != ''">
+	        AND T.MOBILE = #{mobile,jdbcType=VARCHAR} 
+	    </if>
+	    <if test = "itemKey != null">
+	       AND T.ITEM_KEY = #{itemKey,jdbcType=INTEGER}
+	    </if>
+	    ORDER BY T.CREATED_DATE DESC
+    </select>
+	
+	
+	<select id="queryUserInfoByMobileCount" resultType="int">
+		SELECT  
+		      COUNT(1)
+		FROM CMWA_WX_ACTIVITY_USERINFO T 
+	    WHERE T.ACTIVITY_ID = #{activityId,jdbcType=VARCHAR} 
+	     AND  T.MOBILE = #{mobile,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="queryUserInfoByMobileAndItemKeyCount" resultType="int">
+        SELECT  
+              COUNT(1)
+        FROM CMWA_WX_ACTIVITY_USERINFO T 
+        WHERE T.ACTIVITY_ID = #{activityId,jdbcType=VARCHAR} 
+          <if test= "mobile != null and mobile != ''">
+               AND  T.MOBILE = #{mobile,jdbcType=VARCHAR}
+          </if>         
+          <if test= "itemKey != null">
+               AND  T.ITEM_KEY = #{itemKey,jdbcType=INTEGER}
+         </if>
+    </select>
+	
+	<update id="updateUserInfo" parameterType="com.cmwa.ec.weixin.dto.ActivityUserInfoDto">
+		update CMWA_WX_ACTIVITY_USERINFO
+		<trim prefix="set" suffixOverrides=",">
+			<if test="mobile != null">
+				MOBILE = #{mobile},
+			</if>
+			<if test="userFullName != null">
+				USER_FULL_NAME = #{userFullName},
+			</if>
+			<if test="address != null">
+				ADDRESS = #{address},
+			</if>
+		</trim>
+		where userinfo_id = #{userinfoId}
+	</update>
+	
+	
+	<select id="queryUserNameOnCmwaWxUserInfo" parameterType="list" resultType="map">
+		select nickname as "nickname" ,openid as "openid" from cmwa_wx_user_info where openid in
+		<foreach collection="list" close=")" open="(" item="str" separator=",">
+			#{str}
+		</foreach>
+	</select>
+</mapper>

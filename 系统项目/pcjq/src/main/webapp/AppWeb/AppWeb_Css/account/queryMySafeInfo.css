@@ -1,0 +1,556 @@
+.cover_bg{
+	left: 0;
+}
+.safeInfoPage{
+	overflow: auto;
+	overflow-x: hidden;
+}
+.registe-con{
+	width: 480px;
+    background-color: #fff;
+    height: 520px;
+    padding: 0;
+    margin: auto;
+    margin-top: 10%;
+    border-radius: 4px;
+    position: relative;
+}
+
+.registe-con h2{
+	text-align: center;
+    width: auto;
+    font-size: 22px;
+    padding-top: 30px;
+}
+
+.address-title{
+	width: 215px;
+    margin: 55px 0 0 125px;
+    background-color: #f1f1f1;
+    padding: 0 11px;
+    border-radius: 4px;
+}
+.address-title h3{
+	font-size: 14px;
+    color: #3f3f3f;
+}
+.registe-con ul li{
+	margin-bottom: 0px;
+}
+.registe-con ul li .div-cover{
+	width: 250px;
+	position: relative;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 4px;
+    margin: 26px 0 0px 125px;
+}
+.registe-con ul li .div-cover span.select-value{
+	width: 237px;
+	background: url(/AppWeb/AppWeb_Images/images/ic_triangle.png) no-repeat 210px center;
+}
+
+.registe-con ul li label{
+	width: 113px;
+}
+.detailAddress{
+	margin: 6px;
+    width: 230px;
+    height: 72px;
+    margin-left: -3px;
+    border-radius: 4px;
+    padding: 3px 0 0 7px;
+    border: 1px solid #aaa;
+}
+
+.updateAddress_btn{
+	width: 126px;
+    height: 37px;
+    margin: 66px 0 0 66px;
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 37px;
+    position: absolute;
+    top: 475px;
+    border-radius: 4px;
+}
+.registe-con .registe-con-btn a, .registe-mid .registe-con-btn a{
+	width: 126px;
+    height: 37px;
+    line-height: 38px;
+    border-radius: 4px;
+    position: absolute;
+    top: 375px;
+    margin: 66px 0 0 66px;
+}
+input#detailAddress{
+	width: 237px;
+    height: 72px;
+    padding: 0;
+    margin-top: 6px;
+    border-radius: 4px;
+}
+.close_address{
+	position: absolute;
+    right: 20px;
+    width: 14px;
+    height: 14px;
+    top: 15px;
+    background: url(/AppWeb/AppWeb_Images/images/pic_close_name.png);
+    cursor: pointer;
+    z-index: 2;
+}
+.ui-select-wrap{
+	width: 228px;
+    min-width: 237px;
+    left: -3px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 4px;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+.error_msg{
+	top: 410px;
+    position: absolute;
+    width: 480px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: red;
+}
+
+.alert-frame {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.shadow-bg {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.5;
+}
+
+.alert-box {
+  width: 480px;
+  height: 220px;
+  border-radius: 5px;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  margin: -110px 0 0 -240px;
+}
+
+.alert-box .alert-con {
+  width: 440px;
+  height: 48px;
+  margin: 72px auto 0;
+}
+
+.alert-box .alert-con p {
+  color: #3f3f3f;
+  font-size: 22px;
+  line-height: 24px;
+}
+
+.alert-box .alert-con p.align-center {
+  text-align: center;
+}
+
+.alert-box .btn-close-alert {
+  display: block;
+  width: 220px;
+  height: 42px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  background: #ca132c;
+  margin: 38px auto 0;
+  outline: none;
+}
+.showWare{
+    cursor: pointer;
+    position: relative;
+    overflow: visible;
+    z-index: 2;
+}
+
+.markedWords{
+	display: none;
+    background: #f3f3f3;
+    border: 1px solid #f3f3f3;
+    padding: 5px;
+    position: absolute;
+    line-height: 15px;
+    border-radius: 5px;
+    top: -4px;
+    left: 18px;
+    width: 280px;
+}
+a#invprtp_title{
+    color: red;
+    border-bottom: 1px solid red;
+    margin-left: 3px;
+    font-size: 12px;
+}
+
+.showWare:HOVER .markedWords{
+	display: block;
+}
+a#invprtp_title{
+    color: red;
+    border-bottom: 1px solid red;
+    margin-left: 3px;
+    font-size: 12px;
+}
+
+.ware-box{
+	width: 605px;
+    height: 500px;
+    border-radius: 4px;
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    margin: -110px 0 0 -240px;
+}
+.ware-box ul{
+	margin: 39px 19px;
+    max-height: 370px;
+    overflow-y: auto;
+}
+
+.ware_title{ 
+	font-size: 16px;
+    color: #3f3f3f;
+    margin-top: 5px;
+}
+.ware_context{
+	font-size: 14px;
+    color: #3f3f3f;
+    padding: 8px 10px 8px 34px;
+    height: auto;
+    overflow-y: auto;
+    background-color: #ececec;
+    border-radius: 5px;
+    margin: 5px 0 10px 0;
+    line-height: 23px;
+}
+.ware_btn_li{
+	position: absolute;
+    bottom: 40px;
+    left: 135px;
+}
+button.abandon_btn {
+    width: 122px;
+    height: 35px;
+    border: 1px solid #ca132c;
+    background: #fff;
+    color: red;
+    font-size: 16px;
+    border-radius: 4px;
+}
+button.abandon_btn:hover {
+    background: #f7f7f7;
+}
+button.continue_btn {
+    width: 122px;
+    height: 35px;
+    border: 1px solid #ca132c;
+    background: #ca132c;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 4px;
+    margin-left: 84px;
+}
+button.continue_btn:hover {
+    background: #B60019;
+}
+
+.common-box{	
+    width: 745px;
+    height: 575px;
+    border-radius: 4px;
+    background: #fff;
+    position: absolute;
+    left: 47%;
+    top: 30%;
+    margin: -110px 0 0 -240px;
+
+}
+.common-box h1{
+	height: 85px;
+    text-align: center;
+    line-height: 85px;
+    color: #ca132c;
+    font-size: 22px;
+}
+
+.common-box-title{
+	width: 668px;
+    height: 58px;
+    padding: 10px 0 0 21px;
+    background: #f1f1f1;
+    font-size: 14px;
+    border-radius: 4px;
+    margin: 0 28px 0 28px;
+}
+.common-box-context{
+	width: 668px;
+    height: 269px;
+    padding: 10px 0 10px 21px;
+    background: #f1f1f1;
+    font-size: 14px;
+    border-radius: 4px;
+    margin: 10px 28px 10px 28px;
+    overflow-y: auto;
+}
+.common-box-sub-btn{
+	width: 206px;
+    height: 40px;
+    border: 1px solid #f1f1f1;
+    background: #f1f1f1;
+    color: #999999;
+    font-size: 16px;
+    border-radius: 4px;
+    margin: 22px 0 14px 268px;
+}
+
+.common-box button.act{
+    background: #ca132c;
+    color: #fff;
+}
+
+.common-box-res-btn{
+	margin: 0 0 0 347px;
+    font-size: 14px;
+    color: #2061a2;
+    border-bottom: 1px solid#2061a2;
+}
+.common-box h2{
+	width: 651px;
+    margin: 10px auto 5px;
+    font-size: 16px;
+    color: #ca132c;
+}
+
+
+.common-box-context span.list {
+    clear: both;
+    display: block;
+    margin: 10px 0 0 35px;
+    padding-left: 22px;
+    font-size: 14px;
+    color: #3f3f3f;
+    cursor: pointer;
+    background: url(/AppWeb/AppWeb_Images/images/risk-choice.png) no-repeat left 5px;
+}
+
+.common-box-context span.list .risk-option-desc{
+    float: right;
+    margin-right: 25px;
+}
+
+.common-box-context span.list .risk-option-desc a{
+    color: #ca132c;
+    text-decoration: underline;
+}
+
+.common-box-context span.list p{
+    color: #ca132c;
+}
+
+.common-box-context span.list.act {
+    background: url(/AppWeb/AppWeb_Images/images/risk-choice-on.png) no-repeat left 4px;
+}
+.close_common{
+	position: absolute;
+    right: 20px;
+    width: 14px;
+    height: 14px;
+    top: 15px;
+    background: url(/AppWeb/AppWeb_Images/images/pic_close_name.png);
+    cursor: pointer;
+    z-index: 2;
+}
+
+<!--���� -->
+.risk-add-list{
+	width: 550px;
+    margin: 140px 0 0 50px;
+    max-height: 315px;
+    height: auto;
+    overflow: auto;
+}
+
+.risk-add-list .common_bg .div-cover.title-tag {
+    height: 30px;
+    font-size: 14px;
+    width: 130px;
+    float: left;
+    line-height: 30px;
+}
+
+.risk-add-list .common_bg .div-cover.input-tag {
+    width: 400px;
+    float: left;
+    line-height: 30px;
+    height: 45px;
+    position:relative;
+}
+
+.ware-box1 ul{
+	margin: 0;
+    max-height: 370px;
+    overflow-y: visible;
+    top: 31px;
+}
+
+.taxpayerCode{
+	width: 308px;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid #aaaaaa;
+    line-height: 30px;
+    padding: 0 10px;
+}
+
+.risk-add-list .ui-select-wrap {
+	width: 334px !important;
+    min-width: 237px;
+    left: -3px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 4px;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.btn_cancel_revenue{
+    height: 42px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    display: inline;
+    margin: 0 15px 0 50px;
+    width: 150px;
+    background: #f3f3f3;
+    color: #3f3f3f;
+}
+
+.btn_submit_revenue{
+	height: 42px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    background: #ca132c;
+    outline: none;
+    display: inline;
+    width: 150px;
+    margin-left: 100px;
+}
+
+.btn-confirm_yes{
+	display: block;
+    width: 126px;
+    height: 37px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    background: #ca132c;
+    margin: 26px auto 0;
+    outline: none;
+}
+
+.w_text{
+	width: 500px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    height: 30px;
+    padding: 0 10px;
+}
+<!--���� -->
+
+
+
+
+<!-- 20180316Ͷ�����ʵ������� -->
+.myorder-title {
+	position:relative;
+}
+
+.btn-meta {
+	display: inline-block;
+	width: 100px;
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	background: url(/AppWeb/AppWeb_Images/images/triangle-arrow-d.png) no-repeat;
+	background-position: 83px;
+	color: #2061a2;
+	cursor: pointer;
+}
+
+.btn-meta.active {
+	background: url(/AppWeb/AppWeb_Images/images/triangle-arrow-u.png) no-repeat;
+	background-position: 83px;
+}
+
+.meta {
+	display: none;
+	position: absolute;
+	padding: 20px;
+	top: 73px;
+    left: 87px;
+	background: #fff;
+	border: solid 1px #ccc;
+}
+
+.meta.active {
+	display: block;
+}
+
+.meta p {
+	font-size: 13px;
+	line-height: 25px;
+	color: #8a8888;
+}
+
+.meta span{
+    display:block;
+    width:0;
+    height:0;
+    border-width:0 9px 9px;
+    border-style:solid;
+    border-color:transparent transparent #e6e4e4;/*͸�� ͸��  ��*/
+    position:absolute;
+    top: -10px;
+    left: 40px;
+}
+<!-- 20180316Ͷ�����ʵ������� -->
+
+/* �ֲ���ֵ��ʾ��*/
+
+.holdAmountPop{
+    width: 200px;
+    height: 100px;
+}
+

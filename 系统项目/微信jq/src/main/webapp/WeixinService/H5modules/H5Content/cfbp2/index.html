@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>招商财富-财富宝系列 </title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/cfbp2/cfb.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-init.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/flexible.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+
+</head>
+<body>
+<div class="warpper" style="padding-bottom: 1.2rem;    background-color: #F2F2F2;">
+    <div class="banner"></div>
+    <div class="recommendBox">
+        <ul class="item">
+            <li>
+                <h2>财富宝273天理财30号</h2>
+                <p>募集截止：2018年8月6日 15:00</p>
+                <div class="proInfo clearFloat">
+
+                    <div class="info">
+                        <p>业绩计提基准</p>
+                        <p>5.50<span>%</span></p>
+                        <div class="line"></div>
+                    </div>
+                    <div class="info">
+                        <p>产品期限</p>
+                        <p>273<span>天</span></p>
+
+
+                    </div>
+                </div>
+
+            </li>
+
+        </ul>
+        <a href="javascript:;" class="once on1"></a>
+    </div>
+    <!--<div class="recommendBox">-->
+        <!--<ul class="item">-->
+            <!--<li>-->
+                <!--<h2>财富宝119天理财28号</h2>-->
+                <!--<p>募集截止：2018年7月30日 15:00</p>-->
+                <!--<div class="proInfo clearFloat">-->
+
+                    <!--<div class="info">-->
+                        <!--<p>业绩计提基准</p>-->
+                        <!--<p>5.25<span>%</span></p>-->
+                        <!--<div class="line"></div>-->
+                    <!--</div>-->
+                    <!--<div class="info">-->
+                        <!--<p>产品期限</p>-->
+                        <!--<p>119<span>天</span></p>-->
+
+
+                    <!--</div>-->
+                <!--</div>-->
+
+            <!--</li>-->
+
+        <!--</ul>-->
+        <!--<a href="javascript:;" class="once on2"></a>-->
+    <!--</div>-->
+    <div class="tipsH">
+        <div class="tipsH1">产品风险等级为R2，适合C2中低风险承受能力以及以上客群</div>
+        <div class="tipsH2">产品排期如有变动，以财富宝实际上架为准</div>
+        <div class="tipsH3">产品过往业绩不代表未来表现，不等于产品实际投资，投资需谨慎</div>
+    </div>
+    <div class="advantagetit"></div>
+    <div class="advantage">
+
+        <ul>
+            <li>
+                <p>权威团队-为您的资金保驾护航</p>
+                <div>累计管理规模超过350亿元，投资的<br>标准化资产至今无一亏损</div>
+            </li>
+            <li>
+                <p>最优配置-投研精英匠心设计</p>
+                <div>财富宝系列发行200余期，运作稳健，<br>业绩表现优良</div>
+            </li>
+            <li>
+                <p>超额收益-力争实现资产的保值增值</p>
+                <div>与投资人共进退，超出业绩计提基准<br>部分的一定比例计入客户超额收益</div>
+            </li>
+            <li>
+                <p>产品定期开放-进退灵活</p>
+                <div>每个运作期结束后开放申赎，兼顾流动性<br>与增值性</div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="follow"><img src="/WeixinWeb/WeixinWeb_Images/H5modules/cfb/follow.jpg" width="100%"></div>
+</div>
+<div class="bottom clearFloat">
+    <a href="javascript:;" onclick="bussiness();" id="myBtn1">我感兴趣</a>
+    <a href="javascript:;" onclick="myAdviser();" id="myBtn2">我的顾问</a>
+</div>
+<!--预约信息填写-->
+<div class="cover-bg reserves hide">
+    <div class="content">
+        <span class="close"></span>
+        <h1>一键预约享专属服务<br>让投资无后顾之忧</h1>
+        <h3>我们的专属顾问将24小时内给您回电</h3>
+        <div class="form">
+            <ul>
+                <li>
+                    <div class="inputBox">
+                        <span></span> <input type="text" id="userName" name="userName" placeholder="请输入姓名"/>
+                    </div>
+                    <p style="display: none;"></p>
+                </li>
+                <li class="foucs">
+                    <div class="inputBox">
+                        <span></span> <input type="tel" id="mobilePhone" name="mobilePhone" maxlength="11"
+                                             placeholder="请输入手机号码"/>
+                    </div>
+                    <p style="display: none;"></p>
+                </li>
+
+            </ul>
+            <button id="saveBtn" class="disabled">立即提交</button>
+        </div>
+    </div>
+</div>
+<!-- 错误提示 -->
+<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+    <span id="errorRemark"></span>
+</div>
+<!--预约成功-->
+<div class="cover-bg success hide">
+    <div class="content center">
+        <span class="close"></span>
+        <div class="successIcon"></div>
+        <h2>预约成功</h2>
+        <p>客户经理将尽快与您联系，请保持电话畅通</p>
+    </div>
+</div>
+<!-- 尚未完成操作弹窗-->
+<div class="cover_bg" id="noOperation" style="display: none;">
+    <!-- 尚未完成风险评测-->
+    <div class="content risk" id="riskContent" style="display: none;">
+        <h2></h2>
+        <p>哎呀！您尚未完成风险测评</p>
+        <div class="tips">
+            <h3>温馨提示：</h3>
+            <p>根据监管要求，为保护投资者权益，需要了解您的相关信息和风险等级，以实现对您的最大保障。</p>
+            <p class="yearReport">
+                动动小指尖， 30秒完成风险测评，轻松查看产品信息
+            </p>
+        </div>
+        <a href="javascript:void(0);" id="goRisk" class="btn">我要测评</a>
+    </div>
+    <!-- 重新测评-->
+    <div class="content rNameRisk" id="reRiskContent" style="display: none;">
+        <h2></h2>
+        <p>根据监管要求，您的风险测评已过有效期，还请重新测评</p>
+        <a href="javascript:void(0);" id="reRisk" class="btn">确定</a>
+    </div>
+</div>
+<script>
+    var pageId = "wx_cfbP2_h5PageId"
+</script>
+<script src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/activityCommon.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/cfbp2/index.js"></script>
+
+</body>
+</html>

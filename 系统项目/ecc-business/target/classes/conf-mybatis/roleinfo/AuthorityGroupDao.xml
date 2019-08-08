@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.roleinfo.AuthorityGroupDao">
+	<insert id="batchInsert">
+      BEGIN
+      	<foreach collection="sp.shareRoleIds" item="shareId">
+      		 DELETE T_ECC_AUTHORITY_GROUP WHERE ROLE_ID = #{sp.roleId} AND SHARE_ID = #{shareId};
+      		 INSERT INTO T_ECC_AUTHORITY_GROUP(
+      		 	AUTH_ID,
+      		 	ROLE_ID,
+      		 	SHARE_ID
+     		 )VALUES(
+      		 	ECC_IBF_GET_SEQNO(TO_CHAR(SYSDATE, 'YYYYMMDD')),
+      		 	#{sp.roleId},
+      		 	#{shareId}
+    		 );
+      	</foreach>
+      END;
+	</insert>
+	
+	<select id="queryShareCountByRoleId" resultType="int" parameterType="String">
+		SELECT COUNT(ROLE_ID) FROM T_ECC_AUTHORITY_GROUP WHERE ROLE_ID=#{roleId} OR SHARE_ID=#{roleId}
+	</select>
+	
+	<delete id="deleteByRoleId" parameterType="String">
+		DELETE FROM T_ECC_AUTHORITY_GROUP WHERE ROLE_ID = #{roleId}
+	</delete>
+	
+	<!-- add dingxq 2016-6-15 权限设置使用 -->
+	<select id="getShareIds" resultType="String">
+		 SELECT SHARE_ID AS ROLE_ID
+          FROM T_ECC_AUTHORITY_GROUP TAG,
+               T_ROLE TR
+         WHERE TAG.SHARE_ID=TR.ROLE_ID
+           AND TR.ROLE_TYPE =#{dataType}   <!--  判断共享角色里的类型和当前资源的类型一致(过滤递归以后的结果集)-->
+           AND TR.AUTHORITY_TYPE = '1'   <!--权限类型为‘普通’-->
+    START WITH TAG.ROLE_ID = #{roleId}
+    CONNECT BY NOCYCLE PRIOR TAG.SHARE_ID = TAG.ROLE_ID
+           AND TR.ROLE_TYPE = #{dataType}    <!--判断共享角色里的类型和当前资源的类型一致(sql查询递归的时候不满足条件退出递归，也就是把类型不一致的树形结构断开);-->
+	</select>
+	
+</mapper>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.bank.DsBankBnkbaseDao">
+	<resultMap type="dsBankBnkbaseVo" id="dsBankBnkbaseVo">
+		<result column="BNK_NO" property="bnkNo"></result>	
+		<result column="BNK_NM" property="bnkNm"></result>	
+		<result column="WEB_SITE" property="webSite"></result>	
+		<result column="EBNK_URL" property="ebnkUrl"></result>	
+		<result column="BALANCE_URL" property="balanceUrl"></result>	
+		<result column="TEL_BNK" property="telBnk"></result>	
+		<result column="LINK_MAN" property="linkMan"></result>	
+		<result column="LINK_MAN_TEL" property="linkManTel"></result>	
+		<result column="LINK_MAN_FAX" property="linkManFax"></result>	
+		<result column="LINK_MAN_EMAIL" property="linkManEmail"></result>	
+		<result column="DIS_ORDER" property="disOrder"></result>	
+		<result column="DIS_FLG" property="disFlg"></result>	
+		<result column="C_TIME" property="cTime"></result>	
+		<result column="C_MAN" property="cMan"></result>	
+		<result column="E_TIME" property="eTime"></result>	
+		<result column="E_MAN" property="eMan"></result>	
+		<result column="STATUS" property="status"></result>	
+	</resultMap>
+	
+	<insert id ="addDsBankBaseInfo" parameterType="dsBankBnkbaseVo">
+		INSERT INTO DS_BANK_BNKBASE
+			(BNK_NO, 
+			 BNK_NM,
+			 WEB_SITE,
+			 EBNK_URL, 
+			 BALANCE_URL, 
+			 TEL_BNK,
+			 LINK_MAN, 
+			 LINK_MAN_TEL, 
+			 LINK_MAN_FAX, 
+			 LINK_MAN_EMAIL,
+			 DIS_ORDER, 
+			 DIS_FLG, 
+			 C_TIME, 
+			 C_MAN,
+			 E_TIME, 
+			 E_MAN, 
+			 STATUS)
+		VALUES(
+			 #{bnkNo},
+			 #{bnkNm},
+			 #{webSite},
+			 #{ebnkUrl},
+			 #{balanceUrl},
+			 #{telBnk},
+			 #{linkMan},
+			 #{linkManTel},
+			 #{linkManFax},
+			 #{linkManEmail},
+			 #{disOrder},
+			 #{disFlg},
+			 SYSDATE,
+			 #{cMan},
+			 SYSDATE,
+			 #{eMan},
+			 #{status}
+		)	 
+	</insert>
+	
+	<update id="updateDsBankBaseInfo" parameterType="dsBankBnkbaseVo">
+		UPDATE DS_BANK_BNKBASE 
+			SET BNK_NM = #{bnkNm}, 
+			WEB_SITE = #{webSite},
+			EBNK_URL = #{ebnkUrl}, 
+			BALANCE_URL = #{balanceUrl}, 
+			TEL_BNK = #{telBnk}, 
+			LINK_MAN = #{linkMan},
+			LINK_MAN_TEL = #{linkManTel}, 
+			LINK_MAN_FAX = #{linkManFax}, 
+			LINK_MAN_EMAIL = #{linkManEmail}, 
+			DIS_ORDER = #{disOrder},
+			DIS_FLG = #{disFlg},  
+			E_TIME = sysdate,
+			E_MAN = #{eMan}, 
+			STATUS = #{status}
+		WHERE BNK_NO = #{bnkNo}
+	</update>
+	
+	<delete id="deleteDsBankBaseInfo" parameterType = "dsBankBnkbaseVo">
+			DELETE FROM DS_BANK_BNKBASE
+				 WHERE BNK_NO = #{bnkNo}
+	</delete>
+	
+	<select  id="getDsBankBaseInfo" parameterType="java.lang.String" resultMap="dsBankBnkbaseVo">
+		SELECT BNK_NO, 
+			   BNK_NM, 
+               WEB_SITE, 
+               EBNK_URL, 
+               BALANCE_URL, 
+               TEL_BNK, 
+               LINK_MAN, 
+               LINK_MAN_TEL, 
+               LINK_MAN_FAX, 
+               LINK_MAN_EMAIL, 
+               DIS_ORDER, 
+               DIS_FLG, 
+               C_TIME, 
+               C_MAN, 
+               E_TIME, 
+               E_MAN, 
+               STATUS 
+               FROM DS_BANK_BNKBASE 
+        WHERE BNK_NO = #{bnkNo}
+	</select>
+	
+	<select id="queryBankBnkbaseListPage" parameterType="sparam" resultMap="dsBankBnkbaseVo">
+		SELECT 
+			BNK_NO, 
+			BNK_NM,
+            WEB_SITE, 
+            EBNK_URL, 
+            BALANCE_URL, 
+            TEL_BNK, 
+            LINK_MAN, 
+            LINK_MAN_TEL, 
+            LINK_MAN_FAX, 
+            LINK_MAN_EMAIL, 
+            DIS_ORDER, 
+            DIS_FLG, 
+            C_TIME, 
+            C_MAN, 
+            E_TIME, 
+            E_MAN, 
+            STATUS 
+        FROM DS_BANK_BNKBASE 
+         	WHERE 1 = 1
+        <if test=" null != sp.bnkNo  and '' != sp.bnkNo">
+	  		 AND BNK_NO = #{sp.bnkNo}
+	    </if>
+	    <if test=" null != sp.bankName  and '' != sp.bankName">
+	         AND BNK_NM  LIKE CONCAT(CONCAT('%', #{sp.bankName}),'%')  
+	    </if>
+             ORDER BY BNK_NO
+	</select>
+	
+			
+	<select id="queryDsBankBnkbaseInfoListTotal" parameterType="sparam" resultType="int">
+			SELECT COUNT(*)
+			   	FROM DS_BANK_BNKBASE
+			   	WHERE 1= 1
+			   	<if test=" null != sp.bnkNo  and '' != sp.bnkNo">
+	  				 AND BNK_NO = #{sp.bnkNo}
+			    </if>
+			    <if test=" null != sp.bankName  and '' != sp.bankName">
+			         AND BNK_NM  LIKE CONCAT(CONCAT('%', #{sp.bankName}),'%')  
+			    </if>
+			   	ORDER BY DIS_ORDER
+	</select>
+		
+</mapper>

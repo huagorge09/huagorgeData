@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.activity.AwardInfoDao">
+	<resultMap id="awardInfoMap" type="com.cmwa.ec.weixin.dto.AwardInfoDto">
+		<result property="awardId" column="AWARD_ID"/>
+		<result property="awardName" column="AWARD_NAME"/>
+		<result property="activityId" column="ACTIVITY_ID"/>
+		<result property="awardType" column="AWARD_TYPE"/>
+		<result property="awardPrice" column="AWARD_PRICE"/>
+		<result property="awardSort" column= "AWARD_SORT"/>
+		<result property="factnum" column="AWARD_FACTNUM"/>
+		<result property="probability" column= "AWARD_PROBABILITY"/>
+		<result property="awardState" column="AWARD_STATE"/>
+		<result property="validDate" column="VALID_DATE"/>
+		<result property="invalidDate" column="INVALID_DATE"/>
+		<result property="awardPid" column="AWARD_PID"/>
+		<result property="remark" column="REMARK"/>
+		<result property="createdDate" column="CREATED_DATE"/>
+	</resultMap>
+	
+	<!-- 查询活动奖品列表 -->
+	<select id="queryAwardList" parameterType="java.util.Map" resultMap="awardInfoMap">
+		select  
+		      a.award_id,
+		      a.award_name,
+		      a.activity_id,
+		      a.award_state,
+		      a.award_price,
+		      a.award_factnum,
+		      a.award_probability,
+		      a.award_type,
+		      a.valid_date,
+		      a.invalid_date,
+		      a.award_pid,
+		      a.award_sort,
+		      a.created_date,
+		      a.remark
+		from 
+		      cmwa_wx_act_award_info a 
+		where  
+		  	a.award_type = #{map.awardType}
+		and 
+		   	a.activity_id = #{map.activityId}
+		and 
+			a.award_state = 0
+		and  
+			a.award_factnum >= 0
+		<if test="map.awardPid != null and map.awardPid != ''">
+		   and a.award_pid = #{map.awardPid}
+		</if>
+		<if test="map.boxState != null and map.boxState != ''">
+		   and a.award_pid = (
+		   			select 
+		   				a1.award_id
+		   			from 
+		   				cmwa_wx_act_award_info a1
+		   			where 
+		   				a1.award_name = #{map.boxState}
+		   )
+		</if>
+		<if test="map.awardsize != null and map.awardsize != ''">
+		   and #{map.awardsize} >= ROWNUM   
+		</if>
+		order by a.award_sort
+	</select>
+	
+	<!-- 根据奖品Id查询奖品信息 -->
+	<select id="getAwardDto" parameterType="java.lang.String" resultMap="awardInfoMap">
+		select  
+		      a.award_id,
+		      a.award_name,
+		      a.activity_id,
+		      a.award_state,
+		      a.award_price,
+		      a.award_type,
+		      a.award_factnum,
+		      a.award_probability,
+		      a.valid_date,
+		      a.invalid_date,
+		      a.award_pid,
+		      a.award_sort,
+		      a.created_date,
+		      a.remark
+		from 
+		      cmwa_wx_act_award_info a 
+		where  
+		  	a.award_id = #{awardId}
+	</select>
+	
+	<update id="updateAwardNum" parameterType="string">
+		UPDATE cmwa_wx_act_award_info
+		   SET UPDATED_DATE = SYSDATE,
+		   	   AWARD_FACTNUM=AWARD_FACTNUM-1
+		 WHERE AWARD_ID = #{awardId}
+	</update>
+	
+</mapper>

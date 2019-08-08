@@ -1,0 +1,451 @@
+body,
+html {
+	background: #f6f6f6;
+	padding-bottom: .74rem;
+}
+
+.writebox {
+	background: #fff;
+	padding: 0 .3rem .2rem .3rem;
+}
+
+.textinput {
+	padding-top: 0.25rem;
+	width: 100%;
+	border: 0;
+	font-size: .28rem;
+	color: #666;
+	resize: none;
+	font-family: Arial, "Microsoft YaHei";
+	height: 1.45rem;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.textinput::-webkit-input-placeholder{
+	color:#c9c9c9;
+}
+.textinput:-moz-placeholder{
+	color:#c9c9c9;
+}
+.textinput::-moz-placeholder{
+	color:#c9c9c9;
+}
+.textinput:-ms-input-placeholder{
+	color:#c9c9c9;
+}
+.writebox .tips {
+	font-size: .24rem;
+	text-align: center;
+	color: #ff2a2a;
+	display: none;
+}
+
+.imglist {
+	margin-top: .26rem;
+}
+
+.imglist ul li {
+	position: relative;
+	margin-left: .16rem;
+	float: left;
+	margin-bottom: .2rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	overflow: hidden;
+}
+
+.imglist .last {
+	width: 1.5rem;
+	height: 1.5rem;
+	border: 1px #c2c2c2 solid;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	background: url(../image/icon/writefootprints/add.png) no-repeat;
+	background-size: .7rem .7rem;
+	background-position-y: .2rem;
+	background-position-x: center;
+	font-size: .26rem;
+	color: #c2c2c2;
+	text-align: center;
+	padding-top: 1rem;
+	position: relative;
+}
+
+.imglist .last input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	filter: alpha(opacity=0);
+	-moz-opacity: 0;
+	opacity: 0;
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.imglist img {
+	height: auto;
+	display: block;
+	width: 100%;
+	min-height: 100%;
+	position: absolute;
+	left: 50%;
+	top:50%;
+	-webkit-transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	-o-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+}
+
+.tape {
+	margin-top: .1rem;
+	position: relative;
+}
+
+.tapebtn {
+	width: 1.5rem;
+	height: 1.5rem;
+	border: 1px #c2c2c2 solid;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	background: url(../image/icon/writefootprints/shape.png) no-repeat;
+	background-size: .7rem .7rem;
+	background-position: center 0.2rem !important;
+	font-size: .26rem;
+	color: #c2c2c2;
+	text-align: center;
+	padding-top: 1rem;
+	margin-left: .16rem;
+}
+.tapebtn.disabled{
+	border: 1px #f6f6f6 solid;
+	color: #e6e6e6;
+	background: url(../image/icon/writefootprints/shape-no.png) no-repeat  #f6f6f6;
+	background-size: .56rem .67rem;
+}
+.tapebarbox {
+	height: .76rem;
+	line-height: .76rem;
+	background: #f6f6f6;
+	margin-left: .15rem;
+}
+
+.tapebarbox .delete {
+	width: 1.08rem;
+	height: .48rem;
+	text-align: center;
+	line-height: .48rem;
+	font-size: .26rem;
+	color: #666;
+	border: 1px #e0e0e0 solid;
+	margin-left: .2rem;
+}
+
+.tapebarbox .BarAudioPlayer {
+	width: 6.4rem;
+	color: #999;
+	padding-left: .15rem;
+}
+
+.tapetips{
+    position: absolute;
+	width: 2.56rem;
+    left: 1.95rem;
+    top: 0.19rem;
+	padding: 0.15rem;
+	background-color: #f6f6f6;
+	border-radius: 0.16rem;
+	line-height: 0.4rem;
+	font-size: 0.28rem;
+	display: none;
+}
+.tapetipsAnimation{
+	animation: tapetipsAnimation 0.5s both;
+}
+@keyframes tapetipsAnimation {
+	0%{
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+	25%{
+		-webkit-transform: translateY(-0.2rem);
+		transform: translateY(-0.2rem);
+	}
+	75%{
+		-webkit-transform: translateY(0.2rem);
+		transform: translateY(0.2rem);
+	}
+	100%{
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+}
+@-webkit-keyframes tapetipsAnimation {
+	0%{
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+	25%{
+		-webkit-transform: translateY(-0.2rem);
+		transform: translateY(-0.2rem);
+	}
+	75%{
+		-webkit-transform: translateY(0.2rem);
+		transform: translateY(0.2rem);
+	}
+	100%{
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+}
+.tapetips:before{
+	content: "";
+	display: block;
+	position: absolute;
+	border: solid 0.12rem transparent;
+	border-right-color: #f6f6f6;
+	top:50%;
+	left: -0.23rem;
+	margin-top: -0.12rem;
+}
+.tapetips a{
+	color: #437baf;
+}
+.editdate {
+	position: relative;
+	text-align: right;
+	font-size: .24rem;
+	color: #437baf;
+	line-height: .38rem;
+	margin-top: -0.35rem;
+	z-index: 2;
+}
+
+.editdate span {
+	display: inline-block;
+	width: .21rem;
+	height: .21rem;
+	background: url(../image/icon/writefootprints/write.png) no-repeat;
+	background-size: 100% 100%;
+	vertical-align: middle;
+	margin-right: .05rem;
+}
+
+
+/*足迹设置*/
+
+.setwarp {
+	margin-top: .2rem;
+	background: #fff;
+}
+
+.role {
+	border-bottom: 1px #eaeaea solid;
+	padding: .2rem .28rem .28rem .28rem;
+	margin-bottom: .07rem;
+}
+
+.role h2 {
+	font-size: .3rem;
+	line-height: .68rem;
+	font-weight: 600;
+}
+
+.role .checkbox span {
+	display: inline-block;
+	width: 33.3%;
+	background: url(../image/icon/writefootprints/checkno.png) no-repeat;
+	background-size: .36rem .36rem;
+	padding-left: .56rem;
+	vertical-align: middle;
+     margin-top: .1rem;
+	float: left;
+	font-size: 0.3rem;
+	color: #666;
+}
+
+.role .checkbox span.checked {
+	background: url(../image/icon/writefootprints/checked.png) no-repeat;
+	background-size: .36rem .36rem;
+}
+
+.title {
+	border-bottom: 1px #eaeaea solid;
+	padding: 0 .28rem .28rem .28rem;
+	margin-bottom: .07rem;
+	background: #fff;
+}
+
+.title h2 {
+	height: .88rem;
+	line-height: .88rem;
+	font-size: .3rem;
+	font-weight: 600;
+}
+
+.title p {
+	font-size: .3rem;
+	color: #666;
+}
+
+.title em {
+	float: right;
+	display: inline-block;
+	width: .32rem;
+	height: .32rem;
+	background: url(../image/icon/writefootprints/dropDown.png) no-repeat;
+	background-size: .32rem .32rem;
+	transition: All 0.4s ease-in-out;
+	-webkit-transition: All 0.4s ease-in-out;
+	-moz-transition: All 0.4s ease-in-out;
+	-o-transition: All 0.4s ease-in-out;
+}
+
+.rotate {
+	transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+}
+
+.setupitem {
+	display: none;
+	padding: .2rem .45rem .45rem .45rem;
+	border-bottom: 1px #eaeaea solid;
+}
+
+.setupitem li {
+	height: .8rem;
+	line-height: .8rem;
+	color: #666;
+	font-size: .3rem;
+	padding-left: .7rem;
+}
+
+.setupitem .cur {
+	background: url(../image/icon/writefootprints/selected.png) left no-repeat;
+	background-size: .3rem .3rem;
+}
+
+.privacy .setupitem {
+	border-bottom: 0;
+}
+
+.xieyi {
+	height: .32rem;
+	line-height: .32rem;
+	text-align: left;
+	padding-left: .27rem;
+	margin-top: .22rem;
+	font-size: 0.26rem;
+}
+
+.xieyi span {
+	display: inline-block;
+	width: .32rem;
+	height: .32rem;
+	background: url(../image/icon/writefootprints/agree.png) no-repeat;
+	background-size: .32rem .32rem;
+	vertical-align: middle;
+	margin-right: .1rem;
+}
+.xieyi span.no{
+    background: url(../image/icon/writefootprints/agreeno.png) no-repeat;
+	background-size: .32rem .32rem;
+}
+.xieyi a {
+	color: #ffcf63;
+}
+
+.submitbox {
+	margin-top: .5rem;
+	padding: 0 .3rem;
+}
+
+.submitbox input {
+	width: 100%;
+	height: .88rem;
+	line-height: .88rem;
+	font-size: .3rem;
+	text-align: center;
+	background: #ffda44;
+}
+
+.submitbox input.disabled {
+	background: #faebaf;
+}
+
+.submitbox .subtips {
+	display: none;
+	line-height: .6rem;
+	font-size: .26rem;
+	text-align: center;
+	color: #999;
+}
+
+
+/*协议弹窗*/
+
+.maskLayer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	filter: Alpha(opacity=50);
+	opacity: 0.5;
+}
+
+.maskcontent {
+	width: 5.65rem;
+	height: 6.7rem;
+	padding: .55rem .4rem;
+	border-radius: 5px;
+	background: #fff;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	z-index: 992;
+}
+
+.maskcontent .text{
+	margin-top: 0.04rem;
+}
+
+.maskcontent h2 {
+	font-size: .3rem;
+	text-align: center;
+	color: #333;
+}
+
+.maskcontent h2 em{
+	display: inline-block;
+	width: .32rem;
+	height: .32rem;
+	position: absolute;
+	right: .32rem;
+	top: .32rem;
+	background: url(../image/icon/writefootprints/close.png) no-repeat;
+	background-size: .32rem .32rem;
+}
+
+.maskcontent p {
+	line-height: .36rem;
+	font-size: .26rem;
+	margin-top: .25rem;
+}
+
+.maskcontent .text {
+	    height: 5rem;
+	overflow-y: scroll;
+}

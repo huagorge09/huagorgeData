@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="x5-orientation" content="portrait" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no">
+	<title>demo</title>
+	<link rel="stylesheet" href="wappublic.css" />
+
+</head>
+<body>
+	
+	<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+	<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+	<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+	<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><span>111111111111</span>
+	<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+	<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+
+	 <!--用户兑奖弹窗-->
+    <div class="popup cashPrize" style=" display: none; ">
+    	<div class="mask"></div>
+    	<div class="content center">
+    		 <i>xxxxxx</i>
+            <p>1</p>
+            <p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+            <p>1</p>
+            <p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+        </div>
+    </div>
+    <style>
+		.popup{
+			height: 100%;
+		}
+    	body.modal-open {
+		    position: fixed;
+		    width: 100%;
+		}
+    	.content{
+    		height: 3rem;
+    		position: fixed;
+    		left: 50%;
+    		top: 50%;
+    		width: 5rem;
+    		z-index: 200;
+    		background: #fff;
+    		overflow-y: scroll;
+    	}
+    	.mask {
+		    position: fixed;
+		    width: 100%;
+		    height: 100%;
+		    top: 0;
+		    left: 0;
+		    background-color: rgba(0,0,0,0.1);
+		    z-index: 1;
+		}
+		i{
+			position: absolute;
+    		left: 0%;
+    		top: 50%;
+    		width: 5rem;
+		}
+    </style>
+    
+   <script type="text/javascript" src="flexible.min.js" ></script>
+   <script type="text/javascript" src="jquery-3.2.1.min.js" ></script>
+   <script>
+   	$(function(){
+
+   		$("span").click(function(){
+   			 $(".cashPrize").show()
+   			 ModalHelper.afterOpen()
+   		})
+   		$("i").click(function(){
+   			 $(".cashPrize").hide()
+   			 ModalHelper.beforeClose()
+
+   		})
+
+   	})
+
+	var ModalHelper = (function(bodyCls) {
+	  var scrollTop; // 在闭包中定义一个用来保存滚动位置的变量
+	  return {
+	    afterOpen: function() { //弹出之后记录保存滚动位置，并且给body添加.modal-open
+	      scrollTop = document.scrollingElement.scrollTop;
+	      document.body.classList.add(bodyCls);
+	      document.body.style.top = -scrollTop + 'px';
+	    },
+	    beforeClose: function() { //关闭时将.modal-open移除并还原之前保存滚动位置
+	      document.body.classList.remove(bodyCls);
+	      document.scrollingElement.scrollTop = scrollTop;
+	    }
+	  };
+	})('modal-open');
+	
+	
+	
+   </script>
+</body>
+</html>

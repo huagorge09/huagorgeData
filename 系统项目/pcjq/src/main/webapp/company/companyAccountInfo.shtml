@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="/AppWeb/AppWeb_Css/ui-select.css" rel="stylesheet" type="text/css"/>
+    <link href="/AppWeb/AppWeb_Css/account/queryMySafeInfo.css" rel="stylesheet" type="text/css"/>
+    <title></title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+
+<!--#include virtual="/AppService/public/header.shtml"-->
+<div class="center-content-bg">
+    <div class="center-content-height">
+        <div class="center-content mid">
+            <div class="center-content-left fl">
+                <div class="center-imageshead">
+                    <img src="/AppWeb/AppWeb_Images/images/head_normal.png" height="58" width="58" alt=""> <span>欢迎访问招商财富官网</span>
+                </div>
+                <div class="center-left-nav">
+                    <ul>
+                        <li class="money-overviews act"><a href="/company/companyAccountInfo.shtml">财富总览</a></li>
+                        <li class="mynews"><a href="/company/companyList.shtml">我的消息</a></li>
+                    </ul>
+                </div>
+                <span class="QRcode"><img src="/AppWeb/AppWeb_Images/images/img_weixin.png" height="161" width="128"
+                                          alt=""></span>
+            </div>
+            <div class="center-content-right mynewsupdate fl">
+
+                <div class="head-info" style="height: 0; margin-bottom: 18px;">
+                    <!--<div class="head-info-box" style="width: 49%;">-->
+                        <!--<dl>-->
+                            <!--<dt>-->
+                                <!--持仓份额<em><img src="/AppWeb/AppWeb_Images/images/ic_help.png" height="14" width="14"-->
+                                             <!--alt=""></em>-->
+                            <!--</dt>-->
+                            <!--<dd id="asstes">&#45;&#45;</dd>-->
+                        <!--</dl>-->
+                    <!--</div>-->
+                    <!--<div class="head-info-box end" style="width: 49%;">-->
+                        <!--<dl>-->
+                            <!--<dt>-->
+                                <!--已分配收益<em><img src="/AppWeb/AppWeb_Images/images/ic_help.png" height="14" width="14"-->
+                                              <!--alt=""></em>-->
+                            <!--</dt>-->
+                            <!--<dd id="profitExp">&#45;&#45;</dd>-->
+                        <!--</dl>-->
+                    <!--</div>-->
+                    <!--<div class="head-nextcollection none" id="nextNoFund">
+                        <span class="nextcollection-none">还没购买产品哦！</span>
+                        <a href="/AppService/business/fund/fundList.shtml" class="nextcollection-more">查看产品</a>
+                    </div>
+                    <div class="head-nextcollection" id="nextLoadFund">
+                        <span class="nextcollection-none">正在努力加载中.....</span>
+                        <a href="/AppService/business/fund/fundList.shtml" class="nextcollection-more">查看产品</a>
+                    </div>
+                    <div class="head-nextcollection none" id="nextFund">
+                        <div class="nextcollection-mid">
+                            <h1>下一产品到期日</h1>
+                            <div class="nextcollection-date fl">
+                                <h3></h3>
+                                <span></span>
+                            </div>
+                            <div class="nextcollection-info fl">
+                                <dl>
+                                    <dt>待收金额</dt>
+                                    <dd id="nextMoney">
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>待收项目</dt>
+                                    <dd id="fundName"></dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="myorder" id="orderList">
+		<span class="title">
+			<h3 class="fl">我的订单</h3> <a href="javascript:changeOrderList(0)" class="fr">其它订单查询</a>
+		</span>
+                    <div class="myorder-con clear">
+                        <div class="myorder-con-nav">
+                            <ul>
+                                <li class="act"><a href="javascript:showOrderList(0)">全部</a></li>
+                                <li><a href="javascript:showOrderList(1)">未支付</a></li>
+                                <li><a href="javascript:showOrderList(2)">已支付</a></li>
+                                <li><a href="javascript:showOrderList(3)">存续中</a></li>
+                                <li><a href="javascript:showOrderList(4)">已到期</a></li>
+                            </ul>
+                        </div>
+                        <div class="myorder-list" id="section_01">
+                        </div>
+                        <div class="myorder-list none" id="section_02">
+                        </div>
+                        <div class="myorder-list none" id="section_03">
+                        </div>
+                        <div class="myorder-list none" id="section_04">
+                        </div>
+                        <div class="myorder-list none" id="section_05">
+                        </div>
+                    </div>
+                </div>
+                <div class="myorder otherorder none" id="otherOrderList">
+                <span class="title">
+                    <a href="javascript:changeOrderList(1)" class="fl act ordertag">< 我的订单 &nbsp;|</a> <h3
+                        class="fl">其它订单查询</h3>
+                </span>
+                    <div class="myorder-con clear">
+                        <div class="myorder-con-nav">
+                            <ul>
+                                <li class="act"><a href="javascript:showOtherOrderList(0)">全部</a></li>
+                                <li><a href="javascript:showOtherOrderList(1)">存续中</a></li>
+                                <li><a href="javascript:showOtherOrderList(2)">已到期</a></li>
+                                <li id="black" style="display: none"><a href="javascript:showOtherOrderList(3)">白名单</a></li>
+                            </ul>
+                        </div>
+                        <div class="myorder-list" id="other_01">
+
+                        </div>
+                        <div class="myorder-list none" id="other_02">
+
+                        </div>
+                        <div class="myorder-list none" id="other_03">
+
+                        </div>
+                        <div class="myorder-list none" id="other_04">
+
+                        </div>
+
+                        <div class="page">
+                             <div class="page1 pag"></div>
+                             <div class="page2 pag"></div>
+                             <div class="page3 pag"></div>
+                             <div class="page4 pag"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 20180314 新增 E -->
+<div class="cover_bg none" id="updateOrderDiv" style="z-index: 87;">
+</div>
+<div class="cover_bg none" id="updateOrderMoneyDiv" style="z-index: 87;">
+    <div class="main-con updateapmoney placeholder-updatepaymoney">
+        <i class="close"></i>
+        <h2>修改订单金额</h2>
+        <ul>
+            <li><input type="text" id="newMoney"> <i>元</i></li>
+            <li><input class="password" id="tPassWordOrder" type="password" placeholder="安全码"> <a
+                    href="/AppService/business/account/resetTPassword.shtml" class="backpassword">找回密码</a></li>
+            <li class="identify"><input class="identify-input updatepaybankpassword" id="randomCode1" type="text"
+                                        placeholder="验证码"> <span class="indentifyimg"> <img
+                    src="/AppService/setUp/buildimageservlet.xhtml" id="rondomCodeImg1" onclick="getRandomCode1()"
+                    height="42" width="80"/></span></li>
+        </ul>
+			<span class="btn"> <a href="javascript:modifyAppointRequestMoney();" class="fl">确认修改</a> <a
+                    href="javascript:closeUpdateMoney();" class="fr">放弃修改</a>
+			</span>
+    </div>
+</div>
+<div class="cover_bg none" id="updateOrderBankCardDiv" style="z-index: 87;">
+    <div class="main-con updateapmoney updateapbank placeholder-updateapmoney placeholder-updatepaybank">
+        <i class="close"></i>
+        <h2>修改支付银行卡</h2>
+        <div class="select-cover">
+            <span class="select-value" data-bankNm="" data-bankNo="" data-bankAccoDisplay="" data-tradeAcco=""></span>
+            <div class="select-text none">
+                <div class="select-text-list">
+                </div>
+            </div>
+        </div>
+        <ul>
+            <li><input class="password" id="tPassWordBank" type="password" placeholder="安全码"> <a
+                    href="/AppService/business/account/resetTPassword.shtml" class="backpassword">找回密码</a></li>
+            <li class="identify"><input class="identify-input identify-input-update-new" type="text" id="randomCode"
+                                        placeholder="验证码"> <span class="indentifyimg"> <img
+                    src="/AppService/setUp/buildimageservlet.xhtml" id="rondomCodeImg" onclick="getRandomCode()"
+                    height="42" width="80"/></span></li>
+        </ul>
+			<span class="btn"> <a href="javascript:modifyAppointRequestBankCard();" class="fl">确认修改</a> <a
+                    href="javascript:closeUpdateOrderBankCard();" class="fr">放弃修改</a>
+			</span>
+    </div>
+</div>
+<div class="cover_bg none" id="deleteBankCard" style="z-index: 99">
+    <div class="cover-con pop-up-three recoverpassword-cover">
+        <i class="close"></i>
+        <span class="cover-con-text act" style="text-align: center;">您正在进行删除银行卡操作</span>
+        <input class="cover-con-btn registe" id="deleteBank" type="button" value="立即删除"/>
+        <input class="cover-con-btn close" onclick="closeCanelBindDiv()" type="button" value="撤销操作"/>
+    </div>
+</div>
+<!-- 2018032新增S -->
+<style>
+    .foursWidth{
+        width: 189.5px !important;
+    }
+</style>
+<!--#include virtual="/AppService/public/footer.shtml"-->
+<!-- 测试用  -->
+ <!--<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/companyAccountInfo.js"></script> -->
+<!-- 生产用  -->
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/companyAccountInfo.min.js"></script>
+</body>
+</html>

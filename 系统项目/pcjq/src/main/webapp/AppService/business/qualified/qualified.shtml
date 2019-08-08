@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>招商财富</title>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/AppWeb/AppWeb_Css/business/qualified/qualified.css" />
+	<link rel="stylesheet" type="text/css" href="/AppWeb/AppWeb_Css/dialog.css" />
+</head>
+
+<body>
+	<!-- header -->
+	<!--#include virtual="/AppService/public/header.shtml"-->
+	<div class="main">
+		<div class="title">
+			<h2>合格投资者证明</h2>
+			<div class="txt">若要完成合格投资者认证，需证明：</div>
+			<div class="txt2 clear">
+				<span class="span1">资产证明</span>
+				<span class="span2">金融资产<br>>=500万元</span>
+				<span class="span3">或</span>
+				<span class="span4">近三年平均收入<br>40万元</span>
+			</div>
+		</div>
+		<div class="fileBox">
+			<div class="clear firstFile">
+				<div class="listTxt">
+					<h2>近三年收入证明<a href="/AppService/business/qualified/qualifiedAssets.shtml">查看实例</a></h2>
+					<ul>
+						<li><em></em>完税证明/支持单位收入证明/银行对账单/其他</li>
+						<li><em></em>信息分布在多张截图需要提供截图视频，单张截图展示所有信息则不需视频</li>
+						<li><em></em>非截图不必提供视频，但需要盖有公章</li>
+					</ul>
+				</div>
+				<div class="fileUpBox">
+					<!--没有文件-->
+					<div id="financialNone" class="noneFile">
+						<div class="addFile">
+							<span onclick="qualifiedAdd.financialUpFile()"></span>
+						</div>
+						<p><span>上传收入证明</span><br>（可上传PDF/JPG/视频文件）</p>
+					</div>
+					<!--有文件-->
+					<div id="financialHas" class="hasFile" style="display: none;">
+						<p onclick="qualifiedAdd.financialUpFile()">继续上传</p>
+						<ul id="finanList">
+						</ul>
+					</div>
+					<form enctype="multipart/form-data" id="financialCertificate">
+						<input type="file" name="file"
+							accept=".pdf,.jpg,.bmp,.jpeg,.png,.mp4,.rmvb,.avi,.flv,.3gp,.flv,.mov"
+							id="financialFileUpload" style="display: none;" />
+						<input type="hidden" name="recordSource" value="ec-qualified" />
+						<input type="hidden" name="fileType" value="financialCertificate" />
+					</form>
+					<div class="proUpload">
+						<div class="progress" id="financialPro" style="display: none;">
+							<span class="orange" style="width:0%;"><span>0%</span></span>
+						</div>
+						<div class="selectFile">
+							<div>上传的文件名：<span id="financialNameRead"></span></div>
+							<input type="button" id="upLoadFinancialBtn" value="上 传 " class="upLoadBtn" />
+						</div>
+					</div>
+					<div id="financialMask" class="diableMask" style="display: none;">
+						<p></p>
+					</div>
+				</div>
+			</div>
+			<div class="clear">
+				<div class="listTxt">
+					<h2>个人金融资产证明<a href="/AppService/business/qualified/qualifiedFinance.shtml">查看实例</a></h2>
+					<ul>
+						<li><em></em>支持银行存款、股票、债券、基金、理财产品、保险等</li>
+						<li><em></em>不支持营业执照、房产证等非金融资产</li>
+						<li><em></em>信息分布在多张截图需要提供截图视频，单张截图展示多有信息则不需视频</li>
+						<li><em></em>非截图不必提供视频，但需要盖有公章</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+		<!--  投资经历-->
+		<div class="title exper">
+			<div class="txt2 clear">
+				<span class="span1">投资经历证明</span>
+				<span class="span2">两年投资经历</span>
+			</div>
+		</div>
+		<div class="fileBox">
+			<div class="clear firstFile">
+				<div class="listTxt">
+					<h2>投资经历证明<a href="/AppService/business/qualified/qualifiedInvestment.shtml">查看实例</a></h2>
+					<ul>
+						<li><em></em>支持基金、债券、股票等投资经历</li>
+						<li><em></em>信息分布在多张截图需要提供截图视频，单张截图展示所有信息则不需视频</li>
+						<li><em></em>非截图不必提供视频，但需要盖有公章</li>
+					</ul>
+				</div>
+				<div class="fileUpBox">
+					<!--没有文件-->
+					<div id="investNone" class="noneFile">
+						<div class="addFile">
+							<span onclick="qualifiedAdd.investmentUpFile()"></span>
+						</div>
+						<p><span>上传收入证明</span><br>（可上传PDF/JPG/视频文件）</p>
+					</div>
+					<!--有文件-->
+					<div id="investHas" class="hasFile" style="display: none;">
+						<p onclick="qualifiedAdd.investmentUpFile()">继续上传</p>
+						<ul id="investList">
+						</ul>
+					</div>
+					<form enctype="multipart/form-data" id="investCertificate">
+						<input type="file" name="file"
+							accept=".pdf,.jpg,.bmp,.png,.jpeg,.mp4,.rmvb,.avi,.flv,.3gp,.flv,.mov" id="investFileUpload"
+							style="display: none;" />
+						<input type="hidden" name="recordSource" value="ec-qualified" />
+						<input type="hidden" name="fileType" value="investCertificate" />
+					</form>
+					<div class="proUpload">
+						<div class="progress" id="investPro" style="display: none;">
+							<span class="orange" style="width:0%;"><span>0%</span></span>
+						</div>
+						<div class="selectFile">
+							<div>上传的文件名：<span id="investNameRead"></span></div>
+							<input type="button" id="upLoadAssetsBtn" value="上 传 " class="upLoadBtn" />
+						</div>
+					</div>
+					<div id="investMask" class="diableMask" style="display: none;">
+						<p></p>
+					</div>
+				</div>
+			</div>
+			<div class="clear">
+				<div class="listTxt moreText">
+					<h2>拍摄视频要求</h2>
+					<ul>
+						<li><em></em>确保视频清晰，视频中有投资者身份 及证明资料的截屏过程</li>
+						<li><em></em>最多上传10个视频，建议每个视频在15秒以内</li>
+					</ul>
+				</div>
+			</div>
+
+					<div class="clear firstFile xx">
+						<div class="listTxt hh">
+							<h2 class="icCardTit">上传身份证正反面<a onclick="showIcExam()">查看实例</a></h2>
+				
+						<i id="deletPersonImg" class="deletePersonImg" style="display:none;"></i>
+						<img class="idPersonImg" src="/AppWeb/AppWeb_Images/images/qualified/idCardPerson.png" id="icPersonNone" onclick="qualifiedAdd.idCardPersonUpFile()" />
+						<span class="uploadText icT1" id="uploadICPerson">上传<em>身份证正面</em></span>
+	
+						<i id="deleteCountryImg" class="deleteCountryImg" style="display:none;"></i>
+						<img class="idCountryImg" src="/AppWeb/AppWeb_Images/images/qualified/idCardCountry.png" id="icCountryNone" onclick="qualifiedAdd.idCardCountryUpFile()" />
+						<span class="uploadText icT2" id="uploadIcCountry">上传<em>身份证反面</em></span>
+					</div>
+					<!-- <span class="icPersonHasUp"></span>
+					<span class="icCountryHasUp"></span> -->
+                                        <p style="color: red;padding-left: 20px;">身份证正反面为必传项</p>
+			</div>
+			<div class="fileUpBox tx">
+				<!-- 身份证人像面上传 form -->
+				<form enctype="multipart/form-data" id="uploadICPersonForm">
+					<input type="file" name="file"
+						accept=".pdf,.jpg,.bmp,.png,.jpeg,.mp4,.rmvb,.avi,.flv,.3gp,.flv,.mov"
+						id="idCardPersonFileUpload" style="display: none;" />
+					<input type="hidden" name="recordSource" value="ec-qualified" />
+					<input type="hidden" name="fileType" value="idCardPortrait" />
+				</form>
+				<!--  身份证国徽面上传 form -->
+				<form enctype="multipart/form-data" id="uploadICCountryForm">
+					<input type="file" name="file"
+						accept=".pdf,.jpg,.bmp,.png,.jpeg,.mp4,.rmvb,.avi,.flv,.3gp,.flv,.mov"
+						id="idCardCountryFileUpload" style="display: none;" />
+					<input type="hidden" name="recordSource" value="ec-qualified" />
+					<input type="hidden" name="fileType" value="idCardNationalEmblem" />
+				</form>
+			</div>
+
+		</div>
+
+		<!--  填写用户职业信息 -->
+		<div id="userProfessionBox" style="display:none;">
+			<span class="professionText">填写您的职业</span>
+			<input type="text" placeholder="请填写您的职业" class="professionInput" id="professionInput">
+			<span class="submitProfession" onclick="submitProfession()">确认</span>
+		</div>
+		<!--  用户 身份证有效期 -->
+
+		<div class="icTimeBox" id="icTimeBox" style="display:none;"> 
+			<label class="iCTime2">身份证有效期</label>
+			<input id="idCardIndate" type="text" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})"	class="dateOfIdCard ">
+			是否永久有效<input id="foever" name="foever" type="checkbox">
+			<span class="submitProfession" onclick="submitIcTime()">确认</span>
+		</div>
+		<div class="btnBox">
+			<a href="javascript:;" class="disable" id="next">下一步</a>
+		</div>
+	</div>
+
+	<!--  上传身份证示例弹框 -->
+	<div class="recommendPop" id="icExampleBox" style=" display: none;">
+		<div class="popHead">
+				<span class="popTitle">身份证正反面示例</span><span class="closeIcon" onclick="closeExample()"></span>
+			</div>
+		<img class="icExamImg1" src="/AppWeb/AppWeb_Images/images/qualified/icExampleImg.jpg" class="icExampleImg" />
+
+    </div>
+
+	<div id="refuse" style="display: none;"> </div>
+	<!--  身份证人像面文件名 -->
+	<span style="display:none;" id="icPersonFileName"></span>
+	<!-- 身份证国徽面文件名 -->
+	<span style="display:none;" id="icCountryFileName"></span>
+
+	<!--  蒙层 -->
+	<div class="backLayer" style="display: none;"></div>
+	<!-- footer -->
+	<!--#include virtual="/AppService/public/footer.shtml"-->
+
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/jquery/ui-select.js"></script>
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/jquery.form.min.js"></script>
+
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/dialog.min.js"></script>
+	<!-- <script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/qualifiedCommon.js"></script>
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/qualified.js"></script> -->
+
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/qualifiedCommon.min.js"></script>
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/qualified.min.js"></script>
+
+</body>
+
+</html>

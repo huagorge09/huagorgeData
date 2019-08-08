@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="x5-orientation" content="portrait" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="format-detection" content="telephone=no">
+		<title>录音</title>
+		<link rel="stylesheet" href="css/public.css">
+		<link rel="stylesheet" href="css/tape.css">
+		<script src="js/library/jquery-3.2.1.min.js"></script>
+		<script src="js/library/common.js"></script>
+		<script src="js/public.js"></script>
+		<script src="js/tape.js"></script>
+	</head>
+
+	<body>
+	<div class="page">
+		<div class="contain">
+			<!-- 没有预设 -->
+			<div class="preinstall-no" style="display:none">
+				<div class="wrap">
+					<p>孩子的童年只有一次</p>
+					<p class="mt50">干净的声音</p>
+					<p>纯净的心田</p>
+					<p>不受束缚的思维</p>
+					<p>纯真可爱的回答</p>
+					<p class="mt50">都值得被记录...</p>
+				</div>
+			</div>
+			<!-- 有预设 -->
+			<div class="preinstall">
+				<div class="mean">
+					<div class="title">话题意义</div>
+					<div class="context">
+						<p>公猪总是先让母猪吃，等她吃饱了在上去吃母<br>猪吃剩下的食物。每天晚上公猪总是给母猪放<br>哨，上公猪总是给母猪放。</p>
+					</div>
+				</div>
+				<div>
+					<div class="title">引导语</div>
+					<div class="context">
+						<p>从前有两只小猪，</p>
+						<p>整天过着无忧无虑的生活，</p>
+						<p>他们相互相爱着，</p>
+						<p>每天主人送来吃的时候，</p>
+						<p>公猪总是先让母猪吃，</p>
+						<p>等她吃饱了在上去吃母猪吃剩下的食物。</p>
+						<p>每天晚上公猪总是给母猪放哨，</p>
+						<p>从前有两只小猪，</p>
+						<p>整天过着无忧无虑的生活，</p>
+						<p>他们相互相爱着，</p>
+						<p>每天主人送来吃的时候，</p>
+						<p>公猪总是先让母猪吃，</p>
+						<p>等她吃饱了在上去吃母猪吃剩下的食物。</p>
+						<p>每天晚上公猪总是给母猪放哨，</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 录音操作 -->
+		<div class="tapebox">
+			<div class="showtime">00:00:00</div>
+			<div class="total">可录总时长00:05:00</div>
+			<div class="tapeBtn">
+				<div class="startbtn">
+					<div class="btncommom start">开始</div>
+				</div>
+			</div>
+			<div class="nonsupport" id="nonsupport">
+				<p class="tip">微信暂不支持录音</p>
+				<p class="goTo">您可以<a href="https://www.baidu.com/">打开APP录音</a>或<a href="writefootprints.html">仅记录文字和图片</a></p>
+			</div>
+		</div>
+	</div>
+	<!--音频播放器-->
+	<div class="circleAudioPlayer">
+		<canvas></canvas>
+		<div class="button"></div>
+		<div class="close"></div>
+	</div>
+	</body>
+</html>

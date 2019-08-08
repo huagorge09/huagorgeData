@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <script src="https://direct.cmwachina.com/AppWeb/AppWeb_JSLibrary/pageJs/jquery.js"></script>
+    <style type="text/css">
+    	/* 页面元素初始化和常用样式定义-start */
+		/*======== 全局 ========*/
+		body,div,p,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,th,td select option{margin: 0;padding: 0;}
+		body{background: #f2f2f2;font-size: 14px; min-width:1200px;color: #676767; font-family:arial,microsoft yahei,verdana, simsun;}
+		table{border-collapse: collapse; border-spacing: 0; word-break:break-all;}
+		fieldset,img{border: none; vertical-align:middle;}
+		ol,ul,li{list-style: none;}
+		h1,h2,h3,h4,h5,h6{font-size: 90%;font-weight: normal; color: #2d2d2d;}
+		em{font-style: normal;}
+		input,button,select,textarea{outline: none; border-color:#dadada;}
+		/*禁止了文本框的拖拉*/
+		textarea{resize: none;}
+		input,button,select,textarea{outline: none; border-color:#dadada; font-family: inherit;}
+		/*link*/
+		a{text-decoration: none; color: #c8a063; cursor: pointer;}
+		a:hover{color: #d59400!important; text-decoration: none;}
+		a:link, a:visited { outline: none; } 
+		input[type="text"],input[type="password"] { height: 43px; font-size: 16px; padding: 0 15px; line-height: 45px; background-color:#fdfdfd; color: #acaaaa; border: 1px solid #dcdcdc;}
+		.bgLinkHover:hover { background-color: #cb322f!important;} 
+		input.focus { color: #c8a063; border-color:#c8a063; }
+		input.error { color: red; border-color:red; }
+		/*增加的产品名称字段带跳转*/
+		a.productname{text-decoration: none; color: #686868; cursor: pointer;}
+		a.productname:hover{color:#d59400!important; text-decoration: none;}
+		/*浮动*/
+		.fl{float: left;}
+		.fr{float: right;}
+		/*清除浮动*/
+		.clr{*zoom: 1;}
+		.clr:after{content:".";display:block;height:0;clear:both;visibility:hidden; }
+		.clearfix {display: block;}
+		.syncBox{width:650px;height: 500px;padding-right: 20px; background: #fff; margin: 0 auto; margin-top: 20px;padding-left: 30px;}
+		.syncBox h2{font-size: 20px;text-align: center;margin-bottom: 20px; line-height: 35px;padding-top: 15px;}
+		.syncBox input{margin-left: 20px; color: #000;}
+		.syncBox span{display: inline-block;width: 100px;font-size: 18px;}
+		.syncBox select{ padding: 0 15px; width: 150px;height: 45px; margin-left: 20px;margin-right: 20px;}
+		.syncBox li{margin-bottom: 25px;}
+		.syncBox  button{width: 100px;height: 40px;line-height: 40px; margin: 0 auto; display: inline-block; background: #ca132c;;text-align: center; cursor: pointer; border-radius: 5px;font-size: 18px; color: #fff; border:1px}
+        .gray{background-color:#CCC !important; }
+    </style>
+</head>
+<body>
+  <div class="syncBox">
+  	  <h2>用户数据同步</h2>
+  	  <ul>
+  	  	 <li>
+  	  	 	<span>cmfUserId：</span>
+  	  	 	<input type="text" name="cmfUserId"/>
+  	  	 	<select name="cmfUserIdSel">
+  	  	 		<option value="1" selected>手动同步</option>
+  	  	 		<option value="2">批量同步</option>
+  	  	 	</select>
+  	  	 	<button onclick="cmfUserIdSync()">同步</button>
+  	  	 </li>
+  	  	 <li>
+  	  	 	<span>custNo ：</span>
+  	  	 	<input type="text" name="custNo" />
+  	  	 	<select name="custNoSel">
+  	  	 		<option value="1" selected>手动同步</option>
+  	  	 		<option value="2">批量同步</option>
+  	  	 	</select>
+  	  	 	<button onclick="custNoSync()">同步</button>
+  	  	 </li>
+  	  	 <li>
+  	  	 	<span>openId ：</span>
+  	  	 	<input type="text" name="openId"/>
+  	  	 	<select name="openIdSel">
+  	  	 		<option value="1" selected>手动同步</option>
+  	  	 		<option value="2">批量同步</option>
+  	  	 	</select>
+  	  	 	<button onclick="userIdSync()">同步</button>
+  	  	 </li>
+  	  </ul>
+  </div>
+
+<script type="text/javascript">
+	
+$(function(){
+	$("select").change(function(){
+		if($(this).val()=="1"){
+			$(this).parents("li").find("input").removeAttr("disabled");
+			$(this).parents("li").find("input").removeClass("gray");
+		}else{
+			$(this).parents("li").find("input").attr("disabled","disabled");
+			$(this).parents("li").find("input").addClass("gray");
+			$(this).parents("li").find("input").val("");
+		}
+	})
+})
+/**
+ * 同步用户cmfUserId
+ */
+function cmfUserIdSync() {
+	var cmfUserId=$("input[name=cmfUserId]").val();
+	if($("select[name=cmfUserIdSel]").val()=="1"){
+		if(cmfUserId==""){
+			alert("请输入用户cmfUserId");
+			return;
+		}
+	}
+	$.ajax({
+			type: "POST",
+			url: "/WeixinService/sysnUserInfo.xhtml",
+			data: {
+				cmfUserId: cmfUserId
+			},
+			dataType: "json",
+			success: function(data) {
+				alert("用户cmfUserId数据同步总数:" + data.size);
+			},
+			error:function(a,b,c){
+				console.log(a)
+				console.log(b)
+				console.log(c)
+					alert("同步数据异常");
+			}
+	});
+	
+}
+/**
+ * 同步用户custNo
+ */
+function custNoSync() {
+	var custNo=$("input[name=custNo]").val();
+	if($("select[name=custNoSel]").val()=="1"){
+		if(custNo==""){
+			alert("请输入用户custNo");
+			return;
+		}
+	}
+	$.ajax({
+		type: "POST",
+		url: "/WeixinService/synchUserOrderInfo.xhtml",
+		data: {
+			custNo: custNo
+		},
+		dataType: "json",
+		success: function(data) {
+			alert("用户custNo数据同步总数:" + data.size);
+		},
+		error:function(a,b,c){
+			console.log(a)
+			console.log(b)
+			console.log(c)
+				alert("同步数据异常");
+		}
+	});
+}
+/**
+ * 同步用户userId
+ */
+function userIdSync() {
+	var openId=$("input[name=openId]").val();
+	if($("select[name=openIdSel]").val()=="1"){
+		if(openId==""){
+			alert("请输入用户openId");
+			return;
+		}
+	}
+	$.ajax({
+		type: "POST",
+		url: "/WeixinService/synchOldUseInfo.xhtml",
+		data: {
+			openId: openId
+		},
+		dataType: "json",
+		success: function(data) {
+			alert("用户openId数据同步总数:" + data.size);
+		},
+		error:function(a,b,c){
+			console.log(a)
+			console.log(b)
+			console.log(c)
+				alert("同步数据异常");
+		}
+	});
+}
+</script>
+</body>
+</html>

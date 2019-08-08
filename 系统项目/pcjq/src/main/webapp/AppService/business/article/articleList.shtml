@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="/AppWeb/AppWeb_Css/ui-select.css" rel="stylesheet" type="text/css"/>
+<link href="/AppWeb/AppWeb_Css/account/queryMySafeInfo.css" rel="stylesheet" type="text/css"/>
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/ajax-page.js"></script>
+</head>
+<body>
+	<input type="hidden" id="pageId" value="myMessageId"/>
+	<h2 class="myorder-title">
+		我的消息<em id="unRead"></em>
+		<span class="btn-meta">信披说明</span>
+		<div class="meta" style="display: none;">
+			<p>如您需在线查询信息披露，请您做好以下准备：</p>
+			<p>1、	完成用户注册和实名认证：</p>
+			<p>若您当日实名，需要T+1个工作日进行确认，请您耐心等待再查询结果。</p>
+			<p>2、如您已经实名，您需满足如下条件：</p>
+			<p>A、您已购买我司产品，且产品披露时点仍在存续中；</p>
+			<p>B、资管计划年报、季报披露一般原则：</p>
+			<p>季度报告：合同有约定且产品运作满2个月；</p>
+			<p>年度报告：合同有约定且产品运作满3个月；</p>
+			<p>如遇任何问题，随时联系我们：400-8878-555（周一至周五09:00-17:30）。</p>
+			<span></span>
+		</div>
+		<i class="fr" onclick="addReportReadRecordAll()" id="btnUnRead">全部标为已读</i>
+	</h2>
+	<div style="display: none;">
+		<input type="text" id="page" value="0" hidden="true" />
+		<input type="text" id="maxPages" value="1" hidden="false" />
+	</div>
+	<div class='mynews-tab-con clear' id="msgList"></div>
+	<div class="mynews-tab-con clear none" id="noMsg">
+        <span class="bulletin">暂无消息，敬请期待...</span>
+    </div>
+	<div class="page"></div>
+	
+		<!-- 尚未完成操作弹窗-->
+    <div class="cover_bg" id="noOperation" style="display: none;">
+    	 <!-- 尚未完成风险评测-->
+    	 <div class="content risk"  style="display: none;" style="">
+    	 	  <h2></h2>
+    	 	  <p>哎呀！您尚未完成风险测评</p>
+    	 	  <div class="tips">
+    	 	  	  <h3>温馨提示：</h3>
+    	 	  	  <p>根据监管要求，为保护投资者权益，需要了解您的相关信息和风险等级，<br>以实现对您的最大保障。</p>
+    	 	  	  <p class="yearReport">
+    	 	  	  	 动动小指尖， 30秒完成风险测评，轻松查看<span class="noOperation_text">产品</span>信息
+    	 	  	  </p>
+    	 	  </div>
+    	 	   <a class="btn" data-page="activeId" data-event="event_active_expiredId">我要测评</a>
+    	 </div>
+    	 <!-- 重新测评-->
+    	 <div class="content anewRisk"  style="display: none; width: 515px; height: 341px;">
+    	 	  <h2></h2>
+    	 	  <p style="line-height: 30px;height:auto; font-size:18px;padding-left:0;">根据监管要求，您的风险测评<br>已过有效期，还请重新测评。</p>
+    	 	  <a class="btn" style="margin-top: 25px;" data-page="activeId"  data-event="event_active_expiredId">确定</a>
+    	 </div>
+		 
+		 <!-- 尚未完成认证-->
+    	 <div class="content realName"  style="display: none;">
+    	 	  <h2></h2>
+    	 	  <p>咦，尚未完成实名认证，我们找不到您的<span class="noOperation_text">产品</span>信息~</p>
+    	 	  <p class="once">别急！立即完成实名认证即可！</p>
+    	 	  <div class="tips">
+    	 	  	  <h3>温馨提示：</h3>
+    	 	  	  <p>实名过程中需要提供您的银行卡号、手机号及身份证，无需提供任何交易<br>密码，以确保您的资金财产安全。</p>
+    	 	  </div>
+    	 	   <a class="btn">我要实名</a>
+    	 </div> 
+    </div>
+	
+	
+	<style>
+    	.gudieBox{width: 622px;height: 530px;background: #fff;border-radius: 10px;position: absolute;left: 50%;top: 50%;margin-left: -279px;margin-top: -265px;padding-top: 29px;}
+        .gudieBox h2{height: 39px;line-height: 39px;text-align: center;margin-bottom: 20px;background: url(/AppWeb/AppWeb_Images/images/guide3.png) top center no-repeat;color: #fff;font-size: 20px;}
+        .gudieBox .text{padding-left: 42px;}
+        .gudieBox p{font-size: 16px; line-height: 28px; }
+        .gudieBox .pt1{margin-bottom: 35px;margin-top: 35px;}
+        .gudieBox .pt2{color: #717e8c;}
+        .gudieBox .btn{width: 194px; height: 42px;line-height: 42px; font-size: 20px;text-align: center; border-radius: 5px;color: #fff;border: none; cursor: pointer; background: #ca132c; margin: 60px auto 0;outline: none;}
+        .gudieBox .icon{position: absolute; display: inline-block;width: 164px;height: 151px;background: url(/AppWeb/AppWeb_Images/images/guide4.png) no-repeat; bottom: 0; right: 0;background-size: 100% 100%;}
+        .nextGuide .w{margin: 0 auto; width: 1000px; position: relative;}
+        .nextGuide .see{width:375px;height: 41px; background: url(/AppWeb/AppWeb_Images/images/guide1.png) no-repeat; position: absolute;top: 120px;left: 332px;}
+        .nextGuide .know{width:112px;height: 47px; cursor: pointer; background: url(/AppWeb/AppWeb_Images/images/guide2.png) no-repeat;position: absolute;top: 163px;left: 444px;}
+    	
+    	#noOperation .content{width: 594px;height: 476px;position: absolute;left: 50%;top:50%;margin-top: -238px;margin-left: -279px; background: #fff;border-radius: 5px;}
+        #noOperation h2{width:193px;height: 157px;background: url(/AppWeb/AppWeb_Images/images/noOper1.png) no-repeat;  background-size: 100% 100%; margin: 22px auto 2px auto;}
+        #noOperation .content>p{height: 40px;line-height: 40px; font-size: 20px; color: #212121; text-align: center;}
+        #noOperation .tips{    padding-top: 28px;padding-left: 30px;}
+        #noOperation h3{background: url(/AppWeb/AppWeb_Images/images/noOper2.png) no-repeat;padding-left: 23px;margin-bottom: 3px; font-size: 18px; color: #212121;}
+        #noOperation p{font-size: 16px; color: #666666;line-height: 26px;padding-left: 22px;}
+        #noOperation .yearReport{height: 49px;line-height: 42px; width: 504px; color: #47a1f0;margin-left: 21px;background: url(/AppWeb/AppWeb_Images/images/noOper3.png) no-repeat;margin-top: 12px;text-align: center;padding: 0;}
+        #noOperation .btn{display: block; width: 194px; height: 42px;line-height: 42px; font-size: 20px;text-align: center; border-radius: 5px;color: #fff;border: none; cursor: pointer; background: #ca132c; margin: 15px auto 0;outline: none;}
+        #noOperation p.once{text-align: center; font-size: 18px; color: #999999;    line-height: 22px;}
+        #noOperation .realName{height: 450px;margin-top: -225px;}
+    </style>
+	
+<!-- 	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/articleList.js"></script> -->
+	 <script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/articleList.min.js"></script>
+</body>
+</html>

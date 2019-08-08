@@ -1,0 +1,1065 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-appearance: none;
+    outline: none;
+    word-break: break-all;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+*:not(input, textarea) {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+}
+
+html,
+body {
+    color: #333;
+    margin: 0 auto;
+    font-family: Arial, "Microsoft YaHei";
+    font-size: 50px;
+    background: #fff;
+    height: 100%;
+}
+
+input {
+    -webkit-user-select: initial;
+    font-family: Arial, "Microsoft YaHei";
+    border: none;
+}
+
+i {
+    font-style: normal
+}
+
+a {
+    text-decoration: none;
+    color: #ffffdd;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+em {
+    font-style: normal
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+img {
+    border: 0;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clearFloat:after,
+.clearFloat:before {
+    content: "";
+    display: table;
+}
+
+.clearFloat:after {
+    clear: both;
+}
+
+.dswkb {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-box;
+    display: box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-box-align: center;
+    box-align: center;
+    position: relative;
+}
+
+.flex1 {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -ms-box-flex: 1;
+    box-flex: 1;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.center {
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.arrow {
+    width: 0.36rem;
+    height: 0.35rem;
+    position: absolute;
+    bottom: 0.42rem;
+    left: 50%;
+    margin-left: -0.18rem;
+    background: url(../images/arrow.png) no-repeat;
+    background-size: 100% 100%;
+    animation-name: arrowing;
+    -webkit-animation-name: arrowing;
+    animation-duration: 1.5s;
+    -webkit-animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+
+
+.swiper-pagination {
+    bottom: -11px !important;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+    width: 16px;
+    height: 6px;
+    border-radius: 3px;
+}
+
+.swiper-pagination .swiper-pagination-bullet-active {
+    width: 26px;
+}
+
+.fp-tableCell {
+    position: relative;
+}
+
+.pag {
+    position: absolute;
+    display: none;
+}
+
+.page1 {
+    width: 100%;
+    height: 100%;
+    background: url(../images/page1.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+.page1-1 {
+    width: 2.87rem;
+    height: .9rem;
+    background: url(../images/page1-1.png) no-repeat;
+    background-size: 100% 100%;
+    left: .16rem;
+    top: .19rem;
+}
+
+.page1-2 {
+    width: 3.9rem;
+    height: 3.46rem;
+    background: url(../images/page1-2.png) no-repeat;
+    background-size: 100% 100%;
+    right: 0;
+    bottom: 3.21rem;
+}
+
+.page1-3 {
+    width: 2.66rem;
+    height: .68rem;
+    background: url(../images/page1-3.png) no-repeat;
+    background-size: 100% 100%;
+    left: 4%;
+    bottom: 2.67rem;
+}
+
+.page1-4 {
+    width: 5.15rem;
+    height: .53rem;
+    background: url(../images/page1-4.png) no-repeat;
+    background-size: 100% 100%;
+    left: 4%;
+    bottom: 2.15rem;
+}
+
+.page1-5 {
+    width: 5.06rem;
+    height: .52rem;
+    background: url(../images/page1-5.png) no-repeat;
+    background-size: 100% 100%;
+    left: 4%;
+    bottom: 1.35rem;
+}
+
+.page1-6 {
+    width: 3.73rem;
+    height: .39rem;
+    background: url(../images/page1-6.png) no-repeat;
+    background-size: 100% 100%;
+    left: .3rem;
+    bottom: .83rem;
+}
+
+/*第二页*/
+.page2-1 {
+    width: 2.04rem;
+    height: .58rem;
+    background: url(../images/page2-1.png) no-repeat;
+    background-size: 100% 100%;
+    left: .2rem;
+    top: .2rem;
+}
+
+.page2-2 {
+    width: 1.34rem;
+    height: 1.03rem;
+    background: url(../images/page2-5.png) no-repeat;
+    background-size: 100% 100%;
+    right: .2rem;
+    top: .2rem;
+}
+
+.page2-3 {
+    width: 4.85rem;
+    height: .61rem;
+    background: url(../images/page2-2.png) no-repeat;
+    background-size: 100% 100%;
+    left: 17%;
+    top: 8%;
+}
+
+.page2-4 {
+    width: 100%;
+    padding: 0 .4rem;
+    font-size: .3rem;
+    color: #707070;
+    line-height: .46rem;
+        top: 14%;
+    text-indent: 2em;
+}
+
+.page2-5 {
+    width: 4.53rem;
+    height: 5.29rem;
+    background: url(../images/page2-3.png) no-repeat;
+    background-size: 100% 100%;
+    left: 0;
+    bottom: 0;
+}
+
+.page2-6 {
+    width: 1.65rem;
+    height: 1.52rem;
+    background: url(../images/page2-4.png) no-repeat;
+    background-size: 100% 100%;
+    right: 0;
+    bottom: 0;
+}
+
+.page2-7 {
+    width: 4.03rem;
+    height: .37rem;
+    background: url(../images/page2-6.png) no-repeat;
+    background-size: 100% 100%;
+    left: 2.93rem;
+        top: 58%;
+}
+
+.page2-8 {
+    width: 3.71rem;
+    height: .53rem;
+    background: url(../images/page2-7.png) no-repeat;
+    background-size: 100% 100%;
+    left: 3.45rem;
+       top: 62%;
+}
+
+.page2-9 {
+    width: 3.06rem;
+    height: .5rem;
+    background: url(../images/page2-8.png) no-repeat;
+    background-size: 100% 100%;
+    left: 3.97rem;
+   top: 68%;
+}
+
+.page2-10 {
+    width: 2.48rem;
+    height: .47rem;
+    background: url(../images/page2-9.png) no-repeat;
+    background-size: 100% 100%;
+    left: 4.59rem;
+    bottom: 3rem;
+}
+
+/*第三页*/
+.page3 {
+    width: 100%;
+    height: 100%;
+    background: url(../images/page3.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+.page3-1 {
+    width: 4.85rem;
+    height: 5.78rem;
+    background: url(../images/page3-1.png) no-repeat;
+    background-size: 100% 100%;
+    left: 19%;
+    top: 36%;
+}
+
+.page3-2 {
+    width: 1.8rem;
+    height: .43rem;
+    background: url(../images/page3-2.png) no-repeat;
+    background-size: 100% 100%;
+    left: .2rem;
+    top: .2rem;
+}
+
+.page3-3 {
+    width: 4.1rem;
+    height: 1.88rem;
+    background: url(../images/page3-3.png) no-repeat;
+    background-size: 100% 100%;
+    left: 25%;
+    top: 5%;
+}
+
+.page3-4 {
+    width: .82rem;
+    height: 1.71rem;
+    background: url(../images/page3-4.png) no-repeat;
+    background-size: 100% 100%;
+    right: .46rem;
+    top: 9.3%;
+}
+
+.page3-5 {
+    width: 2rem;
+    height: 2rem;
+    background: url(../images/page3-5.png) no-repeat;
+    background-size: 100% 100%;
+    left: 29%;
+    top: -30%;
+}
+
+.page3-6 {
+    width: 2rem;
+    height: 2rem;
+    background: url(../images/page3-6.png) no-repeat;
+    background-size: 100% 100%;
+    left: -.79rem;
+    top: .51rem;
+}
+
+.page3-7 {
+    width: 2rem;
+    height: 2rem;
+    background: url(../images/page3-7.png) no-repeat;
+    background-size: 100% 100%;
+    right: -.79rem;
+    top: .51rem;
+}
+
+.page3-8 {
+    width: 2rem;
+    height: 2rem;
+    background: url(../images/page3-8.png) no-repeat;
+    background-size: 100% 100%;
+    left: 1.4rem;
+    top: 2.8rem;
+}
+
+.page3-9 {
+    width: 2rem;
+    height: 2rem;
+    background: url(../images/page3-9.png) no-repeat;
+    background-size: 100% 100%;
+    left: 1.4rem;
+    top: 5.3rem;
+}
+
+/*第四页*/
+.page4 {
+    width: 100%;
+    height: 100%;
+    background: url(../images/page4.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+.page4-1 {
+    width: 1.8rem;
+    height: .43rem;
+    background: url(../images/page3-2.png) no-repeat;
+    background-size: 100% 100%;
+    left: .2rem;
+    top: .2rem;
+}
+
+.page4-2 {
+    width: 4.1rem;
+    height: 1.88rem;
+    background: url(../images/page4-1.png) no-repeat;
+    background-size: 100% 100%;
+    left: 1.75rem;
+    top: .83rem;
+}
+
+.page4-3 {
+    width: .82rem;
+    height: 1.71rem;
+    background: url(../images/page4-2.png) no-repeat;
+    background-size: 100% 100%;
+    right: .46rem;
+    top: 9.2%;
+}
+
+.page4-4 {
+    width: 6.95rem;
+    height: 3.42rem;
+    background: url(../images/page4-3.png) no-repeat;
+    background-size: 100% 100%;
+    left: .26rem;
+    top: 23%;
+
+}
+
+.page4-5 {
+    width: 4.85rem;
+    height: .49rem;
+    background: url(../images/page4-4.png) no-repeat;
+    background-size: 100% 100%;
+    left: 1.26rem;
+    top: 51%;
+}
+
+.page4-6 {
+    width: 7.01rem;
+    height: 4rem;
+    left: .25rem;
+    top: 58%;
+    overflow: hidden;
+}
+
+.page4-7 {
+    width: 1.62rem;
+    height: .38rem;
+    background: url(../images/page4-6.png) no-repeat;
+    background-size: 100% 100%;
+    left: 50%;
+    bottom: 5%;
+    margin-left: -.8rem;
+}
+
+/*第五页*/
+.page5 {
+    width: 100%;
+    height: 100%;
+    background: url(../images/page5.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+.page5-1 {
+    width: 3.41rem;
+    height: .52rem;
+    background: url(../images/page5-1.png) no-repeat;
+    background-size: 100% 100%;
+    left: .2rem;
+    top: .2rem;
+}
+
+.page5-2 {
+    width: 4.01rem;
+    height: 1.39rem;
+    background: url(../images/page5-2.png) no-repeat;
+    background-size: 100% 100%;
+    left: 1.75rem;
+        top: 6%;
+}
+
+.page5-3 {
+    width: .77rem;
+    height: 1.71rem;
+    background: url(../images/page5-3.png) no-repeat;
+    background-size: 100% 100%;
+    right: .46rem;
+    top: 9.2%;
+}
+
+.page5-4 {
+    width: 3.68rem;
+    height: .68rem;
+    background: url(../images/page5-4.png) no-repeat;
+    background-size: 100% 100%;
+    left: 1.9rem;
+    top: 17%;
+}
+
+.page5-5 {
+    width: 100%;
+    top: 24%;
+    text-align: center;
+}
+
+.page5-5 p {
+    font-size: .3rem;
+    color: #383838;
+    line-height: .42rem;
+    font-family: "楷体";
+}
+
+.page5-6 {
+    width: 4.82rem;
+    top:41%;
+    left: 1.34rem;
+}
+
+.page5-7 {
+    width: 2.22rem;
+    height: 2.95rem;
+    background: url(../images/page5-5.png) no-repeat;
+    background-size: 100% 100%;
+    left: 0;
+    top: 0;
+}
+
+.page5-8 {
+    width: 2.22rem;
+    height: 2.95rem;
+    background: url(../images/page5-6.png) no-repeat;
+    background-size: 100% 100%;
+    right: 0;
+    top: 0;
+}
+
+.page5-9 {
+    width: 2.22rem;
+    height: 2.95rem;
+    background: url(../images/page5-7.png) no-repeat;
+    background-size: 100% 100%;
+    left: 0;
+    top: 3.3rem;
+}
+
+.page5-10 {
+    width: 2.22rem;
+    height: 2.95rem;
+    background: url(../images/page5-8.png) no-repeat;
+    background-size: 100% 100%;
+    right: 0;
+    top: 3.3rem;
+}
+
+/*第六页*/
+.page6-1 {
+    width: 2.04rem;
+    height: .58rem;
+    background: url(../images/page2-1.png) no-repeat;
+    background-size: 100% 100%;
+    left: .2rem;
+    top: .2rem;
+}
+
+.page6-2 {
+    width: 1.34rem;
+    height: 1.03rem;
+    background: url(../images/page2-5.png) no-repeat;
+    background-size: 100% 100%;
+    right: .2rem;
+    top: .2rem;
+}
+
+.page6-3 {
+    width: 1.65rem;
+    height: 1.52rem;
+    background: url(../images/page2-4.png) no-repeat;
+    background-size: 100% 100%;
+    right: 0;
+    bottom: 0;
+}
+
+.page6-4 {
+    width: 32.6px;
+    height: 16.9px;
+    background: #fbdddd;
+    border-left: 0 solid transparent;
+    border-right: 1.76rem solid #fff;
+    border-bottom: 1.76rem solid transparent;
+    left: 0;
+    bottom: 0;
+}
+
+.page6-5 {
+    width: 6.31rem;
+    height: 2.7rem;
+    background: url(../images/page6-1.png) no-repeat;
+    background-size: 100% 100%;
+    top: 11%;
+    left: .6rem;
+}
+
+.page6-6 {
+    width: 4.83rem;
+    height: .48rem;
+    background: url(../images/page6-2.png) no-repeat;
+    background-size: 100% 100%;
+    top: 34%;
+    left: 1.35rem;
+}
+
+.page6-7 {
+    width: 4.98rem;
+    height: .45rem;
+    background: url(../images/page6-3.png) no-repeat;
+    background-size: 100% 100%;
+        top: 39%;
+    left: 50%;
+    margin-left: -2.5rem;
+}
+
+.page6-8 {
+    width: 2.76rem;
+    height: 2.72rem;
+        top: 45%;
+    left: 2.37rem;
+}
+
+.page6-9 {
+    width: 3.34rem;
+    height: .65rem;
+    background: url(../images/page6-5.png) no-repeat;
+    background-size: 100% 100%;
+       top: 66%;
+    left: 2.1rem;
+}
+
+.page6-10 {
+    width: 100%;
+       top: 74%;
+    text-align: center;
+}
+
+.page6-10 p {
+    font-size: .28rem;
+    color: #000000;
+    line-height: .55rem;
+}
+
+/*第一页动画*/
+.page1-1.animate {
+    animation: bouncein 800ms ease both;
+    -webkit-animation: bouncein 800ms ease both;
+    -moz-animation: bouncein 800ms ease both;
+    -o-animation: bouncein 800ms ease both;
+}
+
+.page1-2.animate {
+    animation: fadeinR 1300ms ease 800ms both;
+    -webkit-animation: fadeinR 1300ms ease 800ms both;
+    -moz-animation: fadeinR 1300ms ease 800ms both;
+    -o-animation: fadeinR 1300ms ease 800ms both;
+}
+
+.page1-3.animate {
+    animation: bounceinL 800ms ease 2000ms both;
+    -webkit-animation: bounceinL 800ms ease 2000ms both;
+    -moz-animation: bounceinL 800ms ease 2000ms both;
+    -o-animation: bounceinL 800ms ease 2000ms both;
+}
+
+.page1-4.animate {
+    animation: bounceinL 800ms ease 2600ms both;
+    -webkit-animation: bounceinL 800ms ease 2600ms both;
+    -moz-animation: bounceinL 800ms ease 2600ms both;
+    -o-animation: bounceinL 800ms ease 2600ms both;
+}
+
+.page1-5.animate {
+    animation: bounceinL 800ms ease 3200ms both;
+    -webkit-animation: bounceinL 800ms ease 3200ms both;
+    -moz-animation: bounceinL 800ms ease 3200ms both;
+    -o-animation: bounceinL 800ms ease 3200ms both;
+}
+
+.page1-6.animate {
+    animation: bounceinL 800ms ease 3800ms both;
+    -webkit-animation: bounceinL 800ms ease 3800ms both;
+    -moz-animation: bounceinL 800ms ease 3800ms both;
+    -o-animation: bounceinL 800ms ease 3800ms both;
+}
+
+/*第二页动画*/
+.page2-1.animate {
+    animation: bouncein 800ms ease both;
+    -webkit-animation: bouncein 800ms ease both;
+    -moz-animation: bouncein 800ms ease both;
+    -o-animation: bouncein 800ms ease both;
+}
+
+.page2-2.animate {
+    animation: fadeinR 800ms ease both;
+    -webkit-animation: fadeinR 800ms ease both;
+    -moz-animation: fadeinR 800ms ease both;
+    -o-animation: fadeinR 800ms ease both;
+}
+
+.page2-3.animate {
+    animation: bounceinT 800ms ease 600ms both;
+    -webkit-animation: bounceinT 800ms ease 600ms both;
+    -moz-animation: bounceinT 800ms ease 600ms both;
+    -o-animation: bounceinT 800ms ease 600ms both;
+}
+
+.page2-4.animate {
+    animation: fadein 800ms ease 1000ms both;
+    -webkit-animation: fadein 800ms ease 1000ms both;
+    -moz-animation: fadein 800ms ease 1000ms both;
+    -o-animation: fadein 800ms ease 1000ms both;
+}
+
+.page2-5.animate {
+    animation: rotatein 800ms ease 1000ms both;
+    -webkit-animation: rotatein 800ms ease 1000ms both;
+    -moz-animation: rotatein 800ms ease 1000ms both;
+    -o-animation: rotatein 800ms ease 1000ms both;
+}
+
+.page2-6.animate {
+    animation: fadein 800ms ease 600ms both;
+    -webkit-animation: fadein 800ms ease 600ms both;
+    -moz-animation: fadein 800ms ease 600ms both;
+    -o-animation: fadein 800ms ease 600ms both;
+}
+
+.page2-7.animate {
+    animation: bounceinR 800ms ease 1000ms both;
+    -webkit-animation: bounceinR 800ms ease 1000ms both;
+    -moz-animation: bounceinR 800ms ease 1000ms both;
+    -o-animation: bounceinR 800ms ease 1000ms both;
+}
+
+.page2-8.animate {
+    animation: bounceinR 800ms ease 1600ms both;
+    -webkit-animation: bounceinR 800ms ease 1600ms both;
+    -moz-animation: bounceinR 800ms ease 1600ms both;
+    -o-animation: bounceinR 800ms ease 1600ms both;
+}
+
+.page2-9.animate {
+    animation: bounceinR 800ms ease 2200ms both;
+    -webkit-animation: bounceinR 800ms ease 2200ms both;
+    -moz-animation: bounceinR 800ms ease 2200ms both;
+    -o-animation: bounceinR 800ms ease 2200ms both;
+}
+
+.page2-10.animate {
+    animation: bounceinR 800ms ease 2800ms both;
+    -webkit-animation: bounceinR 800ms ease 2800ms both;
+    -moz-animation: bounceinR 800ms ease 2800ms both;
+    -o-animation: bounceinR 800ms ease 2800ms both;
+}
+
+/*第三页动画*/
+.page3-2.animate {
+    animation: bouncein 800ms ease both;
+    -webkit-animation: bouncein 800ms ease both;
+    -moz-animation: bouncein 800ms ease both;
+    -o-animation: bouncein 800ms ease both;
+}
+
+.page3-3.animate {
+    animation: fadeinT 800ms ease 800ms both;
+    -webkit-animation: fadeinT 800ms ease 800ms both;
+    -moz-animation: fadeinT 800ms ease 800ms both;
+    -o-animation: fadeinT 800ms ease 800ms both;
+}
+
+.page3-4.animate {
+    animation: bouncein 800ms ease 800ms both;
+    -webkit-animation: bouncein 800ms ease 800ms both;
+    -moz-animation: bouncein 800ms ease 800ms both;
+    -o-animation: bouncein 800ms ease 800ms both;
+}
+
+.page3-5.animate {
+    animation: bounceinT 800ms ease 1600ms both;
+    -webkit-animation: bounceinT 800ms ease 1600ms both;
+    -moz-animation: bounceinT 800ms ease 1600ms both;
+    -o-animation: bounceinT 800ms ease 1600ms both;
+}
+
+.page3-6.animate {
+    animation: bounceinL 800ms ease 2200ms both;
+    -webkit-animation: bounceinL 800ms ease 2200ms both;
+    -moz-animation: bounceinL 800ms ease 2200ms both;
+    -o-animation: bounceinL 800ms ease 2200ms both;
+}
+
+.page3-7.animate {
+    animation: bounceinR 800ms ease 2800ms both;
+    -webkit-animation: bounceinR 800ms ease 2800ms both;
+    -moz-animation: bounceinR 800ms ease 2800ms both;
+    -o-animation: bounceinR 800ms ease 2800ms both;
+}
+
+.page3-8.animate {
+    animation: bounceinB 800ms ease 3400ms both;
+    -webkit-animation: bounceinB 800ms ease 3400ms both;
+    -moz-animation: bounceinB 800ms ease 3400ms both;
+    -o-animation: bounceinB 800ms ease 3400ms both;
+}
+
+.page3-9.animate {
+    animation: bounceinB 800ms ease 4000ms both;
+    -webkit-animation: bounceinB 800ms ease 4000ms both;
+    -moz-animation: bounceinB 800ms ease 4000ms both;
+    -o-animation: bounceinB 800ms ease 4000ms both;
+}
+
+/*第四页动画*/
+.page4-1.animate {
+    animation: bouncein 800ms ease both;
+    -webkit-animation: bouncein 800ms ease both;
+    -moz-animation: bouncein 800ms ease both;
+    -o-animation: bouncein 800ms ease both;
+}
+
+.page4-2.animate {
+    animation: fadeinT 800ms ease 800ms both;
+    -webkit-animation: fadeinT 800ms ease 800ms both;
+    -moz-animation: fadeinT 800ms ease 800ms both;
+    -o-animation: fadeinT 800ms ease 800ms both;
+}
+
+.page4-3.animate {
+    animation: bouncein 800ms ease 800ms both;
+    -webkit-animation: bouncein 800ms ease 800ms both;
+    -moz-animation: bouncein 800ms ease 800ms both;
+    -o-animation: bouncein 800ms ease 800ms both;
+}
+
+.page4-4.animate {
+    animation: bouncein 800ms ease 1200ms both;
+    -webkit-animation: bouncein 800ms ease 1200ms both;
+    -moz-animation: bouncein 800ms ease 1200ms both;
+    -o-animation: bouncein 800ms ease 1200ms both;
+}
+
+.page4-5.animate {
+    animation: bounceinT 800ms ease 1600ms both;
+    -webkit-animation: bounceinT 800ms ease 1600ms both;
+    -moz-animation: bounceinT 800ms ease 1600ms both;
+    -o-animation: bounceinT 800ms ease 1600ms both;
+}
+
+.page4-6.animate {
+    animation: fadein 800ms ease 2200ms both;
+    -webkit-animation: fadein 800ms ease 2200ms both;
+    -moz-animation: fadein 800ms ease 2200ms both;
+    -o-animation: fadein 800ms ease 2200ms both;
+}
+
+.page4-7.animate {
+    animation: fadein 800ms ease 2200ms both;
+    -webkit-animation: fadein 800ms ease 2200ms both;
+    -moz-animation: fadein 800ms ease 2200ms both;
+    -o-animation: fadein 800ms ease 2200ms both;
+}
+
+/*第五页动画*/
+.page5-1.animate {
+    animation: bouncein 800ms ease both;
+    -webkit-animation: bouncein 800ms ease both;
+    -moz-animation: bouncein 800ms ease both;
+    -o-animation: bouncein 800ms ease both;
+}
+
+.page5-2.animate {
+    animation: fadeinT 800ms ease 800ms both;
+    -webkit-animation: fadeinT 800ms ease 800ms both;
+    -moz-animation: fadeinT 800ms ease 800ms both;
+    -o-animation: fadeinT 800ms ease 800ms both;
+}
+
+.page5-3.animate {
+    animation: bouncein 800ms ease 800ms both;
+    -webkit-animation: bouncein 800ms ease 800ms both;
+    -moz-animation: bouncein 800ms ease 800ms both;
+    -o-animation: bouncein 800ms ease 800ms both;
+}
+
+.page5-4.animate {
+    animation: bounceinT 800ms ease 1600ms both;
+    -webkit-animation: bounceinT 800ms ease 1600ms both;
+    -moz-animation: bounceinT 800ms ease 1600ms both;
+    -o-animation: bounceinT 800ms ease 1600ms both;
+}
+
+.page5-5.animate p:nth-child(1) {
+    animation: fadein 800ms ease 2200ms both;
+    -webkit-animation: fadein 800ms ease 2200ms both;
+    -moz-animation: fadein 800ms ease 2200ms both;
+    -o-animation: fadein 800ms ease 2200ms both;
+}
+
+.page5-5.animate p:nth-child(2) {
+    animation: fadein 800ms ease 2600ms both;
+    -webkit-animation: fadein 800ms ease 2600ms both;
+    -moz-animation: fadein 800ms ease 2600ms both;
+    -o-animation: fadein 800ms ease 2600ms both;
+}
+
+.page5-5.animate p:nth-child(3) {
+    animation: fadein 800ms ease 3000ms both;
+    -webkit-animation: fadein 800ms ease 3000ms both;
+    -moz-animation: fadein 800ms ease 3000ms both;
+    -o-animation: fadein 800ms ease 3000ms both;
+}
+
+.page5-5.animate p:nth-child(4) {
+    animation: fadein 800ms ease 3400ms both;
+    -webkit-animation: fadein 800ms ease 3400ms both;
+    -moz-animation: fadein 800ms ease 3400ms both;
+    -o-animation: fadein 800ms ease 3400ms both;
+}
+
+.page5-7.animate {
+    animation: bounceinL 800ms ease 3800ms both;
+    -webkit-animation: bounceinL 800ms ease 3800ms both;
+    -moz-animation: bounceinL 800ms ease 3800ms both;
+    -o-animation: bounceinL 800ms ease 3800ms both;
+}
+
+.page5-8.animate {
+    animation: bounceinR 800ms ease 4200ms both;
+    -webkit-animation: bounceinR 800ms ease 4200ms both;
+    -moz-animation: bounceinR 800ms ease 4200ms both;
+    -o-animation: bounceinR 800ms ease 4200ms both;
+}
+
+.page5-9.animate {
+    animation: bounceinL 800ms ease 4600ms both;
+    -webkit-animation: bounceinL 800ms ease 4600ms both;
+    -moz-animation: bounceinL 800ms ease 4600ms both;
+    -o-animation: bounceinL 800ms ease 4600ms both;
+}
+
+.page5-10.animate {
+    animation: bounceinR 800ms ease 5000ms both;
+    -webkit-animation: bounceinR 800ms ease 5000ms both;
+    -moz-animation: bounceinR 800ms ease 5000ms both;
+    -o-animation: bounceinR 800ms ease 5000ms both;
+}
+
+/*第六页动画*/
+.page6-1.animate {
+    animation: bouncein 800ms ease both;
+    -webkit-animation: bouncein 800ms ease both;
+    -moz-animation: bouncein 800ms ease both;
+    -o-animation: bouncein 800ms ease both;
+}
+
+.page6-2.animate {
+    animation: fadeinR 800ms ease both;
+    -webkit-animation: fadeinR 800ms ease both;
+    -moz-animation: fadeinR 800ms ease both;
+    -o-animation: fadeinR 800ms ease both;
+}
+
+.page6-5.animate {
+    animation: fadein 800ms ease 400ms both;
+    -webkit-animation: fadein 800ms ease 400ms both;
+    -moz-animation: fadein 800ms ease 400ms both;
+    -o-animation: fadein 800ms ease 400ms both;
+}
+
+.page6-6.animate {
+    animation: bounceinT 800ms ease 600ms both;
+    -webkit-animation: bounceinT 800ms ease 600ms both;
+    -moz-animation: bounceinT 800ms ease 600ms both;
+    -o-animation: bounceinT 800ms ease 600ms both;
+}
+
+.page6-7.animate {
+    animation: bounceinT 800ms ease 1200ms both;
+    -webkit-animation: bounceinT 800ms ease 1200ms both;
+    -moz-animation: bounceinT 800ms ease 1200ms both;
+    -o-animation: bounceinT 800ms ease 1200ms both;
+}
+
+.page6-8.animate {
+    animation: bounceinT 800ms ease 1600ms both;
+    -webkit-animation: bounceinT 800ms ease 1600ms both;
+    -moz-animation: bounceinT 800ms ease 1600ms both;
+    -o-animation: bounceinT 800ms ease 1600ms both;
+}
+
+.page6-9.animate {
+    animation: fadein 800ms ease 2000ms both;
+    -webkit-animation: fadein 800ms ease 2000ms both;
+    -moz-animation: fadein 800ms ease 2000ms both;
+    -o-animation: fadein 800ms ease 2000 both;
+}
+
+.page6-10.animate p:nth-child(1) {
+    animation: fadein 800ms ease 2600ms both;
+    -webkit-animation: fadein 800ms ease 2600ms both;
+    -moz-animation: fadein 800ms ease 2600ms both;
+    -o-animation: fadein 800ms ease 2600ms both;
+}
+
+.page6-10.animate p:nth-child(2) {
+    animation: fadein 800ms ease 3200ms both;
+    -webkit-animation: fadein 800ms ease 3200ms both;
+    -moz-animation: fadein 800ms ease 3200ms both;
+    -o-animation: fadein 800ms ease 3200ms both;
+}
+
+.page6-10.animate p:nth-child(3) {
+    animation: fadein 800ms ease 3800ms both;
+    -webkit-animation: fadein 800ms ease 3800ms both;
+    -moz-animation: fadein 800ms ease 3800ms both;
+    -o-animation: fadein 800ms ease 3800ms both;
+}
+
+.page6-10.animate p:nth-child(4) {
+    animation: fadein 800ms ease 4400ms both;
+    -webkit-animation: fadein 800ms ease 4400ms both;
+    -moz-animation: fadein 800ms ease 4400ms both;
+    -o-animation: fadein 800ms ease 4400ms both;
+}

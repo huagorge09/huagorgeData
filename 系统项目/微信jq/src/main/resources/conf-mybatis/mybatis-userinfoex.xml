@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.UserInfoexDao">
+
+	<select id="queryByOpenId" parameterType="string" resultType="com.cmwa.ec.weixin.dto.UserInfoexDto">
+		select openid as openId,  crm_custno as crmCustNo, ec_custno as ecCustNo,cmfuserid as cmfUserId, bindstat as bindStat, defaultbankno as defaultBankNo, 
+		TO_CHAR(bindtime,'YYYY-MM-DD HH24:MI:SS') AS bindTime, 
+		TO_CHAR(INSERTTIME,'YYYY-MM-DD HH24:MI:SS') AS insertTime,
+		TO_CHAR(UPDATETIME,'YYYY-MM-DD HH24:MI:SS') AS updateTime 
+		FROM cmf_weixin_userinfoex 
+		WHERE OPENID = #{openId} 
+		 <if test="stat!=null and stat!='' ">  
+         AND BINDSTAT = #{stat}   
+         </if> 
+	</select>
+	
+	
+	<select id="queryByCmfUserId" parameterType="string" resultType="com.cmwa.ec.weixin.dto.UserInfoexDto">
+		select openid as openId,  crm_custno as crmCustNo, ec_custno as ecCustNo,cmfuserid as cmfUserId, bindstat as bindStat, defaultbankno as defaultBankNo, 
+		TO_CHAR(bindtime,'YYYY-MM-DD HH24:MI:SS') AS bindTime, 
+		TO_CHAR(INSERTTIME,'YYYY-MM-DD HH24:MI:SS') AS insertTime,
+		TO_CHAR(UPDATETIME,'YYYY-MM-DD HH24:MI:SS') AS updateTime 
+		FROM cmf_weixin_userinfoex 
+		WHERE CMFUSERID = #{cmfUserId} 
+		 <if test="stat!=null and stat!='' ">  
+         AND BINDSTAT = #{stat}   
+         </if> 
+	</select>
+	
+	
+	<select id="queryByUserId" parameterType="string" resultType="com.cmwa.ec.weixin.dto.UserInfoexDto">
+		SELECT A.OPENID as openId,  A.CRM_CUSTNO as crmCustNo, A.EC_CUSTNO as ecCustNo,A.CMFUSERID as cmfUserId, A.BINDSTAT as bindStat, A.DEFAULTBANKNO as defaultBankNo, 
+		TO_CHAR(A.BINDTIME,'YYYY-MM-DD HH24:MI:SS') AS bindTime, 
+		TO_CHAR(A.INSERTTIME,'YYYY-MM-DD HH24:MI:SS') AS insertTime,
+		TO_CHAR(A.UPDATETIME,'YYYY-MM-DD HH24:MI:SS') AS updateTime 
+		FROM CMF_WEIXIN_USERINFOEX A
+		WHERE  A.OPENID = (SELECT T.OPENID FROM CMF_WEIXIN_USERINFO T WHERE T.USERID = #{userId})
+	</select>
+	
+	<insert id="insert" parameterType="com.cmwa.ec.weixin.dto.UserInfoexDto">
+		insert into CMF_WEIXIN_USERINFOEX
+		(
+		OPENID,
+		CRM_CUSTNO,
+		EC_CUSTNO,
+		CMFUSERID,
+		BINDSTAT,
+		BINDTIME,
+		INSERTTIME,
+		UPDATETIME
+
+		)
+		values(
+		#{dto.openid,jdbcType=VARCHAR},
+		#{dto.crmCustno,jdbcType=VARCHAR},
+		#{dto.ecCustno,jdbcType=CHAR},
+		#{dto.cmfuserid,jdbcType=VARCHAR},
+		#{dto.bindstat,jdbcType=VARCHAR},
+		SYSDATE,
+		SYSDATE,
+		SYSDATE
+
+		)
+	</insert>
+
+	<update id="updatecmfUserid" parameterType="string">
+		UPDATE
+		CMF_WEIXIN_USERINFOEX
+		SET BINDSTAT=#{stat},UPDATETIME=SYSDATE
+	    <if test="cmfuserid!=null and cmfuserid!='' ">  
+         ,CMFUSERID = #{cmfuserid,jdbcType=VARCHAR}
+         </if> 		
+		WHERE OPENID = #{openid}
+
+	</update>
+	
+	<update id="updatecmfCustNoAndEcCustNo" parameterType="com.cmwa.ec.weixin.dto.UserInfoexDto">
+		UPDATE
+		CMF_WEIXIN_USERINFOEX
+		SET  CRM_CUSTNO=#{dto.crmCustno,jdbcType=VARCHAR},EC_CUSTNO=#{dto.ecCustno,jdbcType=CHAR},UPDATETIME=SYSDATE	
+		WHERE OPENID = #{dto.openid,jdbcType=VARCHAR}
+	</update>
+	
+	
+	<select id="queryOpenIdByCmfUserId" parameterType="string" resultType="string">
+	
+		SELECT OPENID AS openId
+		FROM CMF_WEIXIN_USERINFO U
+		WHERE
+			U.STATUS='1'
+			AND U.OPENID IN 
+			(	SELECT E.OPENID 
+				FROM CMF_WEIXIN_USERINFOEX E 
+				WHERE 
+				E.CMFUSERID=#{cmfUserId} 
+				AND E.BINDSTAT='R'
+			)
+	</select>
+	
+	<select id="queryRiskLevel"
+		resultType="com.cmwa.ec.query.facade.dto.user.UserInfoExtendDto">
+		SELECT 
+		EX.RISK_EVAL_STATUS riskEvalStatus,
+		EX.REGISTER_STATUS registrStatus,
+		EX.RISK_CODE riskCode,
+		EX.PURCHASE_STATUS purchaseStatus,
+		EX.LAST_RISK_EVAL_DATE lastRiskEvalDate,
+		EX.CREATE_DATE createDate,
+		EX.CREATE_BY createdBy,
+		EX.UPDATE_DATE updateDate,
+		EX.UPDATE_BY updateBy,
+		EX.CMFUSERID cmfUserId,
+		EX.CUSTNO custNo,
+		EX.BUY_ONLINE buyOnLine,
+		EX.BUY_OFFLINE buyOffLine,
+		EX.REAL_NAME_STATUS realNameStatus
+		FROM CMWA_WX_USER_INFO_EXTEND EX
+		WHERE 1 = 1
+		<if test="dto.openId != null and dto.openId != '' ">
+			AND EX.OPENID=#{dto.openId}
+		</if>
+	</select>
+	
+</mapper>

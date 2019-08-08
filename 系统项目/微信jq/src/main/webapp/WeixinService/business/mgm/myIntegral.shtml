@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>我的积分</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+		<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+		<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/mgm/myIntegral.css">
+
+	</head>
+	<body>
+		<header>
+			<div class="top">
+				<a href="/WeixinService/business/user/queryAccount.shtml" onclick="goback()">返回</a>
+				<p class="title">我的积分</p>
+			</div>
+			<div class="scoreNum" id="scoreNum"></div>
+			<div class="useButton">
+				<a id="useButton">使用</a>
+			</div>
+			<div class="bottom">
+				<a id="toUserRecordBtn" class="useRecord ">使用记录<span
+					class="rightPoint1"></span></a>
+				<a href="javascript:void(0)" onclick="" class="myRecommend" id="myInventPhoneBtn">我的推荐码<span class="rightPoint2"></span></a>
+			</div>
+		</header>
+		<p class="greyBar"></p>
+		<section class="content">
+			<div class="box_getScore">
+				<i class="blueBlock"></i><span class="title1">赚取积分方式</span>
+				<a class="activity_rules" id="actRules" onclick="showActrRule()">活动规则</a><i class="greyPoint"></i>
+			</div>
+			<div class="backImg1">
+
+			</div>
+			<div class="backImg2">
+
+			</div>
+			</div>
+			<p class="greyBar"></p>
+			<div class="buyType_box">
+				<div class="box_getScore">
+					<i class="blueBlock"></i><span class="title1">邀请好友购买方式</span>
+				</div>
+				<div class="buyType_content">
+					<div class="buyType1">
+						<p class="type1">方式</p>
+						<p class="circle_orange">1</p>
+						<p class="water_drop"></p>
+
+						<div class="backRecomend1">
+							<span class="personIcon"></span>
+							<span>推荐我的顾问给朋友</span>
+							<a id="myRecommendBtn">我的顾问</a>
+						</div>
+					</div>
+					<div class="buyType2">
+						<p class="type1">方式</p>
+						<p class="circle_orange">2</p>
+						<p class="water_drop"></p>
+
+						<div class="backRecomend2">
+							<span class="shareIconI"></span>
+							<p class="invent_text">点击<span class="orange_relay"></span>推荐好产品、平台给朋友</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<p class="greyBar"></p>
+			<!--  热门推荐 -->
+			<div class="popular_recomend">
+				<div class="box_getScore" id="hotInvent">
+					<i class="blueBlock"></i><span class="title1">热门推荐</span>
+				</div>
+
+			</div>
+			<p class="greyBar"></p>
+		</section>
+		<footer>
+			<div class="footer_div">
+				<p class="black_company">招商财富</p>
+				<p class="aim">稳健理财 安全放心</p>
+				<a href="javascript:platform();" class="toShare">去分享</a>
+			</div>
+		</footer>
+		
+		<!--  活动规则弹框 -->
+		<div class="actRulesBox" id="actRulesBox" style="display: none;" >
+			<p class="actRuleTitle">活动规则</p><span class="closeIcon" id="closeAct"></span>
+			<div class="actRuleContent">
+				<h2>根据您推荐的客户不同投资金额（扣除活期产品投资额），新老客户均同等获得对应积分如下</h2>
+				<p>1：投资金额在30万元至100万元（包含）的，对应的奖励积分为100；</p>
+				<p>2：投资金额在100万元到500万元（包含）的，对应的奖励积分为200；</p>
+				<p>3：投资金额在500万元到1000万元（包含）的，对应的奖励积分为500；</p>
+				<p>4：投资金额在1000万元以上的，对应的奖励积分为1000；</p>
+				<h4>注意:</h4>
+				<p>a、您推荐的客户购买活期产品的金额不计入投资金额，比如您推荐的客户购买7天管家（或长利产品）30万，财富宝50万，则您推荐的客户购买金额为50万。</p>
+				<p>b、该方案为一次性激励，仅用于激励新客户首次购买产品。</p>
+				<p>c、“每100积分”可兑换“100元等价商品”，兑换商品可选择京东卡或电话卡。</p>
+				<p>d、只有买过产品的客户推荐新客户购买产品才能加积分</p>
+				<p class="t1">该活动最终解释权归招商财富资产管理有限公司所有。 </p>
+			</div>
+			<p class="knowActBtn" id="knowActBtn">知道了</p>
+		</div>
+		
+		<!--  用户手机号提示弹框 -->
+		<div class="usePhonePop" id="usePhonePop" style="display: none;">
+			<div class="content"> <span class="closeIcon" id="closeTel"></span>
+				<!-- <p class="phoneTip">您的推荐号码为:</p> -->
+				<p id="userPhone" ></p>
+			</div>
+			
+		</div>
+		
+		<!--  实名鉴权弹框 -->
+		<div class="realNamePop" id="realNamePop" style="display: none;" >
+			<div class="content">
+				<p class="phoneTip">请您完成实名鉴权</p>
+				<p ></p>
+			</div>
+			<div class="realNameBtn">
+				 <span class="firstLookBtn">先看看</span><span class="toRealBtn">去实名</span>
+			</div>
+	    
+		</div>
+		
+		
+		<div id="mask" class="mask" style="display: none">
+			<div class="share"></div>
+			<p>点击右上角分享<br>分享给朋友</p>
+		</div>
+		<input id="isRealName" type="hidden" />
+		<!--  蒙层 -->
+		<div class="backLayer" style="display: none;"></div>
+		<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+		<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jweixin-1.0.0.js"></script>
+		<!-- 常用JS文件 -->
+		<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+
+		<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/mgmMyIntegral.js"></script>
+		<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/mgmMyIntegral.min.js"></script> -->
+		<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/share.js"></script>
+		<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/otherHeader.min.js"></script>
+		<script type="text/javascript">
+		var jsversion = new Date().getTime();
+		//document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/mgmMyIntegral.js?version='+jsversion+'"><\/script>');
+		document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/mgmMyIntegral.min.js?version='+jsversion+'"><\/script>');
+		</script>
+	</body>
+</html>

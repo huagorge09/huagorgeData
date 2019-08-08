@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.datamanager.CustDataDocUploadDao">
+
+	<select id="queryCustDataDocAllList" resultType="documentDto" parameterType="sparam">
+		SELECT S.L_STORAGEID AS storageid,
+		       S.C_CATALOG AS catalog,
+		       S.C_SUBKEYID AS subkeyid,
+		       S.C_FILENAME AS filename,
+		       S.L_FILESIZE AS filesize,
+		       S.C_CREATOR AS createId,
+		       S.D_CREATEDATE AS createTime,
+		       S.C_SECURITYLEVEL AS securitylevel
+		  FROM TBLOBSTORAGE S, TACCOINFO A
+		 WHERE S.C_SUBKEYID = A.C_CUSTNO
+		   AND A.C_FUNDACCO = #{sp.fundacct}
+	</select>
+	
+	<select id="queryCustDataDocById" resultType="documentDto" parameterType="sparam">
+		SELECT S.L_STORAGEID AS storageid,
+		       S.C_CATALOG AS catalog,
+		       S.C_SUBKEYID AS subkeyid,
+		       S.B_ACCESSORY AS filecontent,
+		       S.C_FILENAME AS filename,
+		       S.L_FILESIZE AS filesize,
+		       S.C_CREATOR AS createId,
+		       S.D_CREATEDATE AS createTime,
+		       S.C_SECURITYLEVEL AS securitylevel
+		  FROM TBLOBSTORAGE S, TACCOINFO A
+		 WHERE S.C_SUBKEYID = A.C_CUSTNO AND S.L_STORAGEID = #{sp.storageid}
+	</select>
+	
+	<insert id="insertCustDataDoc">
+		INSERT INTO TBLOBSTORAGE
+		  (
+		  	L_STORAGEID,
+		   	C_CATALOG,
+		   	C_SUBKEYID,
+		   	C_FILENAME,
+		   	B_ACCESSORY,
+		   	L_FILESIZE,
+		   	C_CREATOR,
+		   	D_CREATEDATE,
+		   	C_SECURITYLEVEL
+		   )
+		VALUES
+		  (
+		  	SEQ_TBLOBSTORAGE.NEXTVAL,
+		  	#{catalog},
+		  	#{subkeyid},
+		  	#{filename},
+		  	#{filecontent},
+		  	#{filesize},
+		  	#{createId},
+		  	SYSDATE,
+		  	#{securitylevel}
+		)
+	</insert>
+	
+	<delete id="custDataDocDel">
+		DELETE TBLOBSTORAGE WHERE L_STORAGEID = #{storageid}
+	</delete>
+</mapper>

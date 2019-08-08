@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cmwa.ecc.business.dao.common.CommonDao" >
+	<!-- 获取参数列表 -->
+	<select id="getParameterListPage" parameterType="sparam" resultType="parameterVo">
+			SELECT PMST, PMKY, PMCO, PMNM, PMV1, PMV2,PMV3, PMV4, PMV5,INSERTTIMESTAMP,UPDATETIMESTAMP 
+			FROM PARAMETER 
+			WHERE '******' != PMCO 
+			<if test="sp.pmst !=null and sp.pmst !='' ">
+				AND  PMST = #{sp.pmst}
+			</if>
+			<if test="sp.pmky !=null and sp.pmky !='' ">
+				AND  PMKY = #{sp.pmky}
+			</if>
+			<if test="sp.Qpmco !=null and sp.Qpmco!=''">
+				AND  PMCO =#{sp.Qpmco}
+			</if>
+			<if test="sp.pmco !=null and sp.pmco!=''">
+				AND  PMCO LIKE CONCAT(CONCAT('%', #{sp.pmco}),'%')
+			</if>
+			<if test="sp.pmnm !=null and sp.pmnm!=''">
+				AND  PMNM LIKE CONCAT(CONCAT('%', #{sp.pmnm}),'%')		
+			</if>
+			<if test="sp.allPmky !=null and sp.allPmky !='' ">
+				AND  PMKY = #{sp.allPmky}
+			</if>
+			<if test="sp.pmv1 !=null and sp.pmv1 !='' ">
+				AND  PMV1  = #{sp.pmv1}	
+			</if>
+			<if test="sp.pmv2 !=null and sp.pmv2 !='' ">
+				AND  PMV2  = #{sp.pmv2}	
+			</if>
+			ORDER BY PMST, PMKY, PMCO
+	</select>
+	
+	<!-- 获取参数列表 不分页 -->
+	<select id="getParameterAllList" parameterType="sparam" resultType="parameterVo">
+			SELECT PMST, PMKY, PMCO, PMNM, PMV1, PMV2,PMV3, PMV4, PMV5,INSERTTIMESTAMP,UPDATETIMESTAMP 
+			FROM PARAMETER 
+			WHERE '******' != PMCO 
+			<if test="sp.pmst !=null and sp.pmst !='' ">
+				AND  PMST = #{sp.pmst}
+			</if>
+			<if test="sp.pmky !=null and sp.pmky !='' ">
+				AND  PMKY = #{sp.pmky}
+			</if>
+			<if test="sp.Qpmco !=null and sp.Qpmco!=''">
+				AND  PMCO =#{sp.Qpmco}
+			</if>
+			<if test="sp.pmco !=null and sp.pmco!=''">
+				AND  PMCO LIKE CONCAT(CONCAT('%', #{sp.pmco}),'%')
+			</if>
+			<if test="sp.pmnm !=null and sp.pmnm!=''">
+				AND  PMNM LIKE CONCAT(CONCAT('%', #{sp.pmnm}),'%')		
+			</if>
+			<if test="sp.allPmky !=null and sp.allPmky !='' ">
+				AND  PMKY = #{sp.allPmky}
+			</if>
+			<if test="sp.pmv1 !=null and sp.pmv1 !='' ">
+				AND  PMV1  = #{sp.pmv1}	
+			</if>
+			<if test="sp.pmv2 !=null and sp.pmv2 !='' ">
+				AND  PMV2  = #{sp.pmv2}	
+			</if>
+			ORDER BY PMST, PMKY, PMCO
+	</select>
+	
+	<select id="getParameterListTotal" parameterType="sparam" resultType="int">
+			SELECT COUNT(*)
+			FROM PARAMETER 
+			WHERE '******' != PMCO 
+			<if test="sp.pmst !=null and sp.pmst !='' ">
+				AND  PMST = #{sp.pmst}
+			</if>
+			<if test="sp.pmky !=null and sp.pmky !='' ">
+				AND  PMKY LIKE CONCAT(CONCAT('%', #{sp.pmky}),'%')
+			</if>
+			<if test="sp.pmco !=null and sp.pmco!=''">
+				AND  PMCO LIKE CONCAT(CONCAT('%', #{sp.pmco}),'%')
+			</if>
+			<if test="sp.allPmky !=null and sp.allPmky !='' ">
+				AND  PMKY  LIKE CONCAT(CONCAT('%', #{sp.allPmky}),'%')		
+			</if>
+			<if test="sp.pmnm !=null and sp.pmnm!=''">
+				AND  PMNM LIKE CONCAT(CONCAT('%', #{sp.pmnm}),'%')		
+			</if>
+			ORDER BY PMST, PMKY, PMCO
+	</select>
+	
+	<select id="getWorkDates" statementType="CALLABLE" parameterType="workDateVo">
+			{ call OQP_GET_WORKDATES(
+			#{errCode,mode=OUT,jdbcType=VARCHAR},
+			#{errMsg,mode=OUT,jdbcType=VARCHAR},
+			#{lastDate,mode=OUT,jdbcType=VARCHAR},
+			#{workDate,mode=OUT,jdbcType=VARCHAR},
+			#{nextDate,mode=OUT,jdbcType=VARCHAR},
+			#{newNextDate,mode=OUT,jdbcType=VARCHAR}) }
+	</select>
+	
+	<insert id="addParameter" parameterType="parameterVo">
+		INSERT INTO PARAMETER (PMST, PMKY, PMCO, PMNM)
+				VALUES(
+				#{pmst,jdbcType=VARCHAR},
+				#{pmky,jdbcType=VARCHAR},
+				#{pmco,jdbcType=VARCHAR},
+				#{pmnm,jdbcType=VARCHAR})
+	</insert>
+	
+	<update id="updateParameter" parameterType="parameterVo">
+			UPDATE PARAMETER
+				   SET PMCO = #{pmco, jdbcType = VARCHAR}, PMNM = #{pmnm, jdbcType = VARCHAR}
+				 WHERE PMST = #{pmst, jdbcType = VARCHAR}
+				   AND PMKY = #{pmky, jdbcType = VARCHAR}
+				   AND PMCO = #{oldPmco, jdbcType = VARCHAR}
+	</update>
+	
+	<delete id="delParameter" parameterType="parameterVo">
+		DELETE FROM PARAMETER
+			 WHERE PMST = #{pmst, jdbcType = VARCHAR}
+			   AND PMKY = #{pmky, jdbcType = VARCHAR}
+			   AND PMCO = #{pmco, jdbcType = VARCHAR}
+	</delete>
+	
+	
+	<select id="queryAllParameterListPage" parameterType="sparam" resultType="parameterVo">
+			SELECT PMST, PMKY, PMCO, PMNM, PMV1, PMV2,PMV3, PMV4, PMV5,INSERTTIMESTAMP,UPDATETIMESTAMP 
+			FROM PARAMETER 
+			WHERE PMCO = '******'
+			<if test="sp.pmst !=null and sp.pmst !='' ">
+				AND  PMST = #{sp.pmst}
+			</if>
+			<if test="sp.allPmky !=null and sp.allPmky !='' ">
+				AND  PMKY  LIKE CONCAT(CONCAT('%', #{sp.allPmky}),'%')		
+			</if>
+			<if test="sp.allPmnm !=null and sp.allPmnm!=''">
+				AND  PMNM LIKE CONCAT(CONCAT('%', #{sp.allPmnm}),'%')		
+			</if>
+			<if test="sp.qpmco != null or sp.qpmnm != null">
+				AND PMST in(
+					SELECT PMST FROM PARAMETER 
+						WHERE PMCO != '******'
+						<if test="sp.qpmco !=null and sp.qpmco!=''">
+							AND  PMCO LIKE CONCAT(CONCAT('%', #{sp.qpmco}),'%')		
+						</if>
+						<if test="sp.qpmnm !=null and sp.qpmnm!=''">
+							AND  PMNM LIKE CONCAT(CONCAT('%', #{sp.qpmnm}),'%')		
+						</if>
+						<if test="sp.allPmky !=null and sp.allPmky !='' ">
+							AND  PMKY  LIKE CONCAT(CONCAT('%', #{sp.allPmky}),'%')		
+						</if>
+				)
+			</if>
+			<if test="sp.qpmco != null or sp.qpmnm != null">
+				AND PMKY in(
+					SELECT PMKY FROM PARAMETER 
+						WHERE PMCO != '******'
+						<if test="sp.qpmco !=null and sp.qpmco!=''">
+							AND  PMCO LIKE CONCAT(CONCAT('%', #{sp.qpmco}),'%')		
+						</if>
+						<if test="sp.qpmnm !=null and sp.qpmnm!=''">
+							AND  PMNM LIKE CONCAT(CONCAT('%', #{sp.qpmnm}),'%')		
+						</if>
+						<if test="sp.allPmky !=null and sp.allPmky !='' ">
+							AND  PMKY  LIKE CONCAT(CONCAT('%', #{sp.allPmky}),'%')		
+						</if>
+				)
+			</if>
+			ORDER BY PMST, PMKY, PMCO
+	</select>
+	
+	<select id="queryAllParameterTotal" parameterType="sparam" resultType="int">
+			SELECT COUNT(*) FROM PARAMETER 
+			WHERE PMCO = '******'
+			<if test="sp.pmst !=null and sp.pmst !='' ">
+				AND  PMST = #{sp.pmst}
+			</if>
+			<if test="sp.allPmky !=null and sp.allPmky !='' ">
+				AND  PMKY  LIKE CONCAT(CONCAT('%', #{sp.allPmky}),'%')		
+			</if>
+			<if test="sp.allPmnm !=null and sp.allPmnm!=''">
+				AND  PMNM LIKE CONCAT(CONCAT('%', #{sp.allPmnm}),'%')		
+			</if>
+			<if test="sp.qpmco != null or sp.qpmnm != null">
+				AND PMST in(
+					SELECT PMST FROM PARAMETER 
+						WHERE PMCO != '******'
+						<if test="sp.qpmco !=null and sp.qpmco!=''">
+							AND  PMCO LIKE CONCAT(CONCAT('%', #{sp.qpmco}),'%')		
+						</if>
+						<if test="sp.qpmnm !=null and sp.qpmnm!=''">
+							AND  PMNM LIKE CONCAT(CONCAT('%', #{sp.qpmnm}),'%')		
+						</if>
+						<if test="sp.allPmky !=null and sp.allPmky !='' ">
+							AND  PMKY  LIKE CONCAT(CONCAT('%', #{sp.allPmky}),'%')		
+						</if>
+				)
+			</if>
+			<if test="sp.qpmco != null or sp.qpmnm != null">
+				AND PMKY in(
+					SELECT PMKY FROM PARAMETER 
+						WHERE PMCO != '******'
+						<if test="sp.qpmco !=null and sp.qpmco!=''">
+							AND  PMCO LIKE CONCAT(CONCAT('%', #{sp.qpmco}),'%')		
+						</if>
+						<if test="sp.qpmnm !=null and sp.qpmnm!=''">
+							AND  PMNM LIKE CONCAT(CONCAT('%', #{sp.qpmnm}),'%')		
+						</if>
+						<if test="sp.allPmky !=null and sp.allPmky !='' ">
+							AND  PMKY  LIKE CONCAT(CONCAT('%', #{sp.allPmky}),'%')		
+						</if>
+				)
+			</if>
+	</select>
+	
+	<!-- 获取银行列表信息 -->
+	<select id="getBankDetail" parameterType="sparam" resultType="dsBankVo">
+		   SELECT T.BNK_NO AS bnkNo,BNK_NM AS bnkNm FROM DS_BANK_BNKBASE T  
+		   <if test="null!=sp.backNo and ''!=sp.backNo">
+		   where T.BNK_NO=#{sp.backNo}
+		   </if>
+		   ORDER BY T.DIS_ORDER,T.BNK_NO
+	</select>
+	
+	<!-- 业务管理 获取参数列表 -->
+	<select id="queryBusinParameterListPage" parameterType="sparam" resultType="parameterVo">
+			SELECT PMST, PMKY, PMCO, PMNM, PMV1, PMV2,PMV3, PMV4, PMV5,INSERTTIMESTAMP,UPDATETIMESTAMP 
+			FROM PARAMETER 
+			WHERE PMCO = '******' 
+			  AND PMKY IN (SELECT PMCO FROM PARAMETER WHERE PMCO <![CDATA[<>]]> '******' AND PMST = 'SYSTEM' AND PMKY = 'BUSIMANA') 
+			<if test="sp.pmst !=null and sp.pmst !='' ">
+				AND  PMST = #{sp.pmst}
+			</if>
+			<if test="sp.pmky !=null and sp.pmky !='' ">
+				AND  PMKY LIKE CONCAT(CONCAT('%', #{sp.pmky}),'%')
+			</if>
+			<if test="sp.qpmco !=null and sp.qpmco!=''">
+				AND  PMCO =#{sp.qpmco}
+			</if>
+			<if test="sp.pmco !=null and sp.pmco!=''">
+				AND  PMCO LIKE CONCAT(CONCAT('%', #{sp.pmco}),'%')
+			</if>
+			<if test="sp.pmnm !=null and sp.pmnm!=''">
+				AND  PMNM LIKE CONCAT(CONCAT('%', #{sp.pmnm}),'%')
+			</if>
+			<if test="sp.qpmnm !=null and sp.qpmnm !='' ">
+				AND  PMNM LIKE CONCAT(CONCAT('%', #{sp.qpmnm}),'%')
+			</if>
+			
+			<if test="sp.allPmnm !=null and sp.allPmnm!=''">
+				AND  PMNM LIKE CONCAT(CONCAT('%', #{sp.allPmnm}),'%')
+			</if>
+			<if test="sp.allPmky !=null and sp.allPmky !='' ">
+				AND  PMKY = #{sp.allPmky}
+			</if>
+			<if test="sp.pmv1 !=null and sp.pmv1 !='' ">
+				AND  PMV1  = #{sp.pmv1}	
+			</if>
+			<if test="sp.pmv2 !=null and sp.pmv2 !='' ">
+				AND  PMV2  = #{sp.pmv2}	
+			</if>
+			ORDER BY PMST, PMKY, PMCO
+	</select>
+	
+</mapper>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.activity.SinoActPhoneCardDao">
+
+	<select id="countByIdCard" resultType="int">
+		SELECT COUNT(1) FROM CMWA_WX_SINOACT_PHONECARD CWSP WHERE CWSP.IDCARD = #{idCard,jdbcType=VARCHAR}
+	</select>
+	<insert id="insertRecord">
+		INSERT INTO CMWA_WX_SINOACT_PHONECARD(
+		       REQ_STREAM_ID,
+		       ORDER_NO,
+		       ASSIGN_MOBILE,
+		       IDCARD,
+		       ASSIGN_STATUS,
+		       ASSIGN_DATE,
+		       CREATED_USER,
+		       CREATED_DATE,
+		       UPDATED_USER,
+		       UPDATED_DATE,
+		       ASSIGN_CHANNEL,
+		       OPENID
+		) VALUES (
+			   #{reqStreamId,jdbcType=VARCHAR},
+			   #{orderNo,jdbcType=VARCHAR},
+			   #{assignMobile,jdbcType=VARCHAR},
+			   #{idCard,jdbcType=VARCHAR},
+			   #{assignStatus,jdbcType=VARCHAR},
+			   TO_DATE(#{assignDate,jdbcType=VARCHAR},'YYYY-MM-DD HH24:MI:SS'),
+			   #{createdUser,jdbcType=VARCHAR},
+			   SYSDATE,
+			   #{updatedUser,jdbcType=VARCHAR},
+			   SYSDATE,
+			   #{assignChannel,jdbcType=VARCHAR},
+			   #{openid,jdbcType=VARCHAR}
+		)
+	</insert>
+	<select id="queryInProcess" resultType="com.cmwa.ec.weixin.dto.SinoActPhoneCardDto">
+		SELECT REQ_STREAM_ID reqStreamId,
+			   ORDER_NO orderNo,
+			   ASSIGN_MOBILE assignMobile,
+			   IDCARD idCard,
+			   ASSIGN_STATUS assignStatus,
+			   ASSIGN_DATE assignDate,
+			   CREATED_USER createdUser,
+			   CREATED_DATE createdDate,
+			   UPDATED_USER updatedUser,
+			   UPDATED_DATE updatedDate,
+			   ASSIGN_CHANNEL assignChannel,
+			   QUERY_STATUS queryStatus,
+			   QUERY_MSG queryMsg,
+			   OPENID openid
+		  FROM CMWA_WX_SINOACT_PHONECARD CWSP
+		 WHERE TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS') >=
+		       TO_CHAR(CWSP.ASSIGN_DATE + 30 / 24 / 60, 'YYYYMMDDHH24MISS')
+		   AND CWSP.ASSIGN_STATUS = 'I'
+	</select>
+	<update id="updateQueryResult">
+		 UPDATE CMWA_WX_SINOACT_PHONECARD
+		   SET ASSIGN_STATUS = #{assignStatus},
+		       QUERY_STATUS  = #{queryStatus},
+		       QUERY_MSG     = #{queryMsg},
+		       UPDATED_USER  = #{updatedUser},
+		       UPDATED_DATE  = SYSDATE
+		 WHERE REQ_STREAM_ID = #{reqStreamId}
+	</update>
+
+</mapper>

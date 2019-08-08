@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx-3.2.xsd  
+        http://www.springframework.org/schema/util 
+        http://www.springframework.org/schema/util/spring-util-3.2.xsd   
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+        ">
+
+	<!-- 自动扫描且只扫描@Controller -->
+	<context:component-scan base-package="com.cmwa.ecc.business.controller" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+	</context:component-scan>
+	
+	<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />
+	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		<property name="favorPathExtension" value="false" />
+		<property name="favorParameter" value="false" />
+		<property name="ignoreAcceptHeader" value="false" />
+		<property name="mediaTypes">
+			<value>
+				atom=application/atom+xml;charset=utf-8
+				html=text/html;charset=utf-8
+				json=application/json;charset=utf-8
+				*=*/*;charset=utf-8
+			</value>
+		</property>
+	</bean>
+
+	<!-- Bean解析器,级别高于默认解析器,根据返回值，寻找bean对象进行二次处理 -->
+	<bean id="beanNameViewResolver"
+		class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="1" />
+	</bean>
+
+	<bean id="springUtil" class="com.cmwa.ec.base.util.SpringUtil"></bean>
+
+	<!--对模型视图名称的解析，即在模型视图名称添加前后缀 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property value="/service/" name="prefix" />
+		<property value=".jsp" name="suffix" />
+		<property value="org.springframework.web.servlet.view.JstlView" name="viewClass" />
+	</bean>
+	
+	<mvc:annotation-driven>
+	<mvc:message-converters>
+		<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+			<property name="supportedMediaTypes">
+				<list>
+					<value>text/plain;charset=UTF-8</value>
+					<value>text/html;charset=UTF-8</value>
+				</list>
+			</property>
+		</bean>
+		<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+			<property name="supportedMediaTypes">
+				<list>
+					<value>application/json; charset=UTF-8</value>
+					<value>application/x-www-form-urlencoded; charset=UTF-8</value>
+				</list>
+			</property>
+		</bean>
+	</mvc:message-converters>
+	</mvc:annotation-driven>
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- set the max upload size100MB -->
+		<property name="maxUploadSize">
+			<value>104857600</value>
+		</property>
+		<property name="maxInMemorySize">
+			<value>4096</value>
+		</property>
+		<property name="DefaultEncoding">
+			<value>UTF-8</value>
+		</property>
+	</bean>
+	
+	
+	<!-- 访问拦截器 
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.cmwa.ecc.business.interceptor.AuthInterceptor">
+				<property name="welcomeUrl" value="service/index/indexView.xhtml" />
+				<property name="excludeUrls">
+					<list>
+						<value>service/index/nonPrivilegedView.xhtml</value>
+						<value>service/index/loginView.xhtml</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>-->
+	
+	<!-- 统一异常处理 -->
+	<bean id="exceptionResolver" class="com.cmwa.ecc.business.exception.MyExceptionResolver"></bean>
+	
+   	 <!-- 定时任务加载,基于SchedulerFactoryBean的加载顺序,该配置务必在Spring配置文件结尾 -->
+	<bean class="com.cmwa.ecc.business.quartz.LoadRepositoryJob" init-method="init"/>
+	
+</beans>

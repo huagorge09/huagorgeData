@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link href="/AppWeb/AppWeb_Css/ui-select.css" rel="stylesheet" type="text/css" />
+	<link href="/AppWeb/AppWeb_Css/business/mgm/useIntegral.css" rel="stylesheet" type="text/css" />
+	<link href="/AppWeb/AppWeb_Css/business/mgm/dropload.css" rel="stylesheet" type="text/css" />
+
+	<title></title>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<style type="text/css">
+
+	</style>
+</head>
+
+<body>
+
+	<!-- 我的积分记录及使用积分 -->
+	<div class="myIntegralInfo" style="">
+
+		<!--  选项框 -->
+		<div class="top">
+			<ul class="tab">
+				<li class="orangeFont useIntegral_tab">使用积分</li>
+				<li class=" integralRecord_tab">积分记录</li>
+			</ul>
+			<span class="goIntegralIndex" onclick="goIntegralIndex()">返回积分首页>></span>
+		</div>
+		<!--  使用积分详情 -->
+		<div class="useIntegralDetail">
+			<!--  积物品列表 -->
+			<ul id="cardBox" class="cardBox">
+
+			</ul>
+
+		</div>
+
+		<!-- 积分记录详情 -->
+		<div class="integralRecordDetail" style="display: none;">
+
+			<!--  已获取的积分信息 -->
+			<div class="hasGetIntegral">
+				<div class="hasGetWin">
+					<p><i class="blueIcon"></i><span class=" hasget">已获取</span></p>
+				</div>
+
+				<!-- echart 控件部分 -->
+				<div id="echartsBox" class="echartsBox">
+				</div>
+				<p class="noBuy" id="noPurchase"></p>
+				<p class="hasBuy" id="alreadyPurchase"></p>
+				<p id="integralTotal" class="integralTotal"></p>
+			</div>
+			<!--  积分记录 -->
+			<div class="integralRecordBox">
+				<div class="recordBox">
+					<p><i class="blueIcon"></i><span class=" hasget">记录</span></p>
+				</div>
+				<!-- 记录列表 -->
+
+				<div class="outer">
+
+					<div class="inner">
+						<div class="lists" id="lists">
+
+						</div>
+						<div class="noRecord" id="noRecord" style="display:none">
+							<img src="/AppWeb/AppWeb_Images/images/mgm/noRecord.png" alt="">
+							<p>暂无数据</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+
+	<!-- 以下积分兑换物品确认弹出框 -->
+	<div class="integralExBox" id="integralExBox" style="display: none;">
+		<div class="exHead">
+			<span class="tit">提示</span>
+			<span class="closeEx" onclick="cancelBtn()"></span>
+		</div>
+		<div class="exContent">
+			<p id="warnIcon" class="warnIcon"></p>
+			<!--  提示文案 -->
+			<div class="toExBox" id="toExBox">
+				<p class="w1">你将兑换<i class="awardDetail"></i><i class="awardName"></i></p>
+				<p class="w2">消耗<i id="integralChange"></i>积分</p>
+			</div>
+		</div>
+		<div class="exBtnBox" id="toExSure">
+			<span class="exCancel" onclick="cancelBtn()">取消</span>
+			<!--  确认是否兑换才提交请求 -->
+			<span class="exSure" onclick="successExBtn()">确定</span>
+
+		</div>
+
+	</div>
+
+	<!-- 以上积分兑换成功弹出框 -->
+
+	<div class="integralExBox" id="successExBox" style="display: none;">
+		<div class="exHead">
+			<span class="tit">提示</span>
+			<span class="closeEx" onclick="cancelSuccessBtn()"></span>
+		</div>
+		<div class="exContent" id="lastByContent">
+
+		</div>
+		<div class="exBtnBox" id="completeEx">
+			<span class="exSure" onclick="closeEx()">确定</span>
+		</div>
+
+	</div>
+
+
+	<!-- 顾问二维码弹框 -->
+	<div class="wxCode">
+
+	</div>
+
+
+
+	<input type="hidden" id="userIntegralNow" />
+	<input type="hidden" id="awardid" />
+	<input type="hidden" id="integralChangeX" class="integralChange" />
+	<input type="hidden" id="hasbuyO" />
+	<input type="hidden" id="nobuyO" />
+
+
+	<script src="/AppWeb/AppWeb_JSLibrary/echarts.min.js"></script>
+	<script src="/AppWeb/AppWeb_JSLibrary/pageReq.min/mgmUseIntegral.min.js" type="text/javascript"></script>
+	<script src="/AppWeb/AppWeb_JSLibrary/pageReq.min/mgmIntegralEcharts.min.js"></script>
+	<script src="/AppWeb/AppWeb_JSLibrary/pageReq.min/mgmDropload.min.js" type="text/javascript"></script>
+	<script src="/AppWeb/AppWeb_JSLibrary/pageReq.min/mgmDropIntegralDetail.min.js" type="text/javascript"></script>
+
+</body>
+
+
+
+
+</html>

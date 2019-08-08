@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="x5-orientation" content="portrait" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no">
+    <title>把握宏观·赢在未来</title>
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/invitation/style.css" />
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/invitation/animation.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/invitation/dialog.css">
+</head>
+
+<body>
+    <div id="pageContain">
+        <div class="section page1">
+            <div class="logo pag animate"></div>
+            <div class="pag page1-1 animate"></div>
+            <div class="pag page1-2 animate">
+                <img src="/WeixinWeb/WeixinWeb_Images/H5modules/invitation/page1-2.png" alt="">
+            </div>
+            <div class="arrow"></div>
+        </div>
+        <div class="section page2">
+            <div class="logo pag"></div>
+            <div class="pag page2-1"></div>
+            <div class="pag page2-2"></div>
+            <div class="pag page2-3"></div>
+            <div class="arrow"></div>
+        </div>
+        <div class="section page3">
+            <div class="logo pag"></div>
+            <div class="pag page3-1"></div>
+            <div class="pag page3-2"></div>
+            <div class="arrow"></div>
+        </div>
+        <div class="section page4">
+            <div class="logo pag"></div>
+            <div class="pag page4-1"></div>
+            <div class="pag page4-2"></div>
+            <div class="arrow"></div>
+        </div>
+        <div class="section page5">
+            <div class="logo pag"></div>
+            <div class="pag page5-1"></div>
+            <div class="pag page5-2"></div>
+            <ul class="pag form">
+                <li>
+                    <span>姓名:</span>
+                    <input type="text" placeholder="请输入您的姓名" name="name">
+                </li>
+                <li>
+                    <span>电话:</span>
+                    <input type="text" placeholder="请输入您的电话" name="tel">
+                </li>
+                <li onclick="saveAppointInfo()">提交</li>
+            </ul>
+            <div class="pag  page5-4 textBox">
+                <p>深圳市福田区东海朗廷酒店</p>
+                <p>若对活动有任何疑问，欢迎致电0755-23988886咨询</p>
+            </div>
+            <a href="https://ditu.amap.com/search?id=B02F38JE1C&city=440304&geoobj=114.059762%7C22.532829%7C114.064944%7C22.535703&query_type=IDQ&query=%E6%B7%B1%E5%9C%B3%E4%B8%9C%E6%B5%B7%E6%9C%97%E5%BB%B7%E9%85%92%E5%BA%97&zoom=18">
+                <div class="pag page5-3"></div>
+            </a>
+
+        </div>
+
+    </div>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/invitation/flexible.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/invitation/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/invitation/dialog.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/invitation/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/invitation/share.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/invitation/jquery.fullPage.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+    <script>
+        var pageSource=getUrlParams("tel").tel;
+        var pageId="invitation";
+        $(function () {
+            if (pageSource) {
+                operatingRecord(pageSource, "openInvitation", pageId, "", "", "", "")
+            }
+            $(".page1 .pag").show()
+            $('body,html').height(document.body.clientHeight);
+            $('#pageContain').fullpage({
+                afterLoad: function (anchorLink, index) {
+                    $.fn.fullpage.setAllowScrolling(true, 'up');
+                    var ele = ".page" + index + " .pag"
+                    $(".logo").addClass("animate")
+                    $(ele).addClass("animate").show();
+                },
+                onLeave: function (index, direction) {
+                    var ele = ".page" + index + " .pag"
+                    $(".logo").removeClass("animate")
+                    $(ele).removeClass("animate").hide()
+                }
+            });
+
+        })
+
+        //点击信息提交
+        function saveAppointInfo() {
+            var userName = $.trim($("input[name=name]").val());
+            var mobilePhone = $.trim($("input[name=tel]").val());
+            var flag = true;
+            if (userName == "" || !ischinese(userName)) {
+                $(document).dialog({
+                    type: 'notice',
+                    infoText: '请输入2-10字中文姓名',
+                    autoClose: 1500,
+                    position: 'center'
+                });
+                flag = false;
+            } else if (!isMobile(mobilePhone)) {
+                $(document).dialog({
+                    type: 'notice',
+                    infoText: '请输入正确的手机号码',
+                    autoClose: 1500,
+                    position: 'center'
+                });
+                flag = false;
+            } else if (flag) {
+                userDateSumbit(userName, mobilePhone);
+            }
+        }
+
+        function ischinese(name) {
+            return /^[\u2E80-\u9FFF]{2,10}$/.test(name)
+        }
+
+        //验证手机号
+        function isMobile(phone) {
+            return /^0?(13[0-9]|15[0123456789]|18[0123456789]|14[0123456789]|17[0123456789])[0-9]{8}$/.test(phone);
+        }
+        /*
+         * 用户信息提交
+         */
+        function userDateSumbit(userName, mobilePhone) {
+            var toast = $(document).dialog({
+                type: 'toast',
+                infoIcon: '/WeixinWeb/WeixinWeb_Images/H5modules/invitation/loading.gif',
+                infoText: '提交中'
+            });
+            $.ajax({
+                async: false,
+                url: apiHost + "/api/insertAppointInfo",
+                type: "post",
+                dataType: 'json',
+                data: {
+                    "userName": userName,
+                    "mobilePhone": mobilePhone,
+                    "productType": "invitation",
+                    "userId": "",
+                    "cmfUserId": ""
+                },
+                success: function (data) {
+                    toast.close()
+                    if (data.success) {
+                        if (userId) {
+                            operatingRecord(pagesource, "submitUserInvitation", pageId, "", "", "", "")
+                        }
+                        $(document).dialog({
+                            type: 'notice',
+                            infoText: '信息提交成功',
+                            autoClose: 2000,
+                            position: 'center'
+                        });
+                        $("input").val("")
+                    } else {
+                        errorRemark(data.msg);
+                    }
+                }
+            });
+        }
+
+        function getUrlSearchParams(_name) {
+            var name, value = '';
+            var str = window.location.href;
+            var num = str.indexOf("?");
+            str = str.substr(num + 1);
+            var arr = str.split("&");
+            for (var i = 0; i < arr.length; i++) {
+                num = arr[i].indexOf("=");
+                if (num > 0) {
+                    name = arr[i].substring(0, num);
+                    if (name.replace(/^\s+|\s+$/g, "") == _name) {
+                        value = arr[i].substr(num + 1);
+                        break;
+                    }
+                }
+            }
+            return decodeURI(value);
+        }
+
+        function addCookie(name, value, path, expiresHours) {
+            var cookieString = name + "=" + escape(value);
+            //判断是否设置过期时间
+            if (expiresHours > 0) {
+                var date = new Date();
+                date.setTime(date.getTime() + expiresHours * 3600 * 1000);
+                cookieString = cookieString + "; expires=" + date.toGMTString();
+            }
+            cookieString += "; path=" + (path ? path : "/");
+            document.cookie = cookieString;
+        }
+
+        function getCookie(name) {
+            var strCookie = document.cookie;
+            var arrCookie = strCookie.split("; ");
+            for (var i = 0; i < arrCookie.length; i++) {
+                var arr = arrCookie[i].split("=");
+                if (arr[0] == name) return arr[1];
+            }
+            return "";
+        }
+    </script>
+</body>
+
+</html>

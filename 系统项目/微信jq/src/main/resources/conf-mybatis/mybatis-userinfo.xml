@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.UserInfoDao">
+
+	<select id="queryByOpenIdAndStatus" parameterType="string" resultType="com.cmwa.ec.weixin.dto.UserInfoDto">
+		select  OPENID as openId, 
+				USERID as userId,   
+				NICKNAME as nickName, 
+				SEX as sex,
+				LANGUAGE as language,
+				CITY as city, 
+				PROVINCE as province, 
+				COUNTRY as country, 
+				HEADIMGURL as headImgurl, 
+				TO_CHAR(SUBCRIBE_TIME,'YYYY-MM-DD HH24:MI:SS') AS subscribeTime, 
+				TO_CHAR(INSERTTIME,'YYYY-MM-DD HH24:MI:SS') AS insertTime,
+				TO_CHAR(UPDATETIME,'YYYY-MM-DD HH24:MI:SS') AS updateTime 
+				FROM cmf_weixin_userinfo
+		 WHERE OPENID = #{openid,jdbcType=VARCHAR}
+		  <if test="status!=null and status!='' ">  
+         AND   STATUS = #{status}   
+         </if> 
+	</select>
+	
+	<select id="queryByOpenId" parameterType="string" resultType="com.cmwa.ec.weixin.dto.UserInfoDto">
+		select  OPENID as openId, 
+				USERID as userId,   
+				NICKNAME as nickName, 
+				SEX as sex,
+				LANGUAGE as language,
+				CITY as city, 
+				PROVINCE as province, 
+				COUNTRY as country, 
+				HEADIMGURL as headImgurl, 
+				STATUS,
+				TO_CHAR(SUBCRIBE_TIME,'YYYY-MM-DD HH24:MI:SS') AS subscribeTime, 
+				TO_CHAR(INSERTTIME,'YYYY-MM-DD HH24:MI:SS') AS insertTime,
+				TO_CHAR(UPDATETIME,'YYYY-MM-DD HH24:MI:SS') AS updateTime 
+				FROM cmf_weixin_userinfo
+		 WHERE OPENID = #{openid}
+	 
+	</select>
+	<select id="queryByUserId" parameterType="string" resultType="com.cmwa.ec.weixin.dto.UserInfoDto">
+		select  OPENID as openId, 
+				USERID as userId,   
+				NICKNAME as nickName, 
+				SEX as sex,
+				LANGUAGE as language,
+				CITY as city, 
+				PROVINCE as province, 
+				COUNTRY as country, 
+				HEADIMGURL as headImgurl, 
+				TO_CHAR(SUBCRIBE_TIME,'YYYY-MM-DD HH24:MI:SS') AS subscribeTime, 
+				TO_CHAR(INSERTTIME,'YYYY-MM-DD HH24:MI:SS') AS insertTime,
+				TO_CHAR(UPDATETIME,'YYYY-MM-DD HH24:MI:SS') AS updateTime 
+				FROM cmf_weixin_userinfo
+		 WHERE USERID = #{userId}
+	</select>
+	
+	<insert id="createUserInfo" parameterType="com.cmwa.ec.weixin.dto.UserInfoDto">
+		insert into cmf_weixin_userinfo 
+		(
+			OPENID , 
+			USERID ,   
+			NICKNAME , 
+			SEX ,
+			LANGUAGE ,
+			CITY , 
+			PROVINCE , 
+			COUNTRY , 
+			HEADIMGURL , 
+			SUBCRIBE_TIME,
+			INSERTTIME,
+			UPDATETIME,
+			STATUS
+		)
+		values(
+			#{dto.openid,jdbcType=VARCHAR},
+			#{dto.userid,jdbcType=VARCHAR},
+			#{dto.nickname,jdbcType=VARCHAR},
+			#{dto.sex,jdbcType=VARCHAR},
+			#{dto.language,jdbcType=VARCHAR},
+			#{dto.city,jdbcType=VARCHAR},
+			#{dto.province,jdbcType=VARCHAR},
+			#{dto.country,jdbcType=VARCHAR},
+			#{dto.headimgurl,jdbcType=VARCHAR},
+			to_date(#{dto.subscribe_time,jdbcType=VARCHAR},'YYYY-MM-DD HH24:MI:SS'),
+			SYSDATE,
+			SYSDATE,
+			#{dto.status,jdbcType=VARCHAR}
+		)
+		
+	</insert>
+	
+	<update id="updateUserInfo" parameterType="com.cmwa.ec.weixin.dto.UserInfoDto">
+		UPDATE CMF_WEIXIN_USERINFO
+		   SET NICKNAME = #{dto.nickname},SEX = #{dto.sex},LANGUAGE = #{dto.language} ,
+		       CITY = #{dto.city},PROVINCE = #{dto.province},COUNTRY = #{dto.country},
+		       HEADIMGURL = #{dto.headimgurl},SUBCRIBE_TIME =SYSDATE
+		        ,UPDATETIME = SYSDATE,STATUS=#{dto.status}
+		 WHERE OPENID = #{dto.openid}
+		  
+	</update>
+	
+	<update id="updateUserInfoStatus" parameterType="string">
+		UPDATE CMF_WEIXIN_USERINFO
+		   SET UPDATETIME = SYSDATE,STATUS=#{status}
+		 WHERE OPENID = #{openid}
+		  
+	</update>
+	
+	<update id="updateUserCode" parameterType="string">
+		UPDATE CMF_WEIXIN_USERINFO
+		   SET CODE = #{md5Code}
+		 WHERE OPENID = #{openId}
+	</update>
+	
+	<select id="queryValidUserCode" parameterType="string" resultType="int">
+		select  count(0)
+	     FROM cmf_weixin_userinfo
+		 WHERE OPENID != #{openId} and CODE = #{md5Code} 
+	</select>
+	
+	<select id="queryUserCode" parameterType="string" resultType="string">
+		select  code from cmf_weixin_userinfo
+		WHERE OPENID = #{openId} 
+	</select>
+	
+	<!-- 根据用户状态获取用户信息  如果状态为空默认查询已关注（1）的微信用户 -->
+	<!-- 未关注：0 -->
+	<!-- 已关注：1 -->
+	<!-- 取消关注：2 -->
+	<!-- 黑名单：3 -->
+	
+	<select id="queryUserInfoByStatus" parameterType="string" resultType="com.cmwa.ec.weixin.dto.UserInfoDto">
+		SELECT OPENID as openId,
+		       USERID as userId,
+		       NICKNAME as nickName,
+		       SEX as sex,
+		       LANGUAGE as language,
+		       COUNTRY as country,
+		       PROVINCE as province,
+		       CITY as city,
+		       HEADIMGURL as headImgurl,
+		       TO_CHAR(SUBCRIBE_TIME, 'YYYY-MM-DD HH24:MI:SS') AS subscribeTime,
+		       TO_CHAR(INSERTTIME, 'YYYY-MM-DD HH24:MI:SS') AS insertTime,
+		       TO_CHAR(UPDATETIME, 'YYYY-MM-DD HH24:MI:SS') AS updateTime
+		  FROM CMF_WEIXIN_USERINFO T
+		 WHERE 1 = 1
+		 <if test="status != null and status != '' ">
+		  AND  T.STATUS = #{status}
+         </if>
+         <if test="status == null or status == '' ">
+		  AND  T.STATUS = '1'
+         </if>
+	</select>
+
+	<update id="updateUserInfoToUnsubscribe" parameterType="string">
+			update cmwa_wx_user_info set SUBSCRIBE = '0' where OPENID = #{openId}
+	</update>
+	
+	<update id="updateUserInfoTosubscribe" parameterType="string">
+			update cmwa_wx_user_info set SUBSCRIBE = '1' where OPENID = #{openId}
+	</update>
+	<insert id="createUserInfoNew" parameterType="com.cmwa.ec.weixin.dto.UserInfoDto">
+		insert into cmwa_wx_user_info 
+		(
+			OPENID ,
+			USER_ID ,
+			NICKNAME,
+			SEX ,
+			LANGUAGE ,
+			CITY ,
+			PROVINCE ,
+			COUNTRY ,
+			HEADIMGURL ,
+			CREATED_DATE ,
+			UPDATED_DATE 
+		)
+		values(
+			#{dto.openid,jdbcType=VARCHAR},
+			#{dto.userid,jdbcType=VARCHAR},
+			#{dto.nickname,jdbcType=VARCHAR},
+			#{dto.sex,jdbcType=VARCHAR},
+			#{dto.language,jdbcType=VARCHAR},
+			#{dto.city,jdbcType=VARCHAR},
+			#{dto.province,jdbcType=VARCHAR},
+			#{dto.country,jdbcType=VARCHAR},
+			#{dto.headimgurl,jdbcType=VARCHAR},
+			SYSDATE,
+			SYSDATE
+		)
+		
+	</insert>
+	
+	<select id="queryIsSubscribeByOpenIdOnCmwaWxUserInfo" resultType="com.cmwa.ec.weixin.dto.CmwaWxUserInfoDto">
+		SELECT T.OPENID         as openId,
+		       T.SUBSCRIBE      as subscribe,
+		       T.SUBSCRIBE_TIME as subscribeTime
+	  	FROM CMWA_WX_USER_INFO T
+	 	WHERE T.OPENID = #{openId,jdbcType=VARCHAR}
+
+	</select>
+	
+	
+	<select id="queryCustserIdByOpenid" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT T.CUSTSER_ID
+		FROM CMWA_WX_USER_INFO T
+		WHERE T.OPENID = #{openid,jdbcType=VARCHAR}	
+	</select>
+	
+	
+	<update id="updateCustserIdByOpenid" parameterType="java.lang.String" >
+		UPDATE CMWA_WX_USER_INFO SET CUSTSER_ID = #{custserId,jdbcType=VARCHAR},UPDATED_DATE = SYSDATE,UPDATED_BY = 'wxLoginBind' WHERE OPENID = #{openid,jdbcType=VARCHAR}
+	</update>
+</mapper>

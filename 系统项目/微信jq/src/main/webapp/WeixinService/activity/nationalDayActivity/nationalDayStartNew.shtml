@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>迎接祖国67岁生日</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/guoqing/guoqingStyleNew.css">
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/DataStatisJsNew.js"></script>
+</head>
+<body>
+<section class="page">   
+<!--#include virtual="/WeixinService/headerOrFooter/otherHeaderNew.shtml"-->
+	<input type="hidden" id="flagShow" value="0">
+	<input type="hidden" id="eventId" value="H0004"> 
+    <section>
+        <div class="bg-state">
+            <div class="qx-page01-head">
+                <img src="/WeixinWeb/WeixinWeb_Images/activity/guoqing/pic_nationalday.jpg" class="start-pic">
+            </div>
+            <div class="qx-page01-con">
+                <img src="/WeixinWeb/WeixinWeb_Images/activity/guoqing/text_start.png" />
+            </div>
+        </div>
+        <div class="box-btn btn-start">
+            <a class="riskevaluation-btn" href="/WeixinService/activity/nationalDayActivity/nationalDayQANew.shtml"><img src="/WeixinWeb/WeixinWeb_Images/activity/guoqing/btn_start.png" alt=""></a>
+        </div>
+    </section>   
+    <!--#include virtual="/WeixinService/activity/nationalDayActivity/nationalDayShareNew.shtml"--> 
+</section>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/nationalDayStartNew.min.js"></script>
+</body>
+</html>

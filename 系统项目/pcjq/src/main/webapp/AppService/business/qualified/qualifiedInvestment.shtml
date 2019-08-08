@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>招商财富</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+       <link rel="stylesheet" type="text/css" href="/AppWeb/AppWeb_Css/business/qualified/qualified.css"/>
+    <link rel="stylesheet" type="text/css" href="/AppWeb/AppWeb_Css/dialog.css"/>
+</head>
+<body>
+<!-- header -->
+<!--#include virtual="/AppService/public/header.shtml"-->
+<div class="main">
+   <div class="title">
+   	   <h2>投资经历证明</h2>
+   </div>
+    <ul class="tab clear">
+     	<li class="assetsTab1 cur">理财产品</li>
+     	<li class="assetsTab2">股票债券等</li>
+     	<li class="assetsTab3">保险</li>
+    </ul>
+    <div class="fileUpBox tabFile">
+   	    <!--没有文件-->
+   	    <div id="investNone" class="noneFile">
+   	    	<div class="addFile">
+   	    		<span onclick="qualifiedInvest.investmentUpFile()"></span>
+   	    	</div>
+   	    	<p><span>上传收入证明</span><br>（可上传PDF/JPG/视频文件）</p>
+   	    </div>
+   	    <!--有文件-->
+   	    <div id="investHas" class="hasFile" style="display: none;">
+   	    	<p onclick="qualifiedInvest.investmentUpFile()">继续上传</p>
+   	    	<ul id="investList">
+         	</ul>
+   	    </div>
+   	    <form enctype="multipart/form-data" id="investCertificate">
+	        <input type="file" name="file" accept=".pdf,.jpg,.bmp,.png,.jpeg,.mp4,.rmvb,.avi,.flv,.3gp,.flv,.mov"  id="investFileUpload" style="display: none;"/>
+	        <input type="hidden" name="recordSource"  value="ec-qualified"/>
+	        <input type="hidden" name="fileType" value="investCertificate"/>
+	    </form>
+	    <div class="proUpload">
+	        <div class="progress" id="investPro" style="display: none;">
+		       <span class="orange" style="width:0%;"><span>0%</span></span>
+		    </div>
+		    <div class="selectFile">
+		        <div>上传的文件名：<span id="investNameRead"></span></div>
+		        <input type="button" id="upLoadAssetsBtn" value="上 传 " class="upLoadBtn"/>
+		    </div>
+        </div>
+        <div id="investMask" class="diableMask" style="display: none;">
+	        <p></p>
+	    </div>
+   	    <div class="btnBox" style="margin-top: 95px;">
+	       <a href="/AppService/business/qualified/qualified.shtml" id="next">下一步</a>
+	    </div>
+   </div>
+    <div class="tabContent">
+    	<div class="improveText" style="display: block;">
+    		<div class="fileBox">
+		       <div class="clear firstFile">
+		       	   <div class="listTxt">
+			   	   	   <h2>互联网理财/线下理财/资管/信托</h2>
+			   	   	   <ul>
+			   	   	   	  <li>1.须包含帐户名/姓名/投资时间/投资产品/投资金额<span>（若以上信息不在同一界面，可提供多张截图）：</span></li>
+			   	   	   	  <li>2.请确保姓名与申请客户信息一致；</li>
+			   	   	   	  <li>3.线下理财产品、资管、信托合同，须上传合同首尾页、投资者信息页、认购金额页、合同有效期页、合同签署页</li>
+			   	   	   	  <li>4.信息分布在多张截图需要提供截图视频，单张截图展示所有信息则不需视频</li>
+			   	   	   </ul>
+			   	   </div>
+		       </div>
+		       <div class="clear">
+		       	   <div class="listTxt">
+			   	   	   <h2>示例图</h2>
+			   	   	   <div class="example">
+			   	   	   	   <img src="/AppWeb/AppWeb_Images/images/qualified/img8.jpg"/>
+			   	   	   </div>
+			   	   </div>
+		       </div>
+		       <div class="clear firstFile">
+		       	   <div class="listTxt">
+			   	   	   <h2>参考<em><a href="/AppWeb/AppWeb_Images/images/qualified/incomeVideo.mp4" target="_blank"><span>视频案例></span></a></em></h2>
+			   	   	   <ul>
+			   	   	   	  <li>1.在支付-我的-账单中查询购买理财产品（余额宝）记录。</li>
+			   	   	   	  <li>2.在微信-我-钱包-理财通-我的-我的资产-交易明细中查询2年前的购买理财产品（零钱理财）交易记录</li>
+			   	   	   </ul>
+			   	   </div>
+		       </div>
+		   </div>
+    	</div>
+    	<div class="improveText" style="display: none;">
+    		<div class="fileBox">
+		       <div class="clear firstFile">
+		       	   <div class="listTxt">
+			   	   	   <h2>股票/债券/基金</h2>
+			   	   	   <ul>
+			   	   	   	  <li>1.须包含帐户名/姓名/投资时间/投资产品/投资金额<span>（若以上信息不在同一界面，可提供多张截图）：</span></li>
+			   	   	   	  <li>2.请确保姓名与申请客户信息一致；</li>
+			   	   	   	  <li>3.线下理财产品、资管、信托合同。（须上传合同首尾页、投资者信息页、认购金额页、合同有限期页、合同签署页）</li>
+			   	   	   	  <li>4.信息分布在多张截图需要提供截图视频，单张截图展示所有信息则不需视频</li>
+			   	   	   </ul>
+			   	   </div>
+			   	   
+		       </div>
+		       <div class="clear">
+		       	   <div class="listTxt">
+			   	   	   <h2>示例图<em><a href="/AppWeb/AppWeb_Images/images/qualified/incomeVideo.mp4" target="_blank"><span>视频案例></span></a></em></h2>
+			   	   	   <div class="example">
+			   	   	   	   <img src="/AppWeb/AppWeb_Images/images/qualified/img9.jpg"/>
+			   	   	   </div>
+			   	   </div>
+		       </div>
+		       	
+		   </div>
+    	</div>
+    	
+    	<div class="improveText" style="display: none;">
+    		<div class="fileBox">
+		       <div class="clear firstFile">
+		       	   <div class="listTxt">
+			   	   	   <h2>保险产品</h2>
+			   	   	   <ul>
+			   	   	   	  <li>1.须包含帐户名/姓名/投资时间/投资产品/投资金额<span>（若以上信息不在同一页面，可提供多张截图）；</span></li>
+			   	   	   	  <li>2.请确保姓名与申请客户信息一致；</li>
+			   	   	   	  <li>3.线下理财产品、资管、信托合同，须上传合同首尾页、投资者信息页、认购金额页、合同有效期页、合同签署页</li>
+			   	   	   	  <li>4.信息分布在多张截图需要提供截图视频，单张截图展示所有信息则不需视频</li>
+			   	   	   </ul>
+			   	   </div>
+			   	   
+		       </div>
+		       <div class="clear">
+		       	   <div class="listTxt">
+			   	   	   <h2>示例图</h2>
+			   	   	   <div class="example">
+			   	   	   	   <img src="/AppWeb/AppWeb_Images/images/qualified/img10.jpg"/>
+			   	   	   </div>
+			   	   </div>
+		       </div>
+		       	
+		   </div>
+    	</div>
+    </div>
+</div>
+
+
+<!-- footer -->
+<!--#include virtual="/AppService/public/footer.shtml"-->
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/dialog.min.js"></script>
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/jquery.form.min.js"></script>
+<!--<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/qualifiedCommon.js"></script>-->
+<!--<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/qualifiedInvestment.js"></script>-->
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/qualifiedCommon.min.js"></script>
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/qualifiedInvestment.min.js"></script>
+</body>
+</html>

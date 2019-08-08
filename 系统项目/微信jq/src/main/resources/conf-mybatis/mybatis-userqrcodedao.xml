@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.UserQrCodeDao">
+
+	<select id="queryQrCodeBySecId" parameterType="string"  resultType="com.cmwa.ec.weixin.dto.UserQrCodeDto">
+		select  CMFUSERID as cmfUserId,
+				SECID as secId, 
+				QRCODEURL as qrCodeUrl,   
+				TO_CHAR(INSERTTIME,'YYYY-MM-DD HH24:MI:SS') AS insertTime
+				FROM USER_CODE_INFO
+				WHERE SECID=#{secId}
+	</select>
+	
+	
+	<select id="queryCountBysecId" parameterType="string"  resultType="int">
+		select  COUNT(*)
+				FROM USER_CODE_INFO
+				WHERE SECID=#{secId}
+	</select>
+	
+	
+	<insert id="insert" parameterType="com.cmwa.ec.weixin.dto.UserQrCodeDto">
+		insert into USER_CODE_INFO 
+		(
+			CMFUSERID , 
+			SECID ,   
+			QRCODEURL , 
+			INSERTTIME
+		)
+		values(
+			#{qrCode.cmfUserId,jdbcType=VARCHAR},
+			#{qrCode.secId,jdbcType=VARCHAR},
+			#{qrCode.qrCodeUrl,jdbcType=VARCHAR},
+			SYSDATE
+		)
+		
+	</insert>
+	
+	
+</mapper>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="x5-orientation" content="portrait" />
+    <meta name="apple-mobile-web-app-capable" content="no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no">
+    <title>粤马会</title>
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/turntableActivity/style.css" />
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/turntableActivity/dialog.css" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="banner">
+            <div class="banner-log"></div>
+        </div>
+        <div class="welfare">
+            <div class="number-people"><span></span>&nbsp;已有<em class="ginseng"></em>人参加</div>
+            <!--转盘抽奖-->
+            <div class="luck-draw" id="box-anli">
+                <div class="star-top star-bj"></div>
+                <div class="star-bottom star-bj"></div>
+                <div class="rotate-bg" id="anli"></div>
+                <div class="lottery-star"></div>
+            </div>
+        </div>
+        <div class="about">
+            <div class="about-box">
+                <div class="box-title"></div>
+                <div class="box-list">
+                    <div class="list-data" id="ceshi">
+                        <ul class="data-hide">
+                            <li class="color-one"><span>恭喜135****5213</span><span>880元高端洗牙护理套餐</span></li>
+                            <li class="color-two"><span>恭喜159****3516</span><span>880元高端洗牙护理套餐</span></li>
+                            <li class="color-one"><span>恭喜178****2346</span><span>880元高端洗牙护理套餐</span></li>
+                            <li class="color-two"><span>恭喜131****6235</span><span>华为P30Pro</span></li>
+                            <li class="color-one"><span>恭喜136****2536</span><span>880元高端洗牙护理套餐</span></li>
+                            <li class="color-two"><span>恭喜158****3621</span><span>100元京东卡</span></li>
+                            <li class="color-one"><span>恭喜137****2439</span><span>880元高端洗牙护理套餐</span></li>
+                            <li class="color-two"><span>恭喜151****9851</span><span>500元中石化加油卡</span></li>
+                            <li class="color-one"><span>恭喜157****4268</span><span>100元京东卡</span></li>
+                            <li class="color-two"><span>恭喜139****2543</span><span>880元高端洗牙护理套餐</span></li>
+
+                            <li class="color-one"><span>恭喜133****6285</span><span>100元京东卡</span></li>
+                            <li class="color-two"><span>恭喜132****4528</span><span>100元京东卡</span></li>
+                            <li class="color-one"><span>恭喜159****2885</span><span>880元高端洗牙护理套餐</span></li>
+                            <li class="color-two"><span>恭喜150****2462</span><span>100元京东卡</span></li>
+                            <li class="color-one"><span>恭喜136****2453</span><span>500元中石化加油卡</span></li>
+                            <li class="color-two"><span>恭喜187****9654</span><span>880元高端洗牙护理套餐</span></li>
+                            <li class="color-one"><span>恭喜136****2589</span><span>100元京东卡</span></li>
+                            <li class="color-two"><span>恭喜139****3099</span><span>880元高端洗牙护理套餐</span></li>
+                            <li class="color-one"><span>恭喜180****2952</span><span>100元京东卡</span></li>
+                            <li class="color-two"><span>恭喜138****6581</span><span>880元高端洗牙护理套餐</span></li>
+
+                            <li class="color-one"><span>恭喜133****6286</span><span>100元京东卡</span></li>
+                            <li class="color-two"><span>恭喜132****4529</span><span>880元高端洗牙护理套餐</span></li>
+                            <li class="color-one"><span>恭喜159****2886</span><span>100元京东卡</span></li>
+                            <li class="color-two"><span>恭喜150****2463</span><span>880元高端洗牙护理套餐</span></li>
+                            <li class="color-one"><span>恭喜136****2454</span><span>100元京东卡</span></li>
+                            <li class="color-two"><span>恭喜187****9655</span><span>100元京东卡</span></li>
+                            <li class="color-one"><span>恭喜136****2590</span><span>880元高端洗牙护理套餐</span></li>
+                            <li class="color-two"><span>恭喜139****3100</span><span>100元中石化加油卡</span></li>
+                            <li class="color-one"><span>恭喜180****2953</span><span>880元高端洗牙护理套餐</span></li>
+                            <li class="color-two"><span>恭喜138****6582</span><span>100元京东卡</span></li>
+
+                            <li class="color-one"><span>恭喜133****6287</span><span>880元高端洗牙护理套餐</span></li>
+                            <li class="color-two"><span>恭喜132****4530</span><span>100元京东卡</span></li>
+                            <li class="color-one"><span>恭喜159****2887</span><span>500元中石化加油卡</span></li>
+                            <li class="color-two"><span>恭喜150****2464</span><span>华为P30Pro</span></li>
+                            <li class="color-one"><span>恭喜136****2455</span><span>500元中石化加油卡</span></li>
+                            <li class="color-two"><span>恭喜187****9656</span><span>880元高端洗牙护理套餐</span></li>
+                            <li class="color-one"><span>恭喜136****2591</span><span>100元京东卡</span></li>
+                            <li class="color-two"><span>恭喜139****3101</span><span>880元高端洗牙护理套餐</span></li>
+                            <li class="color-one"><span>恭喜180****2954</span><span>100元京东卡</span></li>
+                            <li class="color-two"><span>恭喜138****6583</span><span>880元高端洗牙护理套餐</span></li>
+
+                            <li class="color-one"><span>恭喜133****6288</span><span>100元京东卡</span></li>
+                            <li class="color-two"><span>恭喜132****4531</span><span>880元高端洗牙护理套餐</span></li>
+                            <li class="color-one"><span>恭喜159****2888</span><span>100元京东卡</span></li>
+                            <li class="color-two"><span>恭喜150****2465</span><span>500元中石化加油卡</span></li>
+                            <li class="color-one"><span>恭喜136****2456</span><span>880元高端洗牙护理套餐</span></li>
+                            <li class="color-two"><span>恭喜187****9657</span><span>100元京东卡</span></li>
+                            <li class="color-one"><span>恭喜136****2592</span><span>500元中石化加油卡</span></li>
+                            <li class="color-two"><span>恭喜139****3102</span><span>880元高端洗牙护理套餐</span></li>
+                            <li class="color-one"><span>恭喜180****2955</span><span>500元中石化加油卡</span></li>
+                            <li class="color-two"><span>恭喜138****6584</span><span>880元高端洗牙护理套餐</span></li>
+
+                            <li class="color-one"><span>恭喜133****6289</span><span>100元京东卡</span></li>
+                            <li class="color-two"><span>恭喜132****4532</span><span>880元高端洗牙护理套餐</span></li>
+                            <li class="color-one"><span>恭喜159****2889</span><span>100元中石化加油卡</span></li>
+                            <li class="color-two"><span>恭喜150****2466</span><span>880元高端洗牙护理套餐</span></li>
+                            <li class="color-one"><span>恭喜136****2457</span><span>100元京东卡</span></li>
+                            <li class="color-two"><span>恭喜187****9658</span><span>100元京东卡</span></li>
+                            <li class="color-one"><span>恭喜136****2593</span><span>880元高端洗牙护理套餐</span></li>
+                            <li class="color-two"><span>恭喜139****3103</span><span>880元高端洗牙护理套餐</span></li>
+                            <li class="color-one"><span>恭喜180****2956</span><span>100元京东卡</span></li>
+                            <li class="color-two"><span>恭喜138****6585</span><span>880元高端洗牙护理套餐</span></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---输入验证码--->
+    <div class="verification-code" style="display:none;">
+        <div class="code-box center">
+            <div class="close"></div>
+            <div class="list-phone">
+                <div class="list-bode">
+                    <div class="name">
+                        <input type="text" id="name" placeholder="姓名">
+                    </div>
+                    <div class="phone">
+                        <input type="text" id="phone" placeholder="电话" maxlength="11">
+                    </div>
+                    <div class="code-yz">
+                        <input type="text" id="vrfCode" placeholder="验证码" maxlength="6">
+                    </div>
+                    <div class="code">
+                        <div class="examination-box">获取验证码</div>
+                        <!-- <div class="number-examination" style="display:none;">88888</div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="button-btn"></div>
+        </div>
+    </div>
+    <!--高端洗牙护理套餐--->
+    <div class="set-meal" style="display:none;">
+        <div class="meal-backue center">
+            <div class="backue-title">
+                <div class="btn-title">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--100元中石化加油卡-->
+    <div class="oil-card" style="display:none;">
+        <div class="card-run center">
+            <div class="run-bont">
+                <div class="bont-btn"></div>
+            </div>
+        </div>
+    </div>
+    <!--感谢你的参与--->
+    <div class="participate-in" style="display:none;">
+        <div class="in-box center">
+            <img src="/WeixinWeb/WeixinWeb_Images/H5modules/turntableActivity/wxprodQrcode1_03.png" alt="" width="100%" id="codeImg">
+        </div>
+    </div>
+    <!--未关注公众号-->
+    <div class="public-address" style="display:none;">
+        <div class="addres-box center"><img src="/WeixinWeb/WeixinWeb_Images/H5modules/turntableActivity/wgz_cs.png" alt="" width="100%"></div>
+    </div>
+
+
+
+    <script tyepe="text/javascript"
+        src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/turntableActivity/flexible.min.js"></script>
+    <script tyepe="text/javascript"
+        src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/turntableActivity/jquery-3.2.1.min.js"></script>
+    <script tyepe="text/javascript"
+        src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/turntableActivity/jweixin-1.0.0.js"></script>
+    <script tyepe="text/javascript"
+        src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/turntableActivity/dialog.min.js"></script>
+    <script tyepe="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/turntableActivity/config.js"></script>
+    <script tyepe="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/turntableActivity/share.js"></script>
+    <script tyepe="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/turntableActivity/public.js"></script>
+    
+    <script tyepe="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/turntableActivity/scroll.js"></script>
+    <script tyepe="text/javascript"
+        src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/turntableActivity/jQueryRotate.2.2.js"></script>
+    <script tyepe="text/javascript"
+        src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/turntableActivity/jquery.easing.min.js"></script>
+        <script tyepe="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/turntableActivity/index.js"></script>
+
+    <script>
+        if (host.indexOf("wxtest1") < 0) {
+            var _hmt = _hmt || [];
+            (function () {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?9020a7ab025ced56deb634244d8fb392";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        }
+    </script>
+</body>
+
+</html>

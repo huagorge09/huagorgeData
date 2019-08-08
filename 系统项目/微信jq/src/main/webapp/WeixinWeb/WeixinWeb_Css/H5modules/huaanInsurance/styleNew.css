@@ -1,0 +1,659 @@
+/*初始化样式*/
+
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-appearance: none;
+	outline: none;
+	word-break: break-all;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+*:not(input, textarea) {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+}
+
+html,
+body {
+	color: #333;
+	margin: 0 auto;
+	font-family: Arial, "Microsoft YaHei";
+	font-size: 50px;
+	background: #17172f;
+	height: 100%;
+	position: relative;
+}
+input {
+	-webkit-user-select: initial;
+	font-family: Arial, "Microsoft YaHei";
+	border: none;
+}
+
+i {
+	font-style: normal
+}
+
+a {
+	text-decoration: none;
+	color: #ffffdd;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a:active {
+	text-decoration: none;
+}
+
+em {
+	font-style: normal
+}
+
+ul,
+ol,
+li {
+	list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: normal;
+}
+
+img {
+	border: 0;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.clearFloat:after,
+.clearFloat:before {
+	content: "";
+	display: table;
+}
+
+.clearFloat:after {
+	clear: both;
+}
+.colorRed::-webkit-input-placeholder { /* WebKit browsers */
+ color: #f00;
+}
+.colorRed:-ms-input-placeholder { /* Internet Explorer 10+ */
+color: #f00;
+}
+.dswkb {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-box;
+	display: box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-box-align: center;
+	-moz-box-align: center;
+	-ms-box-align: center;
+	box-align: center;
+	position: relative;
+}
+
+.flex1 {
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	-ms-box-flex: 1;
+	box-flex: 1;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.center {
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.dialog-toast .dialog-content{
+	width: 100px !important;
+    height: 100px !important;
+}
+.dialog-toast .info-icon{
+	width: 40px !important;
+    max-width: 56px !important;
+}
+.banner{
+	width:100%;
+	height: 5.45rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/huaanInsurance/banner.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.content{
+	width: 7rem;
+	margin: 0 auto;
+	background: #2a3c73;
+	padding: .15rem;
+	border-radius: 12px;
+}
+.inputBox{
+    background: #2a3c73;
+    border-radius: 12px;
+    padding: 0 .3rem;
+    height: 100%;
+    padding-bottom: .3rem;
+}
+.inputBox p{
+	height: .85rem;
+	line-height: .85rem;
+	font-size: .28rem;
+	color: #fff;
+}
+.inputBox li{
+    border: 1px #d7d7d7 solid;
+    border-radius: 8px;
+    margin-bottom: .3rem;
+    padding-right: .2rem;
+    background: #fff;
+}
+.inputBox li span{
+   display: block;
+    width: 1.5rem;
+    text-align: left;
+    font-size: .3rem;
+    color: #000;
+    margin-right: .36rem;
+    padding-left: .18rem;
+}
+.inputBox li i{
+	display: block;
+	width: 2rem;
+	text-align: center;
+	font-size: .26rem;
+	color: #ffffff;
+	background: #dead74;
+	border-radius: 5px;
+	height: .5rem;
+	line-height: .5rem;
+}
+.inputBox li i.disabled{
+	    background: #c3c3c3;
+}
+.inputBox input{
+    display: block;
+    font-size: .28rem;
+    padding: .17rem 0;
+}
+li.prizeType{
+    height: .62rem;
+    line-height: .62rem;
+    font-size: .3rem;
+    border:0;
+    margin-bottom: 0;
+}
+li.prizeType em{
+    display: inline-block;
+    height: .68rem;
+    width: 1.75rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/huaanInsurance/check.png) no-repeat;
+    background-size: .4rem .4rem;
+    padding-left: .52rem;
+    background-position-y: .1rem;
+}
+li.prizeType em.cur{
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/huaanInsurance/checkRadio.png) no-repeat;
+    background-size: .4rem .4rem;
+    background-position-y: .1rem;
+}
+li.telEdit{
+    text-align: -webkit-right;
+    border: 0;
+    margin-bottom: 0;
+}
+li.telEdit div{
+    width: 2.28rem;
+    height: .69rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/huaanInsurance/telBg.png) no-repeat;
+    background-size: 2.28rem .69rem;
+    display: inline-block;
+    font-size: .26rem;
+    line-height: .69rem;
+    text-align: left;
+    padding-left: .1rem;
+}
+li.telEdit div b{
+
+    font-style: normal;
+}
+.editIcon{
+    display: inline-block;
+    width: .27rem;
+    height: .27rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/huaanInsurance/editTel.png) no-repeat;
+    background-size: 100% 100%;
+    vertical-align: middle;
+    margin-left: .1rem;
+}
+.check{
+	height: .32rem;
+	line-height: .32rem;
+	font-size: .22rem;
+	color: #839df3;
+}
+.check i{
+	display: inline-block;
+	width: .32rem;
+	height: .32rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/huaanInsurance/checked.png) no-repeat;
+	background-size: 100% 100%;
+	vertical-align: bottom;
+	margin-right: .15rem;
+	
+}
+.check i.no{
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/huaanInsurance/checkedNo.png) no-repeat;
+	background-size: 100% 100%;
+}
+.inputBox a{
+	display: block;
+	text-align: center;
+	margin-top: .4rem;
+	width: 100%;
+	background: #edd9c0;
+	border: 0;
+	border-radius: 8px;
+	height: .83rem;
+	line-height: .8rem;
+	color: #fff;
+	font-size: .32rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/huaanInsurance/btn.png) no-repeat;
+	background-size: 100% 100%;
+}
+.inputBox a.getBtn{
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/huaanInsurance/btnOk.png) no-repeat;
+    background-size: 100% 100%;
+    color: #fff;
+}
+.pinxuan{
+	padding: .3rem 0 .1rem 0;
+	position: relative;
+}
+.pinxuan img{
+	padding: 0 .25rem 0 .25rem;
+    display: block;
+}
+.pinxuan p{
+    position: absolute;
+    top: 24.5%;
+    width: 100%;
+    text-align: center;
+}
+.pinxuan p a{
+	font-size: .3rem;
+	color: #0f1735;
+}
+.tips{
+    font-size: .22rem;
+    text-align: center;
+    margin-top: .2rem;
+    color: #5b5f88;
+    line-height: .36rem;
+    margin-bottom: .25rem;
+
+}
+.tips span{
+	color: #ca132a;
+}
+.realName{
+	padding-top: .8rem;
+}
+.realName .content{
+	position: relative;
+}
+.realName h2{
+    position: absolute;
+    width: 100%;
+    height: 1.11rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/huaanInsurance/title.png) no-repeat;
+    background-size: 100% 100%;
+    z-index: 999;
+    left: -1%;
+    top: -7%;
+}
+.realName .inputBox{
+	padding-top: .57rem;
+}
+.realName .remark{
+	text-align: center;
+	font-size: .24rem;
+	color: #0707aa;
+}
+.realName .content{
+	background: #e1c296;
+}
+.realName .inputBox{
+	background: #fff;
+}
+.realName .bankName{
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/huaanInsurance/right.png) right no-repeat;
+    background-size: .12rem .18rem;
+    padding: .1rem 0;
+    text-align: right;
+    padding-right: .3rem;
+    height: .65rem;
+}
+.success {
+     text-align: center;
+    padding-top: .4rem;
+}
+.success .envelope{
+	width: 2rem;
+	height: 2.25rem;
+}
+.success .t1{
+	font-size: .32rem;
+	color: #d9a76c;
+}
+.success .t2{
+	font-size: .28rem;
+	color: #999999;
+	margin-top: .1rem;
+}
+.success .t3{
+    display: inline-block;
+    font-size: .28rem;
+    color: #0707aa;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/huaanInsurance/smile.png) left no-repeat;
+    background-size: .34rem .34rem;
+    margin: 0 auto;
+    padding-left: .4rem;
+    margin-top: .25rem;
+    background-position-x: 0;
+}
+.success .sogan{
+    width: 4.74rem;
+    height: 1.94rem;
+    margin-top: .2rem;
+}
+.success .ewm{
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-top: -.2rem;
+}
+.success .t4{
+    font-size: .24rem;
+    color: #ba7f3a;
+    line-height: .32rem;
+    margin-top: -.15rem;
+}
+.success .t5{
+	font-size: .22rem;
+	margin-top: .5rem;
+	line-height: .3rem;
+	padding-bottom: .3rem;
+}
+.success .t5 span{
+	color: #ca132a;
+}
+.success div{
+    width: 90%;
+    margin: 0 auto;
+    border: 4px #dcc8ab solid;
+    border-radius: 13px;
+    margin-top: .15rem;
+    padding-bottom: .15rem;
+}
+
+.selectBank .serach{
+    height: .88rem;
+    background: #dfdfe1;
+    padding: .13rem .17rem;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+}
+.selectBank .serach i{
+    display: block;
+    width: .48rem;
+    height: .48rem;
+    background-image: url(/WeixinWeb/WeixinWeb_Images/H5modules/huaanInsurance/close.png);
+    background-repeat: no-repeat;
+    background-size: .48rem .48rem;
+    position: absolute;
+    right: 16%;
+    top: 19%;
+}
+.selectBank .serach input{
+    width: 100%;
+    background-color: #fff;
+    font-size: .3rem;
+    height: .62rem;
+    line-height: .62rem;
+    color: #dfdfe1;
+    border-radius: 4px;
+    text-align: center;
+    color: #000;
+    background-image: url(/WeixinWeb/WeixinWeb_Images/H5modules/huaanInsurance/search.png);
+    background-repeat: no-repeat;
+    background-position-x: 2.9rem;
+    background-position-y: .15rem;
+    background-size: .32rem .34rem;
+}
+.selectBank p{
+	height: .8rem;
+	line-height: .8rem;
+	background: #e7e8e9;
+	padding-left: .3rem;
+	color: #7e7c7d;
+	font-size: .3rem;
+}
+.selectBank .bankList{
+    position: absolute;
+    width: 100%;
+    padding-top: .88rem;
+    height: 100%;
+}
+.selectBank li{
+    font-size: .34rem;
+    color: #000;
+    height: .87rem;
+    line-height: .87rem;
+    border-bottom: 1px #dbdbdb solid;
+    background-size: .6rem .6rem;
+    background-position-x: .3rem;
+    background-position-y: .1rem;
+}
+
+.bankList img{
+    width: .6rem;
+    height: .6rem;
+    margin-left: .2rem;
+    vertical-align: middle;
+    margin-right: .14rem;
+}
+.selectBank .serach .focus{
+    text-align: left;
+    padding-left: .6rem;
+    background-position-x: .15rem;
+    width: 88%;
+}
+.selectBank .serach span{
+	margin-left: .1rem;
+}
+.mask{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    opacity: .6;
+    z-index: 999;
+}
+.noSerach{
+    text-align: center;
+    padding-top: 50px;
+    font-size: .36rem;
+    color: #666;
+}
+
+
+.ruleText .rule_entry strong em {
+	display: inline-block;
+	margin-right: .1rem;
+    width: 8px;
+    height: 8px;
+    background: #1f1f1f;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+}
+header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    color: #585858;
+    z-index: 1001;
+    background: #fff;
+    border-bottom: 1px solid #f2f3f8;
+    font-size: .38rem;
+}
+header .head_left {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    top: 0;
+    left: 0;
+    font-size: 15px;
+}
+header .returnIcon{
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/huaanInsurance/back.png) no-repeat;
+    background-size: 100% 100%;
+    width: 10px;
+    height: 17px;
+    margin-left: -15px;
+    margin-top: 13px;
+    display: inline-block;
+}
+.ruleText{
+    padding: 44px 10px 0 10px;
+}
+.ruleText h1{
+	text-align: center;
+	font-size: .36rem;
+}
+.rule_entry p{
+    text-indent: 2em;
+    color: #555;
+    font-size: .33rem;
+}
+.rule_entry strong{
+	    color: #403e3e;
+    font-size: .33rem;
+}
+.rule_entry{
+	    margin-bottom: .4rem;
+}
+.rule_entry li{
+    font-size: .33rem;
+    text-indent: 2em;
+}
+.rule_entry h4,.rule_entry h3{
+	font-size: .33rem;
+}
+
+.content2{
+    position: fixed;
+    width: 6rem;
+    height: 5rem;
+    background: #fff;
+    z-index: 9999;
+    border-radius: 10px;
+    left: 50%;
+    top: 50%;
+    padding: 0 .93rem;
+}
+.formInput h2{
+    height: .92rem;
+    line-height: .92rem;
+    font-size: .36rem;
+    color: #5e5d78;
+    text-align: center;
+    padding-top: .24rem;
+    position: relative;
+}
+.formInput h2 i{
+    position: absolute;
+    right: -0.6rem;
+    top: .2rem;
+    display: inline-block;
+    width: .31rem;
+    height: .3rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/huaanInsurance/close2.png) no-repeat;
+    background-size: 100% 100%;
+}
+.formInput li{
+    border-bottom: 1px #83818c solid;
+    background-position-y: .34rem;
+}
+.formInput li em{
+    display: block;
+    width: .25rem;
+    height: .41rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/huaanInsurance/tel.png) no-repeat;
+    background-size: .25rem .41rem;
+}
+
+.formInput input{
+    font-size: .36rem;
+    color: #000;
+    padding: .34rem 0;
+    display: block;
+    margin-left: .3rem;
+}
+.btn-box{
+    margin-top: .4rem;
+}
+.btn-box .btn{
+    display: inline-block;
+    width: 1.7rem;
+    height: .76rem;
+    text-align: center;
+    line-height: .76rem;
+    font-size: .32rem;
+    color: #cfcece;
+    border: 1px #e3e3e3 solid;
+    border-radius: 17px;
+}
+.btn-box .btn:nth-child(1){
+    margin-right: .5rem;
+}
+.btn-box .btn.sure{
+    border: 1px #fa9137 solid;
+    background: #fa9137;
+    color: #fff;
+}

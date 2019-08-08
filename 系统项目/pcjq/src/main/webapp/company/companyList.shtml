@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+	<!--#include virtual="/AppService/public/header.shtml"-->
+	<div class="center-content-bg">
+		<div class="center-content-height">
+			<div class="center-content mid">
+				<div class="center-content-left fl">
+					<div class="center-imageshead">
+						<img src="/AppWeb/AppWeb_Images/images/head_normal.png" height="58" width="58" alt=""> <span>欢迎访问招商财富官网</span>
+					</div>
+					<div class="center-left-nav">
+						<ul>
+							<li class="money-overviews"><a href="/company/companyAccountInfo.shtml">财富总览</a></li>
+							<li class="mynews act"><a href="/company/companyList.shtml">我的消息</a></li>
+						</ul>
+					</div>
+					<span class="QRcode"><img src="/AppWeb/AppWeb_Images/images/img_weixin.png" height="161" width="128" alt=""></span>
+				</div>
+				<div class="center-content-right mynewsupdate fl">
+					<h2 class="myorder-title">
+						我的消息<em id="unRead">(0)</em><i class="fr" id="btnUnRead" onclick="addReportReadRecordAll()">全部标为已读</i>
+					</h2>
+					<div class="mynews-tab-con clear" id="msgList"></div>
+					<div class="mynews-tab-con clear none" id="noMsg">
+						<span class="bulletin">暂无消息，敬请期待...</span>
+					</div>
+					<div class="page"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div style="display: none;">
+		<input type="hidden" id="maxPages" value="1" /> <input type="hidden" id="page" value="1" />
+	</div>
+	<!-- footer -->
+	<!--#include virtual="/AppService/public/footer.shtml"-->
+<!-- 	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/companyList.js"></script> -->
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/companyList.min.js"></script>
+</body>
+</html>

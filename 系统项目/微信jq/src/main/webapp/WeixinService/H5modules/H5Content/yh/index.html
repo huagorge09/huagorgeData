@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>招商财富-远航系列 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/yh/yh.css">
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-init.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/flexible.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+
+</head>
+<body>
+	<div class="warpper" style="padding-bottom: 1rem;">
+		<div class="banner"></div>
+		<div class="recommendBox">
+			<ul class="item">
+				<li>
+					<h2>远航五号一期 <span>募集截止：2018年07月06日</span></h2>
+					<div class="proInfo clearFloat">
+						
+						<div class="info">
+							<p>6.5<span>%</span></p>
+							<p>业绩计提基准</p>
+							<div class="line"></div>
+						</div>
+						<div class="info">
+							<p>7<span>个月</span></p>
+							<p>产品期限</p>
+							<div class="line"></div>
+						</div>
+						<div class="info">
+							<p>100<span>万起</span></p>
+							<p>理财起点</p>
+						</div>
+					</div>
+					<div class="tips">
+						
+						<p>风险提示：投资有风险。本产品风险等级为R4，适合风险承受能力为C4及以上的投资者；产品的过往业绩并不预示其未来表现。</p>
+						<p>产品排期如有变动，以远航五号实际上架为准</p>
+					</div>
+				</li>
+			</ul>
+			<a href="javascript:;" class="once">立即购买</a>
+		</div>
+		<div class="advantage">
+			<h2><i></i>强大增信方，AAA主体连带责任担保</h2>
+			<p>中证信用成立于2015年5月，由安信证券股份有限公司、中国人保资产管理有限公司、前海金融控股有限公司、东方财富信息股份有限公司等20家股东共同发起设立，截至2017年末，公司资产总额110.91亿元，所有者权益59.68亿元；2017年，公司实现营业收入7.96亿元，2018年，经6家评级机构评级，主体信用为AAA。（资料来源：《联合资信-中证信用增进股份有限公司2018年主体长期信用评级报告 》）</p>
+			<h2 class="first"><i></i>投资信托计划优先级受益权，享受资金优先分配</h2>
+			<p>投资信托计划优先级受益权，财产权信托优先分配优先级受益权的本金和利息。</p>
+			<h2><i></i>基础资产小而分散，有效降低风险</h2>
+			<p>底层信托计划持有的基础资产为去哪儿网和携程持有的拿去花资产，基础资产笔数较多，单笔金额小，高度分散，可有效降低风险。</p>
+		    <h3 class="tips">*备注：“拿去花”是去哪儿网/携程联合各金融机构推出的一项面向个人的信用消费服务，类似于京东白条、支付宝花呗。</h3>
+		</div>
+	    <div class="follow"><img src="/WeixinWeb/WeixinWeb_Images/H5modules/yh/follow.jpg" width="100%"></div>
+	</div>
+	  <div class="bottom clearFloat">
+    	<a href="javascript:;" onclick="bussiness();" id="myBtn1">我感兴趣</a>
+    	<a href="javascript:;" onclick="myAdviser();" id="myBtn2">我的顾问</a>
+    </div>
+	<!--预约信息填写-->
+	<div class="cover-bg reserves hide">
+		<div class="content">
+			 <span class="close"></span>
+			 <h1>一键预约享专属服务<br>让投资无后顾之忧</h1>
+			 <h3>我们的专属顾问将24小时内给您回电</h3>
+			 <div class="form">
+			 	<ul>
+				 	<li>
+				 	   <div class="inputBox">
+				 	  	   <span></span> <input type="text" id="userName" name="userName" placeholder="请输入姓名"/>
+				 	   </div>	
+				       <p style="display: none;"></p>
+				 	</li>
+				 	<li class="foucs">
+				 		<div class="inputBox">
+				 	        <span></span> <input type="tel" id="mobilePhone" name="mobilePhone" maxlength="11" placeholder="请输入手机号码"/> 
+				 		</div>
+				 		<p  style="display: none;"></p>
+				 	</li>
+				 	
+				 </ul>
+				 <button id="saveBtn"  class="disabled">立即提交</button>
+			 </div>
+		</div>
+	</div>
+	<!-- 错误提示 -->
+	<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+		<span id="errorRemark"></span>
+	</div>
+	<!--预约成功-->
+	<div class="cover-bg success hide">
+		 <div class="content center">
+		 	<span class="close"></span>
+		 	<div class="successIcon"></div>
+		 	<h2>预约成功</h2>
+		 	<p>客户经理将尽快与您联系，请保持电话畅通</p>
+		 </div>
+	</div>
+	 <!-- 尚未完成操作弹窗-->
+    <div class="cover_bg" id="noOperation" style="display: none;">
+    	 <!-- 尚未完成风险评测-->
+    	 <div class="content risk" id="riskContent" style="display: none;">
+    	 	  <h2></h2>
+    	 	  <p>哎呀！您尚未完成风险测评</p>
+    	 	  <div class="tips">
+    	 	  	  <h3>温馨提示：</h3>
+    	 	  	  <p>根据监管要求，为保护投资者权益，需要了解您的相关信息和风险等级，以实现对您的最大保障。</p>
+    	 	  	  <p class="yearReport">
+    	 	  	  	 动动小指尖， 30秒完成风险测评，轻松查看产品信息
+    	 	  	  </p>
+    	 	  </div>
+    	 	 <a href="javascript:void(0);" id="goRisk" class="btn">我要测评</a>
+    	 </div>
+    	 <!-- 重新测评-->
+    	 <div class="content rNameRisk" id="reRiskContent"  style="display: none;">
+    	 	  <h2></h2>
+    	 	  <p>根据监管要求，您的风险测评已过有效期，还请重新测评</p>
+    	 	   <a href="javascript:void(0);" id="reRisk" class="btn">确定</a>
+    	 </div>
+    </div>
+     <script>
+    	 var pageId="wx_yh91No10_indexH5Id"
+    </script>
+     <script src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/activityCommon.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/yh/index.js"></script>
+    
+</body>
+</html>

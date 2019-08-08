@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1.min.js"></script>
+	<!--  滚动条js  -->
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscroll.js"></script>
+	<style type="text/css">
+		.cancel-address{
+			display: block;
+		    width: 90%;
+		    height: 50px;
+		    line-height: 50px;
+		    text-align: center;
+		    margin: 0 auto;
+		    color: #fff;
+		    font-size: 1.7rem;
+		    border-radius: 3px;
+		    background: #d3d3d3;
+		}
+		
+		.house-input{
+			margin-left: 10%;
+		    width: 66%;
+		    border: 0px;
+		    color: #999;
+		}
+		
+		@media only screen and (min-device-width: 360px){
+			.input-text label, .input-password label {
+			    font-size: 1.5rem;
+			}
+			.addressTitle{
+				    width: 93px !important;
+			}
+		}
+		
+		@media only screen and (max-device-width: 359.9px){
+			.input-text label, .input-password label {
+			    font-size: 1.3rem;
+			}
+			.addressTitle{
+				    width: 83px !important;
+			}
+		}
+	</style>
+</head>
+
+<body>
+<section class="page">
+<div id="wrapper">
+    <div id="scroller">
+    <!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->
+    <section>
+    	<input type="hidden" id="nation" />
+    	<input type="hidden" id="nationNM" />
+    	<input type="hidden" id="province" />
+    	<input type="hidden" id="provinceNM" />
+    	<input type="hidden" id="provinceNM" />
+    	<input type="hidden" id="city" />
+    	<input type="hidden" id="cityNM" />
+       <div class="center-accountset">
+       		<!-- 点击跳转到地址选择界面 -->
+            <a href="javascript:redirectUrl('/WeixinService/business/user/nationalityInfo.shtml')" class="href-point">所在地区<input id="area" class="house-input" placeholder="请选择" readonly="readonly"/><em></em></a>
+            <div class="input-text">
+	           	<label class="addressTitle">详细地址</label>
+	           	<input type="text" id="detailAddress" style="color: #999;" placeholder="请输入详细地址" >
+	        </div>
+       </div>
+    </section> 
+	<br><a href="javascript:saveAddress();" class="check-order">保存修改</a><br>
+	<a href="javascript:cacelAddressUpdate();" class="cancel-address">放弃</a>
+</div></div>
+</section> 
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/modifyHouseAddress.min.js"></script> -->
+<script type="text/javascript">
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/modifyHouseAddress.min.js?version='+new Date().getTime()+'"><\/script>');
+</script>
+
+<script>
+$(document).ready(function(e) {
+	queryAddressInfo();
+});
+</script>
+</body>
+</html>

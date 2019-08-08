@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.activity.SinoActAwardDao">
+		<resultMap type="com.cmwa.ec.weixin.dto.SinoActAwardDto" id="sinoActAwardDto">
+			<result column="REQ_STREAM_ID" jdbcType="VARCHAR"  property="reqStreamId" />
+			<result column="CARD_NUM" jdbcType="VARCHAR"  property="cardNum" />
+			<result column="CARD_PWD" jdbcType="VARCHAR"  property="cardPwd" />
+			<result column="ASSIGN_MOBILE" jdbcType="VARCHAR"  property="assignMobile" />
+			<result column="ASSIGN_OPENID" jdbcType="VARCHAR" property="assignOpenid" />
+			<result column="ASSIGN_IDCARD"  jdbcType="VARCHAR" property="assignIdcard" />
+			<result column="EXPIRE_DATE"  jdbcType="DATE" property="expireDate" />
+			<result column="SEND_STATUS" jdbcType="VARCHAR" property="sendStatus" />
+			<result column="SEND_DATE" jdbcType="DATE" property="sendDate"/>
+			<result column="CREATED_DATE" jdbcType="DATE" property="createdDate" />
+			<result column="CREATED_USER" jdbcType="VARCHAR" property="createdUser"/>
+			<result column="UPDATED_DATE" jdbcType="DATE" property="updatedDate" />
+			<result column="UPDATED_USER" jdbcType="VARCHAR" property="updatedUser"/>
+			<result column="ASSIGN_CHANNEL" jdbcType="VARCHAR" property="assignChannel" />
+		</resultMap>
+	
+		<insert id="insert" parameterType="com.cmwa.ec.weixin.dto.SinoActAwardDto">
+			INSERT INTO CMWA_WX_SINOACT_AWARD(
+				REQ_STREAM_ID,
+				CARD_NUM,
+				CARD_PWD,
+				EXPIRE_DATE,
+				ASSIGN_MOBILE,
+				ASSIGN_OPENID,
+				ASSIGN_IDCARD,
+				SEND_STATUS,			
+				CREATED_DATE,
+				CREATED_USER,
+				UPDATED_USER,
+				UPDATED_DATE,
+				ASSIGN_CHANNEL
+			) VALUES (
+				#{reqStreamId,jdbcType=VARCHAR},
+				#{cardNum,jdbcType=VARCHAR},
+				#{cardPwd,jdbcType=VARCHAR},
+				to_date(#{expireDate,jdbcType=DATE},'yyyy-mm-dd hh24:mi:ss'),
+				#{assignMobile,jdbcType=VARCHAR},
+				#{assignOpenid,jdbcType=VARCHAR},
+				#{assignIdcard,jdbcType=VARCHAR},
+				'N',
+				sysdate,
+				#{createdUser,jdbcType=VARCHAR},
+				#{updatedUser,jdbcType=VARCHAR},
+				sysdate,
+				#{assignChannel,jdbcType=VARCHAR}
+			)
+		</insert>
+		
+		<update id="rewriteStatus" parameterType="com.cmwa.ec.weixin.dto.SinoActAwardDto">
+			UPDATE CMWA_WX_SINOACT_AWARD SET SEND_DATE=SYSDATE,SEND_STATUS='Y',UPDATED_DATE=SYSDATE,UPDATED_USER=#{updatedUser,jdbcType=VARCHAR} WHERE REQ_STREAM_ID=#{reqStreamId,jdbcType=VARCHAR}
+		</update>
+		
+		<update id="rewriteStatusError" parameterType="com.cmwa.ec.weixin.dto.SinoActAwardDto">
+			UPDATE CMWA_WX_SINOACT_AWARD SET SEND_DATE=SYSDATE,SEND_STATUS='E',UPDATED_DATE=SYSDATE,UPDATED_USER=#{updatedUser,jdbcType=VARCHAR} WHERE REQ_STREAM_ID=#{reqStreamId,jdbcType=VARCHAR}
+		</update>
+		
+		<select id="countAwardInfoByIdCard" parameterType="com.cmwa.ec.weixin.dto.SinoActAwardDto" resultType="int">
+			SELECT COUNT(1) as count FROM CMWA_WX_SINOACT_AWARD T WHERE T.ASSIGN_IDCARD = #{idCard,jdbcType=VARCHAR}
+		</select>
+		
+		<select id="queryExceptionActAwardInfo" resultMap="sinoActAwardDto">
+			SELECT * FROM CMWA_WX_SINOACT_AWARD T WHERE T.CARD_NUM IS NULL AND T.CARD_PWD IS NULL AND T.EXPIRE_DATE IS NULL
+		</select>
+		
+		<update id="updateExceptionInfo">
+			UPDATE CMWA_WX_SINOACT_AWARD SET CARD_NUM=#{dto.cardNum,jdbcType=VARCHAR},CARD_PWD=#{dto.cardPwd,jdbcType=VARCHAR},EXPIRE_DATE=to_date(#{dto.expireDate,jdbcType=VARCHAR},'yyyy-mm-dd hh24:mi:ss'),REQ_STREAM_ID=#{dto.reqStreamId,jdbcType=VARCHAR},UPDATED_USER=#{dto.updatedUser,jdbcType=VARCHAR},UPDATED_DATE=SYSDATE
+			WHERE REQ_STREAM_ID=#{oldReqStreamId,jdbcType=VARCHAR} AND ASSIGN_MOBILE=#{dto.assignMobile,jdbcType=VARCHAR} AND ASSIGN_IDCARD=#{dto.assignIdcard,jdbcType=VARCHAR} AND ASSIGN_CHANNEL=#{dto.assignChannel,jdbcType=VARCHAR}
+		</update>
+		
+		<select id="querySendAwardInfoByIdCardAndUserName" parameterType="com.cmwa.ec.weixin.dto.SinoActAwardDto" resultType="int">
+			SELECT COUNT(1) as count FROM CMWA_WX_SINOACT_AWARD T WHERE T.ASSIGN_MOBILE = #{dto.assignMobile,jdbcType=VARCHAR} AND T.ASSIGN_IDCARD = #{dto.assignIdcard,jdbcType=VARCHAR} AND T.CARD_NUM IS NOT NULL AND T.CARD_PWD IS NOT NULL
+		</select>
+</mapper>

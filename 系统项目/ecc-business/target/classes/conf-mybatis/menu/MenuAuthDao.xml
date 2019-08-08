@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.menu.MenuAuthDao">
+	<resultMap id="menuAuthVo" type="menuAuthVo">
+		<result column="MENUID" property="menuId" />
+		<result column="EMPID" property="empId" />
+		<result column="ORGID" property="orgId" />
+		<result column="TITLEID" property="titleId" />
+		<result column="STATUS" property="status" />
+	</resultMap>
+
+	<!-- 保存岗位和菜单的关联关系 -->
+	<insert id="insertBatchOrmemberMenu" parameterType="java.util.List">
+		<foreach collection="list" item="item" index="index" open="begin" close=";end;" separator=";">
+			INSERT INTO T_ECC_ORMEMBER_MENU(
+			ORGID ,
+			TITLEID ,
+			MENUID ,
+			STATUS
+			) VALUES(
+			#{item.orgId},
+			#{item.titleId},
+			#{item.menuId},
+			#{item.status}
+			)
+		</foreach>
+	</insert>
+
+	<!--根据联合主键， 删除岗位和菜单的关联关系 -->
+	<delete id="deleteOrmemberMenuByUnionId" parameterType="String">
+		DELETE FROM T_ECC_ORMEMBER_MENU OM WHERE OM.ORGID =#{orgId} AND OM.TITLEID=#{titleId}
+	</delete>
+
+
+	<!-- 保存员工和菜单的关联关系 -->
+	<insert id="insertBatchEmpMenu" parameterType="java.util.List">
+		<foreach collection="list" item="item" index="index" open="begin" close=";end;" separator=";">
+			INSERT INTO T_ECC_EMP_MENU(
+			EMPID ,
+			MENUID ,
+			STATUS
+			) VALUES(
+			#{item.empId},
+			#{item.menuId},
+			#{item.status}
+			)
+		</foreach>
+	</insert>
+
+	<!-- 根据员工ID， 删除员工和菜单的关联关系 -->
+	<delete id="deleteEmpMenuByEmpId" parameterType="String">
+		DELETE FROM T_ECC_EMP_MENU EM WHERE EM.EMPID=#{empId}
+	</delete>
+
+	<!-- 查询默认选中的岗位菜单 -->
+	<select id="queryOrmemberDefaultSelectedMenu" parameterType="String" resultType="String">
+		SELECT OM.MENUID FROM T_ECC_ORMEMBER_MENU OM WHERE OM.STATUS='1' AND OM.ORGID =#{orgId} AND OM.TITLEID=#{titleId}
+	</select>
+
+	<!-- 查询默认选中的人员菜单 -->
+	<select id="queryEmpDefaultSelectedMenu" parameterType="String" resultType="String">
+		SELECT EM.MENUID FROM T_ECC_EMP_MENU EM WHERE EM.STATUS='1' AND EM.EMPID=#{empId}
+	</select>
+	<!-- 根据请求路径 查询用户关联权限是否存在，查询权限数量 -->
+	<select id="queryEmpMenuCountByPath" parameterType="String" resultType="Integer">
+		SELECT COUNT(M.MENUID) FROM T_ECC_MENU M
+		JOIN T_ECC_EMP_MENU EM ON M.MENUID=EM.MENUID
+		JOIN T_ECC_EMPLOYEE EMP ON EMP.EMPID=EM.EMPID
+		WHERE EMP.STAT='STAR' AND EMP.EMPID=#{empId} AND M.MURL LIKE #{requestPath}||'%'
+	</select>
+	<!-- 根据请求路径 查询用户岗位关联的权限是否存在，查询权限数量 -->
+	<select id="queryOrmemberMenuCountByPath" parameterType="String" resultType="Integer">
+		SELECT COUNT(M.MENUID) FROM T_ECC_MENU M
+		JOIN T_ECC_ORMEMBER_MENU OM ON M.MENUID=OM.MENUID
+		JOIN T_ECC_ORMEMBER O ON O.ORGID=OM.ORGID AND O.TITLEID=OM.TITLEID
+		WHERE O.STAT='STAR' AND O.EMPID=#{empId} AND M.MURL LIKE #{requestPath}||'%'
+	</select>
+
+	
+
+</mapper>

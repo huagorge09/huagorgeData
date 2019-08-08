@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>财富总览</title>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="shortcut icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon" />
+	<link rel="icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="/AppWeb/AppWeb_Css/dialog.css" />
+
+
+
+	<style type="text/css">
+		.risk-add-list {
+			width: 550px;
+			margin: 130px 0 0 50px;
+			max-height: 303px;
+			height: auto;
+			overflow: auto;
+		}
+
+		.risk-add-list .common_bg .div-cover.title-tag {
+			height: 30px;
+			font-size: 14px;
+			width: 130px;
+			float: left;
+			line-height: 30px;
+		}
+
+		.risk-add-list .common_bg .div-cover.input-tag {
+			width: 400px;
+			float: left;
+			line-height: 30px;
+			height: 45px;
+		}
+
+		.ware-box1 ul {
+			margin: 0;
+			max-height: 370px;
+			overflow-y: visible;
+			top: 31px;
+		}
+
+		.taxpayerCode {
+			width: 308px;
+			height: 30px;
+			border-radius: 4px;
+			border: 1px solid #aaaaaa;
+			line-height: 30px;
+			padding: 0 10px;
+		}
+
+		.risk-add-list .ui-select-wrap {
+			width: 334px !important;
+			min-width: 237px;
+			left: -3px;
+			height: 30px;
+			background-color: #fff;
+			border-radius: 4px;
+			margin: 0;
+			padding: 0;
+			font-size: 14px;
+			line-height: 30px;
+		}
+
+		.btn_cancel_revenue {
+			height: 42px;
+			font-size: 16px;
+			text-align: center;
+			border-radius: 5px;
+			border: none;
+			cursor: pointer;
+			outline: none;
+			display: inline;
+			margin: 0 15px 0 50px;
+			width: 150px;
+			background: #f3f3f3;
+			color: #3f3f3f;
+		}
+
+		.btn_submit_revenue {
+			height: 42px;
+			font-size: 16px;
+			text-align: center;
+			border-radius: 5px;
+			color: #fff;
+			border: none;
+			cursor: pointer;
+			background: #ca132c;
+			outline: none;
+			display: inline;
+			width: 150px;
+			margin-left: 100px;
+		}
+
+		.btn-confirm_yes {
+			display: block;
+			width: 126px;
+			height: 37px;
+			font-size: 16px;
+			text-align: center;
+			border-radius: 5px;
+			color: #fff;
+			border: none;
+			cursor: pointer;
+			background: #ca132c;
+			margin: 26px auto 0;
+			outline: none;
+		}
+
+		.w_text {
+			width: 500px;
+			border: 1px solid #aaa;
+			border-radius: 4px;
+			height: 25px;
+			padding: 0 10px;
+		}
+
+		.risk_tr {
+			height: 40px;
+			line-height: 40px;
+		}
+
+		.risk_td1 {
+			border: 1px solid #d5d5d5;
+			width: 50%;
+			border-left: 0;
+		}
+
+		.risk_td2 {
+			border: 1px solid #d5d5d5;
+			width: 50%;
+			border-right: 0;
+		}
+
+		#common_cover_bg #common-box-context ul li .risk-option-desc {
+			display: none;
+			width: 500px;
+			float: right;
+			margin-right: 40px;
+		}
+
+		.rotate {
+			width: 38px;
+			height: 38px;
+			z-index: 1;
+		}
+
+		.r1 {
+			-moz-transform: rotate(-3deg);
+			-webkit-transform: rotate(-3deg);
+			-o-transform: rotate(-3deg);
+		}
+
+		.r2 {
+			-moz-transform: rotate(2deg);
+			-webkit-transform: rotate(2deg);
+			-o-transform: rotate(2deg);
+		}
+		.pro3{
+			margin-left: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- 去签约 -->
+	<div class="cover_bg" id="contractSign_div_02" style="display: none">
+		<div class="cover-con pop-up-three recoverpassword-cover">
+			<i class="close" onclick="close_tips('contractSign_div_02');"></i>
+			<span class="cover-con-text act" style="text-align: center;" id="tips_btn2_msg">现在开通在线支付？</span>
+			<input class="cover-con-btn registe" type="button" id="tips_btn1_btn" onclick="contractSign();" value="立即开通" />
+			<input class="cover-con-btn close" type="button" id="tips_btn2_btn" onclick="close_tips('contractSign_div_02');"
+				value="再等等吧" />
+		</div>
+	</div>
+
+	<!-- 查询签约 -->
+	<div class="cover_bg" id="contractSign_div_03" style="display: none;">
+		<div class="cover-pay">
+			<i class="close" onclick="contractSign_close('contractSign_div_03')"></i>
+			<span class="cover-pay-text">签约成功？</span>
+			<span class="cover-pay-btn">
+				<a href="javascript:queryCommandByBankAccoNo();" id="tips_btn3_btn" class="fl goon">已签约</a>
+				<a href="javascript:contractSign_close('contractSign_div_03');" class="fl back problem">签约遇到问题</a>
+			</span>
+		</div>
+	</div>
+	<!-- header -->
+	<!--#include virtual="/AppService/public/header.shtml"-->
+	<div class="center-content-bg">
+		<div class="center-content-height">
+			<div class="center-content mid">
+				<div class="center-content-left fl">
+					<div class="center-imageshead">
+						<img src="/AppWeb/AppWeb_Images/images/head_normal.png" height="58" width="58" alt=""> <span><em
+								id="custName"></em></span>
+					</div>
+					<div class="center-left-nav">
+						<ul id="menu">
+
+						</ul>
+					</div>
+					<span class="QRcode"><img src="/AppWeb/AppWeb_Images/images/img_weixin.png" height="161" width="128"
+							alt=""></span>
+				</div>
+			</div>
+			<div class="center-content-right fl" id="cmfCenter"></div>
+		</div>
+	</div>
+
+
+	<!-- 新增 S-->
+	<div class="cover_bg" id="div_cover_bg" style="display: none;">
+		<div id="div_address" class="div_address">
+			<input type="hidden" name="nation" />
+			<input type="hidden" name="province" />
+			<input type="hidden" name="city" />
+			<input type="hidden" name="addr" />
+			<div class="registe-con">
+				<div class="close_address"></div>
+				<ul>
+					<li style="height: 35px;top: -11px;">
+						<h2>选择家庭住址</h2>
+					</li>
+					<li style="height: 28px;">
+						<div class="address-title">
+							<h3>请根据实际情况选择您的居住地。</h3>
+						</div>
+					</li>
+					<li style="height: 36px;">
+						<label>国籍</label>
+						<div class="div-cover">
+							<select class="select" id="nationality" name="nationality" style="width: 218px;">
+								<option value="0">请选择</option>
+							</select>
+						</div>
+					</li>
+					<li style="height: 36px;" class="province">
+						<label>省份</label>
+						<div class="div-cover">
+							<select class="select" id="province" name="province" style="width: 218px;">
+								<option value="0">请选择</option>
+							</select>
+						</div>
+					</li>
+					<li style="height: 36px;" class="city">
+						<label>市</label>
+						<div class="div-cover">
+							<select class="select" id="city" name="city" style="width: 218px;">
+								<option value="0">请选择</option>
+							</select>
+						</div>
+					</li>
+					<li style="margin-top: 20px;">
+						<label>详细地址</label>
+						<textarea id="detailAddress" class="detailAddress"></textarea>
+					</li>
+				</ul>
+				<span class="error_msg"></span>
+				<span class="registe-con-btn"><a href="javascript:updateAddress();" class="updateAddress_btn">确认</a></span>
+			</div>
+		</div>
+	</div>
+	<!-- 职业选择框 start -->
+	<div class="cover_bg" id="div_profession_bg" style="display: none;">
+		<div class="choose-box">
+			<div class="btn-close profession_bg_close"></div>
+			<h2>选择您的职业</h2>
+			<div class="tips">
+				<p>请根据实际情况选择您的职业。</p>
+			</div>
+			<div class="choose-con clear">
+				<div class="section">
+					<ul class="profession-list"></ul>
+				</div>
+			</div>
+		<!-- <div class="otherVocation" style="display: none;">
+				<input id="otherVocation" type="text" placeholder="请填写其他职业">
+			</div> -->
+			
+			<div id="userProfessionBox" class="otherVocation" style="display: none;">
+				<span class="professionText pro3">填写您的职业</span>
+				<input type="text" placeholder="请填写您的职业" class="professionInput" id="otherVocation">
+				<!-- <span class="submitProfession" onclick="submitProfession()">确认</span> -->
+			</div>
+			<button class="sureSubmit" name="prof-confirm">确认</button>
+		</div>
+	</div>
+	<!-- 职业选择框 end -->
+
+	<!-- 警告框 -->
+	<div class="cover_bg" id="ware_cover_bg" style="display: none;">
+		<div class="ware-box" style="height: 460px;">
+			<ul>
+				<li class="ware_title">专业投资者（个人）须同时符合以下条件：</li>
+				<li class="ware_context">
+					● 金融资产不低于500万元，或者最近3年个人年均收入不低于40万元。<br>
+					●
+					具有2年以上证券、基金、期货、黄金、外汇等投资经历，或者具有2年以上金融产品设计、投资、风险管理及相关工作经历，或者属于经有关监管部门设立的金融机构、经行业协会备案或登记的证券、期货公司子公司，私募基金管理人的高级管理人员，获得职业资格认证的从事金融相关业务的注册会计师和律师。
+				</li>
+				<li class="ware_title">专业投资者（个人）的权力与义务：</li>
+				<li class="ware_context"> ● 专业投资者需要依据自己的专业投资知识，查看、购买所有产品，我们不再做任何强制性的风险提示；<br>
+					● 专业投资者可以申请转为普通投资者，重新享有信息告知、风险警示、适当性匹配等方面的特殊保护。
+				</li>
+			</ul>
+			<ul>
+				<li class="ware_btn_li">
+					<button class="abandon_btn">放弃</button>
+					<button class="continue_btn">继续申请</button>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- 申请转换为普通投资者测评 -->
+	<div class="cover_bg" id="common_cover_bg" style="display: none;">
+		<div class="common-box" style="height: 635px;">
+			<div class="close_common" id="close_common_bg"></div>
+			<ul>
+				<li>
+					<h1 style="height: 70px;line-height: 70px;">风险测评</h1>
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<div class="common-box-title" style="height: 30px;">申请转换为普通用户后，需重新进行风险测评，请完成下列问卷。</div>
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<div class="common-box-context" id="common-box-context">
+						<ul>
+							<li>
+								<h2><em>1、</em><span>您目前的主要收入来源是：</span></h2>
+								<span data-score="2" data-name="q1" class="list">无固定收入（2分）</span>
+								<span data-score="4" data-name="q1" class="list">退休金（4分）</span>
+								<span data-score="6" data-name="q1" class="list">工资、劳务报酬（6分）</span>
+								<span data-score="8" data-name="q1" class="list">个体经营或财产收入（房租、股权收入等）（8分）</span>
+								<span data-score="10" data-name="q1" class="list">企业经营（10分）</span>
+							</li>
+							<li>
+								<h2><em>2、</em><span>您的年收入是：</span></h2>
+								<span data-score="0" data-name="q2" class="list">30万元以下</span>
+								<span data-score="0" data-name="q2" class="list">30-50万元</span>
+								<span data-score="0" data-name="q2" class="list">50-100万元</span>
+								<span data-score="0" data-name="q2" class="list">100万以上</span>
+							</li>
+							<li>
+								<h2><em>3、</em><span>您的可支配资产是多少（不包含不动产）（折合人民币）：</span></h2>
+								<span data-score="2" data-name="q3" class="list">100万元以下（2分）</span>
+								<span data-score="4" data-name="q3" class="list">100万元至200万元（4分）</span>
+								<span data-score="6" data-name="q3" class="list">200万元至500万元（6分）</span>
+								<span data-score="8" data-name="q3" class="list">500万元至1000万元（8分）</span>
+								<span data-score="10" data-name="q3" class="list">1000万元以上（10分）</span>
+							</li>
+							<li>
+								<h2><em>4、</em><span>在您每年的家庭可支配收入中，可用于金融投资（储蓄存款除外）的比例为：</span></h2>
+								<span data-score="2" data-name="q4" class="list">小于10%（2分）</span>
+								<span data-score="4" data-name="q4" class="list">10%至25%（4分）</span>
+								<span data-score="6" data-name="q4" class="list">25%至50%（6分）</span>
+								<span data-score="8" data-name="q4" class="list">50%至80%（8分）</span>
+								<span data-score="10" data-name="q4" class="list">80%以上（10分）</span>
+							</li>
+							<li>
+								<h2><em>5、</em><span>您的资产负债情况属于以下哪一种：</span></h2>
+								<span data-score="2" data-name="q5" class="list">有较大数额未到期负债（2分）</span>
+								<span data-score="4" data-name="q5" class="list">收入和支出相抵（4分）</span>
+								<span data-score="6" data-name="q5" class="list">有一定积蓄（6分）</span>
+								<span data-score="8" data-name="q5" class="list">有较为丰厚的积蓄并有一定的投资（8分）</span>
+								<span data-score="10" data-name="q5" class="list">比较富裕且有相当的投资（10分）</span>
+							</li>
+							<li>
+								<h2><em>6、</em><span>您的投资知识可描述为：</span></h2>
+								<span data-score="2" data-name="q6" class="list">无：没有金融产品方面的知识（2分）</span>
+								<span data-score="4" data-name="q6" class="list">有限：理解部分金融产品及其相关风险的概念，但十分有限（4分）</span>
+								<span data-score="6" data-name="q6" class="list">一般：对金融产品及其相关风险具有基本的知识和理解（6分）</span>
+								<span data-score="8" data-name="q6" class="list">丰富：对金融产品及其相关风险具有丰富的知识和理解（8分）</span>
+								<span data-score="10" data-name="q6" class="list">专业：对金融产品及其相关风险具有专业的知识和深入的理解（10分）</span>
+							</li>
+							<li>
+								<h2><em>7、</em><span>您的投资经验可描述为：</span></h2>
+								<span data-score="2" data-name="q7" class="list">基本无投资经验（2分）</span>
+								<span data-score="4" data-name="q7" class="list">大部分投资于存款、国债等（4分）</span>
+								<span data-score="6" data-name="q7" class="list">大部分投资于银行理财产品、保险理财产品等（6分）</span>
+								<span data-score="8" data-name="q7" class="list">大部分投资于基金、股票等（8分）</span>
+								<span data-score="10" data-name="q7" class="list">大部分投资于创业板股票、外汇、期货等高风险产品（10分）</span>
+							</li>
+							<li>
+								<h2><em>8、</em><span>您有多少年投资基金、股票、信托、私募证券或金融衍生产品等风险投资品的经验：</span></h2>
+								<span data-score="2" data-name="q8" class="list">1年以下（2分）</span>
+								<span data-score="4" data-name="q8" class="list">1至2年（4分）</span>
+								<span data-score="6" data-name="q8" class="list">2至5年（6分）</span>
+								<span data-score="8" data-name="q8" class="list">5至10年（8分）</span>
+								<span data-score="10" data-name="q8" class="list">10年以上（10分）</span>
+							</li>
+							<li>
+								<h2><em>9、</em><span>您计划中的投资期限是多长：</span></h2>
+								<span data-score="2" data-name="q9" class="list">少于1年（2分）</span>
+								<span data-score="4" data-name="q9" class="list">1至2年（4分）</span>
+								<span data-score="6" data-name="q9" class="list">2至5年（6分）</span>
+								<span data-score="8" data-name="q9" class="list">5至10年（8分）</span>
+								<span data-score="10" data-name="q9" class="list">10年以上（10分）</span>
+							</li>
+							<li>
+								<h2><em>10、</em><span>您打算重点投资于哪些种类的投资品种：</span></h2>
+								<span data-score="2" data-name="q10" class="list">短债、货币市场基金等主要投资于货币工具的基金（2分）</span>
+								<span data-score="4" data-name="q10" class="list">债券型基金等主要投资于固定收益类资产的基金（4分）</span>
+								<span data-score="6" data-name="q10" class="list">混合型基金等投资于权益类与固定收益类资产的基金（6分）</span>
+								<span data-score="8" data-name="q10" class="list">股票型基金等主要投资于权益类资产的基金（8分）</span>
+								<span data-score="10" data-name="q10" class="list">分级基金等其它复杂或高风险基金（10分）</span>
+							</li>
+							<li>
+								<h2><em>11、</em><span>以下哪项描述最符合您的投资态度：</span></h2>
+								<span data-score="2" data-name="q11" class="list">厌恶风险，能够承担极小的风险（2分）</span>
+								<span data-score="4" data-name="q11" class="list">虽然厌恶风险但愿意承担一些风险（4分）</span>
+								<span data-score="6" data-name="q11" class="list">在深思熟虑后愿意承担一定的风险（6分）</span>
+								<span data-score="8" data-name="q11" class="list">敢冒风险，比较激进（8分）</span>
+								<span data-score="10" data-name="q11" class="list">爱好风险，相当激进（10分）</span>
+							</li>
+							<li>
+								<h2><em>12、</em><span>以下几种投资模式，您更偏好哪种模式：</span></h2>
+								<span data-score="2" data-name="q12" class="list">收益只有5%，但可能亏损不超过5%（2分）</span>
+								<span data-score="4" data-name="q12" class="list">收益15%，但可能亏损5%（4分）</span>
+								<span data-score="6" data-name="q12" class="list">收益是30%，但可能亏损15%（6分）</span>
+								<span data-score="8" data-name="q12" class="list">收益50%，但可能亏损30%（8分）</span>
+								<span data-score="10" data-name="q12" class="list">收益100%，但可能亏损60%（10分）</span>
+							</li>
+							<li>
+								<h2><em>13、</em><span>您认为自己能承受的最大投资损失是多少：</span></h2>
+								<span data-score="2" data-name="q13" class="list">5%以内（2分）</span>
+								<span data-score="4" data-name="q13" class="list">5%-10%（4分）</span>
+								<span data-score="6" data-name="q13" class="list">10%-30%（6分）</span>
+								<span data-score="8" data-name="q13" class="list">30%-50%（8分）</span>
+								<span data-score="10" data-name="q13" class="list">超过50%（10分）</span>
+							</li>
+
+							<li>
+								<h2><em>14、</em><span>是否存在实际控制关系：</span></h2>
+								<span data-score="0" data-name="w14" data-value="N" class="list">否</span>
+								<span data-score="0" data-name="w14" data-value="Y" data-input="Y" class="list" style="height: 50px;">是
+									<div class="risk-option-desc">
+										<input type="text" name="w14_text" class="w14_text w_text" placeholder="请说明实际控制人"
+											onblur="subjoinChange(this)" />
+										<p>所填选项不满足购买专户产品条件，请据实慎重选择。</p>
+									</div>
+								</span>
+							</li>
+							<li>
+								<h2><em>15、</em><span>交易实际受益人：</span></h2>
+								<span data-score="0" data-name="w15" data-value="N" class="list">本人</span>
+								<span data-score="0" data-name="w15" data-value="Y" data-input="Y" class="list" style="height: 50px;">他人
+									<div class="risk-option-desc">
+										<input type="text" name="w15_text" class="w15_text w_text" placeholder="请说明实际受益人，如“以配偶为实际受益人”"
+											onblur="subjoinChange(this)" />
+										<p>所填选项不满足购买专户产品条件，请据实慎重选择。</p>
+									</div>
+								</span>
+							</li>
+							<li>
+								<h2><em>16、</em><span>是否有不良诚信记录：</span></h2>
+								<span data-score="0" data-name="w16" data-value="N" class="list">否</span>
+								<span data-score="0" data-name="w16" data-value="Y" data-input="Y" class="list" style="height: 50px;">是
+									<div class="risk-option-desc">
+										<input type="text" name="w16_text" class="w16_text w_text" placeholder="请说明情况，如信用卡逾期还款"
+											onblur="subjoinChange(this)" />
+										<p>所填选项不满足购买专户产品条件，请据实慎重选择。</p>
+									</div>
+								</span>
+							</li>
+							<li>
+								<h2><em>17、</em><span>请问您是否具有完全民事行为能力：</span></h2>
+								<span data-score="0" data-name="E17" data-value="Y" class="list">是</span>
+								<span data-score="0" data-name="E17" data-value="N" data-input="Y" class="list">否
+									<div class="risk-option-desc">
+										<p>所填选项会被判定为风险承受能力最低类别投资者，请据实慎重选择。</p>
+									</div>
+								</span>
+							</li>
+							<li>
+								<h2><em>18、</em><span>请问您是否没有风险容忍度或者不愿承受任何投资损失：</span></h2>
+								<span data-score="0" data-name="E18" data-value="Y" data-input="Y" class="list">是
+									<div class="risk-option-desc">
+										<p>所填选项会被判定为风险承受能力最低类别投资者，请据实慎重选择。</p>
+									</div>
+								</span>
+								<span data-score="0" data-name="E18" data-value="N" class="list">否</span>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<div class="common-box-title" style="height: 95px;">　　
+						<input type="checkbox"
+							id="common_cover_checkbox" />本人了解个人合格投资者须满足个人金融资产不低于500万元或者最近三年个人年均收入不低于40万元的条件，并承诺符合上述条件。本人保证提供的信息真实、准确、完整，知晓并确认若提供的信息不真实、不准确、不完整的，应依法承担相应的法律责任。本人已知晓并确认提供信息发生重要变化、可能影响投资者分类的，应当及时进行更新并告知招商财富资产管理有限公司。
+					</div>
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<button class="common-box-sub-btn" id="common-box-sub-btn">提交问卷</button>
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<a class="common-box-res-btn" id="common-bg-res-btn">重置选项</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- 修改  风险评测成功弹框 -->
+	<div class="cover_bg" id="common_cover_risk" style="display: none;">
+		<div class="common-box" style="height: 430px;">
+			<ul>
+				<li>
+					<h1>风险测评</h1>
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<div class="common-box-context risk1"
+						style="background: #fff;height: 300px;margin-left: 18px;overflow: hidden;margin-top: 0px;">
+						<div class="risk-result-con" id="risk_div_02" style="width: 660px;font-size: 16px;">
+							<div class="result-text">
+								<div style="width: 60px;float: left;">
+									<img alt="" width="" src="/AppWeb/AppWeb_Images/images/pic_success.png"
+										style="width: 60px;height: 60px;margin: 0 20px 10px 30px;">
+								</div>
+								<div style="margin-left: 100px;line-height: 30px;">
+									<span>经测评，您的风险承受能力为：</span><br>
+									<em id="riskLeverCustLever" style="font-size: 25px;font-weight: 600;">C5-积极型（高风险承受能力）</em><br>
+									<span id="riskEvel" style="font-size: 20px;font-weight: bold;">适宜产品等级：</span><br>
+									<span id="evalDate">评测时间：2017年10月14日</span><br>
+									<span id="evalValiDate">问卷有效期：2017年10月14日</span><br>
+									<span>温馨提示：风险等级由高往低依次为：C5-积极型、C4-成长型、C3-平衡型、C2-稳健性、C1-保守型</span>
+								</div>
+							</div>
+							<div class="btn">
+								<a href="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&thirdCatId=RICHES_INFO"
+									class="btn-left">我的财富</a>
+								<a href="javascript:riskLevel_again_back();" class="btn-right">重新测评</a>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+
+	<!-- 20171009版本新增功能 -->
+	<!-- 出生日期选择 start -->
+	<div class="cover_bg" id="div_birthDate_bg" style="display: none;">
+		<div class="choose-box" style="width: 350px;height: 250px;top: 35%;">
+			<h2>选择您的出生日期</h2>
+			<div class="choose-con clear"
+				style="margin: 0 auto;margin-top: 30px;text-align: center;width: auto;height: 60px;">
+				<label style="font-size: 16px;">出生日期：</label>
+				<input id="birthDateText" type="text" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})"
+					class="dateOfBirth Wdate"
+					style="width: 125px;height: 30px;border-radius: 4px;border: 1px solid #bbbbbb;padding: 0 10px;">
+				<br><br>
+				<label id="birthMsg" style="color: red;"></label>
+			</div>
+			<button class="btn-confirm" name="prof-confirm_birthDate"
+				style="width: 100px;margin: 30px 0 30px 60px;display: inline;" onclick="submitBirthDate();">确认</button>
+			<button class="btn-confirm" name="prof-confirm_birthDate"
+				style="width: 100px;margin: 30px;display: inline;background: #f3f3f3;color: #3f3f3f;"
+				onclick="hideBirthDateDiv();">取消</button>
+		</div>
+	</div>
+	<!-- 出生日期选择 end -->
+
+	<!--  新增身份证有效期选择 start-->
+	<div class="cover_bg" id="idCard-select-pop" style="display: none;">
+		<div class="choose-box" style="width: 350px;height: 250px;top: 35%;">
+			<h2>选择您的身份证有效期</h2>
+			<div class="choose-con clear"
+				style="margin: 0 auto;margin-top: 30px;text-align: center;width: auto;height: 60px;">
+				<label style="font-size: 16px;">身份证有效期：</label>
+				<input id="idCardIndate" type="text" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})"
+					class="dateOfIdCard Wdate"
+					style="width: 125px;height: 30px;border-radius: 4px;border: 1px solid #bbbbbb;padding: 0 10px;">
+				永久有效 <input id="forever" name="foever" type="checkbox" >
+				<label id="" style="color: red;"></label>
+			</div>
+			<button class="btn-confirm" name="prof-confirm_birthDate"
+				style="width: 100px;margin: 30px 0 30px 60px;display: inline;" onclick="submitIdCardTime()">确认</button>
+			<button class="btn-confirm" name="prof-confirm_birthDate"
+				style="width: 100px;margin: 30px;display: inline;background: #f3f3f3;color: #3f3f3f;"
+				onclick="cancelSub()">取消</button>
+		</div>
+	</div>
+	<!--  新增身份证有效期选择 end-->
+
+	<!-- 提示框-新增 -->
+	<div class="cover_bg" id="alert_message_bg" style="display: none;">
+		<div class="alert-box" style="width: 640px;height: 255px;">
+			<div class="alert-con" style="width: 95%;height: 120px;margin: 35px auto 0;">
+				<label class="align-center" id="alert_message"
+					style="height: 80%;font-size: 18px;">　　请您准备以下资料，投递至我司邮箱：cmwa@cmwachina.com。客服人员将在5个工作日内和您联系确认信息。<br>　　（1）金融资产证明或个人年收入证明<br>　　（2）投资经历证明或工作证明、职业资格证书<br>如遇任何问题，随时联系我们：400-8878-555（周一至周五
+					09:00-17:30）</label>
+			</div>
+			<button class="btn-close-alert btn-close-alert_msg">我知道了</button>
+		</div>
+	</div>
+
+	<!-- 提示框-新增  -专业投资者申请中提示-->
+	<div class="cover_bg" id="alert_applyIng_bg" style="display: none;">
+		<div class="alert-box" style="width: 640px;height: 520px;top: 30%;">
+			<div class="close_common close_invest_bg" onclick="$('#alert_applyIng_bg').hide();"></div>
+			<div class="alert-con" style="width: 95%;height: 380px;margin: 35px auto 0;">
+				<label class="align-center" id="alert_applyIng" style="font-size: 16px;">
+					专业投资者（个人）须同时符合以下条件：<br>
+					　　（1）金融资产不低于500万元，或者最近3年个人年均收入不低于50万元；<br>
+					　　（2）具有2年以上证券、基金、期货、黄金、外汇等投资经历，或者具有2年以上金融产品设计、投资、风险管理及相关工作经历，或者属于经有关监管部门设立的金融机构、经行业协会备案或登记的证券、期货公司子公司，私募基金管理人的高级管理人员，获得职业资格认证的从事金融相关业务的注册会计师和律师。<br>
+					<br>
+					申请专业投资者所需提交材料和投递邮箱地址：cmwa@cmwachina.com<br>
+					　　（1）金融资产证明或个人年收入证明<br>
+					　　（2）投资经历证明或工作证明、职业资格证书<br>
+					<br>
+					专业投资者申请流程：<br>
+					<img alt="" id="pic_flow" src="/AppWeb/AppWeb_Images/images/pic_flow.png"
+						style="width: 500px;margin: -20px 0 0 44px;">
+				</label>
+			</div>
+			<div id="apply_pass_begin_knowledge"
+				style="display:none; width: 95%; height: 25px; margin: 12px auto; font-size: 16px; ">
+				<span>提示：专业投资者证明材料已审核通过，请进行投资知识测评</span>
+			</div>
+
+			<button class="btn-close-alert btn-close-cancel"
+				style="display: inline;margin: 0 15px 0 130px;width: 150px;">取消申请</button>
+			<button class="btn-close-alert btn-close-applyIng"
+				style="display: inline;margin: 0 15px 0 50px;width: 150px;">开始测评</button>
+		</div>
+	</div>
+
+	<div class="cover_bg none" id="cancelInvprtp_bg" style="z-index: 99">
+		<div class="cover-con pop-up-three recoverpassword-cover">
+			<i class="close" onclick="close_tips('cancelInvprtp_bg')"></i>
+			<span class="cover-con-text act" style="text-align: center;">您确认要取消申请？</span>
+			<input class="cover-con-btn registe" type="button" value="确定" name="confirm" />
+			<input class="cover-con-btn close" onclick="close_tips('cancelInvprtp_bg')" type="button" value="取消"
+				name="close" />
+		</div>
+	</div>
+
+	<!-- 申请转换为专业投资者投资知识测试问卷 -->
+	<div class="cover_bg" id="invest_knowledge_bg" style="display: none;">
+		<div class="common-box">
+			<div class="close_common close_invest_bg"></div>
+			<ul>
+				<li>
+					<h1>投资知识评测</h1>
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<div class="common-box-title" style="height: 30px;">申请转为专业投资者，需进行投资知识测试，请完成下列问卷。</div>
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<div class="common-box-context-invest common-box-context" style="height: 300px;">
+						<ul>
+							<li>
+								<h2><em>1、</em><span>下列关于到期收益率影响因素的说法，错误的是（ ）：</span></h2>
+								<span data-score="N" class="list">A. 在其他因素相同的情况下，债券市场价格与到期收益率呈反方向增减</span>
+								<span data-score="Y" class="list">B. 在其他因素相同的情况下，固定利率债券比零息债券的到期收益率要低</span>
+								<span data-score="N" class="list">C. 在其他因素相同的情况下，票面利率与债券到期收益率呈同方向增减</span>
+								<span data-score="N" class="list">D. 在市场利率波动的情况下，再投资收益率变动会影响投资者实际的到期收益率</span>
+							</li>
+							<li>
+								<h2><em>2、</em><span>下列关于证券投资风险的说法，错误的是（ ）：</span></h2>
+								<span data-score="N" class="list">A. 非系统风险是可以通过组合投资来分散的</span>
+								<span data-score="Y" class="list">B. 非系统风险与整个证券市场的价格存在系统的联系</span>
+								<span data-score="N" class="list">C. 证券投资的风险是指证券收益的不确定性</span>
+								<span data-score="N" class="list">D. 风险是对投资者预期收益的背离</span>
+							</li>
+							<li>
+								<h2><em>3、</em><span>封闭式基金一般采用（ ）方式分红：</span></h2>
+								<span data-score="N" class="list">A. 转股</span>
+								<span data-score="Y" class="list">B. 现金</span>
+								<span data-score="N" class="list">C. 配股</span>
+								<span data-score="N" class="list">D. 股票红利</span>
+							</li>
+							<li>
+								<h2><em>4、</em><span>（ ）是按偿还期限从长到短的顺序，挑选一系列的债券，使现金流与各个时期现金流的需求相等：</span></h2>
+								<span data-score="Y" class="list">A. 现金流匹配策略</span>
+								<span data-score="N" class="list">B. 多重免疫策略</span>
+								<span data-score="N" class="list">C. 多重负债组合策略</span>
+								<span data-score="N" class="list">D. 多重资产组合策略</span>
+							</li>
+							<li>
+								<h2><em>5、</em><span>完全预期理论认为，下降的收益率曲线意味着市场预期短期利率水平会在未来（ ）：</span></h2>
+								<span data-score="Y" class="list">A. 下降</span>
+								<span data-score="N" class="list">B. 上升</span>
+								<span data-score="N" class="list">C. 保持不变</span>
+								<span data-score="N" class="list">D. 先上升后下降</span>
+							</li>
+							<li>
+								<h2><em>6、</em><span>指数型消极投资策略认为在有效市场（ ）：</span></h2>
+								<span data-score="N" class="list">A. 少数积极型股票投资战略可能取得高于其风险承担水平的超额收益</span>
+								<span data-score="N" class="list">B. 多数积极型股票投资战略都不可能取得高于其风险承担水平的超额收益</span>
+								<span data-score="Y" class="list">C. 任何积极型股票投资战略都不可能取得高于其风险承担水平的超额收益</span>
+								<span data-score="N" class="list">D. 只要投资策略合适就能取得高于其风险承担水平的超额收益</span>
+							</li>
+							<li>
+								<h2><em>7、</em><span>下列关于基金巨额赎回的说法不正确的是（ ）：</span></h2>
+								<span data-score="N" class="list">A. 单个开放日基金净赎回申请超过基金总份额的10%时，为巨额赎回</span>
+								<span data-score="N" class="list">B. 出现巨额赎回申请时，基金管理人可以决定接受全额赎回或者部分延迟赎</span>
+								<span data-score="N" class="list">C. 基金连续两个开放日以上发生巨额赎回，如基金管理人认为有必要，可暂停接受赎回申请</span>
+								<span data-score="Y" class="list">D. 当基金管理人认为对付投资者的赎回申请有困难，可以对所有赎回申请延期办理</span>
+							</li>
+							<li>
+								<h2><em>8、</em><span>对证券投资基金从上市公司分配取得的股息红利所得，扣缴义务人在代扣代缴个人所得税，按（ ）计算应纳税所得额：</span></h2>
+								<span data-score="N" class="list">A. 20%</span>
+								<span data-score="N" class="list">B. 30%</span>
+								<span data-score="N" class="list">C. 40%</span>
+								<span data-score="Y" class="list">D. 50%</span>
+							</li>
+							<li>
+								<h2><em>9、</em><span>下列财务比率中，最为稳健的偿债能力指标是（ ）：</span></h2>
+								<span data-score="N" class="list">A. 资产负债比</span>
+								<span data-score="N" class="list">B. 流动比率</span>
+								<span data-score="N" class="list">C. 速动比率</span>
+								<span data-score="Y" class="list">D. 现金比率</span>
+							</li>
+							<li>
+								<h2><em>10、</em><span>（ ）称为企业的“第一会计报表：</span></h2>
+								<span data-score="Y" class="list">A. 资产负债表</span>
+								<span data-score="N" class="list">B. 利润表</span>
+								<span data-score="N" class="list">C. 现金流量表</span>
+								<span data-score="N" class="list">D. 所有者权益表</span>
+							</li>
+							<li>
+								<h2><em>11、</em><span>基金管理人利用基金财产为基金份额持有人以为的第三人牟取利益，属于合规风险中的（ ）：</span></h2>
+								<span data-score="Y" class="list">A. 投资合规性风险</span>
+								<span data-score="N" class="list">B. 销售合规性风险</span>
+								<span data-score="N" class="list">C. 信息披露合规性风险</span>
+								<span data-score="N" class="list">D. 反洗钱合规性风险</span>
+							</li>
+							<li>
+								<h2><em>12、</em><span>一般来说，（ ）伴随着巨大的资本利得，被认为是推出的最佳渠道：</span></h2>
+								<span data-score="Y" class="list">A. 首次公开发行</span>
+								<span data-score="N" class="list">B. 买壳上市或借壳上市</span>
+								<span data-score="N" class="list">C. 管理层回购</span>
+								<span data-score="N" class="list">D. 二次出售</span>
+							</li>
+							<li>
+								<h2><em>13、</em><span>（ ）是基金公司管理基金投资的最高决策机构：</span></h2>
+								<span data-score="N" class="list">A. 投资部</span>
+								<span data-score="N" class="list">B. 研究部</span>
+								<span data-score="N" class="list">C. 交易部</span>
+								<span data-score="Y" class="list">D. 投资决策委员会</span>
+							</li>
+							<li>
+								<h2><em>14、</em><span>基金销售费用不包括（ ）：</span></h2>
+								<span data-score="N" class="list">A. 申赎费</span>
+								<span data-score="N" class="list">B. 赎回费</span>
+								<span data-score="Y" class="list">C. 基金转换费</span>
+								<span data-score="N" class="list">D. 销售服务费</span>
+							</li>
+							<li>
+								<h2><em>15、</em><span>下列关于回购协议的表述，错误的是（ ）：</span></h2>
+								<span data-score="N" class="list">A. 回购协议是指资金需求方在出售证券的同时与证券的购买方按约定价格回购所卖证券的交易行为</span>
+								<span data-score="N" class="list">B. 本质上，回购协议是一种证券抵押贷款，抵押品为国债为主</span>
+								<span data-score="N" class="list">C. 按回购期限划分，我国在交易所挂牌的国债回购可以分为1天，2天，3天，4天，7天，14天，28天，91天和182天</span>
+								<span data-score="Y" class="list">D. 由于买断式回购历史很长，回购市场以买断式回购为主要交易品种</span>
+							</li>
+							<li>
+								<h2><em>16、</em><span>在我国，对（ ）从证券市场中获得的收入，包括买卖股票、债券的原价收入、股票的股息、红利收入、债券的利息收入及其他收入，暂不征收企业所得税：</span></h2>
+								<span data-score="N" class="list">A. 非银行金融机构</span>
+								<span data-score="N" class="list">B. 企业</span>
+								<span data-score="Y" class="list">C. 证券投资基金</span>
+								<span data-score="N" class="list">D. 基金管理公司</span>
+							</li>
+							<li>
+								<h2><em>17、</em><span>李先生将其资金分别投向A，B，C三只股票，其占总资金的百分比分别为40%，40%，20%；股票A的期望收益率为14%，股票B的期望收益率为20%，股票C的期望收益率为8%；则该股票组合期望收益率为（
+										）：</span></h2>
+								<span data-score="N" class="list">A. 15%</span>
+								<span data-score="Y" class="list">B. 15.2%</span>
+								<span data-score="N" class="list">C. 15.3%</span>
+								<span data-score="N" class="list">D. 15.4%</span>
+							</li>
+							<li>
+								<h2><em>18、</em><span>相关系数的大小范围为（ ）：</span></h2>
+								<span data-score="Y" class="list">A. +1和-1之间</span>
+								<span data-score="N" class="list">B. 0和1之间</span>
+								<span data-score="N" class="list">C. -1和0之间</span>
+								<span data-score="N" class="list">D. 1到正无穷</span>
+							</li>
+							<li>
+								<h2><em>19、</em><span>证券组合的目标可以简单表述为，在既定的收益水平下能承担的（ ）：</span></h2>
+								<span data-score="Y" class="list">A. 最低风险</span>
+								<span data-score="N" class="list">B. 最大化收益</span>
+								<span data-score="N" class="list">C. 最高风险</span>
+								<span data-score="N" class="list">D. 最少收益</span>
+							</li>
+							<li>
+								<h2><em>20、</em><span>复制的组合的股票数越少，跟踪误差（ ），调整所花费的交易成本（ ）：</span></h2>
+								<span data-score="Y" class="list">A. 越大，越低</span>
+								<span data-score="N" class="list">B. 越大，越高</span>
+								<span data-score="N" class="list">C. 越小，越低</span>
+								<span data-score="N" class="list">D. 越小，越高</span>
+							</li>
+
+						</ul>
+					</div>
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<button class="invest_knowledge_bg_btn common-box-sub-btn">提交问卷</button>
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<a class="invest_knowledge_bg_res_btn common-box-res-btn">重置选项</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- 提示框-新增  -专业投资者投资知识测评成功提示-->
+	<div class="cover_bg" id="alert_invest_knowledge_success" style="display: none;">
+		<div class="alert-box" style="width: 640px;height: 360px;">
+			<div class="alert-con" style="width: 95%;height: 60%;margin: 43px auto 0;">
+				<label class="align-center" id="alert_applyIng" style="height: 80%;font-size: 16px;">
+					<img alt="" width="" src="/AppWeb/AppWeb_Images/images/pic_success.png"
+						style="width: 60px;height: 60px;margin: 0 20px 10px 30px;">
+					恭喜您成功通过测试，请您认真阅读以下内容：<br>
+				</label>
+				<label class="align-center" id="alert_applyIng" style="height: 80%;font-size: 16px;">
+					　　一、经营机构在向专业投资者销售产品或提供服务时，
+					对专业投资者履行的适当性职责区别于普通投资者，普通投资者在信息告知、风险警示、适当性匹配等方面享有特别保护。<br>
+					　　二、专业投资者具备必要的投资知识和经验，自行做出投资决定并自主承担投资风险。<br>
+					　　三、当您提供的财产状况、交易情况、工作经历等信息发生重大变化时，请及时通知招商财富，经复核如不再符合专业投资者的申请条件，将不再被认定为专业投资者。
+				</label>
+			</div>
+			<button id="btn-close-success" class="btn-close-alert btn-close-success">我知道了</button>
+		</div>
+	</div>
+
+	<!-- 提示框-新增  -专业投资者投资知识测评未达标提示-->
+	<div class="cover_bg" id="alert_invest_knowledge_reset" style="display: none;">
+		<div class="alert-box">
+			<div class="alert-con">
+				<p class="align-center">很抱歉，您的投资知识测试未达标！</p>
+			</div>
+			<button id="btn_reset_test" class="btn-close-alert"
+				style="display: inline;width: 150px;margin: 0 20px 0 78px;">重新测试</button>
+			<button id="btn_cancel_test" class="btn-close-alert"
+				style="display: inline;width: 150px;background: #f3f3f3;color: #3f3f3f;">稍后再测</button>
+		</div>
+	</div>
+
+	<select id="taxNation_temp" name="taxNation_temp" style="display: none;">
+		<option value="">请选择</option>
+		<option value="1">中国</option>
+		<option value="2">中国香港</option>
+		<option value="3">中国澳门</option>
+		<option value="4">中国台湾</option>
+		<option value="5">海外</option>
+	</select>
+
+	<div id="taxArea_temp" style="display: none">
+		<select name="taxArea" style="width: 200px;" class="select2">
+			<option value="">请选择</option>
+			<option value="156-1">中国</option>
+			<option value="156-2">香港</option>
+			<option value="156-3">澳门</option>
+			<option value="156-4">台湾</option>
+		</select>
+	</div>
+	<!-- 重新选择税收居民类型-新增  -->
+	<div class="cover_bg" id="revenue_resident_bg" style="display: none;">
+		<div class="ware-box1 ware-box" style="height: 563px; margin: -160px 0 0 -299px;">
+			<div class="close_address close_revenue_resident_bg"></div>
+			<h2 style="width: auto;position: absolute;left: 37%;font-size: 20px;top: 22px;color: #ca132c;">选择税收居民类型</h2>
+			<div class="tips"
+				style="width: 86%;height: 42px;position: absolute;border-radius: 4px;background: #f1f1f1;top: 75px;left: 40px;">
+				<p style="font-size: 14px;color: #313131;padding: 0 11px;line-height: 42px;">请根据实际情况选择您的税收居民类型。</p>
+			</div>
+			<div class="risk-add-list">
+				<ul>
+					<li>
+						<div class="common_bg tax_resident_bg">
+							<div class="div-cover title-tag">
+								<span><label style="color: red;">*</label>税收居民类型：</span>
+							</div>
+							<div class="div-cover input-tag" style="width: auto;">
+								<select id="taxResidentType" name="taxResidentType" style="width: 330px;" class="select2 taxpayerCode"
+									onchange="taxResidentChange(this)">
+									<option value="">请选择</option>
+									<option value="1">仅为中国税收居民</option>
+									<option value="2">仅为非居民</option>
+									<option value="3">既是中国又是其他类型税收居民</option>
+								</select>
+								<em class="tax_desc_img"><img src="/AppWeb/AppWeb_Images/images/ic_alert-transparent1.png" height="20"
+										width="20" alt="" onclick="showResidentTypeExplain();"></em>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="common_bg tax_resident_bg englishNameDiv" style="display: none;">
+							<div class="div-cover title-tag">
+								<span><label style="color: red;">*</label>中文姓名：</span>
+							</div>
+							<div class="div-cover input-tag" style="width: auto;">
+								<input type="text" disabled="disabled" class="userCustName taxpayerCode" id="userCustName"
+									name="userCustName">
+							</div>
+							<div class="div-cover title-tag">
+								<span><label style="color: red;">*</label>First Name：</span>
+							</div>
+							<div class="div-cover input-tag" style="width: auto;">
+								<input type="text" class="englishName taxpayerCode" id="englishName" name="englishName"
+									placeholder="First Name">
+							</div>
+							<div class="div-cover title-tag">
+								<span><label style="color: red;">*</label>Last Name：</span>
+							</div>
+							<div class="div-cover input-tag" style="width: auto;">
+								<input type="text" class="englishSurname taxpayerCode" id="englishSurname" name="englishSurname"
+									placeholder="Last Name">
+							</div>
+						</div>
+					</li>
+
+					<li>
+						<div class="common_bg tax_resident_bg birthplace" style="display: none;">
+							<div class="div-cover title-tag">
+								<span><label style="color: red;">*</label>出生地：</span>
+							</div>
+							<div class="div-cover input-tag" style="width: auto;">
+								<select id="birth_nation" name="birth_nation" style="width: 115px;" class="birth taxpayerCode"
+									onchange="changeNation();">
+									<option value="">请选择</option>
+									<option value="1">中国</option>
+									<option value="2">中国香港</option>
+									<option value="3">中国澳门</option>
+									<option value="4">中国台湾</option>
+									<option value="5">海外</option>
+								</select>
+
+							</div>
+							<div class="div-cover input-tag" style="width: auto;margin: 0 15px;">
+								<select id="birth_region" name="birth_region" style="width: 200px;" class="birth taxpayerCode">
+									<option value="">请选择</option>
+								</select>
+							</div>
+							<div class="div-cover input-tag" style="width: auto;margin: 0 0 0 130px;">
+								<input type="text" class="birth_address taxpayerCode" id="birth_address" name="birth_address"
+									placeholder="请输入州、省、市，不少于5个字">
+							</div>
+						</div>
+					</li>
+
+					<li>
+						<div class="common_bg tax_resident_bg resideadd" style="display: none;">
+							<div class="div-cover title-tag">
+								<span><label style="color: red;">*</label>现居国家：</span>
+							</div>
+							<div class="div-cover input-tag" style="width: auto;">
+								<select id="reside_nation" name="reside_nation" style="width: 115px;" class="birth taxpayerCode"
+									onchange="changeResideNation();">
+									<option value="">请选择</option>
+									<option value="1">中国</option>
+									<option value="2">中国香港</option>
+									<option value="3">中国澳门</option>
+									<option value="4">中国台湾</option>
+									<option value="5">海外</option>
+								</select>
+							</div>
+							<div class="div-cover input-tag" style="width: auto;margin: 0 15px;">
+								<select id="reside_region" name="reside_region" style="width: 200px;" class="birth taxpayerCode">
+									<option value="">请选择</option>
+								</select>
+							</div>
+							<div class="div-cover title-tag">
+								<span><label style="color: red;">*</label>现居地址：</span>
+							</div>
+							<div class="div-cover input-tag" style="width: auto;">
+								<input type="text" class="reside_address taxpayerCode" id="reside_address" name="reside_address"
+									placeholder="请输入详细现居地址">
+							</div>
+							<div class="div-cover title-tag">
+								<span><label style="color: red;">*</label>Present Address：</span>
+							</div>
+							<div class="div-cover input-tag" style="width: auto;">
+								<input type="text" class="reside_address_english taxpayerCode" id="reside_address_english"
+									name="reside_address_english" placeholder="Please enter your present address">
+							</div>
+						</div>
+					</li>
+
+					<div class="tax_add_div" id="tax_template" style="display: none;">
+						<li>
+							<div class="common_bg tax_nationality_bg">
+								<div class="div-cover title-tag">
+									<span><label style="color: red;">*</label>税收居民国(地区)：</span>
+								</div>
+								<div class="div-cover input-tag" style="width: auto;">
+									<select name="taxNationality" style="width: 115px;" class="select2"
+										onchange="taxNationalityChange(this)">
+										<option value="">请选择</option>
+									</select>
+								</div>
+								<div class="div-cover input-tag" style="width: auto;margin: 0 15px;">
+									<select name="taxArea" style="width: 200px;" class="select2">
+										<option value="">请选择</option>
+									</select>
+								</div>
+								<div class="div-cover input-tag" style="width: 29px;text-align: center;">
+									<em class="tax_desc_img addTaxNation"><img src="/AppWeb/AppWeb_Images/images/bt_add1.png" height="20"
+											width="20" alt="" onclick="addTaxNation()"></em>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="common_bg taxpayerCode_bg">
+								<div class="div-cover title-tag">
+									<span><label style="color: red;">*</label>纳税人识别号：</span>
+								</div>
+								<div class="div-cover input-tag">
+									<input type="text" class="taxpayerCode" name="taxpayerCode">
+									<label><input type="checkbox" name="isTaxpayerCode" style="margin-left: 10px;"
+											onclick="isTaxpayerEvent(this)">&nbsp;无</label>
+								</div>
+							</div>
+						</li>
+						<div style="display: none;">
+							<li>
+								<div class="common_bg notcode_cause_bg">
+									<div class="div-cover title-tag">
+										<span><label style="color: red;">*</label>无识别号的原因：</span>
+									</div>
+									<div class="div-cover input-tag">
+										<select name="notCodeCause" class="select2" style="width: 330px;"
+											onchange="notCodeCauseEvent(this)">
+											<option value="">请选择</option>
+											<option value="1">居民国（地区）不发放纳税人识别号</option>
+											<option value="2">账号持有人未能取得纳税人识别号</option>
+										</select>
+									</div>
+								</div>
+							</li>
+							<li style="display: none;">
+								<div class="common_bg notget_cause_bg">
+									<div class="div-cover title-tag">
+										<span><label style="color: red;">*</label>未取得原因：</span>
+									</div>
+									<div class="div-cover input-tag">
+										<input id="notGetCause" type="text" class="notGetCause taxpayerCode" name="notGetCause">
+									</div>
+								</div>
+							</li>
+						</div>
+					</div>
+				</ul>
+			</div>
+			<ul>
+				<li style="width: 342px;height: 90px;margin-left: 180px;margin-top: 15px;">
+					<input type="checkbox" name="revenue_hint" id="revenue_hint">
+					本人确认上述信息的真实、准确和完整，且当这些信息发生变更时，将在30日内通知招商财富，否则本人承担由此造成的不利后果。
+				</li>
+			</ul>
+			<li class="ware_btn_li" style="bottom: 18px;position: absolute;">
+				<button class="btn_submit_revenue">确认</button>
+			</li>
+		</div>
+	</div>
+
+	<!-- 新增 税收居民类型提示框 start -->
+	<div class="cover_bg" id="revenue_resident_type_bg" style="display: none;">
+		<div class="choose-box" style="height: 360px;">
+			<div class="btn-close"></div>
+			<h2>中国税收居民说明</h2>
+			<div class="choose-con clear" style="height: 190px; font-size: 14px;">
+				　　税收居民类型包括中国税收居民、非居民以及既是中国又是其他类型税收居民。<br>
+				1.中国税收居民：指在中国境内有住所，或者无住所而在境内居住满一年的个人。
+				在中国境内有住所是指因户籍、家庭、经济利益关系而在中国境内习惯性居住。
+				在境内居住满一年，是指在一个纳税年度中在中国境内居住365日。临时离境的，不扣减日数。
+				临时离境，是指在一个纳税年度中一次不超过30日或者多次累计不超过90日的离境。<br>
+				2.非居民：指中国税收居民以外的个人。其他类型税收居民身份认定规则及纳税识别号相关信息请参见国家税收务总局网站<br>
+				（http://www.chinatax.gov.cn/aeoi_index.html）
+			</div>
+			<button class="btn-confirm_yes" name="prof-confirm">确认</button>
+		</div>
+	</div>
+	<!-- 新增 税收居民类型提示框 end -->
+
+	<!-- 风险评测历史记录 -->
+	<div class="cover_bg" id="risk_history_bg" style="display: none;">
+		<div class="common-box" style="width: 600px;height: 380px;top: 40%;">
+			<div class="close_common close_risk_history_bg"></div>
+			<ul>
+				<li>
+					<div class="common-box-context-invest common-box-context"
+						style="height: 285px;background: #fff;margin: 50px auto;padding: 0;width: 530px;overflow-y: auto;overflow-x: hidden;border: 1px solid #d5d5d5;">
+						<ul>
+							<li>
+								<div style="position: absolute;">
+									<table style="text-align: center;/* position: absolute; */width: 530px;/* top: 51px; */">
+										<tbody>
+											<tr style="background: #f3f3f3;">
+												<td
+													style="border: 1px solid #d5d5d5;width: 50%;height: 44px;line-height: 44px;border-left: 0;border-top: 0;">
+													测评时间</td>
+												<td style="height: 30px;border: 1px solid #d5d5d5;border-right: 0;border-top: 0;">测评结果</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div style="position: absolute;top: 95px;height: 241px;overflow: auto;overflow-x: hidden;width: 530px;">
+									<table id="risk_h_data" style="text-align: center;margin: 0 auto;width: 530px;"></table>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- 新增 E-->
+
+	<!-- 20180314 新增 S -->
+
+	<!-- 用户是否风险测评或者测评是否已过有效期提示框 -->
+	<div class="cover_bg" id="risk_message_bg" style="display: none;">
+		<div class="alert-box" style="width: 560px;height: 225px;top: 50%;">
+			<div class="alert-con" style="width: 95%;height: 95px;text-align: center;margin-bottom: -50px;">
+				<label class="align-center" id="risk_message" style="height: 60%;font-size: 18px;"></label>
+			</div>
+			<button class="btn-close-alert btn-close-alert_msg">确定</button>
+		</div>
+	</div>
+
+	<div class="cover_bg" id="plan_message_bg" style="display: none;">
+		<!-- <div class="common-box" style="width: 450px;height: 380px;position: absolute;bottom: 5px;right: 3px;left: initial;top: initial;">
+			<div style="width: 100%;height: 46px;position: absolute;">
+				<div class="close_common"></div>
+				<div style="">
+					<h3 style="margin: 15px 0 0 30px;">活动活动活动</h3>
+				</div>
+			</div>
+			<div id="plan_bg_pic" style="cursor: pointer;width: 100%;height: 100%;margin-top: 10%;background: url(/AppWeb/AppWeb_Images/images/plan_bg.png) no-repeat;"></div>
+		</div> -->
+
+		<div class="common-box"
+			style="width: 450px;height: 335px;position: absolute;top: 50%;left: 50%;margin-left: -225px; margin-top: -167px;">
+			<div class="close_plan"
+				style="position: absolute;right: 12px;width: 20px;height: 20px;top: 12px;background: url(/AppWeb/AppWeb_Images/images/pic_close_plan.png);cursor: pointer;z-index: 2;">
+			</div>
+			<div id="plan_bg_pic"
+				style="cursor: pointer;width: 100%;height: 100%;background: url(/AppWeb/AppWeb_Images/images/plan_bg.png) no-repeat;background-size: 100%;">
+			</div>
+		</div>
+	</div>
+	<!-- 20180314 新增 E -->
+
+	<div class="cover_bg none" id="updateOrderDiv" style="z-index: 87;">
+	</div>
+	<div class="cover_bg none" id="updateOrderMoneyDiv" style="z-index: 87;">
+		<div class="main-con updateapmoney placeholder-updatepaymoney">
+			<i class="close"></i>
+			<h2>修改订单金额</h2>
+			<ul>
+				<li><input type="text" id="newMoney"> <i>元</i></li>
+				<li><input class="password" id="tPassWordOrder" type="password" placeholder="安全码"> <a
+						href="/AppService/business/account/resetTPassword.shtml" class="backpassword">找回密码</a></li>
+				<li class="identify"><input class="identify-input updatepaybankpassword" id="randomCode1" type="text"
+						placeholder="验证码">
+					<span class="indentifyimg"> <img src="/AppService/setUp/buildimageservlet.xhtml" id="rondomCodeImg1"
+							onclick="getRandomCode1()" height="42" width="80" /></span></li>
+			</ul>
+			<span class="btn"> <a href="javascript:modifyAppointRequestMoney();" class="fl">确认修改</a> <a
+					href="javascript:closeUpdateMoney();" class="fr">放弃修改</a>
+			</span>
+		</div>
+	</div>
+	<div class="cover_bg none" id="updateOrderBankCardDiv" style="z-index: 87;">
+		<div class="main-con updateapmoney updateapbank placeholder-updateapmoney placeholder-updatepaybank">
+			<i class="close"></i>
+			<h2>修改支付银行卡</h2>
+			<div class="select-cover">
+				<span class="select-value"></span>
+				<div class="select-text none">
+					<div class="select-text-list">
+					</div>
+				</div>
+			</div>
+			<ul>
+				<li><input class="password" id="tPassWordBank" type="password" placeholder="安全码"> <a
+						href="/AppService/business/account/resetTPassword.shtml" class="backpassword">找回密码</a></li>
+				<li class="identify"><input class="identify-input identify-input-update-new" type="text" id="randomCode"
+						placeholder="验证码"> <span class="indentifyimg"> <img src="/AppService/setUp/buildimageservlet.xhtml"
+							id="rondomCodeImg" onclick="getRandomCode()" height="42" width="80" /></span></li>
+			</ul>
+			<span class="btn"> <a href="javascript:modifyAppointRequestBankCard();" class="fl">确认修改</a> <a
+					href="javascript:closeUpdateOrderBankCard();" class="fr">放弃修改</a>
+			</span>
+		</div>
+	</div>
+	<div class="cover_bg none" id="deleteBankCard" style="z-index: 99">
+		<div class="cover-con pop-up-three recoverpassword-cover">
+			<i class="close"></i>
+			<span class="cover-con-text act" style="text-align: center;">您正在进行删除银行卡操作</span>
+			<input class="cover-con-btn registe" id="deleteBank" type="button" value="立即删除" />
+			<input class="cover-con-btn close" onclick="closeCanelBindDiv()" type="button" value="撤销操作" />
+		</div>
+	</div>
+
+	<!-- 2018032新增S -->
+	<!--弹窗指引-->
+	<div class="cover_bg" id="guide" style="display: none;">
+		<div class="gudieBox">
+			<h2>信息披露说明</h2>
+			<div class="text">
+				<p>如您需在线查询信息披露，请您做好以下准备：</p>
+				<p>(1)完成用户注册和实名认证：<br>若您当日实名，需要T+1个工作日进行确认，请您耐心等待再查询结果。</p>
+				<p class="pt1">
+					(2)如您已经实名，您需满足如下条件：<br>
+					A、您已购买我司产品，且产品披露时点仍在存续中;<br>
+					B、资管计划年报、季报披露一般原则：<br>
+					季度报告：合同有约定且产品运作满2个月；<br>
+					年度报告：合同有约定且产品运作满3个月；
+				</p>
+				<p class="pt2">如遇任何问题，随时联系我们：400-8878-555（周一至周五09:00-17:30）。</p>
+			</div>
+			<div class="btn">我知道了</div>
+			<span class="icon"></span>
+		</div>
+		<div class="nextGuide" style="display: none;">
+			<div class="w">
+				<div class="see"></div>
+				<div class="know"></div>
+			</div>
+
+		</div>
+	</div>
+	<div id="refuse" style="display: none;">
+
+	</div>
+
+	<!--  蒙层 -->
+	<div class="backLayer" style="display:none;">
+
+	</div>
+
+
+
+	<!-- footer -->
+	<!--#include virtual="/AppService/public/footer.shtml"-->
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/mainFrame.js?version=1.5"></script>
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/dialog.min.js"></script>
+	<!-- <script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/applicationGroups.js"></script> -->
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/applicationGroups.min.js"></script>
+</body>
+
+</html>

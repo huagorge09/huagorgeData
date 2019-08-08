@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title></title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+  <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+  <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+  <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/dialogNew.css">
+  <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+  <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+  <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedomNew.js"></script>
+  <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1New.min.js"></script>
+  <!--  滚动条js  -->
+  <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscrollNew.js"></script>
+
+  <!-- datepicker S -->
+  <!-- <link rel="stylesheet" href="http://www.jq22.com/jquery/font-awesome.4.6.0New.css"> -->
+  <!-- <link href="/WeixinWeb/WeixinWeb_Css/datepicker/foundation.minNew.css" rel="stylesheet" type="text/css"> -->
+  <!-- <link href="/WeixinWeb/WeixinWeb_Css/datepicker/foundation-datepickerNew.css" rel="stylesheet" type="text/css"> -->
+  <!-- <script src="/WeixinWeb/WeixinWeb_JSLibrary/datepicker/foundation-datepickerNew.js"></script> -->
+  <!-- <script src="/WeixinWeb/WeixinWeb_JSLibrary/datepicker/locales/foundation-datepicker.zh-CNNew.js"></script> -->
+
+
+  <link href="/WeixinWeb/WeixinWeb_Css/LCalendarNew.css" rel="stylesheet" type="text/css">
+  <script src="/WeixinWeb/WeixinWeb_JSLibrary/LCalendarNew.min.js"></script>
+
+  <!-- <script src="/WeixinWeb/WeixinWeb_JSLibrary/datePicketer/laydateNew.js"></script> -->
+  <!-- <script src="/WeixinWeb/WeixinWeb_JSLibrary/laydate/laydateNew.js"></script> -->
+  <!-- datepicker E -->
+
+
+  <style type="text/css">
+    .cancel-address {
+      display: block;
+      width: 90%;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      margin: 0 auto;
+      color: #fff;
+      font-size: 1.7rem;
+      border-radius: 3px;
+      background: #d3d3d3;
+    }
+
+    .house-input {
+      margin-left: 10%;
+      width: 66%;
+      border: 0px;
+      color: #999;
+    }
+
+    @media only screen and (min-device-width: 360px) {
+
+      .input-text label,
+      .input-password label {
+        font-size: 1.5rem;
+      }
+
+      .addressTitle {
+        width: 107px !important;
+      }
+
+      .input-text {
+        margin: 0 auto;
+      }
+    }
+
+    @media only screen and (max-device-width: 359.9px) {
+
+      .input-text label,
+      .input-password label {
+        font-size: 1.3rem;
+      }
+
+      .addressTitle {
+        width: 7.8rem !important;
+      }
+
+      .input-text {
+        margin: 0 0 0 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="page">
+    <div id="wrapper">
+      <div id="scroller" style="height: 100%;">
+        <!--#include virtual="/WeixinService/headerOrFooter/headerNew.shtml"-->
+        <section>
+          <div class="center-accountset">
+            <div class="input-text">
+              <label class="addressTitle">身份证有效期：</label>
+              <input type="text" class="calendars" readonly="readonly" id="idExpireDate" onfocus="this.blur()"
+                style="color: #999;padding-left: 10px;width: 100px;" placeholder="请选择身份证有效期">
+                是否永久有效<input type="checkbox" name="foever" style="width: 15px;height: 43px;line-height: 43px;"/>
+            </div>
+          </div>
+        </section>
+	        <div class="btn-state">
+						<a href="javascript:cancelICDateUpdate();" class="btn-back">返回</a>
+						<a href="javascript:saveIcDate();" class="btn-golden">保存修改</a>
+					</div>
+      </div>
+    </div>
+  </section>
+  <!--  蒙层 -->
+  <div class="backLayer" style="display: none;"></div>
+  
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/dialogNew.min.js"></script>
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/updateIdCardIndateNew.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/updateIdCardIndateNew.min.js"></script> -->
+<script type="text/javascript">
+/* document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/updateIdCardIndateNew.js?version='+jsversion+'"><\/script>'); */
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/updateIdCardIndateNew.min.js?version='+jsversion+'"><\/script>');
+</script>
+</body>
+
+</html>

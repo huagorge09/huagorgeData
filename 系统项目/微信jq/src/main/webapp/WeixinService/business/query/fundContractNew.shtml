@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+   	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/bannerStyleNew.css">
+	
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedomNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/numberToCapitalNew.js"></script>
+	<!--  滚动条js  -->
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscrollNew.js"></script>
+</head>
+
+<script type="text/javascript">
+
+</script>
+
+<body>
+
+<section class="page contract">
+   <div id="wrapper">
+        <div id="scroller">
+	    <!--#include virtual="/WeixinService/headerOrFooter/headerNew.shtml"-->
+	    <section>
+	        <div id="dd1" class="xy_head">
+	            
+	        </div>
+	        <div class="xy_content">
+	            <dl>
+	                <dt onclick="showAndHide('dd2')"><h3 id="title2"></h3></dt>
+	                <dd id="dd2">
+	                    
+	                </dd>
+	            </dl>
+	
+	            <dl>
+	                <dt onclick="showAndHide('dd3')"><h3 id="title3"></h3></dt>
+	                <dd id="dd3">
+	                    
+	                </dd>
+	            </dl>
+	            <dl>
+	                <dt onclick="showAndHide('dd4')"><h3 id="title4"></h3></dt>
+	                <dd id="dd4">
+	                 
+	    			</dd>
+	            </dl>
+	        </div>
+	    </section>
+	</div></div>
+</section>
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/fundContractNew.min.js"></script> -->
+<script type="text/javascript">
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/fundContractNew.min.js?version='+new Date().getTime()+'"><\/script>');
+</script>
+</body>
+</html>

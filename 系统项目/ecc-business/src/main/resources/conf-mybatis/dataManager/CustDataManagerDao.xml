@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.datamanager.CustDataManagerDao">
+	<select id="queryCustDataInfoListPage" resultType="openAccountDto" parameterType="sparam">
+		SELECT *
+		  FROM (SELECT D.APPSERIALNO,
+		               F.CUSTNO,
+		               F.APDT,
+		               D.FILENO AS fileno,
+		               F.FUNDACCT,
+		               F.INVNM,
+		               F.INVTP,
+		               F.APKIND,
+		               IBF_GET_PARAMNAME('SYSTEM','APKIND',F.APKIND) AS apkindName,
+		               D.ORIGINAL AS ifOriginal,
+		               D.ISFULL AS ifalldocument,
+		               D.ISSCAN AS isscan,
+		               D.FILED AS ifsaved,
+		               D.KEEPADDRESS,
+		               D.ATTACH AS isupload,
+		               D.SALESACCMANAGER,
+		               D.REMARK AS remarkinfo,
+		               F.INSERTTIMESTAMP,
+		               CE.VOICERECORD,
+		               DC.INVPRTP
+		          FROM APPFDACBLOTTER   F,
+		               DS_CUSTINFODATA  D,
+		               CUSTINFOEX       CE,
+		               DS_CUSTCLASSINFO DC
+		         WHERE F.SERIALNO = D.APPSERIALNO
+		           AND F.CUSTNO = CE.CUSTNO
+		           AND F.CUSTNO = DC.CUSTNO
+		           AND F.APPLYST NOT IN ('F', 'C')
+		         GROUP BY F.CUSTNO,
+		                  F.APDT,
+		                  D.FILENO,
+		                  F.FUNDACCT,
+		                  F.INVNM,
+		                  F.INVTP,
+		                  F.APKIND,
+		                  D.APPSERIALNO,
+		                  D.ORIGINAL,
+		                  D.ISFULL,
+		                  D.ISSCAN,
+		                  D.FILED,
+		                  D.KEEPADDRESS,
+		                  D.ATTACH,
+		                  D.SALESACCMANAGER,
+		                  D.REMARK,
+		                  F.INSERTTIMESTAMP,
+		                  CE.VOICERECORD,
+		                  DC.INVPRTP
+		        UNION ALL
+		        SELECT D.APPSERIALNO,
+		               F.CUSTNO,
+		               F.APDT,
+		               D.FILENO AS fileno,
+		               F.FUNDACCT,
+		               F.INVNM,
+		               F.INVTP,
+		               F.APKIND,
+		               IBF_GET_PARAMNAME('SYSTEM','APKIND',F.APKIND) AS apkindName,
+		               D.ORIGINAL AS ifOriginal,
+		               D.ISFULL AS ifalldocument,
+		               D.ISSCAN AS isscan,
+		               D.FILED AS ifsaved,
+		               D.KEEPADDRESS,
+		               D.ATTACH AS isupload,
+		               D.SALESACCMANAGER,
+		               D.REMARK AS remarkinfo ,
+		               F.INSERTTIMESTAMP,
+		               CE.VOICERECORD,
+		               DC.INVPRTP
+		          FROM H_APPFDACBLOTTER F,
+		               DS_CUSTINFODATA  D,
+		               CUSTINFOEX       CE,
+		               DS_CUSTCLASSINFO DC
+		         WHERE F.SERIALNO = D.APPSERIALNO
+		           AND F.CUSTNO = CE.CUSTNO
+		           AND F.CUSTNO = DC.CUSTNO
+		         GROUP BY F.CUSTNO,
+		                  D.APPSERIALNO,
+		                  F.APDT,
+		                  D.FILENO,
+		                  F.FUNDACCT,
+		                  F.INVNM,
+		                  F.INVTP,
+		                  F.APKIND,
+		                  D.ORIGINAL,
+		                  D.ISFULL,
+		                  D.ISSCAN,
+		                  D.FILED,
+		                  D.KEEPADDRESS,
+		                  D.ATTACH,
+		                  D.SALESACCMANAGER,
+		                  D.REMARK,
+		                  F.INSERTTIMESTAMP,
+		                  CE.VOICERECORD,
+		                  DC.INVPRTP) DT
+		 WHERE 1 = 1
+		 <if test="sp.strDate != null and sp.strDate !='' and sp.endDate != null and sp.endDate !='' ">
+				AND APDT BETWEEN #{sp.strDate} AND #{sp.endDate}
+		 </if>
+		 <if test="sp.fileno != null and sp.fileno !='' ">
+				AND FILENO like '%'|| #{sp.fileno}||'%'
+		 </if>
+		 <if test="sp.fundacco != null and sp.fundacco !='' ">
+				AND FUNDACCT like '%'|| #{sp.fundacco}||'%'
+		 </if>
+		 <if test="sp.invnm != null and sp.invnm !='' ">
+				AND INVNM like '%'|| #{sp.invnm}||'%'
+		 </if>
+		 <if test="sp.custno != null and sp.custno !='' ">
+				AND CUSTNO = #{sp.custno}
+		 </if>
+		 <if test="sp.keepaddress != null and sp.keepaddress !='' ">
+				AND KEEPADDRESS like '%'|| #{sp.keepaddress}||'%'
+		 </if>
+		 <if test="sp.salesaccmanager != null and sp.salesaccmanager !='' ">
+				AND SALESACCMANAGER '%'|| #{sp.salesaccmanager}||'%'
+		 </if>
+		 <if test="sp.apkind != null and sp.apkind !='' ">
+				AND APKIND = #{sp.apkind}
+		 </if>
+		 <if test="sp.isoriginal != null and sp.isoriginal !='' ">
+				AND IFORIGINAL = #{sp.isoriginal}
+		 </if>
+		 <if test="sp.isalldoc != null and sp.isalldoc !='' ">
+				AND IFALLDOCUMENT = #{sp.isalldoc}
+		 </if>
+		 <if test="sp.isscan != null and sp.isscan !='' ">
+				AND ISSCAN = #{sp.isscan}
+		 </if>
+		 <if test="sp.issaved != null and sp.issaved !='' ">
+				AND IFSAVED = #{sp.issaved}
+		 </if>
+		 <if test="sp.isupload != null and sp.isupload !='' ">
+				AND ISUPLOAD = #{sp.isupload}
+		 </if>
+		  ORDER BY DT.INSERTTIMESTAMP DESC 
+	</select>
+	
+	<select id="queryCustDataInfoAllList" resultType="openAccountDto" parameterType="sparam">
+		SELECT *
+		  FROM (SELECT D.APPSERIALNO,
+		               F.CUSTNO,
+		               F.APDT,
+		               D.FILENO AS fileno,
+		               F.FUNDACCT,
+		               F.INVNM,
+		               F.INVTP,
+		               F.APKIND,
+		               IBF_GET_PARAMNAME('SYSTEM','APKIND',F.APKIND) AS apkindName,
+		               D.ORIGINAL AS ifOriginal,
+		               D.ISFULL AS ifalldocument,
+		               D.ISSCAN AS isscan,
+		               D.FILED AS ifsaved,
+		               D.KEEPADDRESS,
+		               D.ATTACH AS isupload,
+		               D.SALESACCMANAGER,
+		               D.REMARK AS remarkinfo,
+		               F.INSERTTIMESTAMP,
+		               CE.VOICERECORD,
+		               DC.INVPRTP
+		          FROM APPFDACBLOTTER   F,
+		               DS_CUSTINFODATA  D,
+		               CUSTINFOEX       CE,
+		               DS_CUSTCLASSINFO DC
+		         WHERE F.SERIALNO = D.APPSERIALNO
+		           AND F.CUSTNO = CE.CUSTNO
+		           AND F.CUSTNO = DC.CUSTNO
+		           AND F.APPLYST NOT IN ('F', 'C')
+		         GROUP BY F.CUSTNO,
+		                  F.APDT,
+		                  D.FILENO,
+		                  F.FUNDACCT,
+		                  F.INVNM,
+		                  F.INVTP,
+		                  F.APKIND,
+		                  D.APPSERIALNO,
+		                  D.ORIGINAL,
+		                  D.ISFULL,
+		                  D.ISSCAN,
+		                  D.FILED,
+		                  D.KEEPADDRESS,
+		                  D.ATTACH,
+		                  D.SALESACCMANAGER,
+		                  D.REMARK,
+		                  F.INSERTTIMESTAMP,
+		                  CE.VOICERECORD,
+		                  DC.INVPRTP
+		        UNION ALL
+		        SELECT D.APPSERIALNO,
+		               F.CUSTNO,
+		               F.APDT,
+		               D.FILENO AS fileno,
+		               F.FUNDACCT,
+		               F.INVNM,
+		               F.INVTP,
+		               F.APKIND,
+		               IBF_GET_PARAMNAME('SYSTEM','APKIND',F.APKIND) AS apkindName,
+		               D.ORIGINAL AS ifOriginal,
+		               D.ISFULL AS ifalldocument,
+		               D.ISSCAN AS isscan,
+		               D.FILED AS ifsaved,
+		               D.KEEPADDRESS,
+		               D.ATTACH AS isupload,
+		               D.SALESACCMANAGER,
+		               D.REMARK AS remarkinfo ,
+		               F.INSERTTIMESTAMP,
+		               CE.VOICERECORD,
+		               DC.INVPRTP
+		          FROM H_APPFDACBLOTTER F,
+		               DS_CUSTINFODATA  D,
+		               CUSTINFOEX       CE,
+		               DS_CUSTCLASSINFO DC
+		         WHERE F.SERIALNO = D.APPSERIALNO
+		           AND F.CUSTNO = CE.CUSTNO
+		           AND F.CUSTNO = DC.CUSTNO
+		         GROUP BY F.CUSTNO,
+		                  D.APPSERIALNO,
+		                  F.APDT,
+		                  D.FILENO,
+		                  F.FUNDACCT,
+		                  F.INVNM,
+		                  F.INVTP,
+		                  F.APKIND,
+		                  D.ORIGINAL,
+		                  D.ISFULL,
+		                  D.ISSCAN,
+		                  D.FILED,
+		                  D.KEEPADDRESS,
+		                  D.ATTACH,
+		                  D.SALESACCMANAGER,
+		                  D.REMARK,
+		                  F.INSERTTIMESTAMP,
+		                  CE.VOICERECORD,
+		                  DC.INVPRTP) DT
+		 WHERE 1 = 1
+		 <if test="sp.strDate != null and sp.strDate !='' and sp.endDate != null and sp.endDate !='' ">
+				AND APDT BETWEEN #{sp.strDate} AND #{sp.endDate}
+		 </if>
+		 <if test="sp.fileno != null and sp.fileno !='' ">
+				AND FILENO like '%'|| #{sp.fileno}||'%'
+		 </if>
+		 <if test="sp.fundacco != null and sp.fundacco !='' ">
+				AND FUNDACCT like '%'|| #{sp.fundacco}||'%'
+		 </if>
+		 <if test="sp.invnm != null and sp.invnm !='' ">
+				AND INVNM like '%'|| #{sp.invnm}||'%'
+		 </if>
+		 <if test="sp.custno != null and sp.custno !='' ">
+				AND CUSTNO = #{sp.custno}
+		 </if>
+		 <if test="sp.keepaddress != null and sp.keepaddress !='' ">
+				AND KEEPADDRESS like '%'|| #{sp.keepaddress}||'%'
+		 </if>
+		 <if test="sp.salesaccmanager != null and sp.salesaccmanager !='' ">
+				AND SALESACCMANAGER '%'|| #{sp.salesaccmanager}||'%'
+		 </if>
+		 <if test="sp.apkind != null and sp.apkind !='' ">
+				AND APKIND = #{sp.apkind}
+		 </if>
+		 <if test="sp.isoriginal != null and sp.isoriginal !='' ">
+				AND IFORIGINAL = #{sp.isoriginal}
+		 </if>
+		 <if test="sp.isalldoc != null and sp.isalldoc !='' ">
+				AND IFALLDOCUMENT = #{sp.isalldoc}
+		 </if>
+		 <if test="sp.isscan != null and sp.isscan !='' ">
+				AND ISSCAN = #{sp.isscan}
+		 </if>
+		 <if test="sp.issaved != null and sp.issaved !='' ">
+				AND IFSAVED = #{sp.issaved}
+		 </if>
+		 <if test="sp.isupload != null and sp.isupload !='' ">
+				AND ISUPLOAD = #{sp.isupload}
+		 </if>
+		  ORDER BY DT.INSERTTIMESTAMP DESC 
+	</select>
+	
+	<select id="queryCustDataInfoByCondtion" resultType="openAccountDto" parameterType="sparam">
+		SELECT SERIALNO,
+		       APPSERIALNO,
+		       (SELECT TO_CHAR(WM_CONCAT(CUSTINFOID))
+		          FROM DS_CUSTINFODATA T1
+		         WHERE APPSERIALNO = T.APPSERIALNO AND T1.EXISTSFLAG = '1') AS CUSTINFOID,
+		       EXISTSFLAG,
+		       INSERTTIMESTAMP,
+		       UPDATETIMESTAMP,
+		       ORIGINAL AS ifOriginal,
+		       FILED AS ifsaved,
+		       APTYPE,
+		       IBF_GET_PARAMNAME('DS','APTYPE',APTYPE) AS APTYPENAME,
+		       ISFULL AS ifalldocument,
+		       ATTACH AS isupload,
+		       REMARK AS remarkinfo,
+		       ISSCAN,
+		       KEEPADDRESS,
+		       SALESACCMANAGER,
+		       FILENO,
+		       CUSTNO
+		  FROM DS_CUSTINFODATA T
+		 WHERE ROWNUM =1
+		  <if test="sp.appserialno != null and sp.appserialno !='' ">
+				AND APPSERIALNO = #{sp.appserialno}
+		 </if>
+	</select>
+	
+	<select id="updateCustDataManagerInfo" statementType="CALLABLE">
+		{ call DS_OAP_MODIFY_CUSTDATA
+		 (
+			#{PI_TRANSCD,jdbcType=VARCHAR,mode=IN},
+			#{PI_OPID,jdbcType=VARCHAR,mode=IN},
+			#{PI_SERIALNO,jdbcType=VARCHAR,mode=IN},
+			#{PI_APTYPE,jdbcType=VARCHAR,mode=IN},
+			#{PI_CUSTINFOSTAT,jdbcType=VARCHAR,mode=IN},
+			#{PI_ISFULL,jdbcType=VARCHAR,mode=IN},
+			#{PI_ORIGINAL,jdbcType=VARCHAR,mode=IN},
+			#{PI_FILED,jdbcType=VARCHAR,mode=IN},
+			#{PI_ATTACH,jdbcType=VARCHAR,mode=IN},
+			#{PI_REMARK,jdbcType=VARCHAR,mode=IN},
+			#{PI_ISSCAN,jdbcType=VARCHAR,mode=IN},
+			#{PI_KEEPADDRESS,jdbcType=VARCHAR,mode=IN},
+			#{PI_SALESACCMANAGER,jdbcType=VARCHAR,mode=IN},
+			#{PI_FILENO,jdbcType=VARCHAR,mode=IN},
+			#{PI_CUSTNO,jdbcType=VARCHAR,mode=IN},
+			#{PO_ERRCOD,jdbcType=VARCHAR,mode=OUT},
+			#{PO_ERRMSG,jdbcType=VARCHAR,mode=OUT}
+          )
+        } 
+	</select>
+</mapper>

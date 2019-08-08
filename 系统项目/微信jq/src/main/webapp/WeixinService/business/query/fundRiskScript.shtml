@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+	<title>风险揭示函</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+   	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/bannerStyle.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/numberToCapital.js"></script>
+	<!--  滚动条js  -->
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscroll.js"></script>
+</head>
+<body>
+	<!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->
+    	<div class="ruleText">
+	        <div class="rule_entry">
+	            <div>
+	            	1.专项资产管理计划投资需承担各类风险，本金可能遭受损失。同时，还要考虑市场风险、信用风险、流动风险、操作风险等各类投资风险。投资者在参与专项资产管理计划过程中应当注意核对自己的风险识别和风险承受能力，选择与自己风险识别能力和风险承受能力相匹配的产品和服务
+	            	<br/>
+					2.本公司专项资产管理计划经中国证监会报备，但中国证监会对本公司发行的专项资产管理计划所作出的任何决定，均不表明其对该计划的风险和收益做出实质性判断、推荐或者保证。
+					<br/>
+					3.本公司承诺以诚实信用、勤勉尽责的原则管理委托资产，但不保证产品一定盈利，也不保证最低收益。投资有风险，选择需谨慎。
+					<br/>
+					4.投资者在办理本公司专项资产管理业务前应认真阅读本公司专项资产管理计划的资产管理合同、投资说明书和其他产品信息。
+						我司在此郑重提醒，我司向您销售的产品或提供的服务将以您的风险承受能力和投资品种、期限为基础，若您提供的信息发生任何重大变化，您应当及时以书面方式通知我司。我司建议您审慎评判自身风险承受能力、结合资深投资行为，认真填写投资品种、期限，并做出审慎的投资判断。
+	            	
+	            </div>
+	         </div>
+         </div>
+<script type="text/javascript">
+	/*修改公共页头名称*/
+	$(".header .top-a h2").html("风险揭示函");
+	document.title="风险揭示函";
+</script>
+</body>
+</html>

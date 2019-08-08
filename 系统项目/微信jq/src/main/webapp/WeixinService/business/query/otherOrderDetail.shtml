@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+   	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/bannerStyle.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/highcharts.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscroll.js"></script>
+	
+    
+</head>
+<body>
+
+<section class="page">
+
+<div id="wrapper" style="bottom: 60px;">
+        <div id="scroller">
+    <!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->
+
+	<div style="display: none;">
+		<input type="hidden" id="serialno" value="" />
+		<input type="hidden" id="fundId" value="" />
+		<input type="hidden" id="tradeAcco" value="" />
+		<input type="hidden" id="period" value="" />
+		<input type="hidden" id="subamt" value="" />
+		<input type="hidden" id="period" value="" />
+		
+		<input type="hidden" id="bankacco" value="" />
+		<input type="hidden" id="realBankName" value="" />
+		<input type="hidden" id="templetId" value="" />
+		<input type="hidden" id="fee" value="" />
+		<input type="hidden" id="isSubPrdAppraisement" value="" /><!-- 子产品是否估值 -->
+    	<input type="hidden" id="outerId" value="" /><!-- 系列产品外部代码 -->
+	</div>
+    <section>
+        <div class="pro-head">
+            <h2><span id="adName"></span></h2>
+            <div class="parameter">
+                <ul>
+                    <li id="profit"><span>业绩报酬计提基准：</span></li>
+                    <li id="term"><span>理财期限：</span></li>
+                    <li id="scale"><span>募集规模：</span></li>
+                    <li id="money"><span>起投金额：</span></li>
+                </ul>
+                <div id="schedule" class="schedule">
+                    <span class="text">投资进度：</span>
+                    <div class="bar" id="saleBar"><em style="width: 0"></em></div>
+                    <span class="number" id="saleNo"><i></i></span> 
+                </div>
+            </div>
+        </div>
+        
+		<!-- 订单信息 -->  
+		<div id="tradeMsg" class='order-main clear'>
+		      
+        </div>
+        
+		<!-- 产品属性   时间轴 -->        
+        <div class="step-bg clear">
+            <div class="step">
+                <div class="step-bar">
+                    <div id="line" class="line_date">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="cirle">
+                        <span class="cirle" onclick="dateAlert('产品预约','当日起产品开始预约，发售前完成汇款，即可锁定额度。')"></span>
+                        <span class="cirle" onclick="dateAlert('正式发售','当日起产品正式发售，请及时完成汇款，锁定产品额度。')"></span>
+                        <span class="cirle" onclick="dateAlert('认购截止','当日产品募集结束，停止销售，次日起息。')"></span>
+                        <span class="cirle" onclick="dateAlert('到期日期','当日产品到期，预计将在5个工作日内完成收益分配。')"></span>                        
+                    </div>
+                </div>
+                <div class="step-text clear">
+                    <ul>
+                        <li>
+                        	<span class="act">产品预约</span><p id="appointDate"></p>
+                        </li>
+                        <li>
+                        	<span>正式发售</span><p id="salesDate"></p>
+                        </li>
+                        <li>
+                        	<span>认购截止</span><p id="subdeadLine"></p>
+                        </li>
+                        <li>
+                        	<span>到期日期</span><p id="maturityDate"></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="box highchart-box hide" id="highchart">
+            <div class="head"><span class="left fl"></span><span class="right fr"><a href="javascript:goToOldNet();">查看历史净值</a><span class="hide"></span></span></div>
+            <div class="highchart clear" id="highchart1">
+            </div>
+            <p id="text1" style='display:none;padding-left: 20px;
+                padding-bottom: 35px;
+                padding-top: 0px;'>注:该净值为招商财富-长城汇理2号专项资管计划份额净值</p>
+            <div class="highchart_nav">
+                <ul>
+                    <li class="act" onclick="queryEstimateByFundId('-1')">1个月</li>
+                    <li onclick="queryEstimateByFundId('-3')">3个月</li>
+                    <li onclick="queryEstimateByFundId('-6')">6个月</li>
+                    <li onclick="queryEstimateByFundId('-12')">1年</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div  id="fundInfoBox">
+	       <!-- 产品基本信息 -->
+	    </div>
+	    <div class="box FAQ" id="otherElement">
+            <h2 onclick="goToElement()"><span><a href="#">投资项目信息</a></span><img class="jt" src="/WeixinWeb/WeixinWeb_Images/images/ic_next.png"></h2>
+        </div>
+        <div class="box FAQ">
+            <h2 id="goToFAQ"><span><a>常见问题</a></span><img class="jt" src="/WeixinWeb/WeixinWeb_Images/images/ic_next.png"></h2>
+        </div>
+    </section> 
+    
+</div></div>  
+
+<div class="cover-bg none" id="tips_01">
+
+</div>
+<div id="cancelOrderDiv" class="cover-bg hide" style="display: none;">
+    <div class="warning">
+        <span class="warning-con">确认删除该订单</span>
+        <div class="warning-bottom">
+	        <a href="javascript:closeTips('cancelOrderDiv');" class="fl">取消</a>
+	        <a id="cancelBtn" href="javascript:cancelAppointRequest()" class="fr">确认</a>
+	    </div>
+    </div>
+</div>
+<div class="cover-bg product-date hide">
+    <div class="cover-point">
+        <h3 id="dateTitle">产品预约</h3>
+        <div class="cover-point-text mid">
+            <p id="dateContent">当日起产品开始预约，发售前完成汇款，即可锁定额度</p>
+        </div>
+        <span class="cover-point-bottom">我知道了</span>
+    </div>
+</div>
+</section>
+<!--<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/otherOrderDetail.js"></script>-->
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/otherOrderDetail.min.js"></script> -->
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/agentOrderData.js"></script>
+
+<script type="text/javascript">
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/otherOrderDetail.min.js?version='+new Date().getTime()+'"><\/script>');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.changeRecord.CustRisklvelInvprtpDetailDao">
+	<resultMap type="custRisklvelInvprtpDetail" id="recordMap">
+		<result property="changeId" column="CHANGE_ID" jdbcType="VARCHAR" />
+		<result property="custNo" column="CUSTNO" jdbcType="VARCHAR" />
+		<result property="changeProject" column="CHANGE_PROJECT" jdbcType="VARCHAR" />
+		<result property="changeWay" column="CHANGE_WAY" jdbcType="VARCHAR" />
+		<result property="updateTime" column="UPDATETIME" />
+		<result property="changeDesc" column="CHANGE_DESC" />
+	</resultMap>
+	
+	<select id="queryChangeRecordByCustNo" parameterType="sparam" resultMap="recordMap">
+		SELECT ROWNUM CHANGE_ID,T.* FROM (
+                                    SELECT CHANGE_PROJECT, CHANGE_WAY, CHANGE_DESC, UPDATETIME FROM (
+                           SELECT '1' AS CHANGE_PROJECT,
+                                  DECODE(CHANNELCODE,'DIR','柜台','NET','电商') AS CHANGE_WAY,
+                                  DECODE(OLD_INVPRTP,'0','专业投资者转','1','普通投资者转') ||  DECODE(INVPRTP,'0','专业投资者','1','普通投资者') AS CHANGE_DESC,
+                                  EVALDATE AS UPDATETIME
+                           FROM H_CUSTINVPRTP
+                           WHERE CUSTNO = #{sp.custNo}
+                           UNION ALL 
+                           SELECT DISTINCT 
+                                   CHANGE_PROJECT,
+                                   DECODE(CHANNELCODE,'DIR','柜台','NET','电商') AS CHANGE_WAY,
+                                   DECODE(IBF_GET_PARAMNAME('SYSTEM','CUSTRISKLEVEL',RISKLEVEL),'','C0-最低',
+                                          IBF_GET_PARAMNAME('SYSTEM','CUSTRISKLEVEL',RISKLEVEL)) CHANGE_DESC,
+                                   UPDATETIME FROM (
+                           SELECT '0' AS CHANGE_PROJECT,
+                                  CHANNELCODE,
+                                  RISKLEVEL,
+                                  TO_DATE(EVALDATE || EVALTIME,
+                                          'YYYY-MM-DD HH24:MI:SS') UPDATETIME
+                             FROM H_CUSTRISKLEVEL HC
+                            WHERE HC.CUSTNO = #{sp.custNo}
+                           UNION ALL
+                           SELECT '0' AS CHANGE_PROJECT,
+                                  CHANNELCODE,
+                                  DECODE((SELECT C1.SPECRISKLEVEL FROM CUSTINFO C1 WHERE CUSTNO = #{sp.custNo} ),'1','0',RISKLEVEL)RISKLEVEL,
+                                  TO_DATE(EVALDATE || EVALTIME,
+                                          'YYYY-MM-DD HH24:MI:SS') UPDATETIME
+                             FROM CUSTRISKLEVEL C
+                            WHERE C.CUSTNO = #{sp.custNo})ORDER BY UPDATETIME DESC)) T
+	</select>	
+	
+</mapper>

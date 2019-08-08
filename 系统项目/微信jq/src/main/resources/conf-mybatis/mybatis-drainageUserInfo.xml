@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.activity.DrainageUserInfoDao">
+		<resultMap type="com.cmwa.ec.weixin.dto.DrainageUserInfoDto" id="drainageUserInfo">
+			<result column="USER_ID" jdbcType="VARCHAR"  property="userId" />
+			<result column="APPID" jdbcType="VARCHAR"  property="appid" />
+			<result column="USER_NAME" jdbcType="VARCHAR"  property="userName" />
+			<result column="USER_IDCARD" jdbcType="VARCHAR"  property="userIdcard" />
+			<result column="USER_PLATENO" jdbcType="VARCHAR" property="userPlateno" />
+			<result column="BRAND_NAME"  jdbcType="VARCHAR" property="brandName" />
+			<result column="PURCHASE_PRICE"  jdbcType="NUMERIC" property="purchasePrice" />
+			<result column="SINO_USERID" jdbcType="VARCHAR" property="sinoUserid" />
+			<result column="CREATED_DATE" jdbcType="DATE" property="createdDate" />
+			<result column="CREATED_USER" jdbcType="VARCHAR" property="createdUser"/>
+			<result column="UPDATED_DATE" jdbcType="DATE" property="updatedDate" />
+			<result column="UPDATED_USER" jdbcType="VARCHAR" property="updatedUser"/>
+			<result column="USER_MOBILE" jdbcType="VARCHAR" property="userMobile"/>
+		</resultMap>
+	
+	
+	<select id="queryAllUserInfo" resultMap="drainageUserInfo">
+		SELECT * FROM CMWA_WX_DRAINAGE_USERINFO
+	</select>
+	
+	<select id="queryUserInfoByUserId" resultType="com.cmwa.ec.weixin.dto.DrainageUserInfoDto">
+		SELECT * FROM CMWA_WX_DRAINAGE_USERINFO T WHERE T.USER_ID = #{userId,jdbcType=VARCHAR}	
+	</select>
+	
+	<insert id="insertUserInfo" parameterType="com.cmwa.ec.weixin.dto.DrainageUserInfoDto">
+		INSERT INTO CMWA_WX_DRAINAGE_USERINFO (
+			USER_ID,
+			APPID,
+			USER_NAME,
+			USER_IDCARD,
+			USER_MOBILE,
+			USER_PLATENO,
+			BRAND_NAME,
+			PURCHASE_PRICE,
+			SINO_USERID,
+			CREATED_DATE,
+			CREATED_USER,
+			UPDATED_DATE,
+			UPDATED_USER,
+			USER_PROVINCE)
+		VALUES(
+			#{userId,jdbcType=VARCHAR},
+			#{appid,jdbcType=VARCHAR},
+			#{userName,jdbcType=VARCHAR},
+			#{userIdcard,jdbcType=VARCHAR},
+			#{userMobile,jdbcType=VARCHAR},
+			#{userPlateno,jdbcType=VARCHAR},
+			#{brandName,jdbcType=VARCHAR},
+			TO_NUMBER(#{purchasePrice,jdbcType=VARCHAR}),
+			#{sinoUserid,jdbcType=VARCHAR},
+			sysdate,
+			#{createdUser,jdbcType=VARCHAR},
+			sysdate,
+			#{updatedUser,jdbcType=VARCHAR},
+			#{userProvince,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<select id="queryUserInfoByIdCardAndOwnerName" resultMap="drainageUserInfo">
+		SELECT * FROM CMWA_WX_DRAINAGE_USERINFO T WHERE T.user_name = #{ownerName,jdbcType=VARCHAR} and T.USER_IDCARD = #{idCard,jdbcType=VARCHAR}
+	</select>
+	
+	<update id="updateRedirectInfo">
+	UPDATE CMWA_WX_DRAINAGE_USERINFO SET 
+		REDIRECT_MSG=#{msg,jdbcType=VARCHAR},
+		REDIRECT_STATUS=#{status,jdbcType=VARCHAR},
+		UPDATED_USER=#{updatedUser,jdbcType=VARCHAR},
+		UPDATED_DATE=SYSDATE
+	WHERE 
+	APPID=#{appId,jdbcType=VARCHAR} AND
+	USER_IDCARD=#{idCard,jdbcType=VARCHAR} AND
+	USER_NAME=#{ownerName,jdbcType=VARCHAR}	
+	</update>	
+	
+	<select id="queryUserInfoByIdCard" resultMap="drainageUserInfo">
+		SELECT * FROM CMWA_WX_DRAINAGE_USERINFO T WHERE T.USER_IDCARD = #{idCard,jdbcType=VARCHAR}
+	</select>
+</mapper>

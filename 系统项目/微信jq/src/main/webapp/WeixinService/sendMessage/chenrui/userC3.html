@@ -1,0 +1,291 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+	<title>招商财富-晨锐系列 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/chenrui/cfb.css">
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-init.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/flexible.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+
+</head>
+<body>
+<div class="warpper" style="padding-bottom: 1rem;">
+		<div class="banner"></div>
+		<div class="recommendBox">
+			<ul class="item">
+				<li>
+					<h2>招商财富——晨锐强债1号</h2>
+					<div class="proInfo clearFloat">
+						<div class="info">
+							<p>每月开放</p>
+							<p>开放频率</p>
+						</div>
+						<div class="info">
+							<p>7月10-19日</p>
+							<p>募集期</p>
+						</div>
+						<div class="info">
+							<p><em id="startBuy">30</em><span>万</span></p>
+							<p>起投金额</p>
+						</div>
+					</div>
+					<a href="javascript:seeProduct();" class="once once1">立即预约</a>
+					<div class="tips">
+						<p class="t2">*本产品风险等级为R3中风险，适合风险承受能力为C3及以上的投资者；</p>
+						<p class="t2">*业绩比较基准：80%*中债新综合财富（1年以下）指数+15%*沪深300指数+5%*一年定期存款收益率。</p>
+					</div>
+					
+				</li>
+			</ul>
+
+		</div>
+		<div class="img1"><img src="/WeixinWeb/WeixinWeb_Images/H5modules/chenrui/img1.jpg" width="100%"></div>
+		 <div class="img2"><img src="/WeixinWeb/WeixinWeb_Images/H5modules/chenrui/img2.jpg" width="100%"></div>
+		  <div class="img3"><img src="/WeixinWeb/WeixinWeb_Images/H5modules/chenrui/img3.jpg" width="100%"></div>
+	    <div class="img4"><img src="/WeixinWeb/WeixinWeb_Images/H5modules/chenrui/img4.jpg" width="100%"></div>
+	    <div class="img5"><img src="/WeixinWeb/WeixinWeb_Images/H5modules/chenrui/img5.jpg" width="100%"></div>
+	</div>
+	  <div class="bottom clearFloat">
+    	<a href="javascript:;" onclick="bussiness();" id="myBtn1">我感兴趣</a>
+    	<a href="javascript:;" onclick="myAdviser();" id="myBtn2">我的顾问</a>
+    </div>
+	<!--预约信息填写-->
+	<div class="cover-bg reserves hide">
+		<div class="content">
+			 <span class="close"></span>
+			 <h1>一键预约享专属服务<br>让投资无后顾之忧</h1>
+			 <h3>我们的专属顾问将24小时内给您回电</h3>
+			 <div class="form">
+			 	<ul>
+				 	<li>
+				 	   <div class="inputBox">
+				 	  	   <span></span> <input type="text" id="userName" name="userName" placeholder="请输入姓名"/>
+				 	   </div>	
+				       <p style="display: none;"></p>
+				 	</li>
+				 	<li class="foucs">
+				 		<div class="inputBox">
+				 	        <span></span> <input type="tel" id="mobilePhone" name="mobilePhone" maxlength="11" placeholder="请输入手机号码"/> 
+				 		</div>
+				 		<p  style="display: none;"></p>
+				 	</li>
+				 	
+				 </ul>
+				 <button id="saveBtn"  class="disabled">立即提交</button>
+			 </div>
+		</div>
+	</div>
+	<!-- 错误提示 -->
+	<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+		<span id="errorRemark"></span>
+	</div>
+	<!--预约成功-->
+	<div class="cover-bg success hide">
+		 <div class="content center">
+		 	<span class="close"></span>
+		 	<div class="successIcon"></div>
+		 	<h2>预约成功</h2>
+		 	<p>客户经理将尽快与您联系，请保持电话畅通</p>
+		 </div>
+	</div>
+
+<style>
+	.guide1 {
+		height: 7.59rem;
+		background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb10/guide11.jpg) no-repeat;
+		background-size: 100% 100%;
+	}
+	.guide2 {
+		height:4.02rem;
+		background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb10/guide2-1.jpg) no-repeat;
+		background-size: 100% 100%;
+		position: relative;
+	}
+	.product ul li:nth-child(1) {
+		width: 2.6rem;
+		text-align: left;
+		padding-left: .3rem;
+	}
+	.product {
+		padding: 0 .7rem;
+		padding-top: 1rem;
+		/* padding-right: 0.3rem; */
+	}
+	.product .secondItem {
+		margin-top: .12rem;
+		padding-top: .15rem;
+	}
+	.loginSee{
+		margin-top: .2rem;
+	}
+</style>
+ <script>
+	var pageSource=getUrlParams("tel").tel
+	var pageId="messagechenrui"
+	$(function(){
+		cmwaOnkeyup("userName;mobilePhone",checkAppoInfoParam);
+		elemBind();
+	 	operatingRecord(pageSource,"openMessagePage",pageId,"","","","")
+	});
+	/* 验证输入框的有效性  */
+	function checkAppoInfoParam(){
+		var userName = $("#userName").val();
+		var mobilePhone = $("#mobilePhone").val();
+		if(userName == null || userName == ""){
+			$("#saveBtn").addClass("disabled").attr("onclick","");
+			return;
+		}else if(mobilePhone == null || mobilePhone == ""){
+			$("#saveBtn").addClass("disabled").attr("onclick","");
+			return;
+		}else{
+			$("#saveBtn").removeClass("disabled").attr("onclick","saveAppointInfo()");
+		}
+	}
+    /*
+     * 预约提交
+     */
+	function seeProduct() {
+        bussiness();
+    }
+	
+	/*
+	 * 用户信息提交
+	 */
+	function userDateSumbit(userName,mobilePhone){
+		$.ajax({
+				async : false,
+				url:apiHost + "/api/insertAppointInfo",
+				type : "post",
+				dataType : 'json',
+				data : {
+					"userName":userName,
+					"mobilePhone":mobilePhone,
+					"productType":"messagechenrui",
+					"cmfUserId":""
+				},
+				success : function(data) {
+					if(data.success){
+						$(".reserves").addClass("hide")
+						$(".success").removeClass("hide")
+						$("input[name=userName]").val('');
+						$("input[name=mobilePhone]").val('');
+						$("#saveBtn").addClass("disabled").attr("onclick","");
+					   operatingRecord(pageSource,"makeMessageSuccess",pageId,"","","","")
+					}else{
+						errorRemark(data.msg);
+					}
+				},
+				error : function() {
+					errorRemark("网络繁忙，请稍后再试。");
+				},
+			});
+	}
+	/**
+	 * 元素事件绑定
+	 */
+	function elemBind(){
+	    //鼠标键盘弹起
+		$("input").keyup(function(){
+			if($("input[name=userName]").val()!==""&&$("input[name=mobilePhone]").val()!==""){
+				$("button").removeClass("disabled");
+			}
+		});
+	     //输入框光标事件
+		$("input").focus(function(){
+			$(this).parents("div").addClass("foucs");
+			$(this).parents("li").find("p").hide().text("")
+		});
+		$("input").blur(function(){
+			$(this).parents("div").removeClass("foucs");
+		});
+	
+		//弹窗关闭
+		$(".close").click(function(){
+			$(".cover-bg").addClass("hide");
+			$("input[name=userName]").val('');
+			$("input[name=mobilePhone]").val('');
+	        $(".reserves li p").hide();
+	        $("body,html").css({"overflow":"auto","height":"auto"}); 
+	        $("#saveBtn").addClass("disabled").attr("onclick","");
+		})
+	
+	}
+	
+	//点击信息提交
+	function saveAppointInfo(){
+			var userName=$.trim($("input[name=userName]").val());
+			var mobilePhone=$.trim($("input[name=mobilePhone]").val());
+			var flag=true;
+			if(userName==""||!ischinese(userName)){
+				$("input[name=userName]").parents("li").find("p").show().text("请输入2-10字中文姓名");
+				flag=false;
+			}	
+			if (!isMobile(mobilePhone)) {
+				$("input[name=mobilePhone]").parents("li").find("p").show().text("请输入正确的手机号码");
+				flag=false;
+			}
+			
+			if(flag){
+				userDateSumbit(userName,mobilePhone);
+			}
+	}
+	
+	
+	function ischinese(name){
+	    return /^[\u2E80-\u9FFF]{2,10}$/.test(name)
+	}  
+	
+	 //验证手机号
+	function  isMobile(phone) {
+	        return /^0?(13[0-9]|15[0123456789]|18[0123456789]|14[0123456789]|17[0123456789])[0-9]{8}$/.test(phone);
+	}
+	/**
+	 * 预约
+	 */
+	function bussiness(){	
+		 operatingRecord(pageSource,"clickAppointment",pageId,"","","","")
+		 $(".reserves").removeClass("hide");
+		 $("body,html").css({"overflow":"auto","height":"100%"}); 
+	}
+    function myAdviser(){
+        location.href = "/WeixinService/sendMessage/chenrui/bussinessCard.html?pageSource=" + pageSource + "&eventId=event_messagechenrui_adviserId"
+    }
+    
+    $(document).ready(function(){
+	    var u = navigator.userAgent, app = navigator.appVersion
+	    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		$("input").blur(function(){
+			if (isIOS) {
+				blurAdjust()
+				// alert("1231321233")
+			}
+		});
+	});
+	// 解决苹果不回弹页面
+	function blurAdjust(e){
+		setTimeout(()=>{
+			// alert("1231321233")
+			if(document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA'){
+				return
+			}
+			let result = 'pc';
+			if(/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) { //判断iPhone|iPad|iPod|iOS
+					result = 'ios'
+			}else if(/(Android)/i.test(navigator.userAgent)) {  //判断Android
+					result = 'android'
+			}
+			
+			if( result = 'ios' ){
+				document.activeElement.scrollIntoViewIfNeeded(true);
+			}
+		},100)
+	}
+ </script>
+</body>
+</html>

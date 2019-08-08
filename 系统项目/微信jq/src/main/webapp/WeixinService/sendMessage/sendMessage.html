@@ -1,0 +1,231 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <script src="https://direct.cmwachina.com/AppWeb/AppWeb_JSLibrary/pageJs/jquery.js"></script>
+    <style type="text/css">
+    	/* 页面元素初始化和常用样式定义-start */
+		/*======== 全局 ========*/
+		body,div,p,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,th,td select option{margin: 0;padding: 0;}
+		body{background: #f2f2f2;font-size: 14px; min-width:1200px;color: #676767; font-family:arial,microsoft yahei,verdana, simsun;}
+		table{border-collapse: collapse; border-spacing: 0; word-break:break-all;}
+		fieldset,img{border: none; vertical-align:middle;}
+		ol,ul,li{list-style: none;}
+		h1,h2,h3,h4,h5,h6{font-size: 90%;font-weight: normal; color: #2d2d2d;}
+		em{font-style: normal;}
+		input,button,select,textarea{outline: none; border-color:#dadada;}
+		/*禁止了文本框的拖拉*/
+		textarea{resize: none;}
+		input,button,select,textarea{outline: none; border-color:#dadada; font-family: inherit;}
+		/*link*/
+		a{text-decoration: none; color: #c8a063; cursor: pointer;}
+		a:hover{color: #d59400!important; text-decoration: none;}
+		a:link, a:visited { outline: none; } 
+		input[type="text"],input[type="password"] { height: 43px; font-size: 16px; padding: 0 15px; line-height: 45px; background-color:#fdfdfd; color: #acaaaa; border: 1px solid #dcdcdc;}
+		.bgLinkHover:hover { background-color: #cb322f!important;} 
+		input.focus { color: #c8a063; border-color:#c8a063; }
+		input.error { color: red; border-color:red; }
+		/*增加的产品名称字段带跳转*/
+		a.productname{text-decoration: none; color: #686868; cursor: pointer;}
+		a.productname:hover{color:#d59400!important; text-decoration: none;}
+		/*浮动*/
+		.fl{float: left;}
+		.fr{float: right;}
+		/*清除浮动*/
+		.clr{*zoom: 1;}
+		.clr:after{content:".";display:block;height:0;clear:both;visibility:hidden; }
+		.clearfix {display: block;}
+		.syncBox{width:800px;height: 600px;padding-right: 20px; background: #fff; margin: 0 auto; margin-top: 20px;padding-left: 30px;}
+		.syncBox h2{font-size: 20px;text-align: center;margin-bottom: 20px; line-height: 35px;padding-top: 15px;}
+		.syncBox input{margin-left: 20px; color: #000;}
+		.syncBox span{display: inline-block;width: 100px;font-size: 18px;}
+		.syncBox select{ padding: 0 15px; width: 150px;height: 45px; margin-left: 20px;margin-right: 20px;}
+		.syncBox li{margin-bottom: 25px;position: relative;}
+		.syncBox  button{width: 100px;height: 40px;line-height: 40px; margin: 0 auto; display: inline-block; background: #ca132c;;text-align: center; cursor: pointer; border-radius: 5px;margin-left: 120px;font-size: 18px; color: #fff; border:1px}
+    .gray{background-color:#CCC !important; }
+     .syncBox li p{    position: absolute;left: 465px;color: #ff0303; top:0;width: 214px;}   
+    </style>
+</head>
+<body>
+  <div class="syncBox">
+  	  <h2>短信发送</h2>
+  	  <form  enctype="multipart/form-data" id="sd-form" method="post">
+	  	  <ul>
+	  	  	 <li>
+	  	  	 	<span>发送方式 ：</span>
+	  	  	 	<select name="sendType">
+	  	  	 		<option value="1" selected="">手动发送</option>
+	  	  	 		<!--<option value="2">批量发送</option>
+	  	  	 		<option value="3">excel导入</option>-->
+	  	  	 	</select>
+	  	  	 </li>
+	  	  	 <li id="userType" style="display: none;">
+	  	  	 	<span>用户类型 ：</span>
+	  	  	 	<select name="userType">
+	  	  	 		<option value="" selected="">全部</option>
+	  	  	 		<option value="10">C3及C3以上客户</option>
+	  	  	 	</select>
+	  	  	 </li>
+	  	  	 <li id="type1">
+	  	  	 	<span>手机号码：</span>
+	  	  	 	<textarea type="text" name="otherMobile" style=" width: 325px; height: 93px; margin-left: 19px;"></textarea>
+	  	  	 	<p class="tips"  style="top: 85px;">示例:15233333333,15533333333</p>
+	  	  	 </li>
+	  	  	 <li id="type2" style="display: none;">
+	  	  	 	<span>excel导入：</span>
+	  	  	 	<input type="file" id="sendFile" name="sendFile" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+	  	  	 </li>
+	  	  	 <li>
+	  	  	 	<span>发送内容：</span>
+	  	  	 	<textarea type="text" name="content" style=" width: 325px; height: 108px; margin-left: 19px;" ></textarea>
+	  	  	    <p class="tips" style="width: 314px;">
+	  	  	    	示例：【招商财富】招商系旗下绩优资管平台，王牌固收产品财富宝系列，期限短、回报养眼，已累计发行超300期，业绩优异，更多信息请点击：XXX。详情请咨询理财顾问：0755-23988886或关注【招商财富】微信号（投资需谨慎）。
+	  	  	    	<br>XXX:为发送链接的占位符
+	  	  	    </p>
+	  	  	 </li>
+	  	  	 <li>
+	  	  	 	<span>发送链接：</span>
+	  	  	 	<input type="text" name="url" value="" />
+	  	  	 </li>
+	  	  </ul>
+		  <input type="hidden" name="sendFileName" id="fileName" value="" /> 
+  	  </form>
+    <button onclick="sendMessage()">发送</button>
+  </div>
+  <div class="tips tipsMask" style="display: none;">
+  	<div class="mask"></div>
+  	<p class="content">
+  		短信发送中
+  	</p>
+  </div>
+  
+  <style>
+  	 .mask{
+	    position: fixed;
+	    width: 100%;
+	    height: 100%;
+	    top: 0;
+	    left: 0;
+	    background-color: rgba(0,0,0,0.3);
+	    z-index: 1;
+	  }
+	 .tips p{
+	    position: absolute;
+	    left: 50%;
+	    top:30%;
+	    width: 120px;
+	    margin: 0 auto;
+	    background: #fff;
+	    z-index: 666;
+	    font-size: 24px;
+	    padding: 5px 25px 5px 15px;
+	  }
+  </style>
+<script type="text/javascript">
+	
+$(function(){
+	$("select[name=sendType]").change(function(){
+		if($(this).val()=="1"){
+			$("#type1").show();
+			$("#type2").hide();
+			$("#userType").hide();
+			$("#sendFile").val("");
+		}else if($(this).val()=="2"){
+			$("#type2").hide();
+			$("#type1").hide();
+			$("#userType").show();
+		}else{
+			$("#type1").hide();
+			$("#type2").show();
+			$("#userType").hide();
+			$("#sendFile").val("");
+		}
+		$("input[name=url").val("")
+		$("textarea[name=otherMobile]").val("")
+	})
+})
+
+/**
+ * 短信发送
+ */
+function sendMessage() {
+	var type=$("select[name=sendType]").val();
+	var tel=$("textarea[name=otherMobile]").val();
+	var sendMessage=$("textarea[name=content]").val();
+	var url=$("input[name=url]").val();
+	if(type=="1"){
+		if(tel==""){
+			alert("发送手机号码不能为空");return;
+		}else if(!/^1[3578][0-9]{9}(,1[3578][0-9]{9})*$/.test(tel)){
+			alert("发送手机号码号码格式不正确");return;
+		}else if(sendMessage==""){
+			alert("短信发送信息不能为空");return;
+		}else{
+			if(sendMessage.indexOf("XXX")>-1){
+				if(url==""){
+					alert("短信链接不能为空");return;
+				}
+			}
+		}
+	}else if(type=="2"){
+	   if(sendMessage==""){
+			alert("短信发送信息不能为空");return;
+	   }else if(sendMessage.indexOf("XXX")>-1){
+	     	if(url==""){
+				alert("短信链接不能为空");return;
+			}
+	   }
+	}else if(type=="3"){
+		var filename=$("input[name=sendFile]").val();
+		if(filename==""){
+			alert("请选择excel文件导入");return;
+		}else if(filename.indexOf(".xls")<0){
+			alert("选择的文件格式不正确，请重新选择");return;
+		}else if(sendMessage==""){
+			alert("短信发送信息不能为空");return;
+		}else if(sendMessage.indexOf("XXX")>-1){
+	     	if(url==""){
+				alert("短信链接不能为空");return;
+			}
+	    }
+	}
+     var formData = new FormData($("#sd-form")[0]);
+	 $.ajax({  
+		  url: '/WeixinService/batchSendMsg.xhtml' ,  
+		  type: 'POST',  
+		  data: formData,  
+		  async: true,  
+		  cache: false,  
+		  contentType: false,
+		  processData: false,
+		  dataType:'json',
+		  success: function (data) {  
+		  	if(data.resultCode=="0000"){
+			  	$("input,textarea").val("");
+		  	}
+		  	$(".tipsMask").hide();
+		  	alert(data.resultMsg)
+		 
+		  },
+		  beforeSend:function(){
+		  	$(".tipsMask").show();
+		  },
+		  error: function (data) {  
+		  	$(".tipsMask").hide();
+			 alert("服务器异常，请稍后再试") 
+		  }  
+	 }); 
+
+}
+
+
+document.getElementById("sendFile").addEventListener("change",function(e){
+	$("#fileName").val(this.files[0].name)
+}) 
+
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+.code_bg{
+	position: absolute;
+	width: 98%; 
+	height: 100%; 
+	background: url(/WeixinWeb/WeixinWeb_Images/images/code_bg.png) no-repeat center top; 
+	background-size: 98%;
+	top:5%; 
+	right: 2%;
+}
+
+.code_img{
+	position: relative; 
+	width: 75%; 
+	left: 15%; 
+	top: 20%;
+}

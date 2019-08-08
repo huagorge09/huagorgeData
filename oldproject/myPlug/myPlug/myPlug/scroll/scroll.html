@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../lib/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript" src="../scroll/js/scroll.js" ></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+		    .ui-scroll{
+		    	height: 300px;
+		    	overflow: hidden;
+		    }
+		    .ui-scroll ul{
+		    	height: 300px;;
+		    }
+		    .ui-scroll ul li{
+		    	height: 50px;
+		    }
+		</style>
+	</head>
+	<body>
+		<div class="ui-scroll" id="ceshi">
+			<ul>
+				<li>测试文字1</li>
+				<li>测试文字2</li>
+				<li>测试文字3</li>
+				<li>测试文字4</li>
+				<li>测试文字5</li>
+				<li>测试文字6</li>
+				<li>测试文字7</li>
+				<li>测试文字8</li>
+				<li>测试文字9</li>
+				<li>测试文字10</li>
+				<li>测试文字11</li>
+				<li>测试文字12</li>
+			</ul>
+		</div>
+	</body>
+	<script>
+	new scroll("#ceshi",{
+		line:3,  
+		timer:1000,
+		speed:2000,
+		hover:false
+	},function(res){
+		console.log(res)
+	})
+    </script>
+</html>

@@ -1,0 +1,251 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+</style>
+</head>
+<body>
+	<input type="hidden" id="pageId" value="personalInformationId" />
+	<div class="center-content-right risk fl" id="div_01">
+	    <h3 class="href-back">
+	    	&lt; 
+	    	<a href="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&amp;thirdCatId=ACCOUNT_INFO" class="info-back">个人信息</a>
+	    	<em>|</em>
+	    	<span>风险测评</span>
+	    </h3>
+	    <div class="risk-con" id="risk_div_01">
+	        <span class="point">根据监管要求，请您完成风险测评：</span>
+	        <div class="risk-con-list">
+	            <ul>
+	                <li>
+	                    <h2><em>1、</em><span>您目前的主要收入来源是：</span></h2>
+	                    <span data-score="2" data-name="q1" class="list">无固定收入（2分）</span>
+	                    <span data-score="4" data-name="q1" class="list">退休金（4分）</span>
+	                    <span data-score="6" data-name="q1" class="list">工资、劳务报酬（6分）</span>
+	                    <span data-score="8" data-name="q1" class="list">个体经营或财产收入（房租、股权收入等）（8分）</span>
+	                    <span data-score="10" data-name="q1" class="list">企业经营（10分）</span>
+	                </li>
+	                <li>
+	                    <h2><em>2、</em><span>您的年收入是：</span></h2>
+	                    <span data-score="0" data-name="q2" class="list">30万元以下</span>
+	                    <span data-score="0" data-name="q2" class="list">30-50万元</span>
+	                    <span data-score="0" data-name="q2" class="list">50-100万元</span>
+	                    <span data-score="0" data-name="q2" class="list">100万以上</span>
+	                </li>
+	                <li>
+	                    <h2><em>3、</em><span>您的可支配资产是多少（不包含不动产）（折合人民币）：</span></h2>
+	                    <span data-score="2" data-name="q3" class="list">100万元以下（2分）</span>
+	                    <span data-score="4" data-name="q3" class="list">100万元至200万元（4分）</span>
+	                    <span data-score="6" data-name="q3" class="list">200万元至500万元（6分）</span>
+	                    <span data-score="8" data-name="q3" class="list">500万元至1000万元（8分）</span>
+	                    <span data-score="10" data-name="q3" class="list">1000万元以上（10分）</span>
+	                </li>
+	                <li>
+	                    <h2><em>4、</em><span>在您每年的家庭可支配收入中，可用于金融投资（储蓄存款除外）的比例为：</span></h2>
+	                    <span data-score="2" data-name="q4" class="list">小于10%（2分）</span>
+	                    <span data-score="4" data-name="q4" class="list">10%至25%（4分）</span>
+	                    <span data-score="6" data-name="q4" class="list">25%至50%（6分）</span>
+	                    <span data-score="8" data-name="q4" class="list">50%至80%（8分）</span>
+	                    <span data-score="10" data-name="q4" class="list">80%以上（10分）</span>
+	                </li>
+	                <li>
+	                    <h2><em>5、</em><span>您的资产负债情况属于以下哪一种：</span></h2>
+	                    <span data-score="2" data-name="q5" class="list">有较大数额未到期负债（2分）</span>
+	                    <span data-score="4" data-name="q5" class="list">收入和支出相抵（4分）</span>
+	                    <span data-score="6" data-name="q5" class="list">有一定积蓄（6分）</span>
+	                    <span data-score="8" data-name="q5" class="list">有较为丰厚的积蓄并有一定的投资（8分）</span>
+	                    <span data-score="10" data-name="q5" class="list">比较富裕且有相当的投资（10分）</span>
+	                </li>
+	                <li>
+	                    <h2><em>6、</em><span>您的投资知识可描述为：</span></h2>
+	                    <span data-score="2" data-name="q6" class="list">无：没有金融产品方面的知识（2分）</span>
+	                    <span data-score="4" data-name="q6" class="list">有限：理解部分金融产品及其相关风险的概念，但十分有限（4分）</span>
+	                    <span data-score="6" data-name="q6" class="list">一般：对金融产品及其相关风险具有基本的知识和理解（6分）</span>
+	                    <span data-score="8" data-name="q6" class="list">丰富：对金融产品及其相关风险具有丰富的知识和理解（8分）</span>
+	                    <span data-score="10" data-name="q6" class="list">专业：对金融产品及其相关风险具有专业的知识和深入的理解（10分）</span>
+	                </li>
+	                <li>
+	                    <h2><em>7、</em><span>您的投资经验可描述为：</span></h2>
+	                    <span data-score="2" data-name="q7" class="list">基本无投资经验（2分）</span>
+	                    <span data-score="4" data-name="q7" class="list">大部分投资于存款、国债等（4分）</span>
+	                    <span data-score="6" data-name="q7" class="list">大部分投资于银行理财产品、保险理财产品等（6分）</span>
+	                    <span data-score="8" data-name="q7" class="list">大部分投资于基金、股票等（8分）</span>
+	                    <span data-score="10" data-name="q7" class="list">大部分投资于创业板股票、外汇、期货等高风险产品（10分）</span>
+	                </li>
+	                <li>
+	                    <h2><em>8、</em><span>您有多少年投资基金、股票、信托、私募证券或金融衍生产品等风险投资品的经验：</span></h2>
+	                    <span data-score="2" data-name="q8" class="list">1年以下（2分）</span>
+	                    <span data-score="4" data-name="q8" class="list">1至2年（4分）</span>
+	                    <span data-score="6" data-name="q8" class="list">2至5年（6分）</span>
+	                    <span data-score="8" data-name="q8" class="list">5至10年（8分）</span>
+	                    <span data-score="10" data-name="q8" class="list">10年以上（10分）</span>
+	                </li>
+	                <li>
+	                    <h2><em>9、</em><span>您计划中的投资期限是多长：</span></h2>
+	                    <span data-score="2" data-name="q9" class="list">少于1年（2分）</span>
+	                    <span data-score="4" data-name="q9" class="list">1-3年（4分）</span>
+	                    <span data-score="6" data-name="q9" class="list">3-5年（6分）</span>
+	                    <span data-score="8" data-name="q9" class="list">5-8年（8分）</span>
+	                    <span data-score="10" data-name="q9" class="list">8年以上（10分）</span>
+	                </li>
+	                <li>
+	                    <h2><em>10、</em><span>您打算重点投资于哪些种类的投资品种：</span></h2>
+	                    <span data-score="2" data-name="q10" class="list">短债、货币市场基金等主要投资于货币工具的基金（2分）</span>
+	                    <span data-score="4" data-name="q10" class="list">债券型基金等主要投资于固定收益类资产的基金（4分）</span>
+	                    <span data-score="6" data-name="q10" class="list">混合型基金等投资于权益类与固定收益类资产的基金（6分）</span>
+	                    <span data-score="8" data-name="q10" class="list">股票型基金等主要投资于权益类资产的基金（8分）</span>
+	                    <span data-score="10" data-name="q10" class="list">分级基金等其它复杂或高风险基金（10分）</span>
+	                </li>
+	                <li>
+	                    <h2><em>11、</em><span>以下哪项描述最符合您的投资态度：</span></h2>
+	                    <span data-score="2" data-name="q11" class="list">厌恶风险，能够承担极小的风险（2分）</span>
+	                    <span data-score="4" data-name="q11" class="list">虽然厌恶风险但愿意承担一些风险（4分）</span>
+	                    <span data-score="6" data-name="q11" class="list">在深思熟虑后愿意承担一定的风险（6分）</span>
+	                    <span data-score="8" data-name="q11" class="list">敢冒风险，比较激进（8分）</span>
+	                    <span data-score="10" data-name="q11" class="list">爱好风险，相当激进（10分）</span>
+	                </li>
+	                <li>
+	                    <h2><em>12、</em><span>以下几种投资模式，您更偏好哪种模式：</span></h2>
+	                    <span data-score="2" data-name="q12" class="list">收益只有5%，但可能亏损不超过5%（2分）</span>
+	                    <span data-score="4" data-name="q12" class="list">收益15%，但可能亏损5%（4分）</span>
+	                    <span data-score="6" data-name="q12" class="list">收益是30%，但可能亏损15%（6分）</span>
+	                    <span data-score="8" data-name="q12" class="list">收益50%，但可能亏损30%（8分）</span>
+	                    <span data-score="10" data-name="q12" class="list">收益100%，但可能亏损60%（10分）</span>
+	                </li>
+	                <li>
+	                    <h2><em>13、</em><span>您认为自己能承受的最大投资损失是多少：</span></h2>
+	                    <span data-score="2" data-name="q13" class="list">5%以内（2分）</span>
+	                    <span data-score="4" data-name="q13" class="list">5%-10%（4分）</span>
+	                    <span data-score="6" data-name="q13" class="list">10%-30%（6分）</span>
+	                    <span data-score="8" data-name="q13" class="list">30%-50%（8分）</span>
+	                    <span data-score="10" data-name="q13" class="list">超过50%（10分）</span>
+	                </li>
+	                
+	                <li>
+	                    <h2><em>14、</em><span>是否存在实际控制关系：</span></h2>
+	                    <span data-score="0" data-name="w14" data-value="N" class="list">否</span>
+	                    <span data-score="0" data-name="w14" data-value="Y" data-input="Y" class="list">是
+	                    	<div class="risk-option-desc">
+		                    	<input type="text" name="w14_text" class="w14_text w_text"  placeholder="请说明实际控制人" onblur="subjoinChange(this)"/>
+		                    	<p>所填选项不满足购买专户产品条件，请据实慎重选择。</p>
+	                    	</div>
+	                    </span>
+	                </li>
+	                <li>
+	                    <h2><em>15、</em><span>交易实际受益人：</span></h2>
+	                    <span data-score="0" data-name="w15" data-value="N" class="list">本人</span>
+	                    <span data-score="0" data-name="w15" data-value="Y" data-input="Y" class="list">他人
+	                    <div class="risk-option-desc">
+	                    	<input type="text" name="w15_text" class="w15_text w_text" placeholder="请说明实际受益人，如“以配偶为实际受益人”" onblur="subjoinChange(this)"/>
+	                    	<p>所填选项不满足购买专户产品条件，请据实慎重选择。</p>
+	                    </div>
+	                    </span>
+	                </li>
+	                <li>
+	                    <h2><em>16、</em><span>是否有不良诚信记录：</span></h2>
+	                    <span data-score="0" data-name="w16" data-value="N" class="list">否</span>
+	                    <span data-score="0" data-name="w16" data-value="Y" data-input="Y" class="list">是
+	                    	<div class="risk-option-desc">
+		                    	<input type="text" name="w16_text" class="w16_text w_text" placeholder="请说明情况，如信用卡逾期还款" onblur="subjoinChange(this)"/>
+		                    	<p>所填选项不满足购买专户产品条件，请据实慎重选择。</p>
+	                    	</div>
+	                    </span>
+	                </li>
+	                <li>
+	                    <h2><em>17、</em><span>请问您是否具有完全民事行为能力：</span></h2>
+	                    <span data-score="0" data-name="E17" data-value="Y" class="list">是</span>
+	                    <span data-score="0" data-name="E17" data-value="N" data-input="Y" class="list">否
+	                    	<div class="risk-option-desc">
+		                    	<p>所填选项会被判定为风险承受能力最低类别投资者，请据实慎重选择。</p>
+	                    	</div>
+	                    </span>
+	                </li>
+	                <li>
+	                    <h2><em>18、</em><span>请问您是否没有风险容忍度或者不愿承受任何投资损失：</span></h2>
+	                    <span data-score="0" data-name="E18" data-value="Y" data-input="Y" class="list">是
+	                    	<div class="risk-option-desc">
+		                    	<p>所填选项会被判定为风险承受能力最低类别投资者，请据实慎重选择。</p>
+	                    	</div>
+	                    </span>
+	                    <span data-score="0" data-name="E18" data-value="N" class="list">否</span>
+	                </li>
+	                <div class="common-box-title" style="background: #fff;margin-left: -18px;margin-top: 10px;width: 732px;">　　
+						<input type="checkbox" id="risk_cover_checkbox">
+						本人了解个人合格投资者须满足个人金融资产不低于500万元或者最近三年个人年均收入不低于40万元的条件，并承诺符合上述条件。本人保证提供的信息真实、准确、完整，知晓并确认若提供的信息不真实、不准确、不完整的，应依法承担相应的法律责任。本人已知晓并确认提供信息发生重要变化、可能影响投资者分类的，应当及时进行更新并告知招商财富资产管理有限公司。
+					</div>
+					<div class="bottom">
+					    <a class="btn act">提交问卷</a>
+					    <a href="javascript:resetOption();" class="reset">重置选项</a>
+					</div>
+           		</ul>
+	        </div>
+	    </div>
+	    
+        <div class="risk-result-con" id="risk_div_02" style="border: 0px;display: none;">
+            <div class="common-box-context risk1" style="background: #fff;height: auto;margin-left: 18px;overflow: hidden;margin-top: 0px;">
+                <div class="risk-result-con" id="risk_div_02" style="width: 660px;font-size: 16px;border: 0px;margin: 25px 0 0 0;">
+			        <div class="">
+					<div style="width: 60px;float: left;">
+  							<img alt="" width="" src="/AppWeb/AppWeb_Images/images/pic_success.png" style="width: 60px;height: 60px;margin: 0 20px 10px 30px;">
+					</div>
+					<div style="margin-left: 100px;line-height: 30px;">
+					    <span>经测评，您的风险承受能力为：</span><br>
+					    <em id="riskLeverCustLever_test" style="font-size: 25px;font-weight: 600;">C5-积极型（高风险承受能力）</em><br>
+					    <span id="riskEvel_test" style="font-size: 20px;font-weight: bold;"></span><br>
+					    <span id="evalDate_test"></span><br>
+						<span id="evalValiDate_test"></span><br>
+					    <span class="" >C5-积极型、C4-成长型、C3-平衡型、C2-稳健型、C1-保守型 <span onclick="detailTips()" class="detailTips">详细说明</span></span>
+					</div>
+				</div>
+		            <div class="btn">
+		                <a href="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&thirdCatId=RICHES_INFO" class="btn-left">我的财富</a>
+		                <a href="javascript:riskLevel_again();" class="btn-right">重新测评</a>
+		            </div>
+		            <div id="risk_isRealName" style="width: 660px;text-align: center;margin-top: 30px;display: none;">
+		                <a href="/AppService/business/bank/realName.shtml" style="color: #2061a2;text-decoration: underline;font-size:16px;">继续完成实名认证，尊享更多增值服务&gt;&gt;&gt;</a>
+		            </div>
+		        </div>
+			</div>
+        </div>
+	    <!--详细说明-->
+		<div class="cover_bg" id="detailText" style="display: none;">
+			<div class="common-box" style="width: 600px;height:434px;top: 40%;">
+				<div class="close_common close_risk_history_bg" onclick="closeDetailText()"></div>
+				<ul>
+					<li>
+						<div class="common-box-context-invest common-box-context" style="height: 285px;background: #fff;margin: 50px auto;margin-bottom: 18px; padding: 0;width: 530px;overflow-y: auto;overflow-x: hidden;border: 1px solid #d5d5d5;">
+							（一）	我司根据投资者所提供信息对其风险承受能力进行综合评价，对投资者评价以投资的风险承受能力来具体反映，专业投资者不再做具体分类管理，普通投资者包括五种类型投资者：C1保守型投资者、C2稳健型投资者、C3平衡型投资者、C4成长型投资者、C5积极型投资者。</br>
+							（二）	我司产品风险评价以公司产品的风险等级来反映，我司产品风险包括五种类型产品：R1低风险产品、R2中低风险产品、R3中风险产品、R4中高风险产品、R5高风险产品。投资者承担风险目的为获得与其匹配的收益，专户风险数值R越高，代表的风险也越高。根据产品风险特性，公司产品风险由低到高分为R1（低风险）、R2（中低风险）、R3（中风险）、R4（中高风险）、R5（高风险）五个级别，即：</br>
+							（三）	R1级，属低风险产品，投资范围仅限于货币市场工具等风险极低的短期金融资产。</br>
+							（四）	R2级，属中低风险产品，该级别产品不保证本金的偿付，但本金偿付风险较小，收益浮动相对可控。在信用风险维度上，产品主要承担高等级信用主体风险；在市场风险维度上，产品主要投资于债券等低波动性金融产品；在策略风险维度上，策略本身为低风险策略且交易风控机制相对固化。</br>
+							（五）	R3级，属中风险产品，该级别产品有一定的本金偿付风险，收益浮动且有一定波动性。在信用风险维度上，产品主要承担中高等级信用主体风险；在市场风险维度上，产品投资于股票、商品、外汇等高波动性金融产品的比例不超过20％（打新产品不受此比例限制）；在策略风险维度上，策略本身为较低风险策略且交易风控机制相对固化，或可进行良好的回撤控制。</br>
+							（六）	R4级，属中高风险产品，该级别产品本金偿付风险较大，收益浮动且波动较大。在信用风险维度上，产品可承担较低等级信用主体的风险；在市场风险维度上，投资于股票、商品、外汇等高波动性金融产品的比例超过20%；在策略风险维度上，策略本身为较高风险策略且交易风控机制不固化，回撤控制具有不确定性。</br>
+							（七）	R5级，属高风险产品，该级别产品本金偿付风险极大，收益浮动且波动极大。在信用风险维度上，产品可承担各等级信用主体的风险；在市场风险维度上，产品可完全投资于股票、外汇、商品等各类高波动性的金融产品。</br>
+							（八）	我司投资者类型与产品风险平级的匹配原则如下：C1保守型（含最低风险承受能力类别）普通投资者可以购买R1低风险等级产品或者服务；C2稳健型普通投资者可以购买R2中低风险等级及以下风险等级的产品或者服务；C3平衡型普通投资者可以购买R3中风险等级及以下风险等级的产品或者服务；C4成长型普通投资者可以购买R4中高风险等级及以下风险等级的产品或者服务；C5积极型普通投资者可以购买R5高风险等级及以下风险等级的产品或者服务。专业投资者可以购买任何风险等级产品。
+						</div>
+						<a href="javascript:closeDetailText();" style="margin-left: 221px;width: 106px;display: inline-block;height: 35px;line-height: 36px;background: #d8271c;border: 1px #d8271c solid;border-radius: 8px;font-size: 16px;text-align: center;color: #fff;">确&nbsp&nbsp&nbsp&nbsp定</a>
+						<!--<a href="javascript:closeDetailText();"  style="margin-left: 185px; width: 206px; display: inline-block;height: 48px;line-height: 48px; background: #fff;border: 1px #b8b8b8 solid;border-radius: 8px; font-size: 16px;text-align: center;">确定</a>-->
+					</li>
+				</ul>
+			</div>
+        </div>
+	</div>
+	<style>
+		.detailTips{
+			display: inline-block;
+			width: 110px;
+			height: 36px;
+			background: url(/AppWeb/AppWeb_Images/images/my_gift_btn.png) no-repeat;
+			background-size: 100% 100%;
+			text-align: center;
+			line-height: 36px;
+			margin-left: 14px;
+			color: #ff4930;
+			cursor: pointer;
+		}
+	</style>
+<!-- 	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/riskLevel.js"></script>  -->
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/riskLevel.min.js"></script>
+</body>
+</html>

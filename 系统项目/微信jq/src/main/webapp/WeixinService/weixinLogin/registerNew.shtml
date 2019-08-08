@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedomNew.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/headerNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscrollNew.js"></script>
+
+</head>
+<body>
+<section class="page" id="section">
+
+	<!--#include virtual="/WeixinService/headerOrFooter/headerNew.shtml"-->
+
+	<div style="display: none;">
+		<input type="hidden" id="sessionID" value="" />
+	</div>
+
+	<section id="section_01" style="display: block;">
+		<div class="box-input registe upadateregiste">
+			<div class="input-text line">
+				<label for="name">手机号</label>
+				<input type="text" id="mobile" value="" placeholder="请输入手机号码"/>
+			</div>
+			<div class="input-password line clear">
+				<label for="password">密码</label>
+				<input type="password" id="passWord" placeholder="请设置6-16位数字组成的登录密码" style="width:75%"/>
+			</div>
+			<div class="input-password clear">
+				<label for="password">确认密码</label>
+				<input type="password" id="confirmPassWord" placeholder="请输入登录密码" />
+			</div>
+		</div>
+		<div class="box-input indentify upadateregiste">
+			<div class="input-text line">
+				<label for="indentify upadateregiste" class="indentifyupdate">验证码</label>
+				<input type="text" id="randomCode" placeholder="请输入验证码" />
+				<span class="indentifyimg">
+					<img src="/WeixinService/buildimageservlet.xhtml" id="loginPageRondomCodeImg" onclick="getRandomCode()"/>
+				</span>
+			</div>
+			<div class="input-text line invitation">
+				<label for="name" class="inventPhone_text" style="width: 30%;">推荐好友手机</label>
+				<input type="text" style="margin-left: 0.5%;" maxlength="11" id="inventer_mobile" value="" class="inventer_mobile" placeholder="请输入推荐好友手机"/>
+			</div>
+			<div class="input-checkbox updateinput-checkbox mid">
+				<input class="checkbox" type="checkbox" id="ischecked" onchange="regCheckParam();"/>
+				<em id="agree">同意</em><span class="agree">
+					<a href="javascript:showXy('xy_01')">《招商财富用户服务协议》</a>
+					<a href="javascript:showXy('xy_02')">《招商财富用户承诺协议》</a>
+                                        <a href="javascript:showXy('xy_03')">《个人投资者告知函书》</a>
+				</span>
+			</div>
+		</div>
+		<div class="box-btn">
+			<a class="" id="reg_btn_01">下一步</a>
+		</div>
+		<div class="box-a">
+			<a href="javascript:goToLogin()" class="fr">已有账号，立即登录</a>
+		</div>
+	</section>
+
+
+	<section id="section_02" style="display: none;">
+		<div class="box-input registe upadateregiste">
+			<div class="input-text line">
+				<span class="point">请输入手机<em id="mobileByMsg"></em>收到的短信验证码</span>
+			</div>
+			<div class="input-text registe-indentify">
+				<label for="indentify upadateregiste">验证码</label>
+				<input type="text" id="smsCode" placeholder="请输入验证码" />
+				<span class="indentifyimg"><a id="AgetCode" href="javascript:getMobileVerifyCode()">获取验证码</a></span>
+			</div>
+		</div>
+		<div class="box-btn">
+			<a class="" id="reg_btn_02">下一步</a>
+		</div>
+		<div class="box-a">
+			<a href="javascript:showTips('tips_01')" class="fr">收不到验证码？</a>
+		</div>
+	</section>
+
+	<section id="section_03" style="display: none;">
+		<div class="bg-state registe upadateregiste">
+			<div class="state-icon waiting">
+				<img src="/WeixinWeb/WeixinWeb_Images/images/img_registration_success.png" alt="" />
+			</div>
+			<h1 class="registe-successful">注册成功</h1>
+		</div>
+		<a href="javascript:redirectUrl('/WeixinService/business/query/fundListNew.shtml')" class="check-order">立即查看专属产品</a>
+		<a href="javascript:redirectUrl('/WeixinService/business/bank/bankAuthNew.shtml')" class="check-order02">继续完成实名认证</a>
+	</section>
+
+
+</section>
+<div id="xy_01" style="display: none;">
+	<div id="wrapper">
+		<div id="scroller">
+			<!--#include virtual="/WeixinService/xyNew.shtml"-->
+		</div>
+	</div>
+</div>
+<div id="xy_02" style="display: none;">
+	<!--#include virtual="/WeixinService/xy2New.shtml"-->
+</div>
+
+<div id="xy_03" style="display: none;">
+	<div id="wrapper_personage">
+		<div id="scroller1_personage">
+			<!--#include virtual="/WeixinService/xy3New.shtml"-->
+		</div>
+	</div>
+</div>
+<div class="cover-bg" id="tips_01" style="display: none;">
+	<div class="cover-point">
+		<h3>收不到验证码？</h3>
+		<div class="cover-point-text mid">
+			<p><i>1.</i><em>请确认手机号码是否正确？</em></p>
+			<p><i>2.</i><em>请查看验证信息是否被手机安全软件拦截</em></p>
+			<p><i>3.</i><em>获得更多帮助，可联系招商财富客服<em class="tel">400-8878-555</em>（周一到周五09:00-17:30）</em></p>
+		</div>
+		<span class="cover-point-bottom" onclick="closeTips('tips_01');">我知道了</span>
+	</div>
+</div>
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/registerNew.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/registerNew.min.js"></script> -->
+<script type="text/javascript">
+/* document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/registerNew.js?version='+jsversion+'"><\/script>'); */
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/registerNew.min.js?version='+jsversion+'"><\/script>');
+</script>
+</body>
+</html>

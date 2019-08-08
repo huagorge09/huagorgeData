@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.schedule.ScheduleDao">
+	<resultMap id="scheduleVo" type="scheduleVo">
+		<result property="taskId" column="TASK_ID" />
+		<result property="taskName" column="TASK_NAME" />
+		<result property="taskDesp" column="TASK_DESP" />
+		<result property="jobName" column="JOB_NAME" />
+		
+		<result property="jobGroup" column="JOB_GROUP" />
+		<result property="triggerName" column="TRIGGER_NAME" />
+		<result property="triggerGroup" column="TRIGGER_GROUP" />
+		<result property="cronExp" column="CRON_EXP" />
+		
+		<result property="state" column="STATE" />
+		<result property="classPath" column="CLASS_PATH" />
+		<result property="createId" column="CREATE_ID" />
+		<result property="createTime" column="CREATE_TIME" />
+		
+		<result property="modifyTime" column="MODIFY_TIME" />
+		<result property="result" column="RESULT" />
+		<result property="stateName" column="STATE_NAME" />
+	</resultMap>
+	
+	<select id = "findById" parameterType="String" resultMap="scheduleVo">
+		SELECT T.TASK_ID,
+			   T.TASK_NAME,
+			   T.TASK_DESP,
+			   T.JOB_NAME,
+			   
+			   T.JOB_GROUP,
+			   T.TRIGGER_NAME,
+			   T.TRIGGER_GROUP,
+			   T.CRON_EXP,
+			   
+			   T.STATE,
+			   T.CLASS_PATH,
+			   T.CREATE_ID,
+			   T.CREATE_TIME,
+			   
+			   T.MODIFY_TIME,
+			   T.RESULT
+			   FROM T_ECC_SCHEDULE T
+			   WHERE T.TASK_ID =#{taskId}
+	</select>
+	
+	<select id="queryAllSchedule" resultMap="scheduleVo">
+		SELECT T.TASK_ID,
+			   T.TASK_NAME,
+			   T.TASK_DESP,
+			   T.JOB_NAME,
+			   
+			   T.JOB_GROUP,
+			   T.TRIGGER_NAME,
+			   T.TRIGGER_GROUP,
+			   T.CRON_EXP,
+			   
+			   T.STATE,
+			   T.CLASS_PATH,
+			   T.CREATE_ID,
+			   T.CREATE_TIME,
+			   
+			   T.MODIFY_TIME,
+			   T.RESULT
+			   FROM T_ECC_SCHEDULE T
+	</select>
+
+	<update id="updateRunningResult" parameterType="java.lang.String">
+		UPDATE T_ECC_SCHEDULE T SET T.RESULT=#{result},T.MODIFY_TIME=SYSDATE WHERE T.TASK_ID=#{taskId}
+	</update>
+	
+	<select id="scheduleListPage"  parameterType="sparam" resultMap="scheduleVo">
+	 SELECT T.TASK_ID,
+           T.TASK_NAME,
+           T.TASK_DESP,
+           T.JOB_NAME,
+           T.JOB_GROUP,
+           T.TRIGGER_NAME,
+           T.TRIGGER_GROUP,
+           T.CRON_EXP,
+           T.CLASS_PATH,
+           T.STATE,
+           DECODE(T.STATE, '0', '未激活', '1', '激活') STATE_NAME,
+           T.RESULT,
+           TO_CHAR(T.MODIFY_TIME, 'YYYY-MM-DD HH24:MI:SS') MODIFY_TIME,
+           TO_CHAR(T.CREATE_TIME, 'YYYY-MM-DD HH24:MI:SS') CREATE_TIME,
+           T.CREATE_ID
+      FROM T_ECC_SCHEDULE T
+      WHERE 1=1
+      <if test="sp.name != null and sp.name != ''">
+     		AND T.TASK_NAME LIKE '%'|| #{sp.name} || '%'
+   	  </if>
+      <if test="sp.state != null and sp.state != ''">
+     		AND T.STATE = #{sp.state}
+   	  </if>
+      ORDER BY T.CREATE_TIME
+	</select>
+	
+	<update id="changeState" parameterType="scheduleVo">
+		UPDATE T_ECC_SCHEDULE SET STATE = #{state}  WHERE TASK_ID = #{taskId} 
+	</update>
+	
+	<!-- 修改运行周期 -->
+	<update id="updateCron" parameterType="scheduleVo">
+			UPDATE T_ECC_SCHEDULE TS 
+		<set>
+			TS.CRON_EXP=#{cronExp}
+		</set>
+		<where>
+			TS.TASK_ID=#{taskId} 
+		</where>
+	</update>
+</mapper>

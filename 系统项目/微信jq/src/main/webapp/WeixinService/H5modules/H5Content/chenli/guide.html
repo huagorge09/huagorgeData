@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>招商财富-晨利系列 </title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/chenli/cfb.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-init.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/flexible.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+
+
+</head>
+<body>
+<div class="guide">
+    <div class="guide1">
+       
+    </div>
+    <div class="guide2">
+        <h1></h1>
+        <div class="product">
+            <h2>晨利短债</h2>
+            <!--<h3>募集截止：2018年6月27日 15:00</h3>-->
+            <ul class="clearFloat">
+                <li>
+                    <p>不限</p>
+                    <p>大额申购</p>
+                </li>
+                <li style="padding-top: .05rem;">
+                    <p><span>登录可见</span></p>
+                    <p>成立以来年化收益率</p>
+                </li>
+                <li>
+                    <p><em id="startBuy"></em><span>万起</span></p>
+                    <p>理财起点</p>
+                </li>
+            </ul>
+            <a href="javascript:;" class="loginSee" onclick="seeProduct()">登录可见产品详情</a>
+            <p class="t2">*风险提示：本产品风险等级为R2，适合风险承受能力为C2及以上的投资者。投资有风险。</p>
+        </div>
+    </div>
+        <div class="guide3">
+       
+    </div>
+        <div class="guide4">
+       
+    </div>
+</div>
+<div class="bottom clearFloat">
+    <a href="javascript:;" onclick="bussiness();" id="myBtn1">我感兴趣</a>
+    <a href="javascript:;" onclick="myAdviser();" id="myBtn2">我的顾问</a>
+</div>
+
+<!--预约信息填写-->
+<div class="cover-bg reserves hide">
+    <div class="content">
+        <span class="close"></span>
+        <h1>一键预约享专属服务<br>让投资无后顾之忧</h1>
+        <h3>我们的专属顾问将24小时内给您回电</h3>
+        <div class="form">
+            <ul>
+                <li>
+                    <div class="inputBox">
+                        <span></span> <input type="text" id="userName" name="userName" placeholder="请输入您的姓名"/>
+                    </div>
+                    <p style="display: none;"></p>
+                </li>
+                <li class="foucs">
+                    <div class="inputBox">
+                        <span></span> <input type="tel" id="mobilePhone" name="mobilePhone" maxlength="11"
+                                             placeholder="请输入您的手机号码"/>
+                    </div>
+                    <p style="display: none;"></p>
+                </li>
+
+            </ul>
+            <button id="saveBtn" class="disabled">立即提交</button>
+        </div>
+    </div>
+</div>
+<!-- 错误提示 -->
+<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+    <span id="errorRemark"></span>
+</div>
+<!--预约成功-->
+<div class="cover-bg success hide">
+    <div class="content center">
+        <span class="close"></span>
+        <div class="successIcon"></div>
+        <h2>预约成功</h2>
+        <p>客户经理将尽快与您联系，请保持电话畅通</p>
+    </div>
+</div>
+<script>
+    var pageId="wx_chenli_guidePageId"
+</script>
+
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/chenli/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.dictionary.DictionaryDao">
+	
+	<resultMap type="dictionaryVo" id="dictionaryResultMap">
+		<id column="DCTID" property="dctId"/>
+		<result column="DCTROOTTYPE" property="dctRootType"/>
+		<result column="DCTFATHTYPE" property="dctFathType"/>
+		<result column="DCTLEFTTYPE" property="dctLeftType"/>
+		<result column="DCTNAME" property="dctName"/>
+		<result column="DCTVALUE" property="dctValue"/>
+		<result column="DCTSORTNO" property="dctSortNo"/>
+		<result column="DCTISLEAF" property="dctIsLeaf"/>
+		<result column="DCTSTAT" property="dctStat"/>
+		<!-- <result column="STATUS" property="stat"/> -->
+		<result column="CREATEID" property="createId"/>
+		<result column="CREATETIME" property="createTime"/>
+		<result column="CHECKID" property="checkId"/>
+		<result column="CHECKTIME" property="checkTime"/>
+		
+		<result column="CREATE_NM" property="createNm"/>
+		<result column="CHECKE_NM" property="checkNm"/>
+		
+	    <result column="STAT" property="stat"/>
+	    <result column="STAT_NM" property="statNM"/>
+		
+		
+	</resultMap>
+
+	<select id="listDictionary" parameterType="dictionaryVo"  resultMap="dictionaryResultMap" >
+		<![CDATA[
+			SELECT DCTID,
+             DCTROOTTYPE, --字典根类型
+             DCTFATHTYPE, --字典父类型 
+             DCTLEFTTYPE, --字典子类型 
+             DCTNAME, --字典名   
+             DCTVALUE, --字典值 
+             DCTSORTNO, --排序号 
+             DCTISLEAF, --是否叶子
+             ECC_IBF_GET_DCTNAME_EX('DAT_YES_NOX', D.DCTISLEAF) AS DCTISLEAF_NM,
+             DCTSTAT, --是否生效
+             ECC_IBF_GET_DCTNAME_EX('DAT_YES_NOX', D.DCTSTAT) AS DCTSTAT_NM,
+             STAT, --状态
+             ECC_IBF_GET_DCTNAME_EX('DAT_CHK_SAT', D.STAT) AS STAT_NM
+        FROM T_ECC_DICTIONARY D
+       WHERE 1=1
+		]]> 
+		<if test="stat != null and stat !='' ">
+			<![CDATA[	AND D.STAT <> #{stat} ]]> 
+		</if>
+	    <if test="dctValue != null and dctValue !='' ">
+				AND NVL(D.DCTVALUE, '1') = NVL(#{dctValue}, NVL(D.DCTVALUE, '1'))
+		 </if>
+		  <if test="dctStat != null and dctStat !='' ">
+				 AND NVL(D.DCTSTAT, '1') = NVL((#{dctStat}, NVL(D.DCTSTAT, '1'))      
+		 </if>
+		 <if test="dctRootType != null and dctRootType !='' ">
+				AND D.DCTROOTTYPE LIKE CONCAT(CONCAT('%', #{dctRootType}),'%')
+		 </if>
+		  <if test="dctFathType != null and dctFathType !='' ">
+				AND D.DCTFATHTYPE LIKE CONCAT(CONCAT('%', #{dctFathType}),'%')
+		 </if>
+		  <if test="dctLeftType != null and dctLeftType !='' ">
+				AND D.DCTLEFTTYPE LIKE CONCAT(CONCAT('%', #{dctLeftType}),'%')
+		 </if>
+		  <if test="dctName != null and dctName !='' ">
+				AND D.DCTNAME LIKE CONCAT(CONCAT('%', #{dctName}),'%')
+		 </if>
+		  ORDER BY D.DCTSORTNO
+	</select>
+	
+	<select id="dictionarys" parameterType="dictionaryVo"  resultMap="dictionaryResultMap" >
+	SELECT 	 DCTNAME, --字典名   
+             DCTVALUE --字典值 
+        FROM T_ECC_DICTIONARY D
+       WHERE 1=1
+       AND D.DCTROOTTYPE =#{dctRootType}
+       AND D.DCTFATHTYPE =#{dctFathType}
+       AND D.DCTLEFTTYPE =#{dctLeftType}
+       ORDER BY DCTSORTNO
+	</select>
+
+
+   <!-- 分页查询产品费用类型信息     by  ex-huangch 2016.5.4  -->
+	<select id="dictionaryListPage" parameterType="sparam"  resultMap="dictionaryResultMap">
+      SELECT DCTID,
+			<!-- 字典根类型 -->
+             DCTROOTTYPE, 
+             DCTFATHTYPE, --字典父类型 
+             DCTLEFTTYPE, --字典子类型 
+             DCTNAME, --字典名   
+             DCTVALUE, --字典值 
+             DCTSORTNO, --排序号 
+             DCTISLEAF, --是否叶子
+             ECC_IBF_GET_DCTNAME_EX('DAT_YES_NOX', D.DCTISLEAF) AS DCTISLEAF_NM,
+             DCTSTAT, --是否生效
+             ECC_IBF_GET_DCTNAME_EX('DAT_YES_NOX', D.DCTSTAT) AS DCTSTAT_NM,
+             STAT, --状态
+             ECC_IBF_GET_DCTNAME_EX('DAT_CHK_SAT', D.STAT) AS STAT_NM
+        FROM T_ECC_DICTIONARY D
+        WHERE 
+		    	 D.STAT <![CDATA[<>]]>  'D' 
+	    <if test="sp.dctValue != null and sp.dctValue !='' ">
+				AND NVL(D.DCTVALUE, '1') = NVL(#{sp.dctValue}, NVL(D.DCTVALUE, '1'))
+		 </if>
+		  <if test="sp.dctStat != null and sp.dctStat !='' ">
+				 AND NVL(D.DCTSTAT, '1') = NVL((#{sp.dctStat}, NVL(D.DCTSTAT, '1'))      
+		 </if>
+		 <if test="sp.dctRootType != null and sp.dctRootType !='' ">
+				AND NVL(D.DCTROOTTYPE, '%') LIKE '%' || #{sp.dctRootType} || '%'
+		 </if>
+		  <if test="sp.dctFathType != null and sp.dctFathType !='' ">
+				AND NVL(D.DCTFATHTYPE, '%') LIKE '%' || #{sp.dctFathType} || '%'
+		 </if>
+		  <if test="sp.dctLeftType != null and sp.dctLeftType !='' ">
+		        AND NVL(D.DCTLEFTTYPE, '%') LIKE '%' || #{sp.dctLeftType} || '%'
+		 </if>
+		  <if test="sp.dctName != null and sp.dctName !='' ">
+				AND NVL(D.DCTNAME, '%') LIKE '%' ||  #{sp.dctName} || '%'
+		 </if>
+		  ORDER BY D.DCTSORTNO
+    
+	  </select>
+	
+	<!-- 新增产品费用类型信息     by  ex-huangch 2016.5.4 -->
+    <insert id="addDictionary" parameterType="dictionaryVo" > 
+	  <selectKey resultType="String" order="BEFORE" keyProperty="dctId">
+			SELECT ECC_IBF_GET_SEQNO(TO_CHAR(SYSDATE,'YYYYMMDD')) FROM DUAL
+	  </selectKey>
+    INSERT INTO T_ECC_DICTIONARY
+      (
+       DCTID,
+       DCTROOTTYPE,
+       DCTFATHTYPE,
+       DCTLEFTTYPE,
+       DCTNAME,
+       DCTVALUE,
+       DCTSORTNO,
+       DCTISLEAF,
+       DCTSTAT,
+       CREATEID,
+       CREATETIME,
+       STAT
+       )
+    VALUES
+      (
+        #{dctId},
+        #{dctRootType},
+        #{dctFathType},
+        #{dctLeftType},
+        #{dctName},
+	    #{dctValue},
+        #{dctSortNo},
+        #{dctIsLeaf},
+        #{dctStat},
+        #{createId},
+        SYSDATE,
+        #{stat}
+      )     
+            
+	 </insert>
+	
+	<!-- 通过字典ID查询系统数据字典信息    by  ex-huangch 2016.5.4 -->
+	<select id="queryDictionaryByDctId" parameterType="String"  resultMap="dictionaryResultMap">
+	 	 SELECT DCTID,
+           DCTROOTTYPE, --字典根类型
+           DCTFATHTYPE, --字典父类型
+           DCTLEFTTYPE, --字典子类型
+           DCTNAME, --字典名
+           DCTVALUE, --字典值
+           DCTSORTNO, --排序号
+           DCTISLEAF, --是否叶子
+           ECC_IBF_GET_DCTNAME_EX('DAT_YES_NOX', D.DCTISLEAF) AS DCTISLEAF_NM,
+           DCTSTAT, --是否生效
+           ECC_IBF_GET_DCTNAME_EX('DAT_YES_NOX', D.DCTSTAT) AS DCTSTAT_NM,
+           CREATEID, --经办人ID
+           (SELECT MAX(EMNAME)
+              FROM T_ECC_EMPLOYEE
+             WHERE EMPID = D.CREATEID) AS CREATE_NM, --经办人名称
+           TO_CHAR(CREATETIME, 'YYYY-MM-DD HH24:MI:SS') AS CREATETIME,
+           CHECKID, --复核人ID
+           (SELECT MAX(EMNAME)
+              FROM T_ECC_EMPLOYEE
+             WHERE EMPID = D.CHECKID) AS CHECKE_NM, --复核人名称
+           TO_CHAR(CHECKTIME, 'YYYY-MM-DD HH24:MI:SS') AS CHECKTIME,
+           STAT, --状态
+           ECC_IBF_GET_DCTNAME_EX('DAT_CHK_SAT', D.STAT) AS STAT_NM
+      FROM T_ECC_DICTIONARY D
+     WHERE   1=1
+      <if test="dctId !=null and dctId != '' ">
+			AND D.DCTID = #{dctId}
+	 	 </if>
+	</select>
+	
+	<!-- 删除系统数据字典信息     by  ex-huangch 2016.5.4 -->
+	<update id="deleteDictionary" parameterType="dictionaryVo">
+	    UPDATE  T_ECC_DICTIONARY D
+	     <set> 
+             D.STAT = #{stat}
+	     </set>
+		WHERE
+       	 <if test="dctId !=null and dctId !=''">
+			D.DCTID = #{dctId} 
+	 	 </if>
+	</update>
+	
+	<!-- 校验系统数据字典信息是否已存在     by  ex-huangch 2016.5.4 -->
+	<select id="checkDictionary" parameterType="dictionaryVo" resultType="int">
+     SELECT NVL(COUNT(DCTVALUE),0) 
+          FROM T_ECC_DICTIONARY
+     WHERE  1=1
+          AND DCTROOTTYPE = #{dctRootType}
+          AND DCTFATHTYPE = #{dctFathType}
+          AND DCTLEFTTYPE = #{dctLeftType}
+          AND DCTVALUE = #{dctValue}
+       <if test="oldDctValue !=null and oldDctValue !=''">
+       <![CDATA[	AND DCTVALUE <> #{oldDctValue} ]]>
+       </if>
+       <![CDATA[	AND STAT <> #{stat} ]]> 
+          
+	</select>
+	
+	<!-- 通过字典ID查询原有字典值     by  ex-huangch 2016.5.4 -->
+	<select id="queryDctValueByDctId" parameterType="dictionaryVo" resultType="String">
+       SELECT DCTVALUE 
+         FROM T_ECC_DICTIONARY
+       WHERE DCTID = #{dctId} 
+	</select>
+	
+	<!-- 修改系统数据字典信息     by  ex-huangch 2016.5.4 -->
+	<update id="updateDictionary" parameterType="dictionaryVo">
+	    UPDATE T_ECC_DICTIONARY
+	     <set> 
+          DCTROOTTYPE = #{dctRootType},
+          DCTFATHTYPE = #{dctFathType},
+          DCTLEFTTYPE = #{dctLeftType},
+          DCTNAME     = #{dctName},
+          DCTVALUE    = #{dctValue},
+          DCTSORTNO   = #{dctSortNo},
+          DCTISLEAF   = #{dctIsLeaf},
+          DCTSTAT     = #{dctStat},
+          STAT        = #{stat}
+	     </set>
+		WHERE 
+		 DCTID = #{dctId} 
+	</update>
+</mapper>

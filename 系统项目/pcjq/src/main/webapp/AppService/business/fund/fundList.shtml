@@ -1,0 +1,331 @@
+﻿
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"/>
+<link rel="shortcut icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+<link rel="icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+ <title>产品列表_投资理财产品、项目、理财管理服务、高端理财产品、招商财富</title>
+<meta name="keyword" content="招商财富理财产品超市、优选高净值投资理财产品" />
+ <meta name="description" content="招商财富为高净值客户提供优质的金融投资理财产品、投资理财建议和专业的资产配置服务，更多高端投资理财产品、投资理财项目，投资理财服务就在招商财富官网。" /> 
+
+<!--[if IE]>
+    <script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageJs/html5.js"></script>
+<![endif]-->
+<!--[if IE 6]>
+    <script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageJs/DD_belatedPNG_0.0.8a.min.js"></script>
+    <script>
+        DD_belatedPNG.fix('*');
+    </script>
+<![endif]-->
+</head>
+
+<body>
+
+<!-- header -->
+<!--#include virtual="/AppService/public/header.shtml"-->
+
+<!-- <div class="smk-top-box clear">
+    <div class="top-box-con" id="hotFundinfo">
+         热销产品展示区域
+    </div>
+</div> -->
+<div class="smk-top-box clear">
+    <div id="promarke-banner" id="hotFundinfo">      
+        <a href="javascript:void(0)" id="promarke-banner_info"></a> <!--标题-->
+        <input type="hidden" id="pageId" value="wealthProductsId"/>
+        <ul id="promarke-list"></ul>
+        <div id="promarke-banner_list">
+<!--             <a class="promarke-banner-img01" style="background: url('/AppWeb/AppWeb_Images/lianghua-banne-5(1).png') no-repeat center;" href="/AppService/business/fund/fundDetail.shtml?fundid=17A037" target="_blank"><img/></a> -->
+<!--             <a class="promarke-banner-img02" style="background: url('/AppWeb/AppWeb_Images/lianghua-banne-5(2).png') no-repeat center;" href="/AppService/business/fund/fundDetail.shtml?fundid=17A077" target="_blank"><img/></a> -->
+        </div>
+    </div>
+</div>
+<div class="pro-list">
+    <h1 class="pro-list-title"><span>产品超市</span><em></em></h1>
+    <div class="pro-list-con mid" id="fundinfoList">
+        <!-- 产品列表展示区域 -->
+    </div>
+</div>
+<div class="buy-process mid clear">
+    <div class="process-left fl">
+        <h1>购买流程</h1>
+        <a href="/AppService/article/openAccountProcess.shtml" class="join">立即查看</a>
+    </div>
+    <div class="process-right fl">
+        <dl>
+            <dt><img src="/AppWeb/AppWeb_Images/images/ic_login.png" height="48" width="42" /></dt>
+            <dd>快速注册/登录<span>注册/登录后才可查看产品信息</span></dd>
+            <img class="process-right-jt" src="/AppWeb/AppWeb_Images/images/ic_angle_process.png" height="20" width="11" />
+        </dl>
+        <dl>
+            <dt><img src="/AppWeb/AppWeb_Images/images/ic_product.png" height="48" width="42" /></dt>
+            <dd>查看招财产品<span>查看产品信息，选择适合标的</span></dd>
+            <img class="process-right-jt" src="/AppWeb/AppWeb_Images/images/ic_angle_process.png" height="20" width="11" />
+        </dl>
+        <dl class="process03">
+            <dt><img src="/AppWeb/AppWeb_Images/images/ic_card.png" height="48" width="42" /></dt>
+            <dd>购买及支付<span>选择支付方式，完成汇款</span></dd>
+            <img class="process-right-jt" src="/AppWeb/AppWeb_Images/images/ic_angle_process.png" height="20" width="11" />
+        </dl>
+        <dl class="last">
+            <dt><img src="/AppWeb/AppWeb_Images/images/ic_about.png" height="48" width="42" /></dt>
+            <dd>获取收益<span>项目到期获取收益</span></dd>
+        </dl>
+    </div>
+</div>
+<div class="q-a mid">
+    <h1>常见问题</h1>
+    <div class="FAQ productFAQ clear" id="QA">
+        <!--问题展示区域 -->
+        <div class="FAQ-con">
+            <dl>
+                <dt><p>如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？</p></dt>
+                <i class="arrow"></i>
+                <dd>在我的财富里面如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？在我的财富里面如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？在我的财富里面如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？</dd>
+            </dl>
+            <dl>
+                <dt><p>如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？</p></dt>
+                <dd>在我的财富里面如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？在我的财富里面如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？在我的财富里面如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？如果查到我购买的产品信息？</dd>
+                <i class="arrow"></i>
+            </dl>
+        </div>
+    </div>
+    <a href="/AppService/article/faq.shtml" class="more-info">查看更多</a>
+</div>
+
+
+<div class="cover_bg"  id="hint_tips_btn4" style="display: none;z-index:200;">
+    <div class="question_tip" style=''>
+        <div style='' class="pic_tip1"></div>
+        <div style='' class="pic_tip2"></div>
+        <div class="riskContent">
+	        <span class='top'>请进行风险测评</span>
+	        <div class="riskDemand">　　根据监管要求，请您完成风险测评：</div>
+	        <div id="questionContent" class='quesiton_content'>
+	        <!--#include virtual="/AppService/business/fund/riskLevel.shtml"-->
+	        </div>
+	        <div class="riskDecl">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="fundRiskDeclConfirm" id="fundRiskDeclConfirm"/><label for="fundRiskDeclConfirm" style="cursor: pointer;" >&nbsp;&nbsp;本人了解个人合格投资者须满足个人金融资产不低于500万元或者最近三年个人年均收入不低于40万元的条件，并承诺符合上述条件。本人保证提供的信息真实、准确、完整，知晓并确认若提供的信息不真实、不准确、不完整的，应依法承担相应的法律责任。本人已知晓并确认提供信息发生重要变化、可能影响投资者分类的，应当及时进行更新并告知招商财富资产管理有限公司。对于税收居民类型相关内容变更的，本人承诺将在30日内通知招商财富，否则本人承担由此造成的不利后果。</label></div>
+	          <div class="quesiton-bottom">
+	                <li>
+	                    <a href="#" id='submitRiskBtn' class="button click" onclick="riskLevel()">提交问卷</a>
+	                    <a href="#" id="iKnow" class="button click" onclick="iKnow()">先看看</a>
+	                </li>
+	                 <li>
+	                     <a href="javascript:resetOption();" class="reset">重置选项</a>
+	                </li>
+	         </div>
+       </div>
+       <div class="riskResult" style="display: none;" id= "riskResult">
+       		<div class="resultContent">
+       			<div class="resultIcon"></div>
+       			<div class="resultTable">
+       				<ul>
+       					<li>经测评，您的风险承受能力为：</li>
+       					<li class="riskResult-riskLevel">
+       						<span id="riskLevelName"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+       						 <span style="font-size:20px;" id="bearAbility"></span>
+       					</li>
+       					<li class="riskResult-fitProductLevel">
+       						适宜产品等级：<span id="fundRiskLevel"></span>
+       					</li>
+       					<li class="riskResult-riskDate">
+       						测评时间&nbsp;&nbsp;&nbsp;：
+       						<span id="evalDispDateTime"></span>
+       					</li>
+       					<li class="riskResult-riskDate">
+       						问卷有效期：
+       						<span id="evalValiDate"></span>
+       					</li>
+       					<li class="riskResult-riskLevelList">
+       						温馨提示：风险等级由高往低依次为：
+       					</li>
+       					<li style="margin-left: 90px">
+       						<span class="" >C5-积极型、C4-成长型、C3-平衡型、C2-稳健型、C1-保守型 <span onclick="detailTips()" class="detailTips">详细说明</span></span>
+       					</li>
+       				</ul>
+       				<ul class="result-bottom" style="margin-top: 30px;">
+       					<li class="result-bottom-left">
+       						<a href="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&thirdCatId=RICHES_INFO" id='accountIndexBtn' class="button click">我的财富</a>
+       					</li>
+       					<li class="result-bottom-right">
+       						<a href="javascript:riskLevel_again()" id='reRiskBtn' class="button click">重新测评</a>
+       					</li>
+       				</ul>
+       				<ul id="isToRealName" style="display: none;">
+       					<li class="result-bottom-left" style="text-align: center;width: 418px;padding-top: 60px;">
+       						<a href="/AppService/business/bank/realName.shtml?pageSourceId=wealthProductsId&eventId=event_wealthPro_realNameId" style="color: #2061a2;text-decoration: underline;font-size:16px;">继续完成实名认证，尊享更多增值服务&gt;&gt;&gt;</a>
+       					</li>
+       				</ul>
+       			</div>
+       		</div>
+       </div>
+    </div>
+</div>
+
+
+<!--  -->
+<div class="cover_bg"  id="hint_tax_resident" style="display: none;z-index:210;">
+  <div class="tax_resident_tip">
+  	<div class="tax_title">
+  		<h3>中国税收居民说明</h3>
+  		<div class="close_Alert" onclick="hideAlertInfoByTargetId('hint_tax_resident')"></div>
+  	</div>
+  	<div class="tax_content">
+  		<span>
+  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;税收居民类型包括中国税收居民、非居民以及既是中国又是其他类型税收居民。<br/>
+			1.中国税收居民：指在中国境内有住所，或者无住所而在境内居住满一年的个人。 在中国境内有住所是指因户籍、家庭、经济利益关系而在中国境内习惯性居住。 在境内居住满一年，是指在一个纳税年度中在中国境内居住365日。临时离境的，不扣减日数。 临时离境，是指在一个纳税年度中一次不超过30日或者多次累计不超过90日离境。<br/>
+			2.非居民：指中国税收居民以外的个人。其他类型税收居民身份认定规则及纳税识别号相关信息请参见国家税收务总局网站<br/>
+			（http://www.chinatax.gov.cn/aeoi_index.html）
+  		</span>
+  	</div>
+  	<div class="tax_button">
+  		<div class="btn-location">
+  			<a href="#" id='taxDescConfirmBtn' class="button click" onclick="hideAlertInfoByTargetId('hint_tax_resident')">确定</a>
+  		</div>
+  	</div>
+  </div>
+</div>
+
+<!-- 风险测评过期 -->
+<!-- <div class="cover_bg"  id="hint_risk_timeout" style="display: none;z-index:209;">
+  <div class="risk_timeout_tip">
+  	<div class="out_title"><h3></h3></div>
+  	<div class="out_content">
+  		<span>您的风险承受能力调查问卷已过有效期，还请重新测评。</span>
+  	</div>
+  	<div class="out_button">
+  		<div class="btn-location">
+  			<div>
+  				<a href="#" id='reQuestionBtn' class="button click" onclick="show_question();hideAlertInfoByTargetId('hint_risk_timeout');">重新测评</a>
+  			</div>
+  			<div>
+  				<a href="#" id='lookAgainBtn' class="button click" onclick="hideAlertInfoByTargetId('hint_risk_timeout')">我再看看</a>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+</div> -->
+
+	<!--详细说明-->
+	<div class="cover_bg" id="detailText" style="display: none;z-index: 999;">
+		<div class="common-box">	
+			<ul style="width: 602px; position: absolute; left: 50%;margin-left: -300px;background: #fff;top: 25%;height: 420px;">
+			<div class="close_common close_risk_history_bg" onclick="closeDetailText()"></div>
+				<li>
+					<div class="common-box-context-invest common-box-context" style="height: 285px;background: #fff;margin: 50px auto;margin-bottom: 18px; padding: 0;width: 530px;overflow-y: auto;overflow-x: hidden;border: 1px solid #d5d5d5;">
+						（一）	我司根据投资者所提供信息对其风险承受能力进行综合评价，对投资者评价以投资的风险承受能力来具体反映，专业投资者不再做具体分类管理，普通投资者包括五种类型投资者：C1保守型投资者、C2稳健型投资者、C3平衡型投资者、C4成长型投资者、C5积极型投资者。</br>
+						（二）	我司产品风险评价以公司产品的风险等级来反映，我司产品风险包括五种类型产品：R1低风险产品、R2中低风险产品、R3中风险产品、R4中高风险产品、R5高风险产品。投资者承担风险目的为获得与其匹配的收益，专户风险数值R越高，代表的风险也越高。根据产品风险特性，公司产品风险由低到高分为R1（低风险）、R2（中低风险）、R3（中风险）、R4（中高风险）、R5（高风险）五个级别，即：</br>
+						（三）	R1级，属低风险产品，投资范围仅限于货币市场工具等风险极低的短期金融资产。</br>
+						（四）	R2级，属中低风险产品，该级别产品不保证本金的偿付，但本金偿付风险较小，收益浮动相对可控。在信用风险维度上，产品主要承担高等级信用主体风险；在市场风险维度上，产品主要投资于债券等低波动性金融产品；在策略风险维度上，策略本身为低风险策略且交易风控机制相对固化。</br>
+						（五）	R3级，属中风险产品，该级别产品有一定的本金偿付风险，收益浮动且有一定波动性。在信用风险维度上，产品主要承担中高等级信用主体风险；在市场风险维度上，产品投资于股票、商品、外汇等高波动性金融产品的比例不超过20％（打新产品不受此比例限制）；在策略风险维度上，策略本身为较低风险策略且交易风控机制相对固化，或可进行良好的回撤控制。</br>
+						（六）	R4级，属中高风险产品，该级别产品本金偿付风险较大，收益浮动且波动较大。在信用风险维度上，产品可承担较低等级信用主体的风险；在市场风险维度上，投资于股票、商品、外汇等高波动性金融产品的比例超过20%；在策略风险维度上，策略本身为较高风险策略且交易风控机制不固化，回撤控制具有不确定性。</br>
+						（七）	R5级，属高风险产品，该级别产品本金偿付风险极大，收益浮动且波动极大。在信用风险维度上，产品可承担各等级信用主体的风险；在市场风险维度上，产品可完全投资于股票、外汇、商品等各类高波动性的金融产品。</br>
+						（八）	我司投资者类型与产品风险平级的匹配原则如下：C1保守型（含最低风险承受能力类别）普通投资者可以购买R1低风险等级产品或者服务；C2稳健型普通投资者可以购买R2中低风险等级及以下风险等级的产品或者服务；C3平衡型普通投资者可以购买R3中风险等级及以下风险等级的产品或者服务；C4成长型普通投资者可以购买R4中高风险等级及以下风险等级的产品或者服务；C5积极型普通投资者可以购买R5高风险等级及以下风险等级的产品或者服务。专业投资者可以购买任何风险等级产品。
+					</div>
+					<!--<a href="javascript:closeDetailText();"  style="margin-left: 185px; width: 206px; display: inline-block;height: 48px;line-height: 48px; background: #fff;border: 1px #b8b8b8 solid;border-radius: 8px; font-size: 16px;text-align: center;">确定</a>-->
+					<a href="javascript:closeDetailText();" style="margin-left: 221px;width: 106px;display: inline-block;height: 35px;line-height: 36px;background: #d8271c;border: 1px #d8271c solid;border-radius: 8px;font-size: 16px;text-align: center;color: #fff;">确&nbsp&nbsp&nbsp&nbsp定</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	  <!-- 尚未完成操作弹窗-->
+    <div class="cover_bg" id="noOperation" style="display: none;">
+    	 <!-- 重新测评-->
+    	 <div class="content anewRisk"  style="width: 515px; height: 341px;">
+    	 	  <h2></h2>
+    	 	  <p style="line-height: 30px;height:auto; font-size:18px;padding-left:0;">根据监管要求，您的风险测评<br>已过有效期，还请重新测评。</p>
+    	 	  <a class="btn" style="margin-top: 25px;">确定</a>
+    	 </div>
+    </div>
+    <style>
+		.detailTips{
+			display: inline-block;
+			width: 110px;
+			height: 36px;
+			background: url(/AppWeb/AppWeb_Images/images/my_gift_btn.png) no-repeat;
+			background-size: 100% 100%;
+			text-align: center;
+			line-height: 36px;
+			margin-left: 14px;
+			color: #ff4930;
+			cursor: pointer;
+		}
+    	.gudieBox{width: 622px;height: 530px;background: #fff;border-radius: 10px;position: absolute;left: 50%;top: 50%;margin-left: -279px;margin-top: -265px;padding-top: 29px;}
+        .gudieBox h2{height: 39px;line-height: 39px;text-align: center;margin-bottom: 20px;background: url(/AppWeb/AppWeb_Images/images/guide3.png) top center no-repeat;color: #fff;font-size: 20px;}
+        .gudieBox .text{padding-left: 42px;}
+        .gudieBox p{font-size: 16px; line-height: 28px; }
+        .gudieBox .pt1{margin-bottom: 35px;margin-top: 35px;}
+        .gudieBox .pt2{color: #717e8c;}
+        .gudieBox .btn{width: 194px; height: 42px;line-height: 42px; font-size: 20px;text-align: center; border-radius: 5px;color: #fff;border: none; cursor: pointer; background: #ca132c; margin: 60px auto 0;outline: none;}
+        .gudieBox .icon{position: absolute; display: inline-block;width: 164px;height: 151px;background: url(/AppWeb/AppWeb_Images/images/guide4.png) no-repeat; bottom: 0; right: 0;background-size: 100% 100%;}
+        .nextGuide .w{margin: 0 auto; width: 1000px; position: relative;}
+        .nextGuide .see{width:375px;height: 41px; background: url(/AppWeb/AppWeb_Images/images/guide1.png) no-repeat; position: absolute;top: 120px;left: 332px;}
+        .nextGuide .know{width:112px;height: 47px; cursor: pointer; background: url(/AppWeb/AppWeb_Images/images/guide2.png) no-repeat;position: absolute;top: 163px;left: 444px;}
+        .quesiton-bottom li{position: relative;}.cover_bg .quesiton-bottom li a.button.click{ margin-left: -122px !important;}#iKnow{position: absolute;left: 228px;top: 0;}
+    	
+    	#noOperation .content{width: 594px;height: 476px;position: absolute;left: 50%;top:50%;margin-top: -238px;margin-left: -279px; background: #fff;border-radius: 5px;}
+        #noOperation h2{width:193px;height: 157px;background: url(/AppWeb/AppWeb_Images/images/noOper1.png) no-repeat;  background-size: 100% 100%; margin: 22px auto 2px auto;}
+        #noOperation .content>p{height: 40px;line-height: 40px; font-size: 20px; color: #212121; text-align: center;}
+        #noOperation .tips{    padding-top: 28px;padding-left: 30px;}
+        #noOperation h3{background: url(/AppWeb/AppWeb_Images/images/noOper2.png) no-repeat;padding-left: 23px;margin-bottom: 3px; font-size: 18px; color: #212121;}
+        #noOperation p{font-size: 16px; color: #666666;line-height: 26px;padding-left: 22px;}
+        #noOperation .yearReport{height: 49px;line-height: 42px; width: 504px; color: #47a1f0;margin-left: 21px;background: url(/AppWeb/AppWeb_Images/images/noOper3.png) no-repeat;margin-top: 12px;text-align: center;padding: 0;}
+        #noOperation .btn{display: block; width: 194px; height: 42px;line-height: 42px; font-size: 20px;text-align: center; border-radius: 5px;color: #fff;border: none; cursor: pointer; background: #ca132c; margin: 15px auto 0;outline: none;}
+        #noOperation p.once{text-align: center; font-size: 18px; color: #999999;    line-height: 22px;}
+        #noOperation .realName{height: 450px;margin-top: -225px;}
+	.conFirst{width: 187px!important}
+        .conTd{width: 100px!important;}
+    </style>
+    <!-- 20180411新增E -->
+	
+	 <script>
+       	function iKnow(){
+       		location.href="/AppService/index.shtml";
+       	}
+	 </script> 
+
+<!-- 您已是专业投资者-->
+<div class="cover_bg"  id="hint_risk_update" style="display: none;z-index:208;">
+  <div class="risk_update_tip">
+  	<div class="update_title"><h3></h3></div>
+  	<div class="update_content">
+  		<span>您已是专业投资者，自行做出投资决定并自主承担投资风险。</span>
+  	</div>
+  	<div class="update_button">
+  		<div class="btn-location">
+  			<div>
+  				<a href="#" id='updateQuestionBtn' class="button click" onclick="updateUserInvprtpAlert()">我知道了</a>
+  			</div>
+  			<div>
+  				<a href="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&thirdCatId=ACCOUNT_INFO" id='updateLookAgainBtn' class="button click" onclick="updateUserInvprtpAlert()">申请转换</a>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+</div>
+
+<style>
+.close_common{
+	position: absolute;
+    right: 20px;
+    width: 14px;
+    height: 14px;
+    top: 15px;
+    background: url(/AppWeb/AppWeb_Images/images/pic_close_name.png);
+    cursor: pointer;
+    z-index: 2;
+}
+</style>
+<!-- footer -->
+<!--#include virtual="/AppService/public/footer.shtml"-->
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/babyzone.js"></script>
+<!-- 测试用 -->
+<!-- <script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/fundList.js"></script> -->
+<!-- 生产用   -->
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/fundList.min.js"></script>
+</body>
+</html>

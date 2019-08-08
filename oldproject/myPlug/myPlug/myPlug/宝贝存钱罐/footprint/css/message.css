@@ -1,0 +1,116 @@
+html,body{
+    background-color: #f6f6f6;
+}
+.page{
+    background-color: #fff;
+}
+.messageList .item{
+    display: -webkit-flex;
+    display: flex;
+}
+.messageList .item:last-of-type .contain{
+    border-bottom: none;
+}
+/*微信头像*/
+.messageList .item .head{
+    padding-top: 0.55rem;
+    padding-left: 0.3rem;
+    margin-right: 0.2rem;
+}
+.messageList .item .head img{
+    width: 1rem;
+    height: 1rem;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+/*消息内容*/
+.messageList .contain{
+    display: -webkit-flex;
+    display: flex;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
+    padding-bottom: 0.3rem;
+    -webkit-flex: 1;
+    flex: 1;
+    border-bottom: solid 1px #eaeaea;
+}
+.messageList .contain .context{
+    -webkit-flex: 1;
+    flex: 1;
+    padding-top: 0.2rem;
+}
+.messageList .context .name{
+    font-size: 0.3rem;
+    color: #437baf;
+    font-weight: bold;
+    line-height: 0.4rem;
+}
+.messageList .context .text{
+    margin-top: 0.1rem;
+}
+.messageList .context .dianZan{
+    font-size: 0.24rem;
+    color: #666;
+    line-height: 0.36rem;
+}
+.messageList .context .dianZan:before{
+    content: "";
+    vertical-align: middle;
+    margin-top: -0.12rem;
+    margin-right: 0.1rem;
+    display: inline-block;
+    width: 0.31rem;
+    height: 0.31rem;
+    background: url("../image/icon/public/zan1.png") no-repeat center;
+    background-size: 100% 100%;
+}
+.messageList .context .pingLun,
+.messageList .context .daShang{
+    font-size: 0.28rem;
+    color: #333;
+    line-height: 0.36rem;
+}
+.messageList .context .daShang span{
+    font-size: 0.36rem;
+    color: #ffc000;
+    margin: 0 0.05rem;
+}
+.messageList .context .date{
+    font-size: 0.24rem;
+    color: #a7a7a7;
+    line-height: 1;
+    margin-top: 0.25rem;
+}
+/*足记图片*/
+.messageList .item .pic{
+    width: 1.5rem;
+    height: 1.5rem;
+    overflow: hidden;
+    margin-left: 0.35rem;
+    background-color: #f6f6f6;
+    font-size: 0.28rem;
+    line-height: 0.36rem;
+    color: #999;
+}
+.messageList .item .pic .text{
+    padding: 0.03rem;
+    color: #999;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+.messageList .item .pic img{
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+}
+.more{
+    border-top: solid 1px #eaeaea;
+    line-height: 0.8rem;
+    text-align: center;
+    font-size: 0.28rem;
+    color: #999;
+}

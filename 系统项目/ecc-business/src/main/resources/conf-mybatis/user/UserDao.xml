@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cmwa.ecc.business.dao.user.UserDao">
+			<select id="getUserById" parameterType="com.cmwa.ecc.business.entity.user.User"  statementType="CALLABLE">
+				{ 
+				    call OQP_OPERATOR_INFO(
+						#{userid,mode=IN,jdbcType=VARCHAR},
+						#{errCode,mode=OUT,jdbcType=VARCHAR},
+						#{errMsg,mode=OUT,jdbcType=VARCHAR},
+						#{userid,mode=OUT,jdbcType=VARCHAR},
+						#{usernm,mode=OUT,jdbcType=VARCHAR},
+						#{status,mode=OUT,jdbcType=VARCHAR},
+						#{netpoint,mode=OUT,jdbcType=VARCHAR}, 
+						#{pwdflg,mode=OUT,jdbcType=VARCHAR}) 
+				}
+			</select>
+			
+			<select id="userHavePermission" parameterType="String" resultType="int">
+					SELECT COUNT(*)
+						  FROM LGI_OPROLE T1, LGI_ROLEPRIV T2, LGI_ROLES T3, LGI_TRANSINFO T4
+						 WHERE T1.ROLEID = T2.ROLEID
+						   AND T2.ROLEID = T3.ROLEID
+						   AND T1.GRST = '1'
+						   AND T3.ROLEST = 'N'
+						   AND T4.TRANSST = '1'
+						   AND T2.TRANSCD = T4.TRANSCD
+						   AND T1.OPID = #{userId}
+						   AND T2.TRANSCD = #{permissId}
+			</select>
+</mapper>

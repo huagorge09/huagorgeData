@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>招商财富用户承诺协议</title>
+<link rel="shortcut icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+<link rel="icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+
+	<!-- header -->
+	<!--#include virtual="/AppService/public/header.shtml"-->
+
+	<div class="user_xybox">
+	    <div class="user_xycenter">
+	        <h2 class="xy_title">招商财富用户承诺协议</h2>
+	        <p style="text-indent: 2em;">依据国家相关法规和政策，招商财富资产管理有限公司的专项资产管理计划的合格投资者用户必须满足个人金融资产不低于500万元，或最近三年个人年均收入不低于40万元的条件。</p>
+	        <p style="text-indent: 2em;">本人慎重承诺，本人符合个人金融资产不低于500万元，或最近三年个人年均收入不低于40万元的条件。如因本人承诺不实，而造成的对招商财富资产管理有限公司和对应资产管理计划的影响和责任，由本人承担。</p>
+	        <p class="thank_p">谢谢您选择招商财富！</p>
+	        <div class="gs_name company">招商财富资产管理有限公司</div>
+	    </div>
+	</div>
+	
+	<!-- footer -->
+	<!--#include virtual="/AppService/public/footer.shtml"-->
+</body>
+</html>

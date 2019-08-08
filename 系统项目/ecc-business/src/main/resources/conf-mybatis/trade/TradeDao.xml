@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cmwa.ecc.business.dao.trade.TradeDao">
+	<select id="simpSwitch" parameterType="tradeDto" resultType="tradeDto" statementType="CALLABLE">
+		{
+		call DS_OTP_TRUSTEE(
+		#{serialno,mode=IN,jdbcType=VARCHAR},
+		#{custno,mode=IN,jdbcType=VARCHAR},
+		#{tradeacco,mode=IN,jdbcType=VARCHAR},
+		#{fundid,mode=IN,jdbcType=VARCHAR},
+		#{seatno,mode=IN,jdbcType=VARCHAR},
+		#{netpoint,mode=IN,jdbcType=VARCHAR},
+		#{OTradeacco,mode=IN,jdbcType=VARCHAR},
+		#{subQuty,mode=IN,jdbcType=DOUBLE},
+		#{contact,mode=IN,jdbcType=VARCHAR},
+		#{contidno,mode=IN,jdbcType=VARCHAR},
+		#{contidtp,mode=IN,jdbcType=VARCHAR},
+		#{trustType,mode=IN,jdbcType=VARCHAR},
+		#{permissionId,mode=IN,jdbcType=VARCHAR},
+		#{operatorId,mode=IN,jdbcType=VARCHAR},
+		#{checkno,mode=IN,jdbcType=VARCHAR},
+		#{managedSwitchType,mode=IN,jdbcType=VARCHAR},
+		#{errcode,mode=OUT,jdbcType=VARCHAR},
+		#{errmsg,mode=OUT,jdbcType=VARCHAR}
+		)}
+	</select>
+	<select id="tradeCheck" parameterType="tradeCheckDto" resultType="tradeCheckDto" statementType="CALLABLE">
+		{call DS_OTP_CHECK(
+		#{serialno,mode=IN,jdbcType=VARCHAR},
+		#{checkst,mode=IN,jdbcType=VARCHAR},
+		#{operatorId,mode=IN,jdbcType=VARCHAR},
+		#{permissionId,mode=IN,jdbcType=VARCHAR},
+		#{errcode,mode=OUT,jdbcType=VARCHAR},
+		#{errmsg,mode=OUT,jdbcType=VARCHAR}
+		)}
+	</select>
+	
+	<select id="contractSign" parameterType="contractSignDto" resultType="contractSignDto" statementType="CALLABLE">
+		{	call OTP_ECONTRACTSIGN(
+				#{serialNo,mode=IN,jdbcType=VARCHAR},
+				#{custNo,mode=IN,jdbcType=VARCHAR},
+				#{tradeAcco,mode=IN,jdbcType=VARCHAR},
+				#{fundId,mode=IN,jdbcType=VARCHAR},
+				#{contractVer,mode=IN,jdbcType=VARCHAR},
+				#{contractTp,mode=IN,jdbcType=VARCHAR},
+				#{signChannel,mode=IN,jdbcType=VARCHAR},
+				#{signMachine,mode=IN,jdbcType=VARCHAR},
+				#{errCode,mode=OUT,jdbcType=VARCHAR},
+				#{errMsg,mode=OUT,jdbcType=VARCHAR}
+			)
+		}
+	</select>
+	
+	<insert id="insertTradeData" parameterType="tradeDto">
+		INSERT INTO DS_TRADEDATA
+	            (SERIALNO,
+	             APPSERIALNO,
+	             ISORIGINAL,
+	             CONTRACTSIGN,
+	             VOICERECORD,
+	             RISKSIGN,
+	             ISTRADEFORM,
+	             INSERTTIMESTAMP,
+	             UPDATETIMESTAMP)
+	      VALUES(
+	             #{serialno},
+	             #{oldserialno},
+	             #{isoriginal},
+	             #{contractsign},
+	             #{voicerecord},
+	             #{risksign},
+	             #{istradeform},
+	             SYSDATE,
+	             SYSDATE
+	             )
+	</insert>
+	
+	<!-- 认购 -->
+	<select id="subscribe" parameterType="tradeDto" statementType="CALLABLE">
+		{	call DS_OTP_SUB(
+				#{serialno,mode=IN,jdbcType=VARCHAR},
+				#{custno,mode=IN,jdbcType=VARCHAR},
+				#{tradeacco,mode=IN,jdbcType=VARCHAR},
+				#{fundid,mode=IN,jdbcType=VARCHAR},
+				#{subAmt,mode=IN,jdbcType=DOUBLE},
+				#{contact,mode=IN,jdbcType=VARCHAR},
+				#{contidno,mode=IN,jdbcType=VARCHAR},
+				#{contidtp,mode=IN,jdbcType=VARCHAR},
+				#{trustType,mode=IN,jdbcType=VARCHAR},
+				#{permissionId,mode=IN,jdbcType=VARCHAR},
+				#{operatorId,mode=IN,jdbcType=VARCHAR},
+				#{checkno,mode=IN,jdbcType=VARCHAR},
+				#{errcode,mode=OUT,jdbcType=VARCHAR},
+				#{errmsg,mode=OUT,jdbcType=VARCHAR}
+			)
+		}
+	</select>
+	
+	<!-- 申购 -->
+	<select id="purchase" parameterType="tradeDto" statementType="CALLABLE">
+		{	call DS_OTP_BID(
+				#{serialno,mode=IN,jdbcType=VARCHAR},
+				#{custno,mode=IN,jdbcType=VARCHAR},
+				#{tradeacco,mode=IN,jdbcType=VARCHAR},
+				#{fundid,mode=IN,jdbcType=VARCHAR},
+				#{subAmt,mode=IN,jdbcType=DOUBLE},
+				#{contact,mode=IN,jdbcType=VARCHAR},
+				#{contidno,mode=IN,jdbcType=VARCHAR},
+				#{contidtp,mode=IN,jdbcType=VARCHAR},
+				#{trustType,mode=IN,jdbcType=VARCHAR},
+				#{permissionId,mode=IN,jdbcType=VARCHAR},
+				#{operatorId,mode=IN,jdbcType=VARCHAR},
+				#{checkno,mode=IN,jdbcType=VARCHAR},
+				#{errcode,mode=OUT,jdbcType=VARCHAR},
+				#{errmsg,mode=OUT,jdbcType=VARCHAR}
+			)
+		}
+	</select>
+	
+	<!-- 赎回 -->
+	<select id="redeem" parameterType="tradeDto" statementType="CALLABLE">
+		{	call DS_OTP_RED(
+				#{serialno,mode=IN,jdbcType=VARCHAR},
+				#{custno,mode=IN,jdbcType=VARCHAR},
+				#{tradeacco,mode=IN,jdbcType=VARCHAR},
+				#{fundid,mode=IN,jdbcType=VARCHAR},
+				#{subAmt,mode=IN,jdbcType=DOUBLE},
+				#{largeflag,mode=IN,jdbcType=VARCHAR},
+				#{contact,mode=IN,jdbcType=VARCHAR},
+				#{contidno,mode=IN,jdbcType=VARCHAR},
+				#{contidtp,mode=IN,jdbcType=VARCHAR},
+				#{trustType,mode=IN,jdbcType=VARCHAR},
+				#{permissionId,mode=IN,jdbcType=VARCHAR},
+				#{operatorId,mode=IN,jdbcType=VARCHAR},
+				#{checkno,mode=IN,jdbcType=VARCHAR},
+				#{errcode,mode=OUT,jdbcType=VARCHAR},
+				#{errmsg,mode=OUT,jdbcType=VARCHAR}
+			)
+		}
+	</select>
+	
+	<!-- 基金转换-->
+	<select id="convert" parameterType="tradeDto" statementType="CALLABLE">
+		{	call DS_OTP_CONV(
+				#{serialno,mode=IN,jdbcType=VARCHAR},
+				#{custno,mode=IN,jdbcType=VARCHAR},
+				#{tradeacco,mode=IN,jdbcType=VARCHAR},
+				#{fundid,mode=IN,jdbcType=VARCHAR},
+				#{ofundid,mode=IN,jdbcType=VARCHAR},
+				#{subAmt,mode=IN,jdbcType=DOUBLE},
+				#{largeflag,mode=IN,jdbcType=VARCHAR},
+				#{contact,mode=IN,jdbcType=VARCHAR},
+				#{contidno,mode=IN,jdbcType=VARCHAR},
+				#{contidtp,mode=IN,jdbcType=VARCHAR},
+				#{trustType,mode=IN,jdbcType=VARCHAR},
+				#{permissionId,mode=IN,jdbcType=VARCHAR},
+				#{operatorId,mode=IN,jdbcType=VARCHAR},
+				#{checkno,mode=IN,jdbcType=VARCHAR},
+				#{errcode,mode=OUT,jdbcType=VARCHAR},
+				#{errmsg,mode=OUT,jdbcType=VARCHAR}
+			)
+		}
+	</select>
+	
+	<!-- 分红方式设置-->
+	<select id="setMelonmd" parameterType="tradeDto" statementType="CALLABLE">
+		{	call DS_OTP_MELONMD_SET(
+				#{serialno,mode=IN,jdbcType=VARCHAR},
+				#{ofundid,mode=IN,jdbcType=VARCHAR},
+				#{tradeacco,mode=IN,jdbcType=VARCHAR},
+				#{fundid,mode=IN,jdbcType=VARCHAR},
+				#{melonmd,mode=IN,jdbcType=VARCHAR},
+				#{melonpercent,mode=IN,jdbcType=DOUBLE},
+				#{contact,mode=IN,jdbcType=VARCHAR},
+				#{contidno,mode=IN,jdbcType=VARCHAR},
+				#{contidtp,mode=IN,jdbcType=VARCHAR},
+				#{trustType,mode=IN,jdbcType=VARCHAR},
+				#{permissionId,mode=IN,jdbcType=VARCHAR},
+				#{operatorId,mode=IN,jdbcType=VARCHAR},
+				#{checkno,mode=IN,jdbcType=VARCHAR},
+				#{errcode,mode=OUT,jdbcType=VARCHAR},
+				#{errmsg,mode=OUT,jdbcType=VARCHAR}
+			)
+		}
+	</select>
+	
+	<!-- 转托管转出-->
+	<select id="managedSwitchOut" parameterType="tradeDto" statementType="CALLABLE">
+		{	call DS_OTP_TRUSTEEOUT(
+				#{serialno,mode=IN,jdbcType=VARCHAR},
+				#{custno,mode=IN,jdbcType=VARCHAR},
+				#{tradeacco,mode=IN,jdbcType=VARCHAR},
+				#{fundid,mode=IN,jdbcType=VARCHAR},
+				#{subQuty,mode=IN,jdbcType=DOUBLE},
+				#{contact,mode=IN,jdbcType=VARCHAR},
+				#{contidno,mode=IN,jdbcType=VARCHAR},
+				#{contidtp,mode=IN,jdbcType=VARCHAR},
+				#{trustType,mode=IN,jdbcType=VARCHAR},
+				#{permissionId,mode=IN,jdbcType=VARCHAR},
+				#{operatorId,mode=IN,jdbcType=VARCHAR},
+				#{checkno,mode=IN,jdbcType=VARCHAR},
+				#{seatno,mode=IN,jdbcType=VARCHAR},
+				#{errcode,mode=OUT,jdbcType=VARCHAR},
+				#{errmsg,mode=OUT,jdbcType=VARCHAR}
+			)
+		}
+	</select>
+	
+	<!-- 转托管转入 -->
+	<select id="managedSwitchIn" parameterType="tradeDto" statementType="CALLABLE">
+		{	call DS_OTP_TRUSTEEIN(
+				#{serialno,mode=IN,jdbcType=VARCHAR},
+				#{custno,mode=IN,jdbcType=VARCHAR},
+				#{tradeacco,mode=IN,jdbcType=VARCHAR},
+				#{fundid,mode=IN,jdbcType=VARCHAR},
+				#{seatno,mode=IN,jdbcType=VARCHAR},
+				#{netpoint,mode=IN,jdbcType=VARCHAR}, 
+				#{oldserialno,mode=IN,jdbcType=VARCHAR}, 
+				#{contact,mode=IN,jdbcType=VARCHAR},
+				#{contidno,mode=IN,jdbcType=VARCHAR},
+				#{contidtp,mode=IN,jdbcType=VARCHAR},
+				#{trustType,mode=IN,jdbcType=VARCHAR},
+				#{permissionId,mode=IN,jdbcType=VARCHAR},
+				#{operatorId,mode=IN,jdbcType=VARCHAR},
+				#{checkno,mode=IN,jdbcType=VARCHAR},
+				#{switchInShare,mode=IN,jdbcType=VARCHAR},
+				#{errcode,mode=OUT,jdbcType=VARCHAR},
+				#{errmsg,mode=OUT,jdbcType=VARCHAR}
+			)
+		}
+	</select>
+	
+	<!-- 转托管转入 -->
+	<select id="tradeModify" parameterType="tradeCheckDto" statementType="CALLABLE">
+		{	call DS_OTP_CHECK_MODIFY(
+				#{serialno,mode=IN,jdbcType=VARCHAR},
+				#{modifytype,mode=IN,jdbcType=VARCHAR},
+				#{custno,mode=IN,jdbcType=VARCHAR},
+				#{tradeacco,mode=IN,jdbcType=VARCHAR},
+				#{fundid,mode=IN,jdbcType=VARCHAR},
+				#{subquty,mode=IN,jdbcType=VARCHAR},
+				#{subamt,mode=IN,jdbcType=VARCHAR}, 
+				#{ofundid,mode=IN,jdbcType=VARCHAR}, 
+				#{oseatno,mode=IN,jdbcType=VARCHAR},
+				#{onetpoint,mode=IN,jdbcType=VARCHAR},
+				#{largeflag,mode=IN,jdbcType=VARCHAR},
+				#{melonmd,mode=IN,jdbcType=VARCHAR},
+				#{melonpercent,mode=IN,jdbcType=VARCHAR},
+				#{operatorId,mode=IN,jdbcType=VARCHAR},
+				#{permissionId,mode=IN,jdbcType=VARCHAR},
+				#{errcode,mode=OUT,jdbcType=VARCHAR},
+				#{errmsg,mode=OUT,jdbcType=VARCHAR}
+			)
+		}
+	</select>
+	
+	<!-- 撤销交易申请 -->
+	<select id="cancel" parameterType="tradeDto" statementType="CALLABLE">
+		{	call DS_OTP_CANCEL(
+				#{serialno,mode=IN,jdbcType=VARCHAR},
+				#{tradeacco,mode=IN,jdbcType=VARCHAR},
+				#{oldserialno,mode=IN,jdbcType=VARCHAR},
+				#{trustType,mode=IN,jdbcType=VARCHAR},
+				#{permissionId,mode=IN,jdbcType=VARCHAR}, 
+				#{operatorId,mode=IN,jdbcType=VARCHAR}, 
+				#{checkno,mode=IN,jdbcType=VARCHAR},
+				#{errcode,mode=OUT,jdbcType=VARCHAR},
+				#{errmsg,mode=OUT,jdbcType=VARCHAR}
+			)
+		}
+	</select>
+</mapper>

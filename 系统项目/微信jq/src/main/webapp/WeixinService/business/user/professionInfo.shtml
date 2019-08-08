@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title></title>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/slider.js"></script>
+	<style type="text/css">
+		.header {
+			position: fixed;
+			top: 0px;
+		}
+
+		section {
+			margin-top: 60px;
+		}
+
+		.otherVocation {
+			height: 30px;
+			padding-left: 10px;
+			border-radius: 3px;
+			border: 1px gray solid;
+			margin-left: 10px;
+			outline: none;
+		}
+
+		span.otherProText {
+			margin-left: 25px;
+			font-size: 16px;
+			color: black;
+		}
+
+		.recommendPop {
+			width: 90%;
+			height: 200px;
+			background: #ffffff;
+			border-radius: 8px;
+			position: fixed;
+			left: 5%;
+			top: 50%;
+			margin-top: -125px;
+			z-index: 99;
+		}
+
+		.popHead {
+			height: 40px;
+			width: 100%;
+			background: #f0f0f0;
+			font-size: 15.5px;
+			color: #000000;
+		}
+
+		.popTitle {
+			text-align: center;
+			width: 100%;
+			padding-top: 10px;
+			display: inline-block;
+		}
+
+		.closeIcon {
+			background: url(/WeixinWeb/WeixinWeb_Images/mgm/closeIcon.png) no-repeat;
+			background-size: 18px;
+			width: 18px;
+			height: 20px;
+			position: absolute;
+			right: 9%;
+			top: 5%;
+			cursor: pointer;
+		}
+
+		.knowedButton {
+			height: 40px;
+			width: 100%;
+			border-top: 1px solid #f1f0f6;
+			color: #ff0000;
+			font-size: 16px;
+			position: absolute;
+			bottom: 0;
+			text-align: center;
+			padding-top: 6px;
+		}
+
+		.backLayer {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #000000;
+			opacity: 0.55;
+			z-index: 1;
+		}
+
+		.otherVocationBox {
+			margin-top: 42px;
+		}
+	</style>
+</head>
+
+<body style="background-color: rgb(245, 245, 245);">
+	<section class="page">
+		<div id="scroller"></div>
+		<!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->
+		<section class="title" id="section_01">
+			<div class="center-accountset"></div>
+		</section>
+
+		<div style="display: none;" class="recommendPop" id="recommendPop">
+			<!-- 弹出框顶部 -->
+			<div class="popHead">
+
+				<span class="popTitle">填写其他职业</span><span class="closeIcon" onclick="closePop()"></span>
+			</div>
+
+			<div class="otherVocationBox">
+				<span class="otherProText">其他职业</span>
+				<input id="otherVocation" class="otherVocation" type="text" placeholder="请填写其他职业">
+			</div>
+
+			<!-- 按钮区域 -->
+			<div class="knowedButton" onclick="updateCmfUserBaseInfo()">提交</div>
+		</div>
+		<!-- 蒙层 -->
+		<div class="backLayer" style="display: none;"></div>
+	</section>
+	<input id="voccode" type="hidden">
+	<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/professionInfo.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/professionInfo.min.js"></script> -->
+	<script type="text/javascript">
+	/* document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/professionInfo.js?version='+jsversion+'"><\/script>'); */
+	document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/professionInfo.min.js?version='+jsversion+'"><\/script>');
+	</script>
+</body>
+
+</html>

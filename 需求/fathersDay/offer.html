@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="x5-orientation" content="portrait" />
+<!--    <meta name="apple-mobile-web-app-capable" content="no" />-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no">
+	<title>邀请好友一起赢携程券</title>
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/animation.css" />
+</head>
+<body class="offerBg">
+    <div class="myOffer">
+    	<h2><span onclick="offer.action.returnIndex()"><i></i>返回</span>我的奖品</h2>
+    	<div class="itemBox">
+    		<ul class="item" style="display: none;">
+	    		<!--<li class="dswkb">
+	    			<div class="itemName"></div>
+	    			<div class="itemInfo">
+	    				<p><em>￥</em>1000</p>
+	    				<p>有效日期：2018-06-30</p>
+	    			</div>
+	    			<div>
+	    				<a href="javascript:;">去兑换</a>
+	    			</div>
+	    			<i></i>
+	    		</li>
+	    		<li class="dswkb status1">
+	    			<div class="itemName"></div>
+	    			<div class="itemInfo">
+	    				<p><em>￥</em>1000</p>
+	    				<p>有效日期：2018-06-30</p>
+	    			</div>
+	    			<div class="grayIcon">
+	    				
+	    			</div>
+	    			<i></i>
+	    		</li>
+	    		<li class="dswkb status1">
+	    			<div class="itemName"></div>
+	    			<div class="itemInfo">
+	    				<p><em>￥</em>1000</p>
+	    				<p>有效日期：2018-06-30</p>
+	    			</div>
+	    			<div class="grayIcon">
+	    				
+	    			</div>
+	    			<i></i>
+	    		</li>-->
+	    	</ul>
+	    	<div class="none" style="display: none;">
+	    		<img src="images/noAward.jpg"/>
+	    		<p>暂无中奖纪录！</p>
+	    		<p>快去集齐地图开宝箱吧！</p>
+	    	</div>
+	    	<p class="tips" style="display: none;">*奖励发放：代金券将于活动结束后15个工作日内发放，您可用于火车票、机票购买、酒店或景点门票等场景消费时使用，携程对券的使用有最终解释权。</p>
+    	</div>
+    	<h2 style="display: none;"class="awardInfoText">我的信息</h2>
+        <div class="awardInfo dswkb awardInfoText" style="display: none;">
+        	<ul>
+        		<li>姓名：<span id="username">刘丹</span> <input type="text" name="userName" style="display: none;"/></li>
+        		<li>手机：<span id="mobilePhone">13488990088</span><input type="text" name="mobilePhone"  style="display: none;" maxlength="11"/></li>
+        	</ul>
+        	<a href="javascript:;" class="edit" onclick="offer.action.edit()">编辑</a>
+        	<a href="javascript:;" class="save" style="display: none;" onclick="offer.action.save()">保存</a>
+        </div>
+    </div> 
+    <!-- 信息提交弹窗-->
+     <div class="popup sumitPop" style="display: none;">
+    	<div class="mask"></div>
+    	<div class="content center">
+    		提交成功
+        </div>
+    </div>
+    <!--用户兑奖弹窗-->
+    <div class="popup cashPrize" style=" display: none; ">
+    	<div class="mask"></div>
+    	<div class="content center">
+              <span class="close" id="close"></span>
+              <h2>填写兑奖信息</h2>
+              <p>请您提供真实有效的姓名和联系方式，<br>我们将据此给您发放活动奖券。</p>
+              <ul>
+              	<li class="dswkb">
+              		<span>姓名：</span>
+              		<input type="text" name="username2" class="flex1" placeholder="请输入2-10字中文姓名" />
+              	</li>
+              	<li class="dswkb">
+              		<span>手机号码：</span>
+              		<input type="tel" name="mobilePhone2" class="flex1" placeholder="请输入您的手机号码" maxlength="11"/>
+              	</li>
+              </ul>
+              <a href="javascript:;" onclick="offer.popUserSubmit()">提交</a>
+              <h3>*携程代金券将于活动结束后15个工作日内发放，届时请注意查收。</h3>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+ 	<script type="text/javascript" src="js/flexible.min.js" ></script>
+    <script type="text/javascript" src="js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="js/config.js" ></script>
+    <script type="text/javascript" src="js/public.js" ></script>
+    <script type="text/javascript" src="js/share.js" ></script>
+    <script type="text/javascript" src="js/offer.js" ></script>
+    
+</body>
+</html>

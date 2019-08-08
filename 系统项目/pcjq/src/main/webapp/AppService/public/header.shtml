@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keyword" content="资产配置、高端投资理财、资产管理、理财产品、固定收益、私募股权、债券、资产证券化、solution" />
+<meta name="description" content="招商财富是招商旗下专业高端资产管理平台，主要经营特定客户资产管理业务。招商财富为高净值客户提供优质的金融投资理财产品、投资理财建议和专业的资产配置服务，满足客户全方位的资产管理需求。" /> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" />
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/DataStatisJs.js"></script>
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageJs/jquery.js"></script>
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageJs/jquery.min.js"></script>
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/highcharts.js"></script>
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/commons.js"></script>
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/regValidater.js"></script>
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/freedom.js"></script>
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/placeholder.js"></script>
+<link rel="stylesheet" type="text/css" href="/AppWeb/AppWeb_Css/public.css">
+<link rel="stylesheet" type="text/css" href="/AppWeb/AppWeb_Css/style.css">
+<!-- 下拉框 -->
+<link rel="stylesheet" type="text/css" href="/AppWeb/AppWeb_Css/select2/select2.min.css" />
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/select2/select2.full.js"></script>
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/select2/i18n/zh-CN.js"></script>
+<!-- 下拉框 end -->
+<!--[if IE]>
+		<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageJs/html5.js"></script>
+	<![endif]-->
+<!--[if IE 6]>
+		<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageJs/DD_belatedPNG_0.0.8a.min.js"></script>
+		<script>
+			DD_belatedPNG.fix('*');
+		</script>
+	<![endif]-->
+</head>
+
+<div class="cover_bg" id="hint_tips_btn1" style="display: none;z-index: 999">
+    <div class="cover-con pop-up-three recoverpassword-cover">
+        <i class="close" onclick="close_tips('hint_tips_btn1');"></i>
+        <span class="cover-con-text act" style="text-align: center;" id="tips_btn1_msg">系统繁忙，请稍后再试！</span>
+        <input class="pop-up-three-confirm" type="button" id='tips_btn3_btn' onclick="close_tips('hint_tips_btn1');" value="确认" />
+    </div>
+</div>
+
+<div class="cover_bg" id="hint_tips_btn2" style="display: none">
+    <div class="cover-con pop-up-three recoverpassword-cover">
+        <i class="close" onclick="close_tips('hint_tips_btn2');"></i>
+        <span class="cover-con-text act" style="text-align: center;" id="tips_btn2_msg">该账号不存在，请立即注册！</span>
+        <input class="cover-con-btn registe" type="button" id="tips_btn1_btn" onclick="gotoRegister();" value="立即注册" />
+        <input class="cover-con-btn close" type="button" id="tips_btn2_btn" onclick="close_tips('hint_tips_btn2');" value="重新填写" />
+    </div>
+</div>
+
+<div class="cover_bg" id="hint_tips_btn3" style="display: none">
+    <div class="cover-con pop-up-three recoverpassword-cover">
+        <!-- <i class="close" onclick="close_tips('hint_tips_btn3');"></i> -->
+        <span class="cover-con-text act" style="text-align: center;" id="tips_btn1_msg">系统繁忙，请稍后再试！</span>
+        <!-- <input class="pop-up-three-confirm" type="button" onclick="close_tips('hint_tips_btn3');" value="确认" /> -->
+    </div>
+</div>
+
+<div class="header">
+	<!-- <div style="display: none;">
+		<input type="text" id="userId" name="cmfUserId" value="" />
+	</div> -->
+	<div class="page-top-bg">
+		<div class="page-top-con mid">
+			<div class="page-top-left fl">
+				<img src="/AppWeb/AppWeb_Images/images/icon_landline.png" height="17" width="17"> <span>客服热线：400-8878-555，销售热线：0755-23988886</span>
+			</div>
+			<div class="page-top-right fr" id="loginNo">
+				<a href="/login/login.shtml" class="login">登录</a> <em>|</em> <a href="/login/register.shtml" class="register">注册</a> <img src="/AppWeb/AppWeb_Images/images/ic_WeChat_normal.png" height="16" width="20" class="weixin_icon" /> <span
+					class="weixin">官方微信</span> <img src="/AppWeb/AppWeb_Images/images/ewm02.gif" height="110" width="110" class="weixin_img" />
+			</div>
+			<div class="page-top-right fr none" id="loginYes">
+				<a class="login" id="login_userinfo"></a> <em>|</em> <a onclick="checkOutLogin();" class="register">退出</a> <img src="/AppWeb/AppWeb_Images/images/ic_WeChat_normal.png" height="16"
+					width="20" class="weixin_icon" /> <span class="weixin">官方微信</span> <img src="/AppWeb/AppWeb_Images/images/ewm02.gif" height="110" width="110" class="weixin_img" />
+			</div>
+			<div class="page-top-right fr none" id="loginYesPublic">
+				<a class="login" id="login_userinfo_public"></a> <em>|</em> <a onclick="checkOutLoginForCompany();" class="register">退出</a> <img src="/AppWeb/AppWeb_Images/images/ic_WeChat_normal.png" height="16"
+					width="20" class="weixin_icon" /> <span class="weixin">官方微信</span> <img src="/AppWeb/AppWeb_Images/images/ewm02.gif" height="110" width="110" class="weixin_img" />
+			</div>
+		</div>
+	</div>
+	<div class="header-nav clear">
+		<div class="header-nav-con mid">
+			<a href="https://direct.cmwachina.com/AppService/index.shtml">
+				<div id="logo" class="fl">
+					<img src="/AppWeb/AppWeb_Images/images/logo-_img.png"> <!--<em><img src="/AppWeb/AppWeb_Images/images/logo-_img-point.jpg"></em>-->
+				</div>
+			</a>
+			<!-- <div id="logo" class="fl">
+				<img src="/AppWeb/AppWeb_Images/images/logo-_img.png" height="54" width="251" />
+			</div> -->
+			<a  href="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&thirdCatId=RICHES_INFO" class="My-center fr">
+			</a>
+			<div class="nav fr">
+				<ul>
+					<li><a href="/AppService/index.shtml">首页</a></li>
+					<li><a href="/AppService/business/fund/fundList.shtml">财富产品</a></li>
+					<li><a href="/AppService/article/newsList.shtml">新闻动态</a></li>
+					<li><a href="/AppService/article/aboutUs.shtml">财富故事</a></li>
+					<li><a href="/AppService/article/investorProtect.shtml">投资者保护</a></li>
+					<li><a href="/AppService/article/infoPublicity.shtml">信息公示</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 未登录header -->
+
+<!--<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/header.min.js"></script>-->
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/header.js"></script>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.WaecuserUserBaseInfoDao">
+	<select id="queryUserBaseInfoByMobile" resultType="com.cmwa.ec.user.facade.dto.UserBaseInfoDto">
+		SELECT 
+			MOBILE mobile,
+			CMFUSERID cmfUserId,
+			USERTYPE userType, 
+			IDTYPE idType,
+			IDNO idNo,
+			LPASSWORD lPassword,
+			TPASSWORD tPassword,
+			MOBILESTATUS mobileStatus,
+			EMAIL email,
+			EMAILSTATUS emailStatus,
+			LLASTTIME lLastTime,
+			LLASTCHANNEL lLastChannel,
+			LLASTMARK lLastMark,
+			LSTATUS lStatus,
+			TSTATUS tStatus,
+			CUSTSTATUS custStatus,
+			RISKLEVEL riskLevel,
+			REGISTMARK registMark
+		FROM USER_BASEINFO T WHERE T.MOBILE = #{mobile,jdbcType=VARCHAR}
+	</select>
+	
+</mapper>

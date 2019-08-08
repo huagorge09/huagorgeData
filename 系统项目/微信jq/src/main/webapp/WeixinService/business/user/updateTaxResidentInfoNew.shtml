@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedomNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1New.min.js"></script>
+	<!--  滚动条js  -->
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscrollNew.js"></script>
+	
+	<style type="text/css">
+		.cancel-address{
+			display: block;
+		    width: 100%;
+		    height: 50px;
+		    line-height: 50px;
+		    text-align: center;
+		    margin: 0 auto;
+		    color: #fff;
+		    font-size: 1.7rem;
+		    /*border-radius: 3px;*/
+		    background: #d3d3d3;
+		    /*float: left;
+			margin-top: -16px;*/
+		}
+		
+		.house-input{
+			margin-left: 10%;
+		    width: 66%;
+		    border: 0px;
+		    color: #999;
+		}
+		
+		@media only screen and (min-device-width: 360px){
+			.input-text label, .input-password label {
+			    font-size: 1.5rem;
+			}
+			.addressTitle{
+				    width: 85px !important;
+			}
+			.input-text{
+				margin: 0 auto;
+			}
+		}
+		
+		@media only screen and (max-device-width: 359.9px){
+			.input-text label, .input-password label {
+			    font-size: 1.3rem;
+			}
+			.addressTitle{
+				    width: 65px !important;
+			}
+			.input-text{
+				margin: 0 0 0 10px;
+			}
+		}
+		.tax_decl{
+			height: 31px;
+		    width: 90%;
+		    margin: 0 auto;
+    	}
+    	.tax_decl a{
+		    color: #2061a2;
+		    text-decoration: underline;
+		    line-height: 31px;
+    	}
+    	.fund_cover_bg .fund_cover-con .span{
+		        position: relative;
+			    font-weight: bold;
+			    padding: initial;
+			    color: #ca132c;
+			    font-size: 1.5rem;
+			    display: inline-block;
+			    width: 197px;
+		}
+		
+		.fund_cover_bg .fund_cover-con .fund_quesiton{
+		    background: #f3f3f3;
+		    line-height: 25px;
+		}
+		.riskDecl{
+		    width: 90%;
+	   		margin: 0 auto;
+		    height: auto;
+		}
+	</style>
+</head>
+
+<body>
+<section class="page">
+<div id="wrapper">
+    <div id="scroller" style="height: 100%;">
+    <!--#include virtual="/WeixinService/headerOrFooter/headerNew.shtml"-->
+    <section>
+    	<input type="hidden" id="taxResidentType" />
+    	<input type="hidden" id="taxResidentTypeNM" />
+    	<input type="hidden" id="taxResidentData" />
+       <div class="center-accountset">
+            <a href="javascript:goFundTaxResidentTypeView()" class="href-point" style="font-size: 12px;">
+				税收居民类型
+				<i id="taxResidentText" style="width: 61%;overflow: hidden;height: 45px;padding-left: 0px;text-align: right;margin-right: 15px;">请选择</i>
+				<em></em>
+			</a>
+       </div>
+    </section> 
+    <div class="tax_decl">
+    	<a href="javascript:show_taxResidentDecl()" style="color: #2061a2;text-decoration: underline;">《中国税收居民说明》</a>
+    </div>
+	<br>
+    <div class="riskDecl">
+   		&nbsp;&nbsp;&nbsp;&nbsp;
+    	<input type="checkbox" name="fundRiskDeclConfirm" id="fundRiskDeclConfirm"/>
+   		<label for="fundRiskDeclConfirm" style="cursor: pointer;" >&nbsp;本人确认上述信息的真实、准确和完整，且当这些信息发生变更时，将在30日内通知招商财富，否则本人承担由此造成的不利后果。</label>
+	</div>
+   <div class="btn-state">
+		<a href="javascript:cacelTaxResidentUpdate();" class="btn-back">返回</a>
+		<a href="javascript:saveTaxResidentInfo();" class="btn-golden">保存修改</a>
+	</div>
+	
+</div></div>
+
+<div id='taxResidentDecl_tip' class="fund_cover_bg"  style="display:none;z-index: 100">
+	    <div class='fund_cover-con' style="overflow-y: auto;">
+			<span class='span' style='text-align:center'>中国税收居民说明</span>
+			<div class='fund_quesiton'>
+				<span>
+		  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;税收居民类型包括中国税收居民、非居民以及既是中国又是其他类型税收居民。<br/>
+					1.中国税收居民：指在中国境内有住所，或者无住所而在境内居住满一年的个人。 在中国境内有住所是指因户籍、家庭、经济利益关系而在中国境内习惯性居住。 在境内居住满一年，是指在一个纳税年度中在中国境内居住365日。临时离境的，不扣减日数。 临时离境，是指在一个纳税年度中一次不超过30日或者多次累计不超过90日离境。<br/>
+					2.非居民：指中国税收居民以外的个人。其他类型税收居民身份认定规则及纳税识别号相关信息请参见国家税收务总局网站<br/>
+					（http://www.chinatax.gov.cn/aeoi_index.html）
+		  		</span>
+			</div>
+			<div class="boxs-btn">
+				<a href="javascript:closeTips('taxResidentDecl_tip')" class="check-order">确定</a>
+			</div>
+	</div>
+</div>
+</section> 
+
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/updateTaxResidentInfoNew.min.js"></script> -->
+<script type="text/javascript">
+//document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/updateTaxResidentInfoNew.min.js?version='+new Date().getTime()+'"><\/script>');
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/updateTaxResidentInfoNew.js?version='+new Date().getTime()+'"><\/script>');
+</script>
+
+<script>
+$(document).ready(function(e) {
+	showTaxResidentInfo();
+});
+</script>
+</body>
+</html>

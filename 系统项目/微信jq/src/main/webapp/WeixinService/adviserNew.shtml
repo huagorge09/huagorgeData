@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>我的顾问</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/adviserNew.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/flexibleNew.min.js"></script>
+      <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+
+</head>
+<body>
+<section class="page">
+	<!--#include virtual="/WeixinService/headerOrFooter/otherHeaderNew.shtml"-->
+   <div class="adviserUserImg">
+	   <img src="" alt="" width="100%" id="custserPhoto">
+   </div>
+	<div class="adviserInfo">
+		 <h2>
+			 <span id="custserName"></span>
+			 <em>您的专属顾问</em>
+		 </h2>
+		<ul>
+			<li><span>手机号码</span> <span><a href="" id="custserMobile"></a></span> <a id="custserMobile2"></a></li>
+			<li onclick="addWetChat(this);" data-src="" id="wxImg"><span>微信昵称</span> <span id="custserNickname"></a></span> <em></em></li>
+			<li><span>全国客服电话</span> <span><a href="tel:400-8878-555">400-8878-555</a></span> <a href="tel:400-8878-555"></a></li>
+			<!--<li><span>毕业院校</span> <span id="custserGraduateSchool"></span> <em></em></li>
+			<li><span>从业年限</span> <span id="custserWorkYear"></span> <em></em></li>-->
+		</ul>
+	</div>
+	<div id="hintDiv" class="cover-bg" style="display: none;">
+		<div class="qrcode">
+			<img src="/WeixinWeb/WeixinWeb_Images/images/1.png" alt="" width="100%">
+			<p>扫描或长按二维码,加我微信</p>
+			<span onclick="closeQrcode();"></span>
+		</div>
+	</div>
+</section>
+<!--#include virtual="/WeixinService/headerOrFooter/footerNew.shtml"-->
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/adviserNew.min.js"></script>
+<!--<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/adviserNew.js"></script>-->
+</body>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ec.weixin.dao.UserShareRecordDao">
+
+	<select id="queryCount" parameterType="com.cmwa.ec.weixin.dto.UserShareRecordDto"  resultType="int">
+		select  COUNT(*)
+				FROM USER_SHARE_RECORD
+				WHERE 
+					SHAREUSERSECID= #{dto.shareUserSecId}
+					AND SHAREPAGECODE = #{dto.sharePageCode}
+					AND SHARESUBCODE = #{dto.shareSubCode}
+					AND SHARECHANNEL = #{dto.shareChannel}
+	</select>
+	
+	
+	<insert id="insert" parameterType="com.cmwa.ec.weixin.dto.UserShareRecordDto">
+		insert into USER_SHARE_RECORD 
+		(
+			CMFUSERID ,
+			SHAREUSERSECID , 
+			SHAREPAGECODE ,
+			SHARESUBCODE , 
+			SHAREPAGETITLE , 
+			SHAREPAGEDESC , 
+			SHARECHANNEL , 
+			SHARETIME
+		)
+		values(
+			#{dto.cmfUserId,jdbcType=VARCHAR},
+			#{dto.shareUserSecId,jdbcType=VARCHAR},
+			#{dto.sharePageCode,jdbcType=VARCHAR},
+			#{dto.shareSubCode,jdbcType=VARCHAR},
+			#{dto.sharePageTitle,jdbcType=VARCHAR},
+			#{dto.sharePageDesc,jdbcType=VARCHAR},
+			#{dto.shareChannel,jdbcType=VARCHAR},
+			SYSDATE
+		)
+		
+	</insert>
+	
+</mapper>

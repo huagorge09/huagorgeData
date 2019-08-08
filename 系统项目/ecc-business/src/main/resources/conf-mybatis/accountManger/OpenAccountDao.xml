@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.accountManger.OpenAccountDao">
+	
+	
+	<!-- 客户税收居民信息 -->
+	<resultMap id="userTaxInfoMap" type="com.cmwa.ecc.business.entity.accountManger.UserTaxInfoDto">
+		<result property="custNo" column="CUSTNO"/>
+		<result property="cmfUserId" column="CMFUSERID"/>
+		<result property="taxNationality" column="TAX_NATIONALITY"/>
+		<result property="taxArea" column="TAX_AREA"/>
+		<result property="taxPayerCode" column="TAX_PAYERCODE"/>
+		<result property="taxNotCodeCause" column="TAX_NOTCODECAUSE"/>
+		<result property="taxnotGetCause" column="TAX_NOTGETCAUSE"/>
+		<result property="sortNo" column="SORT_NO"/>
+		<result property="insertTime" column="INSERTTIME"/>
+		<result property="updateTime" column="UPDATETIME"/>
+		<result property="taxBirthNation" column="BIRTH_NATION"/>
+		<result property="taxBirthRegion" column="BIRTH_REGION"/>
+		<result property="taxBirthAddress" column="BIRTH_ADDRESS"/>
+		<result property="taxResideNation" column="RESIDE_NATION"/>
+		<result property="taxResideRegion" column="RESIDE_REGION"/>
+		<result property="taxResideAddress" column="RESIDE_ADDRESS"/>
+		<result property="taxResideAddressEnglish" column="RESIDE_ADDRESS_ENGLISH"/>
+		<result property="firstName" column="ENGLISH_SURNAME"/>
+		<result property="englishName" column="ENGLISH_NAME"/>
+		<result property="chineseName2" column="CHINESENAME2"/>
+		<result property="englishFamliyName3" column="ENGLISHFAMLIYNAME3"/>
+		<result property="englishFirstName3" column="ENGLISHFIRSTNAME3"/>
+		<result property="controllerType" column="CONTROLLERTYPE"/>
+		<result property="conNonResiFlag" column="CONNONRESIFLAG"/>
+		<result property="conShareRatio" column="CONSHARERATIO"/>
+		<result property="livingCountry2" column="LIVINGCOUNTRY2"/>
+		<result property="livingAddress5" column="LIVINGADDRESS5"/>
+		<result property="livingAddress7" column="LIVINGADDRESS7"/>
+		<result property="birthDate2" column="BIRTHDATE2"/>
+		<result property="birthCountry2" column="BIRTHCOUNTRY2"/>
+		<result property="birthCity2" column="BIRTHCITY2"/>
+		<result property="taxCountry2" column="TAXCOUNTRY2"/>
+		<result property="taxCountry2Code" column="TAXCOUNTRY2CODE"/>
+		<result property="taxID2" column="TAXID2"/>
+		<result property="specification2" column="SPECIFICATION2"/>
+		<result property="specificationCode" column="SPECIFICATIONCODE"/>
+		<result property="livingCountry2Code" column="LIVINGCOUNTRY2CODE"/>
+		<result property="regRegionCode2" column="REGREGIONCODE2"/>
+		<result property="regRegionCode2Code" column="REGREGIONCODE2CODE"/>
+		<result property="birthCountry2Code" column="BIRTHCOUNTRY2CODE"/>
+		<result property="sex" column="SEX"/>
+		<result property="birthDate" column="BIRTHDATE"/>
+	</resultMap>
+	
+	
+	<!-- 个人账户/机构开户 -->
+	<select id="openCustom" parameterType="com.cmwa.ecc.business.entity.accountManger.OpenAccountDto" statementType="CALLABLE">
+        { CALL DS_OAP_OPEN_CUSTOMER(
+				#{permissionId,jdbcType=VARCHAR,mode=IN},
+				#{serialno,jdbcType=VARCHAR,mode=IN},
+				#{trustType,jdbcType=VARCHAR,mode=IN},
+				#{tano,jdbcType=VARCHAR,mode=IN},
+				#{invtp,jdbcType=VARCHAR,mode=IN},
+				#{invnm,jdbcType=VARCHAR,mode=IN},
+				#{idtp,jdbcType=VARCHAR,mode=IN},
+				#{idno,jdbcType=VARCHAR,mode=IN},
+				#{acctabbr,jdbcType=VARCHAR,mode=IN},
+				#{password,jdbcType=VARCHAR,mode=IN},
+				#{bnkNo,jdbcType=VARCHAR,mode=IN},
+				#{openName,jdbcType=VARCHAR,mode=IN},
+				#{bankAccoNm,jdbcType=VARCHAR,mode=IN},
+				#{bankAcco,jdbcType=VARCHAR,mode=IN},
+				#{openAddr,jdbcType=VARCHAR,mode=IN},
+				#{provincecode,jdbcType=VARCHAR,mode=IN},
+				#{citycode,jdbcType=VARCHAR,mode=IN},
+				#{addr,jdbcType=VARCHAR,mode=IN},
+				#{postcode,jdbcType=VARCHAR,mode=IN},
+				#{mobile,jdbcType=VARCHAR,mode=IN},
+				#{email,jdbcType=VARCHAR,mode=IN},
+				#{tel,jdbcType=VARCHAR,mode=IN},
+				#{housetel,jdbcType=VARCHAR,mode=IN},
+				#{tel,jdbcType=VARCHAR,mode=IN},
+				#{nationalitycode,jdbcType=VARCHAR,mode=IN},
+				#{fax,jdbcType=VARCHAR,mode=IN},
+				#{voccode,jdbcType=VARCHAR,mode=IN},
+				#{edlevel,jdbcType=VARCHAR,mode=IN},
+				#{income,jdbcType=VARCHAR,mode=IN},
+				#{sex,jdbcType=VARCHAR,mode=IN},
+				#{marriedflag,jdbcType=VARCHAR,mode=IN},
+				#{birthday,jdbcType=VARCHAR,mode=IN},
+				#{checker,jdbcType=VARCHAR,mode=IN},
+				#{idvalidate,jdbcType=VARCHAR,mode=IN},
+				#{sendingroute,jdbcType=VARCHAR,mode=IN},
+				#{corpropertiy,jdbcType=VARCHAR,mode=IN},
+				#{registCapital,jdbcType=VARCHAR,mode=IN},
+				#{industryType,jdbcType=VARCHAR,mode=IN},
+				#{instrepnm,jdbcType=VARCHAR,mode=IN},
+				#{instrepidtp,jdbcType=VARCHAR,mode=IN},
+				#{instrepidno,jdbcType=VARCHAR,mode=IN},
+				#{instrepvalidate,jdbcType=VARCHAR,mode=IN},
+				#{instrepnation,jdbcType=VARCHAR,mode=IN},
+				#{principalname,jdbcType=VARCHAR,mode=IN},
+				#{principalidtp,jdbcType=VARCHAR,mode=IN},
+				#{principalidno,jdbcType=VARCHAR,mode=IN},
+				#{principalvalidt,jdbcType=VARCHAR,mode=IN},
+				#{principalnation,jdbcType=VARCHAR,mode=IN},
+				#{trustType,jdbcType=VARCHAR,mode=IN},
+				#{trustType1,jdbcType=VARCHAR,mode=IN},
+				#{trustType2,jdbcType=VARCHAR,mode=IN},
+				#{faxdelegate,jdbcType=VARCHAR,mode=IN},
+				#{trustType,jdbcType=VARCHAR,mode=IN},
+				#{trustType6,jdbcType=VARCHAR,mode=IN},
+				#{holdingname,jdbcType=VARCHAR,mode=IN},
+				#{holdingidtp,jdbcType=VARCHAR,mode=IN},
+				#{holdingidno,jdbcType=VARCHAR,mode=IN},
+				#{holdingvalidate,jdbcType=VARCHAR,mode=IN},
+				#{beneficiary,jdbcType=VARCHAR,mode=IN},
+				#{custabbrcode,jdbcType=VARCHAR,mode=IN},
+				#{instrepcode,jdbcType=VARCHAR,mode=IN},
+				#{businesstp,jdbcType=VARCHAR,mode=IN},
+				#{companytp,jdbcType=VARCHAR,mode=IN},
+				#{regiontp,jdbcType=VARCHAR,mode=IN},
+				#{custrisklevl,jdbcType=VARCHAR,mode=IN},
+				#{custriskscore,jdbcType=VARCHAR,mode=IN},
+				#{amlrisktype,jdbcType=VARCHAR,mode=IN},
+				#{operatorId,jdbcType=VARCHAR,mode=IN},
+				#{docbusinesstp,jdbcType=VARCHAR,mode=IN},
+				#{newDocStr,jdbcType=VARCHAR,mode=IN},
+				#{newOcontStr,jdbcType=VARCHAR,mode=IN},
+				#{newOidStr,jdbcType=VARCHAR,mode=IN},
+				#{ifalldocument,jdbcType=VARCHAR,mode=IN},
+				#{ifOriginal,jdbcType=VARCHAR,mode=IN},
+				#{ifsaved,jdbcType=VARCHAR,mode=IN},
+				#{fxqremark,jdbcType=VARCHAR,mode=IN},
+				#{openBankCity,jdbcType=VARCHAR,mode=IN},
+				#{isupload,jdbcType=VARCHAR,mode=IN},
+				#{szsecacc,jdbcType=VARCHAR,mode=IN},
+				#{shsecacc,jdbcType=VARCHAR,mode=IN},
+				#{remarkinfo,jdbcType=VARCHAR,mode=IN},
+				#{fundacc,jdbcType=VARCHAR,mode=IN},
+				#{opentype,jdbcType=VARCHAR,mode=IN},
+				#{organType,jdbcType=VARCHAR,mode=IN},
+				#{isscan,jdbcType=VARCHAR,mode=IN},
+				#{keepaddress,jdbcType=VARCHAR,mode=IN},
+				#{salesaccmanager,jdbcType=VARCHAR,mode=IN},
+				#{fileno,jdbcType=VARCHAR,mode=IN},
+				#{invprtp,jdbcType=VARCHAR,mode=IN},
+				#{taxType,jdbcType=VARCHAR,mode=IN},
+				#{taxTypeDecl,jdbcType=VARCHAR,mode=IN},
+				#{investProInstType,jdbcType=VARCHAR,mode=IN},
+				#{investProInstSecond,jdbcType=VARCHAR,mode=IN},
+				#{oneYearEndNetAsset,jdbcType=VARCHAR,mode=IN},
+				#{oneYearEndFinAsset,jdbcType=VARCHAR,mode=IN},
+				#{investExperience,jdbcType=VARCHAR,mode=IN},
+				#{negativeNotFinaInst,jdbcType=VARCHAR,mode=IN},
+				#{controlPerTaxDecl,jdbcType=VARCHAR,mode=IN},
+				#{threeAnnualIncome,jdbcType=VARCHAR,mode=IN},
+				#{financialAsset,jdbcType=VARCHAR,mode=IN},
+				#{indInvExperience,jdbcType=VARCHAR,mode=IN},
+				#{relatedWorkExp,jdbcType=VARCHAR,mode=IN},
+				#{finProfessions,jdbcType=VARCHAR,mode=IN},
+				#{specriskLevel,jdbcType=VARCHAR,mode=IN},
+				#{attr1,jdbcType=VARCHAR,mode=IN},
+				#{custno,jdbcType=VARCHAR,mode=OUT},
+				#{errcode,jdbcType=VARCHAR,mode=OUT},
+				#{errmsg,jdbcType=VARCHAR,mode=OUT}
+			)
+		}
+	</select>
+	
+	<!-- 机构批量开户 -->
+	<select id="batchOpenAccountSave" parameterType="com.cmwa.ecc.business.entity.accountManger.OpenAccountExcelDto" statementType="CALLABLE">
+        { CALL DS_OAP_OPEN_CUSTOMER(
+				#{transcd,jdbcType=VARCHAR,mode=IN},
+				#{serialno,jdbcType=VARCHAR,mode=IN},
+				#{trusttp,jdbcType=VARCHAR,mode=IN},
+				#{tano,jdbcType=VARCHAR,mode=IN},
+				#{invTp,jdbcType=VARCHAR,mode=IN},
+				#{invnm,jdbcType=VARCHAR,mode=IN},
+				#{idtp,jdbcType=VARCHAR,mode=IN},
+				#{idno,jdbcType=VARCHAR,mode=IN},
+				#{accountabbr,jdbcType=VARCHAR,mode=IN},
+				#{passwd,jdbcType=VARCHAR,mode=IN},
+				#{bankno,jdbcType=VARCHAR,mode=IN},
+				#{banklongname,jdbcType=VARCHAR,mode=IN},
+				#{bankacnm,jdbcType=VARCHAR,mode=IN},
+				#{bankacco,jdbcType=VARCHAR,mode=IN},
+				#{bankaddr,jdbcType=VARCHAR,mode=IN},
+				#{provincecode,jdbcType=VARCHAR,mode=IN},
+				#{cityname,jdbcType=VARCHAR,mode=IN},
+				#{addr,jdbcType=VARCHAR,mode=IN},
+				#{postcode,jdbcType=VARCHAR,mode=IN},
+				#{mobileno,jdbcType=VARCHAR,mode=IN},
+				#{email,jdbcType=VARCHAR,mode=IN},
+				#{telno,jdbcType=VARCHAR,mode=IN},
+				#{hometel,jdbcType=VARCHAR,mode=IN},
+				#{officetel,jdbcType=VARCHAR,mode=IN},
+				#{nation,jdbcType=VARCHAR,mode=IN},
+				#{faxno,jdbcType=VARCHAR,mode=IN},
+				#{voccode,jdbcType=VARCHAR,mode=IN},
+				#{edlevel,jdbcType=VARCHAR,mode=IN},
+				#{income,jdbcType=VARCHAR,mode=IN},
+				#{sex,jdbcType=VARCHAR,mode=IN},
+				#{marriage,jdbcType=VARCHAR,mode=IN},
+				#{birthday,jdbcType=VARCHAR,mode=IN},
+				#{invest,jdbcType=VARCHAR,mode=IN},
+				#{idnolimit,jdbcType=VARCHAR,mode=IN},
+				#{deliverway,jdbcType=VARCHAR,mode=IN},
+				#{corpropertiy,jdbcType=VARCHAR,mode=IN},
+				#{registcapital,jdbcType=VARCHAR,mode=IN},
+				#{industrytype,jdbcType=VARCHAR,mode=IN},
+				#{principalname,jdbcType=VARCHAR,mode=IN},
+				#{principaltype,jdbcType=VARCHAR,mode=IN},
+				#{principalno,jdbcType=VARCHAR,mode=IN},
+				#{principalvalidate,jdbcType=VARCHAR,mode=IN},
+				#{principalnation,jdbcType=VARCHAR,mode=IN},
+				#{principalname,jdbcType=VARCHAR,mode=IN},
+				#{principaltype,jdbcType=VARCHAR,mode=IN},
+				#{principalno,jdbcType=VARCHAR,mode=IN},
+				#{principalvalidate,jdbcType=VARCHAR,mode=IN},
+				#{principalnation,jdbcType=VARCHAR,mode=IN},
+				#{tellertrust,jdbcType=VARCHAR,mode=IN},
+				#{callcenter,jdbcType=VARCHAR,mode=IN},
+				#{internet,jdbcType=VARCHAR,mode=IN},
+				#{faxtrust,jdbcType=VARCHAR,mode=IN},
+				#{mobiletrust,jdbcType=VARCHAR,mode=IN},
+				#{othertrust,jdbcType=VARCHAR,mode=IN},
+				#{holdingname,jdbcType=VARCHAR,mode=IN},
+				#{holdingidtype,jdbcType=VARCHAR,mode=IN},
+				#{holdingidno,jdbcType=VARCHAR,mode=IN},
+				#{holdingidvalidate,jdbcType=VARCHAR,mode=IN},
+				#{beneficiary,jdbcType=VARCHAR,mode=IN},
+				#{custabbrcode,jdbcType=VARCHAR,mode=IN},
+				#{custinstreprcode,jdbcType=VARCHAR,mode=IN},
+				#{businesstp,jdbcType=VARCHAR,mode=IN},
+				#{companytp,jdbcType=VARCHAR,mode=IN},
+				#{regioncode,jdbcType=VARCHAR,mode=IN},
+				#{risklevel,jdbcType=VARCHAR,mode=IN},
+				#{riskscore,jdbcType=VARCHAR,mode=IN},
+				#{amlrisktype,jdbcType=VARCHAR,mode=IN},
+				#{opid,jdbcType=VARCHAR,mode=IN},
+				#{aptype,jdbcType=VARCHAR,mode=IN},
+				#{custinfostat,jdbcType=VARCHAR,mode=IN},
+				#{broke,jdbcType=VARCHAR,mode=IN},
+				#{otherid,jdbcType=VARCHAR,mode=IN},
+				#{isfull,jdbcType=VARCHAR,mode=IN},
+				#{original,jdbcType=VARCHAR,mode=IN},
+				#{filed,jdbcType=VARCHAR,mode=IN},
+				#{amlrisknote,jdbcType=VARCHAR,mode=IN},
+				#{bankaddrcity,jdbcType=VARCHAR,mode=IN},
+				#{attach,jdbcType=VARCHAR,mode=IN},
+				#{szsecacc,jdbcType=VARCHAR,mode=IN},
+				#{shsecacc,jdbcType=VARCHAR,mode=IN},
+				#{remark,jdbcType=VARCHAR,mode=IN},
+				#{fundacct,jdbcType=VARCHAR,mode=IN},
+				#{apkind,jdbcType=VARCHAR,mode=IN},
+				#{insttype,jdbcType=VARCHAR,mode=IN},
+				#{isscan,jdbcType=VARCHAR,mode=IN},
+				#{keepaddress,jdbcType=VARCHAR,mode=IN},
+				#{salesaccmanager,jdbcType=VARCHAR,mode=IN},
+				#{fileno,jdbcType=VARCHAR,mode=IN},
+				#{invprtp,jdbcType=VARCHAR,mode=IN},
+				#{taxtype,jdbcType=VARCHAR,mode=IN},
+				#{taxtypedecl,jdbcType=VARCHAR,mode=IN},
+				#{investproinsttype,jdbcType=VARCHAR,mode=IN},
+				#{investproinstsecond,jdbcType=VARCHAR,mode=IN},
+				#{oneyearendnetasset,jdbcType=VARCHAR,mode=IN},
+				#{oneyearendfinasset,jdbcType=VARCHAR,mode=IN},
+				#{investexperience,jdbcType=VARCHAR,mode=IN},
+				#{negativenotfinainst,jdbcType=VARCHAR,mode=IN},
+				#{controlpertaxdecl,jdbcType=VARCHAR,mode=IN},
+				#{threeannualincome,jdbcType=VARCHAR,mode=IN},
+				#{financialasset,jdbcType=VARCHAR,mode=IN},
+				#{indinvexperience,jdbcType=VARCHAR,mode=IN},
+				#{relatedworkexp,jdbcType=VARCHAR,mode=IN},
+				#{finprofessions,jdbcType=VARCHAR,mode=IN},
+				#{specrisklevel,jdbcType=VARCHAR,mode=IN},
+				#{offinvserialno,jdbcType=VARCHAR,mode=IN},
+				#{outCustNo,jdbcType=VARCHAR,mode=OUT},
+				#{errCode,jdbcType=VARCHAR,mode=OUT},
+				#{errMsg,jdbcType=VARCHAR,mode=OUT}
+			)
+		}
+	</select>
+	
+	<!-- 将用户的 税收居民信息 备份至 历史表 -->
+	<select id="createUserTaxInfoByBackUp" parameterType="java.lang.String">
+		INSERT INTO H_CUST_TAX_RESIDENT_INFO SELECT * FROM CUST_TAX_RESIDENT_INFO WHERE CUSTNO = #{custno}
+	</select>
+	
+	<!-- 删除用户的 税收居民信息 -->
+	<delete id="delUserTaxInfo" parameterType="java.lang.String">
+		DELETE FROM CUST_TAX_RESIDENT_INFO WHERE CUSTNO = #{custno}
+	</delete>
+	
+	<!-- 删除涉税信息接口业务表信息 -->
+	<delete id="delAppR1BlotterInfo" parameterType="java.lang.String">
+		DELETE FROM APPR1BLOTTER WHERE CUSTNO = #{custno}
+	</delete>
+	
+	<insert id="createUserTaxInfo" parameterType="com.cmwa.ecc.business.entity.accountManger.UserTaxInfoDto">
+		INSERT INTO CUST_TAX_RESIDENT_INFO(
+			   CUSTNO,
+			   CMFUSERID,
+			   TAX_NATIONALITY,
+			   TAX_AREA,
+			   TAX_PAYERCODE,
+			   TAX_NOTCODECAUSE,
+			   TAX_NOTGETCAUSE,
+			   BIRTH_NATION,
+			   BIRTH_REGION,
+			   BIRTH_ADDRESS,
+			   RESIDE_NATION,
+			   RESIDE_REGION,
+			   RESIDE_ADDRESS,
+			   RESIDE_ADDRESS_ENGLISH,
+			   ENGLISH_SURNAME,
+			   ENGLISH_NAME,
+			   SORT_NO,
+			   INSERTTIME,
+			   UPDATETIME,
+			   CHINESENAME2,
+			   ENGLISHFAMLIYNAME3,
+			   ENGLISHFIRSTNAME3,
+			   CONTROLLERTYPE,
+			   CONNONRESIFLAG,
+			   CONSHARERATIO,
+			   LIVINGCOUNTRY2,
+			   LIVINGADDRESS5,
+			   LIVINGADDRESS7,
+			   BIRTHDATE2,
+			   BIRTHCOUNTRY2,
+			   BIRTHCITY2,
+			   TAXCOUNTRY2,
+			   TAXID2,
+			   SPECIFICATION2,
+			   LIVINGCOUNTRY2CODE,
+			   REGREGIONCODE2CODE,
+			   REGREGIONCODE2,
+			   BIRTHCOUNTRY2CODE,
+			   SEX,
+			   BIRTHDATE,
+			   TAXCOUNTRY2CODE,
+			   SPECIFICATIONCODE)
+			VALUES
+			  (#{custNo},
+			   #{cmfUserId},
+			   #{taxNationality},
+			   #{taxArea},
+			   #{taxPayerCode},
+			   #{taxNotCodeCause},
+			   #{taxnotGetCause},
+			   #{taxBirthNation},
+			   #{taxBirthRegion},
+			   #{taxBirthAddress},
+			   #{taxResideNation},
+			   #{taxResideRegion},
+			   #{taxResideAddress},
+			   #{taxResideAddressEnglish},
+			   #{firstName},
+			   #{englishName},
+			   #{sortNo},
+			   SYSDATE,
+			   SYSDATE,
+			   #{chineseName2},
+			   #{englishFamliyName3},
+			   #{englishFirstName3},
+			   #{controllerType},
+			   #{conNonResiFlag},
+			   #{conShareRatio},
+			   #{livingCountry2},
+			   #{livingAddress5},
+			   #{livingAddress7},
+			   #{birthDate2},
+			   #{birthCountry2},
+			   #{birthCity2},
+			   #{taxCountry2},
+			   #{taxID2},
+			   #{specification2},
+			   #{livingCountry2Code},
+			   #{regRegionCode2Code},
+			   #{regRegionCode2},
+			   #{birthCountry2Code},
+			   #{sex},
+			   #{birthDate},
+			   #{taxCountry2Code},
+			   #{specificationCode}
+			)
+	</insert>
+	
+	<insert id="insertAppR1BlotterInfo" parameterType="com.cmwa.ecc.business.entity.accountManger.AppR1BlotterDto">
+	 INSERT INTO APPR1BLOTTER(
+			APPSHEETSERIALNO,
+			BRANCHCODE,
+			ORIGINALAPPSHEETNO,
+			TRANSACTIONDATE,
+			TRANSACTIONTIME,
+			DISTRIBUTORCODE,
+			SEX,
+			TAACCOUNTID,
+			SPECIFICATION,
+			ORIGINALAPPDATE,
+			ADDFLAG,
+			RESERVEDFIELD1,
+			RESERVEDFIELD2,
+			RESERVEDFIELD3,
+			RESERVEDFIELD4,
+			RESERVEDFIELD5,
+			REGREGIONCODE,
+			SURVEYMETHOD,
+			GETINVESTCERFLAG,
+			NONRESIFLAG,
+			CHINESENAME,
+			ENGLISHFIRSTNAME2,
+			ENGLISHFAMLIYNAME2,
+			ENGLISHNAME,
+			LIVINGCOUNTRY,
+			LIVINGADDRESS,
+			LIVINGADDRESS2,
+			LIVINGADDRESS3,
+			LIVINGADDRESS4,
+			BIRTHDATE,
+			BIRTHCOUNTRY,
+			BIRTHCOUNTRYENGNAME,
+			BIRTHCITY,
+			ADDRESSTYPE,
+			TAXCOUNTRY,
+			TAXID,
+			PASSIVENONFINFLAG,
+			HAVENONRESCONFLAG,
+			CHINESENAME2,
+			ENGLISHFIRSTNAME3,
+			ENGLISHFAMLIYNAME3,
+			CONTROLLERTYPE,
+			CONNONRESIFLAG,
+			CONSHARERATIO,
+			LIVINGCOUNTRY2,
+			LIVINGADDRESS5,
+			LIVINGADDRESS6,
+			LIVINGADDRESS7,
+			LIVINGADDRESS8,
+			REGREGIONCODE2,
+			BIRTHDATE2,
+			BIRTHCOUNTRY2,
+			BIRTHCOUENGNAME2,
+			BIRTHCITY2,
+			TAXCOUNTRY2,
+			TAXID2,
+			SPECIFICATION2,
+			RESERVEDFIELD6,
+			TANO,
+			CMFUSERID,
+			CUSTNO,
+			APPLYST,
+			TRANSST,
+			TRANSTM,
+			INDIVIDUALORINSTITUTION)
+		VALUES(
+			#{appsheetserialno},
+			'0755',
+			#{originalappsheetno},
+			TO_CHAR(SYSDATE, 'YYYYMMDD'),
+			TO_CHAR(SYSDATE,
+			'hh24MIss'),
+			'291',
+			#{sex},
+			#{taaccountid},
+			#{specification},
+			#{originalappdate},
+			'1',
+			#{reservedfield1},
+			#{reservedfield2},
+			#{reservedfield3},
+			#{reservedfield4},
+			#{reservedfield5},
+			#{regregioncode},
+			#{surveymethod},
+			'1',
+			#{nonresiflag},
+			#{chinesename},
+			#{englishfirstname2},
+			#{englishfamliyname2},
+			#{englishname},
+			#{livingcountry},
+			#{livingaddress},
+			#{livingaddress2},
+			#{livingaddress3},
+			#{livingaddress4},
+			#{birthdate},
+			#{birthcountry},
+			#{birthcountryengname},
+			#{birthcity},
+			#{addresstype},
+			#{taxcountry},
+			#{taxid},
+			#{passivenonfinflag},
+			#{havenonresconflag},
+			#{chinesename2},
+			#{englishfirstname3},
+			#{englishfamliyname3},
+			#{controllertype},
+			#{connonresiflag},
+			#{conshareratio},
+			#{livingcountry2},
+			#{livingaddress5},
+			#{livingaddress6},
+			#{livingaddress7},
+			#{livingaddress8},
+			#{regregioncode2},
+			#{birthdate2},
+			#{birthcountry2},
+			#{birthcouengname2},
+			#{birthcity2},
+			#{taxcountry2},
+			#{taxid2},
+			#{specification2},
+			#{reservedfield6},
+			'17',
+			'',
+			#{custno},
+			'N',
+			'N',
+			'',
+			#{individualorinstitution}
+		)
+	</insert>
+	
+	<select id="queryUserTaxInfo" parameterType="java.lang.String" resultType="com.cmwa.ecc.business.entity.accountManger.AppR1BlotterDto">
+		SELECT APPNO	originalappsheetno,
+			   FUNDACCT	taaccountid,
+			   APDT		originalappdate,
+			   INVNM	chinesename,
+			   INVTP	individualorinstitution
+		  FROM (SELECT APPNO, FUNDACCT, APDT, C.INVNM, C.INVTP
+			          FROM H_APPFDACBLOTTER T, CUSTINFO C
+			         WHERE ROWNUM = 1
+			           AND T.CUSTNO = C.CUSTNO
+			           AND APPLYST = 'S'
+			           AND APKIND = '001'
+			           AND T.CUSTNO = #{custno}
+			        UNION
+			        SELECT APPNO, FUNDACCT, APDT, C.INVNM, C.INVTP
+			          FROM APPFDACBLOTTER T, CUSTINFO C
+			         WHERE ROWNUM = 1
+			           AND T.CUSTNO = C.CUSTNO
+			           AND T.APPLYST = 'N'
+			           AND T.TRANSST = 'N'
+			           AND T.CUSTNO = #{custno}
+			   )
+		 WHERE ROWNUM = 1
+	</select>
+	
+	<!-- 增开交易账号 -->
+	<select id="tradeAccountAdd" parameterType="com.cmwa.ecc.business.entity.accountManger.OpenAccountDto" statementType="CALLABLE">
+        { CALL DS_OAP_TRADEACCO_ADD(
+				#{permissionId,jdbcType=VARCHAR,mode=IN},
+				#{serialno,jdbcType=VARCHAR,mode=IN},
+				#{trustType,jdbcType=VARCHAR,mode=IN},
+				#{custno,jdbcType=VARCHAR,mode=IN},
+				#{bnkNo,jdbcType=VARCHAR,mode=IN},
+				#{openName,jdbcType=VARCHAR,mode=IN},
+				#{bankAcco,jdbcType=VARCHAR,mode=IN},
+				#{bankAccoNm,jdbcType=VARCHAR,mode=IN},
+				#{openAddr,jdbcType=VARCHAR,mode=IN},
+				#{openBankCity,jdbcType=VARCHAR,mode=IN},
+				#{operatorId,jdbcType=VARCHAR,mode=IN},
+				#{tano,jdbcType=VARCHAR,mode=IN},
+	    		#{errcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{errmsg,jdbcType=VARCHAR,mode=OUT}
+			)
+		}
+	</select>
+		
+	<!-- 增开基金账号 -->
+	<select id="openFundAccount" parameterType="com.cmwa.ecc.business.entity.accountManger.OpenAccountDto" statementType="CALLABLE">
+        { CALL DS_OAP_OPEN_OTHERTA(
+				#{permissionId,jdbcType=VARCHAR,mode=IN},
+				#{serialno,jdbcType=VARCHAR,mode=IN},
+				#{trustType,jdbcType=VARCHAR,mode=IN},
+				#{tradeacco,jdbcType=VARCHAR,mode=IN},
+				#{tano,jdbcType=VARCHAR,mode=IN},
+				#{operatorId,jdbcType=VARCHAR,mode=IN},
+				#{fundacct,jdbcType=VARCHAR,mode=IN},
+				#{szsecacc,jdbcType=VARCHAR,mode=IN},
+				#{shsecacc,jdbcType=VARCHAR,mode=IN},
+	    		#{errcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{errmsg,jdbcType=VARCHAR,mode=OUT}
+			)
+		}
+	</select>
+		
+	<!-- 交易账号销户 -->
+	<select id="destroyTradeacco" parameterType="com.cmwa.ecc.business.entity.accountManger.OpenAccountDto" statementType="CALLABLE">
+        { CALL DS_OAP_CLOSE_TRADEACCO(
+				#{permissionId,jdbcType=VARCHAR,mode=IN},
+				#{serialno,jdbcType=VARCHAR,mode=IN},
+				#{trustType,jdbcType=VARCHAR,mode=IN},
+				#{tradeacco,jdbcType=VARCHAR,mode=IN},
+				#{operatorId,jdbcType=VARCHAR,mode=IN},
+				#{tano,jdbcType=VARCHAR,mode=IN},
+	    		#{errcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{errmsg,jdbcType=VARCHAR,mode=OUT}
+			)
+		}
+	</select>
+		
+	<!-- 基金账号销户 -->
+	<select id="destroyFundacco" parameterType="com.cmwa.ecc.business.entity.accountManger.OpenAccountDto" statementType="CALLABLE">
+        { CALL DS_OAP_CLOSE_FUNDACCT(
+				#{permissionId,jdbcType=VARCHAR,mode=IN},
+				#{serialno,jdbcType=VARCHAR,mode=IN},
+				#{trustType,jdbcType=VARCHAR,mode=IN},
+				#{fundacct,jdbcType=VARCHAR,mode=IN},
+				#{operatorId,jdbcType=VARCHAR,mode=IN},
+	    		#{errcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{errmsg,jdbcType=VARCHAR,mode=OUT}
+			)
+		}
+	</select>
+	
+	<select id="antiMoneyLaunValid" parameterType="sparam" resultType="java.util.Map">
+		SELECT * FROM T_ANTIMONEYLAUN_BLACKLIST T WHERE T.INVTP = #{sp.invtp,jdbcType=VARCHAR} 
+			AND T.IDTP=#{sp.idtp,jdbcType=VARCHAR} AND T.IDNO = #{sp.idno,jdbcType=VARCHAR}
+	</select>
+</mapper>

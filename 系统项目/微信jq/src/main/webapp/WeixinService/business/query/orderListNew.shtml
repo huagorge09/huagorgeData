@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+	<title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/dialogNew.css">
+   	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/bannerStyleNew.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscrollNew.js"></script>
+	
+    
+</head>
+<body>
+
+<section class="page">
+  
+<div id="wrapper">
+        <div id="scroller">
+    <!--#include virtual="/WeixinService/headerOrFooter/headerNew.shtml"-->
+    
+    <!--<div class="center-mynav-a">
+        <ul>
+            <li><a href="javascript:showOrderList('0')" class="act">???</a></li>
+            <li><a href="javascript:showOrderList('1')">?????</a></li>
+            <li><a href="javascript:showOrderList('2')">?????</a></li>
+            <li><a href="javascript:showOrderList('3')">??????</a></li>
+            <li><a href="javascript:showOrderList('4')">?????</a></li>
+        </ul>
+    </div>-->
+    <section id="section_01">
+      
+        
+    </section>  
+
+
+    <section id="section_02" style="display: none;">
+
+    </section> 
+
+
+    <section id="section_03" style="display: none;">
+
+    </section>   
+
+
+    <section id="section_04" style="display: none;">
+    
+    </section>   
+    
+
+    <section id="section_05" style="display: none;">
+        
+    </section>   
+</div></div>  
+
+
+</section>
+<style>
+.box-order .income.upadateorder-income dl dd {
+    font-size: 1.3rem !important;
+}
+.box-order h2 span:nth-child(1) {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 65%;
+}
+    .income dd i{
+        font-size: 1.3rem !important;
+    }
+    .type0210 dl:nth-child(3){
+        width: 55.3%;
+    }
+    .type0210 dl:nth-child(2){
+        display: none;
+    }
+    .box-order h2{
+        position: relative;
+    }
+    .redemption-box{
+        position:fixed;
+        width: 100%;
+        height:100%;
+        background-color: #000;
+        opacity: 0.2;
+        z-index: 100;
+        left: 0;
+        top: 0;
+    }
+    .realName {
+      height: 370px;
+      margin-top: -185px;
+      width: 92%;
+      margin-left: -46%;
+    }
+    .content {
+        width: 95%;
+        height: 123px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-top: -74px;
+        margin-left: -47.5%;
+        background: #fff;
+        border-radius: 5px;
+    }
+    .prompt-box{
+        position:fixed;
+        width: 100%;
+        height:100%;
+        background: url(/WeixinWeb/WeixinWeb_Images/images/bg_1px.png);
+        z-index: 2;
+    }
+    .frdiv{
+        display: inline-block;
+        margin-left: 20%;
+        margin-left: 17%;
+        width: 13%;
+    }
+    .hasexpiredSpan{
+    display: inline-block;
+    width: 21px;
+    height: 4px;
+    background: url(/WeixinWeb/WeixinWeb_Images/images/ppt_03.png) no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+    }
+    .bj-color{
+        display:block;
+        /* width: 2.02rem;
+        height: 1.74rem; */
+            width: 80px;
+    height: 80px;
+        background: url(/WeixinWeb/WeixinWeb_Images/images/pp_03.png) no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        top: 86%;
+        left: 74%;
+        z-index: 110;
+    }
+    .bj-color p{
+           height: 36px;
+    width: 100%;
+    text-align: center;
+    line-height: 36px;
+    }
+    .bj-color p span{
+            display: inline-block;
+    width: 80% !important;
+    margin: 0 auto;
+    font-size: 14px;
+    margin-left: 7px;
+    }
+   .spannth{
+        border-bottom:0.01rem solid #e6e6e6;
+    }
+    .hasexpiredT {
+        background: url(/WeixinWeb/WeixinWeb_Images/images/icon_userCetner_yiDaoQi.png) no-repeat left center;
+    background-size: 18px 18px;
+    padding-left: 16px;
+    }
+    .withdrawal {
+       background: url(/WeixinWeb/WeixinWeb_Images/images/ann01_03.png) no-repeat left center;
+    background-size: 15px 17px;
+    padding-left: 16px;
+    }
+    .box-title p{
+        text-align: center;
+        height: 6rem;
+        line-height: 6rem;
+        font-size: 15px;
+    }
+</style>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/dialogNew.min.js"></script> 
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/orderListNew.js"></script> -->
+<script type="text/javascript">
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/orderListNew.min.js?version='+new Date().getTime()+'"><\/script>');
+</script>
+
+</body>
+</html>

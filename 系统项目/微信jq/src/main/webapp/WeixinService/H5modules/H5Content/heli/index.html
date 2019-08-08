@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>招商财富-和利系列 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/heli/heli.css">
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-init.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/flexible.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+
+</head>
+<body>
+	<div class="warpper" style="padding-bottom: 1rem;">
+		<div class="banner"></div>
+		<div class="recommendBox">
+			<h2>与其静待时机，不如选择牛基</h2>
+			<ul class="item">
+				<li>
+					<h2 class="seeKan">和利5号</h2>
+					<div class="proInfo clearFloat seeKan">
+						<div class="info">
+							<p>285<span>天</span></p>
+							<p>产品期限</p>
+							<div class="line"></div>
+						</div>
+						<div class="info">
+							<p>6.0<span>%</span></p>
+							<p>业绩计提基准</p>
+							<div class="line"></div>
+						</div>
+						<div class="info">
+							<p>100<span>万</span></p>
+							<p>起投</p>
+						</div>
+					</div>
+					<div class="tips">
+						<p>募集截止：2018年7月19日</p>
+						<p>产品风险等级为R2，适合C2中低风险承受能力以及以上客群</p>
+						<p>追求绝对收益不代表未来最终收益的保证，投资有风险，产品最终收益以实际运行情况为准。</p>
+					</div>
+				</li>
+			</ul>
+			<a href="javascript:;" class="once oncePro">立即购买</a>
+		</div>
+		<div class="advantage">
+			<h2>四大产品核心优势</h2>
+			<ul>
+				<li>
+					<p>多维度流动性管理</p>
+					<div>投研团队精细化运作，多维度流动性管理<br>严格的风险收益配比</div>
+				</li>
+				<li>
+					<p>权威信评严控风险</p>
+					<div>专业信评团队，甄选个券资质，运作<br>至今未出现一例信用风险事件</div>
+				</li>
+				<li>
+					<p>超额收益共同分享</p>
+					<div>与投资人共进退，超出业绩计提基准<br>部分的一定比例计入客户超额收益</div>
+				</li>
+				<li>
+					<p>定期开放进退灵活</p>
+					<div>每个封闭期结束后开放参与退出，兼顾<br>增值性与流动性</div>
+				</li>
+			</ul>
+		</div>
+		<div class="follow"><img src="/WeixinWeb/WeixinWeb_Images/H5modules/heli/follow.png" width="100%"> </div>
+	</div>
+	  <div class="bottom clearFloat">
+    	<a href="javascript:;" onclick="bussiness();" id="myBtn1">我感兴趣</a>
+    	<a href="javascript:;" onclick="myAdviser();" id="myBtn2">我的顾问</a>
+    </div>
+	<!--预约信息填写-->
+	<div class="cover-bg reserves hide">
+		<div class="content">
+			 <span class="close"></span>
+			 <h1>一键预约享专属服务<br>让投资无后顾之忧</h1>
+			 <h3>我们的专属顾问将24小时内给您回电</h3>
+			 <div class="form">
+			 	<ul>
+				 	<li>
+				 	   <div class="inputBox dswkb">
+				 	  	   <span></span> <input type="text" id="userName" name="userName" class="flex1" placeholder="请输入姓名"/>
+				 	   </div>	
+				       <p style="display: none;"></p>
+				 	</li>
+				 	<li class="foucs">
+				 		<div class="inputBox dswkb">
+				 	        <span></span> <input type="tel" id="mobilePhone" name="mobilePhone" class="flex1" maxlength="11" placeholder="请输入手机号码"/>
+				 		</div>
+				 		<p  style="display: none;"></p>
+				 	</li>
+				 	
+				 </ul>
+				 <button id="saveBtn"  class="disabled">立即提交</button>
+			 </div>
+		</div>
+	</div>
+	<!-- 错误提示 -->
+	<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+		<span id="errorRemark"></span>
+	</div>
+	<!--预约成功-->
+	<div class="cover-bg success hide">
+		 <div class="content center">
+		 	<span class="close"></span>
+		 	<div class="successIcon"></div>
+		 	<h2>预约成功</h2>
+		 	<p>客户经理将尽快与您联系，请保持电话畅通</p>
+		 </div>
+	</div>
+	 <!-- 尚未完成操作弹窗-->
+    <div class="cover_bg" id="noOperation" style="display: none;">
+    	 <!-- 尚未完成风险评测-->
+    	 <div class="content risk" id="riskContent" style="display: none;">
+    	 	  <h2></h2>
+    	 	  <p>哎呀！您尚未完成风险测评</p>
+    	 	  <div class="tips">
+    	 	  	  <h3>温馨提示：</h3>
+    	 	  	  <p>根据监管要求，为保护投资者权益，需要了解您的相关信息和风险等级，以实现对您的最大保障。</p>
+    	 	  	  <p class="yearReport">
+    	 	  	  	 动动小指尖， 30秒完成风险测评，轻松查看产品信息
+    	 	  	  </p>
+    	 	  </div>
+    	 	 <a href="javascript:void(0);" id="goRisk" class="btn">我要测评</a>
+    	 </div>
+    	 <!-- 重新测评-->
+    	 <div class="content rNameRisk" id="reRiskContent"  style="display: none;">
+    	 	  <h2></h2>
+    	 	  <p>根据监管要求，您的风险测评已过有效期，还请重新测评</p>
+    	 	   <a href="javascript:void(0);" id="reRisk" class="btn">确定</a>
+    	 </div>
+    </div>
+     <script>
+    	 var pageId="wx_hlNo5_h5PageId"
+    </script>
+     <script src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/activityCommon.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/heli/index.js"></script>
+    
+</body>
+</html>

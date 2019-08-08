@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="shortcut icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon" />
+	<link rel="icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon" />
+	<link href="/AppWeb/AppWeb_Css/ui-select.css" rel="stylesheet" type="text/css" />
+	<link href="/AppWeb/AppWeb_JSLibrary/My97DatePicker/resource/skin/WdatePicker.css" rel="stylesheet" type="text/css" />
+</head>
+
+<style>
+	.center-content-right {
+		position: relative;
+		float: left;
+		width: 679px;
+		min-height: 450px;
+		height: auto;
+		margin-bottom: 0px;
+		border-top-right-radius: 4px;
+		border-top: 1px solid #dee1e7;
+		border-right: 1px solid #dee1e7;
+		border-bottom: 1px solid #dee1e7;
+		background: #f3f3f3;
+	}
+
+
+	.risk .risk-result-con {
+		width: 673px;
+		margin: 0 auto;
+		border-top: 1px solid #f2f2f2;
+	}
+
+	.risk .risk-con ul li h2 span {
+		margin-left: 9px;
+		float: left;
+		line-height: 24px;
+		width: 643px;
+		font-weight: bold;
+	}
+
+	.center-content-right.risk .risk-con {
+		width: 673px;
+		margin: 0 auto;
+	}
+
+	.center-content-right h2 {
+		width: 679px;
+		margin: 40px auto 20px 20px;
+		font-size: 16px;
+		color: #ca132c;
+	}
+
+	.risk .risk-con ul li h2 em {
+		float: left;
+		width: 26px;
+		height: 26px;
+		line-height: 21px;
+		text-align: center;
+		font-size: 12px;
+		font-weight: bold;
+		color: #3f3f3f;
+		background: no-repeat;
+	}
+
+	.risk .risk-con ul li h2 span {
+		margin-left: 9px;
+		float: left;
+		line-height: 24px;
+		width: 643px;
+	}
+
+	.risk .risk-con ul li span.list {
+		clear: both;
+		display: block;
+		margin: 5px -1px -1px 55px;
+		padding-left: 22px;
+		top: 10px;
+		position: relative;
+		font-size: 14px;
+		color: #3f3f3f;
+		cursor: pointer;
+		background: url(/AppWeb/AppWeb_Images/images/risk-choice.png) no-repeat left 5px;
+	}
+
+	.risk .risk-con ul li span.list input {
+		width: 100%;
+		border-radius: 4px;
+		border: 1px solid #a9a9a9;
+		padding-left: 5px;
+		height: 25px;
+	}
+
+	.risk .risk-con ul li span.list .risk-option-desc {
+		display: none;
+		width: 500px;
+		float: right;
+		margin-right: 55px;
+	}
+
+	.risk .risk-con ul li h2 span {
+		margin-left: 9px;
+		float: left;
+		line-height: 24px;
+		width: 622px;
+	}
+
+	.risk-option-desc {
+		display: none;
+		width: 500px;
+		float: right;
+		margin-right: 50px;
+	}
+
+
+	/* 家庭住址 样式 start   */
+	.risk-add-list .risk_add_bg {
+		clear: both;
+		margin: 19px -1px -1px 30px;
+		height: 94px;
+	}
+
+	.risk-add-list .risk_add_bg .div-cover {
+		width: 28%;
+		float: left;
+		line-height: 40px;
+	}
+
+	.risk-add-list .risk_add_bg .div-cover:first-child {
+		width: 14%;
+		height: 40px;
+		font-size: 14px;
+	}
+
+	.risk-add-list .risk_add_bg .div-cover select {
+		width: 95%;
+		height: 40px;
+		border-radius: 4px;
+	}
+
+	.risk-add-list .risk_add_bg .div-cover input {
+		width: 98%;
+		height: 38px;
+		border-radius: 4px;
+		border: 1px solid #a9a9a9;
+		padding-left: 10px;
+		line-height: 40px;
+	}
+
+	/***/
+
+	/* 通用样式 start   */
+	.risk-add-list .common_bg {
+		margin: 15px -1px -1px 30px;
+		height: 42px;
+	}
+
+	.risk-add-list .common_bg .div-cover.input-tag {
+		width: 230px;
+		float: left;
+		line-height: 40px;
+	}
+
+	.risk-add-list .common_bg .div-cover.title-tag {
+		height: 40px;
+		font-size: 14px;
+		width: 89px;
+		float: left;
+		line-height: 40px;
+	}
+
+	.risk-add-list .common_bg .div-cover select {
+		width: 200px;
+		height: 40px;
+		border-radius: 4px;
+	}
+
+	.risk-add-list .common_bg .div-cover input[type="text"] {
+		width: 200px;
+		height: 38px;
+		line-height: 38px;
+		border-radius: 4px;
+		border: 1px solid #a9a9a9;
+		padding-left: 10px;
+	}
+
+	/** 通用  end */
+
+	/* 职业样式 start   */
+	.risk-add-list .risk_prof_bg {
+		margin: 15px -1px -1px 30px;
+		height: 42px;
+	}
+
+	.risk-add-list .risk_prof_bg .div-cover.input-tag {
+		width: 230px;
+		float: left;
+		line-height: 40px;
+	}
+
+	.risk-add-list .risk_prof_bg .div-cover.title-tag {
+		height: 40px;
+		font-size: 14px;
+		width: 89px;
+		float: left;
+		line-height: 40px;
+	}
+
+	.risk-add-list .risk_prof_bg .div-cover select {
+		width: 200px;
+		height: 40px;
+		border-radius: 4px;
+	}
+
+	.risk-add-list .risk_prof_bg .div-cover input {
+		width: 200px;
+		height: 38px;
+		border-radius: 4px;
+		border: 1px solid #a9a9a9;
+		padding-left: 10px;
+		line-height: 38px;
+	}
+
+	/** 税收居民类型 样式 */
+	.tax_resident_bg .tax_desc_img {
+		line-height: 40px;
+		margin-left: 10px;
+		cursor: pointer;
+	}
+
+	/** 税收居民类型 样式 */
+	.tax_nationality_bg .tax_desc_img {
+		line-height: 40px;
+		margin-left: 10px;
+		cursor: pointer;
+	}
+
+	.select2-container .select2-selection--single {
+		box-sizing: border-box;
+		cursor: pointer;
+		display: block;
+		height: 40px;
+		user-select: none;
+		-webkit-user-select: none;
+	}
+
+	.select2-container--default .select2-selection--single .select2-selection__rendered {
+		color: #666;
+		line-height: 32px;
+	}
+
+	span.proNameTitle {
+		display: inline-block;
+		width: 56px;
+		line-height: normal;
+	}
+
+	#otherProName {
+		width: 339px;
+	}
+
+	.hide {
+		display: none;
+	}
+</style>
+
+<body>
+	<div class="center-content-right risk fl" id="div_01">
+		<div class="risk-con" id="risk_div_01">
+			<div class="risk-add-list">
+				<ul>
+					<li>
+						<div class="risk_prof_bg">
+							<div class="div-cover title-tag">
+								<span>职业：</span>
+							</div>
+							<div class="div-cover input-tag">
+								<select id="profId" name="profId">
+									<option value="">请选择</option>
+								</select>
+							</div>
+							<div class="div-cover title-tag">
+								<span>出生日期：</span>
+							</div>
+							<div class="div-cover input-tag">
+								<input id="dateOfBirth" class="dateOfBirth Wdate" name="dateOfBirth"
+									onclick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})" onchange="dateOfBirthChange(this)"
+									placeholder="请选择出生日期" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="risk_prof_bg " id="otherProBox">
+							<div class="div-cover title-tag">
+								<span class="proNameTitle">请输入您的职业：</span>
+							</div>
+							<div class="div-cover input-tag">
+								<input id="otherProName" type="text" class="detailAddress" name="otherProName" placeholder="请输入您的职业">
+							</div>
+						</div>
+					</li>
+					<li>
+						<input type="hidden" name="nation" />
+						<input type="hidden" name="province" />
+						<input type="hidden" name="city" />
+						<input type="hidden" name="addr" />
+						<input type="hidden" name="profession" />
+						<input type="hidden" name="taxResidentData" />
+						<input type="hidden" name="taxResidentType" />
+						<input type="hidden" name="taxNationality" />
+						<input type="hidden" name="taxPayerCode" />
+						<input type="hidden" name="taxNotCodeCause" />
+						<input type="hidden" name="taxnotGetCause" />
+
+						<select id="taxNation_temp" name="taxNation_temp" style="display: none;">
+							<option value="">请选择</option>
+							<option value="1">中国</option>
+							<option value="2">中国香港</option>
+							<option value="3">中国澳门</option>
+							<option value="4">中国台湾</option>
+							<option value="5">海外</option>
+						</select>
+
+						<div id="taxArea_temp" style="display: none">
+							<select name="taxArea" style="width: 175px;" class="select2">
+								<option value="">请选择</option>
+								<option value="156-1">中国</option>
+								<option value="156-2">香港</option>
+								<option value="156-3">澳门</option>
+								<option value="156-4">台湾</option>
+							</select>
+						</div>
+						<div class="risk_add_bg">
+							<div class="div-cover">
+								<span>家庭住址：</span>
+							</div>
+							<div class="div-cover">
+								<select class="select" id="nationality" name="nationality">
+									<option value="">请选择</option>
+								</select>
+							</div>
+
+							<div class="div-cover province">
+								<select class="select" id="province" name="province">
+									<option value="">请选择</option>
+								</select>
+							</div>
+
+							<div class="div-cover city">
+								<select class="select" id="city" name="city">
+									<option value="">请选择</option>
+								</select>
+							</div>
+							<div class="div-cover" style="width: 82.5%;margin-top: 10px;margin-left: 89px;">
+								<input id="detailAddress" type="text" class="detailAddress" name="detailAddress"
+									placeholder="请输入详细地址" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="common_bg tax_resident_bg">
+							<div class="div-cover title-tag" style="line-height: 20px;">
+								<span>税收居民</span>
+								<br />
+								<span>类型：</span>
+							</div>
+							<div class="div-cover input-tag" style="width: auto;">
+								<select id="taxResidentType" name="taxResidentType" style="width: 351px;" class="select2"
+									onchange="taxResidentChange(this)">
+									<option value="">请选择</option>
+									<option value="1">仅为中国税收居民</option>
+									<option value="2">仅为非居民</option>
+									<option value="3">既是中国又是其他类型税收居民</option>
+								</select>
+								<em class="tax_desc_img"><img src="/AppWeb/AppWeb_Images/images/ic_alert-transparent1.png" height="20"
+										width="20" alt="" onclick="showAlertInfoByTargetId('hint_tax_resident')"></em>
+							</div>
+						</div>
+					</li>
+
+					<li>
+						<div class="common_bg risk_add_bg englishNameDiv" style="display: none;">
+							<div class="div-cover title-tag">
+								<span>中文姓名：</span>
+							</div>
+							<div class="div-cover input-tag" style="width: 80%;">
+								<input type="text" disabled="disabled" class="userCustName detailAddress" id="userCustName"
+									name="userCustName" style="width: 66%;">
+							</div>
+							<div class="div-cover title-tag" style="margin-top: 15px;margin-bottom: 15px;">
+								<span>First Name：</span>
+							</div>
+							<div class="div-cover input-tag" style="width: 80%;margin-top: 15px;margin-bottom: 15px;">
+								<input type="text" class="englishName engName detailAddress" id="englishName" name="englishName"
+									placeholder="First Name" style="width: 66%;">
+							</div>
+							<div class="div-cover title-tag" style="margin-bottom: 15px;">
+								<span>Last Name：</span>
+							</div>
+							<div class="div-cover input-tag" style="width: 80%;margin-bottom: 15px;">
+								<input type="text" class="englishSurname engName detailAddress" id="englishSurname"
+									name="englishSurname" placeholder="Last Name" style="width: 66%;">
+							</div>
+						</div>
+					</li>
+
+					<li>
+						<div class="common_bg tax_birthNation_bg" style="height: 90px;" id="tax_birthNation_bg">
+							<div class="div-cover title-tag">
+								<span>出生地:</span>
+							</div>
+							<div class="div-cover input-tag" style="width: 175px;">
+								<select name="birthNation" style="width: 155px;" class="select2" onchange="changeBirthNation(this)">
+									<option value="">请选择</option>
+									<option value="1">中国</option>
+									<option value="2">中国香港</option>
+									<option value="3">中国澳门</option>
+									<option value="4">中国台湾</option>
+									<option value="5">海外</option>
+								</select>
+							</div>
+							<div class="div-cover input-tag" style="width: 300px;">
+								<select name="birthArea" style="width: 177px;" class="select2">
+								</select>
+							</div>
+							<div class="div-cover input-tag" style="width: 100%;margin: 10px 0px 0px 89px;">
+								<input name="birthAddress" type="text" class="detailAddress engName" style="width: 341px;"
+									placeholder="请输入州、省、市，不少于5个字" />
+							</div>
+						</div>
+					</li>
+
+					<li>
+						<div class="common_bg tax_resident_bg resideadd" style="display: none;">
+							<div class="div-cover title-tag" style="margin-top: 15px;">
+								<span>现居国家：</span>
+							</div>
+							<div class="div-cover input-tag" style="width: 175px;margin-top: 15px;">
+								<select id="reside_nation" name="reside_nation" style="width: 155px;" class="birth taxpayerCode"
+									onchange="changeResideNation();">
+									<option value="">请选择</option>
+									<option value="1">中国</option>
+									<option value="2">中国香港</option>
+									<option value="3">中国澳门</option>
+									<option value="4">中国台湾</option>
+									<option value="5">海外</option>
+								</select>
+							</div>
+							<div class="div-cover input-tag" style="width: 300px;margin-top: 15px;">
+								<select id="reside_region" name="reside_region" style="width: 177px;" class="birth taxpayerCode">
+									<option value="">请选择</option>
+								</select>
+							</div>
+							<div class="div-cover title-tag" style="margin-top: 15px;">
+								<span>现居地址：</span>
+							</div>
+							<div class="div-cover input-tag" style="width: 80%;margin-top: 15px;">
+								<input type="text" style="width: 66%;" class="reside_address engName taxpayerCode" id="reside_address"
+									name="reside_address" placeholder="请输入详细现居地址">
+							</div>
+							<div class="div-cover title-tag" style="line-height: 20px;margin-top: 15px;">
+								<span>Present Address：</span>
+							</div>
+							<div class="div-cover input-tag" style="width: 80%;margin-top: 15px;">
+								<input type="text" style="width: 66%;" class="reside_address_english engName taxpayerCode"
+									id="reside_address_english" name="reside_address_english"
+									placeholder="Please enter your present address">
+							</div>
+						</div>
+					</li>
+
+					<div class="tax_add_div" id="tax_template" style="display: none;">
+						<li>
+							<div class="common_bg tax_nationality_bg">
+								<div class="div-cover title-tag" style="line-height: 20px;margin-top: 15px; ">
+									<span>税收居民国</span>
+									<br />
+									<span>(地区)：</span>
+								</div>
+								<div class="div-cover input-tag" style="width: 175px;margin-top: 15px;">
+									<select name="taxNationality" style="width: 155px;" class="select2"
+										onchange="taxNationalityChange(this)">
+										<option value="">请选择</option>
+									</select>
+								</div>
+								<div class="div-cover input-tag" style="width: 300px;margin-top: 15px;">
+									<select name="taxArea" style="width: 177px;" class="select2">
+										<option value="">请选择</option>
+									</select>
+								</div>
+								<div class="div-cover input-tag"
+									style="width: 50px;width: 41px;text-align: center;margin-left: -120px;">
+									<em class="tax_desc_img"><img src="/AppWeb/AppWeb_Images/images/bt_add1.png" height="20" width="20"
+											alt="" onclick="addTaxNation()"></em>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="common_bg taxpayerCode_bg">
+								<div class="div-cover title-tag" style="line-height: 20px;margin-top: 15px;">
+									<span>纳税人</span>
+									<br />
+									<span>识别号：</span>
+								</div>
+								<div class="div-cover input-tag" style="width: 555px;margin-top: 15px;">
+									<input type="text" class="taxpayerCode" name="taxpayerCode" style="width: 341px;" />
+									<label><input type="checkbox" name="isTaxpayerCode" style="margin-left: 10px;"
+											onclick="isTaxpayerEvent(this)" />&nbsp;无</label>
+								</div>
+							</div>
+						</li>
+						<div style="display: none;">
+							<li>
+								<div class="common_bg notcode_cause_bg">
+									<div class="div-cover title-tag" style="line-height: 20px;margin-top: 15px;">
+										<span>无识别号</span>
+										<br />
+										<span>的原因：</span>
+									</div>
+									<div class="div-cover input-tag" style="width: 555px;margin-top: 15px;">
+										<select name="notCodeCause" style="width: 351px;" onchange="notCodeCauseEvent(this)"
+											class="select2">
+											<option value="">请选择</option>
+											<option value="1">居民国（地区）不发放纳税人识别号</option>
+											<option value="2">账号持有人未能取得纳税人识别号</option>
+										</select>
+									</div>
+								</div>
+							</li>
+							<li style="display: none;">
+								<div class="common_bg notget_cause_bg">
+									<div class="div-cover title-tag" style="line-height: 20px;margin-top: 15px;">
+										<span>未取得</span>
+										<br />
+										<span>原因：</span>
+									</div>
+									<div class="div-cover input-tag" style="width: 555px; margin-top: 15px;">
+										<input id="notGetCause" type="text" class="notGetCause" name="notGetCause" style="width: 341px;" />
+									</div>
+								</div>
+							</li>
+						</div>
+					</div>
+				</ul>
+			</div>
+			<div class="hiddenDIv" style="height: 30px;width: 500px;visibility: hidden;"></div>
+			<div class="risk-con-list">
+				<ul>
+					<li>
+						<h2><em>1、</em><span>您目前的主要收入来源是：</span></h2>
+						<span data-score="2" data-name="q1" class="list">无固定收入（2分）</span>
+						<span data-score="4" data-name="q1" class="list">退休金（4分）</span>
+						<span data-score="6" data-name="q1" class="list">工资、劳务报酬（6分）</span>
+						<span data-score="8" data-name="q1" class="list">个体经营或财产收入（房租、股权收入等）（8分）</span>
+						<span data-score="10" data-name="q1" class="list">企业经营（10分）</span>
+					</li>
+					<li>
+						<h2><em>2、</em><span>您的年收入是：</span></h2>
+						<span data-score="0" data-name="q2" class="list" data-value="2">30万元以下</span>
+						<span data-score="0" data-name="q2" class="list" data-value="4">30-50万元</span>
+						<span data-score="0" data-name="q2" class="list" data-value="6">50-100万元</span>
+						<span data-score="0" data-name="q2" class="list" data-value="8">100万以上</span>
+					</li>
+					<li>
+						<h2><em>3、</em><span>您的可支配资产是多少（不包含不动产）（折合人民币）：</span></h2>
+						<span data-score="2" data-name="q3" class="list">100万元以下（2分）</span>
+						<span data-score="4" data-name="q3" class="list">100万元至200万元（4分）</span>
+						<span data-score="6" data-name="q3" class="list">200万元至500万元（6分）</span>
+						<span data-score="8" data-name="q3" class="list">500万元至1000万元（8分）</span>
+						<span data-score="10" data-name="q3" class="list">1000万元以上（10分）</span>
+					</li>
+					<li>
+						<h2><em>4、</em><span>在您每年的家庭可支配收入中，可用于金融投资（储蓄存款除外）的比例为：</span></h2>
+						<span data-score="2" data-name="q4" class="list">小于10%（2分）</span>
+						<span data-score="4" data-name="q4" class="list">10%至25%（4分）</span>
+						<span data-score="6" data-name="q4" class="list">25%至50%（6分）</span>
+						<span data-score="8" data-name="q4" class="list">50%至80%（8分）</span>
+						<span data-score="10" data-name="q4" class="list">80%以上（10分）</span>
+					</li>
+					<li>
+						<h2><em>5、</em><span>您的资产负债情况属于以下哪一种：</span></h2>
+						<span data-score="2" data-name="q5" class="list">有较大数额未到期负债（2分）</span>
+						<span data-score="4" data-name="q5" class="list">收入和支出相抵（4分）</span>
+						<span data-score="6" data-name="q5" class="list">有一定积蓄（6分）</span>
+						<span data-score="8" data-name="q5" class="list">有较为丰厚的积蓄并有一定的投资（8分）</span>
+						<span data-score="10" data-name="q5" class="list">比较富裕且有相当的投资（10分）</span>
+					</li>
+					<li>
+						<h2><em>6、</em><span>您的投资知识可描述为：</span></h2>
+						<span data-score="2" data-name="q6" class="list">无：没有金融产品方面的知识（2分）</span>
+						<span data-score="4" data-name="q6" class="list">有限：理解部分金融产品及其相关风险的概念，但十分有限（4分）</span>
+						<span data-score="6" data-name="q6" class="list">一般：对金融产品及其相关风险具有基本的知识和理解（6分）</span>
+						<span data-score="8" data-name="q6" class="list">丰富：对金融产品及其相关风险具有丰富的知识和理解（8分）</span>
+						<span data-score="10" data-name="q6" class="list">专业：对金融产品及其相关风险具有专业的知识和深入的理解（10分）</span>
+					</li>
+					<li>
+						<h2><em>7、</em><span>您的投资经验可描述为：</span></h2>
+						<span data-score="2" data-name="q7" class="list">基本无投资经验（2分）</span>
+						<span data-score="4" data-name="q7" class="list">大部分投资于存款、国债等（4分）</span>
+						<span data-score="6" data-name="q7" class="list">大部分投资于银行理财产品、保险理财产品等（6分）</span>
+						<span data-score="8" data-name="q7" class="list">大部分投资于基金、股票等（8分）</span>
+						<span data-score="10" data-name="q7" class="list">大部分投资于创业板股票、外汇、期货等高风险产品（10分）</span>
+					</li>
+					<li>
+						<h2><em>8、</em><span>您有多少年投资基金、股票、信托、私募证券或金融衍生产品等风险投资品的经验：</span></h2>
+						<span data-score="2" data-name="q8" class="list">1年以下（2分）</span>
+						<span data-score="4" data-name="q8" class="list">1至2年（4分）</span>
+						<span data-score="6" data-name="q8" class="list">2至5年（6分）</span>
+						<span data-score="8" data-name="q8" class="list">5至10年（8分）</span>
+						<span data-score="10" data-name="q8" class="list">10年以上（10分）</span>
+					</li>
+					<li>
+						<h2><em>9、</em><span>您计划中的投资期限是多长：</span></h2>
+						<span data-score="2" data-name="q9" class="list">少于1年（2分）</span>
+						<span data-score="4" data-name="q9" class="list">1-3年（4分）</span>
+						<span data-score="6" data-name="q9" class="list">3-5年（6分）</span>
+						<span data-score="8" data-name="q9" class="list">5-8年（8分）</span>
+						<span data-score="10" data-name="q9" class="list">8年以上（10分）</span>
+					</li>
+					<li>
+						<h2><em>10、</em><span>您打算重点投资于哪些种类的投资品种：</span></h2>
+						<span data-score="2" data-name="q10" class="list">短债、货币市场基金等主要投资于货币工具的基金（2分）</span>
+						<span data-score="4" data-name="q10" class="list">债券型基金等主要投资于固定收益类资产的基金（4分）</span>
+						<span data-score="6" data-name="q10" class="list">混合型基金等投资于权益类与固定收益类资产的基金（6分）</span>
+						<span data-score="8" data-name="q10" class="list">股票型基金等主要投资于权益类资产的基金（8分）</span>
+						<span data-score="10" data-name="q10" class="list">分级基金等其它复杂或高风险基金（10分）</span>
+					</li>
+					<li>
+						<h2><em>11、</em><span>以下哪项描述最符合您的投资态度：</span></h2>
+						<span data-score="2" data-name="q11" class="list">厌恶风险，能够承担极小的风险（2分）</span>
+						<span data-score="4" data-name="q11" class="list">虽然厌恶风险但愿意承担一些风险（4分）</span>
+						<span data-score="6" data-name="q11" class="list">在深思熟虑后愿意承担一定的风险（6分）</span>
+						<span data-score="8" data-name="q11" class="list">敢冒风险，比较激进（8分）</span>
+						<span data-score="10" data-name="q11" class="list">爱好风险，相当激进（10分）</span>
+					</li>
+					<li>
+						<h2><em>12、</em><span>以下几种投资模式，您更偏好哪种模式：</span></h2>
+						<span data-score="2" data-name="q12" class="list">收益只有5%，但可能亏损不超过5%（2分）</span>
+						<span data-score="4" data-name="q12" class="list">收益15%，但可能亏损5%（4分）</span>
+						<span data-score="6" data-name="q12" class="list">收益是30%，但可能亏损15%（6分）</span>
+						<span data-score="8" data-name="q12" class="list">收益50%，但可能亏损30%（8分）</span>
+						<span data-score="10" data-name="q12" class="list">收益100%，但可能亏损60%（10分）</span>
+					</li>
+					<li>
+						<h2><em>13、</em><span>您认为自己能承受的最大投资损失是多少：</span></h2>
+						<span data-score="2" data-name="q13" class="list">5%以内（2分）</span>
+						<span data-score="4" data-name="q13" class="list">5%-10%（4分）</span>
+						<span data-score="6" data-name="q13" class="list">10%-30%（6分）</span>
+						<span data-score="8" data-name="q13" class="list">30%-50%（8分）</span>
+						<span data-score="10" data-name="q13" class="list">超过50%（10分）</span>
+					</li>
+					<li>
+						<h2><em>14、</em><span>是否存在实际控制关系：</span></h2>
+						<span data-score="0" data-value="N" data-name="q14" class="list">否</span>
+						<span data-score="0" data-value="Y" data-name="q14" data-input="Y" class="list">是
+							<div class="risk-option-desc">
+								<input type="text" placeholder="请说明实际控制人" />
+								<p>所填选项不满足购买专户产品条件，请据实慎重选择。</p>
+							</div>
+						</span>
+					</li>
+					<li>
+						<h2><em>15、</em><span>交易实际受益人：</span></h2>
+						<span data-score="0" data-value="N" data-name="q15" class="list">本人</span>
+						<span data-score="0" data-value="Y" data-name="q15" data-input="Y" class="list">他人
+							<div class="risk-option-desc">
+								<input type="text" placeholder="请说明实际受益人，如“以配偶为实际受益人”" />
+								<p>所填选项不满足购买专户产品条件，请据实慎重选择。</p>
+							</div>
+						</span>
+					</li>
+					<li>
+						<h2><em>16、</em><span>是否有不良诚信记录：</span></h2>
+						<span data-score="0" data-value="N" data-name="q16" class="list">否</span>
+						<span data-score="0" data-value="Y" data-name="q16" data-input="Y" class="list">是
+							<div class="risk-option-desc">
+								<input type="text" placeholder="请说明情况，如信用卡逾期还款" />
+								<p>所填选项不满足购买专户产品条件，请据实慎重选择。</p>
+							</div>
+						</span>
+					</li>
+					<li>
+						<h2><em>17、</em><span>请问您是否具有完全民事行为能力？：</span></h2>
+						<span data-score="0" data-value="Y" data-name="q17" class="list">是</span>
+						<span data-score="0" data-value="N" data-name="q17" data-input="Y" class="list">否
+							<div class="risk-option-desc">
+								<p>所填选项会被判定为风险承受能力最低类别投资者，请据实慎重选择。</p>
+							</div>
+						</span>
+					</li>
+					<li>
+						<h2><em>18、</em><span>请问您是否没有风险容忍度或者不愿承受任何投资损失？：</span></h2>
+						<span data-score="0" data-value="Y" data-name="q18" data-input="Y" class="list">是
+							<div class="risk-option-desc">
+								<p>所填选项会被判定为风险承受能力最低类别投资者，请据实慎重选择。</p>
+							</div>
+						</span>
+						<span data-score="0" data-value="N" class="list">否</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- <div class="risk-result-con" id="risk_div_02" style="display: none;">
+            <h1>您的测评结果为</h1>
+            <div class="mark"><em id="riskLever_score"></em></div>
+            <div class="result-text">为<em id="riskLever_custLever">C5-积极型客户</em></div>
+            <div class="btn">
+                <a href="javascript:close_tips('hint_tips_btn4');queryFundList();" class="btn-left">确定</a>
+                <a href="javascript:riskLevel_again();" class="btn-right">重新测评</a>
+            </div>
+        </div>
+        <div class="risk-result-con" id="risk_div_03" style="display: none;">
+            <h1>您的测评结果为</h1>
+            <div class="result-text"><em id="riskLever_custLever"></em></div>
+            <div class="btn">
+                <a href="javascript:riskLevel_again();" class="btn-right">重新测评</a>
+            </div>
+        </div> -->
+	</div>
+
+	<!-- <script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/fundRiskLevel.js"></script> -->
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/fundRiskLevel.min.js"></script>
+
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/jquery/ui-select.js"></script>
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/My97DatePicker/WdatePicker.js"></script>
+</body>
+
+</html>

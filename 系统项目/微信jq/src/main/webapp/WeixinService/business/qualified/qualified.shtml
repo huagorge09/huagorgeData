@@ -1,0 +1,295 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/bannerStyle.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/qualified/qualified.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/dialog.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/swiper.min.css">
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-2.0.0.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/DataStatisJs.js"></script>
+
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1.min.js"></script>
+	<!--  滚动条js  -->
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscroll.js"></script>
+	<!--  时间控件 -->
+	<link href="/WeixinWeb/WeixinWeb_Css/LCalendar.css" rel="stylesheet" type="text/css">
+	<script src="/WeixinWeb/WeixinWeb_JSLibrary/LCalendar.min.js"></script>
+
+</head>
+
+<body>
+	<div class="page qualified">
+		<!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->
+		<h2>若要完成合格投资者认证，需证明：</h2>
+		<div class="qualWapper">
+			<div class="title">
+				<span>
+					资产<br>证明
+				</span>
+				<span>
+					金融资产<br>>=500万元
+				</span>
+				<span>
+					或
+				</span>
+				<span>
+					近三年平均收入<br>>=40万元
+				</span>
+			</div>
+			<div class="qualText">
+				<div>
+					<h2><i></i>近三年收入证明 <a href="/WeixinService/business/qualified/qualifiedAssets.shtml">查看实例</a></h2>
+					<ul>
+						<li>
+							<span></span>
+							<div>完税证明/支持单位收入证明/银行对账单/其他</div>
+						</li>
+						<li>
+							<span></span>
+							<div>信息分布在多张截图需要提供截图视频，单张截图展示所有信息则不需视频</div>
+						</li>
+						<li>
+							<span></span>
+							<div>非截图不必提供视频，但需要盖有公章</div>
+						</li>
+					</ul>
+				</div>
+				<div class="finance">
+					<h2><i></i>个人金融资产证明 <a href="/WeixinService/business/qualified/qualifiedFinance.shtml">查看实例</a></h2>
+					<ul>
+						<li>
+							<span></span>
+							<div>支持银行存款、股票、债券、基金、理财产品、保险等</div>
+						</li>
+						<li>
+							<span></span>
+							<div>信息分布在多张截图需要提供截图视频，单张截图展示多有信息则不需视频</div>
+						</li>
+						<li>
+							<span></span>
+							<div>非截图不必提供视频，但需要盖有公章</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="tips">
+				<a href="javascript:qualified.maskShow('tipsMask1');">拍摄照片要求</a>
+				<a href="javascript:qualified.maskShow('tipsMask2');">拍摄视频要求</a>
+			</div>
+			<div class="fileBox">
+				<div id="fileAwaitFirst" style="display: block;">
+					<div class="upBox assetFirst" onclick="qualifiedAdd.financialUpFile()">
+
+					</div>
+					<div id="financialMask" class="diableMask" style="display: none;">
+						<p></p>
+					</div>
+					<div class="upTips">
+						<p>上传<span>资产证明</span></p>
+						<p>（可上传pdf/jpg/视频文件）</p>
+						<!-- <p>注意：视频上传有自动压缩功能，将客户视频压缩到合理大小（5M左右）</p>-->
+						<form enctype="multipart/form-data" id="financialCertificate">
+							<input type="file" name="file" accept="*" id="financialFileUpload" style="display: none;" />
+							<input type="hidden" name="recordSource" value="wx-qualified" />
+							<input type="hidden" name="fileType" value="financialCertificate" />
+						</form>
+					</div>
+				</div>
+				<ul id="fileItemFirst" class="fileItem" style="display: none;">
+					<li id="filelaterFirst" onclick="qualifiedAdd.financialUpFile()"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="qualWapper exper">
+			<div class="title">
+				<span>
+					投资经<br>历证明
+				</span>
+				<span>
+					两年投资经历证明
+				</span>
+			</div>
+			<div class="qualText">
+				<div>
+					<h2><i></i>投资<span>经历证明</span> <a
+							href="/WeixinService/business/qualified/qualifiedInvestment.shtml">查看实例</a></h2>
+					<ul>
+						<li>
+							<span></span>
+							<div>支持基金、债券、股票等投资经历</div>
+						</li>
+						<li>
+							<span></span>
+							<div>信息分布在多张截图需要提供截图视频，单张截图展示所有信息则不需视频</div>
+						</li>
+						<li>
+							<span></span>
+							<div>非截图不必提供视频，但需要盖有公章</div>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="fileBox">
+				<div id="fileAwaitSecond" style="display: block;">
+					<div class="upBox financeFirst" onclick="qualifiedAdd.investmentUpFile()">
+
+					</div>
+					<div id="investMask" class="diableMask" style="display: none;">
+						<p></p>
+					</div>
+					<div class="upTips">
+						<p>上传<span>投资经历证明</span></p>
+						<p>（可上传pdf/jpg/视频文件）</p>
+						<!-- <p>注意：视频上传有自动压缩功能，将客户视频压缩到合理大小（5M左右）</p>-->
+						<form enctype="multipart/form-data" id="investCertificate">
+							<input type="file" name="file" accept="*" id="investFileUpload" style="display: none;" />
+							<input type="hidden" name="recordSource" value="wx-qualified" />
+							<input type="hidden" name="fileType" value="investCertificate" />
+						</form>
+					</div>
+				</div>
+				<ul id="fileItemSecond" class="fileItem" style="display: none;">
+					<li id="filelaterSecond" onclick="qualifiedAdd.investmentUpFile()"></li>
+				</ul>
+			</div>
+
+			<!--  上传身份证 部分 -->
+			<!--  人像 -->
+			<div class="uploadPersonIC">
+				<div class="icPersonBox">
+					<i id="deletePersonImg" class="deleteIcon" style="display: none;"></i>
+					<img id="icPersonImg" class="personIcImg " onclick="qualifiedAdd.idCardPersonUpFile()" />
+				</div>
+				<p class="icCardExShow" id="icCardExShow"> 查看示例</p>
+				<div class="uploadText">上传<span>身份证正面</span></div>
+			</div>
+			<!--  国徽 -->
+			<div class="uploadCountryIc">
+				<div class="icCOuntryBox">
+					<i id="deleteCountryImg" class="deleteIcon" style="display: none;"></i>
+					<img id="icCountryImg" class="countryIcImg" onclick="qualifiedAdd.idCardCountryUpFile()" />
+				</div>
+				<div class="uploadText">上传<span>身份证反面</span></div>
+			</div>
+                        <p style="color: red;padding-left: 10px;">身份证正反面为必传项</p>
+			<!--  填写用户职业信息 -->
+			<div id="userProfessionBox" class="userIcInfoBox" style="display:none;">
+				<span class="professionText">您的职业</span>
+				<input type="text" placeholder="请填写您的职业" class="professionInput" id="professionInput">
+				<span class="submitProfession" onclick="submitProfession()">确认</span>
+			</div>
+			<!-- 选择身份证有效期  -->
+			<div id="userIcTimeBox" class="userIcInfoBox" style="display:none;">
+                 <div>
+					<span class="professionText">身份证有效期</span>
+					<input type="text" placeholder="请选择身份证有效期" class="calendars professionInput  " id="idExpireDate"
+						onfocus="this.blur()" class="calendars" readonly="readonly">
+						
+					<span class="submitProfession" onclick="saveIcDate()">确认</span>
+				 </div>
+				 <div style="padding-left: 101px">
+					是否永久有效<input type="checkbox" name="foever" style=" width: 15px;margin-top: 13px;vertical-align: sub;"/>
+				 </div>
+			</div>
+
+			<!--  上传身份证示例 -->
+			<div class="recommendPop" id="icExampleBox" style=" display: none;">
+				<div class="popHead">
+					<span class="popTitle">身份证示例</span><span class="closeIcon" onclick="closeExample()"></span>
+				</div>
+				<img src="/WeixinWeb/WeixinWeb_Images/images/qualified/icExampleImg.jpg" class="icExampleImg" />
+
+			</div>
+
+			<!--  身份证正面 -->
+			<form enctype="multipart/form-data" id="uploadICPersonForm">
+				<input type="file" name="file" accept="*" id="idCardPersonFileUpload" style="display: none;">
+				<input type="hidden" name="recordSource" value="wx-qualified">
+				<input type="hidden" name="fileType" value="idCardPortrait">
+			</form>
+			<!--  身份证反面 -->
+			<form enctype="multipart/form-data" id="uploadICCountryForm">
+				<input type="file" name="file" accept="*" id="idCardCountryFileUpload" style="display: none;">
+				<input type="hidden" name="recordSource" value="wx-qualified">
+				<input type="hidden" name="fileType" value="idCardNationalEmblem">
+			</form>
+
+		</div>
+		<div class="next">
+			<a href="javascript:;">下一步</a>
+		</div>
+		<!--拍摄照片说明-->
+		<div class="cover-bg tipsMask tipsMask1" style="display: none;">
+			<div class="con">
+				<h2>拍摄照片说明<em onclick="qualified.maskHide('tipsMask1');"></em></h2>
+				<p>1.请确保上传的图片清晰，四角完整，并包含您本人<span>真实姓名</span></p>
+				<p>2.最多上传<span>10张</span>，建议每张图片大小控制在<span>2M</span>以内</p>
+				<span class="know" onclick="qualified.maskHide('tipsMask1');">我知道了</span>
+			</div>
+		</div>
+		<!--拍摄视频说明-->
+		<div class="cover-bg tipsMask tipsMask2" style="display: none;">
+			<div class="con">
+				<h2>拍摄视频说明<em onclick="qualified.maskHide('tipsMask2');"></em></h2>
+				<p>1.请确保视频清晰，视频中有投资者身份及证明资料的截屏过程</p>
+				<p>2.最多上传<span>10个</span>视频，建议每个视频在<span>15秒</span>以内</p>
+				<a
+					href="javascript:qualified.play('/WeixinWeb/WeixinWeb_Images/images/qualified/incomeVideo.mp4');">参考视频</a>
+				<span class="know" onclick="qualified.maskHide('tipsMask2');">我知道了</span>
+			</div>
+		</div>
+		<!--拍摄视频说明-->
+		<div class="cover-bg tipsMask tipsMask3" style="display: none;">
+			<div class="con">
+				<h2>错误提示<em onclick="qualified.maskHide('tipsMask3');"></em></h2>
+				<p style="text-align: center;"></p>
+				<span class="know" onclick="qualified.maskHide('tipsMask3');">我知道了</span>
+			</div>
+		</div>
+		<!--拍摄播放-->
+		<div class="cover-bg tipsMask tipsMaskVideo" style="display: none;">
+			<div class="con">
+				<h2>视频播放<em onclick="qualified.closeVideo('tipsMaskVideo');"></em></h2>
+				<p style="text-align: center;">
+					<video id="video" controls="" autoplay="" name="media">
+						<source src=""></video>
+				</p>
+			</div>
+		</div>
+		<div class="scheduleBox" style="display: none;" id="scheduleBox">
+			<div class="mask"></div>
+			<div class="scheduleBar center">
+				<div class="currentBar" style="width: 78%;"></div>
+				<div class="percent">78%</div>
+			</div>
+		</div>
+	</div>
+	<!--  蒙层 -->
+	<div class="backLayer" style="display: none;"></div>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/dialog.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/swiper.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.form.min.js"></script>
+	<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/qualifiedCom.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/qualified.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/qualifiedCom.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/qualified.min.js"></script> -->
+	<script type="text/javascript">
+	/* document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/qualifiedCom.js?version='+jsversion+'"><\/script>');
+	document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/qualified.js?version='+jsversion+'"><\/script>'); */
+	document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/qualifiedCom.min.js?version='+jsversion+'"><\/script>');
+	document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/qualified.min.js?version='+jsversion+'"><\/script>');
+	</script>
+</body>
+
+</html>

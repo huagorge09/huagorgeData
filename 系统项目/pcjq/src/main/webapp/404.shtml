@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>404</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+
+<!-- header -->
+<!--#include virtual="/AppService/public/header.shtml"-->
+
+<div class="login-content nonePage">
+    <div class="mid clear">
+       <div class="img404"></div>
+       <div class="des">
+             <h2>抱歉，您查看的页面不存在</h2>
+             <h3>您可以：</h3>
+             <p><a href="/AppService/index.shtml">返回首页</a></p>
+             <h3>页面不存在可能是因为：</h3>
+             <ul>
+                 <li>网址已失效</li>
+                 <li>网址有错误</li>
+             </ul>
+       </div>
+
+    </div>
+</div>
+<!-- footer -->
+<!--#include virtual="/AppService/public/footer.shtml"-->
+<style>
+    .header{
+        border-bottom:1px #dee0e6 solid
+    }
+    .nonePage{
+        background: #fff;
+        height:450px;
+        padding-top: 60px;
+    }
+    .nonePage .img404{
+        width: 643px;
+        height: 376px;
+        float:left;
+        background: url(/AppWeb/AppWeb_Images/images/404.png) no-repeat;
+    }
+    .nonePage a{
+        display:inline-block;
+        width:140px;
+        height:40px;
+        background-color:#c9132c;
+        line-height:40px;
+        text-align:center;
+        font-size:16px;
+        color:#fff;
+        border-radius:10px;
+        margin-top: 18px;
+    }
+    .des{
+        width: 290px;
+        height: 376px;
+        float: left;
+        padding-top: 58px;
+        margin-left: 32px;
+    }
+    .des h2{
+        font-size: 22px;
+        color: #727684;
+        line-height: 60px;
+        margin-bottom: 8px;
+    }
+    .des h3{
+        font-size: 16px;
+    }
+    .des p{
+        margin-bottom:30px;
+    }
+    .des ul{
+        margin-left: 18px;
+        margin-top:10px;
+    }
+    .des li{
+        height:28px;
+        line-height:28px;
+        list-style-type: disc;
+        font-size:14px;
+        color:#727684;
+    }
+</style>
+
+</body>
+</html>

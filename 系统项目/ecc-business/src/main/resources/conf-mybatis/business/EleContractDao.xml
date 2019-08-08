@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.business.EleContractDao">
+	<resultMap type="eleContractDto" id="eleContract">
+		<result column="contractid" property="contractID" jdbcType="VARCHAR" />
+		<result column="contractname" property="contractName" jdbcType="VARCHAR" />
+		<result column="contractattach" property="contractAttach" jdbcType="VARCHAR" />
+		<result column="contractversion" property="contractversion" jdbcType="VARCHAR" />
+		<result column="fundid" property="fundID" jdbcType="VARCHAR" />
+		<result column="processor" property="Processor" jdbcType="VARCHAR" />
+		<result column="processtime" property="processTime" />
+		<result column="contractst" property="Contractst" jdbcType="VARCHAR" />
+		<result column="FUNDNM" property="fundName" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="queryContractListPage" parameterType="sparam"
+		resultMap="eleContract">
+		 select contractid,
+		    contractname,
+		    contractattach,
+		    contractversion,
+		    T.fundid,
+		    processor,
+		    processtime,
+		    contractst,
+		    TF.FUNDNM
+		    from ELECONTRACT T,FUNDINFO TF,FUNDINFOEX TEX
+		WHERE T.contractid is not
+		null  and TF.FUNDID=T.FUNDID AND TEX.FUNDID=TF.fundid
+		<if test="null!=sp.fundid and ''!=sp.fundid">
+			AND T.FUNDID LIKE CONCAT(CONCAT('%', #{sp.fundid}),'%')
+		</if>
+		<if test="null!=sp.contractid and ''!=sp.contractid">
+			AND
+			T.contractid=#{sp.contractid}
+		</if>
+		ORDER BY processtime DESC NULLS LAST
+	</select>
+	
+</mapper>

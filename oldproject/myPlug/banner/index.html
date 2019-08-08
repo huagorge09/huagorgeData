@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/banner.js"></script>
+	<title></title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		li{
+			list-style-type: none;
+		}
+		.banner-wrap{
+			width: 1130px;
+			height: 500px;
+			margin: 20px auto 0 auto;
+			position: relative;
+		}
+		.banner-wrap .banner-silder{
+			position: relative;
+		}
+		.banner-wrap .banner-silder li{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 1130px;
+			height: 500px;
+			display: none;
+		}
+		.banner-wrap .banner-silder li.active{
+			display: block;
+		}
+		.banner-wrap .btn-control{
+			width: 100%;
+			position: absolute;
+			top:50%;
+			margin-top: -34px;
+			z-index: 999;
+		}
+		.banner-wrap .btn-control a{
+			position: absolute;
+			display: inline-block;
+			width: 30px;
+			height: 64px;
+			line-height: 64px;
+			text-align: center;
+			background: rgba(0,0,0,0.4);
+			font-size: 24px;
+			color: #fff;
+			text-decoration: none;
+		}
+		.banner-wrap .btn-control .left-btn{
+			left: 20px;
+		}
+		.banner-wrap .btn-control .right-btn{
+			right: 20px;
+		}
+		.banner-wrap .dot-control{
+			width: 100%;
+			position: absolute;
+			bottom: 20px;
+			text-align: center;
+		}
+		.banner-wrap .dot-control span{
+			display: inline-block;
+			width: 18px;
+			height: 18px;
+	        background: rgba(0,0,0,0.5);
+	        border-radius: 50%;
+	        margin-right: 10px;
+	        cursor: pointer;
+		}
+		.banner-wrap .dot-control span.active{
+			background:rgba(255,255,255,0.5);
+			border: 2px #000 solid;
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+	<div class="banner-wrap">
+		 <ul class="banner-silder">
+		 	<li style="background: url(img/1.jpg) no-repeat;"></li>
+		 	<li style="background: url(img/2.jpg) no-repeat;"></li>
+		 	<li style="background: url(img/3.jpg) no-repeat;"></li>
+		 	<li style="background: url(img/2.jpg) no-repeat;"></li>
+		 	<li style="background: url(img/3.jpg) no-repeat;"></li>
+		 	<li style="background: url(img/2.jpg) no-repeat;"></li>
+		 </ul>
+	</div>
+	<script>
+		var banner1=new banner(".banner-wrap",{
+			DisplayIndex:"2",   //初始第几个显示
+			IsdotControl:true,  //是否需要多点控制
+			IsbtnControl:true,  //是否需要左右点击按钮
+		    ChangeStyle:"fade", //幻灯片的切换方式
+		    Timer:2000           //是否自动切换默认2000ms
+		})
+		
+//		$(".banner-wrap").Ban({
+//			DisplayIndex:"2",   //初始第几个显示
+//			IsdotControl:true,  //是否需要多点控制
+//			IsbtnControl:true,  //是否需要左右点击按钮
+//		    ChangeStyle:"fade", //幻灯片的切换方式
+//		    Timer:2000           //是否自动切换默认2000ms
+//		})
+	</script>
+</body>
+</html>

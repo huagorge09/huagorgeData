@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.dsquery.DSQueryDao" >
+
+			<select id="getCustId" parameterType="string" resultType="string">
+					<!--SELECT LOGINID FROM LGI_OPERATOR WHERE OPID = #{opId}
+					   <if test="null!=sp.fundacct and ''!=sp.fundacct">
+						  AND F.FUNDACCT = #{sp.fundacct}
+					  </if> -->
+				SELECT LOGIN FROM T_ECC_EMPLOYEE WHERE EMPID = #{opId,jdbcType=VARCHAR}
+			</select>
+			
+			<select id="queryUrlByCode" parameterType="string" resultType="string">
+				SELECT REPORTURL FROM LGI_TRANSINFO WHERE TRANSCD = #{permissionId,jdbcType=VARCHAR}
+			</select>
+			
+			<select id="querySSOKey" resultType="string">
+				SELECT PMNM FROM PARAMETER WHERE PMST='SYSTEM' AND PMKY='SSOCFG' AND PMCO='SSOKEY'
+			</select>
+			
+			<select id="queryEccSystemInfo" resultType="map">
+		       	SELECT 
+				  (SELECT KYINT FROM SYSALTER WHERE KEY1 = 'EC' AND KEY2 = 'SYS' AND KEY3 = 'SYSSTATUS') AS SYSSTATUS ,
+				  (SELECT IBF_GET_PARAMNAME('SYSTEM', 'SYSSTATUS', KYINT) FROM SYSALTER WHERE KEY1 = 'EC' AND KEY2 = 'SYS' AND KEY3 = 'SYSSTATUS') AS SYSSTATUSNAME,
+				  (SELECT TO_CHAR(TO_DATE(KYDATE,'YYYYMMDD'),'YYYY-MM-DD') FROM SYSALTER WHERE KEY1 = 'EC' AND KEY2 ='SYS' AND KEY3 ='LASTDATE') AS LASTDATE,
+				  (SELECT TO_CHAR(TO_DATE(KYDATE,'YYYYMMDD'),'YYYY-MM-DD') FROM SYSALTER WHERE KEY1 = 'EC' AND KEY2 ='SYS' AND KEY3 ='WORKDATE') AS WORKDATE,
+				  (SELECT TO_CHAR(TO_DATE(KYDATE,'YYYYMMDD'),'YYYY-MM-DD') FROM SYSALTER WHERE KEY1 = 'EC' AND KEY2 ='SYS' AND KEY3 ='NEXTDATE') AS NEXTDATE
+				FROM DUAL
+	       </select>
+</mapper> 

@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/dialog.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/slider.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscroll.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/DataStatisJs.js"></script>
+    <style type="text/css">
+        .cover-bg .cover-point{
+            top: 40%;
+        }
+        .mid{
+            width: 85%;
+        }
+    </style>
+</head>
+<body onload="loaded()">
+<section class="page">
+    <!--#include virtual="/WeixinService/headerOrFooter/otherHeader.shtml"-->
+
+
+    <div id="wrapper" style="bottom: 70px;">
+        <div id="scroller">
+            <div class="header" style="border-bottom: 0">
+                <div class="top hide">
+                    <!-- <a href="javascript:toBack();" class="come-back"></a>
+                    <a href="javascript:redirectUrl('/WeixinService/business/query/orderList.shtml')" class="nav-home">订单查询</a> -->
+                </div>
+            </div>
+            <section>
+                <div class="center-head">
+                    <div class="head-portrait">
+                        <img onclick="redirectUrl('/WeixinService/business/user/userInfo.shtml')" class="portrait" src="/WeixinWeb/WeixinWeb_Images/images/icon_userCenter_face.png" alt="">
+                        <span class="portrait-name" id="name">您好!</span>
+                    </div>
+                    <div class="head-personal-money">
+                        <dl >
+                            <dt id="asstes_title" onclick="redirectUrl('/WeixinService/business/query/myBill.shtml?item=1')">持仓市值（元）</dt>
+                            <dd id="asstes">--</dd>
+                        </dl>
+                        <dl onclick="redirectUrl('/WeixinService/business/query/myBill.shtml?item=2')">
+                            <dt>我的收益</dt>
+                            <dd id="inCome">--</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="center-nav">
+                    <h2>
+                        <span class="fl">查看资产</span>
+                        <a class="fr" href="javascript:redirectUrl('/WeixinService/business/query/orderListAgent.shtml')">其它订单查询 ></a>
+                    </h2>
+                    <!--<div class="center-nav-a">
+                        <ul>
+                            <li onclick="redirectUrl('/WeixinService/business/query/orderList.shtml?item=1')"><a>未支付</a></li>
+                            <li onclick="redirectUrl('/WeixinService/business/query/orderList.shtml?item=2')"><a>已支付</a></li>
+                            <li onclick="redirectUrl('/WeixinService/business/query/orderList.shtml?item=3')"><a>存续中</a></li>
+                            <li onclick="redirectUrl('/WeixinService/business/query/orderList.shtml?item=4')"><a>已到期</a></li>
+                        </ul>
+                    </div>-->
+                </div>
+                <div class="center-info">
+                    <a href="javascript:redirectUrl('/WeixinService/business/query/orderList.shtml')" class="href-point tran-record">我的订单<em></em></a>
+                    <a href="javascript:redirectUrl('/WeixinService/business/query/myBill.shtml')" class="href-point tran-record">交易明细<em></em></a>
+                    <a href="javascript:redirectUrl('/WeixinService/business/user/userInfo.shtml')" class="href-point account-info">个人信息设置<em></em></a>
+                    <a href="javascript:toMyMessage()" class="href-point mymessage">我的消息 &nbsp;
+                        <img style="display: none;" id="bt_msg_new" alt="" style="width: 80px;height: 22px;margin-left: -5px;" src="">
+                        <span id="unRead" style="display: none;"></span><em></em></a>
+                    <a style="display:none" href="javascript:qualified()" class="href-point qualified-info">合格投资者认证<em></em></a>
+                    <a style="display:none" href="javascript:redirectUrl('/WeixinService/business/mgm/myIntegral.shtml')" class="href-point mygift">我的积分<em></em></a>                </div>
+                <div class="center-myinfo">
+                    <a href="javascript:redirectUrl('/WeixinService/business/bank/bankList.shtml')" class="href-point bank-manage">银行卡管理<em></em></a>
+                </div>
+            </section>
+
+
+        </div></div>
+    <!--#include virtual="/WeixinService/headerOrFooter/footer.shtml"-->
+</section>
+
+
+<!-- 尚未完成操作弹窗-->
+<div class="cover_bg" id="noOperation" style="display: none;">
+    <!-- 尚未完成风险评测-->
+    <div class="content risk" id="riskContent" style="display: none;">
+        <h2></h2>
+        <p>哎呀！您尚未完成风险测评</p>
+        <div class="tips">
+            <h3>温馨提示：</h3>
+            <p>根据监管要求，为保护投资者权益，需要了解您的相关信息和风险等级，以实现对您的最大保障。</p>
+            <p class="yearReport">
+                动动小指尖， 30秒完成风险测评，轻松查看<span id="riskMsg"></span>信息
+            </p>
+        </div>
+        <a href="javascript:void(0);" id="goRisk" class="btn">我要测评</a>
+    </div>
+
+    <!-- 尚未完成实名认证-->
+    <div class="content realName" id="realNameContent"  style="display: none;">
+        <h2></h2>
+        <p>咦，尚未完成实名认证，我们找不<br>到您的<span id="realNameMsg"></span>信息~</p>
+        <p class="once">别急！立即完成实名认证即可！</p>
+        <div class="tips">
+            <h3>温馨提示：</h3>
+            <p>实名过程中需要提供您的银行卡号、手机号及身份证，无需提供任何交易密码，以确保您的资金财产安全。</p>
+        </div>
+        <a href="javascript:void(0);" id="goAuth" class="btn">我要实名</a>
+    </div>
+
+    <!-- 重新测评-->
+    <div class="content rNameRisk" id="reRiskContent"  style="display: none;">
+        <h2></h2>
+        <p>根据监管要求，您的风险测评已过有效期，还请重新测评</p>
+        <a href="javascript:void(0);" id="reRisk" class="btn">确定</a>
+    </div>
+</div>
+<style>
+    .cover_bg{z-index: 999;}
+</style>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/dialog.min.js"></script> 
+<!--  <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/queryAccount.js"></script> -->
+<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/queryAccount.min.js"></script> -->
+<script type="text/javascript">
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/queryAccount.min.js?version='+new Date().getTime()+'"><\/script>');
+</script>
+
+<div id="taxResidentDecl_tip" style="display: none;" class="fund_cover_bg">
+    <div class="fund_cover-con" style="overflow-y: auto; height: 485.24px; width: 372.6px; margin-left: 21.735px; margin-top: 61.088px;">
+        <div class="fund_quesiton" style="margin-left: 14.49px; margin-right: 14.49px; width: 345.69px;height: 345.69px;marker: 46px;margin-top: 25px;">
+				<span id="okBtn">
+		  			<img class="portrait" src="/WeixinWeb/WeixinWeb_Images/images/active_tips.png" alt="" style="width: 100%;height: 100%;">
+		  		</span>
+        </div>
+        <div class="boxs-btn" style="margin-top: 10px;" id="cancelBtn">
+            <span><a href="javascript:void(0);" style="background:#ccc" class="check-order">取消</a></span>
+        </div>
+    </div>
+</div>
+
+<!-- 持仓市值提示框-->
+<div id="holdAmountBox" class="holdAmountBox" style="display: none">
+    <span class="closeIcon" id="closeIcon" onclick="closeHoldTip()"></span>
+    <p class="holdContent">持仓市值通过昨日市值计算，与实际市值可能有所偏差</p>
+    <p class="knowHoldBtn" id="knowHoldBtn" onclick="closeHoldTip()">知道了</p>
+</div>
+
+<div class="back_pop" id="back_pop" style="display: none">
+
+</div>
+
+</body>
+</html>

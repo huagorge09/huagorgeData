@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.directmanager.ValidateDao">
+	<resultMap type="validateDto" id="validateDto">
+		<result column="CUSTNO" property="custno"/>
+		<result column="TRADEACCO" property="tradeacco"/>
+		<result column="FUNDACCO" property="fundacco"/>
+		<result column="IDHOLDNAME" property="idnm"/>
+		<result column="INVTP" property="invtp"/>
+		<result column="INVTP_NAME" property="invtpName"/>
+		<result column="IDTP" property="idtp"/>
+		<result column="IDTP_NAME" property="idtpName"/>
+		<result column="IDNO" property="idno"/>
+		<result column="AVAILABLYDATE" property="idvalidate"/>
+		<result column="TELNO" property="tel"/>
+		<result column="MOBILENO" property="mobile"/>
+		<result column="FAXNO" property="fax"/>
+		<result column="EMAIL" property="email"/>
+		<result column="ADDR" property="addr"/>
+	</resultMap>
+	
+	<select id="queryValidateList" parameterType="sparam" statementType="CALLABLE">
+		{ call DS_OQP_IDVALIDDAYINFO(
+				#{sp.fundacco,jdbcType=VARCHAR,mode=IN},
+				#{sp.tradeacco,jdbcType=VARCHAR,mode=IN},
+				#{sp.operatorType,jdbcType=VARCHAR,mode=IN},
+				#{sp.invtp,jdbcType=VARCHAR,mode=IN},
+				#{sp.idtp,jdbcType=VARCHAR,mode=IN},
+				#{sp.idno,jdbcType=VARCHAR,mode=IN},
+				#{sp.idnm,jdbcType=VARCHAR,mode=IN},
+				#{sp.begindate,jdbcType=VARCHAR,mode=IN},
+				#{sp.enddate,jdbcType=VARCHAR,mode=IN},
+	    		#{sp.errcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.errmsg,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.validateList,resultMap=validateDto,jdbcType=CURSOR,mode=OUT}
+			)
+		}
+	</select>
+	
+	<select id="updateValidate" parameterType="sparam" statementType="CALLABLE">
+		{ call DS_OTP_IDVALIDDAY(
+				#{sp.operatorType,jdbcType=VARCHAR,mode=IN},
+				#{sp.idtp,jdbcType=VARCHAR,mode=IN},
+				#{sp.idno,jdbcType=VARCHAR,mode=IN},
+				#{sp.idvalidate,jdbcType=VARCHAR,mode=IN},
+	    		#{sp.errcode,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.errmsg,jdbcType=VARCHAR,mode=OUT}
+			)
+		}
+	</select>
+</mapper>

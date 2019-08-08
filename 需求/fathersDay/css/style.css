@@ -1,0 +1,1975 @@
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-appearance: none;
+	outline: none;
+	word-break: break-all;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+*:not(input, textarea) {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+}
+
+html,
+body {
+	color: #333;
+	margin: 0 auto;
+	font-family: Arial, "Microsoft YaHei";
+	font-size: 50px;
+	background: #f1f5ff;
+	height: 100%;	
+}
+
+input {
+	-webkit-user-select: initial;
+	font-family: Arial, "Microsoft YaHei";
+	border: none;
+}
+
+i {
+	font-style: normal
+}
+
+a {
+	text-decoration: none;
+	color: #ffffdd;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a:active {
+	text-decoration: none;
+}
+
+em {
+	font-style: normal
+}
+
+ul,
+ol,
+li {
+	list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: normal;
+}
+
+img {
+	border: 0;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.clearFloat:after,
+.clearFloat:before {
+	content: "";
+	display: table;
+}
+
+.clearFloat:after {
+	clear: both;
+}
+
+.dswkb {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-box;
+	display: box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-box-align: center;
+	-moz-box-align: center;
+	-ms-box-align: center;
+	box-align: center;
+	position: relative;
+}
+
+.flex1 {
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	-ms-box-flex: 1;
+	box-flex: 1;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.center {
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+/*loading*/
+.loadIcon2{
+	display: inline-block;
+    width: .54rem;
+    height: .54rem;
+    background:url("../images/load.gif") no-repeat center;
+    background-size:100% 100%;
+}
+.maskLoad{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    background: #000;
+    opacity: .5;
+    text-align: center;
+    border-radius: 7px;
+    color: #fff;
+    font-size: .26rem;
+    padding: .2rem;
+}
+.maskLoad p:nth-child(2){
+	margin-top: .2rem;
+}
+.load .mask{
+	opacity: 0;
+}
+/*loading  end*/
+.zindex999{
+	z-index:999;
+}
+.tipBox{
+    position: fixed;
+    top:50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    overflow: hidden;
+    z-index: 999;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.autoBox{
+    background-color: rgba(0,0,0,0.8);
+    width: 60%;
+    padding: 0.2rem;
+    color: #fff;
+    font-size: 0.28rem;
+    text-align: center;
+    line-height: 0.4rem;
+    vertical-align: middle;
+    -webkit-border-radius: 0.1rem;
+    border-radius: 0.1rem;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+.mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 20;
+}
+
+.colorRed::-webkit-input-placeholder { /* WebKit browsers */
+color: #f00;
+}
+.colorRedcolor: #f00;
+}
+.colorRedcolor: #f00;
+}
+.colorRed:-ms-input-placeholder { /* Internet Explorer 10+ */
+color: #f00;
+}
+/*引导页面*/
+.guide{
+	width: 100%;
+	height: 100%;
+	background: url(../images/indexBg.jpg) no-repeat;
+	background-size: 100% 100%;
+	position: relative;
+}
+.guide .title{
+   position: absolute;
+    width: 6.06rem;
+    height: 1.92rem;
+    left: 50%;
+    top: .9rem;
+    margin-left: -3rem;
+    background: url(../images/title1.png) no-repeat;
+    background-size: 100% 100%;
+	
+}
+.swiper-wrapper{
+	  left: -6%
+}
+ .swiper-container {
+     width: 100%;
+    height: 5.31rem;
+    bottom: -26%;
+ }
+ .swiper-container .swiper-slide-prev,.swiper-container .swiper-slide-next{
+ 	width:3.32rem !important;
+    height: 3.89rem !important;
+    top: .7rem;
+ }
+  .swiper-slide-prev img,.swiper-slide-next img{
+  	width: 3.3rem !important;
+  }
+ .swiper-slide {
+ 	text-align: center;
+ 	font-size: 18px;
+ 	background: #fff;
+ 	/* Center slide text vertically */
+ 	display: -webkit-box;
+ 	display: -ms-flexbox;
+ 	display: -webkit-flex;
+ 	display: flex;
+ 	-webkit-box-pack: center;
+ 	-ms-flex-pack: center;
+ 	-webkit-justify-content: center;
+ 	justify-content: center;
+ 	-webkit-box-align: center;
+ 	-ms-flex-align: center;
+ 	-webkit-align-items: center;
+ 	align-items: center;
+ 	height: 3.89rem;
+ 	width: 3.97rem !important;
+ 	margin-right: .36rem　!important;
+ }
+ .swiper-slide-active{
+ 	    -moz-box-shadow: 0px 5px 11px #dec2a2;
+    -webkit-box-shadow: 0px 5px 11px #dec2a2;
+    box-shadow: 0px 5px 11px #dec2a2;
+ }
+ 	
+.swiper-slide img {
+	height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    -moz-box-shadow:0px 5px 11px #dec2a2; 
+    -webkit-box-shadow:0px 5px 11px #dec2a2; 
+    box-shadow:0px 5px 11px #dec2a2;
+}
+.guide .logo{
+	width: 2.11rem;
+	height: .58rem;
+	position: absolute;
+   left: .16rem;
+   top: .14rem;
+}
+.guide p{
+    position: absolute;
+    width: 100%;
+    bottom: 1.8rem;
+    line-height: .5rem;
+    font-size: .32rem;
+    color: #000;
+    text-align: center;
+    animation: pAnimat 300ms ease both;
+    -webkit-animation: pAnimat 300ms ease both;
+    -moz-animation: pAnimat 300ms ease both;
+    -o-animation: pAnimat 300ms ease both;
+}
+.guide a{
+	display: inline-block;
+	position: absolute;
+	left: 50%;
+	margin-left:-2.65rem;
+	bottom: .38rem;
+	width: 5.3rem;
+	height: .8rem;
+	line-height: .8rem;
+	text-align: center;
+	background: #1ea7e9;
+	border-radius: 20px;
+	font-size: .32rem;
+	color: #fff;
+	-moz-box-shadow:2px 10px 20px #d2f0fe; 
+	-webkit-box-shadow:2px 10px 20px #d2f0fe; 
+	box-shadow:2px 10px 20px #d2f0fe;
+}
+
+/*抽奖页面*/
+.draw{
+    width: 100%;
+    height: 100%;
+    background: url(../images/bg.jpg) no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    padding-top: 1rem;
+	
+}
+.drawBg{
+   height: 11.98rem;
+   background: #fff1c6;
+}
+.draw .logo{
+    width: 1.72rem;
+    height: .37rem;
+    position: absolute;
+    left: .2rem;
+    top: .2rem;
+}
+.draw .rules{
+    position: absolute;
+    right: .19rem;
+    top: 0;
+    width: .96rem;
+    height: 1.07rem;
+    font-size: .28rem;
+    color: #fff;
+    text-align: center;
+    background: url(../images/ruleBg.png) no-repeat;
+    background-size: 100% 100%;
+    padding-top: .08rem;
+}
+.sysNotice{
+    width: 5.8rem;
+    height: .55rem;
+    background: url(../images/sysNotice.png) no-repeat;
+    background-size: 100% 100%;
+    margin-left: .6rem;
+    padding-left: .88rem;
+    overflow: hidden;
+}
+.sysNotice li{
+	font-size: .22rem;
+	color: #fff;
+	line-height: .55rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.sysNotice li span{
+	color: #ffbe00;
+}
+.myNotice{
+position: absolute;
+    bottom: .1rem;
+    left: 57%;
+    margin-left: -3.4rem;
+    z-index: 2;
+    color: #fff;
+    font-size: .22rem;
+    width: 5.8rem;
+    background: #000000;
+    opacity: .6;
+    border-radius: 14px;
+    padding: .0rem .2rem;
+    height: 17px;
+    overflow: hidden;
+}
+.myNotice .xttz{
+    display: block;
+    height: .34rem;
+    width: .23rem;
+    background: url(../images/tz.png) no-repeat;
+    background-size: .23rem .19rem;
+    float: left;
+    padding-left: .2rem;
+    background-position-y: .05rem;
+    margin-right: .05rem;
+}
+.myNotice .myself{
+    width: 5rem;
+    float: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.myNotice .myself li{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/*.myNotice .myself i{
+  display: inline-block;
+  width: .22rem;
+  height: .2rem;
+  background: url(../images/myIconNotice.png) no-repeat;
+  background-size: 100% 100%;
+  vertical-align: middle;
+  margin-right: .05rem;
+}*/
+.myNotice .myself span{
+	color: #e7b21e;
+}
+.board{
+    position: absolute;
+    width: 7.1rem;
+    height: 4.39rem;
+    left: 50%;
+    top: 22%;
+    background: url(../images/board.png) no-repeat;
+    background-size: 100% 100%;
+    margin-left: -3.55rem;
+}
+
+.draw .title{
+    width: 5.22rem;
+    height: 2.69rem;
+    background: url(../images/title2.png) no-repeat;
+    background-size: 100% 100%;
+    margin-left: 1.1rem;
+}
+.drawBox {
+	width: 6.15rem;
+	margin:  1.8rem auto 0 auto;
+	position: relative;
+}
+.drawBox p{
+    position: absolute;
+    left: 1.74rem;
+    top: 2.13rem;
+    color: #7e541f;
+    font-size: .28rem;
+}
+.drawBox li{
+    width: 2.05rem;
+    height: 2.05rem;
+    position: relative;
+}
+.drawBox li:nth-child(1){
+	background: url(../images/box3.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.drawBox li:nth-child(2){
+	background: url(../images/box1.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.drawBox li:nth-child(3){
+	background: url(../images/box2.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.drawBox li.shake{
+	 animation: shake 600ms ease  alternate infinite;
+    -webkit-animation: shake 600ms ease alternate  infinite;
+    -moz-animation: shake 600ms ease alternate  infinite;
+    -o-animation: shake 600ms ease  alternate  infinite;
+}
+.drawBox .shine{
+	position: absolute;
+	left: .5rem;
+	top: .4rem;
+	width:.68rem;
+	height: .66rem;
+    background: url(../images/shine.png) no-repeat;
+	background-size: 100% 100%;
+	 animation: shine 600ms ease   infinite;
+    -webkit-animation: shine 600ms ease   infinite;
+    -moz-animation: shine 600ms ease   infinite;
+    -o-animation: shine 600ms ease   infinite;
+    
+}
+.drawBox .hand{
+    width: 1rem;
+    height: 1rem;
+    background: url(../images/hand.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    left: .8rem;
+    top: .5rem;
+    animation: handAnimat 300ms ease alternate infinite;
+    -webkit-animation: handAnimat 300ms ease alternate infinite;
+    -moz-animation: handAnimat 300ms ease alternate infinite;
+    -o-animation: handAnimat 300ms ease alternate infinite;
+}
+.UserCenter {
+    position: absolute;
+    right: .14rem;
+    bottom: .4rem;
+    z-index: 2;
+}
+.UserCenter li{
+	width:1.18rem;
+	height: 1.18rem;
+	margin-bottom: .1rem;
+	position: relative;
+}
+
+.UserCenter li:nth-child(1){
+	background: url(../images/notice.png) no-repeat;
+	background-size: 100% 100%;
+}
+.UserCenter li:nth-child(2){
+	background: url(../images/rating.png) no-repeat;
+	background-size: 100% 100%;
+}
+.UserCenter li:nth-child(3){
+	background: url(../images/prize.png) no-repeat;
+	background-size: 100% 100%;
+}
+.UserCenter li span{
+    position: absolute;
+    right: .1rem;
+    height: .16rem;
+    line-height: .16rem;
+    padding: 0 .03rem;
+    display: inline-block;
+    background: #fc5a13;
+    border-radius: 15px;
+    color: #fff;
+    font-size: .144rem;
+    top: .3rem;
+}
+
+.invitation{
+    position: absolute;
+    bottom: .2rem;
+    left: 50%;
+    margin-left: -3.48rem;
+    width: 6.96rem;
+    height: 4.66rem;
+    background: url(../images/invitation.png) no-repeat;
+    background-size: 100% 100%;
+    z-index: 1;
+    padding-top: .7rem;
+    text-align: center;
+}
+.invitation p{
+	text-align: center;
+	color: #e26c03;
+	font-size: .3rem;
+}
+.invitation p:nth-child(1){
+    text-align: center;
+    color: #434343;
+    font-size: .36rem;
+    margin-top: .1rem;
+    font-weight: bold;
+}
+.invitation p:nth-child(2){
+    padding: 0 .92rem;
+    font-size: .34rem;
+    color: #ed2c34;
+    margin-top: .25rem;
+    line-height: .36rem;
+    font-weight: bold;
+}
+.invitation p:nth-child(3){
+	font-size: .26rem;
+	color: #589ce9;
+	margin-top: .14rem;
+}
+.invitation a{
+   display: inline-block;
+    width: 3.27rem;
+    height: 1.18rem;
+    line-height: .83rem;
+    text-align: center;
+    font-size: .3rem;
+    background: url(../images/investBtn.png) no-repeat;
+    background-size: 100% 100%;
+    margin-top: .48rem;
+    color: #fff;
+    font-weight: bold;
+}
+/*活动规则*/
+.rules .content{
+	position: absolute;
+	left: 50%;
+	top: 48%;
+	width: 6.74rem;
+	
+	background: #fff;
+	border:.23rem #00a3f3 solid;
+	z-index: 21;
+	border-radius: 15px;
+}
+.rules h2{
+	width: 3.14rem;
+	height: .78rem;
+	position: absolute;
+	left: 50%;
+	margin-left: -1.57rem;
+	top: -4%;
+	background: url(../images/rulesTitle.png) no-repeat;
+	background-size: 100% 100%;
+	font-size: .32rem;
+	text-align: center;
+	line-height: .78rem;
+	color: #fff;
+}
+.rules .rulesDeatail{
+    padding: .6rem .2rem 0 .2rem;
+}
+.rules .rulesDeatail>h3{
+	font-size: .32rem;
+	color: #f46d00;
+}
+.rules .rulesDeatail>h3 span{
+	display: inline-block;
+	width: .08rem;
+	height: .28rem;
+	background: #f46d00;
+	border-radius: 15px;
+	margin-right: .11rem;
+}
+.rules .rulesDeatail>h4{
+	line-height: .44rem;
+	font-size: .28rem;
+	color: #999;
+	padding-left: .25rem;
+}
+.rules .rulesDeatail ul  h3{
+	line-height: .53rem;
+	font-size: .3rem;
+	color: #18b5ff;
+	margin-bottom: .15rem;
+}
+.rules .rulesDeatail ul  h3 i{
+	display: inline-block;
+	width: .42rem;
+	height: .43rem;
+	background: url(../images/serial.png) no-repeat;
+	background-size: 100% 100%;
+	font-size: .22rem;
+	text-align: center;
+	color: #fff;
+	line-height: .43rem;
+}
+.rules .rulesDeatail ul  p{
+	font-size: .24rem;
+	color: #666;
+	line-height: .36rem;
+	margin-bottom: .17rem;
+}
+.rules .rulesDeatail em{
+	display: inline-block;
+	width: .39rem;
+	height: .44rem;
+	background: url(../images/leaf.png) no-repeat;
+	background-size: 100% 100%;
+	vertical-align: middle;
+}
+.rules .ps{
+	font-size: .22rem;
+	line-height: .36rem;
+	color: #f8984b;
+	margin: 0 .2rem;
+	border-top: 1px #cccccc solid;
+	padding-top: .14rem;
+}
+.rules .tips{
+	font-size: .22rem;
+	line-height: .32rem;
+	color: #8c8c8c;
+	padding: .15rem .2rem;
+	background: #dbf3ff;
+	margin-top: .1rem;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.rules .close{
+    display: inline-block;
+    width: .5rem;
+    height: .5rem;
+    position: absolute;
+    left: 50%;
+    margin-left: -.3rem;
+    bottom: -9%;
+    background: url(../images/close.png) no-repeat;
+    background-size: .28rem .26rem;
+    border: 1px #c5c5c5 solid;
+    border-radius: 50%;
+    background-position-x: .1rem;
+    background-position-y: .1rem;
+}
+/*首次进入得碎片弹窗*/
+.getFrag .content{
+    position: absolute;
+    width: 5.08rem;
+    left: 50%;
+    top: 44%;
+    z-index: 62;
+}
+.getFrag .flashRotation{
+	position: absolute;
+    width: 4.64rem;
+    height: 4.45rem;
+    background: url(../images/shine2.png) no-repeat;
+    background-size: 100% 100%;
+    margin: 0 auto;
+    padding-top: .8rem;
+    padding-left: 1.5rem;
+       animation: rotation 300ms ease 200ms both;
+    -webkit-animation:  rotation 300ms ease  200ms both;
+    -moz-animation: rotation 300ms ease 200ms both;
+    -o-animation: rotation 300ms ease 200ms both;
+}
+.getFrag .flash {
+	text-align: center;
+}
+.getFrag .flash .chip{
+	width: 1.74rem;
+	height:1.93rem;
+	background: url(../images/chip.png) no-repeat;
+	background-size: 100% 100%;
+}
+.getFrag .flash .chipShine{
+	position: relative;
+    width: 2.82rem;
+    height: 2.82rem;
+    background: url(../images/shine3.png) no-repeat;
+    background-size: 100% 100%;
+    margin-left: 1.1rem;
+    margin-top: 1rem;
+    padding-left: .49rem;
+    padding-top: .3rem;
+    animation: bouncein 300ms ease 300ms both;
+    -webkit-animation: bouncein 300ms ease 300ms both;
+    -moz-animation: bouncein 300ms ease 300ms both;
+    -o-animation: bouncein 300ms ease 300ms both;
+}
+.getFrag .flash p{
+  color: #fff !important;
+}
+.getFrag .gonglve{
+    width: 5.86rem;
+    height: 1.76rem;
+    background: url(../images/gonglue.png) no-repeat;
+    background-size: 100% 100%;
+    margin-left: -.35rem;
+}
+ 
+.getFrag .chipShine span{
+	position: absolute;
+	width: .35rem;
+	height: .38rem;
+	display: inline-block;
+    background: url(../images/star2.png) no-repeat;
+    background-size: 100% 100%;
+}
+.getFrag .chipShine span:nth-child(1){
+    left: 1.4rem;
+    top: -.16rem;
+    animation: start1Animat 500ms ease 600ms both;
+    -webkit-animation: start1Animat 500ms ease 600ms both;
+    -moz-animation: start1Animat 500ms ease 600ms both;
+    -o-animation: start1Animat 500ms ease 600ms both;
+}
+.getFrag .chipShine span:nth-child(2){
+    left: 2.5rem;
+    top: 0.84rem;
+    animation: start2Animat 500ms ease 600ms both;
+    -webkit-animation: start2Animat 500ms ease 600ms both;
+    -moz-animation: start2Animat 500ms ease 600ms both;
+    -o-animation: start2Animat 500ms ease 600ms both;
+}
+.getFrag .chipShine span:nth-child(3){
+    left: 2rem;
+    top: 2.3rem;
+        animation: start3Animat 500ms ease 600ms both;
+    -webkit-animation: start3Animat 500ms ease 600ms both;
+    -moz-animation: start3Animat 500ms ease 600ms both;
+    -o-animation: start3Animat 500ms ease 600ms both;
+}
+.getFrag .chipShine span:nth-child(4){
+    left: .1rem;
+    top: 2rem;
+            animation: start4Animat 500ms ease 600ms both;
+    -webkit-animation: start4Animat 500ms ease 600ms both;
+    -moz-animation: start4Animat 500ms ease 600ms both;
+    -o-animation: start4Animat 500ms ease 600ms both;
+}
+.getFrag .chipShine span:nth-child(5){
+    left: .08rem;
+    top: .5rem;
+                animation: start5Animat 500ms ease 600ms both;
+    -webkit-animation: start5Animat 500ms ease 600ms both;
+    -moz-animation: start5Animat 500ms ease 600ms both;
+    -o-animation: start5Animat 500ms ease 600ms both;
+}
+.getFrag .flash a{
+   display: inline-block;
+    width: 1.73rem;
+    height: .88rem;
+    background: url(../images/btn1.png) no-repeat;
+    background-size: 100% 100%;
+    margin-top: .2rem;
+    margin-bottom: .3rem;
+    font-weight: 600;
+}
+.getFrag p{
+	text-align: center;
+}
+.getFrag p:nth-child(1){
+    font-size: .46rem;
+    color: #69c6f9;
+    font-weight: bold;
+}
+.getFrag p:nth-child(2){
+	font-size: .36rem;
+	color: #ffef6e;
+	margin-top: .15rem;
+	line-height: .6rem;
+}
+
+.u-flyer {
+	display: block;
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+	position: fixed;
+	z-index: 9999;
+}
+/*没有关注弹窗*/
+.follow .content{
+	position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 5.26rem;
+    z-index: 66;
+    text-align: center;
+}
+.follow img{
+	width: 5.26rem;
+	height: 4.46rem;
+}
+.follow p{
+	font-size: .28rem;
+	color: #fff;
+	line-height: .4rem;
+}
+/*打开宝箱弹窗*/
+.openFragNo .content,.winPrize .content{
+	position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 6.2rem;
+    z-index: 21;
+    background: url(../images/openBg.png) no-repeat;
+	background-size: 100% 100%;
+	text-align: center;
+    padding-bottom: .5rem;
+}
+.openFragNo .close{
+	display: block;
+	width: .8rem;
+	height: .88rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.openFragNo .openBox{
+	text-align: center;
+	padding-top: .84rem;
+}
+.openFragNo .openBox img{
+	width: 1.7rem;
+	height: 2.06rem;
+}
+.openFragNo .openBox p{
+	font-size: .28rem;
+	line-height: .46rem;
+	color: #3b3a3a;
+	margin-top: .55rem;
+}
+.openFragNo .openBox p span,.openFragNo .openBox p em{
+	color: #38afe1;
+}
+.openFragNo .openBox h3{
+    text-align: center;
+    color: #38afe1;
+    font-size: .22rem;
+    margin-top: .15rem;
+}
+.openFragNo .openBox a{
+    display: inline-block;
+    width: 3.2rem;
+    height: .86rem;
+    text-align: center;
+    line-height: .8rem;
+    background: url(../images/openGet.png) no-repeat;
+    background-size: 100% 100%;
+    font-size: .32rem;
+    color: #663200;
+    margin-top: .4rem;
+}
+.winPrize .conguration{
+    display: block;
+    width: 5.04rem;
+    height: 3.18rem;
+    position: absolute;
+    right: 8%;
+    top: -33%;
+    background: url(../images/conguration.png) no-repeat;
+    background-size: 100% 100%;
+}
+.winPrize .close{
+    display: block;
+    width: .8rem;
+    height: .88rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.winPrize .quanBox{
+    text-align: center;
+    padding-top: 1.1rem;
+}
+.winPrize .quan{
+	display: inline-block;
+	width: 3.9rem;
+    height: 2.01rem;
+       background: url(../images/offerBg.png) no-repeat;
+    background-size: 100% 100%;
+    margin-bottom: .29rem;
+}
+.winPrize .quan i{
+    display: inline-block;
+    width: 3.18rem;
+    height: 1.49rem;
+    margin-top: .25rem;
+}
+.winPrize .quan i.copper{
+	background: url(../images/offer1.png) no-repeat;
+    background-size: 100% 100%;
+}
+.winPrize .quan i.silver{
+	background: url(../images/offer3.png) no-repeat;
+    background-size: 100% 100%;
+}
+.winPrize .quan i.gold{
+	background: url(../images/offer2.png) no-repeat;
+    background-size: 100% 100%;
+}
+.winPrize .quan i p{
+    text-align: left;
+    padding-left: 2.3rem;
+}
+.winPrize .quan i p:nth-child(1){
+	font-size: .25rem;
+	color: #fff;
+	padding-top: .35rem;
+}
+.winPrize .quan i p:nth-child(2){
+	font-size: .3rem;
+	color: #fff;
+	margin-top: .1rem;
+	font-weight: bold;
+}
+.winPrize .quan i p:nth-child(2) em{
+	font-size: .16rem;
+}
+.winPrize .quanBox>p:nth-child(2){
+	font-size: .28rem;
+	color: #666666;
+	line-height: .46rem;
+}
+.winPrize .quanBox>p:nth-child(3){
+	font-size: .3rem;
+	color:#b83e00;
+	font-weight: bold;
+	margin-top: .12rem;
+}
+.winPrize .quanBox>p:nth-child(4){
+	font-size: .3rem;
+	color:#09a2db;
+	font-weight: bold;
+	margin-top: .12rem;
+}
+.winPrize  a{
+	display: inline-block;
+    width: 3.2rem;
+    height: .86rem;
+    text-align: center;
+    line-height: .8rem;
+    background: url(../images/openGet.png) no-repeat;
+    background-size: 100% 100%;
+    font-size: .32rem;
+    color: #663200;
+    margin-top: .3rem;
+}
+.winPrize .fragBox .fargNum{
+	display: inline-block;
+	 width: 4.02rem;
+    height: 2.35rem;
+	  background: url(../images/openFrag.png) no-repeat;
+    background-size: 100% 100%;
+    margin-top: .86rem;
+    position: relative
+}
+.winPrize .fragBox .fargNum em{
+    display: block;
+    position: absolute;
+    padding-right: .1rem;
+    padding-left: .1rem;
+    height: .4rem;
+    line-height: .4rem;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    right: 25%;
+    top: 16%;
+    font-size: .26rem;
+    color: #fff;
+    background: rgba(0,0,0,0.3);
+}
+.winPrize .fragBox p{
+	font-size: .32rem;
+	color: #dc6e1e;
+	line-height: .46rem;
+	margin-top: .1rem;
+}
+.winPrize .fragBox h2{
+	font-size: .28rem;
+	color: #212121;
+	margin-top: .1rem;
+}
+
+
+/*没有关注弹窗*/
+.subscribe .content{
+    position: absolute;
+    left: 50%;
+    top: 7%;
+    width: 5.58rem;
+    height: 9.94rem;
+    z-index: 999;
+    border-radius: 6px;
+    margin-left: -2.9rem;
+}
+.subscribe .content img{
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+}
+.subscribe span{
+    display: inline-block;
+    width: .5rem;
+    height: .5rem;
+    position: absolute;
+    left: 50%;
+    margin-left: -.3rem;
+    bottom: -6%;
+    background: url(../images/close.png) no-repeat;
+    background-size: .28rem .26rem;
+    border: 1px #c5c5c5 solid;
+    border-radius: 50%;
+    background-position-x: .1rem;
+    background-position-y: .1rem;
+}
+.subscribe p{
+    font-size: 0.26rem;
+    color: #fff;
+    /* width: 100%; */
+    position: absolute;
+    top: 9px;
+    right: 16px;
+    z-index: 66666;
+}
+.subscribe p i{
+display: inline-block;
+    width: .45rem;
+    height: .39rem;
+    background: url(../images/sIcon.png) no-repeat;
+    background-size: 100% 100%;
+    margin-left: .3rem;
+}
+/*碎片中心*/
+.fragBg{
+	height: 100%;
+	background: #eee7ba;
+}
+.fragment{
+	width: 100%;
+	height: 100%;
+	background: url(../images/qdbg.jpg) no-repeat;
+	background-size: 100% 100%;
+	position: relative;
+}
+
+.fragment .fragmentReturn{
+    position: absolute;
+    width: .9rem;
+    height: .6rem;
+    background: url(../images/frament.png) no-repeat;
+    background-size: 100% 100%;
+    left: 0;
+    top: .34rem;
+   z-index: 6;
+}
+.fragment .rating{
+	position: absolute;
+	width: 1.1rem;
+	height:1.1rem;
+    background: url(../images/rating.png) no-repeat;
+	background-size: 100% 100%;
+	right: .09rem;
+	top: .17rem;
+	z-index: 2;
+}
+
+.fargBox{
+    width: 7.06rem;
+    height: 3.8rem;
+    position: absolute;
+    left: 50%;
+    margin-left: -3.53rem;
+    top: .2rem;
+}
+.fargBox>p{
+    text-align: center;
+    font-size: .26rem;
+    color: #43688d;
+    margin-top: .24rem;
+    margin-bottom: .25rem;
+}
+.fargBox .singInRing{
+    width: 1.7rem;
+    height: 1.7rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.fargBox .singInRing p:nth-child(1){
+    font-size: .29rem;
+    padding-top: 0.4rem;
+}
+.fargBox .singInRing p:nth-child(2){
+	font-size: .25rem;
+	margin-top: .2rem;
+}
+.fargBox .singInRing.alreadySign{
+	background: url(../images/alreadySign.png) no-repeat;
+	background-size: 100% 100%;
+}
+.fargBox .singInRing.alreadySign p{
+	color: #5d8bb4;
+}
+.fargBox .singInRing.noneSign{
+	background: url(../images/noneSign.png) no-repeat;
+	background-size: 100% 100%;
+}
+.fargBox .singInRing.noneSign p:nth-child(1){
+	color: #5d8bb4;
+}
+
+.fargBox .singInRing.noneSign p:nth-child(2){
+	color: #e88a25;
+}
+
+.fargBox #countdown span{
+	display: inline-block;
+	width: .38rem;
+	height: .5rem;
+	text-align: center;
+	line-height: .5rem;
+	font-size: .36rem;
+	color: #fff;
+	background: #000;
+	border-radius: 5px;
+	opacity: .6;
+	margin-left: .05rem;
+}
+.fargBox #countdown i{
+	font-size: .36rem;
+	color: #51565d;
+	font-weight: bold;
+}
+.fragmentProgress {
+	position: relative;
+}
+.fragmentProgress li{
+	width: 2.18rem;
+	position: relative;
+}
+.fragmentProgress li em{
+	display: inline-block;
+	width: .3rem;
+	height: .3rem;
+	background: url(../images/cicle.png) no-repeat;
+	background-size: .2rem .2rem;
+	background-position: .05rem .05rem;
+}
+.fragmentProgress li div{
+    position: absolute;
+    left: .36rem;
+    top: .1rem;
+    width: 1.8rem;
+    height: 4px;
+    background: #536f7f;
+}
+.fragmentProgress .progress{
+    position: absolute;
+    left: 0;
+    top: .125rem;
+    width: 6.72rem;
+    height: .04rem;
+    background: #536f7f;
+}
+.fragmentProgress li p{
+    color: #4f6979;
+    font-size: .24rem;
+    margin-left: -.2rem;
+    text-shadow: 0 1px #fff, 1px 0 #fff, -1px 0 #fff, 0 -1px #fff; 	
+}
+.fragmentProgress li:last-child{
+	width: .72rem;
+}
+.fragmentProgress.step1 li:nth-child(1) em{
+	width: .43rem;
+	height: .42rem;
+	background: url(../images/success.png) no-repeat;
+	background-size: .43rem .42rem;
+}
+.fragmentProgress.step1 li:nth-child(1) p{
+    padding-left: .22rem;
+}
+.fragmentProgress.step1 li:nth-child(1) div{
+	  width: 1.6rem;
+    left: .5rem;
+    top: .16rem;
+}
+.fragmentProgress.step1 li:nth-child(1) p{
+	color: #f72b71;
+	text-shadow: 0 1px #fff, 1px 0 #fff, -1px 0 #fff, 0 -1px #fff; 	
+}
+.fragmentProgress.step1 li:nth-child(1) div{
+	background: #f72b71;
+}
+
+.fragmentProgress.step2 li:nth-child(2) em{
+	width: .43rem;
+	height: .42rem;
+	background: url(../images/success.png) no-repeat;
+	background-size: .43rem .42rem;
+}
+.fragmentProgress.step2 li:nth-child(2) p{
+    padding-left: .22rem;
+}
+.fragmentProgress.step2 li:nth-child(2) div{
+	  width: 1.6rem;
+    left: .5rem;
+    top: .16rem;
+}
+.fragmentProgress.step2 li:nth-child(2) p{
+	color: #f72b71;
+	text-shadow: 0 1px #fff, 1px 0 #fff, -1px 0 #fff, 0 -1px #fff; 	
+	padding-left: 0;
+}
+.fragmentProgress.step2 li:nth-child(2) div{
+	background: #f72b71;
+}
+
+.fragmentProgress.step3 li:nth-child(3) em{
+	width: .43rem;
+	height: .42rem;
+	background: url(../images/success.png) no-repeat;
+	background-size: .43rem .42rem;
+}
+.fragmentProgress.step3 li:nth-child(3) p{
+    padding-left: .22rem;
+}
+.fragmentProgress.step3 li:nth-child(3) div{
+	  width: 1.6rem;
+    left: .5rem;
+    top: .16rem;
+}
+.fragmentProgress.step3 li:nth-child(3) p{
+	color: #f72b71;
+	text-shadow: 0 1px #fff, 1px 0 #fff, -1px 0 #fff, 0 -1px #fff; 	
+	padding-left: 0;
+}
+.fragmentProgress.step3 li:nth-child(3) div{
+	background: #f72b71;
+}
+.fragmentProgress.step4 li:nth-child(4) em{
+	width: .43rem;
+	height: .42rem;
+	background: url(../images/success.png) no-repeat;
+	background-size: .43rem .42rem;
+}
+.fragmentProgress.step4 li:nth-child(4) p{
+	color: #f72b71;
+	text-shadow: 0 1px #fff, 1px 0 #fff, -1px 0 #fff, 0 -1px #fff; 	
+	padding-left: 0;
+}
+.fragMap{
+    position: absolute;
+    padding: 0 .21rem;
+    bottom: .1rem;
+    left: 50%;
+    margin-left: -3.53rem;
+    width: 7.06rem;
+    /* height: 5.57rem; */
+    background: #74aad5;
+    border-radius: 20px;
+    padding-top: 0.4rem;
+}
+.fragMap>p{
+	font-size: .28rem;
+	color: #fff;
+	text-align: center;
+	background: url(../images/titleyy.png) no-repeat;
+	background-size: 6.58rem .41rem;
+}
+
+.fragMap .title{
+    position: absolute;
+    left: 50%;
+    margin-left: -1.5rem;
+    width: 3.08rem;
+    top: -.5rem;
+    height: .96rem;
+    background: url(../images/title3.png) no-repeat;
+    line-height: .7rem;
+    background-size: 100% 100%;
+    text-align: center;
+    font-size: .31rem;
+    color: #fff;
+    font-weight: bold;
+}
+.fragMap ul{
+	    margin-top: .3rem;
+}
+.fragMap li{
+    width: 6.65rem;
+    height: 1.95rem;
+    background: url(../images/mapListBg.png) no-repeat;
+    background-size: 100% 100%;
+    margin-bottom: .17rem;
+}
+.fragMap li>span{
+	display: block;
+	width: .6rem;
+    font-size: .22rem;
+    color: #c29c6f;
+    text-align: center;
+}
+.fragMap li:nth-child(2)>span,.fragMap li:nth-child(3)>span{
+	padding-top: .15rem;
+}
+.fragMap li div{
+    height: 100%;
+    padding-top: .2rem;
+    padding-left: 0.12rem;
+    font-size: .24rem;
+    position: relative;
+}
+.fragMap li div em{
+    display: inline-block;
+    width: .8rem;
+    height: .96rem;
+    position: relative;
+    margin: 0 .04rem;
+    margin-top: -.1rem;
+}
+.fragMap li div em:nth-child(5){
+width: 1.2rem;
+    height: 1.38rem;
+}
+/*铜碎片*/
+.fragMap li.gold em:nth-child(1){
+	background: url(../images/frag/A1.png) no-repeat;
+    background-size: 100% 100%;
+} 
+.fragMap li.gold em:nth-child(1).kong{
+	background: url(../images/frag/A1K.png) no-repeat;
+    background-size: 100% 100%;
+} 
+
+.fragMap li.gold em:nth-child(2){
+	background: url(../images/frag/A2.png) no-repeat;
+    background-size: 100% 100%;
+} 
+.fragMap li.gold em:nth-child(2).kong{
+	background: url(../images/frag/A2K.png) no-repeat;
+    background-size: 100% 100%;
+} 
+.fragMap li.gold em:nth-child(3){
+	background: url(../images/frag/A3.png) no-repeat;
+    background-size: 100% 100%;
+} 
+.fragMap li.gold em:nth-child(3).kong{
+	background: url(../images/frag/A3K.png) no-repeat;
+    background-size: 100% 100%;
+} 
+.fragMap li.gold em:nth-child(4){
+	background: url(../images/frag/A4.png) no-repeat;
+    background-size: 100% 100%;
+} 
+.fragMap li.gold em:nth-child(4).kong{
+	background: url(../images/frag/A4K.png) no-repeat;
+    background-size: 100% 100%;
+} 
+.fragMap li.gold em:nth-child(5){
+	background: url(../images/frag/A.png) no-repeat;
+    background-size: 100% 100%;
+    top: .15rem;
+} 
+.fragMap li.gold em:nth-child(5).kong{
+	background: url(../images/frag/AK.png) no-repeat;
+    background-size: 100% 100%;
+} 
+
+
+/*银碎片*/
+.fragMap li.silver em:nth-child(1){
+	background: url(../images/frag/B1.png) no-repeat;
+    background-size: 100% 100%;
+} 
+.fragMap li.silver em:nth-child(1).kong{
+	background: url(../images/frag/B1K.png) no-repeat;
+    background-size: 100% 100%;
+} 
+.fragMap li.silver em:nth-child(2){
+	background: url(../images/frag/B2.png) no-repeat;
+    background-size: 100% 100%;
+} 
+.fragMap li.silver em:nth-child(2).kong{
+	background: url(../images/frag/B2K.png) no-repeat;
+    background-size: 100% 100%;
+} 
+.fragMap li.silver em:nth-child(3){
+	background: url(../images/frag/B3.png) no-repeat;
+    background-size: 100% 100%;
+} 
+.fragMap li.silver em:nth-child(3).kong{
+	background: url(../images/frag/B3K.png) no-repeat;
+    background-size: 100% 100%;
+} 
+.fragMap li.silver em:nth-child(4){
+	background: url(../images/frag/B4.png) no-repeat;
+    background-size: 100% 100%;
+} 
+.fragMap li.silver em:nth-child(4).kong{
+	background: url(../images/frag/B4K.png) no-repeat;
+    background-size: 100% 100%;
+} 
+.fragMap li.silver em:nth-child(5){
+	background: url(../images/frag/B.png) no-repeat;
+    background-size: 100% 100%;
+    top: .15rem;
+} 
+.fragMap li.silver em:nth-child(5).kong{
+	background: url(../images/frag/BK.png) no-repeat;
+    background-size: 100% 100%;
+} 
+/*金碎片*/
+.fragMap li.copper em:nth-child(1){
+	background: url(../images/frag/C1.png) no-repeat;
+    background-size: 100% 100%;
+} 
+.fragMap li.copper em:nth-child(1).kong{
+	background: url(../images/frag/C1K.png) no-repeat;
+    background-size: 100% 100%;
+}
+.fragMap li.copper em:nth-child(2){
+	background: url(../images/frag/C2.png) no-repeat;
+    background-size: 100% 100%;
+} 
+.fragMap li.copper em:nth-child(2).kong{
+	background: url(../images/frag/C2K.png) no-repeat;
+    background-size: 100% 100%;
+} 
+.fragMap li.copper em:nth-child(3){
+	background: url(../images/frag/C3.png) no-repeat;
+    background-size: 100% 100%;
+} 
+.fragMap li.copper em:nth-child(3).kong{
+	background: url(../images/frag/C3K.png) no-repeat;
+    background-size: 100% 100%;
+} 
+.fragMap li.copper em:nth-child(4){
+	background: url(../images/frag/C4.png) no-repeat;
+    background-size: 100% 100%;
+} 
+.fragMap li.copper em:nth-child(4).kong{
+	background: url(../images/frag/C4K.png) no-repeat;
+    background-size: 100% 100%;
+} 
+.fragMap li.copper em:nth-child(5){
+	background: url(../images/frag/C.png) no-repeat;
+    background-size: 100% 100%;
+    top: .15rem;
+} 
+.fragMap li.copper em:nth-child(5).kong{
+	background: url(../images/frag/CK.png) no-repeat;
+    background-size: 100% 100%;
+} 
+
+
+
+
+.fragMap li.gold .man i{
+    display: inline-block;
+    width: .8rem;
+    height: .8rem;
+    background: url(../images/frag/X3.png) no-repeat;
+    background-size: 100% 100%;
+    animation: shake 600ms ease alternate infinite;
+    -webkit-animation: shake 600ms ease alternate infinite;
+    -moz-animation: shake 600ms ease alternate infinite;
+    -o-animation: shake 600ms ease alternate infinite;
+    position: absolute;
+    left: .2rem;
+    top: .28rem;
+} 
+
+.fragMap li.copper .man i{
+	display: inline-block;
+	width: .8rem;
+	height: .8rem;
+	background: url(../images/frag/X2.png) no-repeat;
+    background-size: 100% 100%;
+    animation: shake 600ms ease alternate infinite;
+    -webkit-animation: shake 600ms ease alternate infinite;
+    -moz-animation: shake 600ms ease alternate infinite;
+    -o-animation: shake 600ms ease alternate infinite;
+     position: absolute;
+    left: .2rem;
+    top: .28rem;
+} 
+
+.fragMap li.silver .man i{
+	display: inline-block;
+	width: .8rem;
+	height: .8rem;
+	background: url(../images/frag/X1.png) no-repeat;
+    background-size: 100% 100%;
+    animation: shake 600ms ease alternate infinite;
+    -webkit-animation: shake 600ms ease alternate infinite;
+    -moz-animation: shake 600ms ease alternate infinite;
+    -o-animation: shake 600ms ease alternate infinite;
+     position: absolute;
+    left: .2rem;
+    top: .28rem;
+} 
+
+
+
+
+.fragMap li em b{
+    position: absolute;
+    right: .05rem;
+    top: 3px;
+    padding: 0 .1rem;
+    height: .2rem;
+    line-height: .2rem;
+    background: #ff6a10;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    font-size: .16rem;
+    text-align: center;
+    color: #fff;
+}
+.fragMap li.gold em:nth-child(4) b{
+    top: 4px;
+    right: 0;
+} 
+/*.fragMap li em i{
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 1rem;
+	height: 1.17rem;
+		background: url(../images/mask.png) no-repeat;
+    background-size: 100% 100%;
+    font-size: .24rem;
+    color: #fff;
+    text-align: center;
+    line-height: 1.17rem;
+}*/
+
+
+.fragment>a{
+	position: absolute;
+	bottom: .18rem;
+	text-decoration: underline;
+	font-size: .3rem;
+	left: 45%;
+	color: #43688d;
+}
+
+/*优惠卷列表*/
+.offerBg{
+	background: #f2f2f2;
+}
+.myOffer{
+	padding: .29rem .25rem 0 .23rem;
+}
+.myOffer h2{
+	position: relative;
+	width: 100%;
+	height: .82rem;
+	line-height: .82rem;
+	background: #fff;
+	font-size: .32rem;
+	text-align: center;
+	color: #212121;
+	border-radius: 6px;
+	border:1px #dadada solid;
+	    z-index: 9;
+    -moz-box-shadow:2px 0px 20px #E3E3E3; -webkit-box-shadow:2px 0px 20px #E3E3E3; box-shadow:2px 0px 20px #E3E3E3;
+}
+.myOffer h2 span{
+    position: absolute;
+    left: .1rem;
+    top: 0;
+    padding-left: .44rem;
+    font-size: .3rem;
+    color: #b2b2b2;
+}
+.myOffer h2 span i{
+	display: inline-block;
+	width: .32rem;
+	height: .32rem;
+	background: url(../images/return.png) no-repeat;
+    background-size: .32rem .32rem;
+    margin-right: .12rem;
+    vertical-align: text-top;
+}
+.myOffer h2:after{
+	content: "";
+	position: absolute;
+	left: .22rem;
+	top: .55rem;
+	width: .18rem;
+	height: .64rem;
+	background: url(../images/rope.png) no-repeat;
+    background-size: 100% 100%;
+}
+.myOffer h2:before{
+	content: "";
+	position: absolute;
+	right:.22rem;
+	top: .55rem;
+	width: .18rem;
+	height: .64rem;
+	background: url(../images/rope.png) no-repeat;
+    background-size: 100% 100%;
+}
+/*.myOffer ul{
+
+}*/
+.myOffer .itemBox {
+		margin-top: .2rem;
+	background: #fff;
+	border-radius: 6px;
+	    padding: .28rem .2rem .2rem .25rem;
+		border:1px #dadada solid;
+    -moz-box-shadow:2px 0px 20px #E3E3E3; -webkit-box-shadow:2px 0px 20px #E3E3E3; box-shadow:2px 0px 20px #E3E3E3;
+    margin-bottom: .3rem;
+}
+.myOffer .itemBox ul li{
+	height:1.94rem;
+	position: relative;
+	-moz-box-shadow:4px 4px 20px #E3E3E3; -webkit-box-shadow:4px 4px 20px #E3E3E3; box-shadow:4px 4px 20px #E3E3E3;
+	margin-bottom: .13rem;
+}
+.myOffer ul li.status1 .itemName{
+		background: url(../images/offerStatus2.png) no-repeat;
+    background-size: 100% 100%;
+}
+.myOffer ul li.status1 .itemInfo p{
+	color: #b2b2b2;
+}
+.myOffer ul li.status1 .grayIcon{
+		width: 1.55rem;
+	height: 1.52rem;
+	background: url(../images/offerStatusIcon1.png) no-repeat;
+    background-size: 100% 100%;
+}
+.myOffer ul li.status2 .grayIcon{
+		width: 1.55rem;
+	height: 1.52rem;
+	background: url(../images/offerStatusIcon2.png) no-repeat;
+    background-size: 100% 100%;
+}
+.myOffer .itemName{
+	width: 2.3rem;
+	height: 1.94rem;
+	background: url(../images/offerStatus1.png) no-repeat;
+    background-size: 100% 100%;
+}
+.myOffer .itemInfo{
+	width: 2.58rem;
+	padding-left: .12rem;
+}
+.myOffer .itemInfo p:nth-child(1){
+	font-size: .54rem;
+	font-weight: bold;
+	color: #18b5ff;
+}
+.myOffer .itemInfo p:nth-child(2){
+	font-size: .2rem;
+	color: #929292;
+}
+.myOffer .itemInfo p em{
+	font-size: .28rem;
+}
+.myOffer .itemBox a{
+	display: inline-block;
+	width: 1.35rem;
+	height: .61rem;
+	text-align: center;
+	line-height: .54rem;
+	font-size: .28rem;
+	color: #18b5ff;
+	border:2px #18b5ff solid;
+	border-radius: 15px;
+}
+
+.myOffer .itemBox .status1Airport .itemName{
+	background: url(../images/airPort1.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+.status1Airport p:nth-child(1),.status1Airport p:nth-child(1),.status1Airport p:nth-child(1){
+	font-size: .46rem !important;
+}
+
+
+.myOffer li i{
+	position: absolute;
+		width: .14rem;
+	height: .27rem;
+	right: 0;
+	top:50%;
+	
+	background: url(../images/bancicle.png) no-repeat;
+    background-size: 100% 100%;
+}
+.myOffer .itemBox>p{
+	font-size: .22rem;
+	color: #afafaf;
+	line-height: .32rem;
+	margin-top: .25rem;
+}
+.myOffer .itemBox .none{
+   text-align:center;
+}
+/*.myOffer .itemBox p:nth-child(2){
+	font-size: .3rem;
+	color: #212121;
+}*/
+.myOffer .itemBox p:nth-child(3){
+    font-size: .22rem;
+    color: #999999;
+    margin-top: .rem;
+    margin-bottom: .1rem;
+	
+}
+.myOffer .itemBox .none img{
+	width: 2.09rem;
+}
+.myOffer .awardInfo{
+	padding: .48rem .49rem .48rem .25rem;
+	background: #fff;
+	    border-radius: 6px;
+	    border: 1px #dadada solid;
+    -moz-box-shadow: 2px 0px 20px #E3E3E3;
+    -webkit-box-shadow: 2px 0px 20px #E3E3E3;
+    box-shadow: 2px 0px 20px #E3E3E3;
+    margin-top: .22rem;
+        z-index: 1;
+}
+
+.myOffer .awardInfo li{
+	font-size: .3rem;
+	color: #212121;
+	padding-left: .52rem;
+}
+.myOffer .awardInfo li:nth-child(1){
+	margin-bottom: .32rem;
+	background: url(../images/iconUser.png) no-repeat;
+    background-size: .32rem .32rem;
+        background-position-y: 3px;
+}
+.myOffer .awardInfo li:nth-child(2){
+	background: url(../images/iconTel.png) no-repeat;
+    background-size: .32rem .32rem;
+        background-position-y: 3px;
+}
+.myOffer .awardInfo li.editLi{
+	    background-position-y: 8px;
+}
+.myOffer .awardInfo ul{
+	width: 5.15rem;
+	
+}
+.myOffer .awardInfo .edit{
+	display: inline-block;
+	width: 1.14rem;	
+	height: .52rem;
+	line-height: .52rem;
+	background: url(../images/iconEdit.png) no-repeat;
+    background-size: .52rem .54rem;
+    font-size: .28rem;
+    color: #979797;
+    padding-left: .56rem;
+}
+.myOffer .awardInfo  .save{
+	display: inline-block;
+    width: 1.35rem;
+    height: .61rem;
+    text-align: center;
+    line-height: .54rem;
+    font-size: .28rem;
+    color: #18b5ff;
+    border: 2px #18b5ff solid;
+    border-radius: 15px;
+}
+.myOffer .awardInfo input{
+    width: 3.2rem;
+    padding: .12rem 0;
+    border: 1px #eaeaea solid;
+    color: #999999;
+    padding-left: .15rem;
+    font-size: .3rem;
+    border-radius: 5px;
+}
+.myOffer .awardInfo input.focus,.cashPrize input.focus{
+	border:1px #18b5ff solid;
+}
+/*信息提交弹窗*/
+.sumitPop .content{
+	 position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 3.04rem;
+    height: .85rem;
+    line-height: .85rem;
+	background: url(../images/iconSuccess.png) no-repeat #fff;;
+    background-size: .52rem .54rem;
+    background-position:.5rem .18rem;
+    z-index: 999;
+    font-size: .32rem;
+    border-radius: 7px;
+    padding-left: 1.15rem;
+}
+/*用户兑奖弹窗*/
+.cashPrize .content{
+	    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 6.21rem;
+    height: 7.11rem;
+    z-index: 21;
+    background: url(../images/userAwardBg.png) no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+    padding-top: .3rem;
+
+}
+.cashPrize .close{
+	display: block;
+    width: .8rem;
+    height: .88rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.cashPrize h2{
+	font-size: .32rem;
+	color: #fff;
+	margin-bottom: .1rem;
+	font-weight: bold;
+}
+.cashPrize p{
+	font-size: .22rem;
+	color: #fff;
+}
+.cashPrize a{
+	 display: inline-block;
+    width: 3.2rem;
+    height: .86rem;
+    text-align: center;
+    line-height: .8rem;
+    background: url(../images/openGet.png) no-repeat;
+    background-size: 100% 100%;
+    font-size: .32rem;
+    color: #663200;
+    margin-top: .1rem;
+}
+.cashPrize h3{
+	font-size: .22rem;
+	color: #b4b4b4;
+	text-align: left;
+	padding:0 .22rem;
+	margin-top: .28rem;
+}
+.cashPrize ul{
+	padding: 1.7rem .3rem 0 0.16rem;
+}
+.cashPrize ul span{
+	display: block;
+	width: 1.65rem;
+	font-size: .32rem;
+	color: #666;
+	text-align: right
+}
+.cashPrize ul li{
+	padding-bottom: .22rem;
+}
+.cashPrize ul input{
+    display: block;
+    padding: .15rem 0;
+    color: #666;
+    border: 1px #e5e5e5 solid;
+    border-radius: 5px;
+    padding-left: .22rem;
+    font-size: .28rem;
+}
+
+/*活动结束*/
+.end{
+    width: 100%;
+    height: 100%;
+    background: url(../images/activityEnd.jpg) no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    text-align: center;
+}
+
+.end>div{
+    position: absolute;
+    bottom: 1.4rem;
+    width: 100%;
+}
+.end p{
+    font-size: .3rem;
+    color: #761809;
+    margin-bottom: .1rem;
+}
+.end img{
+	width: 1.74rem;
+	height: 1.74rem;
+}

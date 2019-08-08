@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.workdays.WorkdaysDao" >
+				<!--款项到账  资金明细查询-->
+	<resultMap id="workdaysVo" type="workdaysVo">
+		<result property="workdayId" column="WORKDAYID"/>
+		<result property="fundid" column="FUNDID"/>
+		<result property="workdate" column="WORKDATE"/>
+		<result property="workdateFmt" column="WORKDATEFMT"/>
+		<result property="workflag" column="WORKFLAG"/>
+		<result property="workflagnm" column="WORKFLAGNM"/>
+	</resultMap>
+	
+	<!-- 新增工作日   -->
+	<insert id="create" parameterType="workdaysVo">
+		INSERT INTO WORKDAYS(
+							FUNDID,
+							WORKDATE,
+							WORKFLAG
+							)
+					  VALUES(
+							#{fundid},
+							#{workdate},
+							#{workflag}
+							)
+	</insert>
+	
+	<update id="update"  parameterType="workdaysVo">
+		UPDATE WORKDAYS 
+		   SET WORKFLAG = #{workflag}
+		 WHERE FUNDID 	= #{fundid}
+		   AND WORKDATE = #{workdate}
+	</update>
+	
+	<!--  删除挂账   -->
+	<delete id="delete" parameterType="java.lang.String">
+		DELETE FROM WORKDAYS WHERE FUNDID = #{fundid} AND WORKDATE = #{workdate}
+	</delete>
+	
+	<!-- 获取单个工作日信息 -->
+	<select id="getWorkDate" resultType="workdaysVo">
+		SELECT 
+				FUNDID,
+				WORKDATE,
+        		TO_CHAR(TO_DATE(WORKDATE,'YYYY-MM-DD'),'YYYY-MM-DD') WORKDATEFMT,
+				WORKFLAG,
+				DECODE(WORKFLAG,'Y','工作日','节假日') WORKFLAGNM
+		  FROM  WORKDAYS 
+		 WHERE  FUNDID 	 = #{fundid} 
+		   AND  WORKDATE = #{workdate}
+	</select>
+	
+	<!-- 获取所有工作日信息 -->
+	<select id="getWorkDateListPage" parameterType="sparam" resultType="workdaysVo">
+		SELECT  
+				ROWNUM WORKDAYID,
+				FUNDID,
+			 	WORKDATE,
+        		TO_CHAR(TO_DATE(WORKDATE,'YYYY-MM-DD'),'YYYY-MM-DD') WORKDATEFMT,
+			 	WORKFLAG,
+				DECODE(WORKFLAG,'Y','工作日','节假日') WORKFLAGNM
+		  FROM  WORKDAYS 
+		 WHERE  WORKFLAG = 'Y' 
+	  ORDER BY  FUNDID,WORKDATE DESC
+	</select>
+	
+	<!-- 取当前工作日 -->
+	<select id="getWorkDateNow" parameterType="sparam" statementType="CALLABLE">
+		{call OTP_GET_CURRENT_WORKDATE(
+	    		#{sp.apkind,jdbcType=VARCHAR,mode=IN},
+	    		#{sp.resultCode,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.workdate,jdbcType=VARCHAR,mode=OUT}
+    		)
+    	}
+	</select>
+	
+	<!-- 根据当前日期取工作日(暂时无效) -->
+	<select id="getWorkDateByDate" resultType="workdaysVo">
+		SELECT IBF_GET_CURRENT_WORKDATE(#{apkind}) AS WORKDATE FROM DUAL
+	</select>
+	
+	<!-- 取工作日 -->
+	<select id="getOtherWorkDate" parameterType="sparam" statementType="CALLABLE">
+		{ 
+			call OTP_GET_WORKDATE(
+				#{sp.now,jdbcType=VARCHAR,mode=IN},
+				#{sp.datenum,jdbcType=VARCHAR,mode=IN},
+				#{sp.type,jdbcType=VARCHAR,mode=IN},
+				#{sp.fundid,jdbcType=VARCHAR,mode=IN},
+	    		#{sp.resultCode,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.resultMessage,jdbcType=VARCHAR,mode=OUT},
+	    		#{sp.workdate,jdbcType=VARCHAR,mode=OUT}
+			)
+		}
+	</select>
+	
+	<!-- 根据日期取工作日,如果日期不是工作日取下一个最近的工作日 -->
+	<select id="getWorkDateByDT"  parameterType="sparam" resultType="workdaysVo">
+	
+	   <choose>
+		   <when test="sp.nextn == null">
+		          SELECT IBF_GET_NEXTNWORKDAY3( #{sp.cycleendt},0,'******') AS WORKDATE FROM DUAL
+		   </when>
+		   <otherwise>
+		         SELECT IBF_GET_NEXTNWORKDAY3( #{sp.cycleendt},#{sp.nextn},'******') AS WORKDATE FROM DUAL
+		   </otherwise>
+	    </choose>
+		
+	</select>
+	
+	
+</mapper>	

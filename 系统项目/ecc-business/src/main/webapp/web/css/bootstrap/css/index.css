@@ -1,0 +1,118 @@
+.page-tabs .page-tabs-header {
+    border-top: 0;
+    padding: 2px 10px 0 20px;
+    margin: 0 -20px 20px;
+}
+
+.page-tabs .nav-page-tabs {
+    list-style: none;
+    font-size: 14px;
+    vertical-align: bottom;
+    padding: 0;
+    margin: 0;
+}
+
+.page-tabs .nav-page-tabs li {
+    padding: 0 35px 0 25px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    line-height: 47px;
+    border-bottom: 2px solid transparent;
+}
+
+.page-tabs .nav-page-tabs li i {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 18px;
+    padding: 0 5px;
+}
+
+.page-tabs .nav-page-tabs li.active i,
+.page-tabs .nav-page-tabs li:hover i {
+    display: inline-block;
+}
+
+.page-tabs .nav-page-tabs li.active,
+.page-tabs .nav-page-tabs li:hover {
+    color: #ff6800;
+    border-bottom: 2px solid #ff6800;
+}
+
+.page-tabs .nav-page-container .nav-page-item-body {
+    display: none;
+    height: calc( 100vh - 170px);
+
+}
+
+.page-tabs .nav-page-container .nav-page-item-body.active {
+    display: block;
+}
+
+.page-tabs .nav-page-container .nav-page-item-body iframe {
+    width: 100%;
+    height: 100%;
+}
+.page-tabs .page-tabs-header li i[data-url="#!/cbp/analysis/flow/index.do"]{
+	display: none;
+}
+
+
+
+/* ��������ָ��ҳǩcss����20160929 */
+.page-tabs .nav-page-tabs li.nav-page-flow-guide {
+	padding: 0 25px 0 35px;
+}
+
+.page-tabs .nav-page-tabs .nav-page-flow-guide i.fa-cogs {
+	top: 17px;
+	right: 85px;
+	display: block;
+	color: #000;
+}
+
+.page-tabs .nav-page-tabs .active i.fa-cogs {
+	color: #ff6800;
+}
+
+.systemInfo {
+    color: #666;
+    float: left;
+    margin: 20px 0px 0px 10px;
+}
+.systemInfo .status {
+    margin-right: 10px;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #fc6820;
+    border-radius: 50%;
+}
+.systemInfo .sysTime {
+    margin-right: 5px;
+    background: url(../../../images/head_eccsysalter_time.jpg) no-repeat;
+    padding-left: 15px;
+    background-position-y: 3px;
+}
+.systemInfo .stautsText {
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+    background: #fee0d5;
+    border-radius: 4px;
+    text-align: center;
+    color: #fe6720;
+    line-height: 20px;
+    margin-left: 9px;
+    margin-right: 10px;
+}
+
+.hughCity .status {
+    background: #666;
+}
+
+.hughCity .stautsText {
+    background: #666;
+    color: #fff;
+}

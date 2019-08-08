@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+	<title>金融资产证明要求</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+   	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/bannerStyleNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/qualified/qualifiedNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/dialogNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/swiper.minNew.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-2.0.0New.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedomNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/DataStatisJsNew.js"></script>
+</head>
+<body>
+<div class="page asset">
+     <!--#include virtual="/WeixinService/headerOrFooter/headerNew.shtml"-->
+     <ul class="tab dswkb">
+     	<li class="cur flex1">银行存款</li>
+     	<li class="flex1">股票债券等</li>
+     	<li class="flex1">理财产品</li>
+     	<li class="flex1">保险</li>
+     </ul>
+     <div class="tabContent">
+     	 <div class="improveText" style="display: block;">
+	     	<div class="tit">
+	     		<h2>银行存款/银行理财</h2>
+	     	</div>
+	     	<ul>
+	     		<li>1.须包含账户名/姓名、总资产/账户余额（若以上信息不在同一页面，可提供多张截图）；</li>
+	     		<li>2.请确保姓名与申请客户信息一致；</li>
+	     		<li>3.可提供银行出具的盖章版流水；</li>
+	     		<li>4.信息分布在多张截图需要提供截图视频，单张截图展示所有信息则不需视频。</li>
+	     		
+	     	</ul>
+	     	<div>
+	     		<h2>示例图: 	<span onclick="qualified.play('/WeixinWeb/WeixinWeb_Images/images/qualified/incomeVideo.mp4')">视频示例>></span></h2>
+	     		<div class="img">
+	     			<img src="/WeixinWeb/WeixinWeb_Images/images/qualified/img4.jpg" style="width: 80%;"/>
+	     		</div>
+	     	</div>
+	     </div>
+	     <div class="improveText" style="display: none;">
+	     	<div class="tit">
+	     		<h2>股票/债券/基金</h2>
+	     	</div>
+	     	<ul>
+	     		<li>1.须包含账户名/姓名、总资产/账户余额（若以上信息不在同一页面，可提供多张截图）；</li>
+	     		<li>2.请确保姓名与申请客户信息一致；</li>
+	     		<li>3.信息分布在多张截图需要提供截图视频，单张截图展示所有信息则不需视频。</li>
+	     	</ul>
+	     	<div>
+	     		<h2>示例图:	<span onclick="qualified.play('/WeixinWeb/WeixinWeb_Images/images/qualified/incomeVideo.mp4')">视频示例>></span></h2>
+	     		<div class="img">
+	     			<img src="/WeixinWeb/WeixinWeb_Images/images/qualified/img5.jpg"/>
+	     		</div>
+	     	</div>
+	     </div>
+	     <div class="improveText" style="display: none;">
+	     	<div class="tit">
+	     		<h2>互联网理财/线下理财/资管/信托</h2>
+	     	</div>
+	     	<ul>
+	     		<li>1.须包含账户名/姓名、总资产/账户余额（若以上信息不在同一页面，可提供多张截图）；</li>
+	     		<li>2.请确保姓名与申请客户信息一致；</li>
+	     		<li>3.线下理财产品、资管、信托合同。（须上传合同首尾页、投资者信息页、认购金额页、合同有限期页、合同签署页）;</li>
+	     		<li>4.信息分布在多张截图需要提供截图视频，单张截图展示所有信息则不需视频。</li>
+	     	</ul>
+	     	<div>
+	     		<h2>示例图: 	<span onclick="qualified.play('/WeixinWeb/WeixinWeb_Images/images/qualified/incomeVideo.mp4')">视频示例>></span></h2>
+	     		<div class="img">
+	     			<img src="/WeixinWeb/WeixinWeb_Images/images/qualified/img6.jpg"/>
+	     		</div>
+	     	</div>
+	     </div>
+         <div class="improveText" style="display: none;">
+	     	<div class="tit">
+	     		<h2>保险产品</h2>
+	     	</div>
+	     	<ul>
+	     		<li>1.保险产品的金额以保费为准；</li>
+	     		<li>2.请确保合同编号完整，投保人、被保险人、收益人完整、投保期限完整；</li>
+	     		<li>3.请确保在保险合同有效期内；</li>
+	     		<li>4.请确保保险权益人姓名与申请客户信息一致；</li>
+	     		<li>5.非截屏文件须盖有相应机构的业务公章。</li>
+	     		<li>6.信息分布在多张截图需要提供截图视频，单张截图展示所有信息则不需视频。</li>
+	     	</ul>
+	     	<div>
+	     		<h2>示例图: 	<span onclick="qualified.play('/WeixinWeb/WeixinWeb_Images/images/qualified/incomeVideo.mp4')">视频示例>></span></h2>
+	     		<div class="img">
+	     			<img src="/WeixinWeb/WeixinWeb_Images/images/qualified/img7.jpg"/>
+	     		</div>
+	     	</div>
+	     </div>
+     </div>
+     <div class="fileBox tabFile1">
+    	<div id="fileAwaitFirst" style="display: block;">
+        	<div class="upBox" onclick="qualifiedAssets.financialUpFile()">
+        		
+        	</div>
+        	<div id="financialMask" class="diableMask" style="display: none;">
+	        	<p></p>
+	        </div>
+        	<div class="upTips">
+        		 <p>上传<span>资产证明</span></p>
+        		 <p>（可上传pdf/jpg/视频文件）</p>
+        		 <form enctype="multipart/form-data" id="financialCertificate">
+			        <input type="file" name="file" accept="*" id="financialFileUpload" style="display: none;"/>
+			        <input type="hidden" name="recordSource"  value="wx-qualified"/>
+			        <input type="hidden" name="fileType" value="financialCertificate"/>
+				 </form>
+	        </div>
+        </div>
+    	<ul id="fileItemFirst" class="fileItem" style="display: none;">
+             <li id="filelaterFirst" onclick="qualifiedAssets.financialUpFile()"></li>
+    	</ul>
+     </div>
+     <div class="next">
+       <a href="/WeixinService/business/qualified/qualifiedNew.shtml" class="cur">下一步</a>
+     </div>
+     <div class="scheduleBox" style="display: none;" id="scheduleBox">
+	 	<div class="mask"></div>
+	 	<div class="scheduleBar center">
+	 		<div class="currentBar" style="width: 78%;"></div>
+	 		<div class="percent">78%</div>
+	 	</div>
+	 </div>
+	 	 <!--拍摄播放-->
+     <div class="cover-bg tipsMask tipsMaskVideo" style="display: none;">
+	    <div class="con">
+	    	<h2>视频播放<em onclick="qualified.closeVideo('tipsMaskVideo');" ></em></h2>
+	        <p style="text-align: center;">
+	        	<video id="video" controls="" autoplay="" name="media"><source src=""></video>
+	        </p> 
+	    </div>
+	 </div>
+	 <script>
+	 	$(function(){
+	 		$(".header h2").text("个人金融资产证明 ");
+	 	})
+	 </script>
+</div>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/dialogNew.min.js"></script> 
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/swiperNew.min.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.formNew.min.js"></script> 
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/qualifiedComNew.js"></script> 
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/qualifiedAssetsNew.js"></script> 
+<!--<<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/qualifiedComNew.min.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/qualifiedAssetsNew.min.js"></script>-->
+</body>
+</html>

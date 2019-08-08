@@ -1,0 +1,17 @@
+
+<html>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+	
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/302.min.js"></script>
+    
+	<script type="text/javascript">
+		
+	</script>
+	
+	<br>
+
+	<form action='' method="post" name="frmLogin" id="frmLogin">
+		<input name="code" id="code" type="hidden"> 
+	</form>
+	
+</html>

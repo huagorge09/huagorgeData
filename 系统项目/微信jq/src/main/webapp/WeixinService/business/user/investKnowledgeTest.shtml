@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+    
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/slider.js"></script>
+	<style type="text/css">
+		.cover-bg .cover-point{
+			top: 35%;
+		}
+	</style>
+    
+</head>
+<body style="background-color: #fff">
+<section class="page">
+
+    <!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->
+	
+	<section class="title" id="section_01" style="display: block;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>1、</em><b>下列关于到期收益率影响因素的说法，错误的是（）：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="N" >A. 在其他因素相同的情况下，债券市场价格与到期收益率呈反方向增减</li>
+                <li data-score="Y" >B. 在其他因素相同的情况下，固定利率债券比零息债券的到期收益率要低</li>
+                <li data-score="N" >C. 在其他因素相同的情况下，票面利率与债券到期收益率呈同方向增减</li>
+                <li data-score="N" >D. 在市场利率波动的情况下，再投资收益率变动会影响投资者实际的到期收益率</li>
+            </ul>
+        </div> 
+        <div class="box-btn"><a class="riskevaluation-btn" href="javascript:toIndex();">返回</a></div>     
+	</section> 
+	
+	<section class="title" id="section_02" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>2、</em><b>下列关于证券投资风险的说法，错误的是（）：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="N" >A. 非系统风险是可以通过组合投资来分散的</li>
+                <li data-score="Y" >B. 非系统风险与整个证券市场的价格存在系统的联系</li>
+                <li data-score="N" >C. 证券投资的风险是指证券收益的不确定性</li>
+                <li data-score="N" >D. 风险是对投资者预期收益的背离</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section> 
+	
+	<section class="title" id="section_03" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>3、</em><b>封闭式基金一般采用（）方式分红：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+               	<li data-score="N" >A. 转股</li>
+			    <li data-score="Y" >B. 现金</li>
+			    <li data-score="N" >C. 配股</li>
+			    <li data-score="N" >D. 股票红利</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section> 
+	
+	<section class="title" id="section_04" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>4、</em><b>（）是按偿还期限从长到短的顺序，挑选一系列的债券，使现金流与各个时期现金流的需求相等：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="Y" >A. 现金流匹配策略</li>
+                <li data-score="N" >B. 多重免疫策略</li>
+                <li data-score="N" >C. 多重负债组合策略</li>
+                <li data-score="N" >D. 多重资产组合策略</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section> 
+	
+	<section class="title" id="section_05" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>5、</em><b>完全预期理论认为，下降的收益率曲线意味着市场预期短期利率水平会在未来（）：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="Y" >A. 下降</li>
+                <li data-score="N" >B. 上升</li>
+                <li data-score="N" >C. 保持不变</li>
+                <li data-score="N" >D. 先上升后下降</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section> 
+	
+	<section class="title" id="section_06" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>6、</em><b>指数型消极投资策略认为在有效市场（）：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+            	<li data-score="N" >A. 少数积极型股票投资战略可能取得高于其风险承担水平的超额收益</li>
+             	<li data-score="N" >B. 多数积极型股票投资战略都不可能取得高于其风险承担水平的超额收益</li>
+             	<li data-score="Y" >C. 任何积极型股票投资战略都不可能取得高于其风险承担水平的超额收益</li>
+             	<li data-score="N" >D. 只要投资策略合适就能取得高于其风险承担水平的超额收益</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section> 
+	
+	<section class="title" id="section_07" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>7、</em><b>下列关于基金巨额赎回的说法不正确的是（）：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="N" >A. 单个开放日基金净赎回申请超过基金总份额的10%时，为巨额赎回</li>
+                <li data-score="N" >B. 出现巨额赎回申请时，基金管理人可以决定接受全额赎回或者部分延迟赎</li>
+                <li data-score="N" >C. 基金连续两个开放日以上发生巨额赎回，如基金管理人认为有必要，可暂停接受赎回申请</li>
+                <li data-score="Y" >D. 当基金管理人认为对付投资者的赎回申请有困难，可以对所有赎回申请延期办理</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section> 
+	
+	<section class="title" id="section_08" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>8、</em><b>对证券投资基金从上市公司分配取得的股息红利所得，扣缴义务人在代扣代缴个人所得税，按（）计算应纳税所得额：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="N" >A. 20%</li>
+                <li data-score="N" >B. 30%</li>
+                <li data-score="N" >C. 40%</li>
+                <li data-score="Y" >D. 50%</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section> 
+	
+	<section class="title" id="section_09" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>9、</em><b>下列财务比率中，最为稳健的偿债能力指标是（）：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="N" >A. 资产负债比</li>
+                <li data-score="N" >B. 流动比率</li>
+                <li data-score="N" >C. 速动比率</li>
+                <li data-score="Y" >D. 现金比率</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section>
+	
+	<section class="title" id="section_10" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>10、</em><b>（）称为企业的“第一会计报表：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="Y" >A. 资产负债表</li>
+                <li data-score="N" >B. 利润表</li>
+                <li data-score="N" >C. 现金流量表</li>
+                <li data-score="N" >D. 所有者权益表</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section>
+	
+	<section class="title" id="section_11" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>11、</em><b>基金管理人利用基金财产为基金份额持有人以为的第三人牟取利益，属于合规风险中的（）：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+             	<li data-score="Y" >A. 投资合规性风险</li>
+                <li data-score="N" >B. 销售合规性风险</li>
+                <li data-score="N" >C. 信息披露合规性风险</li>
+                <li data-score="N" >D. 反洗钱合规性风险</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section>
+	
+	<section class="title" id="section_12" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>12、</em><b>一般来说，（）伴随着巨大的资本利得，被认为是推出的最佳渠道：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+             	<li data-score="Y" >A. 首次公开发行</li>
+                <li data-score="N" >B. 买壳上市或借壳上市</li>
+                <li data-score="N" >C. 管理层回购</li>
+                <li data-score="N" >D. 二次出售</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section>
+	
+	<section class="title" id="section_13" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>13、</em><b>（）是基金公司管理基金投资的最高决策机构：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+             	<li data-score="N" >A. 投资部</li>
+                <li data-score="N" >B. 研究部</li>
+                <li data-score="N" >C. 交易部</li>
+                <li data-score="Y" >D. 投资决策委员会</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section>
+	
+	<section class="title" id="section_14" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>14、</em><b>基金销售费用不包括（）：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+             	<li data-score="N" >A. 申赎费</li>
+                <li data-score="N" >B. 赎回费</li>
+                <li data-score="Y" >C. 基金转换费</li>
+                <li data-score="N" >D. 销售服务费</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section>
+	
+	<section class="title" id="section_15" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>15、</em><b>下列关于回购协议的表述，错误的是（）：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+             	<li data-score="N" >A. 回购协议是指资金需求方在出售证券的同时与证券的购买方按约定价格回购所卖证券的交易行为</li>
+                <li data-score="N" >B. 本质上，回购协议是一种证券抵押贷款，抵押品为国债为主</li>
+                <li data-score="N" >C. 按回购期限划分，我国在交易所挂牌的国债回购可以分为1天，2天，3天，4天，7天，14天，28天，91天和182天</li>
+                <li data-score="Y" >D. 由于买断式回购历史很长，回购市场以买断式回购为主要交易品种</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section>
+	
+	<section class="title" id="section_16" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>16、</em><b>在我国，对（）从证券市场中获得的收入，包括买卖股票、债券的原价收入、股票的股息、红利收入、债券的利息收入及其他收入，暂不征收企业所得税：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+             	<li data-score="N" >A. 非银行金融机构</li>
+                <li data-score="N" >B. 企业</li>
+                <li data-score="Y" >C. 证券投资基金</li>
+                <li data-score="N" >D. 基金管理公司</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section>
+	
+	<section class="title" id="section_17" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>17、</em><b>李先生将其资金分别投向A，B，C三只股票，其占总资金的百分比分别为40%，40%，20%；股票A的期望收益率为14%，股票B的期望收益率为20%，股票C的期望收益率为8%；则该股票组合期望收益率为（   ）：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+             	<li data-score="N" >A. 15%</li>
+                <li data-score="Y" >B. 15.2%</li>
+                <li data-score="N" >C. 15.3%</li>
+                <li data-score="N" >D. 15.4%</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section>
+	
+	<section class="title" id="section_18" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>18、</em><b>相关系数的大小范围为（）：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+              	<li data-score="Y" >A. +1和-1之间</li>
+                <li data-score="N" >B. 0和1之间</li>
+                <li data-score="N" >C. -1和0之间</li>
+                <li data-score="N" >D. 1到正无穷</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section>
+	
+	<section class="title" id="section_19" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>19、</em><b>证券组合的目标可以简单表述为，在既定的收益水平下能承担的（）：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+             	<li data-score="Y" >A. 最低风险</li>
+                <li data-score="N" >B. 最大化收益</li>
+                <li data-score="N" >C. 最高风险</li>
+                <li data-score="N" >D. 最少收益</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section>
+	
+	
+	<section class="title" id="section_20" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>20、</em><b>复制的组合的股票数越少，跟踪误差（），调整所花费的交易成本（）：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="Y" >A. 越大，越低</li>
+                <li data-score="N" >B. 越大，越高</li>
+                <li data-score="N" >C. 越小，越低</li>
+                <li data-score="N" >D. 越小，越高</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn" href="javascript:comit();">提交</a></div>
+		<div><a class="check-order02 pre_question">重做上一题</a></div>
+	</section> 
+</section>  
+<script>
+$(document).ready(function(e) {
+	$(".header .top-a h2").html("投资知识评测");
+	document.title="投资知识评测";
+});
+
+/* 第一题 返回到开始页面 */
+function toIndex() {
+	$("section ul li").removeClass("act");
+	window.location.href="/WeixinService/business/user/materialReviewPage.shtml?pic=2";
+}
+/* 做题 选择答案自动下一题 */
+$("section ul li").click(
+		function() {
+			$(this).siblings().removeClass("act");
+			$(this).addClass("act");
+			/* 最后一题 不需要跳转 */
+			if (!($(this).parents(".title").attr("id") == "section_20")) {
+				window.setTimeout('next(\"'
+						+ $(this).parents(".title").attr("id") + '\")', 500);
+			}
+		});
+function next(_id) {
+	$("#" + _id).hide().next().show();
+}
+/* 重做上一题 */
+$("section div a.pre_question").click(function() {
+	$(this).parents(".title").hide().prev().show();
+});
+
+/* 提交 */
+function comit() {
+	var invprtp = $("input[name='invprtp']").val();
+	var len = $("ul li.act").length;
+	if (len == null || len != 20) {
+		errorRemark("还有未做题目");
+		return;
+	}
+	var score = 0;
+	var num = "";
+	var temp = 0;
+	for (var i = 0; i < len; i++) {
+		var res = $("ul li.act").eq(i).attr("data-score");
+		if(res == "Y"){
+			temp++;
+		}
+	}
+	score = temp*5;
+	
+	//入库
+	$.ajax({
+		async: !1,
+		url: "/WeixinService/business/passTestUpdateUserInvtp.xhtml",
+		data:{
+			'invprtpScore' : score
+		},
+		dataType: "json",
+		cache: !1,
+		type: "POST",
+		error: function() {
+			show_tips("网络繁忙，请稍后再试。");
+		},
+		success: function(n) {
+			if(n != null && n.resultCode =="0000"){
+				if(score >= 60){
+					window.location.href="/WeixinService/business/user/knowledgeTestPass.shtml";
+				}else{
+					window.location.href="/WeixinService/business/user/knowledgeTestNoPass.shtml";
+				}
+			}else{
+				errorRemark("提交投资知识评测异常。");
+			}
+		}
+	});
+}
+</script>
+</body>
+</html>

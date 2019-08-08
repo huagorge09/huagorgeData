@@ -1,0 +1,10 @@
+<TABLE STYLE="border:0px solid #EEE;" WIDTH="98%">
+        <TR STYLE="border:0px solid #EEE;">
+          <TD STYLE="border:0px solid #EEE;TEXT-ALIGN: LEFT;font-size: 18px;">
+           $!createName
+          </TD>
+        </TR>
+        <TR>
+           <TD STYLE="border:0px solid #EEE; font-size: 18px;" >　你好，$!accName（$!accTypeName）的开户申请即将到期，如你有任何问题，请联系基金核算部李思萍。</TD>
+        </TR>
+        </TABLE>

@@ -1,0 +1,246 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/messagePush/third-party/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/WeixinWeb/WeixinWeb_JSLibrary/messagePush/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/WeixinWeb/WeixinWeb_JSLibrary/messagePush/ueditor.all.min.js"> </script>
+    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+    <script type="text/javascript" charset="utf-8" src="/WeixinWeb/WeixinWeb_JSLibrary/messagePush/lang/zh-cn/zh-cn.js"></script>
+
+ <style type="text/css">
+    	/* 页面元素初始化和常用样式定义-start */
+		/*======== 全局 ========*/
+		body,div,p,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,th,td select option{margin: 0;padding: 0;}
+		body{background: #f2f2f2;font-size: 14px; min-width:1200px;color: #676767; font-family:arial,microsoft yahei,verdana, simsun;}
+		table{border-collapse: collapse; border-spacing: 0; word-break:break-all;}
+		fieldset,img{border: none; vertical-align:middle;}
+		ol,ul,li{list-style: none;}
+		h1,h2,h3,h4,h5,h6{font-size: 90%;font-weight: normal; color: #2d2d2d;}
+		em{font-style: normal;}
+		input,button,select,textarea{outline: none; border-color:#dadada;}
+		/*禁止了文本框的拖拉*/
+		textarea{resize: none;}
+		input,button,select,textarea{outline: none; border-color:#dadada; font-family: inherit;}
+		/*link*/
+		a{text-decoration: none; color: #c8a063; cursor: pointer;}
+		a:hover{color: #d59400!important; text-decoration: none;}
+		a:link, a:visited { outline: none; } 
+		input[type="text"],input[type="password"] { height: 43px; font-size: 16px; padding: 0 15px; line-height: 45px; background-color:#fdfdfd; color: #acaaaa; border: 1px solid #dcdcdc;}
+		.bgLinkHover:hover { background-color: #cb322f!important;} 
+		input.focus { color: #c8a063; border-color:#c8a063; }
+		input.error { color: red; border-color:red; }
+		/*增加的产品名称字段带跳转*/
+		a.productname{text-decoration: none; color: #686868; cursor: pointer;}
+		a.productname:hover{color:#d59400!important; text-decoration: none;}
+		/*浮动*/
+		.fl{float: left;}
+		.fr{float: right;}
+		/*清除浮动*/
+		.clr{*zoom: 1;}
+		.clr:after{content:".";display:block;height:0;clear:both;visibility:hidden; }
+		.clearfix {display: block;}
+		.formBox input{color: #000; width: 500px;}
+		.formBox{width: 900px;margin: 0 auto;background: #fff;padding-bottom: 25px;}
+		.formBox ul{width: 689px; margin: 0 auto; }
+		.formBox h2{text-align: center; font-size: 18px; line-height: 75px;}
+		.formBox li{margin-bottom: 10px;}
+		.formBox textarea{width: 450px; height: 475px;}
+		.formBox label{ height: 42px; line-height: 42px;  float: left;width: 132px;font-size: 16px;color: #3f3f3f;text-align: right;margin-right: 15px;}
+         .button{width: 100px;height: 40px;line-height: 40px; margin: 0 auto; display: block; background: #ca132c;;text-align: center; cursor: pointer; border-radius: 5px;font-size: 18px; color: #fff;}
+        .formBox select{    padding: 0 15px; width: 150px;height: 45px;}
+        .toUserId{font-size: 16px;height: 80px!important; width: 526px!important;}
+    </style>
+</head>
+<body>
+<div>
+   <form class="formBox">
+		<h2>模板消息推送</h2>
+		<ul>
+		 	<li class="clr">
+		 		<label for="toUserName">toUserName:</label>
+		 		<input type="text" name="toUserName" value="ovWiouBUUI1AWveVm" style="width: 170px; margin-right: 15px;"/>
+		 		<label for="fromUserName" style="float: initial;">fromUserName:</label>
+		 		<input type="text" name="fromUserName" value="gh_ed83ffe9d316"  style="width: 150px;"/>
+		 	</li>
+		 	<li>
+		 	   <label for="toUserId">toUserId读取方式</label>
+		 		<select class="selectType">
+		 			<option value="1">后台读取</option>
+		 			<option value="2" selected="selected">手动填写</option>
+		 		</select>
+		 	</li>
+		 	<li  style="display: none;" id="stausVal">
+		 		<label for="toUserId">status:</label>
+		 		<select class="stausVal">
+		 			<option value="0">0　未关注</option>
+		 			<option value="1" selected>1　已关注</option>
+		 			<option value="2">2　取消关注</option>
+		 			<option value="3">3　黑名单</option>
+		 		</select>		 		
+		 	</li>
+		 	<li id="iptVal">
+		 		<label for="toUserId">toUserId:</label>
+		 		<!-- <input type="text" name="toUserId" value="ovWiouKhNbKaOAvmjj3VkMuW89L4,ovWiouICKEDM6AOzvJByz44WnYx0,ovWiouN3um2FADSHwpd4iF2epNhE,ovWiouC8Cs0NHVeEr1MGloDviVoE"/> -->			 		
+		 		<textarea name="toUserId" class="toUserId"></textarea>
+		 	</li>
+		 	<li>
+		 		<label for="templateId">templateId:</label>
+		 		<input type="text" name="templateId" value="2ufW1iZl4h9xPcLx0XHqwRzbxqyTCN8iCmdLBypTqvQ"/>
+		 	</li>
+		 	<li>
+		 		<label for="url">URL:</label>
+		 		<input type="text" name="url" value="https://wxtest1.cmwachina.com/WeixinService/business/user/queryAccount.shtml"/>
+		 	</li>
+		 	<li class="clr">
+		 	    	<label for="frontEndIp">frontEndIp:</label>
+		 		    <input type="text" name="frontEndIp" value="192.168.8.184"  style="width: 158px; margin-right: 35px;"/>	
+		 			<label for="frontEndPort" style="float: initial;">frontEndPort:</label>
+		 	    	<input type="text" name="frontEndPort" value="1880"  style="width: 158px;"/>
+		 	</li>
+		 	<li class="clr">
+		 		<label for="postXML" class="fl">postXML:</label>
+		 		<div class="ue" style="width: 450px;float: left;">
+				<script id="editor" type="text/plain" style="width: 530px;height: 200px;"></script>
+		 		</div>
+		 	</li>
+		 </ul>
+		  <p id="retultMsg" style="color: red; display: block; text-align: center; margin-bottom: 10px;height: 20px;"></p>
+		  <span class="button">提交</span>
+	</form>
+</div>
+
+
+
+<script type="text/javascript">
+
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor('editor',{
+    	 toolbars:[['FullScreen']]
+        });
+    $(document).ready(function(){  
+    	var str='&lt;xml&gt;<br>'+
+        '    &lt;ToUserName&gt;{{toUserName}}&lt;/ToUserName&gt;<br>'+
+        '    &lt;FromUserName&gt;{{fromUserName}}&lt;/FromUserName&gt;<br>'+
+        '    &lt;CreateTime&gt;{{createTime}}&lt;/CreateTime&gt;<br>'+
+        '    &lt;MsgType&gt;template&lt;/MsgType&gt;<br>'+
+        '    &lt;MsgContent&gt;<br>'+
+        '    &lt;![CDATA[<br>'+
+        '    {<br>'+
+               '        "touser":"{{toUserId}}",<br>'+
+               '        "template_id":"{{templateId}}",<br>'+
+               '        "url":"{{url}}",  <br>'+
+               '        "data":{<br>'+
+                       '                    "first": {<br>'+
+                           '                        "value":"招商财富2017年产品年度报告已更新！\\n",<br>'+
+                           '                        "color":"#173177"<br>'+
+                       '                    },<br>'+
+                       '                    "keyword1":{<br>'+
+                           '                        "value":"招商财富旗下专项资产管理计划",<br>'+
+                           '                        "color":"#000000"<br>'+
+                       '                    },<br>'+
+                       '                    "keyword2": {<br>'+
+                           '                        "value":"产品年度报告",<br>'+
+                           '                        "color":"#000000"<br>'+
+                       '                    },<br>'+
+                       '                    "keyword3": {<br>'+
+                           '                        "value":"2018年3月23日",<br>'+
+                           '                        "color":"#000000"<br>'+
+                       '                    },<br>'+
+                       '                    "keyword4": {<br>'+
+                           '                        "value":"详情请点击链接",<br>'+
+                           '                        "color":"#000000"<br>'+
+                       '                    },<br>'+
+                       '                    "remark":{<br>'+
+                           '                        "value":"\\n点击查看详情>>",<br>'+
+                           '                        "color":"#173177"<br>'+
+                       '                    }<br>'+
+               '            }<br>'+
+           '  }<br>'+
+        '    ]]&gt;<br>'+
+        '    &lt;/MsgContent&gt;<br>'+
+        '&lt;/xml&gt;';
+			     ue.ready(function() {//编辑器初始化完成再赋值  
+			    	 ue.setHeight(350);
+			         ue.setContent(str);  //赋值给UEditor  
+			     });    
+		    });  
+
+			$(function(){
+				$(".selectType").change(function(){
+					var val=$(this).val();
+					if(val=="1"){
+						$("#iptVal").hide();
+						$("#stausVal").show();
+					}else if(val=="2"){
+						$("#iptVal").show();
+						$("#stausVal").hide();
+					}
+				})
+				$(".button").on("click",function(){
+					$("#retultMsg").html("");
+					var flag=true;
+					$("li").each(function(){
+						if($(this).find("input").val()==""){
+							alert($(this).find("label").text()+"不能为空");
+							flag=false;
+							return;
+						}
+					})
+					if($(".selectType").val()=="0"){
+						alert("请选择toUserId的读取方式");
+						flag=false;
+					}
+					if(flag){
+						var postXML=UE.getEditor('editor').getContentTxt();
+						var status="";
+					  	var toUserId="";
+					  	if($(".selectType").val()=="1"){
+					  	 	status=$(".stausVal").val();
+					  	}else{
+					  	 	toUserId=$(".toUserId").val();
+					  	 	if(toUserId == ""){
+					  	 		$("#retultMsg").html("请输入toUserId！");
+								setTimeout(function(){
+									$("#retultMsg").html("");
+								},3000);
+								return;
+						  	}
+					  	}
+					  	$.ajax({
+								type:"post",
+							    async : false,
+								url:"/WeixinService/pushTemplateMessage.xhtml",
+								data : {
+									'toUserId':toUserId,
+									'toUserName':$("input[name=fromUserName]").val(),
+									'fromUserName':$("input[name=toUserName]").val(),
+									'templateId':$("input[name=templateId]").val(),
+									'url':$("input[name=url]").val(),
+									'frontEndIp':$("input[name=frontEndIp]").val(),
+									'frontEndPort':$("input[name=frontEndPort]").val(),
+									'postXML':postXML,
+									'status':status
+								},
+								dataType: "json",
+								success:function(res){
+									$("#retultMsg").html(res.resultMsg);
+									setTimeout(function(){
+										$("#retultMsg").html("");
+									},3000);
+								},
+								error:function(){
+									console.log("服务器错误")
+								}
+				      })
+					}
+				})
+			})
+</script>
+</body>
+</html>

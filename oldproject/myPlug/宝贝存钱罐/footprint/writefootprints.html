@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="x5-orientation" content="portrait" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="format-detection" content="telephone=no">
+		<title>写足迹</title>
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<link rel="stylesheet" href="css/mobiscroll.2.13.2.css">
+		<link rel="stylesheet" href="css/public.css">
+		<link rel="stylesheet" href="css/writefootprints.css">
+		<script src="js/library/jquery-3.2.1.min.js"></script>
+		<script src="js/library/mobiscroll.2.13.2.js"></script>
+		<script src="js/library/swiper.min.js"></script>
+		<script src="js/library/common.js"></script>
+		<script src="js/public.js"></script>
+		<script src="js/writefootprints.js"></script>
+	</head>
+
+	<body>
+		<div class="page">
+			<!--足迹内容-->
+			<div class="writebox">
+				<textarea class="textinput" id="textarea"  placeholder="保存宝贝童年中珍贵、独一无二、不会重来的每一刻..."></textarea>
+				<div class="tips">字数已达2000字，已无法输入咯 ~</div>
+				<div class="imglist" id="imgList">
+					<ul class="item clearFloat">
+						<li class="last" id="shangChuanImg">图片<input type="file" name="file" id="fileimg" multiple="multiple" accept="image/*" /></li>
+					</ul>
+				</div>
+				<div class="tape">
+				     <!--此处判断为否为微信端 ，当为微信端是tapebtn添加 disabled，则将tapetips设置为block-->
+					<div class="tapebtn" id="tapebtn">录音</div>
+					<div class="tapetips" id="tapetips">微信暂不支持录音，前往<a href="https://www.baidu.com">App</a>体验</div>
+					<!--<div class="tapebarbox" style="display: block;">-->
+						<!--<div class="record">-->
+							<!--<audio src="http://pic.ibaotu.com/00/22/50/22t888piCF8X.mp3"></audio>-->
+							<!--&lt;!&ndash;音频播放器&ndash;&gt;-->
+							<!--<div class="BarAudioPlayer">-->
+								<!--<div class="currentTime">00:00</div>-->
+								<!--<div class="scheduleBar">-->
+									<!--<div class="currentSchedule"></div>-->
+									<!--<div class="button"></div>-->
+								<!--</div>-->
+								<!--<div class="endTime">00:00</div>-->
+								<!--<a href="javascript:;" class="delete">删除</a>-->
+							<!--</div>-->
+						<!--</div>-->
+					<!--</div>-->
+				</div>
+				<!--时间-->
+				<div class="editdate" id="editdate">
+					<span></span>
+					<em id="date"></em>
+				</div>
+			</div>
+			<!--足迹设置-->
+			<div class="setwarp">
+				<!--足迹主角-->
+				<div class="role">
+					<h2>足迹主角</h2>
+					<div class="checkbox clearFloat" id="songList">
+						<span>大宝</span>
+						<span>二宝</span>
+						<span class="checked">三宝</span>
+					</div>
+				</div>
+				<!--足迹主题-->
+				<div class="themebpox">
+					<div class="title">
+						<h2>足迹主题</h2>
+						<p><span>一张照片，一段回忆</span><em></em></p>
+					</div>
+					<ul class="setupitem" id="zhuTi">
+						<li class="cur">一张照片，一段回忆</li>
+						<li>才艺展示大舞台</li>
+						<li>晒晒我们一家人</li>
+						<li>晒运动，宝贝也有金牌梦</li>
+						<li>晒吃晒喝，宝贝是个小吃货</li>
+						<li>假期带宝贝去看世界</li>
+						<li>晒晒宝贝的新玩具</li>
+						<li>晒晒我家小小读书郎</li>
+					</ul>
+				</div>
+				<!--隐私设置-->
+				<div class="privacy">
+					<div class="title">
+						<h2>谁可以看</h2>
+						<p><span>公开到 “足迹墙”</span><em></em></p>
+					</div>
+					<ul class="setupitem" id="yinSi">
+						<li class="cur">公开到 “足迹墙” (所有人可见)</li>
+						<li>隐私 (仅自己、家人可见)</li>
+					</ul>
+				</div>
+			</div>
+			<!--协议-->
+			<div class="xieyi" id="xieYi">
+				<span id="gouXuan"></span>我已经阅读<a href="javascrip:;" id="see">上传须知</a>，承诺所发表内容文明且可公开
+			</div>
+			<!--发表-->
+			<div class="submitbox">
+				<input type="submit" value="发表" class="disabled" id="submit"/>
+				<p class="subtips" id="subtips">需添文字后才能发表哦 ~</p>
+			</div>
+		</div>
+		
+		<!--协议内容-->
+		<div class="maskcontent" style="display: none;" id="maskcontent">
+			<h2>足迹上传须知<em class="colse"></em></h2>
+			<div class="text">
+				<p>1.请勿上传涉及他人隐私、淫秽色情、暴力、血腥、 违反国家法律法规的照片、图片、录音或文字内容。 </p>
+				<p>2.请勿上传对他人、组织机构的攻击内容，禁止针对种族、国家、民族、宗教、性别、年龄、地缘、性取向、生理特征的歧视和仇恨言论。</p>
+				<p>3.禁止强推广告、恶意刷屏、使用程序操作、冒充其他用户等行为。</p>
+				<p>4.您需要对所上传的照片、图片及录音的版权负责，宝贝存钱罐不承担因此带来的任何第三方责任及法律风险。</p>
+				<p>5. 账号发布含有违反相关法律法规或管理规定的内容，宝贝存钱罐有可能删除您发布的内容，并保留对您账号的处理权利。</p>
+				<p>6.您在宝贝存钱罐公开发表的内容，将默认公开到足迹墙，允许其他宝贝存钱罐用户浏览、点赞、打赏、评论。</p>
+				<p>7.您在宝贝存钱罐授权发表的内容，将默认给宝贝存钱罐在官方渠道推广、宣传（包括但不限于微信、微博。宝贝存钱罐会注明作者和来源，且不用做商业用途），如果您不允许，请在发表内容时注明。</p>
+			</div>
+		</div>
+	</body>
+	<!--音频播放器-->
+	<div class="circleAudioPlayer">
+		<canvas></canvas>
+		<div class="button"></div>
+		<div class="close"></div>
+	</div>
+</html>

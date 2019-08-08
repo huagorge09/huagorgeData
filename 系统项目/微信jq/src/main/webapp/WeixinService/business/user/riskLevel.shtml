@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+    
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/slider.js"></script>
+	<style type="text/css">
+		.cover-bg .cover-point{
+			top: 35%;
+		}
+		
+		@media only screen and (min-device-width: 360px){
+			.testResult{
+				width: 80%;
+			}
+		}
+		
+		@media only screen and (max-device-width: 359.9px){
+			.testResult{
+				width: 90%;
+			}
+		}
+		.risk-option-desc{
+			display: none;
+			color: #ca132c;
+		}
+		.risk-option-desc a{
+			color: #ca132c;
+			text-decoration: underline;;
+		}
+	</style>
+    
+</head>
+<body style="background-color: #fff">
+<section class="page">
+
+    <!--#include virtual="/WeixinService/headerOrFooter/header.shtml"-->
+
+
+	<section class="title" id="section_0" style="">
+		<input type="hidden" name="invprtp"/>
+    	<input type="hidden" name="appst"/>
+    	<input type="hidden" name="birthDate"/>
+    	
+		<div class="bg-state">
+			<div class="state-icon waiting"><img src="/WeixinWeb/WeixinWeb_Images/images/icon_top_wenJuan.png" alt="" /></div>
+			<h1>风险调查问卷</h1>
+			<span class="point">根据监管要求，请您完成风险测评</span>
+		</div>
+		<a href="javascript:toRisk();" class="check-order" style="margin-bottom: 20px;">开始评测</a>
+		<a id="queryRiskHistory" class="check-order" style="background: #d3d3d3;margin-bottom: 20px;">查看历史测评记录</a>
+	</section>
+	 
+	
+	<section class="title" id="section_01" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>1.</em><b>您目前的主要收入来源是：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">无固定收入（2分）</li>
+                <li data-score="4">退休金（4分）</li>
+                <li data-score="6">工资、劳务报酬（6分）</li>
+                <li data-score="8">个体经营或财产收入（房租、股权收入等）（8分）</li>
+                <li data-score="10">企业经营（10分）</li>
+            </ul>
+        </div> 
+        <div class="box-btn"><a class="riskevaluation-btn" href="javascript:toIndex();">返回</a></div>     
+	</section> 
+	
+	<section class="title" id="section_02" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>2.</em><b>您的年收入是：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="0">30万元以下</li>
+                <li data-score="0">30-50万元</li>
+                <li data-score="0">50-100万元</li>
+                <li data-score="0">100万以上</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section>
+	
+	<section class="title" id="section_03" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>3.</em><b>您的可支配资产是多少（不包含不动产）（折合人民币）：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">100万元以下（2分）</li>
+                <li data-score="4">100万元至200万元（4分）</li>
+                <li data-score="6">200万元至500万元（6分）</li>
+                <li data-score="8">500万元至1000万元（8分）</li>
+                <li data-score="10">1000万元以上（10分）</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section> 
+	
+	<section class="title" id="section_04" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>4.</em><b>在您每年的家庭可支配收入中，可用于金融投资（储蓄存款除外）的比例为：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">小于10%（2分）</li>
+                <li data-score="4">10%至25%（4分）</li>
+                <li data-score="6">25%至50%（6分）</li>
+                <li data-score="8">50%至80%（8分）</li>
+                <li data-score="10">80%以上（10分）</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section> 
+	
+	<section class="title" id="section_05" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>5.</em><b>您的资产负债情况属于以下哪一种：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">有较大数额未到期负债（2分）</li>
+                <li data-score="4">收入和支出相抵（4分）</li>
+                <li data-score="6">有一定积蓄（6分）</li>
+                <li data-score="8">有较为丰厚的积蓄并有一定的投资（8分）</li>
+                <li data-score="10">比较富裕且有相当的投资（10分）</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section> 
+	
+	<section class="title" id="section_06" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>6.</em><b>您的投资知识可描述为：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">无：没有金融产品方面的知识（2分）</li>
+                <li data-score="4">有限：理解部分金融产品及其相关风险的概念，但十分有限（4分）</li>
+                <li data-score="6">一般：对金融产品及其相关风险具有基本的知识和理解（6分）</li>
+                <li data-score="8">丰富：对金融产品及其相关风险具有丰富的知识和理解（8分）</li>
+                <li data-score="10">专业：对金融产品及其相关风险具有专业的知识和深入的理解（10分）</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section> 
+	
+	<section class="title" id="section_07" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>7.</em><b>您的投资经验可描述为：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">基本无投资经验（2分）</li>
+                <li data-score="4">大部分投资于存款、国债等（4分）</li>
+                <li data-score="6">大部分投资于银行理财产品、保险理财产品等（6分）</li>
+                <li data-score="8">大部分投资于基金、股票等（8分）</li>
+                <li data-score="10">大部分投资于创业板股票、外汇、期货等高风险产品（10分）</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section> 
+	
+	<section class="title" id="section_08" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>8.</em><b>您有多少年投资基金、股票、信托、私募证券或金融衍生产品等风险投资品的经验：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">1年以下（2分）</li>
+                <li data-score="4">1至2年（4分）</li>
+                <li data-score="6">2至5年（6分）</li>
+                <li data-score="8">5至10年（8分）</li>
+                <li data-score="10">10年以上（10分）</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section> 
+	
+	<section class="title" id="section_09" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>9.</em><b>您计划中的投资期限是多长：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">少于1年（2分）</li>
+                <li data-score="4">1-3年（4分）</li>
+                <li data-score="6">3-5年（6分）</li>
+                <li data-score="8">5-8年（8分）</li>
+                <li data-score="10">8年以上（10分）</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section> 
+	
+	<section class="title" id="section_10" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>10.</em><b>您打算重点投资于哪些种类的投资品种：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">短债、货币市场基金等主要投资于货币工具的基金（2分）</li>
+                <li data-score="4">债券型基金等主要投资于固定收益类资产的基金（4分）</li>
+                <li data-score="6">混合型基金等投资于权益类与固定收益类资产的基金（6分）</li>
+                <li data-score="8">股票型基金等主要投资于权益类资产的基金（8分）</li>
+                <li data-score="10">分级基金等其它复杂或高风险基金（10分）</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section>
+	
+	<section class="title" id="section_11" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>11.</em><b>以下哪项描述最符合您的投资态度：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                 <li data-score="2">厌恶风险，能够承担极小的风险（2分）</li>
+                <li data-score="4">虽然厌恶风险但愿意承担一些风险（4分）</li>
+                <li data-score="6">在深思熟虑后愿意承担一定的风险（6分）</li>
+                <li data-score="8">敢冒风险，比较激进（8分）</li>
+                <li data-score="10">爱好风险，相当激进（10分）</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section>
+	
+	<section class="title" id="section_12" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>12.</em><b>以下几种投资模式，您更偏好哪种模式：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">收益只有5%，但可能亏损不超过5%（2分）</li>
+                <li data-score="4">收益15%，但可能亏损5%（4分）</li>
+                <li data-score="6">收益是30%，但可能亏损15%（6分）</li>
+                <li data-score="8">收益50%，但可能亏损30%（8分）</li>
+                <li data-score="10">收益100%，但可能亏损60%（10分）</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section>
+	
+	<section class="title" id="section_13" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>13.</em><b>您认为自己能承受的最大投资损失是多少：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="2">5%以内（2分）</li>
+                <li data-score="4">5%-10%（4分）</li>
+                <li data-score="6">10%-30%（6分）</li>
+                <li data-score="8">30%-50%（8分）</li>
+                <li data-score="10">超过50%（10分）</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section>
+	
+	<section class="title" id="section_14" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>14.</em><b>是否存在实际控制关系：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="0" data-value="N">否</li>
+                <li data-score="0" data-value="Y">是</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section>
+	
+	<section class="title section_14" style="display: none;">
+        <div class="registe-point riskevaluation-point" style="border-bottom: 1px solid #f3f3f3;">
+            <div class="risk-point"><em></em><b>请说明实际控制人</b></div>
+        </div>
+        <div class="input-text" style="border-bottom: 1px solid #f3f3f3;width: 100%;height: 53px;">
+            <input type="text" id="riskControl" style="color: #000;width: 80%;margin-left: 20px;" placeholder="请说明实际控制人">
+        </div>
+        <div class="registe-point riskevaluation-point" style="border-bottom: 1px solid #f3f3f3;height: 65px;">
+            <div class="risk-point"><em></em><b style="color: #ca132c;">所填选项不满足购买专户产品条件，请据实慎重选择。</b></div>
+        </div>
+		<div class="bg-state">
+			<a style="margin-top: 20px;" href="javascript:back('section_14');" class="check-order">返回题目</a>
+		</div>
+	    <div>
+	    	<a class="check-order02" href="javascript:goOn('section_14');">提交</a>
+	    </div>
+	</section>
+	
+	<section class="title" id="section_15" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>15.</em><b>交易实际受益人：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="0" data-value="N">本人</li>
+                <li data-score="0" data-value="Y">他人</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>   
+	</section>
+	
+	<section class="title section_15" style="display: none;">
+        <div class="registe-point riskevaluation-point" style="border-bottom: 1px solid #f3f3f3;">
+            <div class="risk-point"><em></em><b>请说明实际受益人</b></div>
+        </div>
+        <div class="input-text" style="border-bottom: 1px solid #f3f3f3;width: 100%;height: 53px;">
+            <input type="text" id="riskBeneficiary" style="color: #000;width: 80%;margin-left: 20px;" placeholder="请说明实际受益人，如“以配偶为实际受益人”">
+        </div>
+        <div class="registe-point riskevaluation-point" style="border-bottom: 1px solid #f3f3f3;height: 65px;">
+            <div class="risk-point"><em></em><b style="color: #ca132c;">所填选项不满足购买专户产品条件，请据实慎重选择。</b></div>
+        </div>
+		<div class="bg-state">
+			<a style="margin-top: 20px;" href="javascript:back('section_15');" class="check-order">返回题目</a>
+		</div>
+	    <div><a class="check-order02" href="javascript:goOn('section_15');">提交</a></div>
+	</section>
+	
+	<section class="title" id="section_16" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>16.</em><b>是否有不良诚信记录：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="0" data-value="N">否</li>
+                <li data-score="0" data-value="Y">是</li>
+            </ul>
+        </div>
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>
+	</section>
+	
+	<section class="title section_16" style="display: none;">
+        <div class="registe-point riskevaluation-point" style="border-bottom: 1px solid #f3f3f3;">
+            <div class="risk-point"><em></em><b>请说明情况</b></div>
+        </div>
+        <div class="input-text" style="border-bottom: 1px solid #f3f3f3;width: 100%;height: 53px;">
+            <input type="text" id="detailAddress" style="color: #000;width: 80%;margin-left: 20px;" placeholder="请说明情况，如信用卡逾期还款">
+        </div> 
+        <div class="registe-point riskevaluation-point" style="border-bottom: 1px solid #f3f3f3;height: 65px;">
+            <div class="risk-point"><em></em><b style="color: #ca132c;">所填选项不满足购买专户产品条件，请据实慎重选择。</b></div>
+        </div>
+		<div class="bg-state">
+			<a style="margin-top: 20px;" href="javascript:back('section_16');" class="check-order">返回题目</a>
+		</div>
+	    <div><a class="check-order02" href="javascript:goOn('section_16');">提交</a></div>
+	</section>
+	
+	<section class="title" id="section_17" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>17.</em><b>请问您是否具有完全民事行为能力：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="0" data-value="N" data-input="Y">否
+                	<div class="risk-option-desc" >
+                    	<p>所填选项会被判定为风险承受能力最低类别投资者，请据实慎重选择。</p>
+                   	</div>
+                </li>
+                <li data-score="0" data-value="Y">是</li>
+            </ul>
+        </div>   
+        <div class="box-btn"><a class="riskevaluation-btn pre_question">重做上一题</a></div>
+       	<a href="#" onclick="clickOptionToNextQuestion(this)" class="check-order02">继续</a>
+	</section>
+	
+	<section class="title" id="section_18" style="display: none;">
+        <div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>18.</em><b>请问您是否没有风险容忍度或者不愿承受任何投资损失：</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="0" data-value="N">否</li>
+                <li data-score="0" data-value="Y" data-input="Y">是
+                	<div class="risk-option-desc">
+                    	<p>所填选项会被判定为风险承受能力最低类别投资者，请据实慎重选择。</p>
+                   	</div>
+                </li>
+            </ul>
+        </div>
+        <div style="width: 90%;margin: 0 auto;margin-top: 10px;">
+          <input type="checkbox" id="risk_cover_checkbox" style="margin-left: 25px;">
+          	本人了解个人合格投资者须满足个人金融资产不低于500万元或者最近三年个人年均收入不低于40万元的条件，并承诺符合上述条件。
+          	本人保证提供的信息真实、准确、完整，知晓并确认若提供的信息不真实、不准确、不完整的，应依法承担相应的法律责任。
+          	本人已知晓并确认提供信息发生重要变化、可能影响投资者分类的，应当及时进行更新并告知招商财富资产管理有限公司。
+		</div> 
+        <div class="box-btn"><a class="riskevaluation-btn" href="javascript:comit();">提交</a></div>
+		<div><a class="check-order02 pre_question">重做上一题</a></div>
+	</section>
+    
+    <section id="section_20" style="display: none;">
+        <div class="bg-state riskscore">
+        	<div style="text-align: center;margin-top: 5px;">
+	    		<img src="/WeixinWeb/WeixinWeb_Images/images/img_name_success.png" style="width: 190px;">
+	    	</div>
+            <div style="width: 100%;margin: 10px auto;text-align: center;">
+                <span style="font-size: 16px;">经评测，您的风险承受能力为：</span><br>
+            	<span class="invtpLevl" style="font-size: 35px;color: #ca132c;">保守型</span><br>
+            	<span class="riskLevl" style="ont-size: 14px;"></span>
+            </div>            
+        	<div class="testResult" style="margin: 10px auto;font-size: 14px;line-height: 25px;">
+        		<span style="font-size: 16px;font-weight: bold;">适宜产品等级：<span class="riskLevlNm"></span></span><br>
+                <span>评测时间：</span><br>
+	            <span class="testDate"></span><br>
+	            <span>问卷有效期：</span><br>
+	            <span class="valiDate"></span><br>
+	            <span style="">温馨提示：风险等级由高往低依次为：<br>C5-积极型、C4-成长型、C3-平衡型、C2-稳健型、C1-保守型<span onclick="detailTips()" style="color:#ca132c">&nbsp&nbsp详细说明>></span></span>
+				
+			</div>
+		</div>
+        <a href="javascript:toFundList();" id="myTreasure" class="check-order">财富中心</a>
+        <a href="javascript:restRiskLevel()" class="check-order02">重新评测</a>
+        <a id="isAuth" style="display: none;" href="javascript:toAuthPage();" class="check-order02">继续完成实名认证，尊享更多增值服务   >></a>
+    </section>
+    
+     
+	<div class="cover-bg" id="tips_01" style="display: none;">
+	    <div class="cover-point">
+	        <div class="cover-point-text mid">
+	            <div style="font-size: 14px;margin: 30px 0px 15px 10px;line-height: 25px;">您的专业投资者身份证明材料正在审批中，请耐心等待。</div>
+	        </div>
+	        <span class="cover-point-bottom" onclick="closeTips('tips_01')">我知道了</span>
+	    </div>
+	</div>
+	
+	<div id="detailText" class="cover-bg suport-bank hide" style="display: none;">
+		<div class="suport-bank-con" style=" height: 432px; margin: -222px 0 0 -42.5%;">
+		<p id="supportBankList" class="suport-bank-text" style="overflow-y: scroll;height: 385px;">
+				（一）	我司根据投资者所提供信息对其风险承受能力进行综合评价，对投资者评价以投资的风险承受能力来具体反映，专业投资者不再做具体分类管理，普通投资者包括五种类型投资者：C1保守型投资者、C2稳健型投资者、C3平衡型投资者、C4成长型投资者、C5积极型投资者。</br>
+				（二）	我司产品风险评价以公司产品的风险等级来反映，我司产品风险包括五种类型产品：R1低风险产品、R2中低风险产品、R3中风险产品、R4中高风险产品、R5高风险产品。投资者承担风险目的为获得与其匹配的收益，专户风险数值R越高，代表的风险也越高。根据产品风险特性，公司产品风险由低到高分为R1（低风险）、R2（中低风险）、R3（中风险）、R4（中高风险）、R5（高风险）五个级别，即：<br>
+				（三）	R1级，属低风险产品，投资范围仅限于货币市场工具等风险极低的短期金融资产。</br>
+				（四）	R2级，属中低风险产品，该级别产品不保证本金的偿付，但本金偿付风险较小，收益浮动相对可控。在信用风险维度上，产品主要承担高等级信用主体风险；在市场风险维度上，产品主要投资于债券等低波动性金融产品；在策略风险维度上，策略本身为低风险策略且交易风控机制相对固化。</br>
+				（五）	R3级，属中风险产品，该级别产品有一定的本金偿付风险，收益浮动且有一定波动性。在信用风险维度上，产品主要承担中高等级信用主体风险；在市场风险维度上，产品投资于股票、商品、外汇等高波动性金融产品的比例不超过20％（打新产品不受此比例限制）；在策略风险维度上，策略本身为较低风险策略且交易风控机制相对固化，或可进行良好的回撤控制。</br>
+				（六）	R4级，属中高风险产品，该级别产品本金偿付风险较大，收益浮动且波动较大。在信用风险维度上，产品可承担较低等级信用主体的风险；在市场风险维度上，投资于股票、商品、外汇等高波动性金融产品的比例超过20%；在策略风险维度上，策略本身为较高风险策略且交易风控机制不固化，回撤控制具有不确定性。</br>
+				（七）	R5级，属高风险产品，该级别产品本金偿付风险极大，收益浮动且波动极大。在信用风险维度上，产品可承担各等级信用主体的风险；在市场风险维度上，产品可完全投资于股票、外汇、商品等各类高波动性的金融产品。</br>
+				（八）	我司投资者类型与产品风险平级的匹配原则如下：C1保守型（含最低风险承受能力类别）普通投资者可以购买R1低风险等级产品或者服务；C2稳健型普通投资者可以购买R2中低风险等级及以下风险等级的产品或者服务；C3平衡型普通投资者可以购买R3中风险等级及以下风险等级的产品或者服务；C4成长型普通投资者可以购买R4中高风险等级及以下风险等级的产品或者服务；C5积极型普通投资者可以购买R5高风险等级及以下风险等级的产品或者服务。专业投资者可以购买任何风险等级产品。
+		</p>
+			<span onclick="closeTips('detailText');" class="suport-bank-bottom">我知道了</span>
+		</div>
+	</div>
+</section>  
+ 
+<script type="text/javascript">
+// document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/riskLevel.js?version='+jsversion+'"><\/script>'); 
+document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/riskLevel.min.js?version='+jsversion+'"><\/script>');
+</script>
+</body>
+</html>

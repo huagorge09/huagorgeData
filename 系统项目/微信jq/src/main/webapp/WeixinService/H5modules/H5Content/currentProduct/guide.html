@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+	<title>招商财富-长利系列 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/currentProduct/cfb.css">
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-init.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/flexible.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+
+
+</head>
+<body>
+	<div class="guide">
+		<div class="guide1">
+			<p>招商财富 · 长利现金管理系列</p>
+			<p>灵活存取,每日申赎,不限大额申购,<br>收益领先,直击企业、高净值人士闲<br>置资金需求痛点！</p>
+		</div>
+		<div class="guide2">
+			<!--<h1>长利现金管理系列</h1>-->
+			<div class="product">
+				<h3>长利现金管理系列</h3>
+				<ul class="clearFloat">
+					
+					<li>
+						<p>每日开放申赎</p>
+						<p>投资周期</p>
+					</li>
+					<li>
+						<p><span>登录可见</span></p>
+						<p>产品收益</p>
+					</li>
+					<li>
+						<p>30<span>万起</span></p>
+						<p>理财起点</p>
+					</li>
+				</ul>
+				<a href="javascript:;" class="loginSee" onclick="seeProduct()">登录可见产品详情</a>
+				<p class="t1">*风险提示：本产品风险等级为R1，适合风险承受能力为C1及以上的投资者。投资有风险。</p>
+			</div>
+		</div>
+    </div>
+    <div class="bottom clearFloat">
+    	<a href="javascript:;" onclick="bussiness();" id="myBtn1">我感兴趣</a>
+    	<a href="javascript:;" onclick="myAdviser();" id="myBtn2">我的顾问</a>
+    </div>
+    
+    	<!--预约信息填写-->
+	<div class="cover-bg reserves hide">
+		<div class="content">
+			 <span class="close"></span>
+			 <h1>一键预约享专属服务<br>让投资无后顾之忧</h1>
+			 <h3>我们的专属顾问将24小时内给您回电</h3>
+			 <div class="form">
+			 	<ul>
+				 	<li>
+				 	   <div class="inputBox">
+				 	  	   <span></span> <input type="text" id="userName" name="userName" placeholder="请输入您的姓名"/>
+				 	   </div>	
+				       <p style="display: none;"></p>
+				 	</li>
+				 	<li class="foucs">
+				 		<div class="inputBox">
+				 	        <span></span> <input type="tel" id="mobilePhone" name="mobilePhone" maxlength="11" placeholder="请输入您的手机号码"/> 
+				 		</div>
+				 		<p  style="display: none;"></p>
+				 	</li>
+				 	
+				 </ul>
+				 <button id="saveBtn"  class="disabled">立即提交</button>
+			 </div>
+		</div>
+	</div>
+	<!-- 错误提示 -->
+	<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+		<span id="errorRemark"></span>
+	</div>
+	<!--预约成功-->
+	<div class="cover-bg success hide">
+		 <div class="content center">
+		 	<span class="close"></span>
+		 	<div class="successIcon"></div>
+		 	<h2>预约成功</h2>
+		 	<p>客户经理将尽快与您联系，请保持电话畅通</p>
+		 </div>
+	</div>
+	 <script>
+    	 var pageId="wx_currentPro_guidePageId"
+    </script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/currentProduct/index.js"></script
+</body>
+</html>

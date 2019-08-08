@@ -1,0 +1,25 @@
+.contain{
+    padding-top: 0;
+}
+.tuiJian .block-context{
+    padding-top: 0.2rem;
+    padding-bottom: 0.4rem;
+}
+.block .title{
+    padding-top: 0.2rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 0.6rem;
+}
+.block .title .num{
+    font-size: 0.24rem;
+    color: #a7a7a7;
+    margin-top: 0.2rem;
+}
+.zuJi .square-tab-flex{
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    margin-top: 0;
+}

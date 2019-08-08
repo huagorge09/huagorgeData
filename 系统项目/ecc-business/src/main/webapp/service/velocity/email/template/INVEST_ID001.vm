@@ -1,0 +1,37 @@
+<TABLE CELLSPACING=0 CELLPADDING=0 WIDTH=""100%""> 
+  <TR>
+  	<TD WIDTH=100% COLSPAN="10"  ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">截止当天下午2:30仍存在“未提交银基通成功的线上指令”如下</TD>
+  </TR>
+  <TR>
+  	<TD WIDTH=7% ALIGN=CENTER STYLE="BACKGROUND-COLOR:RGBHEX ;">指令编号</TD>
+  	<TD WIDTH=7% ALIGN=CENTER STYLE="BACKGROUND-COLOR:RGBHEX ;">产品简称</TD>
+    <TD WIDTH=7% ALIGN=CENTER STYLE="BACKGROUND-COLOR:RGBHEX ;">标的简称</TD>
+    <TD WIDTH=7% ALIGN=CENTER STYLE="BACKGROUND-COLOR:RGBHEX ;">标的代码</TD>
+	<TD WIDTH=7% ALIGN=CENTER STYLE="BACKGROUND-COLOR:RGBHEX ;">交易方向</TD>
+    <TD WIDTH=7% ALIGN=CENTER STYLE="BACKGROUND-COLOR:RGBHEX ;">金额/份额</TD>
+    <TD WIDTH=7% ALIGN=CENTER STYLE="BACKGROUND-COLOR:RGBHEX ;">交易日期</TD>
+    <TD WIDTH=7% ALIGN=CENTER STYLE="BACKGROUND-COLOR:RGBHEX ;">状态</TD>
+    <TD WIDTH=7% ALIGN=CENTER STYLE="BACKGROUND-COLOR:RGBHEX ;">直连指令状态</TD>
+    <TD WIDTH=7% ALIGN=CENTER STYLE="BACKGROUND-COLOR:RGBHEX ;">指令下达时间</TD>
+  </TR>
+ #if($reviewList.size() != 0)
+  #foreach($investOrderVo in $reviewList)
+  	<TR>
+  	 <TD ALIGN=CENTER WIDTH=7%><SPAN>$!investOrderVo.instrId</SPAN></TD>
+  	 <TD ALIGN=CENTER WIDTH=7%><SPAN>$!investOrderVo.fundSname</SPAN></TD>
+  	 <TD ALIGN=CENTER WIDTH=7%><SPAN>$!investOrderVo.securAbbrName</SPAN></TD>
+  	 <TD ALIGN=CENTER WIDTH=7%><SPAN>$!investOrderVo.securId</SPAN></TD>
+  	 <TD ALIGN=CENTER WIDTH=7%><SPAN>$!investOrderVo.txnCode</SPAN></TD>
+  	 <TD ALIGN=CENTER WIDTH=7%><SPAN>$!investOrderVo.transferAmt</SPAN></TD>
+  	 <TD ALIGN=CENTER WIDTH=7%><SPAN>$!investOrderVo.transferDate</SPAN></TD>
+  	 <TD ALIGN=CENTER WIDTH=7%><SPAN>$!investOrderVo.statNm</SPAN></TD>
+  	 <TD ALIGN=CENTER WIDTH=7%><SPAN>$!investOrderVo.zlStatusNm</SPAN></TD>    
+  	 <TD ALIGN=CENTER WIDTH=7%><SPAN>$!investOrderVo.createTime</SPAN></TD>    
+   </TR>
+  #end
+#elseif($reviewList.size() == 0)
+	<TR>
+  	 <TD ALIGN=CENTER COLSPAN="10"><SPAN>无数据!</SPAN></TD>
+   </TR>
+#end
+</TABLE>

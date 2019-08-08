@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.resource.ResourceDao">
+	<resultMap type="resourceVo" id="resourceVo">
+		<id column="RES_ID" property="resId"/>
+		<result column="RES_NAME" property="resName"/>
+		<result column="RES_OWNER" property="resOwner"/>
+		<result column="CREATE_ID" property="createId"/>
+		<result column="CREATE_NAME" property="createName"/>
+		<result column="CREATE_TIME" property="createTime"/>
+		<result column="MODIFY_ID" property="modifyId"/>
+		<result column="MODIFY_TIME" property="modifyTime"/>
+		<result column="MODIFY_NAME" property="modifyName"/>
+	</resultMap>
+	
+	<select id="queryAllResourceList" resultMap="resourceVo">
+		SELECT RES_ID,
+		       RES_NAME,
+		       RES_OWNER,
+		       CREATE_ID,
+		       CREATE_TIME,
+		       MODIFY_ID,
+		       MODIFY_TIME
+		  FROM T_ECC_RESOURCE
+	</select>
+	
+	<select id="queryResourceInfoByParam" resultMap="resourceVo" parameterType="resourceVo">
+		SELECT RES_ID,
+		       RES_NAME,
+		       RES_OWNER,
+		       CREATE_ID,
+		       CREATE_TIME,
+		       MODIFY_ID,
+		       MODIFY_TIME
+		  FROM T_ECC_RESOURCE
+		  WHERE 
+		  	RES_NAME = #{resName}
+		  	<if test="resId != null and resId != ''">
+		  		OR RES_ID = #{resId}
+		  	</if>
+	</select>
+	
+	<insert id="saveResource">
+		<selectKey resultType="String" order="BEFORE" keyProperty="resId">
+			SELECT ECC_IBF_GET_SEQNO(TO_CHAR(SYSDATE, 'YYYYMMDD')) FROM DUAL
+		</selectKey>
+		INSERT INTO T_ECC_RESOURCE
+			  (RES_ID,
+			   RES_NAME,
+			   RES_OWNER,
+			   CREATE_ID,
+			   CREATE_TIME,
+			   MODIFY_ID,
+			   MODIFY_TIME
+			  )
+			VALUES
+			  (
+			  	#{resId},
+			  	#{resName},
+			  	#{resOwner},
+			  	#{createId},
+			  	SYSDATE,
+			  	#{modifyId},
+			  	SYSDATE
+			  )
+	</insert>
+	
+	<select id="queryNotAuthResListByRoleEmps" resultMap="resourceVo" parameterType="java.lang.String">
+			SELECT WR.RES_ID,
+		       WR.RES_NAME,
+		       WR.RES_OWNER,
+		       WR.CREATE_ID,
+		       WR.CREATE_TIME,
+		       WR.MODIFY_ID,
+		       WR.MODIFY_TIME
+		  FROM T_ECC_RESOURCE WR
+		 WHERE WR.RES_ID NOT IN (
+		 		SELECT WRR.RES_ID
+		          FROM T_ECC_RES_ROLE_REL WRR
+		             WHERE WRR.ROLE_ID = #{roleId})
+	</select>
+	
+	<select id="queryResourceListByRoleEmps" resultMap="resourceVo" parameterType="java.lang.String">
+			SELECT WR.RES_ID,
+		       WR.RES_NAME,
+		       WR.RES_OWNER,
+		       WR.CREATE_ID,
+		       WR.CREATE_TIME,
+		       WR.MODIFY_ID,
+		       WR.MODIFY_TIME
+		  FROM T_ECC_RESOURCE WR
+		 WHERE WR.RES_ID IN (
+		 		SELECT WRR.RES_ID
+		          FROM T_ECC_RES_ROLE_REL WRR
+		             WHERE WRR.ROLE_ID = #{roleId})
+	</select>
+	
+	<delete id="deleteResourceByResOrRole">
+		DELETE T_ECC_RES_ROLE_REL WHERE ROLE_ID =#{roleId} OR RES_ID =#{resId}
+	</delete>
+</mapper>

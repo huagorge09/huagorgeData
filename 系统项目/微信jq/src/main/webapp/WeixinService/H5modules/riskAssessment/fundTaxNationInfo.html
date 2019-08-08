@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/idangerous.swiper-2.1.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/slider.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+	<style type="text/css">
+		.header{
+			position: fixed;
+	    	top: 0px;
+		}
+		section{
+			margin-top: 60px;
+		}
+	</style>
+</head>
+
+<body style="background-color: rgb(245, 245, 245);">
+<section class="page">
+
+		<input type="hidden" id="nation" />
+    	<input type="hidden" id="nationNM" />
+    	<input type="hidden" id="province" />
+    	<input type="hidden" id="provinceNM" />
+    	<input type="hidden" id="city" />
+    	<input type="hidden" id="cityNM" />
+    	<input type="hidden" id="vocCode" />
+    	<input type="hidden" id="vocName" />
+    	<input type="hidden" id="dateOfBirth"/>
+    	<input type="hidden" id="address"/>
+    	<input type="hidden" id="taxResidentType"/>
+    	<input type="hidden" id="taxResidentTypeNM"/>
+    	<input type="hidden" id="nationType"/>
+    	<input type="hidden" id="taxResidentData"/>
+    	<input type="hidden" id="targetId"/>
+    	<input type="hidden" id="sourceType"/>
+   		<input type="hidden" id="viewType"/>
+	<div id="scroller"></div>
+    <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/DataStatisJs.js"></script>
+    
+</head>
+
+<script type="text/javascript">
+</script>
+
+<body>
+	
+	<div id="maskDiv" class="maskDiv">
+		<div id="gifImgDiv" class="gifImgDiv"></div>
+	</div>
+	
+	<div id="otherIEHeader" class="hide">
+		<!DOCTYPE html>
+<html>
+<head>
+    <meta content="telephone=no" name="format-detection" />
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/DataStatisJs.js"></script>
+</head>
+
+<script type="text/javascript">
+
+</script>
+<body>
+	<div class="header">
+        <div class="top-a">
+            <a id="titleBack" href="javascript:toBack();" class="come-back"></a>
+            <h2></h2>
+           
+        </div>
+       
+    </div>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/otherIEHeader.min.js"></script>
+</body>
+</html>
+	</div>
+
+	<div id="wxIEHeader" class="hide">
+		<!DOCTYPE html>
+<html>
+<head>
+    <meta content="telephone=no" name="format-detection" />
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/DataStatisJs.js"></script>
+</head>
+
+<script type="text/javascript">
+	
+</script>
+<body>
+</body>
+</html>
+	</div>
+	
+	<!-- 错误提示 -->
+	<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+		<span id="errorRemark"></span>
+	</div>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/header.min.js"></script>
+</body>
+</html>
+	<section class="title" id="section_01">
+    	<div class="center-accountset">
+    		<a class="href-point" data-value="1" data-text="中国">中国</a>
+    		<a class="href-point" data-value="2" data-text="中国香港">中国香港<em></em></a>
+    		<a class="href-point" data-value="3" data-text="中国澳门">中国澳门<em></em></a>
+    		<a class="href-point" data-value="4" data-text="中国台湾">中国台湾<em></em></a>
+    		<a class="href-point" data-value="5" data-text="海外">海外<em></em></a>
+       </div>
+	</section> 
+</section>
+ <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/fundTaxType.js"></script>
+<script>
+	$(".header .top-a h2").html("选择地区");
+	fundTaxNationInfoLoadParam();
+	delTaxNationDataByMinTargetId();
+	bindTaxNationClick();
+</script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE web-app  PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"   "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+    <icon></icon>
+    <display-name>CMWaWeixin</display-name>
+    <description>CMWAWeixin</description>
+    
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath*:/conf-spring/spring-context-*.xml</param-value>
+	</context-param>
+
+
+	<filter>
+        <filter-name>CheckFiler</filter-name>
+        <filter-class>com.cmwa.ec.webapp.interceptor.CheckFilter</filter-class>
+    </filter> 
+    <filter-mapping>
+        <filter-name>CheckFiler</filter-name>
+        <url-pattern>*</url-pattern>
+    </filter-mapping>
+
+
+   <filter>
+        <filter-name>Encoding</filter-name>
+        <filter-class>com.cmwa.ec.webapp.interceptor.SetCharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter> 
+    <!-- filter definition end -->
+
+    <!-- filter-mapping definition begin -->
+    <filter-mapping>
+        <filter-name>Encoding</filter-name>
+        <url-pattern>*.shtml</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Encoding</filter-name>
+        <url-pattern>/cgi-bin/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Encoding</filter-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </filter-mapping>
+
+	<!-- PCWXSkipFilter S -->
+	<filter>
+		<filter-name>pcwxSkip</filter-name>
+        <filter-class>com.cmwa.ec.log.filter.PCWXSkipFilter</filter-class>
+	</filter> 
+	<filter-mapping>
+        <filter-name>pcwxSkip</filter-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </filter-mapping>
+	<filter-mapping>
+        <filter-name>pcwxSkip</filter-name>
+        <url-pattern>*.shtml</url-pattern>
+    </filter-mapping>
+	<!-- PCWXSkipFilter E -->
+
+	<filter>
+        <filter-name>pageFilter</filter-name>
+        <filter-class>com.cmwa.ec.webapp.interceptor.PageFilter</filter-class>
+    </filter> 
+	<!--     filter definition end -->
+
+	<!--     filter-mapping definition begin -->
+    <!-- <filter-mapping>
+        <filter-name>pageFilter</filter-name>
+        <url-pattern>/AppService/*.shtml</url-pattern>
+    </filter-mapping> -->
+    <!-- <filter-mapping>
+        <filter-name>pageFilter</filter-name>
+        <url-pattern>/AppService/index.shtml</url-pattern>
+    </filter-mapping> -->
+    <filter-mapping>
+        <filter-name>pageFilter</filter-name>
+        <url-pattern>/AppService/business/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>pageFilter</filter-name>
+        <url-pattern>/AppService/business/*.xhtml</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>pageFilter</filter-name>
+        <url-pattern>/AppService/business/*.shtml</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>pageFilter</filter-name>
+        <url-pattern>/AppService/business/*/*.shtml</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>pageFilter</filter-name>
+        <url-pattern>/AppService/applicationGroups.shtml</url-pattern>
+    </filter-mapping>
+    <!-- filter-mapping definition begin -->
+	<!--  <filter-mapping>
+	<filter-name>iGuardFilter</filter-name>
+	<url-pattern>/*</url-pattern>
+	</filter-mapping>-->
+    
+	<!-- listener definition begin -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+    <!--  <listener>
+    	<listener-class>project.cmf.weixin.timingjob.guessprice.GuessPriceJob</listener-class>
+    </listener>-->
+
+    <servlet>
+		<servlet-name>springServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath*:/conf-spring/spring-mvc.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+    <servlet-mapping>
+		<servlet-name>springServlet</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	  <servlet-name>getUserRequestServlet</servlet-name>
+	  <servlet-class>com.cmwa.ec.log.servlet.DataStatisServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>getUserRequestServlet</servlet-name>
+	  <url-pattern>/AppService/log/getUserRequest.stat</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+	  <servlet-name>getCmbReportUserRequest</servlet-name>
+	  <servlet-class>com.cmwa.ec.log.servlet.CmbReportsStatisServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>getUserRequestServlet</servlet-name>
+	  <url-pattern>/AppService/log/getCmbReportUserRequest.stat</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<servlet>
+		<servlet-name>SSIServlet</servlet-name>
+		<servlet-class>com.caucho.servlets.ssi.SSIServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SSIServlet</servlet-name>
+		<url-pattern>*.shtml</url-pattern>
+	</servlet-mapping>
+
+    <session-config>
+        <session-timeout>180</session-timeout>
+    </session-config>
+	
+    <welcome-file-list>
+        <welcome-file>default.html</welcome-file>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.shtml</welcome-file>
+    </welcome-file-list>
+    
+   	<error-page> 
+   	<error-code>404</error-code> 
+   	<location>/404.shtml</location> 
+	</error-page> 
+
+
+    <taglib>
+        <taglib-uri>oscache</taglib-uri>
+        <taglib-location>/WEB-INF/tlds/oscache.tld</taglib-location>
+    </taglib>
+    <taglib>
+        <taglib-uri>/tags/jstl-core</taglib-uri>
+        <taglib-location>/WEB-INF/tlds/c.tld</taglib-location>
+    </taglib>
+    <taglib>
+        <taglib-uri>/tags/jstl-format</taglib-uri>
+        <taglib-location>/WEB-INF/tlds/fmt.tld</taglib-location>
+    </taglib>
+</web-app>

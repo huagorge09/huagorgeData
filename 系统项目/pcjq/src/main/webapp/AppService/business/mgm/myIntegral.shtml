@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link href="/AppWeb/AppWeb_Css/ui-select.css" rel="stylesheet" type="text/css" />
+	<link href="/AppWeb/AppWeb_Css/business/mgm/myIntegral.css" rel="stylesheet" type="text/css" />
+
+	<title></title>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<style type="text/css">
+
+	</style>
+</head>
+
+<body>
+	<input type="hidden" id="integralCount" />
+	<!-- 我的积分首页 1 -->
+	<div class="integralIndex " id="div_01">
+		<header class="head">
+			<div class="top">
+				<p class="title">我的积分</p>
+			</div>
+			<div class="scoreNum" id="scoreNum">推荐朋友</div>
+			<div class="useButton">
+				<a class="useIntegral" onclick="useIntegral()">使用积分</a>
+				<a class="integralRecord" onclick="integralRecordButton()">积分记录</a>
+			</div>
+
+		</header>
+
+		<section class="content">
+			<div class="activityRules">
+				<span class="line1">邀请朋友成功购买产品</span>
+				<p class="line2"><span>自己和朋友都有</span><span>积分收益</span></p>
+				<span class="activityRules_btn" onclick="showActRules()">活动规则</span>
+			</div>
+			<i class="blueBlock"></i><span class="title1">邀请好友购买方式</span>
+			<div class="inventFriend">
+				<div>
+					<span class="recommendLine1" onclick="myRecommenderBtn()">推荐我的顾问给朋友</span>
+					<span class="myRecommender_btn" onclick="myRecommenderBtn()">我的顾问</span>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<!--  使用积分及积分记录页面导入 -->
+	<div id="div_02" style="display: none;">
+
+		<!--#include virtual="/AppService/business/mgm/useIntegral.shtml"-->
+	</div>
+
+
+	<!-- 我的顾问弹出框 -->
+	<div class="myRecommenderPop" id="myRecommenderPop" style="display: none;">
+		<div class="popHead">
+			<span class="myRecommender_title">我的顾问</span><span class="closeIcon" onclick="closeIcon()"></span>
+		</div>
+
+		<div class="recommenderDetail">
+			<div class="front">
+				<img class="headPhoto" id="custserPhoto" src="" />
+				<span class="recommenderName" id="custserName"></span>
+				<span class="yourRecommender">您的专属顾问</span>
+			</div>
+			<div class="phoneBox">
+				<span class="phoneTit">手机号码</span>
+				<span class="recommendPhone" id="custserMobile"></span>
+				<span class="phoneIcon"></span>
+			</div>
+			<div class="wxBox">
+				<span class="wxTit">微信昵称</span>
+				<span class="wxName" id="custserNickname"></span>
+				<span class="moreIcon" title="点击显示二维码"></span>
+			</div>
+			<div class="inventBox">
+				<span class="blueTit "></span><span class="inventToFriend">推荐<i class="recommendSex"></i>给您的朋友</span>
+			</div>
+			<div class="friendNameBox fontBox">
+				<span class="font_lab">朋友姓名 :</span><span><input type="text" class="friend_name" id="friend_name" maxlength="10"
+						border="0" placeholder="请输入朋友姓名"></span>
+			</div>
+			<p><label style="display: none" class="error" id="name_error"></label></p>
+
+
+			<div class="friendPhoneBox fontBox">
+				<span class="font_lab">朋友手机 :</span><span><input type="text" class="friend_phone" id="friend_phone"
+						maxlength="15" border="0" placeholder="请输入朋友手机号"></span>
+			</div>
+			<p><label style="display: none" class="error" id="phone_error"></label></p>
+			<!-- 把她推荐给朋友 -->
+			<div class="inventButton" onclick="inventBtn()">
+				把<i class="recommendSex"></i>推荐给朋友
+			</div>
+		</div>
+	</div>
+	<!--以上我的顾问弹出框 -->
+
+	<!--  以下我的顾问回调弹出框 -->
+	<div class="recommendReturn" id="recommendReturn" style="display: none;">
+		<div class="exHead">
+			<span class="tit">提示</span>
+			<span class="closeRe" onclick="close()"></span>
+		</div>
+		<div class="exContent">
+			<!--  提示文案 -->
+			<div class="warnWord" id="successWord" style="display: none;">
+				<p class="tipWord1">感谢您的推荐</p>
+				<p class="tipWord2">您推荐的顾问将在24小时内联系您的朋友</p>
+			</div>
+			<!-- 成功文案 -->
+			<div class="warnWord" id="thankWord" style="display: none;">
+				<p class="tipWord1">您推荐的朋友已经是我们的客户</p>
+				<p class="tipWord2">您推荐的顾问将在24小时内联系您的朋友，</p>
+				<p class="tipWord2">感谢您的支持</p>
+			</div>
+		</div>
+		<div class="exBtnBox">
+			<span class="exSure" onclick="close()">知道了</span>
+		</div>
+
+	</div>
+	<!--  以上我的顾问回调弹出框 -->
+
+	<!--弹出微信二维码--开始-->
+	<div class="wechat-box " style="display: none;">
+		<div class="box-wx">
+			<img src="" alt="" width="100%" height="100%" id="wechat-img">
+		</div>
+		<p class="box-p">我知道了</p>
+	</div>
+	<!--弹出微信二维码--结束-->
+
+	<!-- 活动规则弹出框 -->
+	<div class="actRuleBox " id="actRuleBox" style="display: none;">
+		<div class="exHead">
+			<span class="tit">活动规则</span>
+			<span class="closeRe" onclick="closeActRule()"></span>
+		</div>
+		<div class="content">
+			<p class="px15">根据您推荐的客户不同投资金额（扣除活期产品投资额），新老客户均同等获得对应积分如下</p>
+
+			<p>1：投资金额在30万元至100万元（包含）的，对应的奖励积分为100；</p>
+			<p>2：投资金额在100万元到500万元（包含）的，对应的奖励积分为200；</p>
+			<p>3：投资金额在500万元到1000万元（包含）的，对应的奖励积分为500；</p>
+			<p>4：投资金额在1000万元以上的，对应的奖励积分为1000；</p>
+			<p class="px15">注意:</p>
+			<p>a、您推荐的客户购买活期产品的金额不计入投资金额，比如您推荐的客户购买7天管家（或长利产品）30万，财富宝50万，则您推荐的客户购买金额为50万。</p>
+			<p>b、该方案为一次性激励，仅用于激励新客户首次购买产品</p>
+			<p>c、“每100活跃度点数”可兑换“100元等价商品”，兑换商品可选择京东卡或电话卡</p>
+			<p>d、只有买过产品的客户推荐新客户购买产品才能加积分</p>
+			<p class="lastExplain">该活动最终解释权归招商财富资产管理有限公司所有。</p>
+
+		</div>
+		<div class="exBtnBox">
+			<span class="exSure" onclick="closeActRule()">知道了</span>
+		</div>
+	</div>
+
+	<!-- 实名鉴权弹框 -->
+	<div class="recommendReturn " id="realNameBox" style="display: none;">
+		<div class="exContent">
+			<!--  提示文案 -->
+			<div class="warnWord ">
+				<p class="tipWord1 toRealText">请您完成实名鉴权</p>
+			</div>
+		</div>
+		<div class="exBtnBox ">
+			<span class="exCancel" onclick="cancelRealNameBtn()">先看看</span>
+			<!--  确认是否兑换才提交请求 -->
+			<span class="exSure" onclick="closeRealNameBox()">确定</span>
+		</div>
+	</div>
+
+	<input type="hidden" id="MycustName" />
+	<input type="hidden" id="MycustId" />
+
+
+	
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/commons.js"></script>
+
+	<!-- <script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/mgmMyIntegral.js"></script> -->
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/mgmMyIntegral.min.js"></script>
+
+</body>
+
+</html>

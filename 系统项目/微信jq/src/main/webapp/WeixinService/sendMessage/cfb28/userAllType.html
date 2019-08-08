@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<title>招商财富-财富宝系列 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/public.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/style.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/cfb28/cfb.css">
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-init.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/flexible.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedom.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/js/header.js"></script>
+
+</head>
+
+<body>
+	<div class="guide">
+		<div class="guide1">
+			<p>招商财富-固收王牌</p>
+			<p>历史业绩优良，产品期限短，<br>定期开放，进退灵活，旗舰<br>配置，权威团队，稳步求赢！</p>
+		</div>
+		<div class="guide2">
+			<h1></h1>
+			<div class="product">
+				<!--<h3>募集截止：2018年6月27日 15:00</h3>-->
+				<ul class="clearFloat">
+					<li>
+						<p><span>28</span>天</p>
+						<p>产品期限</p>
+					</li>
+
+					<li>
+						<p><span>30</span>万</p>
+						<p>起投金额</p>
+					</li>
+				</ul>
+				<a href="javascript:;" class="loginSee" onclick="seeProduct()">立即预约</a>
+			</div>
+		</div>
+	</div>
+	<div class="bottom clearFloat">
+		<a href="javascript:;" onclick="bussiness();" id="myBtn1">我感兴趣</a>
+		<a href="javascript:;" onclick="myAdviser();" id="myBtn2">我的顾问</a>
+	</div>
+
+	<!--预约信息填写-->
+	<div class="cover-bg reserves hide">
+		<div class="content">
+			<span class="close"></span>
+			<h1>一键预约享专属服务<br>让投资无后顾之忧</h1>
+			<h3>我们的专属顾问将24小时内给您回电</h3>
+			<div class="form">
+				<ul>
+					<li>
+						<div class="inputBox">
+							<span></span> <input type="text" id="userName" name="userName" placeholder="请输入您的姓名" />
+						</div>
+						<p style="display: none;"></p>
+					</li>
+					<li class="foucs">
+						<div class="inputBox">
+							<span></span> <input type="tel" id="mobilePhone" name="mobilePhone" maxlength="11" placeholder="请输入您的手机号码" />
+						</div>
+						<p style="display: none;"></p>
+					</li>
+
+				</ul>
+				<button id="saveBtn" class="disabled">立即提交</button>
+			</div>
+		</div>
+	</div>
+	<!-- 错误提示 -->
+	<div id="errorDiv" class="cover-opacity hide" onclick="errorRemarkHide();">
+		<span id="errorRemark"></span>
+	</div>
+	<!--预约成功-->
+	<div class="cover-bg success hide">
+		<div class="content center">
+			<span class="close"></span>
+			<div class="successIcon"></div>
+			<h2>预约成功</h2>
+			<p>客户经理将尽快与您联系，请保持电话畅通</p>
+		</div>
+	</div>
+	<style>
+		.guide2 {
+			height: 5.1rem;
+			background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb28/guide2-1.jpg) no-repeat;
+			background-size: 100% 100%;
+			position: relative;
+		}
+
+		.product ul li {
+			width: 50% !important;
+		}
+
+		.product ul {
+			padding-top: .5rem;
+		}
+
+		.product {
+			padding-right: .8rem;
+			padding: 0 1.2rem;
+			padding-top: .9rem;
+		}
+
+		.product ul li p:nth-child(1) span {
+			font-size: .48rem !important;
+		}
+
+		.product ul li p:nth-child(1) {
+			font-size: .31rem
+		}
+
+		.loginSee {
+		    margin-top: .4rem;
+			margin-left: .5rem;
+		}
+		.product ul li:nth-child(1){
+			padding-top: 0;
+		}
+	</style>
+	<script>
+		var pageSource = getUrlParams("tel").tel
+		var pageId = "messageCfb28"
+		$(function () {
+			cmwaOnkeyup("userName;mobilePhone", checkAppoInfoParam);
+			elemBind();
+			operatingRecord(pageSource, "openMessagePage", pageId, "", "", "", "")
+		});
+		/* 验证输入框的有效性  */
+		function checkAppoInfoParam() {
+			var userName = $("#userName").val();
+			var mobilePhone = $("#mobilePhone").val();
+			if (userName == null || userName == "") {
+				$("#saveBtn").addClass("disabled").attr("onclick", "");
+				return;
+			} else if (mobilePhone == null || mobilePhone == "") {
+				$("#saveBtn").addClass("disabled").attr("onclick", "");
+				return;
+			} else {
+				$("#saveBtn").removeClass("disabled").attr("onclick", "saveAppointInfo()");
+			}
+		}
+		/*
+		 * 预约提交
+		 */
+		function seeProduct() {
+			bussiness();
+		}
+
+		/*
+		 * 用户信息提交
+		 */
+		function userDateSumbit(userName, mobilePhone) {
+			$.ajax({
+				async: false,
+				url: apiHost + "/api/insertAppointInfo",
+				type: "post",
+				dataType: 'json',
+				data: {
+					"userName": userName,
+					"mobilePhone": mobilePhone,
+					"productType": "cfb28",
+					"cmfUserId": ""
+				},
+				success: function (data) {
+					if (data.success) {
+						$(".reserves").addClass("hide")
+						$(".success").removeClass("hide")
+						$("input[name=userName]").val('');
+						$("input[name=mobilePhone]").val('');
+						$("#saveBtn").addClass("disabled").attr("onclick", "");
+						operatingRecord(pageSource, "makeMessageSuccess", pageId, "", "", "", "")
+					} else {
+						errorRemark(data.msg);
+					}
+				},
+				error: function () {
+					errorRemark("网络繁忙，请稍后再试。");
+				},
+			});
+		}
+		/**
+		 * 元素事件绑定
+		 */
+		function elemBind() {
+			//鼠标键盘弹起
+			$("input").keyup(function () {
+				if ($("input[name=userName]").val() !== "" && $("input[name=mobilePhone]").val() !== "") {
+					$("button").removeClass("disabled");
+				}
+			});
+			//输入框光标事件
+			$("input").focus(function () {
+				$(this).parents("div").addClass("foucs");
+				$(this).parents("li").find("p").hide().text("")
+			});
+			$("input").blur(function () {
+				$(this).parents("div").removeClass("foucs");
+			});
+
+			//弹窗关闭
+			$(".close").click(function () {
+				$(".cover-bg").addClass("hide");
+				$("input[name=userName]").val('');
+				$("input[name=mobilePhone]").val('');
+				$(".reserves li p").hide();
+				$("body,html").css({
+					"overflow": "auto",
+					"height": "auto"
+				});
+				$("#saveBtn").addClass("disabled").attr("onclick", "");
+			})
+
+		}
+
+		//点击信息提交
+		function saveAppointInfo() {
+			var userName = $.trim($("input[name=userName]").val());
+			var mobilePhone = $.trim($("input[name=mobilePhone]").val());
+			var flag = true;
+			if (userName == "" || !ischinese(userName)) {
+				$("input[name=userName]").parents("li").find("p").show().text("请输入2-10字中文姓名");
+				flag = false;
+			}
+			if (!isMobile(mobilePhone)) {
+				$("input[name=mobilePhone]").parents("li").find("p").show().text("请输入正确的手机号码");
+				flag = false;
+			}
+
+			if (flag) {
+				userDateSumbit(userName, mobilePhone);
+			}
+		}
+
+
+		function ischinese(name) {
+			return /^[\u2E80-\u9FFF]{2,10}$/.test(name)
+		}
+
+		//验证手机号
+		function isMobile(phone) {
+			return /^0?(13[0-9]|15[0123456789]|18[0123456789]|14[0123456789]|17[0123456789])[0-9]{8}$/.test(phone);
+		}
+		/**
+		 * 预约
+		 */
+		function bussiness() {
+			operatingRecord(pageSource, "clickAppointment", pageId, "", "", "", "")
+			$(".reserves").removeClass("hide");
+			$("body,html").css({
+				"overflow": "auto",
+				"height": "100%"
+			});
+		}
+
+		function myAdviser() {
+			location.href = "/WeixinService/sendMessage/cfb28/bussinessCard.html?pageSource=" + pageSource +
+				"&eventId=event_cfb28_adviserId"
+		}
+	</script>
+</body>
+
+</html>

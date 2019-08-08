@@ -1,0 +1,43 @@
+<H1 WIDTH=""100%"" ALIGN=CENTER >综合业务平台服务报告</H1>
+<TABLE CELLSPACING=0 CELLPADDING=0 WIDTH=""100%"">
+  <TR>
+    <TD ALIGN=CENTER  COLSPAN="2">服务报告日期：</TD>
+    <TD ALIGN=CENTER  COLSPAN="3">$!date</TD>
+    <TD ALIGN=CENTER  COLSPAN="3">服务报告类型：</TD>
+    <TD ALIGN=CENTER  COLSPAN="6">销售渠道未及时募集结束/募集结束复核 </TD>
+  </TR> 
+  <TR>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">序号</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">子产品编码</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">子产品名称</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">基金代码</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">项目经理</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">过程状态</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">销售机构名称</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">募集开始日</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">募集结束日</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">实际募集金额</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">渠道募集过程状态</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">渠道募集结束状态</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">子产品成立日</TD>
+    <TD ALIGN=CENTER STYLE="BACKGROUND-COLOR:ORANGE;">子产品到期日</TD>
+  </TR>
+  #foreach($subProductVo in $subProductLst)
+  	<TR>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!{velocityCount}</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!subProductVo.subPrdCode</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!subProductVo.subFundSName</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!subProductVo.fundCode</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!subProductVo.mgrName</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!subProductVo.subPrdPrcStatusName</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!subProductVo.seatNm</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!subProductVo.expRaiseBegDate</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!subProductVo.expRaiseEndDate</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!subProductVo.raiseAmt</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!subProductVo.raiseStatusName</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!subProductVo.raiseEndStatusName</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!subProductVo.expectedIntBegDate</SPAN></TD>
+     <TD ALIGN=CENTER WIDTH=7%><SPAN>$!subProductVo.expectedEndDate</SPAN></TD>
+   </TR>
+  #end　　
+</TABLE>

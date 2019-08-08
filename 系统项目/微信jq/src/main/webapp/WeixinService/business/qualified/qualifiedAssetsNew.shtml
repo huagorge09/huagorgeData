@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/bannerStyleNew.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/qualified/qualifiedNew.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/dialogNew.css">
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/swiper.minNew.css">
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery-2.0.0New.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/freedomNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/DataStatisJsNew.js"></script>
+</head>
+
+<body>
+	<div class="page asset">
+		<!--#include virtual="/WeixinService/headerOrFooter/headerNew.shtml"-->
+		<ul class="tab dswkb">
+			<li class="cur flex1">完税要求</li>
+			<li class="flex1">单位收入证明</li>
+			<li class="flex1">银行流水</li>
+		</ul>
+		<div class="tabContent">
+			<div class="improveText" style="display: block;">
+				<div class="tit">
+					<h2>完税证明</h2>
+				</div>
+				<ul>
+					<li>1.需为本人最近三年的个人所得税完税证明;</li>
+					<li>2.请确保姓名与申请客户信息一致；</li>
+					<li>3.年均应纳税金额不低于40万；</li>
+					<li>4.信息分布在多张截图需要提供截图视频，单张截图展示所有信息则不需视频</li>
+				</ul>
+				<div>
+					<h2>示例图: <span
+							onclick="qualified.play('/WeixinWeb/WeixinWeb_Images/images/qualified/incomeVideo.mp4')">视频示例>></span>
+					</h2>
+					<div class="img">
+						<img src="/WeixinWeb/WeixinWeb_Images/images/qualified/img1.jpg" />
+					</div>
+				</div>
+				<div class="tit">
+					<h2>参考网站</h2>
+				</div>
+				<ul>
+					<li>1.上海：上海市税务局，或关注微信公众号“上海税务”，点击涉税查询”一“个人办税”菜单；</li>
+					<li>2.北京：关注微信公众号“北京税务”，点击“我要办”一“个税查询”菜单；</li>
+					<li>3.广州：关注微信公众号“广州税务”，点击“微税办”一“个人办税”菜单；</li>
+					<li>4.深圳：关注微信公众号“深圳税务纳税服务二”，点击“自助办税”一“个人中心”菜单中“申报纳税信息”查询；</li>
+					<li>5.其他省市，可至相应税务官方网站或微信公众号查询办。</li>
+				</ul>
+				<div class="more"><a href="/WeixinWeb/WeixinWeb_Images/images/qualified/queryChannel.xlsx" download="queryChannel.xlsx">更多城市>></a>
+				</div>
+			</div>
+			<div class="improveText" style="display: none;">
+				<div class="tit">
+					<h2>单位收入证明</h2>
+				</div>
+				<ul>
+					<li>1.须为最近三年收入证明；</li>
+					<li>2.请确保姓名与申请客户信息一致；</li>
+					<li>3.工作单位及日期完整；</li>
+					<li>4.需盖有单位公章。</li>
+					<li>5.近三年更换过单位，需提供两家任职单位收入证明。</li>
+					<li>6.证明出具时间需为申请日前一个月内。</li>
+				</ul>
+				<div>
+					<h2>示例图:</h2>
+					<div class="img">
+						<img src="/WeixinWeb/WeixinWeb_Images/images/qualified/img2.jpg" />
+					</div>
+					<div class="downLoad">
+						收入证明模板下载
+					</div>
+				</div>
+			</div>
+			<div class="improveText" style="display: none;">
+				<div class="tit">
+					<h2>银行流水</h2>
+				</div>
+				<ul>
+					<li>1.须为本人名下最近三年（借记卡/储蓄卡）对账单，含工资/代发工资项目；</li>
+					<li>2.请确保姓名与申请客户信息一致；</li>
+					<li>3.非截屏文件须盖有银行业务公章。</li>
+					<li>4.信息分布在多张截图需要提供截图视频，单张截图展示所有信息则不需视频</li>
+				</ul>
+				<div>
+					<h2>示例图: <span
+							onclick="qualified.play('/WeixinWeb/WeixinWeb_Images/images/qualified/incomeVideo.mp4')">视频示例>></span>
+					</h2>
+					<div class="img">
+						<img src="/WeixinWeb/WeixinWeb_Images/images/qualified/img3.jpg" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="fileBox tabFile1">
+			<div id="fileAwaitFirst" style="display: block;">
+				<div class="upBox" onclick="qualifiedAssets.financialUpFile()">
+
+				</div>
+				<div id="financialMask" class="diableMask" style="display: none;">
+					<p></p>
+				</div>
+				<div class="upTips">
+					<p>上传<span>资产证明</span></p>
+					<p>（可上传pdf/jpg/视频文件）</p>
+					<form enctype="multipart/form-data" id="financialCertificate">
+						<input type="file" name="file" accept="*" id="financialFileUpload" style="display: none;" />
+						<input type="hidden" name="recordSource" value="wx-qualified" />
+						<input type="hidden" name="fileType" value="financialCertificate" />
+					</form>
+				</div>
+			</div>
+			<ul id="fileItemFirst" class="fileItem" style="display: none;">
+				<li id="filelaterFirst" onclick="qualifiedAssets.financialUpFile()"></li>
+			</ul>
+		</div>
+
+
+
+		<!--  国徽 -->
+
+
+		<!--  填写用户职业信息 -->
+		<!-- <div id="userProfessionBox" style="display:none;">
+			<span class="professionText">填写您的职业</span>
+			<input type="text" placeholder="请填写您的职业" class="professionInput" id="professionInput">
+			<span class="submitProfession" onclick="submitProfession()">确认</span>
+		</div> -->
+
+
+
+		<div class="next">
+			<a href="/WeixinService/business/qualified/qualifiedNew.shtml" class="cur">下一步</a>
+		</div>
+		<div class="scheduleBox" style="display: none;" id="scheduleBox">
+			<div class="mask"></div>
+			<div class="scheduleBar center">
+				<div class="currentBar" style="width: 78%;"></div>
+				<div class="percent">78%</div>
+			</div>
+		</div>
+		<div class="cover-bg tipsMask tipsMask1 sendMail" style="display: none;">
+			<div class="con">
+				<h2>提示<em onclick="qualified.maskHide('tipsMask1');"></em></h2>
+				<div class="inputBox"><span>邮箱：</span><input type="text" name="email" /></div>
+				<div class="btnBox">
+					<span class="know" onclick="qualified.maskHide('tipsMask1');">取消</span>
+					<span class="know" onclick="qualifiedAssets.sendEmail();">确定</span>
+				</div>
+
+			</div>
+		</div>
+		<!--拍摄播放-->
+		<div class="cover-bg tipsMask tipsMaskVideo" style="display: none;">
+			<div class="con">
+				<h2>视频播放<em onclick="qualified.closeVideo('tipsMaskVideo');"></em></h2>
+				<p style="text-align: center;">
+					<video id="video" controls="" autoplay="" name="media">
+						<source src=""></video>
+				</p>
+			</div>
+		</div>
+
+
+
+	</div>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/dialogNew.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/swiperNew.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.formNew.min.js"></script>
+	<!-- <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/qualifiedComNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/qualifiedAssetsNew.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/qualifiedComNew.min.js"></script>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/qualifiedAssetsNew.min.js"></script> -->
+	<script type="text/javascript">
+	 document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/qualifiedComNew.js?version='+jsversion+'"><\/script>');
+	document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq/qualifiedAssetsNew.js?version='+jsversion+'"><\/script>'); 
+	/*document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/qualifiedComNew.min.js?version='+jsversion+'"><\/script>');
+	document.write('<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/qualifiedAssetsNew.min.js?version='+jsversion+'"><\/script>');*/
+	</script>
+</body>
+
+</html>

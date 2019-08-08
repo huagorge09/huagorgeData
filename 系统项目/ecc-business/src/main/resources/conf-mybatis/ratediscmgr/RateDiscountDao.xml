@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.ratediscmgr.RateDiscountDao">
+<resultMap type="bankDiscountVo" id="bankDiscountVo">
+	<result column="BNK_NO" property="bnkNo"/>
+	<result column="PRODUCT_ID" property="productId"/>
+	<result column="APKIND" property="apkind"/>
+	<result column="STRAMT" property="strAmt"/>
+	<result column="ENDAMT" property="endAmt"/>
+	<result column="STRDATE" property="strDate"/>
+	<result column="ENDDATE" property="endDate"/>
+	<result column="DISCOUNT" property="discount"/>
+	<result column="C_TIME" property="cTime"/>
+	<result column="C_MAN" property="cMan"/>
+	<result column="E_TIME" property="eTime"/>
+	<result column="E_MAN" property="eMan"/>
+	<result column="STATUS" property="status"/>
+	<result column="STATUS_NAME" property="statusName"/>
+	<result column="BNK_NAME" property="bnkName"/>
+	<result column="APKIND_NAME" property="apkindName"/>
+	<result column="C_MAN_NAME" property="cManName"/>
+	<result column="E_MAN_NAME" property="eManName"/>
+	<result column="PRODUCT_NAME" property="productName"/>
+	<result column="STRDATEFORMAT" property="strDateFormat"/>
+	<result column="ENDDATEFORMAT" property="endDateFormat"/>
+</resultMap>
+
+	<select id="rateDiscountListPage" resultMap="bankDiscountVo" parameterType="sparam">
+		SELECT BNK_NO,
+		       ECC_IBF_GET_BANK_NAME(BNK_NO) AS BNK_NAME,
+		       PRODUCT_ID,
+		       (SELECT FUNDNM FROM FUNDINFO WHERE ROWNUM = 1 AND FUNDID = PRODUCT_ID) AS PRODUCT_NAME,
+		       APKIND,
+		       IBF_GET_PARAMNAME('SYSTEM','APKIND',APKIND) AS APKIND_NAME,
+		       STRAMT,
+		       ENDAMT,
+		       STRDATE,
+		       ENDDATE,
+		       TO_CHAR(TO_DATE(STRDATE,'YYYYMMDD'),'YYYY-MM-DD') AS STRDATEFORMAT,
+       		   TO_CHAR(TO_DATE(ENDDATE,'YYYYMMDD'),'YYYY-MM-DD') AS ENDDATEFORMAT,
+		       TO_CHAR(DISCOUNT,'FM9999999999999990.00') AS DISCOUNT,
+		       TO_CHAR(C_TIME,'YYYY-MM-DD HH24:MI:SS') C_TIME,
+		       C_MAN,
+		       ECC_IBF_GET_EMPLOYEE_NAME(C_MAN) AS C_MAN_NAME,
+		       E_TIME,
+		       E_MAN,
+		       ECC_IBF_GET_EMPLOYEE_NAME(E_MAN) AS E_MAN_NAME,
+		       STATUS,
+		       IBF_GET_PARAMNAME('SYSTEM','ECCDATAST',STATUS) AS STATUS_NAME
+		  FROM BANK_DISCOUNT
+		  WHERE 1=1 
+		  AND STATUS <![CDATA[<>]]> 'D'
+		  <if test="sp.bankName != null and sp.bankName !='' ">
+			 	AND BNK_NO = #{sp.bankName}
+		  </if>
+		  <if test="sp.productId != null and sp.productId !='' ">
+			 	AND PRODUCT_ID = #{sp.productId}
+		  </if>
+		  <if test="sp.apkind != null and sp.apkind !='' ">
+			 	AND APKIND = #{sp.apkind}
+		  </if>
+		  
+		 ORDER BY C_TIME DESC 
+	</select>
+	
+	<select id="rateDiscountAllList" resultMap="bankDiscountVo" parameterType="sparam">
+		SELECT BNK_NO,
+		       ECC_IBF_GET_BANK_NAME(BNK_NO) AS BNK_NAME,
+		       PRODUCT_ID,
+		       (SELECT FUNDNM FROM FUNDINFO WHERE ROWNUM = 1 AND FUNDID = PRODUCT_ID) AS PRODUCT_NAME,
+		       APKIND,
+		       IBF_GET_PARAMNAME('SYSTEM','APKIND',APKIND) AS APKIND_NAME,
+		       STRAMT,
+		       ENDAMT,
+		       STRDATE,
+		       ENDDATE,
+		       TO_CHAR(TO_DATE(STRDATE,'YYYYMMDD'),'YYYY-MM-DD') AS STRDATEFORMAT,
+       		   TO_CHAR(TO_DATE(ENDDATE,'YYYYMMDD'),'YYYY-MM-DD') AS ENDDATEFORMAT,
+		       TO_CHAR(DISCOUNT,'FM9999999999999990.00') AS DISCOUNT,
+		       TO_CHAR(C_TIME,'YYYY-MM-DD HH24:MI:SS') C_TIME,
+		       C_MAN,
+		       ECC_IBF_GET_EMPLOYEE_NAME(C_MAN) AS C_MAN_NAME,
+		       E_TIME,
+		       E_MAN,
+		       ECC_IBF_GET_EMPLOYEE_NAME(E_MAN) AS E_MAN_NAME,
+		       STATUS,
+		       IBF_GET_PARAMNAME('SYSTEM','ECCDATAST',STATUS) AS STATUS_NAME
+		  FROM BANK_DISCOUNT
+		  WHERE 1=1 
+		  AND STATUS <![CDATA[<>]]> 'D'
+		  <if test="sp.bankName != null and sp.bankName !='' ">
+			 	AND BNK_NO = #{sp.bankName}
+		  </if>
+		  <if test="sp.productId != null and sp.productId !='' ">
+			 	AND PRODUCT_ID = #{sp.productId}
+		  </if>
+		  <if test="sp.apkind != null and sp.apkind !='' ">
+			 	AND APKIND = #{sp.apkind}
+		  </if>
+		 ORDER BY C_TIME DESC 
+	</select>
+	
+	<update id="delRateDiscountByParam">
+		 DELETE BANK_DISCOUNT BD WHERE BD.BNK_NO = #{bnkNo} AND BD.PRODUCT_ID = #{productId} AND BD.APKIND = #{apkind}
+	</update>
+	
+	<insert id="addRateDiscount">
+		INSERT INTO BANK_DISCOUNT
+		  (BNK_NO,
+		   PRODUCT_ID,
+		   APKIND,
+		   STRAMT,
+		   ENDAMT,
+		   STRDATE,
+		   ENDDATE,
+		   DISCOUNT,
+		   C_TIME,
+		   C_MAN,
+		   E_TIME,
+		   E_MAN,
+		   STATUS)
+		VALUES
+		  (
+		   #{bnkNo},
+		   #{productId},
+		   #{apkind},
+		   #{strAmt},
+		   #{endAmt},
+		   #{strDate},
+		   #{endDate},
+		   #{discount},
+		   SYSDATE,
+		   #{createId},
+		   SYSDATE,
+		   #{createId},
+		   #{status}
+		   )
+	</insert>
+	
+	<update id="updateRateDiscountByParam">
+		UPDATE BANK_DISCOUNT
+		   SET STRAMT   = #{strAmt},
+		       ENDAMT   = #{endAmt},
+		       STRDATE  = #{strDate},
+		       ENDDATE  = #{endDate},
+		       DISCOUNT = #{discount},
+		       E_TIME   = SYSDATE,
+		       E_MAN    = #{modifyId},
+		       STATUS   = #{status}
+		 WHERE BNK_NO = #{bnkNo}
+		   AND PRODUCT_ID = #{productId}
+		   AND APKIND = #{apkind}
+	</update>
+	
+</mapper>

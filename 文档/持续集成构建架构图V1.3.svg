@@ -1,0 +1,269 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" height="429" xmlns="http://www.w3.org/2000/svg" width="689" viewBox="0 0 689 429">
+    <style type="text/css"><![CDATA[
+.st1 {fill:#000000;font-family:微软雅黑 Light;font-size:6pt}
+.st3 {fill:#000000;font-family:微软雅黑 Light;font-size:7pt}
+.st4 {fill:#9c400e;font-family:微软雅黑 Light;font-size:6pt}
+.st5 {fill:#9c400e;font-family:微软雅黑 Light;font-size:7pt}
+.st6 {fill:#ffffff;font-family:微软雅黑 Light;font-size:6pt}
+.st2 {font-size:7pt}
+]]></style>
+    <defs>
+        <radialGradient cx="1096" cy="1095" fy="1095" gradientUnits="userSpaceOnUse" fx="1096" r="1549.1" id="rg1">
+            <stop offset="0" stop-color="#ffffff" stop-opacity="0.4"/>
+            <stop offset="0.7" stop-color="#ffffff" stop-opacity="0"/>
+            <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient cx="1048" cy="1047" fy="1047" gradientUnits="userSpaceOnUse" fx="1048" r="1481.8" id="rg2">
+            <stop offset="0" stop-color="#ffffff" stop-opacity="0.4"/>
+            <stop offset="0.7" stop-color="#ffffff" stop-opacity="0"/>
+            <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient cx="1000" cy="1000" fy="1000" gradientUnits="userSpaceOnUse" fx="1000" r="1414.4" id="rg3">
+            <stop offset="0" stop-color="#ffffff" stop-opacity="0.4"/>
+            <stop offset="0.7" stop-color="#ffffff" stop-opacity="0"/>
+            <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+        </radialGradient>
+    </defs>
+    <g transform="translate(-197.36,-124)">
+        <path transform="translate(411.77,348)" stroke="#ef957e" fill="#fbeae7" d="M323.9,204.5C326.3,204.5,328.2,202.5,328.2,200.1L328.2,4.4C328.2,2,326.3,0,323.9,0L4.4,0C2,0,0,2,0,4.4L0,200.1C0,202.5,2,204.5,4.4,204.5L323.9,204.5z" id="shape1"/>
+        <g transform="translate(645.83,195.57)">
+            <path stroke="#eb641b" fill="#eb641b" d="M4.1,0L29.9,0C32.2,0,34,1.8,34,4L34,54.2C34,56.3,32.2,58.1,29.9,58.1L4.1,58.1C1.8,58.1,0,56.3,0,54.2L0,4C0,1.8,1.8,0,4.1,0z" id="shape2"/>
+            <path transform="translate(5.67,6.56)" stroke="#ffffff" fill="#ffffff" d="M1.7,0L21,0C21.9,0,22.7,.7,22.7,1.6C22.7,2.5,21.9,3.3,21,3.3L1.7,3.3C.8,3.3,0,2.5,0,1.6C0,.7,.8,0,1.7,0z" stroke-width="0.333333" id="shape3"/>
+            <path transform="translate(5.67,15.12)" stroke="#ffffff" fill="#ffffff" d="M1.7,0L21,0C21.9,0,22.7,.7,22.7,1.6C22.7,2.5,21.9,3.3,21,3.3L1.7,3.3C.8,3.3,0,2.5,0,1.6C0,.7,.8,0,1.7,0z" stroke-width="0.333333" id="shape4"/>
+            <path transform="translate(5.67,23.68)" stroke="#ffffff" fill="#ffffff" d="M1.7,0L21,0C21.9,0,22.7,.7,22.7,1.6C22.7,2.5,21.9,3.3,21,3.3L1.7,3.3C.8,3.3,0,2.5,0,1.6C0,.7,.8,0,1.7,0z" stroke-width="0.333333" id="shape5"/>
+            <path transform="translate(13.18,46.73)" stroke="#ffffff" fill="#ffffff" d="M3.8,3.7C3.5,3.7,3.3,3.5,3.3,3.2L3.3,.5C3.3,.2,3.5,0,3.8,0C4.1,0,4.4,.2,4.4,.5L4.4,3.2C4.4,3.5,4.1,3.7,3.8,3.7zM5.9,.6C5.8,.6,5.7,.5,5.6,.5C5.3,.5,5.1,.8,5.1,1.1C5.1,1.2,5.1,1.3,5.2,1.3C5.2,1.4,5.2,1.4,5.3,1.5C5.3,1.5,5.3,1.5,5.4,1.5C5.5,1.6,5.6,1.7,5.8,1.8C6.3,2.3,6.6,3,6.6,3.7C6.6,4.4,6.3,5.1,5.8,5.6C5.2,6.1,4.6,6.4,3.8,6.4C3.1,6.4,2.4,6.1,1.9,5.6C1.4,5.1,1.1,4.4,1.1,3.7C1.1,3,1.4,2.3,1.9,1.8C2,1.7,2.1,1.6,2.3,1.5C2.3,1.5,2.3,1.5,2.4,1.5C2.4,1.4,2.4,1.4,2.5,1.3C2.5,1.3,2.6,1.2,2.6,1.1C2.6,.8,2.3,.5,2,.5C1.9,.5,1.8,.6,1.7,.6C.7,1.3,0,2.4,0,3.7C0,5.8,1.7,7.4,3.8,7.4C5.9,7.4,7.6,5.8,7.6,3.7C7.6,2.4,7,1.3,5.9,.6z" stroke-width="0.333333" id="shape6"/>
+            <path transform="translate(5.67,30.78)" stroke="#ffffff" fill="#ffffff" d="M.7,0L8.7,0C9,0,9.4,.7,9.4,1.6C9.4,2.5,9,3.3,8.7,3.3L.7,3.3C.3,3.3,0,2.5,0,1.6C0,.7,.3,0,.7,0z" stroke-width="0.333333" id="shape7"/>
+            <path transform="translate(18.99,30.78)" stroke="#ffffff" fill="#ffffff" d="M.7,0L8.7,0C9,0,9.4,.7,9.4,1.6C9.4,2.5,9,3.3,8.7,3.3L.7,3.3C.3,3.3,0,2.5,0,1.6C0,.7,.3,0,.7,0z" stroke-width="0.333333" id="shape8"/>
+            <path transform="translate(5.67,37.6)" stroke="#ffffff" fill="#ffffff" d="M.7,0L8.7,0C9,0,9.4,.7,9.4,1.6C9.4,2.5,9,3.3,8.7,3.3L.7,3.3C.3,3.3,0,2.5,0,1.6C0,.7,.3,0,.7,0z" stroke-width="0.333333" id="shape9"/>
+            <path transform="translate(18.99,37.6)" stroke="#ffffff" fill="#ffffff" d="M.7,0L8.7,0C9,0,9.4,.7,9.4,1.6C9.4,2.5,9,3.3,8.7,3.3L.7,3.3C.3,3.3,0,2.5,0,1.6C0,.7,.3,0,.7,0z" stroke-width="0.333333" id="shape10"/>
+        </g>
+        <g transform="translate(459.25,210.4)">
+            <path transform="translate(9.84,23.84)" stroke="#ef957e" fill="#ef957e" d="M3.4,0L10.3,0L10.3,3L3.4,3L3.4,0zM0,2.8L13.8,2.8L13.8,4.6L0,4.6L0,2.8z" id="shape11"/>
+            <path stroke="#eb641b" fill="#eb641b" d="M.5,0L33.4,0C33.8,0,34,.2,34,.5L34,23.5C34,23.8,33.8,24,33.4,24L.5,24C.2,24,0,23.8,0,23.5L0,.5C0,.2,.2,0,.5,0z" id="shape12"/>
+            <path transform="translate(1.26,1.05)" stroke="#ffffff" fill="#ffffff" d="M0,0L31.5,0L31.5,19.1L0,19.1L0,0z" id="shape13"/>
+        </g>
+        <g transform="translate(407.11,237.57)" id="shape14">
+            <text class="st1">
+                <tspan y="14.9" x="39.1">Development PC</tspan>
+                <tspan class="st2" y="27.9" x="17.1">Eclipse IDE with SonarLint</tspan>
+            </text>
+        </g>
+        <g transform="translate(593.7,253)" id="shape15">
+            <text class="st1">
+                <tspan y="14.9" x="27.1">Version Control System</tspan>
+                <tspan class="st2" y="27.9" x="48.1">&lt;&lt;SVN>></tspan>
+            </text>
+        </g>
+        <g transform="translate(250.5,422.94)">
+            <path stroke="#eb641b" fill="#eb641b" d="M4.1,0L29.9,0C32.2,0,34,1.8,34,4.1L34,56.5C34,58.8,32.2,60.6,29.9,60.6L4.1,60.6C1.8,60.6,0,58.8,0,56.5L0,4.1C0,1.8,1.8,0,4.1,0z" id="shape16"/>
+            <path transform="translate(5.67,6.85)" stroke="#ffffff" fill="#ffffff" d="M1.7,0L21,0C21.9,0,22.7,.8,22.7,1.7C22.7,2.6,21.9,3.4,21,3.4L1.7,3.4C.8,3.4,0,2.6,0,1.7C0,.8,.8,0,1.7,0z" stroke-width="0.333333" id="shape17"/>
+            <path transform="translate(5.67,15.77)" stroke="#ffffff" fill="#ffffff" d="M1.7,0L21,0C21.9,0,22.7,.8,22.7,1.7C22.7,2.6,21.9,3.4,21,3.4L1.7,3.4C.8,3.4,0,2.6,0,1.7C0,.8,.8,0,1.7,0z" stroke-width="0.333333" id="shape18"/>
+            <path transform="translate(5.67,24.7)" stroke="#ffffff" fill="#ffffff" d="M1.7,0L21,0C21.9,0,22.7,.8,22.7,1.7C22.7,2.6,21.9,3.4,21,3.4L1.7,3.4C.8,3.4,0,2.6,0,1.7C0,.8,.8,0,1.7,0z" stroke-width="0.333333" id="shape19"/>
+            <path transform="translate(13.18,48.75)" stroke="#ffffff" fill="#ffffff" d="M3.8,3.9C3.5,3.9,3.3,3.6,3.3,3.3L3.3,.6C3.3,.2,3.5,0,3.8,0C4.1,0,4.4,.2,4.4,.6L4.4,3.3C4.4,3.6,4.1,3.9,3.8,3.9zM5.9,.6C5.8,.6,5.7,.6,5.6,.6C5.3,.6,5.1,.8,5.1,1.1C5.1,1.2,5.1,1.3,5.2,1.4C5.2,1.5,5.2,1.5,5.3,1.5C5.3,1.6,5.3,1.6,5.4,1.6C5.5,1.7,5.6,1.8,5.8,1.9C6.3,2.4,6.6,3.1,6.6,3.9C6.6,4.6,6.3,5.3,5.8,5.8C5.2,6.3,4.6,6.6,3.8,6.6C3.1,6.6,2.4,6.3,1.9,5.8C1.4,5.3,1.1,4.6,1.1,3.9C1.1,3.1,1.4,2.4,1.9,1.9C2,1.8,2.1,1.7,2.3,1.6C2.3,1.6,2.3,1.6,2.4,1.5C2.4,1.5,2.4,1.5,2.5,1.4C2.5,1.3,2.6,1.2,2.6,1.1C2.6,.8,2.3,.6,2,.6C1.9,.6,1.8,.6,1.7,.6C.7,1.3,0,2.5,0,3.9C0,6,1.7,7.7,3.8,7.7C5.9,7.7,7.6,6,7.6,3.9C7.6,2.5,7,1.3,5.9,.6z" stroke-width="0.333333" id="shape20"/>
+            <path transform="translate(5.67,32.11)" stroke="#ffffff" fill="#ffffff" d="M.7,0L8.7,0C9,0,9.4,.8,9.4,1.7C9.4,2.6,9,3.4,8.7,3.4L.7,3.4C.3,3.4,0,2.6,0,1.7C0,.8,.3,0,.7,0z" stroke-width="0.333333" id="shape21"/>
+            <path transform="translate(18.99,32.11)" stroke="#ffffff" fill="#ffffff" d="M.7,0L8.7,0C9,0,9.4,.8,9.4,1.7C9.4,2.6,9,3.4,8.7,3.4L.7,3.4C.3,3.4,0,2.6,0,1.7C0,.8,.3,0,.7,0z" stroke-width="0.333333" id="shape22"/>
+            <path transform="translate(5.67,39.23)" stroke="#ffffff" fill="#ffffff" d="M.7,0L8.7,0C9,0,9.4,.8,9.4,1.7C9.4,2.6,9,3.4,8.7,3.4L.7,3.4C.3,3.4,0,2.6,0,1.7C0,.8,.3,0,.7,0z" stroke-width="0.333333" id="shape23"/>
+            <path transform="translate(18.99,39.23)" stroke="#ffffff" fill="#ffffff" d="M.7,0L8.7,0C9,0,9.4,.8,9.4,1.7C9.4,2.6,9,3.4,8.7,3.4L.7,3.4C.3,3.4,0,2.6,0,1.7C0,.8,.3,0,.7,0z" stroke-width="0.333333" id="shape24"/>
+        </g>
+        <g transform="translate(198.36,488.26)" id="shape25">
+            <text class="st3">
+                <tspan y="13.1" x="22.1">SonarQube Web Server</tspan>
+            </text>
+        </g>
+        <g transform="translate(645.83,439.02)">
+            <path transform="translate(9.84,23.84)" stroke="#ef957e" fill="#ef957e" d="M3.4,0L10.3,0L10.3,3L3.4,3L3.4,0zM0,2.8L13.8,2.8L13.8,4.6L0,4.6L0,2.8z" id="shape26"/>
+            <path stroke="#eb641b" fill="#eb641b" d="M.5,0L33.4,0C33.8,0,34,.2,34,.5L34,23.5C34,23.8,33.8,24,33.4,24L.5,24C.2,24,0,23.8,0,23.5L0,.5C0,.2,.2,0,.5,0z" id="shape27"/>
+            <path transform="translate(1.26,1.05)" stroke="#ffffff" fill="#ffffff" d="M0,0L31.5,0L31.5,19.1L0,19.1L0,0z" id="shape28"/>
+        </g>
+        <g transform="translate(579.32,469.57)" id="shape29">
+            <text class="st1">
+                <tspan class="st2" y="11.4" x="29">Maven Build Enverionment </tspan>
+                <tspan y="23.4" x="54">Management PC</tspan>
+                <tspan y="34.4" x="55">Virtual Machine</tspan>
+            </text>
+        </g>
+        <g transform="translate(645.83,453.25)" id="shape30">
+            <path stroke="#ad4711" fill="none" d="M0,0L-94.4,0"/>
+            <path stroke="#ad4711" stroke-linecap="round" fill="#ad4711" d="M-94.4,3L-100.4,0L-94.4,-3L-94.4,3" stroke-width="1"/>
+            <rect fill="#ffffff" height="11" y="-5.5" x="-68.1" width="36.8"/>
+            <text class="st4">
+                <tspan y="2.5" x="-68.2">Executing</tspan>
+            </text>
+        </g>
+        <g transform="translate(431.9,366.5)" id="shape31">
+            <path stroke="#ef957e" fill="#ffffff" d="M113.5,173.5L113.5,0L0,0L0,173.5L113.5,173.5z"/>
+            <text class="st5">
+                <tspan y="14" x="23.3">Run Maven Build</tspan>
+            </text>
+        </g>
+        <g transform="translate(453.07,393)" id="shape32">
+            <path stroke="#eb641b" fill="#eb641b" d="M67,20.4C69.3,20.4,71.2,18.5,71.2,16.2L71.2,4.1C71.2,1.8,69.3,0,67,0L4.1,0C1.8,0,0,1.8,0,4.1L0,16.2C0,18.5,1.8,20.4,4.1,20.4L67,20.4z"/>
+            <text class="st6">
+                <tspan y="12.7" x="21.1">Compile</tspan>
+            </text>
+        </g>
+        <g transform="translate(453.07,421.94)" id="shape33">
+            <path stroke="#eb641b" fill="#eb641b" d="M67,20.4C69.3,20.4,71.2,18.5,71.2,16.2L71.2,4.1C71.2,1.8,69.3,0,67,0L4.1,0C1.8,0,0,1.8,0,4.1L0,16.2C0,18.5,1.8,20.4,4.1,20.4L67,20.4z"/>
+            <text class="st6">
+                <tspan y="12.7" x="23.1">Testing</tspan>
+            </text>
+        </g>
+        <g transform="translate(453.07,450.88)" id="shape34">
+            <path stroke="#eb641b" fill="#eb641b" d="M67,20.4C69.3,20.4,71.2,18.5,71.2,16.2L71.2,4.1C71.2,1.8,69.3,0,67,0L4.1,0C1.8,0,0,1.8,0,4.1L0,16.2C0,18.5,1.8,20.4,4.1,20.4L67,20.4z"/>
+            <text class="st6">
+                <tspan y="12.7" x="27.1">PMD</tspan>
+            </text>
+        </g>
+        <g transform="translate(453.07,479.82)" id="shape35">
+            <path stroke="#eb641b" fill="#eb641b" d="M67,20.4C69.3,20.4,71.2,18.5,71.2,16.2L71.2,4.1C71.2,1.8,69.3,0,67,0L4.1,0C1.8,0,0,1.8,0,4.1L0,16.2C0,18.5,1.8,20.4,4.1,20.4L67,20.4z"/>
+            <text class="st6">
+                <tspan y="12.7" x="13.1">Check Codes</tspan>
+            </text>
+        </g>
+        <g transform="translate(279.01,224.63)" id="shape36">
+            <path stroke="#ad4711" fill="none" d="M0,0L174.2,-0"/>
+            <path stroke="#ad4711" stroke-linecap="round" fill="#ad4711" d="M174.2,-3L180.2,-0L174.2,3L174.2,-3" stroke-width="1"/>
+            <rect fill="#ffffff" height="11" y="-16.5" x="76.2" width="29.6"/>
+            <rect fill="#ffffff" height="11" y="-5.5" x="87.5" width="8.2"/>
+            <rect fill="#ffffff" height="11" y="5.5" x="52.7" width="76.7"/>
+            <text class="st4">
+                <tspan y="-8.5" x="75.6">Coding </tspan>
+                <tspan y="2.5" x="86.6">&amp; </tspan>
+                <tspan y="13.5" x="52.6">Run Sonarlint locally</tspan>
+            </text>
+        </g>
+        <g transform="translate(662.84,253.68)" id="shape37">
+            <path stroke="#ad4711" fill="none" d="M0,0L-0,179.3"/>
+            <path stroke="#ad4711" stroke-linecap="round" fill="#ad4711" d="M3,179.3L-0,185.3L-3,179.3L3,179.3" stroke-width="1"/>
+            <rect fill="#ffffff" height="11" y="76.2" x="-14" width="29.6"/>
+            <rect fill="#ffffff" height="11" y="87.2" x="-1.8" width="6.1"/>
+            <rect fill="#ffffff" height="11" y="98.2" x="-31.4" width="64.4"/>
+            <text class="st4">
+                <tspan y="84.2" x="-14.5">Update </tspan>
+                <tspan y="95.2" x="-2.5">&amp;</tspan>
+                <tspan y="106.2" x="-31.5">Get Lastest Codes</tspan>
+            </text>
+        </g>
+        <g transform="translate(431.9,453.25)" id="shape38">
+            <path stroke="#ad4711" fill="none" d="M0,0L-141.4,-0"/>
+            <path stroke="#ad4711" stroke-linecap="round" fill="#ad4711" d="M-141.4,3L-147.4,-0L-141.4,-3L-141.4,3" stroke-width="1"/>
+            <rect fill="#ffffff" height="11" y="-5.5" x="-103.6" width="61.3"/>
+            <text class="st4">
+                <tspan y="2.5" x="-103.7">Deploy to Server</tspan>
+            </text>
+        </g>
+        <g transform="translate(695.5,423.94)">
+            <path stroke="#ef957e" fill="#ffffff" d="M0,11.5C0,5.1,5.1,0,11.5,0C17.9,0,23,5.1,23,11.5C23,17.8,17.9,23,11.5,23C5.1,23,0,17.8,0,11.5z" id="shape39"/>
+            <path transform="translate(0.54,0.55)" fill="url(#rg1)" d="M0,11C0,4.9,4.9,0,11,0C17,0,21.9,4.9,21.9,11C21.9,17,17,21.9,11,21.9C4.9,21.9,0,17,0,11z" id="shape40"/>
+            <text class="st4">
+                <tspan y="14" x="9">4</tspan>
+            </text>
+        </g>
+        <g transform="translate(621,322)">
+            <path stroke="#ef957e" fill="#ffffff" d="M0,11C0,4.9,4.9,0,11,0C17.1,0,22,4.9,22,11C22,17.1,17.1,22,11,22C4.9,22,0,17.1,0,11z" id="shape41"/>
+            <path transform="translate(0.52,0.53)" fill="url(#rg2)" d="M0,10.5C0,4.7,4.7,0,10.5,0C16.3,0,21,4.7,21,10.5C21,16.3,16.3,20.9,10.5,20.9C4.7,20.9,0,16.3,0,10.5z" id="shape42"/>
+            <text class="st4">
+                <tspan y="13.5" x="9">3</tspan>
+            </text>
+        </g>
+        <g transform="translate(421.51,358.6)">
+            <path stroke="#ef957e" fill="#ffffff" d="M0,11C0,4.9,4.9,0,11,0C17.1,0,22,4.9,22,11C22,17.1,17.1,22,11,22C4.9,22,0,17.1,0,11z" id="shape43"/>
+            <path transform="translate(0.52,0.53)" fill="url(#rg2)" d="M0,10.5C0,4.7,4.7,0,10.5,0C16.3,0,21,4.7,21,10.5C21,16.3,16.3,20.9,10.5,20.9C4.7,20.9,0,16.3,0,10.5z" id="shape44"/>
+            <text class="st4">
+                <tspan y="13.5" x="9">5</tspan>
+            </text>
+        </g>
+        <g transform="translate(311.65,423.94)">
+            <path stroke="#ef957e" fill="#ffffff" d="M0,11C0,4.9,4.9,0,11,0C17.1,0,22,4.9,22,11C22,17.1,17.1,22,11,22C4.9,22,0,17.1,0,11z" id="shape45"/>
+            <path transform="translate(0.52,0.53)" fill="url(#rg2)" d="M0,10.5C0,4.7,4.7,0,10.5,0C16.3,0,21,4.7,21,10.5C21,16.3,16.3,20.9,10.5,20.9C4.7,20.9,0,16.3,0,10.5z" id="shape46"/>
+            <text class="st4">
+                <tspan y="13.5" x="9">6</tspan>
+            </text>
+        </g>
+        <g transform="translate(231,322)">
+            <path stroke="#ef957e" fill="#ffffff" d="M0,11C0,4.9,4.9,0,11,0C17.1,0,22,4.9,22,11C22,17.1,17.1,22,11,22C4.9,22,0,17.1,0,11z" id="shape47"/>
+            <path transform="translate(0.52,0.53)" fill="url(#rg2)" d="M0,10.5C0,4.7,4.7,0,10.5,0C16.3,0,21,4.7,21,10.5C21,16.3,16.3,20.9,10.5,20.9C4.7,20.9,0,16.3,0,10.5z" id="shape48"/>
+            <text class="st4">
+                <tspan y="13.5" x="9">7</tspan>
+            </text>
+        </g>
+        <g transform="translate(312.65,199.91)">
+            <path stroke="#ef957e" fill="#ffffff" d="M0,10.5C0,4.7,4.7,0,10.5,0C16.3,0,21,4.7,21,10.5C21,16.3,16.3,21,10.5,21C4.7,21,0,16.3,0,10.5z" id="shape49"/>
+            <path transform="translate(0.5,0.5)" fill="url(#rg3)" d="M0,10C0,4.5,4.5,0,10,0C15.5,0,20,4.5,20,10C20,15.5,15.5,20,10,20C4.5,20,0,15.5,0,10z" id="shape50"/>
+            <text class="st4">
+                <tspan y="13" x="9">1</tspan>
+            </text>
+        </g>
+        <g transform="translate(313.15,125)">
+            <path stroke="#ef957e" fill="#ffffff" d="M0,11C0,4.9,4.9,0,11,0C17.1,0,22,4.9,22,11C22,17.1,17.1,22,11,22C4.9,22,0,17.1,0,11z" id="shape51"/>
+            <path transform="translate(0.52,0.53)" fill="url(#rg2)" d="M0,10.5C0,4.7,4.7,0,10.5,0C16.3,0,21,4.7,21,10.5C21,16.3,16.3,20.9,10.5,20.9C4.7,20.9,0,16.3,0,10.5z" id="shape52"/>
+            <text class="st4">
+                <tspan y="13.5" x="9">2</tspan>
+            </text>
+        </g>
+        <g transform="translate(493.26,224.63)" id="shape53">
+            <path stroke="#ad4711" fill="none" d="M0,0L146.6,0"/>
+            <path stroke="#ad4711" stroke-linecap="round" fill="#ad4711" d="M146.6,-3L152.6,0L146.6,3L146.6,-3" stroke-width="1"/>
+            <rect fill="#ffffff" height="11" y="-16.2" x="20.1" width="93"/>
+            <text class="st4">
+                <tspan y="-8.2" x="20">Send codes to SVN server</tspan>
+            </text>
+        </g>
+        <g transform="translate(267.51,247.63)" id="shape54">
+            <path stroke="#ad4711" fill="none" d="M0,0L-0,169.3"/>
+            <path stroke="#ad4711" stroke-linecap="round" fill="#ad4711" d="M3,169.3L-0,175.3L-3,169.3L3,169.3" stroke-width="1"/>
+            <rect fill="#ffffff" height="11" y="71.2" x="-9.6" width="21.5"/>
+            <rect fill="#ffffff" height="11" y="82.2" x="-2.5" width="6.1"/>
+            <rect fill="#ffffff" height="11" y="93.2" x="-21.9" width="45"/>
+            <text class="st4">
+                <tspan y="79.2" x="-10">Login</tspan>
+                <tspan y="90.2" x="-3">&amp;</tspan>
+                <tspan y="101.2" x="-22">Check Issues</tspan>
+            </text>
+        </g>
+        <g transform="translate(805.32,453.25)" id="shape55">
+            <path stroke="#ad4711" fill="none" d="M0,0L-119.5,0"/>
+            <path stroke="#ad4711" stroke-linecap="round" fill="#ad4711" d="M-119.5,3L-125.5,0L-119.5,-3L-119.5,3" stroke-width="1"/>
+            <rect fill="#ffffff" height="11" y="-11" x="-94.4" width="65.4"/>
+            <rect fill="#ffffff" height="11" y="0" x="-105.6" width="87.9"/>
+            <text class="st4">
+                <tspan y="-3" x="-94.7">Run Maven Build </tspan>
+                <tspan y="8" x="-105.7">with SonarQube Plugin</tspan>
+            </text>
+        </g>
+        <g transform="translate(198.36,237.57)" id="shape56">
+            <text class="st1">
+                <tspan class="st2" y="22.4" x="47.1">Developers</tspan>
+            </text>
+        </g>
+        <g transform="translate(747.52,461.32)" id="shape57">
+            <text class="st1">
+                <tspan class="st2" y="22.4" x="51.1">Manager</tspan>
+            </text>
+        </g>
+        <g transform="translate(267.51,201.63)" id="shape58">
+            <path stroke="#ad4711" fill="none" d="M0,0L0,-43.6C0,-47.5,3.1,-50.6,7,-50.6L201.5,-50.6C205.4,-50.6,208.5,-47.5,208.5,-43.6L208.5,4.4"/>
+            <path stroke="#ad4711" stroke-linecap="round" fill="#ad4711" d="M211.5,4.4L208.5,10.4L205.5,4.4L211.5,4.4" stroke-width="1"/>
+            <rect fill="#ffffff" height="11" y="-74.1" x="84.5" width="62.3"/>
+            <rect fill="#ffffff" height="11" y="-63.1" x="108" width="15.3"/>
+            <text class="st4">
+                <tspan y="-66.1" x="84.4">Submit codes to </tspan>
+                <tspan y="-55.1" x="107.4">SVN</tspan>
+            </text>
+        </g>
+        <g transform="translate(453.07,508.39)" id="shape59">
+            <path stroke="#eb641b" fill="#eb641b" d="M67,20.4C69.3,20.4,71.2,18.5,71.2,16.2L71.2,4.1C71.2,1.8,69.3,0,67,0L4.1,0C1.8,0,0,1.8,0,4.1L0,16.2C0,18.5,1.8,20.4,4.1,20.4L67,20.4z"/>
+            <text class="st6">
+                <tspan y="12.7" x="30.1">……</tspan>
+            </text>
+        </g>
+        <g transform="translate(805.32,434.35)">
+            <path transform="translate(7.53,-0.1)" stroke="#eb641b" fill="#eb641b" d="M0,3.7C0,1.7,1.9,0,4.3,0C6.6,0,8.5,1.7,8.5,3.7C8.5,5.8,6.6,7.5,4.3,7.5C1.9,7.5,0,5.8,0,3.7z" id="shape60"/>
+            <path transform="translate(0,7.23)" stroke="#eb641b" fill="#eb641b" d="M0,10.4C0,10.4,4.3,0,4.3,0C12.1,1.5,19,0,19,0L22.8,10.4L20.1,11.7L17.1,4.1L17.1,13.4L21.1,30.3L16.9,30.3L11.7,16.2L6.6,30.3L2.2,30.5L6.5,13.4L6.5,4.4L3.3,11.7L0,10.4z" id="shape61"/>
+        </g>
+        <g transform="translate(256.33,205.73)">
+            <path transform="translate(7.53,-0.1)" stroke="#eb641b" fill="#eb641b" d="M0,3.7C0,1.7,1.9,0,4.3,0C6.6,0,8.5,1.7,8.5,3.7C8.5,5.8,6.6,7.5,4.3,7.5C1.9,7.5,0,5.8,0,3.7z" id="shape62"/>
+            <path transform="translate(0,7.23)" stroke="#eb641b" fill="#eb641b" d="M0,10.4C0,10.4,4.3,0,4.3,0C12.1,1.5,19,0,19,0L22.8,10.4L20.1,11.7L17.1,4.1L17.1,13.4L21.1,30.3L16.9,30.3L11.7,16.2L6.6,30.3L2.2,30.5L6.5,13.4L6.5,4.4L3.3,11.7L0,10.4z" id="shape63"/>
+        </g>
+    </g>
+</svg>

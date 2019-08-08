@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cmwa.ecc.business.dao.mail.MailDao">
+
+	<resultMap id="mailSendRecord" type="com.cmwa.ecc.business.entity.mail.MailSendRecord">
+		<result property="msrId" column="MSR_ID" />
+		<result property="confId" column="CONF_ID" />
+		<result property="from" column="MS_FROM" />
+		<result property="to" column="MS_TO" />
+		<result property="cc" column="MS_CC" />
+		<result property="subject" column="MS_HEAD" />
+		<result property="content" column="MS_BODY" jdbcType="CLOB" javaType="java.lang.String"/>
+		<result property="attachs" column="MS_ATTACHS" />
+		<result property="serverIp" column="SERVER_IP" />
+		<result property="serverName" column="SERVER_NAME" />
+		<result property="time" column="MS_TIME" />
+		<result property="createDate" column="CREATE_DATE" />
+		<result property="result" column="MS_RESULT" />
+	</resultMap>
+
+	<resultMap id="mailAppend" type="com.cmwa.ecc.business.entity.mail.MailAppend">
+		<result property="appendId" column="APPEND_ID" />
+		<result property="sourceId" column="SOURCE_ID" />
+		<result property="category" column="APPEND_CATEGORY" />
+		<result property="configId" column="CONFIG_ID" />
+	</resultMap>
+	
+	<resultMap id="mailAppendDetail" type="com.cmwa.ecc.business.entity.mail.MailAppendDetail">
+		<result property="appendId" column="APPEND_ID" />
+		<result property="sourceId" column="SOURCE_ID" />
+		<result property="category" column="APPEND_CATEGORY" />
+		<result property="configId" column="CONFIG_ID" />
+		<result property="val" column="VAL" />
+		<result property="valNm" column="VAL_NM" />
+		<result property="mailPath" column="MAIL_PATH" />
+	</resultMap>
+	
+	<resultMap id="mailConfig" type="com.cmwa.ecc.business.entity.mail.MailConfig">
+		<result property="mcId" column="MC_ID" />
+		<result property="category" column="CONFIG_CATEGORY" />
+		<result property="head" column="TEMPLATE_HEAD" />
+		<result property="body" column="TEMPLATE_BODY" jdbcType="CLOB" javaType="java.lang.String"/>
+		<result property="createDate" column="CREATE_DATE" />
+		<result property="modifiDate" column="MODIFI_DATE" />
+		<result property="remark" column="REMARK" />
+		<result property="result" column="RESULT" />
+		<result property="runStatus" column="RUN_STATUS" />
+		<result property="runStatusNM" column="RUN_STATUS_NAME" />
+	</resultMap>
+	<resultMap id="mailConfPath" type="com.cmwa.ecc.business.entity.mail.MailConfPath">
+		<result property="mailId" column="MAIL_ID" />
+		<result property="confId" column="CONF_ID" />
+		<result property="mailTo" column="MAIL_TO" />
+		<result property="mailCc" column="MAIL_CC" />
+		<result property="createDate" column="CREATE_DATE" />
+		<result property="modifyDate" column="MODIFY_DATE" />
+	</resultMap>
+
+	<insert id="addRecord" parameterType="com.cmwa.ecc.business.entity.mail.MailSendRecord">
+		<selectKey resultType="String" order="BEFORE" keyProperty="msrId">
+			SELECT TO_CHAR(SYSDATE,'YYMMDD')||ECC_SEQ_MAIL_SEND_RECORD_ID.NEXTVAL AS msrId FROM DUAL
+		</selectKey>
+
+		INSERT INTO T_ECC_MAIL_SEND_RECORD
+		(
+			MSR_ID,
+			CONF_ID,
+			MS_FROM,
+			MS_TO,
+			MS_CC,
+			MS_HEAD,
+			MS_BODY,
+			MS_ATTACHS,
+			SERVER_IP,
+			SERVER_NAME,
+			MS_TIME,
+			CREATE_DATE,
+			MS_SCC
+		)
+	VALUES
+		(
+			#{msrId},
+			#{confId},
+			#{from},
+			#{to},
+			#{cc},
+			#{subject},
+			#{content},
+			#{attachs},
+			#{serverIp},
+			#{serverName},
+			TO_CHAR(SYSDATE,'YYYYMMDD'),
+			SYSDATE,
+			#{scc}
+		)
+	</insert>
+
+	<update id="setResult" parameterType="java.lang.String">
+		UPDATE T_ECC_MAIL_SEND_RECORD SET MS_RESULT=#{result} WHERE MSR_ID=#{id}
+	</update>
+	
+	<delete id="deleteAppend" parameterType="java.lang.String">
+		DELETE T_ECC_MAIL_APPEND T WHERE T.CONFIG_ID =#{configId}
+	</delete>
+	
+	<update id="updConfig" parameterType="com.cmwa.ecc.business.entity.mail.MailConfig">
+		UPDATE T_ECC_MAIL_CONFIG T 
+			SET
+			    T.TEMPLATE_HEAD =#{head},
+			    T.TEMPLATE_BODY =#{body},
+			    T.MODIFI_DATE =SYSDATE,
+			    T.REMARK =#{remark}
+			WHERE T.MC_ID =#{mcId}
+	</update>
+	
+	<insert id="addAppend" parameterType="com.cmwa.ecc.business.entity.mail.MailAppend">
+		<foreach collection="list" item="item" index="index"  open="begin" close=";end;" separator=";" >  
+			INSERT INTO T_ECC_MAIL_APPEND
+					(	APPEND_ID,
+					 	SOURCE_ID,
+					 	APPEND_CATEGORY,
+					 	CONFIG_ID
+					)
+					VALUES(
+					 	TO_CHAR(SYSDATE,'YYMMDD')||ECC_SEQ_MAIL_APPEND_ID.NEXTVAL,
+					 	#{item.sourceId},
+					 	#{item.category},
+					 	#{item.configId}
+					)
+		</foreach>
+	</insert>
+	
+	<select id="queryMailConfigListPage" resultMap="mailConfig">
+		SELECT T.MC_ID,
+		       T.CONFIG_CATEGORY,
+		       T.TEMPLATE_HEAD,
+		       T.TEMPLATE_BODY,
+		       T.REMARK,
+		       T.RUN_STATUS,
+			   ECC_IBF_GET_DCTNAME_EX('MAIL_RUN_STATUS',T.RUN_STATUS) AS RUN_STATUS_NAME,
+		       TO_CHAR(T.MODIFI_DATE,'YYYY-MM-DD hh24:mi:ss') MODIFI_DATE,
+		       (SELECT MS_RESULT FROM 
+		               (SELECT TR.MS_RESULT,TR.CONF_ID
+		                  FROM T_ECC_MAIL_SEND_RECORD TR ORDER BY TR.CREATE_DATE DESC
+		               ) TEMP
+		               WHERE ROWNUM = 1 AND TEMP.CONF_ID = T.MC_ID
+		          ) RESULT
+		  FROM T_ECC_MAIL_CONFIG T
+		 WHERE 1 = 1
+         <if test="sp.title != null and sp.title !='' ">
+		  AND   T.CONFIG_CATEGORY LIKE '%'||#{sp.title}||'%' 
+		 </if>
+	</select>
+	
+	<select id="queryMailConfig" parameterType="java.lang.String" resultMap="mailConfig">
+		SELECT T.MC_ID,
+			   T.CONFIG_CATEGORY,
+			   T.TEMPLATE_HEAD,
+			   T.TEMPLATE_BODY,
+			   T.RUN_STATUS,
+			   ECC_IBF_GET_DCTNAME_EX('MAIL_RUN_STATUS',T.RUN_STATUS) AS RUN_STATUS_NAME,
+			   (TO_CHAR(T.CREATE_DATE,'YYYY-MM-DD HH24:MI:SS')) CREATE_DATE,
+			   (TO_CHAR(T.MODIFI_DATE,'YYYY-MM-DD HH24:MI:SS')) MODIFI_DATE,
+			   T.REMARK
+			   FROM T_ECC_MAIL_CONFIG T WHERE T.MC_ID =#{configId}
+	</select>
+	
+	
+	<select id="queryMailAppendList" parameterType="java.lang.String" resultMap="mailAppendDetail">
+		SELECT T.APPEND_ID,
+			   T.SOURCE_ID,
+			   T.APPEND_CATEGORY,
+			   T.CONFIG_ID,
+			   (SELECT U.EMPID FROM T_ECC_EMPLOYEE U WHERE U.EMPID=T.SOURCE_ID) VAL,
+         	   (SELECT U.EMNAME FROM T_ECC_EMPLOYEE U WHERE U.EMPID=T.SOURCE_ID) VAL_NM,
+         	   (SELECT TE.EMPEMAIL FROM T_ECC_EMPLOYEEE TE WHERE TE.EMPID = T.SOURCE_ID) MAIL_PATH
+		  FROM T_ECC_MAIL_APPEND T  
+		 WHERE T.CONFIG_ID=#{configId} 
+		   AND T.APPEND_CATEGORY=#{category}
+	</select>
+	
+	<update id="mailStatusOperate">
+		UPDATE T_ECC_MAIL_CONFIG SET RUN_STATUS = #{runStatus}, MODIFI_DATE = SYSDATE WHERE MC_ID = #{mcId}
+	</update>
+	
+	<select id="queryMailPath" parameterType="java.lang.String" resultType="com.cmwa.ecc.business.entity.mail.MailConfPath">
+		 SELECT T.MAIL_TO as mailTo,
+		       	T.MAIL_CC as mailCc,
+		       	T.MAIL_SCC as mailScc
+		   FROM T_MAIL_CONF_MAILPATH T
+		  WHERE T.CONF_ID = #{confId}
+	</select>
+	
+	<insert id="addMailPath" parameterType="com.cmwa.ecc.business.entity.mail.MailConfPath">
+	INSERT INTO 
+	       T_MAIL_CONF_MAILPATH(
+		       MAIL_ID,
+		       CONF_ID,
+		       MAIL_CC,
+		       MAIL_SCC,
+		       CREATE_DATE,
+		       MODIFY_DATE
+	       ) VALUES(
+		       (TO_CHAR(SYSDATE,'YYYYMMDD')|| LPAD(ECC_SEQ_CONF_MAILPATH_ID.NEXTVAL, 6,'0')),
+		       #{confId},
+		       #{mailCc},
+		       #{mailScc},
+		       SYSDATE,
+		       SYSDATE
+	       )
+	</insert>
+	
+	<update id="updateMailPath" parameterType="com.cmwa.ecc.business.entity.mail.MailConfPath">
+		UPDATE 
+			   T_MAIL_CONF_MAILPATH 
+		   SET MAIL_CC=#{mailCc},
+		   	   MODIFY_DATE = SYSDATE
+		 WHERE CONF_ID=#{confId}
+	</update>
+	<delete id="deleteMailPath" parameterType="java.lang.String">
+		DELETE T_MAIL_CONF_MAILPATH WHERE CONF_ID=#{confId}
+	</delete>
+</mapper>

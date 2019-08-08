@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>七夕活动-奖品已派完</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/qixi/qixiStyle.css">
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jquery.min.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commons.js"></script>
+</head>
+<body>
+<section class="qx-page04-bg"><div class="qx-page04-bg-img"></div></section>
+<section class="page">
+<!--#include virtual="/WeixinService/headerOrFooter/otherHeader.shtml"-->
+    <div class=" page04">
+        <div class="page04-con">
+            <img class="page04-con01" src="/WeixinWeb/WeixinWeb_Images/activity/qixi/pic_defeat.png" />
+            <span class="page04-con02 over">奖品已派完！</span>
+            <span class="page04-con03">很遗憾！奖品已派完！<em>下一次下手快点哦！</em></span>
+        </div>
+        <div class="page04-con-bottom"><a href="#"><img src="/WeixinWeb/WeixinWeb_Images/activity/qixi/btn_return.png" alt=""></a></div>
+    </div>
+    <!--#include virtual="/WeixinService/activity/magpieFestivalActivity/magpieFestivalShare.shtml"--> 
+</section>
+</body>
+</html>

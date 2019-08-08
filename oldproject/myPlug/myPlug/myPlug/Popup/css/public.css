@@ -1,0 +1,237 @@
+@charset "UTF-8";
+/* reset */
+/*初始化样式*/
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-appearance: none;
+	outline: none;
+	word-break: break-all;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+*:not(input, textarea) {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+}
+
+html,
+body {
+	color: #333;
+	margin: 0 auto;
+	font-family: Arial, "Microsoft YaHei";
+	font-size: 50px;
+}
+
+input {
+	-webkit-user-select: initial;
+	font-family: Arial, "Microsoft YaHei";
+	border: none;
+}
+
+i {
+	font-style: normal
+}
+
+a {
+	text-decoration: none;
+	color: #ffffdd;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a:active {
+	text-decoration: none;
+}
+
+em {
+	font-style: normal
+}
+
+ul,
+ol,
+li {
+	list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: normal;
+}
+
+img {
+	border: 0;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.clearFloat:after,
+.clearFloat:before {
+	content: "";
+	display: table;
+}
+
+.clearFloat:after {
+	clear: both;
+}
+
+.dswkb {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-box;
+	display: box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-box-align: center;
+	-moz-box-align: center;
+	-ms-box-align: center;
+	box-align: center;
+	position: relative;
+}
+
+.flex1 {
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	-ms-box-flex: 1;
+	box-flex: 1;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.center {
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+/*弹窗*/
+.mask{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top:0;
+    z-index: 9998;
+    background-color: rgba(0,0,0,0.5);
+    moz-user-select: -moz-none;
+    -moz-user-select: none;
+    -o-user-select:none;
+    -khtml-user-select:none;
+    -webkit-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+.dialog .alertPopup{
+    position: absolute;
+    width: 70%;
+    /*height: auto;*/
+    background-color: #fff;
+    top:50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    margin: auto;
+    -webkit-border-radius: 0.1rem;
+    -moz-border-radius: 0.1rem;
+    border-radius: 0.1rem;
+    padding-top: 0.5rem;
+    z-index: 9999;
+}
+.dialog .alertPopup .title{
+    line-height: 0.6rem;
+    text-align: center;
+    font-size: 0.4rem;
+    color: #333;
+}
+.dialog .alertPopup .contain{
+    text-align: center;
+    padding: 0.2rem 0.5rem 0.5rem 0.5rem;
+    font-size: 0.3rem;
+    color: #777;
+    line-height: 1.7;
+}
+.dialog .alertPopup .btn{
+    text-align: center;
+    height: 0.8rem;
+    /*background-color: red;*/
+    line-height: 0.8rem;
+    border-top: solid 1px #999;
+    font-size: 0.36rem;
+    color: #ff3f61;
+}
+.dialog .single .btn div{
+    display: inline-block;
+    height: 100%;
+    width: 50%;
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.dialog .single .btn div:first-child{
+    border-right: solid 1px #999;
+}
+.tipBox {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 999;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.autoBox {
+	background-color: rgba(0, 0, 0, 0.8);
+	width: 60%;
+	padding: 0.2rem;
+	color: #fff;
+	font-size: 0.28rem;
+	text-align: center;
+	line-height: 0.4rem;
+	vertical-align: middle;
+	-webkit-border-radius: 0.1rem;
+	border-radius: 0.1rem;
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+	-o-transition: 0.5s;
+	transition: 0.5s;
+}

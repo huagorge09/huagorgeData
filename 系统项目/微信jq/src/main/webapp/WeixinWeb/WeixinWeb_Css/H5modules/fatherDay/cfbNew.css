@@ -1,0 +1,1204 @@
+﻿body {
+	color: #333;
+	margin: 0 auto;
+	font-family: Arial, "Microsoft YaHei";
+	font-size: 50px;
+	background: #f1f5ff;
+	height: auto;
+	/* padding-bottom: 1rem; */
+}
+
+.center {
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.clearFloat:after,
+.clearFloat:before {
+	content: "";
+	display: table;
+}
+
+.clearFloat:after {
+	clear: both;
+}
+
+#errorRemark {
+	font-size: .28rem;
+}
+
+.banner {
+	height:12.98rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/fatherDay/fqj_01.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.guide2 {
+    height: 4.25rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/proBg.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+
+
+.recommendBox {
+	width: 100%;
+	height: 4.61rem;
+	margin: 0 auto;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/pBg.jpg) no-repeat;
+	background-size: 100% 100%;
+	background-repeat: repeat-y;
+	margin-top: -.01rem;
+}
+
+.recommendBox>h2 {
+	font-size: .36rem;
+	text-align: center;
+	color: #fff;
+	line-height: .67rem;
+}
+
+.item li {
+	width: 6.1rem;
+	margin: 0 auto;
+}
+
+.proInfo {
+	padding-bottom: .15rem;
+	padding-top: .15rem;
+}
+
+.item li>p {
+	font-size: .24rem;
+	color: #999;
+	line-height: .39rem;
+	margin-bottom: .15rem;
+}
+
+.item li:last-child {
+	margin-bottom: 0;
+}
+
+.item h2 {
+	font-size: .36rem;
+	line-height: .65rem;
+	color: #22293b;
+	padding-top: .4rem;
+	font-weight: bold;
+}
+
+.item .info {
+	float: left;
+	position: relative;
+}
+
+.item .info>p {
+	font-size: .28rem;
+	line-height: .55rem;
+}
+
+.item .info .line {
+	position: absolute;
+	height: .86rem;
+	width: 2px;
+	right: 0;
+	top: .1rem;
+	border-right: 1px #eedec8 solid;
+}
+
+.item .info:nth-child(1),
+.item .info:nth-child(3) {
+	width: 31%;
+	text-align: center;
+}
+
+.item .info {
+	width: 38%;
+	text-align: center;
+}
+
+.item .info:nth-child(1) {
+	text-align: center;
+}
+
+.item .info p:nth-child(1) {
+	font-size: .4rem;
+	font-weight: bold;
+}
+
+.item .info p:nth-child(1) span {
+	font-size: .26rem;
+}
+
+
+.info p:nth-child(1) {
+	font-size: .28rem;
+	color: #bf192b;
+}
+
+.info p:nth-child(2) span {
+	font-size: .24rem;
+	color: #d4b282;
+}
+
+.info p:nth-child(2) {
+	font-size: .24rem;
+	color: #aeaeae;
+	margin-top: -.1rem;
+}
+
+.recommendBox .secondItem {
+	padding-top: .28rem;
+}
+
+.item .tips {
+	padding-top: .1rem;
+	margin-left: -.18rem;
+}
+
+.item .tips p:nth-child(1) {
+	font-size: .19rem;
+	line-height: .24rem;
+	color: #cb9d82;
+	margin-bottom: .1rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/star.png) no-repeat;
+	background-size: .16rem .16rem;
+	padding-left: .2rem;
+	background-position-y: .01rem;
+	margin-top: .2rem;
+}
+
+.item .tips p:nth-child(2) {
+	font-size: .2rem;
+	line-height: .28rem;
+	color: #646464;
+	margin-top: .02rem;
+	margin-bottom: .05rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/star1.png) no-repeat;
+	background-size: .2rem .19rem;
+	background-position: .08rem -0.02rem;
+	padding-left: .3rem;
+	margin-bottom: .1rem;
+}
+
+.item .tips p:nth-child(3) {
+	font-size: .2rem;
+	color: #c3a68f;
+	line-height: .28rem;
+	padding-left: .3rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/star.png) no-repeat;
+	background-size: .2rem .19rem;
+	background-position: .04rem -.02rem;
+}
+
+.recommendBox>p {
+	color: #956122;
+	line-height: .65rem;
+	font-size: .22rem;
+	padding-left: .36rem;
+	font-weight: bold;
+	margin-top: .1rem;
+}
+
+ .once {
+    display: block;
+    width: 5.5rem;
+    height: .85rem;
+    text-align: center;
+    line-height: .85rem;
+    font-size: .36rem;
+    color: #fff;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/btn.png) no-repeat;
+    background-size: 100% 100%;
+    margin: 0 auto;
+    
+}
+
+.advantage {
+	height: 8.06rem;
+	margin: 0 auto;
+	background: #404553;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/advantage.jpg) no-repeat;
+	background-size: 100% 100%;
+	margin-top: -.01rem;
+	padding-top: 1.6rem;
+}
+
+.advantage ul {
+	margin-top: -.2rem;
+}
+
+.advantage h3 {
+	font-size: .26rem;
+	color: #c19550;
+	text-align: center;
+	margin-top: .05rem;
+}
+
+.advantage li {
+	padding-bottom: .35rem;
+	padding: .18rem 0 .15rem 2rem;
+}
+
+.advantage li:nth-child(1) {
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/icon1.png) no-repeat .36rem;
+	background-size: 1.06rem 1.06rem;
+	background-position-x: .65rem;
+}
+
+.advantage li:nth-child(2) {
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/icon2.png) no-repeat .36rem;
+	background-size: 1.06rem 1.06rem;
+	background-position-x: .65rem;
+}
+
+.advantage li:nth-child(3) {
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/icon3.png) no-repeat .36rem;
+	background-size: 1.06rem 1.06rem;
+	background-position-x: .65rem;
+}
+
+
+.advantage li p {
+	font-size: .28rem;
+	color: #090a0e;
+	line-height: .5rem;
+	padding-top: .18rem;
+	margin-bottom: .04rem;
+	font-weight: bold;
+}
+
+.advantage h2 {
+	height: 1rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/feature.png) no-repeat center;
+	background-size: 3.74rem .51rem;
+}
+
+.advantage li div {
+	font-size: .26rem;
+	color: #464749;
+	line-height: .36rem;
+}
+
+.follow {
+	width: 100%;
+	height: 4.19rem;
+	margin: 0 auto;
+}
+
+
+/*预约信息弹窗*/
+
+.reserves .content {
+	width: 80%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	padding-top: .44rem;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	background: #fff;
+	border-radius: 17px;
+}
+
+.reserves h1 {
+	font-size: .36rem;
+	color: #5e5d78;
+	text-align: center;
+	line-height: .42rem;
+}
+
+.reserves h3 {
+	font-size: .28rem;
+	color: #72748a;
+	text-align: center;
+	margin: .2rem 0;
+}
+
+.reserves h2 span,
+.success span {
+	display: inline-block;
+	width: .3rem;
+	height: .3rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/close.png) no-repeat;
+	background-size: 100% 100%;
+	position: absolute;
+	right: .3rem;
+	top: .3rem;
+}
+
+.reserves .content>span {
+	display: inline-block;
+	width: .3rem;
+	height: .3rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/close.png) no-repeat;
+	background-size: 100% 100%;
+	position: absolute;
+	right: .3rem;
+	top: .3rem;
+}
+
+.reserves .form {
+	padding: 0 .8rem .4rem .8rem;
+}
+
+.reserves .form li:nth-child(1) span {
+	display: inline-block;
+	width: .4rem;
+	height: .5rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/icon_U.png) no-repeat;
+	background-size: 100% 100%;
+	vertical-align: middle;
+}
+
+.reserves .form li:nth-child(2) span {
+	display: inline-block;
+	width: .4rem;
+	height: .5rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/icon_T.png) no-repeat;
+	background-size: 100% 100%;
+	vertical-align: middle;
+}
+
+.reserves .inputBox {
+	line-height: .88rem;
+	border-bottom: 1px #83818c solid;
+	margin-bottom: .3rem;
+}
+
+.reserves .inputBox span {
+	display: inline-block;
+	width: 1.32rem;
+	text-align: center;
+	color: #666;
+	font-size: .3rem;
+}
+
+.reserves .inputBox input {
+	border: 0;
+	padding-left: .2rem;
+	color: #212121;
+	padding: .2rem 0;
+	font-size: .3rem;
+}
+
+.reserves .inputBox.foucs {
+	border-color: #59aaf3;
+}
+
+.reserves ul p {
+	font-size: .22rem;
+	color: #ca132a;
+	line-height: .3rem;
+	margin-bottom: .25rem;
+}
+
+.reserves button {
+	width: 4.21rem;
+	border: 0;
+	height: .8rem;
+	line-height: .8rem;
+	border-radius: 3px;
+	font-size: .32rem;
+	color: #fff;
+	background: #fa9137;
+	margin: 0 auto;
+	border-radius: 22px;
+	display: block;
+}
+
+.reserves button.disabled {
+	background: #cecece;
+}
+
+
+/*预约成功*/
+
+.success .content {
+	height: 2.75rem !important;
+	width: 90% !important;
+	position: absolute!important;
+	left: 50%!important;
+	top: 50%!important;
+	background: #fff!important;
+	border-radius: 5px!important;
+}
+
+.success .successIcon {
+	width: .92rem;
+	height: .92rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/success.png) no-repeat;
+	background-size: 100% 100%;
+	margin: .34rem auto .23rem auto;
+}
+
+.success h2 {
+	line-height: .5rem;
+	font-size: .32rem;
+	color: #212121;
+	text-align: center;
+}
+
+.success p {
+	font-size: .28rem!important;
+	text-align: center!important;
+	color: #666!important;
+	line-height: .44rem!important;
+}
+
+
+/*名片*/
+
+.bussinessCard {
+	width: 100%;
+	height: 11rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/cardBg.jpg) no-repeat;
+	background-size: 100% 100%;
+	padding-top: .5rem;
+}
+
+.bussinessCard .headUrl {
+	width: 1.45rem;
+	display: block;
+	margin: 0 auto;
+}
+
+.bussinessCard .t1 {
+	text-align: center;
+	font-size: .3rem;
+	color: #2e2e2e;
+	line-height: .54rem;
+}
+
+.bussinessCard .erweima {
+	display: block;
+	width: 3.2rem;
+	margin: .1rem auto 0 auto;
+	padding: 8px;
+	background: #f98522;
+	border-radius: 12px;
+}
+
+.bussinessCard .t2 {
+	line-height: .75rem;
+	text-align: center;
+	font-size: .3rem;
+	color: #666666;
+}
+
+.bussinessCard .t2 span {
+	display: inline-block;
+	width: .34rem;
+	height: .27rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/wx.png) no-repeat;
+	background-size: 100% 100%;
+	padding-left: .06rem;
+}
+
+.bussinessCard .t3 {
+	width: 3.53rem;
+	height: .78rem;
+	line-height: .78rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/tel.png) no-repeat;
+	background-size: 100% 100%;
+	margin: 0 auto;
+	font-size: .32rem;
+	color: #fff;
+	padding-left: 1.1rem;
+}
+
+.bussinessCard .t3 a {
+	color: #fff;
+}
+
+.bussinessCard .t4 {
+	text-align: center;
+	font-size: .32rem;
+	color: #2e2e2e;
+	margin-top: .4rem;
+}
+
+.bussinessCard .card {
+	width: 100%;
+}
+/*index*/
+.warpper{}
+.warpper .purchase{
+	width: 7.5rem;
+	height:7.08rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/fatherDay/fqj_02.jpg) no-repeat;
+	background-size: 100% 100%;
+	overflow: hidden;
+}
+.warpper .purchase-but{
+	margin: 0 auto;
+	width: 5.78rem;
+	height:0.87rem;
+	text-align: center;
+	line-height: 0.8rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/fatherDay/fqj02_03.png) no-repeat;
+	background-size: 100% 100%;
+	margin-top: 5.25rem;
+	font-size: 0.35rem;
+	color: #fff;
+	cursor: pointer;
+}
+.warpper .be-thankful{
+	width: 7.5rem;
+	height:5.74rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/fatherDay/fqj_03.jpg) no-repeat;
+	background-size: 100% 100%;
+	overflow: hidden;
+}
+.link-box{
+	margin: 0 auto;
+	width: 3.85rem;
+	height:1.8rem;
+	margin-top: 1.6rem;
+}
+.link-box .go-register{
+	float:left;
+	width:1.8rem;
+	height: 1.8rem;
+	cursor: pointer;
+}
+.link-box .go-share{
+	float:right;
+	width:1.8rem;
+	height: 1.8rem;
+	cursor: pointer;
+}
+.warpper .character{
+	width: 7.5rem;
+	height:11.26rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/fatherDay/fqj_05.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+.warpper .base-box{
+	width: 7.5rem;
+	height:4.59rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/fatherDay/fqj_06.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+.box-img{
+	margin: 0 auto;
+	width: 2.1rem;
+	height:2.1rem;
+	padding-top: 0.45rem;
+}
+.bg-img{
+	height:5.6rem !important;
+    width: 5.6rem !important;
+    position: absolute!important;
+    left: 50%!important;
+    top: 50%!important;
+    background: #fff!important;
+    /* border-radius: 5px!important; */
+}
+/*指引*/
+.guide .banner{
+	width: 100%;
+	height:12.98rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/fatherDay/fqj_01.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+.guide .purchase{
+	width: 7.5rem;
+	height:7.08rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/fatherDay/fqj_02.jpg) no-repeat;
+	background-size: 100% 100%;
+	overflow: hidden;
+}
+.guide .purchase-but{
+	margin: 0 auto;
+	width: 5.78rem;
+	height:0.87rem;
+	text-align: center;
+	line-height: 0.8rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/fatherDay/fqj02_03.png) no-repeat;
+	background-size: 100% 100%;
+	margin-top: 5.25rem;
+	font-size: 0.35rem;
+	color: #fff;
+	cursor: pointer;
+}
+.guide .be-thankful{
+	width: 7.5rem;
+	height:5.74rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/fatherDay/fqj_03.jpg) no-repeat;
+	background-size: 100% 100%;
+	overflow: hidden;
+}
+.link-box{
+	margin: 0 auto;
+	width: 3.85rem;
+	height:1.8rem;
+	margin-top: 1.6rem;
+}
+.link-box .go-register{
+	float:left;
+	width:1.8rem;
+	height: 1.8rem;
+	cursor: pointer;
+}
+.link-box .go-share{
+	float:right;
+	width:1.8rem;
+	height: 1.8rem;
+	cursor: pointer;
+}
+.guide .character{
+	width: 7.5rem;
+	height:11.26rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/fatherDay/fqj_05.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+.guide .base-box{
+	width: 7.5rem;
+	height:4.59rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/fatherDay/fqj_06.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+.box-img{
+	margin: 0 auto;
+	width: 2.1rem;
+	height:2.1rem;
+	padding-top: 0.45rem;
+}
+.pr{
+	padding: 0 .68rem;
+}
+.pr1{
+	width: 100%;
+	height: 6.45rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/g2.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+.pr2{
+	width: 100%;
+	height: 6.47rem;
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/g3.jpg) no-repeat;
+    background-size: 100% 100%;
+    margin-top: -1px;
+}
+.pr h1{
+    font-size: .36rem;
+    color: #b80e00;
+    text-align: center;
+    line-height: .8rem;
+    margin-bottom: .3rem;
+    font-weight: bold;
+}
+.pr>h2{
+	font-size: .32rem;
+	color: #000;
+} 
+.pr .time{
+    font-size: .2rem;
+    color: #5e5648;
+    line-height: .35rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/icon1_g.png) no-repeat;
+    background-size: .27rem .27rem;
+    padding-left: .35rem;
+    margin-bottom: .16rem;
+} 
+.pr .solgan{
+    font-size: .26rem;
+    color: #ba975c;
+    line-height: .55rem;
+}
+.pr .keyword{
+    height: .5rem;
+    line-height: .5rem;
+    margin-bottom: .2rem;
+}
+.pr .keyword span{
+	display:inline-block;
+	float: left;
+	font-size: .28rem;
+	color: #5e5648;
+	width: 2.5rem;
+}
+.pr .keyword span i{
+	display: inline-block;
+	width: .27rem;
+	height: .27rem;
+    margin-right: .15rem;
+   vertical-align: text-top;
+}
+
+
+.pr .keyword span:nth-child(1) i{
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/icon4_g.png) no-repeat;
+    background-size: .27rem .27rem;
+        margin-right: .05rem;
+}
+.pr .keyword span:nth-child(2) i{
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/icon5_g.png) no-repeat;
+    background-size: .27rem .27rem;
+        margin-right: .05rem;
+}
+.pr .keyword span:nth-child(3) i{
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/icon6_g.png) no-repeat;
+    background-size: .27rem .27rem;
+      margin-right: .05rem;
+}
+.pr1 .keyword span:nth-child(1) i{
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/icon2_g.png) no-repeat;
+    background-size: .27rem .27rem;
+        margin-right: .05rem;
+}
+.pr1 .keyword span:nth-child(2) i{
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/icon3_g.png) no-repeat;
+    background-size: .27rem .27rem;
+        margin-right: .05rem;
+}
+.pr ul{
+	overflow: hidden;
+}
+.pr li{
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+.pr li p:nth-child(1){
+	font-size: .45rem;
+	color: #ba0a00;
+	line-height: .68rem;
+	font-weight: bold;
+}
+.pr li p:nth-child(1) span{
+	font-size: .6rem;
+}
+.pr li p:nth-child(2){
+    font-size: .22rem;
+    color: #a9a9a9;
+    line-height: .42rem;
+    margin-top: .05rem;
+}
+.pr .see{
+    display: block;
+    width: 5.99rem;
+    height: .94rem;
+    line-height: .87rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/btn_g.png) no-repeat;
+    background-size: 100% 100%;
+    color: #fff;
+    text-align: center;
+    font-size: .38rem;
+    margin-top: .25rem;
+    margin: 0 auto;
+    margin-top: .21rem;
+}
+.pr2 .keyword span i{
+	    width: .35rem;
+    height:.35rem;
+}
+.pr2 .keyword span:nth-child(1){
+	width: 2rem;
+}
+.pr2 .keyword span:nth-child(2){
+	width: 1.9rem;
+}
+.pr2 .keyword span:nth-child(3){
+	width: 2.2rem;
+}
+.pr2 .keyword span i:nth-child(3){
+	    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/icon6_g.png) no-repeat;
+    background-size: 100% 100%;
+}
+.profix p:nth-child(1){
+	text-align: center;
+	font-size: .45rem;
+	color: #ba0a00;
+   height: .74rem;
+   line-height: .74rem;
+}
+.profix p:nth-child(1) span{
+	font-size: .6rem;
+	   height: .4rem;
+   line-height: .4rem;
+}
+.profix p:nth-child(2){
+	font-size: .22rem;
+	color: #a9a9a9;
+	   height: .74rem;
+   line-height: .74rem;
+   text-align: center;
+}
+.pr2 .see{
+	margin-top: 0;
+}
+
+.logo{
+    position: absolute;
+    width: 2.13rem;
+    height: .76rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/logo.png) no-repeat;
+    background-size: 100% 100%;
+    left: 8%;
+    top: 10%;
+}
+.exp{
+width: 100%;
+    height: 5.89rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/g4.png) no-repeat;
+    background-size: 100% 100%;
+    margin-top: -1px;
+}
+
+
+
+    /*position: absolute;
+.guide .title{
+    position: absolute;
+    width: 5.7rem;
+    height: 2.26rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/title.png) no-repeat;
+    background-size: 85% 85%;
+    left: 15%;
+    top: 17%;
+}
+.guide .center{
+position: absolute;
+    width: 4.32rem;
+    height: 4rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/center.png) no-repeat;
+    background-size: 100% 100%;
+    left: 48%;
+    top: 53%;
+}
+.guide p{
+    font-size: .18rem;
+    color: #c5b17f;
+    text-align: center;
+    position: absolute;
+    top: 75%;
+    width: 100%;
+    line-height: .22rem;
+}*/
+.loginSee {
+    top: 81%;
+    left: 20%;
+    display: block;
+    width: 4.33rem;
+    height: .94rem;
+    text-align: center;
+    line-height: .94rem;
+    font-size: .34rem;
+    color: #090e16;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/btn.png) no-repeat;
+    background-size: 100% 100%;
+}
+.product {
+    padding-top: 0.34rem;    
+}
+
+.product h2 {
+    text-align: left;
+    font-size: .34rem;
+    color: #000;
+    font-weight: bold;
+    padding-left: .83rem;
+}
+.product h2  span{
+    color: #bdbdbd;
+    font-size: .2rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/icon_time.png) no-repeat;
+    background-size: .24rem .24rem;
+    margin-left: .3rem;
+    padding-left: .36rem;
+   /* background-position-y: .04rem;*/
+    height: .43rem;
+}
+.product h3 {
+	font-size: .22rem;
+	color: #b5b5b5;
+	line-height: .3rem;
+}
+
+.product ul {
+    padding-bottom: .2rem;
+    margin-top: .22rem;
+    padding-left: .7rem;
+}
+
+.product ul li {
+	float: left;
+	text-align: center;
+}
+
+.product ul li:nth-child(1) {
+	    width: 1.81rem;
+}
+
+.product ul li:nth-child(2) {
+	    width: 2.4rem;
+}
+
+.product ul li:nth-child(3) {
+	width: 1.87rem;
+}
+
+.product ul li p:nth-child(1) {
+	font-size: .36rem;
+	color: #000;
+	line-height: .46rem;
+	margin-bottom: .05rem;
+}
+.product ul li:nth-child(2) p:nth-child(1){
+	color: #e23f00;
+}
+.product ul li p:nth-child(2) {
+    font-size: .22rem;
+    color: #aeaeae;
+    line-height: .38rem;
+    margin-top: .2rem;
+
+}
+.product ul li:nth-child(2) p:nth-child(1) span{
+	font-size: .5rem;
+    font-weight: bold;
+}
+.product .t1 {
+	font-size: .22rem;
+	color: #646464;
+	line-height: .35rem;
+	background: url( /WeixinWeb/WeixinWeb_Images/H5modules/cfb207/star1.png) no-repeat;
+	background-size: .16rem .16rem;
+	padding-left: .25rem;
+	background-position-y: .05rem;
+	    margin-left: -.22rem;
+}
+.product>p{
+    font-size: .2rem;
+    color: #d3131f;
+    line-height: .3rem;
+    margin-top: .12rem;
+    padding-right: .5rem;
+    padding-left: .7rem;
+}
+.product .t2 {
+	font-size: .2rem;
+	color: #c3a68f;
+	line-height: .35rem;
+	background: url( /WeixinWeb/WeixinWeb_Images/H5modules/cfb207/star.png) no-repeat;
+	background-size: .16rem .16rem;
+	padding-left: .25rem;
+	background-position-y: .05rem;
+	    margin-left: -.22rem;
+}
+
+.product .t3 {
+	font-size: .22rem;
+	color: #969696;
+	line-height: .3rem;
+	background: url( /WeixinWeb/WeixinWeb_Images/H5modules/cfb207/star.png) no-repeat;
+	background-size: .16rem .16rem;
+	padding-left: .25rem;
+	background-position-y: .05rem;
+	    margin-left: -.22rem;
+}
+.bottom {
+	position: fixed;
+	bottom: -.01rem;
+	width: 100%;
+	height: 1rem;
+	line-height: 1rem;
+	font-size: .32rem;
+	-moz-box-shadow: 2px -2px 20px rgba(66, 66, 66, 0.66);
+	-webkit-box-shadow: 2px -2px 20px rgba(66, 66, 66, 0.66);
+	;
+	box-shadow: 2px -2px 20px rgba(66, 66, 66, 0.66);
+	;
+}
+
+.bottom a {
+	width: 50%;
+	display: block;
+	float: left;
+
+}
+
+.bottom a:nth-child(1) {
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/love2.png) no-repeat #db5c58;
+	background-size: .55rem .55rem;
+	color: #fff;
+	background-position-x: .85rem;
+	background-position-y: .2rem;
+	padding-left: 1.5rem;
+}
+
+.bottom a:nth-child(1).active {
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/love.png) no-repeat #eea72a;
+	background-size: .55rem .55rem;
+	background-position-x: .85rem;
+	background-position-y: .2rem;
+}
+
+.bottom a:nth-child(2) {
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/user.png) no-repeat #eea72a;
+	background-size: .55rem .55rem;
+	color: #fff;
+	background-position-x: .85rem;
+	background-position-y: .2rem;
+	padding-left: 1.5rem;
+}
+
+.bottom a:nth-child(2).active {
+	background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/user2.png) no-repeat #db5c58;
+	background-size: .55rem .55rem;
+	background-position-x: .85rem;
+	background-position-y: .2rem;
+}
+
+.cover_bg {
+	left: 0;
+	top: 0;
+}
+
+.proDetail2 .banner{
+	    height: 5.94rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/banner2.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+.proDetail2 .guide2{
+	    height: 3.54rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/pro2.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+.proDetail2 .guide2 h2{
+    font-size: .42rem;
+    text-align: center;
+    font-weight: bold;
+    color: #000000;
+    padding-left: 0;
+    line-height: .9rem;
+}
+.proDetail2 .product  ul li{
+	width: 50%;
+}
+.proDetail2 .product  ul li p:nth-child(1){
+	font-size: .22rem;
+	color: #9eabb2;
+	font-weight: bold;
+}
+.proDetail2 .product  ul li:nth-child(1) p:nth-child(1){
+	font-size: .35rem;
+	color: #ed5400;
+	font-weight: bold;
+}
+.proDetail2 .product  ul li:nth-child(1) p:nth-child(1) span{
+	font-size: .46rem;
+	font-weight: bold;
+}
+.proDetail2 .product  ul li:nth-child(2) p:nth-child(1){
+	font-size: .35rem;
+	color: #000000;
+	font-weight: bold;
+}
+.proDetail2 .product  ul li:nth-child(2) p:nth-child(1) span{
+	font-size: .46rem;
+		color: #000000;
+		font-weight: bold;
+}
+.proDetail2 .product ul{
+	padding: 0 .54rem;
+}
+.proDetail2 .product h3{
+height: .27rem;
+    line-height: .27rem;
+    display: block;
+    font-size: .2rem;
+    color: #fff;
+    margin: 0 auto;
+    background: #5bb9e7;
+    border-radius: 20px;
+    text-align: center;
+    width: 3.7rem;
+}
+.proDetail2 .once {
+    width: 3.64rem;
+    height: .8rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/img2-btn.png) no-repeat;
+    background-size: 100% 100%;
+    margin-top: .16rem;
+    position: relative;
+}
+.detail1{
+    width:100%;
+    height: 9.53rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/img2-1.jpg) no-repeat;
+    background-size: 100% 100%;
+    margin-top: -1px;
+}
+.detail2{
+    width:100%;
+    height: 8.65rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/img2-2.jpg) no-repeat;
+    background-size: 100% 100%;
+    margin-top: -1px;
+}
+.detail3{
+    width:100%;
+    height: 6.47rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/cfb207/img2-3.jpg) no-repeat;
+    background-size: 100% 100%;
+    margin-top: -1px;
+}
+.proDetail2 .product>p{
+	padding: 0 .42rem;
+	font-size: .16rem;
+	color: #fff;
+	line-height: .26rem;
+}
+
+
+.antel{
+	width: 100%;
+	height:100%;
+	cursor: pointer;
+}
+
+/****分享样式***/
+.mask{
+	position: fixed;
+	z-index: 31000;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	background: rgba(8, 8, 8,0.7);
+}
+.share{
+	width: 108px;
+	height:112px;
+	background: url('/WeixinWeb/WeixinWeb_Images/mgm/sIcon.png');
+	background-size: 100% 100%;
+	position: absolute;
+	right: 5%;
+	top: 0;
+}
+.mask p{
+	font-size: 18px;
+	color: #fff;
+	position: absolute;
+	right: 80px;
+	top: 111px;
+	line-height: 19px;
+}
+
+.shut-down{
+	width: 1rem;
+    height: 1rem;
+    position: absolute;
+    right: 0;
+}
+.bj-box{
+	position: relative;
+}

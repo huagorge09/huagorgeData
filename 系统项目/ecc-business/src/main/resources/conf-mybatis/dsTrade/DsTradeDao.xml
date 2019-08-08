@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.dsTrade.DsTradeDao" >
+	<resultMap  type="dsTradeDataDto" id="dsTradeDataMap">
+		<result column="ISTRADEFORM" property="istradeform" jdbcType="VARCHAR" />
+		<result column="SERIALNO" property="serialno" jdbcType="VARCHAR" />
+		<result column="FILENO" property="fileno" jdbcType="VARCHAR" />
+		<result column="APDT" property="apdt" jdbcType="VARCHAR" />
+		<result column="CUSTNO" property="custno" jdbcType="VARCHAR" />
+		<result column="FUNDID" property="fundid" jdbcType="VARCHAR" />
+		<result column="SUBAMT" property="subamt" jdbcType="NUMERIC" />
+		<result column="SUBQUTY" property="subquty" jdbcType="NUMERIC" />
+		<result column="CONTRACTSIGN" property="contractsign" jdbcType="VARCHAR" />
+		<result column="CONTRACTSIGN_NAME" property="contractsignName" jdbcType="VARCHAR" />
+		<result column="CONTRACTDEVOLVE" property="contractdevolve" jdbcType="VARCHAR" />
+		<result column="CONTRACTDEVOLVE_NAME" property="contractdevolveName" jdbcType="VARCHAR" />
+		<result column="ISORIGINAL" property="isoriginal" jdbcType="VARCHAR" />
+		<result column="ISORIGINAL_NAME" property="isoriginalName" jdbcType="VARCHAR" />
+		<result column="FILED" property="filed" jdbcType="VARCHAR" />
+		<result column="FILED_NAME" property="filedName" jdbcType="VARCHAR" />
+		<result column="REMARK" property="remark" jdbcType="VARCHAR" />
+		<result column="INVNM" property="invnm" jdbcType="VARCHAR" />
+		<result column="FUNDNM" property="fundname" jdbcType="VARCHAR" />
+		<result column="APKIND" property="apkind" jdbcType="VARCHAR" />
+		<result column="VOICERECORD" property="voicerecord" jdbcType="VARCHAR" />
+		<result column="RISKSIGN" property="risksign" jdbcType="VARCHAR" />
+		<result column="RISKSIGN_NAME" property="risksignName" jdbcType="VARCHAR" />
+		<result column="INVPRTP" property="invprtp" jdbcType="VARCHAR" />
+		<result column="INVPRTP_NAME" property="invprtpName" jdbcType="VARCHAR" />
+		<result column="ISTRADEFORM" property="istradeform" jdbcType="VARCHAR" />
+		<result column="ISTRADEFORM_NAME" property="istradeformName" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="queryDsTradeDataListPage" parameterType="sparam"  resultMap="dsTradeDataMap">
+			SELECT ISTRADEFORM,
+		       SERIALNO,
+		       DT.FILENO,
+		       DT.APDT,
+		       DT.CUSTNO,
+		       DT.FUNDID,
+		       SUBAMT,
+		       SUBQUTY,
+		       CONTRACTSIGN,
+		       IBF_GET_PARAMNAME('SYSTEM','TRADESIGN',CONTRACTSIGN) CONTRACTSIGN_NAME,
+		       CONTRACTDEVOLVE,
+		       ISORIGINAL,
+		       FILED,
+		       REMARK,
+		       DT.INSERTTIMESTAMP,
+		       C.INVNM,
+		       FI.FUNDNM,
+		       DT.APKIND,
+		       VOICERECORD,
+		       RISKSIGN,
+		       DCL.INVPRTP
+		  FROM (SELECT D.ISTRADEFORM,
+		               D.SERIALNO,
+		               F.FILENO,
+		               ATT.APDT,
+		               ATT.CUSTNO,
+		               ATT.FUNDID,
+		               ATT.SUBAMT,
+		               ATT.SUBQUTY,
+		               D.CONTRACTSIGN,
+		               D.CONTRACTDEVOLVE,
+		               D.ISORIGINAL,
+		               D.FILED,
+		               D.REMARK,
+		               ATT.APKIND,
+		               ATT.INSERTTIMESTAMP,
+		               D.VOICERECORD,
+		               D.RISKSIGN
+		          FROM DS_TRADEDATA D,
+		               APPTRADEBLOTTER ATT,
+		               (SELECT DC.FILENO, A.CUSTNO
+		                  FROM APPFDACBLOTTER A, DS_CUSTINFODATA DC
+		                 WHERE A.SERIALNO = DC.APPSERIALNO
+		                   AND A.APKIND = '001'
+		                 GROUP BY DC.FILENO, A.APKIND, A.CUSTNO
+		                UNION ALL
+		                SELECT DC.FILENO, A.CUSTNO
+		                  FROM H_APPFDACBLOTTER A, DS_CUSTINFODATA DC
+		                 WHERE A.SERIALNO = DC.APPSERIALNO
+		                   AND A.APKIND = '001'
+		                 GROUP BY DC.FILENO, A.APKIND, A.CUSTNO) F
+		         WHERE D.APPSERIALNO = ATT.SERIALNO
+		           AND ATT.CUSTNO = F.CUSTNO(+)
+		           AND ATT.APPLYST NOT IN ('C', 'F')
+		        UNION ALL
+		        SELECT D.ISTRADEFORM,
+		               D.SERIALNO,
+		               F.FILENO,
+		               ATT.APDT,
+		               ATT.CUSTNO,
+		               ATT.FUNDID,
+		               ATT.SUBAMT,
+		               ATT.SUBQUTY,
+		               D.CONTRACTSIGN,
+		               D.CONTRACTDEVOLVE,
+		               D.ISORIGINAL,
+		               D.FILED,
+		               D.REMARK,
+		               ATT.APKIND,
+		               ATT.INSERTTIMESTAMP,
+		               D.VOICERECORD,
+		               D.RISKSIGN
+		          FROM DS_TRADEDATA D,
+		               H_APPTRADEBLOTTER ATT,
+		               (SELECT DC.FILENO, A.CUSTNO
+		                  FROM H_APPFDACBLOTTER A, DS_CUSTINFODATA DC
+		                 WHERE A.SERIALNO = DC.APPSERIALNO
+		                   AND A.APKIND = '001'
+		                 GROUP BY DC.FILENO, A.APKIND, A.CUSTNO) F
+		         WHERE D.APPSERIALNO = ATT.SERIALNO
+		           AND ATT.CUSTNO = F.CUSTNO(+)) DT,
+		       CUSTINFO C,
+		       FUNDINFO FI,
+		       DS_CUSTCLASSINFO DCL
+		 WHERE DT.CUSTNO = C.CUSTNO(+)
+		   AND DT.FUNDID = FI.FUNDID(+)
+		   AND DT.CUSTNO = DCL.CUSTNO(+)
+	    <if test="null != sp.startDate and '' != sp.startDate">
+				AND APDT <![CDATA[>=]]> #{sp.startDate}
+			</if>
+			<if test="null != sp.endDate and '' != sp.endDate">
+				AND APDT <![CDATA[<=]]> #{sp.endDate}
+			</if>
+		   <if test=" null != sp.fileno  and '' != sp.fileno">
+		  		 AND FILENO LIKE '%'||#{sp.fileno}||'%' 
+		    </if>
+		   <if test=" null != sp.fundnm  and '' != sp.fundnm">
+		  		 AND FI.FUNDNM LIKE '%'||#{sp.fundnm}||'%' 
+		    </if>
+		   <if test=" null != sp.invnm  and '' != sp.invnm">
+		  		 AND INVNM LIKE '%'||#{sp.invnm}||'%' 
+		    </if>
+		    <!-- 合同签署  -->
+		    <if test=" null != sp.contractsign  and '' != sp.contractsign">
+		  		 AND CONTRACTSIGN = #{sp.contractsign}
+		    </if>
+		    <!-- 合同是否移交 -->
+		    <if test=" null != sp.contractdevolve  and '' != sp.contractdevolve">
+		  		 AND CONTRACTDEVOLVE = #{sp.contractdevolve}
+		    </if>
+		    <!-- 是否原件 -->
+		    <if test=" null != sp.isoriginal  and '' != sp.isoriginal">
+		  		 AND ISORIGINAL = #{sp.isoriginal}
+		    </if>
+		    <!-- 是否归档  -->
+		    <if test=" null != sp.filed  and '' != sp.filed">
+		  		 AND FILED = #{sp.filed}
+		    </if>
+		    <if test=" null != sp.custno  and '' != sp.custno">
+		  		 AND DT.CUSTNO = #{sp.custno}
+		    </if>
+		    <if test=" null != sp.subamt  and '' != sp.subamt">
+		  		 AND DT.SUBAMT = #{sp.subamt}
+		    </if>
+		    <if test=" null != sp.serialno  and '' != sp.serialno">
+		  		 AND SERIALNO = #{sp.serialno}
+		    </if>
+			 ORDER BY INSERTTIMESTAMP DESC
+			
+	</select>
+	<select id="queryDsTradeDataList" parameterType="sparam" resultMap="dsTradeDataMap">
+				SELECT ISTRADEFORM,
+			       CASE
+			         WHEN ISTRADEFORM = 'Y' THEN
+			          '是'
+			         WHEN ISTRADEFORM = 'N' THEN
+			          '否'
+			         ELSE
+			          ''
+			       END AS ISTRADEFORM_NAME,
+			       SERIALNO,
+			       DT.FILENO,
+			       DT.APDT,
+			       DT.CUSTNO,
+			       DT.FUNDID,
+			       SUBAMT,
+			       SUBQUTY,
+			       CASE
+			         WHEN CONTRACTDEVOLVE = 'Y' THEN
+			          '是'
+			         WHEN CONTRACTDEVOLVE = 'N' THEN
+			          '否'
+			         ELSE
+			          ''
+			       END AS CONTRACTDEVOLVE_NAME,
+			       CASE
+			         WHEN RISKSIGN = '0' THEN
+			          '无需'
+			         WHEN RISKSIGN = '1' THEN
+			          '已签署'
+			         WHEN RISKSIGN = '2' THEN
+			          '未签署'
+			         ELSE
+			          ''
+			       END AS RISKSIGN_NAME,
+			       CONTRACTSIGN,
+			       IBF_GET_PARAMNAME('SYSTEM', 'TRADESIGN', CONTRACTSIGN) CONTRACTSIGN_NAME,
+			       CONTRACTDEVOLVE,
+			       CASE
+			         WHEN ISORIGINAL = 'Y' THEN
+			          '是'
+			         WHEN ISORIGINAL = 'N' THEN
+			          '否'
+			         ELSE
+			          ''
+			       END AS ISORIGINAL_NAME,
+			       ISORIGINAL,
+			       CASE
+			         WHEN FILED = 'Y' THEN
+			          '是'
+			         WHEN FILED = 'N' THEN
+			          '否'
+			         ELSE
+			          ''
+			       END AS FILED_NAME,
+			       FILED,
+			       REMARK,
+			       DT.INSERTTIMESTAMP,
+			       C.INVNM,
+			       FI.FUNDNM,
+			       DT.APKIND,
+			       VOICERECORD,
+			       RISKSIGN,
+			       CASE
+			         WHEN INVPRTP = '0' THEN
+			          '专业投资者'
+			         WHEN INVPRTP = '1' THEN
+			          '普通投资者'
+			         ELSE
+			          ''
+			       END AS INVPRTP_NAME,
+			       DCL.INVPRTP
+			  FROM (SELECT D.ISTRADEFORM,
+			               D.SERIALNO,
+			               F.FILENO,
+			               ATT.APDT,
+			               ATT.CUSTNO,
+			               ATT.FUNDID,
+			               ATT.SUBAMT,
+			               ATT.SUBQUTY,
+			               D.CONTRACTSIGN,
+			               D.CONTRACTDEVOLVE,
+			               D.ISORIGINAL,
+			               D.FILED,
+			               D.REMARK,
+			               ATT.APKIND,
+			               ATT.INSERTTIMESTAMP,
+			               D.VOICERECORD,
+			               D.RISKSIGN
+			          FROM DS_TRADEDATA D,
+			               APPTRADEBLOTTER ATT,
+			               (SELECT DC.FILENO, A.CUSTNO
+			                  FROM APPFDACBLOTTER A, DS_CUSTINFODATA DC
+			                 WHERE A.SERIALNO = DC.APPSERIALNO
+			                   AND A.APKIND = '001'
+			                 GROUP BY DC.FILENO, A.APKIND, A.CUSTNO
+			                UNION ALL
+			                SELECT DC.FILENO, A.CUSTNO
+			                  FROM H_APPFDACBLOTTER A, DS_CUSTINFODATA DC
+			                 WHERE A.SERIALNO = DC.APPSERIALNO
+			                   AND A.APKIND = '001'
+			                 GROUP BY DC.FILENO, A.APKIND, A.CUSTNO) F
+			         WHERE D.APPSERIALNO = ATT.SERIALNO
+			           AND ATT.CUSTNO = F.CUSTNO(+)
+			           AND ATT.APPLYST NOT IN ('C', 'F')
+			        UNION ALL
+			        SELECT D.ISTRADEFORM,
+			               D.SERIALNO,
+			               F.FILENO,
+			               ATT.APDT,
+			               ATT.CUSTNO,
+			               ATT.FUNDID,
+			               ATT.SUBAMT,
+			               ATT.SUBQUTY,
+			               D.CONTRACTSIGN,
+			               D.CONTRACTDEVOLVE,
+			               D.ISORIGINAL,
+			               D.FILED,
+			               D.REMARK,
+			               ATT.APKIND,
+			               ATT.INSERTTIMESTAMP,
+			               D.VOICERECORD,
+			               D.RISKSIGN
+			          FROM DS_TRADEDATA D,
+			               H_APPTRADEBLOTTER ATT,
+			               (SELECT DC.FILENO, A.CUSTNO
+			                  FROM H_APPFDACBLOTTER A, DS_CUSTINFODATA DC
+			                 WHERE A.SERIALNO = DC.APPSERIALNO
+			                   AND A.APKIND = '001'
+			                 GROUP BY DC.FILENO, A.APKIND, A.CUSTNO) F
+			         WHERE D.APPSERIALNO = ATT.SERIALNO
+			           AND ATT.CUSTNO = F.CUSTNO(+)) DT,
+			       CUSTINFO C,
+			       FUNDINFO FI,
+			       DS_CUSTCLASSINFO DCL
+			 WHERE DT.CUSTNO = C.CUSTNO(+)
+			   AND DT.FUNDID = FI.FUNDID(+)
+			   AND DT.CUSTNO = DCL.CUSTNO(+)
+		       <if test="null != sp.startDate and '' != sp.startDate">
+				AND APDT <![CDATA[>=]]> #{sp.startDate}
+			</if>
+			<if test="null != sp.endDate and '' != sp.endDate">
+				AND APDT <![CDATA[<=]]> #{sp.endDate}
+			</if>
+		   <if test=" null != sp.fileno  and '' != sp.fileno">
+		  		 AND FILENO LIKE '%'||#{sp.fileno}||'%' 
+		    </if>
+		   <if test=" null != sp.fundnm  and '' != sp.fundnm">
+		  		 AND FI.FUNDNM LIKE '%'||#{sp.fundnm}||'%' 
+		    </if>
+		   <if test=" null != sp.invnm  and '' != sp.invnm">
+		  		 AND INVNM LIKE '%'||#{sp.invnm}||'%' 
+		    </if>
+		    <!-- 合同签署  -->
+		    <if test=" null != sp.contractsign  and '' != sp.contractsign">
+		  		 AND CONTRACTSIGN = #{sp.contractsign}
+		    </if>
+		    <!-- 合同是否移交 -->
+		    <if test=" null != sp.contractdevolve  and '' != sp.contractdevolve">
+		  		 AND CONTRACTDEVOLVE = #{sp.contractdevolve}
+		    </if>
+		    <!-- 是否原件 -->
+		    <if test=" null != sp.isoriginal  and '' != sp.isoriginal">
+		  		 AND ISORIGINAL = #{sp.isoriginal}
+		    </if>
+		    <!-- 是否归档  -->
+		    <if test=" null != sp.filed  and '' != sp.filed">
+		  		 AND FILED = #{sp.filed}
+		    </if>
+		    <if test=" null != sp.custno  and '' != sp.custno">
+		  		 AND DT.CUSTNO = #{sp.custno}
+		    </if>
+		    <if test=" null != sp.subamt  and '' != sp.subamt">
+		  		 AND DT.SUBAMT = #{sp.subamt}
+		    </if>
+		     <if test=" null != sp.serialno  and '' != sp.serialno">
+		  		 AND SERIALNO = #{sp.serialno}
+		    </if>
+			 ORDER BY INSERTTIMESTAMP DESC
+	</select>
+	<select id="queryDsTradeDataListTotal" parameterType="sparam" resultType="int">
+		SELECT 
+			COUNT(*)
+		  FROM (SELECT D.ISTRADEFORM,
+		               D.SERIALNO,
+		               F.FILENO,
+		               ATT.APDT,
+		               ATT.CUSTNO,
+		               ATT.FUNDID,
+		               ATT.SUBAMT,
+		               ATT.SUBQUTY,
+		               D.CONTRACTSIGN,
+		               D.CONTRACTDEVOLVE,
+		               D.ISORIGINAL,
+		               D.FILED,
+		               D.REMARK,
+		               ATT.APKIND,
+		               ATT.INSERTTIMESTAMP,
+		               D.VOICERECORD,
+		               D.RISKSIGN
+		          FROM DS_TRADEDATA D,
+		               APPTRADEBLOTTER ATT,
+		               (SELECT DC.FILENO, A.CUSTNO
+		                  FROM APPFDACBLOTTER A, DS_CUSTINFODATA DC
+		                 WHERE A.SERIALNO = DC.APPSERIALNO
+		                   AND A.APKIND = '001'
+		                 GROUP BY DC.FILENO, A.APKIND, A.CUSTNO
+		                UNION ALL
+		                SELECT DC.FILENO, A.CUSTNO
+		                  FROM H_APPFDACBLOTTER A, DS_CUSTINFODATA DC
+		                 WHERE A.SERIALNO = DC.APPSERIALNO
+		                   AND A.APKIND = '001'
+		                 GROUP BY DC.FILENO, A.APKIND, A.CUSTNO) F
+		         WHERE D.APPSERIALNO = ATT.SERIALNO
+		           AND ATT.CUSTNO = F.CUSTNO(+)
+		           AND ATT.APPLYST NOT IN ('C', 'F')
+		        UNION ALL
+		        SELECT D.ISTRADEFORM,
+		               D.SERIALNO,
+		               F.FILENO,
+		               ATT.APDT,
+		               ATT.CUSTNO,
+		               ATT.FUNDID,
+		               ATT.SUBAMT,
+		               ATT.SUBQUTY,
+		               D.CONTRACTSIGN,
+		               D.CONTRACTDEVOLVE,
+		               D.ISORIGINAL,
+		               D.FILED,
+		               D.REMARK,
+		               ATT.APKIND,
+		               ATT.INSERTTIMESTAMP,
+		               D.VOICERECORD,
+		               D.RISKSIGN
+		          FROM DS_TRADEDATA D,
+		               H_APPTRADEBLOTTER ATT,
+		               (SELECT DC.FILENO, A.CUSTNO
+		                  FROM H_APPFDACBLOTTER A, DS_CUSTINFODATA DC
+		                 WHERE A.SERIALNO = DC.APPSERIALNO
+		                   AND A.APKIND = '001'
+		                 GROUP BY DC.FILENO, A.APKIND, A.CUSTNO) F
+		         WHERE D.APPSERIALNO = ATT.SERIALNO
+		           AND ATT.CUSTNO = F.CUSTNO(+)) DT,
+		       CUSTINFO C,
+		       FUNDINFO FI,
+		       DS_CUSTCLASSINFO DCL
+		 WHERE DT.CUSTNO = C.CUSTNO(+)
+		   AND DT.FUNDID = FI.FUNDID(+)
+		   AND DT.CUSTNO = DCL.CUSTNO(+)
+	    	<if test="null != sp.startDate and '' != sp.startDate">
+				AND APDT <![CDATA[>=]]> #{sp.startDate}
+			</if>
+			<if test="null != sp.endDate and '' != sp.endDate">
+				AND APDT <![CDATA[<=]]> #{sp.endDate}
+			</if>
+		   <if test=" null != sp.fileno  and '' != sp.fileno">
+		  		 AND FI.FUNDNM LIKE '%'||#{sp.fileno}||'%' 
+		    </if>
+		   <if test=" null != sp.fundnm  and '' != sp.fundnm">
+		  		 AND FILENO LIKE '%'||#{sp.fundnm}||'%' 
+		    </if>
+		   <if test=" null != sp.invnm  and '' != sp.invnm">
+		  		 AND INVNM LIKE '%'||#{sp.invnm}||'%' 
+		    </if>
+		    <if test=" null != sp.contractsign  and '' != sp.contractsign">
+		  		 AND CONTRACTSIGN = #{sp.contractsign}
+		    </if>
+		    <if test=" null != sp.contractdevolve  and '' != sp.contractdevolve">
+		  		 AND CONTRACTDEVOLVE = #{sp.contractdevolve}
+		    </if>
+		    <if test=" null != sp.isoriginal  and '' != sp.isoriginal">
+		  		 AND ISORIGINAL = #{sp.isoriginal}
+		    </if>
+		    <if test=" null != sp.filed  and '' != sp.filed">
+		  		 AND FILED = #{sp.filed}
+		    </if>
+		    <if test=" null != sp.custno  and '' != sp.custno">
+		  		 AND DT.CUSTNO = #{sp.custno}
+		    </if>
+		    <if test=" null != sp.subamt  and '' != sp.subamt">
+		  		 AND DT.SUBAMT = #{sp.subamt}
+		    </if>
+	</select>
+	
+	<select id="updateTradeData" parameterType="dsTradeDataDto">
+		UPDATE DS_TRADEDATA T
+		   SET T.CONTRACTSIGN    = #{contractsign},
+		       T.ISORIGINAL      = #{isoriginal},
+		       T.CONTRACTDEVOLVE = #{contractdevolve},
+		       T.FILED           = #{filed},
+		       T.REMARK          = #{remark},
+		       ISTRADEFORM       = #{istradeform}
+		 WHERE T.SERIALNO =	#{serialno}
+ 	</select>
+	
+</mapper>

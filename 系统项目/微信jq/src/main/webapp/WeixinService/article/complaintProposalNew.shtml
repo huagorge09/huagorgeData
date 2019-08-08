@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>意见反馈 & 投诉处理服务</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/publicNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/styleNew.css">
+    <link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/bannerStyleNew.css">
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/flexibleNew.min.js"></script>
+    <script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscrollNew.js"></script>
+    <script src="/WeixinWeb/WeixinWeb_JSLibrary/iscroll_master/iscroll-probeNew.js"></script>
+    <style>
+        html,
+        body {
+            color: #333;
+            margin: 0 auto;
+            font-family: Arial, "Microsoft YaHei";
+            background: #fafafa;
+            height: 100%;
+            font-size: 50px
+        }
+        .w{
+            margin: 19px  auto 30px auto;
+            padding: 34px 40px 0 40px;
+            border:1px #e1e1e1 solid;
+            background: #fafafa;
+            -moz-box-shadow:0px 2px 5px #D9D9D9; -webkit-box-shadow:0px 2px 5px #D9D9D9; box-shadow:0px 2px 5px #D9D9D9;
+        }
+        .complaint{
+            padding: 0 .2rem;
+        }
+        .complaint p{
+            font-size: .3rem;
+            color: #454545;
+            line-height: .6rem;
+            text-align: center;
+        }
+        .tag{
+            height: .22rem;
+            border-bottom: 1px #e1e1e1 solid;
+            position: relative;
+            margin-bottom: .5rem;
+        }
+        .tag span{
+            display: inline-block;
+            width: .85rem;
+            height: .65rem;
+            position: absolute;
+            left: 50%;
+            top: -23%;
+            margin-left: -.325rem;
+            background-image: url(/WeixinWeb/WeixinWeb_Images/images/complaintProposal/tag.png);
+            background-repeat: no-repeat;
+            background-color: #fafafa;
+            background-size: 100% 100%;
+            font-size: .22rem;
+            color: #fff;
+            text-align: center;
+            line-height:.6rem;
+        }
+
+        .Info th{
+            font-size: .24rem;
+            color: #ca132c;
+            height:.6rem;
+            line-height: .6rem;
+            border:1px #e5e5e5 solid;
+            padding-left: .16rem;
+            text-align: left;
+            background: #fbf2f3;
+        }
+        .Info td{
+            font-size: .2rem;
+            color: #434343;
+            height: .6rem;
+            line-height: .3rem;
+            border: 1px #e5e5e5 solid;
+            padding-left: .16rem;
+            background: #ffffff;
+        }
+        .InfoWarp{
+            padding-top: .15rem;
+            padding: 0 .19rem;
+            margin-top: 1.64rem;
+        }
+        .t1{
+            width: 1.67rem;
+        }
+        .t2{
+            width: 3.09rem;
+        }
+        .t3{
+            width: 2.33rem;
+        }
+        .t4{
+            padding-top: .1rem;
+            padding-bottom: .1rem
+        }
+        .progress{
+            height: 4px;
+            background: #f05b6f;
+            position: relative;
+
+        }
+        .box{
+            position: absolute;
+            text-align: center;
+            top: -1.1rem;
+        }
+        .box1{
+            left: 0;
+        }
+        .box i{
+            display: inline-block;
+            width: .62rem;
+            height: .73rem;
+            margin-bottom: -5px
+        }
+        .box1{
+           width: 2.05rem;
+        }
+        .box1 i{
+            background: url(/WeixinWeb/WeixinWeb_Images/images/complaintProposal/icon1.png) no-repeat;
+            background-size: 100% 100%;
+        }
+        .box2{
+            width: 2.74rem;
+        }
+        .box2 i{
+            background: url(/WeixinWeb/WeixinWeb_Images/images/complaintProposal/icon2.png) no-repeat;
+            background-size: 100% 100%;
+        }
+        .box3{
+             width: 1.97rem;
+         }
+        .box3 i{
+            background: url(/WeixinWeb/WeixinWeb_Images/images/complaintProposal/icon3.png) no-repeat;
+            background-size: 100% 100%;
+        }
+        .process{
+            height: 2.28rem;
+            background: #fff;
+            border: 1px #e1e1e1 solid;
+            margin-top: 1.55rem;
+            position: relative;
+        }
+        .box div{
+            font-size: .24rem;
+            color: #212121;
+            line-height: .3rem;
+        }
+        .box span{
+            display: inline-block;
+            width: .3rem;
+            height: .3rem;
+            background: #f05b6f;
+            border-radius: 50%;
+            font-size: .22rem;
+            line-height: .3rem;
+        }
+        .box2{
+            left: 31%;
+        }
+        .box3{
+            left: 74%;
+        }
+        .serial span{
+            color: #fff;
+        }
+        .serial{
+            margin-bottom: 8px;
+        }
+        .process p{
+            margin-top: -1.42rem;
+        }
+    </style>
+</head>
+<body>
+
+<section class="complaint">
+    <div class="channel">
+        <p>意见反馈&投诉处理方式及渠道</p>
+        <div class="tag">
+            <span>1</span>
+        </div>
+        <div class="Info">
+            <table cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <th class="t1">方式</th>
+                    <th class="t2">统一受理渠道</th>
+                    <th class="t3">受理时间</th>
+                </tr>
+                <tr>
+                    <td>电话</td>
+                    <td >客户服务热线：400-887-8555</td>
+                    <td rowspan="2">工作日：9:00-11:30,13:00-17:30</td>
+                </tr>
+                <tr>
+                    <td>微信</td>
+                    <td>微信在线客服</td>
+
+                </tr>
+                <tr>
+                    <td>电子邮件</td>
+                    <td>cmwa@cmwachina.com</td>
+                    <td rowspan="4">
+                        当日17:30之前的投诉来访当日受理；<br><br>
+                        当日17:30之后的投诉来访下一工作日受理。
+                    </td>
+                </tr>
+                <tr>
+                    <td>传真</td>
+                    <td>0755-83196400</td>
+                </tr>
+                <tr>
+                    <td>信函</td>
+                    <td class="t4">深圳市福田区深南大道7888号东海国际中心B座19楼 客服中心<br>邮编：518040</td>
+                </tr>
+                <tr>
+                    <td>代销机构所<br>提供的投诉方式</td>
+                    <td>代销机构服务渠道</td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+    <div class="process">
+        <p>投诉处理流程</p>
+        <div class="tag">
+            <span>2</span>
+        </div>
+        <div class="Info InfoWarp">
+            <div class="progress">
+                <div class="box box1">
+                    <i></i>
+                    <div class="serial"><span>1</span></div>
+                    <div>客服接到投诉</div>
+                </div>
+                <div class="box box2">
+                    <i></i>
+                    <div class="serial"><span>2</span></div>
+                    <div>提交有关部门处理</div>
+                </div>
+                <div class="box box3">
+                    <i></i>
+                    <div class="serial"><span>3</span></div>
+                    <div>客服回复客户<br>并进行沟通解释</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

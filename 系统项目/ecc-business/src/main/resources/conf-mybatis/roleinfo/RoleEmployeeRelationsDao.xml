@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.roleinfo.RoleEmployeeRelationsDao">
+	<resultMap id="roleEmployeeRelationsVo" type="roleEmployeeRelationsVo">
+		<result property="roleId" column="ROLE_ID" />
+		<result property="empId" column="EMP_ID" />
+		<result property="stat" column="STAT" />
+		<result column="CREATE_ID" property="createId"/>
+		<result column="CREATE_NAME" property="createName"/>
+		<result column="CREATE_TIME" property="createTime"/>
+		<result column="MODIFY_ID" property="modifyId"/>
+		<result column="MODIFY_TIME" property="modifyTime"/>
+		<result column="MODIFY_NAME" property="modifyName"/>
+		<result column="ATTR1" property="attr1"/>
+		<result column="ATTR2" property="attr2"/>
+		<result column="ATTR3" property="attr3"/>
+		<result column="ATTR3" property="attr3"/>
+		<result column="ATTR3" property="attr3"/>
+		<result column="ATTR3" property="attr3"/>
+		<result column="ATTR3" property="attr3"/>
+		<result column="ORGID" property="orgId"/>
+		<result column="EMNAME" property="emName"/>
+		<result column="TITLENAME" property="titleName"/>
+		<result column="ORGNAME" property="orgName"/>
+		
+	</resultMap>
+	
+	<insert id="batchInsert">
+      BEGIN 
+      	<foreach collection="sp.empIds" item="empId">
+      		DELETE T_ECC_ROLE_EMP_REL WHERE ROLE_ID = #{sp.roleId} AND EMP_ID = #{empId};
+      		INSERT INTO T_ECC_ROLE_EMP_REL (
+        		ROLE_ID,    
+        		EMP_ID,   
+        		STAT,
+        		CREATE_ID,
+        		CREATE_TIME,
+        		MODIFY_ID,
+        		MODIFY_TIME
+       		)VALUES(
+       			#{sp.roleId}, 
+       			#{empId},
+       			'C',
+       			#{sp.createId},
+       			SYSDATE, 
+       			#{sp.createId},
+       			SYSDATE
+       		);
+      	</foreach>
+      END;
+	</insert>
+	
+	<delete id="deleteByRoleId" parameterType="String">
+	DELETE FROM T_ECC_ROLE_EMP_REL WHERE ROLE_ID = #{roleId}
+	</delete>
+	
+	<select id="queryRelationsByEmpId" parameterType="String" resultMap="roleEmployeeRelationsVo">
+		SELECT ROLE_ID,EMP_ID FROM T_ECC_ROLE_EMP_REL 
+		WHERE STAT ='C' 
+		AND EMP_ID= #{empId}
+	</select>
+	
+	<select id="queryShareRoleByEmpAllRole" parameterType="String" resultMap="roleEmployeeRelationsVo">
+		SELECT WAG.SHARE_ID AS ROLE_ID, #{empId} AS EMP_ID
+		  FROM T_ECC_AUTHORITY_GROUP WAG
+		 WHERE WAG.ROLE_ID IN (
+             SELECT ROLE_ID
+               FROM T_ECC_ROLE_EMP_REL
+              WHERE STAT = 'C'
+                AND EMP_ID = #{empId})
+	 ORDER BY SHARE_ID ASC
+	</select>
+	
+	<select id="queryRoleEmpRelByRoleId" resultType="java.lang.String" parameterType="java.util.List">
+		SELECT TO_CHAR(WM_CONCAT(EMP_ID))
+		  FROM (
+		  	SELECT DISTINCT EMP_ID
+	          FROM T_ECC_ROLE_EMP_REL
+	         WHERE ROLE_ID IN 
+	         <foreach item="roleVo" collection="list" open="(" separator="," close=")">
+	         	#{roleVo.roleId}
+	         </foreach>
+		  )
+	</select>
+	
+	<select id="queryRoleEmpRelByParam" parameterType="sparam" resultMap="roleEmployeeRelationsVo">
+		SELECT WRER.ROLE_ID,
+		       WRER.EMP_ID,
+		       WRER.STAT,
+		       WRER.CREATE_ID,
+		       WRER.CREATE_TIME,
+		       WRER.MODIFY_ID,
+		       WRER.MODIFY_TIME,
+		       (SELECT TE.EMPEMAIL FROM T_ECC_EMPLOYEEE TE WHERE TE.EMPID = WRER.EMP_ID) ATTR1
+		  FROM T_ECC_ROLE_EMP_REL WRER
+		  LEFT JOIN T_ECC_ROLE WR ON WRER.ROLE_ID = WR.ROLE_ID
+		 WHERE 
+		 	1 = 1
+		   AND WRER.STAT = 'C'
+		 <if test="sp.roleName != null and sp.roleName !='' ">
+		 	AND WR.ROLE_NAME = #{sp.roleName}
+		 </if>
+		 <if test="sp.roleId != null and sp.roleId !='' ">
+		 	AND WR.ROLE_ID = #{sp.roleId}
+		 </if>
+		<!--  <if test="sp.isSendMail != null and sp.isSendMail !='' ">
+		 	AND WR.IS_SENDMAIL = 'Y'
+		 </if> -->
+	</select>
+	
+	<select id="queryRoleRelationsByEmpId" parameterType="String" resultMap="roleEmployeeRelationsVo">
+		select EMPID, ORGID, EMNAME, STAT, TITLENAME, ORGNAME
+			  from V_T_SYS_KM_BO_ORMEMBER
+			 WHERE EMPID = #{empId}
+			   AND ORGNAME = (select *
+                    from (SELECT ORGNAME
+                            from V_T_SYS_KM_BO_ORMEMBER
+                           WHERE EMPID = #{empId}
+                           GROUP BY ORGNAME)
+                   where rownum = 1)
+	</select>
+	<select id="queryDeptAllRoleByEmpId" parameterType="String" resultMap="roleEmployeeRelationsVo">
+		SELECT ORGID, EMPID, EMNAME
+			 FROM V_T_SYS_KM_BO_ORMEMBER
+			 WHERE ORGID = #{orgId}
+			 AND STAT = 'STAR'
+	</select>
+	
+</mapper>

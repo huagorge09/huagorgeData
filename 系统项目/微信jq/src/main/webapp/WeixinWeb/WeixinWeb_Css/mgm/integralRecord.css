@@ -1,0 +1,169 @@
+
+.content{
+	background: #FFFFFF;
+}
+
+span{
+	display: inline-block;
+}
+.headX{
+	width: 100%;
+	height: 250px;
+	position: relative;
+}
+
+/* 蓝色小块 */
+.blueBlock{
+	background-color:#85c4f5 ;
+	width: 4px;
+	height: 17px;
+	display: inline-block;
+	margin-left: 15px;
+	margin-right: 10px;
+	position: relative;
+	top: 2.35px;
+}
+.get1{
+	font-size: 16px;
+	color: #000000;
+}
+.month1{
+	color: #999999;
+	font-size: 16px;
+}
+.top{
+	height: 45px;
+	width: 100%;
+	border-bottom: 1px solid #efefef ;
+}
+.top p{
+	margin-top: 15px;
+}
+
+.integralEcharts{
+	width:100%;
+	height: 155px;
+	margin-top:18px;
+	position: absolute;
+	left: -15%;
+}
+
+.buyAmount{
+	position: absolute;
+	right:25%;
+	top: 125px;
+}
+.buyAmount p{
+	font-size:20px;
+	color: #66717f;
+}
+
+.hasBuy{
+	position: absolute;
+	top: 60px;
+}
+.greyBar{
+	width: 100%;
+	height: 10px;
+	background-color: #f1f0f6;
+}
+
+.recordTit{
+	width: 100%;
+	height: 45px;
+	border-bottom: 1px solid #efefef ;
+	position: relative;
+}
+.recordTit .r1{
+	display: inline-block;
+	margin-top: 12px;
+}
+.totalIntegral{
+	font-size: 15px;
+	color: #a1a1a1;
+	position: absolute;
+	right: 19%;
+	margin-top: 12px;
+}
+.recordBox{
+	width: 100%;
+}
+.recordList{
+	width: 96%;
+	margin-left: 4%;
+	margin-bottom: 30px;
+}
+.recordList li{
+	height: 73px;
+	width: 100%;
+	border-bottom:1px solid #efefef ;
+}
+.red{
+	color: #fc3f3f;
+}
+.black{
+	color: #000000;
+}
+.operationName{
+	font-size: 16px;
+	color: #000000;
+	margin-top: 18px;
+}
+.costDate{
+	font-size: 13px;
+	color: #939393;
+	margin-top: 3px;
+}
+.successBuy{
+
+	width: 80px;
+	height: 20px;
+	background: #e5f3ff;
+	border-radius:20px ;
+	color: #40a7ff;
+	font-size: 14px;
+	text-align: center;
+	line-height:20px ;
+	margin-left: 8px;
+}
+.recordList li .amount{
+	font-size: 20px;
+	position: absolute;
+	right: 5%;
+	margin-top:18px ;
+}
+#total{
+    position: absolute;
+    right: 4%;
+    margin-top:12.8px;
+    font-size: 15px;
+    color: #a1a1a1;
+
+}
+ul#lists {
+    margin-left: 3.6%;
+    list-style-type: none;
+}
+.custRed{
+	color: #fc3f3f;
+}
+span.amount {
+  
+	position: absolute;
+	right: 5%;
+	font-size: 20px;
+	margin-top: 15px;
+}
+.noRecord{
+    text-align: center;
+    padding-top: 24px;
+}
+  .noRecord img{
+	  width: 119px;
+	  height: 104px;
+  }
+  .noRecord p{
+	  font-size: 14px;
+	  margin-top: 1px;
+	  color: #999;
+  }

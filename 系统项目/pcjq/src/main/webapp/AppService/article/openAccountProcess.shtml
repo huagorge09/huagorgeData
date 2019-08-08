@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>财富故事</title>
+<link rel="shortcut icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+<link rel="icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<!--[if IE]>
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageJs/html5.js"></script>
+<![endif]-->
+<!--[if IE 6]>
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageJs/DD_belatedPNG_0.0.8a.min.js"></script>
+	<script>
+		DD_belatedPNG.fix('*');
+	</script>
+<![endif]-->
+</head>
+<body>
+	
+<!-- header -->
+<!--#include virtual="/AppService/public/header.shtml"-->
+
+
+<div class="cooperation-bg mid">
+    <h3 class="flow-title">招商财富线上购买流程详解</h3>
+    <div class="flow-box box1">
+        <h1>1</h1>
+        <div class="flow-con">
+            <h2>登录或注册成为招商财富客户</h2>
+            <span>您需要提供有效的手机号码，并认证为“合格投资者”，即可成为招商财富尊贵客户，享受快捷、方便的理财服务。</span> 
+        </div>
+        <img src="/AppWeb/AppWeb_Images/images/xiangQing_img1.png" height="318" width="728" alt="" class="flow-img">
+    </div>
+    <div class="flow-box box1">
+        <h1>2</h1>
+        <div class="flow-con">
+            <h2>查看优质产品</h2>
+            <span>点击 “财富产品”，即可查看正在募集中的产品。这里有丰富的理财产品和详细的投资介绍。</span> 
+        </div>
+        <img src="/AppWeb/AppWeb_Images/images/xiangQing_img2.png" height="318" width="728" alt="" class="flow-img">
+    </div>
+    <div class="flow-box box1">
+        <h1>3</h1>
+        <div class="flow-con">
+            <h2>购买及支付</h2>
+            <span>完成实名认证后，点击产品介绍页面的“立即预约”或者“立即购买”按钮，并按提示进行操作，即可成功购买相应理财产品。</span> 
+        </div>
+        <img src="/AppWeb/AppWeb_Images/images/xiangQing_img3.png" height="318" width="728" alt="" class="flow-img">
+    </div>
+    <div class="flow-box box1">
+        <h1>4</h1>
+        <div class="flow-con">
+            <h2>订单查询</h2>
+            <span>付款成功后，您可以在“我的财富”中查询相关订单信息，时时刻刻掌握您的理财信息。</span> 
+        </div>
+        <img src="/AppWeb/AppWeb_Images/images/xiangQing_img4.png" height="318" width="728" alt="" class="flow-img">
+    </div>
+    <div class="other-operation" id="infos">
+        <!-- <h3 class="flow-title">其它业务流程说明</h3>
+        <ul>
+            <li>
+                <a href="#">
+                    <span>直销柜台业务办理指南（客户版）</span>
+                    <em>2016-07-12</em>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>直销柜台业务办理指南（客户版）</span>
+                    <em>2016-07-12</em>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>直销柜台业务办理指南（客户版）</span>
+                    <em>2016-07-12</em>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>直销柜台业务办理指南（客户版）</span>
+                    <em>2016-07-12</em>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>直销柜台业务办理指南（客户版）</span>
+                    <em>2016-07-12</em>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>直销柜台业务办理指南（客户版）</span>
+                    <em>2016-07-12</em>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>直销柜台业务办理指南（客户版）</span>
+                    <em>2016-07-12</em>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>直销柜台业务办理指南（客户版）</span>
+                    <em>2016-07-12</em>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>直销柜台业务办理指南（客户版）</span>
+                    <em>2016-07-12</em>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>直销柜台业务办理指南（客户版）</span>
+                    <em>2016-07-12</em>
+                </a>
+            </li>
+        </ul>
+        <span class="check-more">展开查看更多
+            <img class="down" src="images/download20160707/download_center_showMore.png" height="15" width="15" alt="">
+            <img class="up none" src="images/download20160707/download_center_showMore_up.png" height="15" width="15" alt="">
+        </span> -->
+    </div>
+</div>
+
+<!-- footer -->
+<!--#include virtual="/AppService/public/footer.shtml"-->
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/openAccountProcess.min.js"></script>
+</body>
+</html>

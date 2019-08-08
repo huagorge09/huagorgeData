@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+	<h2 class="myorder-title">我的对账单</h2>
+	<div class="myorder-tab-con" style="margin-bottom: 15px;">
+		<div class="myorder-tab-nav">
+			<ul>
+				<li class="act"><a href="javascript:showTradeInfo('0')">全部</a></li>
+				<li><a href="javascript:showTradeInfo('1')">认购</a></li>
+				<li><a href="javascript:showTradeInfo('2')">分配</a></li>
+				<li><a href="javascript:showTradeInfo('3')">赎回</a></li>
+			</ul>
+		</div>
+		<div class="myorder-tab-info">
+			<h3>
+				<span>产品名称</span> <span>时间</span> <span>交易类型</span> <span>金额</span>
+			</h3>
+			<ul id="bill_01">
+			</ul>
+			<ul id="bill_02" class="none">
+			</ul>
+			<ul id="bill_03" class="none">
+			</ul>
+			<ul id="bill_04" class="none">
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/myBill.min.js"></script>
+	<!-- <script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/myBill.js"></script> -->
+</body>
+</html>

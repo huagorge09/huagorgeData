@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.roleinfo.RoleInfoDao">
+	<resultMap type="roleVo" id="roleVo">
+		<id column="ROLE_ID" property="roleId"/>
+		<result column="ROLE_NAME" property="roleName"/>
+		<result column="ROLE_TYPE" property="roleType"/>
+		<result column="ROLE_TYPE_NAME" property="roleTypeName"/>
+		<result column="IS_SENDMAIL" property="isSendMail"/>
+		<result column="STAT" property="stat"/>
+		<result column="AUTHORITY_TYPE" property="authorityType"/>
+		<result column="ROLE_TYPE_CODE" property="roleTypeCode"/>
+		<result column="STATNAME" property="statName"/>
+		<result column="CREATE_ID" property="createId"/>
+		<result column="CREATE_NAME" property="createName"/>
+		<result column="CREATE_TIME" property="createTime"/>
+		<result column="MODIFY_ID" property="modifyId"/>
+		<result column="MODIFY_TIME" property="modifyTime"/>
+		<result column="MODIFY_NAME" property="modifyName"/>
+		<result column="EMPS_NAME" property="empsName"/>
+		<result column="EMPIDS" property="empIds"/>
+		<result column="SHARE_ROLE_IDS" property="shareRoleIds"/>
+		
+	</resultMap>
+	
+	<select id="queryRoleInfoListPage" resultMap="roleVo" parameterType="sparam">
+		SELECT WROLE.ROLE_ID,
+		       WROLE.ROLE_NAME,
+		       WROLE.ROLE_TYPE,
+		       WROLE.IS_SENDMAIL,
+		       WROLE.STAT,
+		       WROLE.AUTHORITY_TYPE,
+		       WROLE.CREATE_ID,
+		       TO_CHAR(WROLE.CREATE_TIME,'YYYY-MM-DD HH24:MI:SS') AS CREATE_TIME,
+		       WROLE.MODIFY_ID,
+		       TO_CHAR(WROLE.MODIFY_TIME,'YYYY-MM-DD HH24:MI:SS') AS MODIFY_TIME
+		  FROM T_ECC_ROLE WROLE
+		  WHERE 
+		       WROLE.STAT = 'C'
+			<if test="sp.roleName != null and sp.roleName !='' ">
+				AND WROLE.ROLE_NAME LIKE '%'||#{sp.roleName}||'%'
+			</if>
+			<if test="sp.empId != null and sp.empId !='' ">
+				AND EXISTS
+				  (
+				      SELECT 1 FROM T_ECC_ROLE_EMP_REL REL 
+				      	WHERE REL.EMP_ID = #{sp.empId} AND REL.ROLE_ID = WROLE.ROLE_ID
+				  )
+			</if>
+			ORDER BY WROLE.CREATE_TIME DESC,WROLE.ROLE_ID DESC
+	</select>
+	
+	<select id="queryRoleInfoListByParam" resultMap="roleVo" parameterType="sparam">
+		SELECT WROLE.ROLE_ID,
+		       WROLE.ROLE_NAME,
+		       WROLE.ROLE_TYPE,
+		       WROLE.IS_SENDMAIL,
+		       WROLE.STAT,
+		       WROLE.AUTHORITY_TYPE,
+		       WROLE.CREATE_ID,
+		       TO_CHAR(WROLE.CREATE_TIME,'YYYY-MM-DD HH24:MI:SS') AS CREATE_TIME,
+		       WROLE.MODIFY_ID,
+		       TO_CHAR(WROLE.MODIFY_TIME,'YYYY-MM-DD HH24:MI:SS') AS MODIFY_TIME
+		  FROM T_ECC_ROLE WROLE
+		  WHERE 
+		       WROLE.STAT = 'C'
+			<if test="sp.roleName != null and sp.roleName !='' ">
+				AND WROLE.ROLE_NAME LIKE '%'||#{sp.roleName}||'%'
+			</if>
+			<if test="sp.currEmpId != null and sp.currEmpId !='' ">
+				AND EXISTS
+				  (
+				      SELECT 1 FROM T_ECC_ROLE_EMP_REL REL 
+				      	WHERE REL.EMP_ID = #{sp.currEmpId} AND REL.ROLE_ID = WROLE.ROLE_ID
+				  )
+			</if>
+			ORDER BY WROLE.CREATE_TIME DESC 
+	</select>
+	
+	<select id="queryRoleCount" resultType="int" parameterType="roleVo">
+		SELECT COUNT(1) FROM T_ECC_ROLE WHERE ROLE_NAME = #{roleName}
+	</select>
+	
+	<select id="queryRoleInfoById" resultMap="roleVo" parameterType="java.lang.String">
+		SELECT WROLE.ROLE_ID,
+		       WROLE.ROLE_NAME,
+		       WROLE.ROLE_TYPE,
+		       WROLE.IS_SENDMAIL,
+		       WROLE.STAT,
+		       AUTHORITY_TYPE,
+		       (SELECT TO_CHAR(WM_CONCAT(REL.EMP_ID))
+		          FROM T_ECC_ROLE_EMP_REL REL
+		         WHERE REL.ROLE_ID = WROLE.ROLE_ID) AS EMPIDS,
+		       (SELECT TO_CHAR(WM_CONCAT(EMP.EMNAME))
+		          FROM V_T_SYS_KM_BO_EMPLOYEE EMP
+		         WHERE EMP.EMPID IN
+		               (SELECT REL.EMP_ID
+		                  FROM T_ECC_ROLE_EMP_REL REL
+		                 WHERE REL.ROLE_ID = WROLE.ROLE_ID)) AS EMPS_NAME,
+		       (SELECT TO_CHAR(WM_CONCAT(SHARE_ID))
+		          FROM T_ECC_AUTHORITY_GROUP WAGP
+		         WHERE WAGP.ROLE_ID = WROLE.ROLE_ID) AS SHARE_ROLE_IDS,          
+		       WROLE.CREATE_ID,
+		       WROLE.CREATE_TIME,
+		       WROLE.MODIFY_ID,
+		       WROLE.MODIFY_TIME
+		  FROM T_ECC_ROLE WROLE
+		WHERE WROLE.ROLE_ID = #{roleId}
+	</select>
+	
+	<select id="queryRoleInfoByParam" resultMap="roleVo" parameterType="roleVo">
+		SELECT 
+				ROLE_ID,
+				ROLE_NAME, 
+				ROLE_TYPE,
+				IS_SENDMAIL,
+				STAT,
+				AUTHORITY_TYPE, 
+				CREATE_ID,
+				CREATE_TIME,
+				MODIFY_ID,
+				MODIFY_TIME
+		FROM T_ECC_ROLE
+		WHERE ROLE_NAME = #{roleName}
+	</select>
+	
+	<insert id="insertRoleInfoByRole">
+		<selectKey resultType="String" order="BEFORE" keyProperty="roleId">
+			SELECT ECC_IBF_GET_SEQNO(TO_CHAR(SYSDATE, 'YYYYMMDD')) FROM DUAL
+		</selectKey>
+		INSERT INTO T_ECC_ROLE
+	  	(
+	       ROLE_ID, 
+	       ROLE_NAME, 
+	       ROLE_TYPE, 
+	       AUTHORITY_TYPE, 
+	       STAT,
+	       CREATE_ID, 
+	       MODIFY_ID
+	    )
+		VALUES
+		  (
+	  		#{roleId},
+	   		#{roleName},
+	   		#{roleType},
+	   		#{authorityType},
+	   		'C',
+	   		#{createId},
+	   		#{modifyId}
+		   )
+	</insert>
+	
+	<select id="queryRole" resultMap="roleVo" parameterType="roleVo">
+		SELECT 
+				ROLE_ID,
+				ROLE_NAME, 
+				ROLE_TYPE,
+				IS_SENDMAIL,
+				STAT,
+				AUTHORITY_TYPE, 
+				CREATE_ID,
+				CREATE_TIME,
+				MODIFY_ID,
+				MODIFY_TIME
+		FROM T_ECC_ROLE WROLE WHERE 1=1
+	     <if test="roleName != null and roleName != ''"> 
+	       AND ROLE_NAME = #{roleName}
+	     </if>
+	</select>
+	
+	<update id="updateRoleInfoByRole">
+		UPDATE 
+			T_ECC_ROLE WROLE 
+		SET 
+			WROLE.ROLE_NAME = #{roleName},
+			WROLE.IS_SENDMAIL = NVL(#{isSendMail},'N'),
+			WROLE.MODIFY_ID	= #{modifyId},
+			WROLE.MODIFY_TIME = SYSDATE
+		WHERE WROLE.ROLE_ID = #{roleId}
+	</update>
+	
+	<select id="matchRoleInfoIsNotExist" resultMap="roleVo" parameterType="roleVo">
+		SELECT 
+				ROLE_ID,
+				ROLE_NAME, 
+				ROLE_TYPE,
+				IS_SENDMAIL,
+				STAT,
+				AUTHORITY_TYPE, 
+				CREATE_ID,
+				CREATE_TIME,
+				MODIFY_ID,
+				MODIFY_TIME
+		FROM T_ECC_ROLE WROLE WHERE 1=1
+	     <if test="roleName != null and roleName != ''"> 
+	       AND ROLE_NAME = #{roleName}
+	     </if>
+	     <if test="roleId != null and roleId != ''"> 
+	       AND ROLE_ID <![CDATA[<>]]> #{roleId}
+	     </if>
+	</select>
+	
+	<select id="queryShareRoleListByRoleId" resultMap="roleVo" parameterType="roleVo">
+		SELECT ROLE_ID,
+		       ROLE_NAME,
+		       ROLE_TYPE,
+		       IS_SENDMAIL,
+		       STAT,
+		       AUTHORITY_TYPE,
+		       CREATE_ID,
+		       CREATE_TIME,
+		       MODIFY_ID,
+		       MODIFY_TIME
+		  FROM T_ECC_ROLE WROLE
+		 WHERE WROLE.ROLE_ID IN
+		       (SELECT WRGR.SHARE_ID
+		          FROM T_ECC_AUTHORITY_GROUP WRGR
+		         WHERE WRGR.ROLE_ID = #{roleId})
+	</select>
+	
+	<select id="getClShareNamesByRoleId" resultType="String" parameterType="String">
+		SELECT TO_CHAR(WMSYS.WM_CONCAT(ROLE_NAME))
+			FROM T_ECC_ROLE
+		     WHERE ROLE_ID IN (
+		       SELECT T.SHARE_ID FROM (
+		          SELECT * FROM T_ECC_AUTHORITY_GROUP START WITH SHARE_ID=#{roleId} 
+		          CONNECT BY NOCYCLE PRIOR ROLE_ID=SHARE_ID
+		       ) T WHERE T.ROLE_ID=#{roleId})
+	</select>
+</mapper>

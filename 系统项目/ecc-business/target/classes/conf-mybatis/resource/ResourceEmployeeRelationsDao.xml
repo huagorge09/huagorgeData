@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmwa.ecc.business.dao.resource.ResourceEmployeeRelationsDao">
+	<resultMap type="resourceEmployeeRelationsVo" id="resourceEmployeeRelationsVo">
+		<result column="RES_ID" property="resId"/>
+		<result column="EMP_ID" property="empId"/>
+		<result column="CREATE_ID" property="createId"/>
+		<result column="CREATE_NAME" property="createName"/>
+		<result column="CREATE_TIME" property="createTime"/>
+		<result column="MODIFY_ID" property="modifyId"/>
+		<result column="MODIFY_TIME" property="modifyTime"/>
+		<result column="MODIFY_NAME" property="modifyName"/>
+	</resultMap>
+	
+	<insert id="batchInsert">
+      BEGIN 
+      	<foreach collection="sp.empIds" item="empId">
+      		INSERT INTO T_ECC_RES_EMP_REL (
+        		RES_ID,    
+        		EMP_ID,   
+        		CREATE_ID,
+        		CREATE_TIME,
+        		MODIFY_ID,
+        		MODIFY_TIME
+       		)VALUES(
+       			#{sp.resId}, 
+       			#{empId},
+       			#{sp.createId},
+       			SYSDATE, 
+       			#{sp.createId},
+       			SYSDATE
+       		);
+      	</foreach>
+      END;
+	</insert>
+	
+	<delete id="deleteRelByResOrEmpId">
+		DELETE T_ECC_RES_EMP_REL WHERE RES_ID = #{resId} OR EMP_ID = #{empId}
+	</delete>
+	
+</mapper>

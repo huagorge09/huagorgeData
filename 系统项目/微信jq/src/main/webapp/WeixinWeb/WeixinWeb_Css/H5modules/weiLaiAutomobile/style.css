@@ -1,0 +1,716 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-appearance: none;
+    outline: none;
+    word-break: break-all;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+*:not(input, textarea) {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+}
+
+html,
+body {
+    color: #333;
+    margin: 0 auto;
+    font-family: Arial, "Microsoft YaHei";
+    font-size: 50px;
+    background: #fff;
+    height: 100%;
+}
+
+input {
+    -webkit-user-select: initial;
+    font-family: Arial, "Microsoft YaHei";
+    border: none;
+}
+
+i {
+    font-style: normal
+}
+
+a {
+    text-decoration: none;
+    color: #ffffdd;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+em {
+    font-style: normal
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+img {
+    border: 0;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clearFloat:after,
+.clearFloat:before {
+    content: "";
+    display: table;
+}
+
+.clearFloat:after {
+    clear: both;
+}
+
+.dswkb {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-box;
+    display: box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-box-align: center;
+    box-align: center;
+    position: relative;
+}
+
+.flex1 {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -ms-box-flex: 1;
+    box-flex: 1;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.center {
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.arrow {
+    width: 0.5rem;
+    height: 0.5rem;
+    position: absolute;
+    bottom: 0.42rem;
+    left: 50%;
+    margin-left: -0.18rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/invitation/arrow.png) no-repeat;
+    background-size: 100% 100%;
+    animation-name: arrowing;
+    -webkit-animation-name: arrowing;
+    animation-duration: 1.5s;
+    -webkit-animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+.dialog-toast .dialog-content{
+	width: 100px !important;
+    height: 100px !important;
+}
+.dialog-toast .info-icon{
+	width: 40px !important;
+    max-width: 56px !important;
+}
+/* .logo{
+    position: absolute;
+    left: .24rem;
+    top:.4rem;
+    width: 1.78rem;
+    height: .66rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/invitation/logo.png) no-repeat;
+    background-size: 100% 100%;
+} */
+
+
+.fp-tableCell {
+    position: relative;
+}
+
+.pag {
+    position: absolute;
+    display: none;
+}
+
+.page1 {
+    width: 100%;
+    height: 100%;
+    /* background: url(/WeixinWeb/WeixinWeb_Images/H5modules/invitation/bg1.jpg) no-repeat; */
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/weiLaiAutomobile/YQHA.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+.page1-1 {
+    width: 5.45rem;
+    height: 5.47rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/weiLaiAutomobile/YQHB_03.png) no-repeat;
+    background-size: 94% 94%;
+    left: 1.2rem;
+    top: 10%;
+}
+
+.page1-2 {
+    width: 2.51rem;
+    height: 0.91rem;
+    left: 2.5rem;
+    top: 85%;
+}
+.page1-2 img{
+    width: 100%
+}
+
+
+
+
+
+/*第二页*/
+.page2{
+    width: 100%;
+    height: 100%;
+    /* background: url(/WeixinWeb/WeixinWeb_Images/H5modules/invitation/bg.jpg) no-repeat; */
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/weiLaiAutomobile/YQHC.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+.page2-1 {
+    width: 5.4rem;
+    height: 1.57rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/weiLaiAutomobile/YQHD_03.png) no-repeat;
+    background-size: 100% 100%;
+    left: 0.9rem;
+    top: 7%;
+}
+
+.page2-2 {
+    width: 5.55rem;
+    /* height: 8.12rem; */
+    height: 8rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/weiLaiAutomobile/YQHD_06.png) no-repeat;
+    background-size: 100% 100%;
+    left: 12%;
+    top: 25%;
+}
+.page2-3 {
+    width: 5.66rem;
+    height: 3.47rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/invitation/page2-3.png) no-repeat;
+    background-size: 100% 100%;
+    left: 12%;
+    top: 58%;
+}
+
+
+
+/*第三页*/
+.page3 {
+    width: 100%;
+    height: 100%;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/weiLaiAutomobile/YQHUI.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+.page3-1 {
+    width: 5.86rem;
+    height: 5.21rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/invitation/page3-1.png) no-repeat;
+    background-size: 100% 100%;
+    left: 11%;
+    top: 14%;
+}
+
+.page3-2 {
+    width: 5.86rem;
+    height: 3.99rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/invitation/page3-2.png) no-repeat;
+    background-size: 100% 100%;
+    left: 11%;
+    top: 58%;
+}
+
+
+/*第四页*/
+.page4 {
+    width: 100%;
+    height: 100%;   
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/weiLaiAutomobile/YQHUI.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+.page4-1 {
+    width: 3.94rem;
+    height: 2.28rem;
+    /* background: url(/WeixinWeb/WeixinWeb_Images/H5modules/weiLaiAutomobile/YQHPT_03.png) no-repeat; */
+    background-size: 100% 100%;
+    left: 1.9rem;
+    top: 75%;
+}
+
+
+/*第五页*/
+.page3 {
+    width: 100%;
+    height: 100%;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/weiLaiAutomobile/YQHE.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+.page3-1 {
+    width: 1.85rem;
+    height: .46rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/weiLaiAutomobile/YQHF_03.png) no-repeat;
+    background-size: 100% 100%;
+    left: 37%;
+    top: 11%;
+}
+
+.page3-2 {
+    width: 1.98rem;
+    height: .58rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/invitation/page5-2.png) no-repeat;
+    background-size: 100% 100%;
+    left: 37%;
+    top: 49%;
+
+}
+
+.page3-3 {
+    width: 5.74rem;
+    height: 2.83rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/invitation/page5-3.png) no-repeat;
+    background-size: 100% 100%;
+    left: 11.5%;
+    top: 71%;
+}
+.textBox{
+    left: 0;
+    top: 60%;
+    width: 100%;
+}
+.textBox p:nth-child(1){
+    font-size: .3rem;
+    color: #fff;
+    text-align: center
+}
+.textBox p:nth-child(2){
+    font-size: .24rem;
+    color: #868ec9;
+    text-align: center;
+    margin-top: .1rem;
+}
+.form{
+    position: absolute;
+    left: 12.5%;
+    top: 22%;
+}
+.form li{
+    width: 5.6rem;
+    height: .8rem;
+    background: #fff;
+    border-radius: 3px;
+    font-size: .3rem;
+    margin-bottom: .3rem;
+    line-height: .8rem;
+}
+.form li span{
+    display: inline-block;
+    width: 1.3rem;
+    text-align: center;
+}
+/* .form li:nth-child(3){
+    width: 5.6rem;
+    height: .8rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/invitation/btn.png) no-repeat;
+    background-size: 100% 100%;
+    font-size: .36rem;
+    text-align: center;
+    color: #202230
+} */
+.form li:nth-child(3){
+    width: 5.6rem;
+    height: .8rem;
+    background-size: 100% 100%;
+    font-size: .36rem;
+    text-align: center;
+    color: #202230;
+    background: none !important;
+}
+.input-left{
+    float:left;
+    width: 2.1rem;
+    height: .8rem;
+    background-color:#fff;
+    background-size: 100% 100%;
+    color: #202230;
+}
+#vrfCode{
+    width: 2.1rem;
+    height: .8rem;
+    text-indent: 0.4rem;
+}
+/* #vrfCode::-webkit-input-placeholder {
+    color: #000;
+} */
+.input-right{
+    float: right;
+    width: 2.89rem;
+    height: .8rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/weiLaiAutomobile/YQHF_07.png) no-repeat;
+    background-size: 100% 100%;
+    color: #fff;
+    cursor: pointer;
+
+}
+.bacgBj{
+    background-color: #df8b13 !important;
+
+}
+.form li:nth-child(4){
+    width: 5.6rem;
+    height: .8rem;
+    background-size: 100% 100%;
+    font-size: .36rem;
+    text-align: center;
+    color: #202230;
+    background: none !important;
+    margin-bottom: 0.7rem;
+}
+.data-right{
+    float: left;
+    display:inline-block;
+    width: 3.5rem;
+    height:0.8rem;
+    font-size:0.3rem;
+    color:#000;
+    position: relative;
+    
+}
+.data-right em{
+    display: inline-block;
+    width: 3.88rem;
+    height: 0.53rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/weiLaiAutomobile/YQHF_11.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 0.65rem;
+    left: 0.2rem;
+}
+.data-left{
+    float: right;
+    display:inline-block;
+    height:0.8rem;
+    width: 1.55rem;
+    font-size:0.3rem;
+    color:#fff;
+}
+.data-left p{
+    display: inline-block;
+    width: 0.6rem;
+    height:0.6rem;
+    text-align: center;
+    line-height: 0.6rem;
+    background-color: #a24928;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.data-left p:nth-child(1){
+    float:left;
+}
+.data-left p:nth-child(2){
+    float:right;
+}
+.form li:nth-child(5){
+    width: 5.6rem;
+    height: .8rem;
+    background: url(/WeixinWeb/WeixinWeb_Images/H5modules/weiLaiAutomobile/YQHOP_03.png) no-repeat;
+    background-size: 100% 100%;
+    font-size: .36rem;
+    text-align: center;
+    color: #fff;
+}
+.form li input{
+    font-size: .3rem;
+}
+.logo.animate {
+    animation: bouncein 800ms ease both;
+    -webkit-animation: bouncein 800ms ease both;
+    -moz-animation: bouncein 800ms ease both;
+    -o-animation: bouncein 800ms ease both;
+}
+/*第一页动画*/
+
+.page1-1.animate{
+    animation: fadeinL 800ms ease both;
+    -webkit-animation: fadeinL 800ms ease both;
+    -moz-animation: fadeinL 800ms ease both;
+    -o-animation: fadeinL 800ms ease both;
+}
+.page1-2.animate {
+    animation: fadeinR 1300ms ease 800ms both;
+    -webkit-animation: fadeinR 1300ms ease 800ms both;
+    -moz-animation: fadeinR 1300ms ease 800ms both;
+    -o-animation: fadeinR 1300ms ease 800ms both;
+}
+
+
+/*第二页动画*/
+.page2-1.animate {
+    animation: bouncein 800ms ease both;
+    -webkit-animation: bouncein 800ms ease both;
+    -moz-animation: bouncein 800ms ease both;
+    -o-animation: bouncein 800ms ease both;
+}
+
+.page2-2.animate {
+    animation: fadeinR 800ms ease both;
+    -webkit-animation: fadeinR 800ms ease both;
+    -moz-animation: fadeinR 800ms ease both;
+    -o-animation: fadeinR 800ms ease both;
+}
+
+.page2-3.animate {
+    animation: bounceinT 800ms ease 600ms both;
+    -webkit-animation: bounceinT 800ms ease 600ms both;
+    -moz-animation: bounceinT 800ms ease 600ms both;
+    -o-animation: bounceinT 800ms ease 600ms both;
+}
+
+
+
+/*第三页动画*/
+/* .page3-1.animate {
+    animation: bounceinT 1000ms ease both;
+    -webkit-animation: bounceinT 1000ms ease both;
+    -moz-animation: bounceinT 1000ms ease both;
+    -o-animation: bounceinT 1000ms ease both;
+}
+.page3-2.animate {
+    animation: bouncein 800ms ease 800ms both;
+    -webkit-animation: bouncein 800ms ease 800ms both;
+    -moz-animation: bouncein 800ms ease 800ms both;
+    -o-animation: bouncein 800ms ease 800ms both;
+} */
+
+
+
+/*第四页动画*/
+/* .page4-1.animate {
+    animation: bounceinT 800ms ease both;
+    -webkit-animation: bounceinT 800ms ease both;
+    -moz-animation: bounceinT 800ms ease both;
+    -o-animation: bounceinT 800ms ease both;
+}
+
+.page4-2.animate {
+    animation: fadeinT 800ms ease 800ms both;
+    -webkit-animation: fadeinT 800ms ease 800ms both;
+    -moz-animation: fadeinT 800ms ease 800ms both;
+    -o-animation: fadeinT 800ms ease 800ms both;
+} */
+
+
+
+/*第五页动画*/
+.page3-1.animate {
+    animation: bouncein 800ms ease both;
+    -webkit-animation: bouncein 800ms ease both;
+    -moz-animation: bouncein 800ms ease both;
+    -o-animation: bouncein 800ms ease both;
+}
+
+.page3-2.animate {
+    animation: fadeinT 800ms ease 800ms both;
+    -webkit-animation: fadeinT 800ms ease 800ms both;
+    -moz-animation: fadeinT 800ms ease 800ms both;
+    -o-animation: fadeinT 800ms ease 800ms both;
+}
+
+.page3-3.animate {
+    animation: bouncein 800ms ease 800ms both;
+    -webkit-animation: bouncein 800ms ease 800ms both;
+    -moz-animation: bouncein 800ms ease 800ms both;
+    -o-animation: bouncein 800ms ease 800ms both;
+}
+
+.page3-4.animate {
+    animation: bounceinT 800ms ease 1600ms both;
+    -webkit-animation: bounceinT 800ms ease 1600ms both;
+    -moz-animation: bounceinT 800ms ease 1600ms both;
+    -o-animation: bounceinT 800ms ease 1600ms both;
+}
+
+.page3-5.animate p:nth-child(1) {
+    animation: fadein 800ms ease 2200ms both;
+    -webkit-animation: fadein 800ms ease 2200ms both;
+    -moz-animation: fadein 800ms ease 2200ms both;
+    -o-animation: fadein 800ms ease 2200ms both;
+}
+
+.page3-5.animate p:nth-child(2) {
+    animation: fadein 800ms ease 2600ms both;
+    -webkit-animation: fadein 800ms ease 2600ms both;
+    -moz-animation: fadein 800ms ease 2600ms both;
+    -o-animation: fadein 800ms ease 2600ms both;
+}
+
+.page3-5.animate p:nth-child(3) {
+    animation: fadein 800ms ease 3000ms both;
+    -webkit-animation: fadein 800ms ease 3000ms both;
+    -moz-animation: fadein 800ms ease 3000ms both;
+    -o-animation: fadein 800ms ease 3000ms both;
+}
+
+.page3-5.animate p:nth-child(4) {
+    animation: fadein 800ms ease 3400ms both;
+    -webkit-animation: fadein 800ms ease 3400ms both;
+    -moz-animation: fadein 800ms ease 3400ms both;
+    -o-animation: fadein 800ms ease 3400ms both;
+}
+
+.page3-7.animate {
+    animation: bounceinL 800ms ease 3800ms both;
+    -webkit-animation: bounceinL 800ms ease 3800ms both;
+    -moz-animation: bounceinL 800ms ease 3800ms both;
+    -o-animation: bounceinL 800ms ease 3800ms both;
+}
+
+.page3-8.animate {
+    animation: bounceinR 800ms ease 4200ms both;
+    -webkit-animation: bounceinR 800ms ease 4200ms both;
+    -moz-animation: bounceinR 800ms ease 4200ms both;
+    -o-animation: bounceinR 800ms ease 4200ms both;
+}
+
+.page3-9.animate {
+    animation: bounceinL 800ms ease 4600ms both;
+    -webkit-animation: bounceinL 800ms ease 4600ms both;
+    -moz-animation: bounceinL 800ms ease 4600ms both;
+    -o-animation: bounceinL 800ms ease 4600ms both;
+}
+
+.page3-10.animate {
+    animation: bounceinR 800ms ease 5000ms both;
+    -webkit-animation: bounceinR 800ms ease 5000ms both;
+    -moz-animation: bounceinR 800ms ease 5000ms both;
+    -o-animation: bounceinR 800ms ease 5000ms both;
+}
+
+/*第六页动画*/
+.page6-1.animate {
+    animation: bouncein 800ms ease both;
+    -webkit-animation: bouncein 800ms ease both;
+    -moz-animation: bouncein 800ms ease both;
+    -o-animation: bouncein 800ms ease both;
+}
+
+.page6-2.animate {
+    animation: fadeinR 800ms ease both;
+    -webkit-animation: fadeinR 800ms ease both;
+    -moz-animation: fadeinR 800ms ease both;
+    -o-animation: fadeinR 800ms ease both;
+}
+
+.page6-5.animate {
+    animation: fadein 800ms ease 400ms both;
+    -webkit-animation: fadein 800ms ease 400ms both;
+    -moz-animation: fadein 800ms ease 400ms both;
+    -o-animation: fadein 800ms ease 400ms both;
+}
+
+.page6-6.animate {
+    animation: bounceinT 800ms ease 600ms both;
+    -webkit-animation: bounceinT 800ms ease 600ms both;
+    -moz-animation: bounceinT 800ms ease 600ms both;
+    -o-animation: bounceinT 800ms ease 600ms both;
+}
+
+.page6-7.animate {
+    animation: bounceinT 800ms ease 1200ms both;
+    -webkit-animation: bounceinT 800ms ease 1200ms both;
+    -moz-animation: bounceinT 800ms ease 1200ms both;
+    -o-animation: bounceinT 800ms ease 1200ms both;
+}
+
+.page6-8.animate {
+    animation: bounceinT 800ms ease 1600ms both;
+    -webkit-animation: bounceinT 800ms ease 1600ms both;
+    -moz-animation: bounceinT 800ms ease 1600ms both;
+    -o-animation: bounceinT 800ms ease 1600ms both;
+}
+
+.page6-9.animate {
+    animation: fadein 800ms ease 2000ms both;
+    -webkit-animation: fadein 800ms ease 2000ms both;
+    -moz-animation: fadein 800ms ease 2000ms both;
+    -o-animation: fadein 800ms ease 2000 both;
+}
+
+.page6-10.animate p:nth-child(1) {
+    animation: fadein 800ms ease 2600ms both;
+    -webkit-animation: fadein 800ms ease 2600ms both;
+    -moz-animation: fadein 800ms ease 2600ms both;
+    -o-animation: fadein 800ms ease 2600ms both;
+}
+
+.page6-10.animate p:nth-child(2) {
+    animation: fadein 800ms ease 3200ms both;
+    -webkit-animation: fadein 800ms ease 3200ms both;
+    -moz-animation: fadein 800ms ease 3200ms both;
+    -o-animation: fadein 800ms ease 3200ms both;
+}
+
+.page6-10.animate p:nth-child(3) {
+    animation: fadein 800ms ease 3800ms both;
+    -webkit-animation: fadein 800ms ease 3800ms both;
+    -moz-animation: fadein 800ms ease 3800ms both;
+    -o-animation: fadein 800ms ease 3800ms both;
+}
+
+.page6-10.animate p:nth-child(4) {
+    animation: fadein 800ms ease 4400ms both;
+    -webkit-animation: fadein 800ms ease 4400ms both;
+    -moz-animation: fadein 800ms ease 4400ms both;
+    -o-animation: fadein 800ms ease 4400ms both;
+}

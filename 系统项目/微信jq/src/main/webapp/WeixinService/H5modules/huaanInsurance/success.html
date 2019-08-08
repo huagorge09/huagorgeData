@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="x5-orientation" content="portrait" />
+    <meta name="apple-mobile-web-app-capable" content="no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no">
+	<title>招商财富×华安保险</title>
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/huaanInsurance/style.css"/>
+	<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/H5modules/huaanInsurance/dialog.css"/>
+</head>
+<body>
+    <div class="wrap success">
+    	 <img src="/WeixinWeb/WeixinWeb_Images/H5modules/huaanInsurance/envelope.png" alt=""  class="envelope"/>
+    	 <p class="t1">领取成功</p>
+    	 <p class="t2" id="jdCard" style="display: none">100元京东卡将以短信的形式发送至您的手机，<br>请留意查收哦~</p>
+		<p class="t2" id="phoneCard" style="display: none">100元话费充值成功后将以短信形式通知您，<br>请留意查收哦~</p>
+    	 <p class="t3">恭喜成为招商财富注册会员</p>
+    	 <div>
+    	 	 <img src="/WeixinWeb/WeixinWeb_Images/H5modules/huaanInsurance/sogan.png" alt=""  class="sogan"/>
+	    	 <img src="/WeixinWeb/WeixinWeb_Images/H5modules/huaanInsurance/ewm.png" alt=""  class="ewm"/>
+	    	 <p class="t4">扫码关注“招商财富”公众号，<br>超10万名高净值人士的共同选择</p>
+    	 </div>
+    	 <p class="t5">如有任何疑问，欢迎致电招商财富咨询：<span>0755-23988886</span>。<br>*活动最终解释权归招商财富所有。</p>
+    </div>
+    <style>
+    	body,html{
+    		background: #fff;
+    	}
+    </style>
+	<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/H5modules/huaanInsurance/jquery-3.2.1.min.js"></script>
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ed2b61a27da9a7a4c08caac2ddb8ffc1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+
+
+})();
+
+//   jq工厂函数
+  $(function(){
+// 获取 reName.js 传过来的awardType（奖品类型）
+      var awardType=localStorage.getItem("awardType");
+
+      if(awardType=="phoneCard"){
+         $("#phoneCard").show();
+
+      }else if(awardType=="jdCard"){
+         $("#jdCard").show();
+      }
+
+  })
+
+
+
+</script>
+
+</body>
+</html>

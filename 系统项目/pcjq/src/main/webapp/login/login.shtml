@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <title>登录_招商财富   都市精英的私人银行、高净值人士专业资产管理平台</title>
+     <link rel="shortcut icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+<link rel="icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+	<meta name="keyword" content="资产配置、高端投资理财、资产管理、理财产品、固定收益、私募股权、债券、资产证券化、solution" />
+    <meta name="description" content="招商财富是招商旗下专业高端资产管理平台，主要经营特定客户资产管理业务。招商财富为高净值客户提供优质的金融投资理财产品、投资理财建议和专业的资产配置服务，满足客户全方位的资产管理需求。" /> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body onkeydown="keyLogin()">
+
+	<!-- header -->
+	<!--#include virtual="/AppService/public/header.shtml"-->
+	<input type="hidden" id="pageId" value="loginId" />
+	<div class="login-content">
+	    <div class="login-content-mid mid">
+	    
+
+	        <div id="personal" class="login-panel personal">
+	        	<div class="hrefcompany"></div>
+	            <div class="panel">
+	                <h3>个人客户登录</h3>
+	                <div class="panel-input user-name">
+	                    <input type="text" id="mobile" placeholder="手机号码/身份证号码">
+	                </div>
+	                <div class="panel-input user-password">
+	                    <input type="password" id="password" placeholder="6位以上数字登录密码" style="width: 190px;">
+	                    <a href="/login/resetLPassWord.shtml?type=R" class="recoverpassword">找回密码</a>
+	                </div>
+	                <div class="panel-input user-identify">
+	                    <input type="text" id="vrfCode_1" placeholder="验证码">
+	                    <!-- <img src="/AppWeb/AppWeb_Images/images/identify.jpg" alt="" class="identify-text"> -->
+						<img src="/AppService/setUp/buildimageservlet.xhtml" id="rondomCodeImg_1" class="identify-text" onclick="getRandomCode()"/>
+	                </div>
+	                <div class="panel-input remenbername">
+	                    <!-- <input type="checkbox" class="checkbox fl" checked="checkbox"> -->
+	                    <!-- <span class="remenbername-point fl">记住用户名</span> -->
+	                    <a href="/login/register.shtml" class="hrefregiste fr">注册会员</a>
+						<input type="checkbox" class="checkbox fl" checked="true" id="agreeCheckbox">
+	                    <span class="remenbername-point fl">同意
+							<a href="/login/registerRiskScript.shtml" target="_blank">《个人投资者告知函书》</a>
+						</span>	
+					</div>
+                         
+	                <div class="panel-btn clear">
+	                    <input type="button" value="立即登录" class="button" onclick="login();" id="person" data-event="event_loginId"/>
+	                </div>
+	            </div>
+	        </div>
+	        
+	        <div id="company" class="login-panel company hidden">
+	            <div class="hrefpersonal"></div>
+	            <div class="panel">
+	                <h3>机构客户查询</h3>
+	                <div class="panel-input user-name">
+	                    <input type="text" placeholder="营业执照上的企业全称" id="branchName" style="width: 190px;">
+	                </div>
+	                <div class="panel-input user-code">
+	                    <input type="text" id="fundAcco" placeholder="企业或产品基金账号">
+	                </div>
+	                <div class="panel-input user-registeNo">
+	                    <input type="text" id="branchLicense" placeholder="企业营业执照注册号">
+	                </div>
+	                <div class="panel-input user-identify">
+	                    <input type="text" id="vrfCode_2" placeholder="验证码">
+			  <img src="/AppService/setUp/buildimageservlet.xhtml" id="rondomCodeImg_2" class="identify-text" onclick="getRandomCode()"/>
+	                </div>
+	               <div class="panel-input remenbername">
+	                    <!-- <input type="checkbox" class="checkbox fl" checked="checkbox"> -->
+	                    <!-- <span class="remenbername-point fl">记住用户名</span> -->
+	                    <a href="/login/login.shtml?type=abs" class="hrefregiste fr">ABS入口</a>
+	                </div>
+                         <div class="panel-btn clear">
+	                    <input type="button" value="立即登录" onclick="branchUserLogin();" class="button">
+	                </div>
+	            </div>
+	        </div>
+
+			<div  id="abs" class="login-panel company  hidden">
+				<div class="hrefpersonal"></div>
+				<div class="panel">
+					<h3>机构客户查询</h3>
+					<div class="panel-input user-name">
+						<input type="text" placeholder="营业执照上的企业全称" id="branchNameAbs" style="width: 190px;">
+					</div>
+					<div class="panel-input user-registeNo">
+						<input type="text" id="branchLicenseAbs" placeholder="企业营业执照注册号">
+					</div>
+					<div class="panel-input user-identify">
+						<input type="text" id="vrfCode_2Abs" placeholder="验证码">
+						<img src="/AppService/setUp/buildimageservlet.xhtml" id="rondomCodeImg_2" class="identify-text" onclick="getRandomCode()"/>
+					</div>
+                                             <div class="panel-input remenbername">
+	                    <!-- <input type="checkbox" class="checkbox fl" checked="checkbox"> -->
+	                    <!-- <span class="remenbername-point fl">记住用户名</span> -->
+	                    <a href="/login/login.shtml" class="hrefregiste fr">个人入口</a>
+	                </div>
+					<div class="panel-btn clear">
+						<input type="button" value="立即登录" onclick="branchUserLogin();" class="button" />
+					</div>
+				</div>
+			</div>
+	    </div>
+	</div>
+       <!-- 系统通知弹窗-->
+	<div class="cover_bg" id="systemOperation" style="display: none;">
+		<div class="content anewRisk"  style="display: block; width: 550px; height: 200px;padding: 0 30px;padding-top: 50px;">
+			<p style="line-height: 30px;height:auto; font-size:18px;padding-left:0; text-align: left; text-indent: 2em">尊敬的客户您好，为了全面优化用户体验、提升平台的稳定性，我们将于7月28日0:00-8:00进行系统维护。维护期间您无法登录使用系统，由此给您带来的不便敬请谅解。</p>
+			<a class="btn systemNotice" style="margin-top: 30px;">确定</a>
+		</div>
+	</div>
+	<style> 
+                   #company .panel .panel-btn { margin-top: -19px;}
+                  #abs.login-panel.company{height: 345px;}
+                  #abs a{font-size: 14px;color: #ca132c;}
+                  #company .hrefregiste,#abs .hrefregiste{background: url(/AppWeb/AppWeb_Images/images/rightjt.png) no-repeat -14px center;}
+		#systemOperation .content{width: 594px;height: 476px;position: absolute;left: 50%;top:50%;margin-top: -180px;margin-left: -279px; background: #fff;border-radius: 5px;}
+		#systemOperation .btn{display: block; width: 194px; height: 42px;line-height: 42px; font-size: 20px;text-align: center; border-radius: 5px;color: #fff;border: none; cursor: pointer; background: #ca132c; margin: 15px auto 0;outline: none;}*/
+	</style>
+	<script>
+		$(function () {
+			var now = new Date();
+			str =new Date("2018-07-28 00:00:00"),
+			str2 = new Date("2018-07-28 08:00:00")
+			if(now>=str&&now<=str2) {
+				$("#systemOperation").show();
+			}else{
+				$("#systemOperation").hide();
+			}
+			$(".systemNotice").click(function () {
+                        $("#systemOperation").hide();
+			})
+		})
+	</script>
+	<!-- 系统通知弹窗-->
+
+	
+	<!-- footer -->
+	<!--#include virtual="/AppService/public/footer.shtml"-->
+ 	<!--<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/login.js"></script> -->
+	<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/login.min.js"></script>
+</body>
+</html>

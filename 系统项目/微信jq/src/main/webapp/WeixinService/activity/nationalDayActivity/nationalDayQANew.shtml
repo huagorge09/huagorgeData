@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>迎接祖国67岁生日</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" href="/WeixinWeb/WeixinWeb_Css/guoqing/guoqingStyleNew.css">
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/jqueryNew.min.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/commonsNew.js"></script>
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/DataStatisJsNew.js"></script>
+</head>
+<body>
+<div class="page-bg"></div>
+<section class="page">
+<!--#include virtual="/WeixinService/headerOrFooter/otherHeaderNew.shtml"-->
+<input type="hidden" id="flagShow" value="0">
+<input type="hidden" id="scoreNum" value="0">
+<input type="hidden" id="eventId" value="H0004"> 
+    <section class="title" id="section_01">
+    	<div class="ques-box">
+    	<div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>1.</em><b>1949年10月1日，北京30万群众齐集天安门广场，举行隆重的开国大典。毛泽东主席在天安门城楼上向全世界庄严宣告：“中华人民共和国中央人民政府今天成立了！”向世界宣告中华人民共和国成立！开国大典开始于？</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="0">A.上午10点</li>
+                <li data-score="0">B.中午12点</li>
+                <li data-score="0">C.下午2点</li>
+                <li data-score="20">D.下午3点</li>
+            </ul>
+        </div>
+    	</div>
+        <div class="box-btn">
+   			 <a class="riskevaluation-btn" href="/WeixinService/activity/nationalDayActivity/nationalDayStartNew.shtml"><img src="/WeixinWeb/WeixinWeb_Images/activity/guoqing/btn_back1.png" alt=""></a>
+		</div>      
+    </section> 
+    <section class="title" id="section_02" style="display: none;">
+    	<div class="ques-box">
+    	<div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>2.</em><b>中国共产党首次明确提出“以经济建设为中心，坚持四项基本原则，坚持改革开放，自力更生，艰苦创业，把我们建设成为富强、民主、文明的社会主义现代化国家”的会议是？</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="0">A.中共十一届三中全会</li>
+                <li data-score="0">B.中共十二大</li>
+                <li data-score="20">C.中共十三大</li>
+                <li data-score="0">D.中共十五大</li>
+            </ul>
+        </div>  
+    	</div>
+        <div class="box-btn">
+   			 <a class="riskevaluation-btn pre_question" href="#"><img src="/WeixinWeb/WeixinWeb_Images/activity/guoqing/btn_back.png" alt=""></a>
+		</div>    
+    </section> 
+     <section class="title" id="section_03" style="display: none;">
+     	<div class="ques-box">
+     	<div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>3.</em><b>改革开放的总设计师是下面哪位伟人？</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="0">A.毛泽东</li>
+                <li data-score="20">B.邓小平</li>
+                <li data-score="0">C.刘少奇</li>
+                <li data-score="0">D.陈云</li>
+            </ul>
+        </div>  
+    	</div>
+        <div class="box-btn">
+   			 <a class="riskevaluation-btn pre_question" href="#"><img src="/WeixinWeb/WeixinWeb_Images/activity/guoqing/btn_back.png" alt=""></a>
+		</div>      
+    </section> 
+    <section class="title" id="section_04" style="display: none;">
+    	<div class="ques-box">
+    	<div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>4.</em><b>在哪一年，全国人大常委会颁布了《广东省经济特区条例》，确定深圳经济特区正式成立？</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="0">A.1978年</li>
+                <li data-score="20">B.1980年</li>
+                <li data-score="0">C.1990年</li>
+                <li data-score="0">D.1992年</li>
+            </ul>
+        </div>   
+    	</div>
+        <div class="box-btn">
+   			 <a class="riskevaluation-btn pre_question" href="#"><img src="/WeixinWeb/WeixinWeb_Images/activity/guoqing/btn_back.png" alt=""></a>
+		</div>  
+    </section> 
+    <section class="title" id="section_05" style="display: none;">
+    	<div class="ques-box">
+    	<div class="registe-point riskevaluation-point">
+            <div class="risk-point"><em>5.</em><b>下面哪家企业为招商旗下、高端财富管理平台？</b></div>
+        </div>
+        <div class="box-option clear">
+            <ul>
+                <li data-score="20">A.招商财富</li>
+                <li data-score="0">B.招商基金</li>
+                <li data-score="0">C.招商银行</li>
+                <li data-score="0">D.招商证券</li>
+            </ul>
+        </div> 
+    	</div>
+        <div class="box-btn" id="submitQA">
+   		 	<a class="riskevaluation-btn" href="javascript:comit();"><img src="/WeixinWeb/WeixinWeb_Images/activity/guoqing/btn_submit.png" alt=""></a>
+    		<a href="#" class="check-order02 pre_question">重做上一题</a>
+		</div>       
+    </section> 
+    <section id="successQA" class="hide" style="background: #fff;">
+        <div class="bg-state riskscore">
+            <div class="state-icon">
+                <span class="score-text"><b>您的爱国指数为：</b></span>
+                <div class="score">
+                    <span class="score-value">
+                        <em></em>
+                        <span class="score-unit">分</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <p class="answer" id="resultAnswer">赶紧自觉加强爱国主义教育!</p>
+        <a href="/WeixinService/activity/nationalDayActivity/nationalDayStartNew.shtml" class="check-order02">重新测评</a>
+        <div class="qx-page03-bottom"><div class="box-btn-up"><a class="riskevaluation-btn" href="javascript:shareShow(true)"><img src="/WeixinWeb/WeixinWeb_Images/activity/guoqing/btn_share.png" alt=""></a></div></div>
+    </section>  
+   <!--#include virtual="/WeixinService/activity/nationalDayActivity/nationalDayShareNew.shtml"--> 
+</section>
+<div class="shadow" id="shadow" onclick="shareShow(false)">
+	<div class="box-shadow"></div>
+	<div class="box-shadow-tips">
+		<p>请点击右上角</p>
+		<p>将它发送给指定朋友</p>
+		<p>或分享到朋友圈</p>
+	</div>
+	<div class="box-shadow-arr"></div>
+</div>
+
+<script type="text/javascript" src="/WeixinWeb/WeixinWeb_JSLibrary/pageReq.min/nationalDayQANew.min.js"></script>
+</body>
+</html>

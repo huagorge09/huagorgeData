@@ -1,0 +1,686 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"/>
+    <link rel="shortcut icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="/AppWeb/AppWeb_Css/index/image/favicon.ico" type="image/x-icon"/>
+    <title>产品赎回</title>
+
+    <!--[if IE]>
+    <script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageJs/html5.js"></script>
+    <![endif]-->
+    <!--[if IE 6]>
+    <script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageJs/DD_belatedPNG_0.0.8a.min.js"></script>
+    <script>
+        DD_belatedPNG.fix('*');
+    </script>
+    <![endif]-->
+    <script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/numberToCapital.js"></script>
+    <link href="/AppWeb/AppWeb_Css/business/fund/payHighRiskPrompt.css" rel="stylesheet" type="text/css"/>
+    <style type="text/css">
+        p.MsoNormal{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<!-- header -->
+<!--#include virtual="/AppService/public/header.shtml"-->
+<body>
+
+<!-- 赎回后持仓金额小于最低持仓金额 弹窗 -->
+<div class="cover_bg bg-one" id="minHoldCheck" style="display: none;">
+    <div class="cover-pay gopay">
+        <i class="close" onclick="colseTips()"></i>
+        <span class="cover-pay-text">尊敬的<em id='text_01'></em>，您设置的赎回份额（<em id='text_02'></em>份）导致存续份额（<em id='text_03'></em>份）低于产品最低持有金额（<em id='text_04'></em>元），请全部赎回或输入更少的份额，谢谢。</span>
+        <span class="cover-pay-btn">
+            <a href="javascript:colseTips()" class="fl goon">确定</a>
+        </span>
+    </div>
+</div>
+<!-- 支付错误弹窗 S -->
+<div id="payFail" class="cover_bg" style="display: none;">
+    <div class="cover-con pop-up-five">
+        <h1>支付失败</h1>
+        <i class="close" onclick="close_tips('payFail')"></i>
+        <span class="cover-con-text">支付遇到问题：请稍后重试！</span>
+        <input class="pop-up-five-confirm" type="button" value="确认" onclick="close_tips('payFail')"/>
+    </div>
+</div>
+<!-- 支付错误弹窗 E -->
+
+<!-- 错误信息提示弹窗 S -->
+<div id="errTips" class="cover_bg" style="display: none;">
+    <div class="cover-con pop-up-three ">
+        <i class="close" onclick="close_tips('errTips')"></i>
+        <span class="cover-con-text"></span>
+        <input class="pop-up-three-confirm" type="button" value="确认" onclick="close_tips('errTips')">
+    </div>
+</div>
+<!-- 错误信息提示弹窗 E -->
+
+<!-- 去签约 -->
+<div class="cover_bg" id="contractSign_div_02" style="display: none;">
+    <div class="cover-pay gopay">
+        <i class="close" onclick="contractSign_close('contractSign_div_02')"></i>
+        <span class="cover-pay-text">您尚未签约，签约后即可使用线上支付。</span>
+        <span class="cover-pay-btn">
+            <a href="javascript:contractSign()" class="fl goon">去签约</a>
+            <a href="javascript:contractSign_close('contractSign_div_02')" class="fl back">算了，就用线下支付吧</a>
+        </span>
+    </div>
+</div>
+
+<!-- 查询签约 -->
+<div class="cover_bg" id="contractSign_div_03" style="display: none;">
+    <div class="cover-pay">
+        <i class="close" onclick="contractSign_close('contractSign_div_03')"></i>
+        <span class="cover-pay-text">签约成功？</span>
+        <span class="cover-pay-btn">
+            <a href="javascript:queryCommandByBankAccoNo();" class="fl goon">已签约</a>
+            <a href="javascript:contractSign_close('contractSign_div_03');" class="fl back problem">签约遇到问题</a>
+        </span>
+    </div>
+</div>
+<div class="cover_bg" id="pay_wait_tips" style="display: none;">
+    <div class="loading-online">
+        <span>正在跳转</span>
+        <img src="/AppWeb/AppWeb_Images/images/l2.gif" height="10" width="48" alt="" />
+    </div>
+</div>
+
+<!-- 收益取出规则 S -->
+
+<div class="cover_bg"  id="hint_tips_btn4" style="display: none;z-index:200;">
+    <div class="question_tip" style=''>
+        <span class='rule_top'>收益及取出规则</span>
+        <div  class='rule_content'>
+            <div class='rule_content_right'>
+                <ul>
+                    <li>
+                        <i></i>
+                        <h2 class='shouyi'>收益规则</h2>
+                        <span></span>
+                    </li>
+                    <li>
+                        <i></i><h2 class='quchu'>取出规则</h2>
+                        <span></span>
+
+                        <table>
+                            <tr>
+                                <th height="32" align='center'>时间</th>
+                                <th  align='center'> 操作</th>
+                            </tr>
+                            <tr>
+                                <td   height="32" align='center' ></td>
+                                <td  align='center' ></td>
+                            </tr>
+                            <tr>
+                                <td  height="32"  align='center' ></td>
+                                <td  align='center' ></td>
+                            </tr>
+                            <tr>
+                                <td  height="32" align='center' ></td>
+                                <td  align='center' ></td>
+                            </tr>
+                        </table>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="quesiton-bottom">
+            <ul>
+                <li>
+                    <a href="javascript:close_window()" id='submitRiskBtn' class="button click">我知道了</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 收益取出规则 E -->
+<div style="display: none;">
+    <!-- 保存在页面的产品数据，在页面中计算的时候要用到的  S -->
+    <input type="hidden" id="scale" value=""><!-- 产品规模 -->
+    <input type="hidden" id="buyType" value="" /><!-- 购买类型 1，预约；2，认购；4，排队 -->
+    <input type="hidden" id="moneyZero" value=""><!-- 认购起点 -->
+    <input type="hidden" id="moneyStep" value=""><!-- 认购步长 -->
+    <input type="hidden" id="displayLimit" value=""><!-- 剩余额度 -->
+    <input type="hidden" id="templetId" value=""><!-- 合同模板 -->
+    <input type="hidden" id="typeId" value=""><!-- 产品类型 -->
+    <input type="hidden" id="latestNewValue" value=""><!-- 产品最新净值 -->
+    <input type="hidden" id="minHoldingMoney" value=""><!-- 产品最新净值 -->
+    <!-- 保存在页面的产品数据，在页面中计算的时候要用到的  E -->
+
+
+    <!-- 传到后台所需要的参数  S -->
+    <input type="hidden" id="serialNo" value=""><!-- 订单号 -->
+    <input type="hidden" id="renewInput" value=""><!-- 排队单用 -->
+    <input type="hidden" id="fundid" value=""><!-- 产品id -->
+    <input type="hidden" id="serialno" value=""><!-- 产品id -->
+    <input type="hidden" id="fundState" value=""><!-- 产品状态0、1、p、q -->
+    <!-- <input type="hidden" class="profit" value=""> --><!-- 年化收益率 -->
+    <input type="hidden" id="fundRisklevel" value=""><!-- 产品风险等级 -->
+    <input type="hidden" id="riskLevel" value=""><!-- 用户风险等级 -->
+    <input type="hidden" id="specialRiskLevel" value=""><!-- 特殊用户风险等级 -->
+    <input type="hidden" id="invprtp" value=""><!-- 投资者类型 -->
+    <input type="hidden" id="invprtpScore" value=""><!-- 投资者类型 知识问卷分数 -->
+    <input type="hidden" id="contractVer" value=""><!-- 合同版本 -->
+    <input type="hidden" id="serType" value=""><!-- 业务类型 -->
+    <input type="hidden" id="payType" value=""><!-- 支付类型 -->
+    <input type="hidden" id="bankCardNo" value=""><!-- 选择的银行卡号-->
+    <input type="hidden" id="bankName" value=""><!-- 选择的银行名称-->
+    <input type="hidden" id="payMobile" value=""><!-- 支付银行卡银行预留手机号码 -->
+    <input type="hidden" id="payMoney" value=""><!-- 支付金额 -->
+    <input type="hidden" id="sessionID" value=""><!-- 发送短信后返回的sessionID 验证短信验证码时传递到后台，匹配 -->
+    <input type="hidden" id="tradeAcco" value=""><!-- 交易账号 -->
+    <input type="hidden" id="rate" value="0"><!-- 认购费 -->
+    <input type="hidden" id="commro" value="0"><!-- 折扣 -->
+    <input type="hidden" id="feeMode" value="0"><!-- 费率类型 -->
+   	<input type="hidden" id="custno">
+    <input type="hidden" id="mobileno">
+    <input type="hidden" id="adName">
+    <input type="hidden" id="paymentinter">
+    <input type="hidden" id="appointEndDate">
+    <input type="hidden" id="appointDate">
+    <input type="hidden" id="salesDate">
+    <input type="hidden" id="subdeadLine">
+    <input type="hidden" id="renew">
+    <input type="hidden" id="highRiskExplain" value=""><!-- 高风险提示内容 -->
+    <input type="hidden" id="isControl" value=""><!-- 是否存在控制关系 -->
+    <input type="hidden" id="isNotBeneficiary" value=""><!-- 是否不是实际受益人 -->
+    <input type="hidden" id="isBadHonesty" value=""><!-- 是否有不良诚信 -->
+    <input type="hidden" id="totalbalance" value=""><!-- 用户持仓总份额 -->
+    <input type="hidden" id="custName" value=""><!-- 客户名 -->
+    <input type="hidden" id="tradeBalance" value=""><!-- 交易账号所对应的份额 -->
+    
+    <!-- 传到后台所需要的参数  E -->
+
+</div>
+
+<!-- 顶部进度条(1、确认订单信息/2、确认支付信息/3、完成订单) S -->
+<div id="wrad" class="pay-schedule mid clear">
+    <div class="pay-order schedule01 current"><span>1、确认订单信息</span></div>
+    <div class="pay-order schedule02"><span>2、确认赎回信息</span></div>
+    <div class="pay-order schedule03"><span>3、完成订单</span></div>
+</div>
+<!-- 顶部进度条(1、确认订单信息/2、确认支付信息/3、完成订单) E -->
+
+<!-- 确认产品信息 S -->
+<div id="div_01" class="confirm-order mid clear">
+    <div class="confirm-order-info">
+        <div class="info-head">
+            <h2 class="fl">确认产品信息</h2>
+            <!-- 去除页面上无用链接 -->
+            <!-- <a href="javascript:show_window()" class="fr">收益及取出规则</a> -->
+        </div>
+        <div class="confirm-order-info-con">
+            <dl>
+                <dt>产品名称</dt>
+                <dd id="productName_01"></dd>
+            </dl>
+            <dl>
+                <dt>最新净值</dt>
+                <dd id="netWorth" class="time"></dd>
+            </dl>
+            <dl class="order-last">
+                <dt>到账时间</dt>
+                <dd id="maturityDate"></dd>
+            </dl>
+        </div>
+    </div>
+    <div class="confirm-order-money mid">
+        <div class="info-head">
+            <h2 class="fl">确认赎回份额</h2>
+        </div>
+        <div class="confirm-order-money-con money-one" style="width: 540px;margin-left: 274px;">
+        	<div class="order-money" style="margin-bottom: -45px;">
+                <label for="total" class="fl"  style="width:120px">赎回到:</label>
+                <select name="bank" id="bank">
+                </select>
+                
+            </div>
+            <div class="order-money">
+                <label for="money" class="fl"  style="width:120px">总份额:</label>
+                <div  style="margin-bottom: 7px;height: 50px;float: left;line-height: 50px;width: 410px;">
+                   <em id="balance"></em>  份(<em id="bt1"></em>元        仅供参考)
+                </div>
+            </div>
+            <div class="order-money" style="margin-top: 0;">
+                <label for="money" class="fl"  style="width:120px">赎回份额:</label>
+                <div class="input-money-bg fl" style="margin-bottom: 15px;width: 243px;">
+                    <input type="text" id="money" value="" onblur="checkedMoney('money');" />
+                    <em class="input-money">份</em>
+                    <i id="money_error" class="erro-point none"></i>
+                </div>
+            </div>
+			<div class="order-money" style="width: 522px; margin-top: 0;">
+                        <label for="money" class="fl" style="width:120px">预计赎回金额:</label>
+                        <div style="margin-bottom: 7px;height: 50px;float: left;line-height: 50px;width: 372px;">
+                        	<em id="moneyTotal"></em>元（该金额用昨日净值估计，仅供参考）
+                        </div>
+            </div>
+            <div class="pay-btn"><input type="button" id="btn_01" value="立即下单" onclick="onceOrder();" style="margin-left: 64px;"/></div>
+        </div>
+        <div class="confirm-order-money-con money-two" style="width: 534px;">
+                <div class="order-money">
+                    <label for="total" class="fl" style="width: 164px">总份额:</label>
+                    <div id="balanceDiv" style=" margin-bottom: 7px;height: 50px;float: left;line-height: 50px;width: 350px;"> 
+                    	<em id="balance"></em>份 （<em id="bt"></em>元   仅供参考）
+                    </div>
+                </div>
+                <div class="order-money" style="margin-top: 0;height: 70px;">
+                    <label for="money" class="fl" style="width:164px;">到期赎回份额:</label>
+                    <div class="input-money-bg fl" style="margin-bottom: 15px;width: 243px;">
+                        <input type="text" id="money" value="" onblur="checkedMoney();"/>
+                        <em class="input-money">份</em>
+                        <i id="money_error" class="erro-point none"></i>
+                        <div class="redeem-data">全部赎回</div>
+                    </div>
+                </div>
+                <div class="order-money" style="margin-top: 0;">
+                        <label for="money" class="fl" style="width:164px;">预计赎回金额:</label>
+                        <div id="moneyTotalDiv" style=" margin-bottom: 7px;height: 50px;float: left;line-height: 50px;width: 350px;">
+                        	<em id="moneyTotal"></em>元（该金额用昨日净值估计，仅供参考）
+                        </div>
+                </div>
+                <div class="order-money" style="margin-top: 0;">
+                        <label for="money" class="fl" style="width:164px;">预计滚存入下一期金额:</label>
+                        <div id="renewBalanceDiv" style=" margin-bottom: 7px;height: 50px;float: left;line-height: 50px;width: 355px;">
+                        	<em id="renewBalance"></em>元（该金额用昨日净值估计，仅供参考）
+                        </div>
+                </div>
+                <div class="pay-btn" style="width: 335px; margin: 0 auto;"><input type="button" id="btn_011" value="确认安排" onclick="confirmationArrangement();"/></div>
+            </div>
+    </div>
+</div>
+<!-- 确认订单信息 E -->
+
+<!-- 选择支付方式并输入安全码 S -->
+<div id="div_02" class="confirm-pay mid clear" style="display: none;">
+    <div class="confirm-pay-info">
+        <h2>确认赎回份额</h2>
+        <div class="confirm-pay-info-con">
+            <div class="confirm-pay-info-left fl">
+                <dl>
+                    <dt>产品名称</dt>
+                    <dd id="productName_02"></dd>
+                </dl>
+            </div>
+            <div class="confirm-pay-info-right fr">
+                <dl id="money03">
+                    <dt>赎回份额</dt>
+                    <dd>111</dd>
+                    <span>222</span>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="confirm-pay-way clear">
+        <h2>选择赎回账户</h2>
+        <div class="confirm-pay-way-con">
+            <div class="confirm-pay-way-bank">
+              
+
+                <!-- 网上支付 start-->
+                <div class="online">
+                    <div class="offline-pay-bank">
+                        <ul>
+                            <li id="bank_01">银行卡<em></em></li>
+                            <li id="bank_02">收款银行<em></em></li>
+                            <li  id="bank_03">收款人姓名<em></em></li>
+                            <li class="last" id="bank_04">收款账号<em ></em></li>
+                        </ul>
+                    </div>
+
+
+                    <div class="submit" style="margin: 100px 0 60px 95px;">
+                        <input type="submit" id="btn_02" class="submit clear" value="提交订单" onclick="fundTrade();" />
+                    </div>
+                </div>
+                <!-- 网上支付 end-->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 选择支付方式并输入安全码 E -->
+
+<!-- 支付成功 S -->
+<div id="div_03" class="confirm-pay pay-state mid clear" style="display: none;">
+    <img class="pay-state-img" src="/AppWeb/AppWeb_Images/images/photo_Pay.png">
+    <div class="redemption-successOne">
+        <h2>赎回成功</h2>
+        <div class="redeemInfo">
+            <p><span>收款银行</span><em id="bank_em1"></em></p>
+            <p><span>收款人姓名</span><em id="bank_em2"></em></p>
+            <p><span>收款账号</span><em id="bank_em3"></em></p>
+        </div>
+        <span class="state-con con03"><em class="timeOut">10</em>S 后将自动跳转至<a href="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&thirdCatId=RICHES_INFO" class="order">我的财富</a>&gt;&gt;</span>
+    </div>
+    <div class="redemption-successTwo">
+        <div class="redeemInfo redeemInfo-border" style="width: 535px;">
+            <h3 class="redeemInfo-bookOne"><span></span>资金安排信息：</h3>
+            <div class="redeemInfo-one">
+                <p><span>预计赎回金额</span><em id="balance_em2"></em>元（该金额用昨日净值估计，仅供参考）</p>
+                <p><span style="width: 160px;">预计滚入下一期金额</span><em id="balance_em3"></em>元（该金额用昨日净值估计，仅供参考）</p>
+            </div>
+        </div>
+        <div class="redeemInfo redeemInfo-book">
+            <h3 class="redeemInfo-bookOne" style="margin-left: -117px;"><span></span>赎回资金到账账户信息：</h3>
+            <div>
+                <p><span>收款银行</span><em id="bank_em1"></em></p>
+                <p><span>收款人姓名</span><em id="bank_em2"></em></p>
+                <p><span>收款账号</span><em id="bank_em3"></em></p>
+            </div>
+        </div>
+        <span class="state-con con03"><em class="timeOut">10</em>S 后将自动跳转至<a href="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&thirdCatId=RICHES_INFO" class="order">我的财富</a>&gt;&gt;</span>
+    </div>  
+</div>
+<!-- 支付成功 E -->
+
+<!-- 易宝支付成功受理 S -->
+<div id="div_04" class="confirm-pay pay-state mid clear" style="display: none;">
+    <img class="pay-state-img" src="/AppWeb/AppWeb_Images/images/photo_acceptance.png">
+    <h2>成功受理</h2>
+    <span class="state-con con01">支付申请已受理。由于金额较大，请稍后查询支付结果。</span>
+    <span class="state-con con02">详情订单信息，请查询<a href="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&thirdCatId=RICHES_INFO" class="state-con02-a">我的财富</a></span>
+    <span class="state-con con03"><em>10</em>S 后将自动跳转至<a href="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&thirdCatId=RICHES_INFO" class="order">我的财富</a>&gt;&gt;</span>
+</div>
+<!-- 成功受理 E -->
+
+<!-- 易宝支付成功受理 S -->
+<div id="bocPayAccept_div_04" class="confirm-pay pay-state mid clear" style="display: none;">
+    <img class="pay-state-img" src="/AppWeb/AppWeb_Images/images/photo_acceptance.png">
+    <h2>成功受理</h2>
+    <span class="state-con con01">订单已受理，请稍后查询支付结果。到账结果以网银支付结果为准。</span>
+    <span class="state-con con02">详情订单信息，请查询<a href="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&thirdCatId=RICHES_INFO" class="state-con02-a">我的财富</a></span>
+    <span class="state-con con03"><em>10</em>S 后将自动跳转至<a href="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&thirdCatId=RICHES_INFO" class="order">我的财富</a>&gt;&gt;</span>
+</div>
+<!-- 成功受理 E -->
+
+<!-- 线下下单成功  等待汇款 S -->
+<div id="div_05" class="confirm-pay pay-state mid clear" style="display: none;">
+    <img class="pay-state-img" src="/AppWeb/AppWeb_Images/images/photo_waiting.png">
+    <h2>等待汇款中</h2>
+    <span class="state-con con01">恭喜您！您已成功下单。请尽快完成汇款。</span>
+    <span class="state-con con02">详情订单信息，请查询<a href="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&thirdCatId=RICHES_INFO" class="state-con02-a">我的财富</a></span>
+    <span class="state-con con03"><em>10</em>S 后将自动跳转至<a href="/AppService/applicationGroups.shtml?mainCatId=MY_ACCOUNT&thirdCatId=RICHES_INFO" class="order">我的财富</a>&gt;&gt;</span>
+</div>
+<!-- 线下下单成功  等待汇款 E -->
+
+<form  name="order" id="contractSign_order" METHOD="post" ACTION="https://B2c.icbc.com.cn/servlet/EBConsignPayServlet" onsubmit="document.charset='GBK';" accept-charset="GBK" target="_blank">
+    <INPUT id="contractSign_interfaceName" NAME="interfaceName" TYPE="hidden" value="ICBC_PERBANK_EBConsignPay">
+    <INPUT id="contractSign_interfaceVersion" NAME="interfaceVersion" TYPE="hidden" value="1.0.0.0">
+    <INPUT id="contractSign_selserialNo" NAME="selserialNo" TYPE="hidden" value="BDP300241833"><!-- 协议编号 -->
+
+    <INPUT id="contractSign_payNo" NAME="payNo" TYPE="hidden" value="201607200000026"><!-- 缴费编号 -->
+
+    <INPUT id="contractSign_selpayType" NAME="selpayType" TYPE="hidden" value="扣费"><!-- 缴费种类 -->
+
+    <INPUT id="contractSign_selcorpId" NAME="selcorpId" TYPE="hidden" value="40009000160441a"><!-- 企业编码 -->
+
+    <INPUT id="contractSign_selaccountNo" NAME="selaccountNo" TYPE="hidden" value="4000023029200124946"><!-- 企业收费账号 -->
+
+    <INPUT id="contractSign_regDate" NAME="regDate" TYPE="hidden" value="20151231"><!-- 签约日期 -->
+
+    <INPUT id="contractSign_HSURL" NAME="HSURL" TYPE="hidden" value="http://127.0.0.1/test.jsp"><!-- 通知地址 -->
+
+    <INPUT id="contractSign_merCertID" NAME="merCertID" TYPE="hidden" value="ncrp.y.4000"><!-- 证书ID -->
+
+    <INPUT id="contractSign_Language" NAME="Language" TYPE="hidden" value="ZH_CN"><!-- 语言 -->
+
+    <INPUT id="contractSign_certDate" NAME="certDate" TYPE="hidden" value="20160720152101"><!-- 交易日期时间（14位时间戳） -->
+    <INPUT id="contractSign_allowFinalDate" NAME="allowFinalDate" TYPE="hidden" value="0">
+    <INPUT id="contractSign_accountNo" NAME="accountNo" TYPE="hidden" value="6222024000799000076">
+
+    <INPUT id="contractSign_certData" NAME="certData" TYPE="hidden" value="MIIFhQYJKoZIhvcNAQcCoIIFdjCCBXICAQExCzAJBgUrDgMCGgUAMIIBWgYJKoZIhvcNAQcBoIIBSwSCAUdpbnRlcmZhY2VOYW1lPUlDQkNfUEVSQkFOS19FQkNvbnNpZ25QYXkmaW50ZXJmYWNlVmVyc2lvbj0xLjAuMC4wJnNlbHNlcmlhbE5vPUJEUDMwMDI0MTgzMyZwYXlObz0yMDE2MDcyMDAwMDAwMjYmc2VscGF5VHlwZT1UVFQmc2VsY29ycElkPTQwMDA5MDAwMTYwNDQxYSZzZWxhY2NvdW50Tm89NDAwMDAyMzAyOTIwMDEyNDk0NiZyZWdEYXRlPTIwMTUxMjMxJkhTVVJMPWh0dHA6Ly8xMjcuMC4wLjEvdGVzdC5qc3AmbWVyQ2VydElEPW5jcnAueS40MDAwJmNlcnREYXRlPTIwMTYwNzIwMTUyMTAxJmFjY291bnRObz02MjIyMDI0MDAwNzk5MDAwMDc2JmFsbG93RmluYWxEYXRlPTCgggMPMIIDCzCCAfOgAwIBAgIKG5LKECVWAAJvczANBgkqhkiG9w0BAQUFADA7MR8wHQYDVQQDExZJQ0JDIFRlc3QgQ29ycG9yYXRlIENBMRgwFgYDVQQKEw90ZXN0aWNiYy5jb20uY24wHhcNMTUxMjMxMDMwNjQxWhcNMjAxMjMxMDMwNjQxWjA/MRQwEgYDVQQDEwtuY3JwLnkuNDAwMDENMAsGA1UECxMENDAwMDEYMBYGA1UEChMPdGVzdGljYmMuY29tLmNuMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCggAaIsLIQ0zFHBgkj+L2bqbLY/vdaxwHHVJBPIyq3IulSG10JA5pwLmTgEr59iRi4wV2myRDhYfioL/PeDm7GYMVzmuBtNX9BB35xPVfZuxHrO/RVsSrdoP4M0hWhm5E16dTy12wzJjjQUBcFM0eiNaJsG5ovmrvtnoqNEN9XWQIDAQABo4GQMIGNMB8GA1UdIwQYMBaAFER9t5AsN6TZ7WzipIdXZwq18E0UMEsGA1UdHwREMEIwQKA+oDykOjA4MQ4wDAYDVQQDEwVjcmwzMjEMMAoGA1UECxMDY3JsMRgwFgYDVQQKEw90ZXN0aWNiYy5jb20uY24wHQYDVR0OBBYEFCNmgyn2V5f9lFzawl8JxiiojQ7KMA0GCSqGSIb3DQEBBQUAA4IBAQAXwwrEH/vNMbpzX8+8EtjbgH2Jm8bEjxr9YU6thEnDR+gvySr4CkeA8PEgpeiCem4iUXPjRUuANbnbjvNPfU1xxKzZwxO9uiC0xX7YpyLI4wc/DzVIQcm7hsFoBjlHw/8pixk4DIlvBQyedZYo9VRURiIO/PQBEWmP9kI+gt7hOQT0id7+mj4VuXMfQAcZ88z5QZ2cKlSuBTi1RtKzPVsHWbimbxRqtCiSJU0Tyx5jcvMtl3WKwyjpOLZJuuxdgHr4QYKihY1W62DcaBnDmRjgmd/xQwNY9xf7ZZLz5AZr/7txBWGkCQrZANA41RHPZrNPNqdozIHPincCeBKldLR3MYHuMIHrAgEBMEkwOzEfMB0GA1UEAxMWSUNCQyBUZXN0IENvcnBvcmF0ZSBDQTEYMBYGA1UEChMPdGVzdGljYmMuY29tLmNuAgobksoQJVYAAm9zMAkGBSsOAwIaBQAwDQYJKoZIhvcNAQEBBQAEgYA5yfiqjmn40hEVeAIUJQltOavRIq+nNgYIeUpIloLwpZrwFUpdPEVjdJK2jEgTHPbkY+TgSwoKON+YbmvNCKKjNe4f+9HLigKg1iuu6/sfVEfY3fzXj4q34RjvdNz+9bv3feVzBYsNWVZIeFQMYPvMeuSj4feQcb93BeQTyV6L7w==">  <!-- 签名 -->
+
+    <INPUT type="hidden" NAME="tipMsg"  value="欢迎在线签署《中国工商银行网上银行个人委托缴费协议》" > <!-- 提示信息 -->
+</form>
+<!--中行支付   begin-->
+<FORM id="bocPay" METHOD="POST" ACTION="https://ebspay.boc.cn/PGWPortal/LCPNoBindRecvOrder.do" onsubmit="document.charset='utf-8';" accept-charset="utf-8"  target="_blank">
+    <!--01.商户号-->
+    <INPUT TYPE="HIDDEN" SIZE="20" ID="merchantNo" NAME="merchantNo" VALUE=""><BR/>
+    <!--03.商户订单号-->
+    <INPUT TYPE="HIDDEN" SIZE="19" ID="orderNo" NAME="orderNo" VALUE=""><BR/>
+    <!--04.订单币种-->
+    <INPUT TYPE="HIDDEN" SIZE="3" ID="curCode" NAME="curCode" VALUE="001"><BR/>
+    <!--05.订单金额-->
+    <INPUT TYPE="HIDDEN" SIZE="13" ID="orderAmount" NAME="orderAmount" VALUE="0"><BR/>
+    <!--06.订单时间-->
+    <INPUT TYPE="HIDDEN" SIZE="14" ID="orderTime" NAME="orderTime" VALUE=""><BR/>
+    <!--07.订单说明-->
+    <INPUT TYPE="HIDDEN" SIZE="30" ID="orderNote" NAME="orderNote" VALUE="fund"><BR/>
+    <INPUT TYPE="HIDDEN" SIZE="30" ID="identityType" NAME="identityType" VALUE="1"><BR/>
+    <INPUT TYPE="HIDDEN" SIZE="30" ID="identityNumber" NAME="identityNumber" VALUE=""><BR/>
+    <INPUT TYPE="HIDDEN" SIZE="30" ID="holderName" NAME="holderName" VALUE=""><BR/>
+    <INPUT TYPE="HIDDEN" SIZE="30" ID="acctNo" NAME="acctNo" VALUE=""><BR/>
+    <!--08.商户接收通知URL-->
+    <INPUT TYPE="HIDDEN" SIZE="100" ID="orderUrl" NAME="orderUrl" VALUE="https://www.cmwachina.com"><BR/>
+    <!--10.商户签名数据-->
+    <INPUT TYPE="HIDDEN" ID="signData" NAME="signData" VALUE=""><BR/>
+</FORM>
+<!--中行支付   end-->
+<!-- 去中行支付 -->
+<div class="cover_bg" id="bocPay_div_02" style="display: none;">
+    <div class="cover-pay gopay">
+        <i class="close" onclick="contractSign_close('bocPay_div_02')"></i>
+        <span class="cover-pay-text">即将跳转到中国银行网银支付</span>
+        <span class="cover-pay-btn">
+            <a href="javascript:bocPaySubmit()" class="fl goon">去支付 </a>
+            <a href="javascript:bocPayFail_close('bocPay_div_02')" class="fl back">不了，选择其他支付方式</a>
+        </span>
+    </div>
+</div>
+<!-- 查询中行支付结果 -->
+<div class="cover_bg" id="bocPay_div_03" style="display: none;">
+    <div class="cover-pay">
+        <i class="close" onclick="contractSign_close('bocPay_div_03')"></i>
+        <span class="cover-pay-text">支付成功？</span>
+        <span class="cover-pay-btn">
+            <a href="javascript:queryPayCommandByBankAccoNo();" class="fl goon">已支付</a>
+            <a href="javascript:bocPayFail_close('bocPay_div_03');" class="fl back problem">支付遇到问题</a>
+        </span>
+    </div>
+</div>
+
+<!-- 高风险 产品提示 -->
+<div class="cover_bg" id="high_risk_bg" style="display: none;">
+    <div id="div_high_risk" class="div_high_risk">
+        <div class="high_risk_registe-con">
+            <!-- <div class="close_high_risk"></div> -->
+            <ul>
+                <li style="height: 35px;top: -11px;"><h2 class="high_risk_explain">风险说明</h2></li>
+                <li >
+                    <div class="high_risk_title">
+                        <span>您购买的产品为</span>
+                        <span style="color:red;">高风险</span>
+                        <span>产品，请详细阅读以下风险说明：</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="high_risk_content">
+                        <div style="margin-top: 10px;" id="high_risk_content">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <span class="registe-con-btn"><a href="#" class="high_risk_know_btn">我知道了<span class="high_risk_timer"></span></a></span>
+        </div>
+    </div>
+</div>
+
+<style>
+    .confirm-order-info-con dl{
+        width: 33%;
+    }
+    .bank{
+        position: relative;
+        margin-left: 10px;
+    }
+    .offline-pay-bank{
+        padding-left: 102px;
+        margin-top: 26px;
+    }
+    .add-bank{
+        position: absolute;
+        left: -1px;
+        top: 46px;
+    }
+    .confirm-pay-way-bank{
+        width: 438px;
+    }
+    .online{
+        margin-top: 28px;
+    }
+    .pay-state h2{
+        margin-bottom: 10px;
+    }
+    .redeemInfo{
+        width: 243px;
+        margin: 0 auto;
+    }
+    .redeemInfo p{
+        font-size: 14px;
+    }
+    .redeemInfo p span{
+        font-size: 16px;
+        margin-right: 5px;
+        width: 80px;
+        display: inline-block;
+    }
+    .redeemInfo p em{
+        color: #CA132C;
+    }
+    .confirm-order-money-con .order-money i.erro-point{
+    	    right: -210px
+    }
+
+	#minHoldCheck .cover-pay-text{
+		font-size: 18px;
+		margin: 60px 59px 27px;
+	}
+	#minHoldCheck .goon{
+		margin-left: 32px;
+	}
+	#minHoldCheck .back{
+	    text-align: center;
+	    color: #ca132c;
+	    font-size: 18px;
+	    width: 160px;
+	} 
+	.confirm-order-money-con label{
+		 width: 82px;
+		 text-align: right;
+	}
+	#bank{
+	     display: inline-block;
+	    width: 237px;
+	    padding: 9px 5px 9px 10px;
+	    color: #3f3f3f;
+	    border: 1px solid #D0D0D0;
+	    outline: none;
+	    overflow：hidden: ;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	    border-radius: 4px;
+	    -webkit-appearance: none;
+	    -moz-appearance: none;
+	    appearance: none;
+	    background: url(/AppWeb/AppWeb_Images/images/ic_triangle.png) no-repeat 210px center;
+	    padding-right: 14px;
+	}
+	.cover_bg .cover-pay {
+	    background: #fff;
+	    width: 414px;
+        height: 256px;
+	}
+    .money-two{
+        width:450px;
+    }
+    .money-two i.erro-point{
+        top: 45px !important;
+        left: 2px;
+    }
+    .redeem-data{
+        color:#3f95ff;
+        display: inline-block;
+        width: 65px;
+        position: absolute;
+        top: 10px;
+        right: -80px;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    .redemption-successTwo .redeemInfo{
+        width: 300px;
+    }
+    .redemption-successTwo .redeemInfo h3{
+        font-size: 15px;
+        color: #000;
+        font-weight: 600;
+        background: url(/AppWeb/AppWeb_Images/images/capital_01.png) no-repeat left;
+        text-indent:30px;
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+    .redemption-successTwo .redeemInfo p{
+        margin-left: 30px;
+        margin-bottom: 15px;
+    }
+    .redeemInfo-border{
+        border-bottom:1px solid #e5e5e5;
+        margin-bottom: 30px;
+    }
+    .redeemInfo-border p span{
+        width: 130px;
+    }
+    .bg-one .cover-pay{
+    	height:280px;
+    }
+    .bg-one .cover-pay-btn{
+    	display: block;
+    	width: 50%;
+    	margin: 0 auto;
+    }
+    .bg-one .cover-pay-btn a{
+        margin-left: 0px;
+    }
+    
+    
+    
+    
+    #minHoldCheck .cover-pay-text {
+    font-size: 18px;
+    margin: 60px 30px 20px;
+    text-align: left;
+    text-indent: 2em;
+}
+.cover_bg .cover-pay span.cover-pay-text {
+    display: block;
+    font-size: 22px;
+    line-height: 26px;
+    text-align: center;
+    color: #3f3f3f;
+    width: 425px;
+    margin: 60px 40px 45px;
+}
+.cover_bg .cover-pay{
+    width: 500px;
+        margin: -152px 0 0 -250px;
+}
+.confirm-order-money-con .order-money {
+    overflow: hidden;
+}
+</style>
+
+<!-- footer -->
+<!--#include virtual="/AppService/public/footer.shtml"-->
+<script type="text/javascript" src=""></script>
+<!-- 生产用  -->
+ 
+<script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq.min/userRedeem.min.js"></script>
+<!-- <script type="text/javascript" src="/AppWeb/AppWeb_JSLibrary/pageReq/userRedeem.js"></script> -->
+</body>
+</html>

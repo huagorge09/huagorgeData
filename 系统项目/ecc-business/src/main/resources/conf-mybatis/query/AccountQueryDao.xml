@@ -1,0 +1,1044 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cmwa.ecc.business.dao.query.AccountQueryDao">
+		
+		<!-- 当前账户返回结果集   -->
+		<resultMap type="acctAppTodayVo" id="acctAppTodayMap">
+			<result column="FUNDACCT" property="fundacct" jdbcType="VARCHAR" />
+			<result column="TRADEACCO" property="tradeacco" jdbcType="VARCHAR" />
+			<result column="NETPOINT" property="netPoint" jdbcType="VARCHAR" />
+			<result column="APKIND" property="apkind" jdbcType="VARCHAR" />
+			<result column="APKIND_NAME" property="apkindName" jdbcType="VARCHAR" />
+			<result column="APDT" property="apdt" jdbcType="VARCHAR" />
+			<result column="APTM" property="aptm" jdbcType="VARCHAR" />
+ 			<result column="INVTP" property="invtp" jdbcType="VARCHAR" />
+ 			<result column="INVTP_NAME" property="invtpName" jdbcType="VARCHAR" />
+			<result column="INVNM" property="invnm" jdbcType="VARCHAR" />
+			<result column="IDTP" property="idtp" jdbcType="VARCHAR" />
+			<result column="IDTP_NAME" property="idtpName" jdbcType="VARCHAR" />
+			<result column="IDNO" property="idno" jdbcType="VARCHAR" />
+			<result column="MOBILENO" property="mobileno" jdbcType="VARCHAR" />
+			<result column="ADDR" property="addr" jdbcType="VARCHAR" />
+			<result column="POSTCODE" property="postcode" jdbcType="VARCHAR" />
+			<result column="EMAIL" property="email" jdbcType="VARCHAR" />
+			<result column="FAXNO" property="faxno" jdbcType="VARCHAR" />
+			<result column="DELIVERTYPE" property="delivertype" jdbcType="VARCHAR" />
+			<result column="MELONMD" property="melonmd" jdbcType="VARCHAR" />
+			<result column="MELONMD_NAME" property="melonmdName" jdbcType="VARCHAR" />
+			<result column="REGIONCODE_NAME" property="regioncodeName" jdbcType="VARCHAR" />
+			<result column="REGIONCODE" property="regioncode" jdbcType="VARCHAR" />
+			<result column="CUSTABBRCODE" property="custsimpnm" jdbcType="VARCHAR" />
+			<result column="CUSTINSTREPRCODE" property="instrepcode" jdbcType="VARCHAR" />
+			<result column="INVNAME" property="invname" jdbcType="VARCHAR" />
+			<result column="BROKERNAME" property="brokername" jdbcType="VARCHAR" />
+			<result column="BROKEROFFICETEL" property="officetel" jdbcType="VARCHAR" />
+			<result column="BROKERFAX" property="brokerfax" jdbcType="VARCHAR" />
+			<result column="CHKFLAG" property="checkflag" jdbcType="VARCHAR" />
+			<result column="CHKFLAG_NAME" property="checkflagName" jdbcType="VARCHAR" />
+			<result column="OPID" property="operatorcode" jdbcType="VARCHAR" />
+			<result column="CHECKER" property="checker" jdbcType="VARCHAR" />
+			<result column="SERIALNO" property="serialno" jdbcType="VARCHAR" />
+			<result column="APPNO" property="appno" jdbcType="VARCHAR" />
+		</resultMap>
+		
+		<!-- TA账户返回结果集  -->
+		<resultMap type="acctAckTodayVo" id="acctAckTodayMap">
+			<result column="SERIALNO" property="serialno" jdbcType="VARCHAR" />
+			<result column="ACKDT" property="ackdt" jdbcType="VARCHAR" />
+			<result column="ACKNO" property="ackno" jdbcType="VARCHAR" />
+			<result column="APPNO" property="appno" jdbcType="VARCHAR" />
+			<result column="FUNDACCT" property="fundacct" jdbcType="VARCHAR" />
+			<result column="TRADEACCO" property="tradeacco" jdbcType="VARCHAR" />
+ 			<result column="INVTP" property="invtp" jdbcType="VARCHAR" />
+ 			<result column="INVTP_NAME" property="invtpName" jdbcType="VARCHAR" />
+			<result column="INVNM" property="invnm" jdbcType="VARCHAR" />
+			<result column="IDTP" property="idtp" jdbcType="VARCHAR" />
+			<result column="IDTP_NAME" property="idtpName" jdbcType="VARCHAR" />
+			<result column="IDNO" property="idno" jdbcType="VARCHAR" />
+			<result column="APKIND" property="apkind" jdbcType="VARCHAR" />
+			<result column="APKIND_NAME" property="apkindName" jdbcType="VARCHAR" />
+			<result column="MELONMD" property="melonmd" jdbcType="VARCHAR" />
+			<result column="MELONMD_NAME" property="melonmdName" jdbcType="VARCHAR" />
+			<result column="MULTIACCTFLAG" property="multiacctflag" jdbcType="VARCHAR" />
+			<result column="RETCODE" property="retcode" jdbcType="VARCHAR" />
+			<result column="RETMSG" property="retmsg" jdbcType="VARCHAR" />
+			
+			<result column="NETPOINT" property="netPoint" jdbcType="VARCHAR" />
+			
+		</resultMap>
+		
+		<!-- 二级清算账户返回结果集  -->
+		<resultMap type="acctAckClearVo" id="acctAckClearMap">
+			<result column="FUNDACCT" property="fundacct" jdbcType="VARCHAR" />
+			<result column="APKIND" property="apkind" jdbcType="VARCHAR" />
+			<result column="APKIND_NAME" property="apkindName" jdbcType="VARCHAR" />
+			<result column="TRADEACCO" property="tradeacco" jdbcType="VARCHAR" />
+			<result column="ACKDT" property="ackdt" jdbcType="VARCHAR" />
+			<result column="INVTP" property="invtp" jdbcType="VARCHAR" />
+			<result column="INVTP_NAME" property="invtpName" jdbcType="VARCHAR" />
+			<result column="INVNM" property="invnm" jdbcType="VARCHAR" />
+ 			<result column="APPLYST" property="applyst" jdbcType="VARCHAR" />
+			<result column="IDTP" property="idtp" jdbcType="VARCHAR" />
+			<result column="IDTP_NAME" property="idtpName" jdbcType="VARCHAR" />
+			<result column="IDNO" property="idno" jdbcType="VARCHAR" />
+			<result column="CLEARDT" property="cleardt" jdbcType="VARCHAR" />
+			<result column="MELONMD" property="melonmd" jdbcType="VARCHAR" />
+			<result column="MELONMD_NAME" property="melonmdName" jdbcType="VARCHAR" />
+			<result column="RETMSG" property="retmsg" jdbcType="VARCHAR" />
+			<result column="SERIALNO" property="serialno" jdbcType="VARCHAR" />
+			<result column="ACKNO" property="ackno" jdbcType="VARCHAR" />
+			
+			<result column="NETPOINT" property="netPoint" jdbcType="VARCHAR" />
+			
+		</resultMap>
+		
+		<!-- 历史账户账户返回结果集  -->
+		<resultMap type="acctAppHisVo" id="acctAppHisMap">
+			<result column="FUNDACCT" property="fundacct" jdbcType="VARCHAR" />
+			<result column="APKIND" property="apkind" jdbcType="VARCHAR" />
+			<result column="APKIND_NAME" property="apkindName" jdbcType="VARCHAR" />
+			<result column="TRADEACCO" property="tradeacco" jdbcType="VARCHAR" />
+			<result column="NETPOINT" property="netPoint" jdbcType="VARCHAR" />
+			<result column="APDT" property="apdt" jdbcType="VARCHAR" />
+			<result column="CUSTTP" property="custtp" jdbcType="VARCHAR" />
+			<result column="INVTP" property="invtp" jdbcType="VARCHAR" />
+			<result column="INVTP_NAME" property="invtpName" jdbcType="VARCHAR" />
+			<result column="INVNM" property="invnm" jdbcType="VARCHAR" />
+			<result column="IDTP" property="idtp" jdbcType="VARCHAR" />
+			<result column="IDTP_NAME" property="idtpName" jdbcType="VARCHAR" />
+			<result column="IDNO" property="idno" jdbcType="VARCHAR" />
+			<result column="MOBILENO" property="mobileno" jdbcType="VARCHAR" />
+			<result column="ADDR" property="addr" jdbcType="VARCHAR" />
+			<result column="POSTCODE" property="postcode" jdbcType="VARCHAR" />
+			<result column="FAXNO" property="faxno" jdbcType="VARCHAR" />
+			<result column="DELIVERTYPE" property="delivertype" jdbcType="VARCHAR" />
+			<result column="MELONMD" property="melonmd" jdbcType="VARCHAR" />
+			<result column="MELONMD_NAME" property="melonmdName" jdbcType="VARCHAR" />
+			<result column="REGIONCODE_NAME" property="regioncodeName" jdbcType="VARCHAR" />
+			<result column="REGIONCODE" property="regioncode" jdbcType="VARCHAR" />
+			<result column="CUSTABBRCODE" property="custsimpnm" jdbcType="VARCHAR" />
+			<result column="CUSTABBRCODE_NAME" property="custsimpnmName" jdbcType="VARCHAR" />
+			<result column="CUSTINSTREPRCODE" property="instrepcode" jdbcType="VARCHAR" />
+			<result column="CUSTINSTREPRCODE_NAME" property="instrepcodeName" jdbcType="VARCHAR" />
+			<result column="BROKERNAME" property="brokername" jdbcType="VARCHAR" />
+			<result column="BROKEROFFICETEL" property="brokertel" jdbcType="VARCHAR" />
+			<result column="BROKERFAX" property="brokerfax" jdbcType="VARCHAR" />
+			<result column="CHKFLAG" property="checkflag" jdbcType="VARCHAR" />
+			<result column="CHKFLAG_NAME" property="checkflagName" jdbcType="VARCHAR" />
+			<result column="OPID" property="operatorcode" jdbcType="VARCHAR" />
+			<result column="CHECKER" property="checker" jdbcType="VARCHAR" />
+			<result column="SERIALNO" property="serialno" jdbcType="VARCHAR" />
+			<result column="APPNO" property="appno" jdbcType="VARCHAR" />
+		</resultMap>
+		
+		
+		<!-- 历史二级清算账户返回结果集  -->
+		
+		<resultMap type="acctAckClearHisVo" id="acctAckClearHisMap">
+			<result column="FUNDACCT" property="fundacct" jdbcType="VARCHAR" />
+			<result column="TRADEACCO" property="tradeacco" jdbcType="VARCHAR" />
+			<result column="IDTP" property="idtp" jdbcType="VARCHAR" />
+			<result column="IDTP_NAME" property="idtpName" jdbcType="VARCHAR" />
+			<result column="IDNO" property="idno" jdbcType="VARCHAR" />
+			<result column="ACKDT" property="ackdt" jdbcType="VARCHAR" />
+			<result column="INVTP" property="invtp" jdbcType="VARCHAR" />
+			<result column="INVTP_NAME" property="invtpName" jdbcType="VARCHAR" />
+			<result column="INVNM" property="invnm" jdbcType="VARCHAR" />
+ 			<result column="APKIND" property="apkind" jdbcType="VARCHAR" />
+ 			<result column="APKIND_NAME" property="apkindName" jdbcType="VARCHAR" />
+			<result column="MELONMD" property="melonmd" jdbcType="VARCHAR" />
+			<result column="MELONMD_NAME" property="melonmdName" jdbcType="VARCHAR" />
+			<result column="RETCODE" property="retcode" jdbcType="VARCHAR" />
+			<result column="RETMSG" property="retmsg" jdbcType="VARCHAR" />
+			<result column="REGIONCODE_NAME" property="regioncodeName" jdbcType="VARCHAR" />
+			<result column="REGIONCODE" property="regioncode" jdbcType="VARCHAR" />
+			<result column="CUSTABBRCODE" property="custabbrcode" jdbcType="VARCHAR" />
+			<result column="BROKERNAME" property="brokername" jdbcType="VARCHAR" />
+			<result column="BROKEROFFICETEL" property="brokertel" jdbcType="VARCHAR" />
+			<result column="BROKERFAX" property="brokerfax" jdbcType="VARCHAR" />			
+			<result column="SERIALNO" property="serialno" jdbcType="VARCHAR" />
+			<result column="ACKNO" property="ackno" jdbcType="VARCHAR" />
+			
+			<result column="NETPOINT" property="netPoint" jdbcType="VARCHAR" />
+			
+		</resultMap>
+		
+		<!-- 客户账户 修改返回结果集 -->
+		
+		<resultMap type="acctAppModifyVo" id="acctAppModifyMap">
+			<result column="APDT" property="apdt" jdbcType="VARCHAR" />
+			<result column="FUNDACCT" property="fundacct" jdbcType="VARCHAR" />
+			<result column="INVNM" property="tradeacco" jdbcType="VARCHAR" />
+			<result column="IDNO" property="idno" jdbcType="VARCHAR" />
+			<result column="IDTP" property="idtp" jdbcType="VARCHAR" />
+			<result column="IDTP_NAME" property="idtpName" jdbcType="VARCHAR" />
+			<result column="BANKNO" property="bankno" jdbcType="VARCHAR" />
+			<result column="BANKLONGNAME" property="banklongname" jdbcType="VARCHAR" />
+			<result column="INSTREPDATE" property="instreprdate" jdbcType="VARCHAR" />
+			<result column="BANKACCO" property="bankacco" jdbcType="VARCHAR" />
+ 			<result column="BANKACNM" property="bankacname" jdbcType="VARCHAR" />
+			<result column="OFFICETEL" property="officetel" jdbcType="VARCHAR" />
+			<result column="MOBILENO" property="mobileno" jdbcType="VARCHAR" />
+			<result column="HOMETEL" property="hometel" jdbcType="VARCHAR" />
+			<result column="FAXNO" property="faxno" jdbcType="VARCHAR" />
+			<result column="EMAIL" property="email" jdbcType="VARCHAR" />
+			<result column="POSTCODE" property="postcode" jdbcType="VARCHAR" />
+			<result column="DELIVERTYPE" property="delivertype" jdbcType="VARCHAR" />
+			<result column="ADDR" property="addr" jdbcType="VARCHAR" />	
+			
+			<result column="NETPOINT" property="netPoint" jdbcType="VARCHAR" />
+					
+		</resultMap>
+		
+		<!-- 当前账户  -->
+		
+		<select id="queryAcctAppTodayListPage" parameterType="sparam" resultMap="acctAppTodayMap">
+		          SELECT T.SERIALNO,
+	                     FUNDACCT,
+	                     TRADEACCO,
+	                   IBF_GET_PARAMNAME('SYSTEM','APKIND',APKIND) APKIND_NAME,
+	                     APKIND,
+	                   IBF_GET_PARAMNAME('SYSTEM','INVTP',INVTP) INVTP_NAME,
+	                     INVTP,
+	                     INVNM,
+	                   IBF_GET_PARAMNAME('SYSTEM','IDTP',IDTP) IDTP_NAME,
+	                     IDTP,
+	                     IDNO,
+	                     TELNO,
+	                     MOBILENO,
+	                     ADDR,
+	                     POSTCODE,
+	                     EMAIL,
+	                     FAXNO,
+	                     DELIVERTYPE,
+	                   IBF_GET_PARAMNAME('SYSTEM','MELONMD',MELONMD) MELONMD_NAME,
+	                     MELONMD,
+	                     WORKDATE,
+	                     APPLYST,
+	                     APDT,
+	                     APTM,
+	                     HOMETEL,
+	                     OFFICETEL,
+	                     (CASE 
+	                           WHEN REGIONCODE = '0001' THEN '网下'
+	                           WHEN REGIONCODE = '9999' THEN '网上'
+	                      END) REGIONCODE_NAME,
+	                     REGIONCODE,
+	                     NETPOINT,
+	                     CUSTTP,
+	                     INSTREPRNAME,
+	                     INSTREPRIDTP,
+	                     INSTREPRIDNO,
+	                     BROKERNAME,
+	                     BROKERIDTP,
+	                     BROKERIDNO,
+	                     BROKEROFFICETEL,
+	                     BROKERFAX,
+	                     CHECKER,
+	                     OPID,
+	                   IBF_GET_PARAMNAME('SYSTEM','CHKFLAG',CHKFLAG) CHKFLAG_NAME,
+	                     CHKFLAG,
+	                     ACCOUNTABBR,
+	                     CUSTABBRCODE,
+	                     CUSTINSTREPRCODE,
+                    	 (CONCAT(IBF_GET_PARAMNAME('DSCUSTGROUP','FIRSTGROUP',CUSTABBRCODE),'-') || (SELECT PMNM FROM PARAMETER WHERE PMST = 'DSCUSTGROUP' AND PMKY = 'SECONDGROUP'  AND PMV1 = CUSTABBRCODE AND PMCO = CUSTINSTREPRCODE)) INVNAME,
+	                     APPNO
+	                FROM V_APPFDACTODAY T
+	               WHERE 1 = 1
+			   		<if test=" null != sp.fundacct  and '' != sp.fundacct">
+				  		 AND TRIM(FUNDACCT) = #{sp.fundacct}
+				    </if>
+				    <if test=" null != sp.idno  and '' != sp.idno">
+				  		 AND IDNO = #{sp.idno}
+				    </if>
+				    <if test=" null != sp.invnm  and '' != sp.invnm">
+				  		 AND INVNM LIKE '%'||#{sp.invnm}||'%' 
+				    </if>
+				    <if test=" null != sp.appDate  and '' != sp.appDate">
+				  		 AND WORKDATE = #{sp.appDate}
+				    </if>
+				    <if test=" null != sp.apkind  and '' != sp.apkind">
+				  		 AND APKIND = #{sp.apkind}
+				    </if>
+				    <if test=" null != sp.tano  and '' != sp.tano">
+				  		 AND TANO = #{sp.tano}
+				    </if>
+				    <if test=" null != sp.netpoint  and '' != sp.netpoint">
+				  		 AND NETPOINT = #{sp.netpoint}
+				    </if>
+				    <if test=" null != sp.qway  and '' != sp.qway">
+				  		 AND REGIONCODE = #{sp.qway}
+				    </if>
+ 			  	 <!-- ORDER BY CONCAT(APDT,APTM) DESC -->
+                 ORDER BY INVNM,CONCAT(APDT,APTM),APPNO ASC		
+        </select>
+		<!-- 当前账户导出 -->
+		<select id="queryAcctAppTodayList" parameterType="sparam" resultMap="acctAppTodayMap">
+		          SELECT T.SERIALNO,
+	                     FUNDACCT,
+	                     TRADEACCO,
+	                   IBF_GET_PARAMNAME('SYSTEM','APKIND',APKIND) APKIND_NAME,
+	                     APKIND,
+	                   IBF_GET_PARAMNAME('SYSTEM','INVTP',INVTP) INVTP_NAME,
+	                     INVTP,
+	                     INVNM,
+	                   IBF_GET_PARAMNAME('SYSTEM','IDTP',IDTP) IDTP_NAME,
+	                     IDTP,
+	                     IDNO,
+	                     TELNO,
+	                     MOBILENO,
+	                     ADDR,
+	                     POSTCODE,
+	                     EMAIL,
+	                     FAXNO,
+	                     DELIVERTYPE,
+	                   IBF_GET_PARAMNAME('SYSTEM','MELONMD',MELONMD) MELONMD_NAME,
+	                     MELONMD,
+	                     WORKDATE,
+	                     APPLYST,
+	                     APDT,
+	                     APTM,
+	                     HOMETEL,
+	                     OFFICETEL,
+	                     (CASE 
+	                           WHEN REGIONCODE = '0001' THEN '网下'
+	                           WHEN REGIONCODE = '9999' THEN '网上'
+	                      END) REGIONCODE_NAME,
+	                     REGIONCODE,
+	                     NETPOINT,
+	                     CUSTTP,
+	                     INSTREPRNAME,
+	                     INSTREPRIDTP,
+	                     INSTREPRIDNO,
+	                     BROKERNAME,
+	                     BROKERIDTP,
+	                     BROKERIDNO,
+	                     BROKEROFFICETEL,
+	                     BROKERFAX,
+	                     CHECKER,
+	                     OPID,
+	                   IBF_GET_PARAMNAME('SYSTEM','CHKFLAG',CHKFLAG) CHKFLAG_NAME,
+	                     CHKFLAG,
+	                     ACCOUNTABBR,
+	                     CUSTABBRCODE,
+	                     CUSTINSTREPRCODE,
+                      	 (CONCAT(IBF_GET_PARAMNAME('DSCUSTGROUP','FIRSTGROUP',CUSTABBRCODE),'-') || (SELECT PMNM FROM PARAMETER WHERE PMST = 'DSCUSTGROUP' AND PMKY = 'SECONDGROUP'  AND PMV1 = CUSTABBRCODE AND PMCO = CUSTINSTREPRCODE)) INVNAME,
+	                     APPNO
+	                FROM V_APPFDACTODAY T
+	               WHERE 1 = 1
+			   		<if test=" null != sp.fundacct  and '' != sp.fundacct">
+				  		 AND TRIM(FUNDACCT) = #{sp.fundacct}
+				    </if>
+				    <if test=" null != sp.idno  and '' != sp.idno">
+				  		 AND IDNO = #{sp.idno}
+				    </if>
+				    <if test=" null != sp.invnm  and '' != sp.invnm">
+				  		 AND INVNM LIKE '%'||#{sp.invnm}||'%' 
+				    </if>
+				    <if test=" null != sp.appDate  and '' != sp.appDate">
+				  		 AND WORKDATE = #{sp.appDate}
+				    </if>
+				    <if test=" null != sp.apkind  and '' != sp.apkind">
+				  		 AND APKIND = #{sp.apkind}
+				    </if>
+				    <if test=" null != sp.tano  and '' != sp.tano">
+				  		 AND TANO = #{sp.tano}
+				    </if>
+				    <if test=" null != sp.netpoint  and '' != sp.netpoint">
+				  		 AND NETPOINT = #{sp.netpoint}
+				    </if>
+				    <if test=" null != sp.qway  and '' != sp.qway">
+				  		 AND REGIONCODE = #{sp.qway}
+				    </if>
+ 			   <!-- ORDER BY CONCAT(APDT,APTM) DESC -->
+ 			   ORDER BY INVNM,CONCAT(APDT,APTM),APPNO ASC
+		</select>
+		<select id="queryCurrentAccListTotal" parameterType="sparam" resultType="int">
+			SELECT COUNT(*) 
+		    		FROM V_APPFDACTODAY
+			   		WHERE 1=1
+			   		<if test=" null != sp.fundacct  and '' != sp.fundacct">
+				  		 AND TRIM(FUNDACCT) = #{sp.fundacct}
+				    </if>
+				    <if test=" null != sp.idno  and '' != sp.idno">
+				  		 AND IDNO = #{sp.idno}
+				    </if>
+				    <if test=" null != sp.invnm  and '' != sp.invnm">
+				  		 AND INVNM LIKE '%'||#{sp.invnm}||'%' 
+				    </if>
+				    <if test=" null != sp.appDate  and '' != sp.appDate">
+				  		 AND WORKDATE = #{sp.appDate}
+				    </if>
+				    <if test=" null != sp.apkind  and '' != sp.apkind">
+				  		 AND APKIND = #{sp.apkind}
+				    </if>
+				    <if test=" null != sp.tano  and '' != sp.tano">
+				  		 AND TANO = #{sp.tano}
+				    </if>
+				    <if test=" null != sp.netpoint  and '' != sp.netpoint">
+				  		 AND NETPOINT = #{sp.netpoint}
+				    </if>
+				    <if test=" null != sp.qway  and '' != sp.qway">
+				  		 AND REGIONCODE = #{sp.qway}
+				    </if>
+                    ORDER BY INVNM,CONCAT(APDT,APTM),APPNO ASC
+		</select>
+		
+		<!-- TA账户 -->
+		
+		<select id="queryAcctAckTodayListPage" parameterType="sparam" resultMap="acctAckClearMap">
+			  SELECT ACKDT,
+			         ACKNO,
+			         T.SERIALNO, 
+			         APPNO,
+			         FUNDACCT,
+			         TRADEACCO,
+			         INVNM,
+		         	 IBF_GET_PARAMNAME('SYSTEM','INVTP',INVTP) INVTP_NAME,
+			         INVTP,
+		         	 IBF_GET_PARAMNAME('SYSTEM','IDTP',IDTP) IDTP_NAME,
+	                 IDTP,
+			         IDNO,
+		         	 IBF_GET_PARAMNAME('SYSTEM','APKIND',APKIND) APKIND_NAME,
+			         APKIND,
+			         NULL AS CLEARDT,
+		         	 IBF_GET_PARAMNAME('SYSTEM','MELONMD',MELONMD) MELONMD_NAME,
+			         MELONMD,
+			         MULTIACCTFLAG,
+			         RETCODE,
+			         RETMSG,
+			         NETPOINT
+			    FROM V_T_ACKFDACBLOTTER T	
+			   		WHERE 1=1
+			   		<if test=" null != sp.fundacct  and '' != sp.fundacct">
+				  		 AND TRIM(FUNDACCT)= #{sp.fundacct}
+				    </if>
+				    <if test=" null != sp.idno  and '' != sp.idno">
+				  		 AND IDNO = #{sp.idno}
+				    </if>
+				    <if test=" null != sp.invnm  and '' != sp.invnm">
+				  		 AND INVNM LIKE '%'||#{sp.invnm}||'%' 
+				    </if>
+				    <if test=" null != sp.apkindack  and '' != sp.apkindack">
+				  		 AND APKIND = #{sp.apkindack}
+				    </if>
+				    <if test=" null != sp.tano  and '' != sp.tano">
+				  		 AND TANO = #{sp.tano}
+				    </if>
+				    <if test=" null != sp.qway  and '' != sp.qway">
+				  		 AND REGIONCODE = #{sp.qway}
+				    </if>
+				    <if test=" null != sp.netpoint  and '' != sp.netpoint">
+				  		 AND NETPOINT = #{sp.netpoint}
+				    </if>
+				    ORDER BY INVNM,ACKDT,ACKNO ASC
+		</select>
+		
+		<select id="queryAcctAckTodayListTotal" parameterType="sparam" resultType="int">
+			  SELECT COUNT(*)
+			    FROM V_T_ACKFDACBLOTTER 		
+			   		WHERE 1=1
+			   		<if test=" null != sp.fundacct  and '' != sp.fundacct">
+				  		 AND TRIM(FUNDACCT) = #{sp.fundacct}
+				    </if>
+				    <if test=" null != sp.idno  and '' != sp.idno">
+				  		 AND IDNO = #{sp.idno}
+				    </if>
+				    <if test=" null != sp.invnm  and '' != sp.invnm">
+				  		 AND INVNM LIKE '%'||#{sp.invnm}||'%' 
+				    </if>
+				    <if test=" null != sp.apkindack  and '' != sp.apkindack">
+				  		 AND APKIND = #{sp.apkindack}
+				    </if>
+				    <if test=" null != sp.tano  and '' != sp.tano">
+				  		 AND TANO = #{sp.tano}
+				    </if>
+				    <if test=" null != sp.qway  and '' != sp.qway">
+				  		 AND REGIONCODE = #{sp.qway}
+				    </if>
+				    <if test=" null != sp.netpoint  and '' != sp.netpoint">
+				  		 AND NETPOINT = #{sp.netpoint}
+				    </if>
+				    ORDER BY INVNM,ACKDT,ACKNO ASC
+		</select>
+		
+		<!-- 二级清算账户  -->
+		<select id="queryAcctAckClearListPage" parameterType="sparam" resultMap="acctAckClearMap">
+					 SELECT 
+					 	 S.ACKDT,
+				         S.ACKNO,
+				         S.RETCODE,
+				         S.RETMSG,
+				         S.SERIALNO, 
+				         S.APPNO,
+				         S.FUNDACCT,
+				         S.TRADEACCO,
+				         S.INVNM,
+			         	 IBF_GET_PARAMNAME('SYSTEM','INVTP',INVTP) INVTP_NAME,
+				         S.INVTP,
+			         	 IBF_GET_PARAMNAME('SYSTEM','IDTP',IDTP) IDTP_NAME,
+				         S.IDTP,
+				         S.IDNO,
+			         	 IBF_GET_PARAMNAME('SYSTEM','APKIND',APKIND) APKIND_NAME,
+				         S.APKIND,
+				         S.CLEARDT,
+				         S.APPLYST,
+                         S.NETPOINT,
+				         S.MELONMD,
+				         S.MULTIACCTFLAG
+					     FROM S_ACKFDACBLOTTER S,
+					         TRADEACCOINFO T
+					         WHERE 1 = 1
+				             AND S.TRADEACCO = T.TRADEACCO
+					   		<if test=" null != sp.fundacct  and '' != sp.fundacct">
+						  		 AND TRIM(S.FUNDACCT) = #{sp.fundacct}
+						    </if>
+						    <if test=" null != sp.idno  and '' != sp.idno">
+						  		 AND S.IDNO = #{sp.idno}
+						    </if>
+						    <if test=" null != sp.invnm  and '' != sp.invnm">
+						  		 AND S.INVNM LIKE '%'||#{sp.invnm}||'%' 
+						    </if>
+						    <if test=" null != sp.apkindack  and '' != sp.apkindack">
+						  		 AND S.APKIND = #{sp.apkindack}
+						    </if>
+						    <if test=" null != sp.tano  and '' != sp.tano">
+						  		 AND S.TANO = #{sp.tano}
+						    </if>
+						    <if test=" null != sp.qway  and '' != sp.qway">
+						  		 AND T.REGIONCODE = #{sp.qway}
+						    </if>
+						    <if test=" null != sp.netpoint  and '' != sp.netpoint">
+						  		 AND S.NETPOINT = #{sp.netpoint}
+						    </if>
+						     ORDER BY S.INVNM,S.ACKDT,S.ACKNO ASC
+		</select>
+		
+		<select id="queryAcctAckClearListTotal" parameterType="sparam" resultType="int">
+				 SELECT COUNT(*)
+				    FROM S_ACKFDACBLOTTER S,
+				         TRADEACCOINFO T
+				         WHERE 1 = 1
+			             AND S.TRADEACCO = T.TRADEACCO
+		   		<if test=" null != sp.fundacct  and '' != sp.fundacct">
+			  		 AND TRIM(S.FUNDACCT) = #{sp.fundacct}
+			    </if>
+			    <if test=" null != sp.idno  and '' != sp.idno">
+			  		 AND S.IDNO = #{sp.idno}
+			    </if>
+			    <if test=" null != sp.invnm  and '' != sp.invnm">
+			  		 AND S.INVNM LIKE '%'||#{sp.invnm}||'%' 
+			    </if>
+			    <if test=" null != sp.apkindack  and '' != sp.apkindack">
+			  		 AND S.APKIND = #{sp.apkindack}
+			    </if>
+			    <if test=" null != sp.tano  and '' != sp.tano">
+			  		 AND S.TANO = #{sp.tano}
+			    </if>
+			    <if test=" null != sp.qway  and '' != sp.qway">
+			  		 AND T.REGIONCODE = #{sp.qway}
+			    </if>
+			    <if test=" null != sp.netpoint  and '' != sp.netpoint">
+			  		 AND S.NETPOINT = #{sp.netpoint}
+			    </if>
+			     ORDER BY S.INVNM,S.ACKDT,S.ACKNO ASC
+		</select>
+		
+		
+		<!--历史账户  -->
+		
+		<select id="queryAcctAppHisListPage" parameterType="sparam" resultMap="acctAppHisMap">
+				SELECT DISTINCT 
+					  S.SERIALNO,
+                      S.APPNO,
+                      S.FUNDACCT,
+                      S.NETPOINT,
+                      S.TRADEACCO,
+                      IBF_GET_PARAMNAME('SYSTEM','APKIND',APKIND) APKIND_NAME,
+                      S.APKIND,
+                      S.CUSTTP,
+                      IBF_GET_PARAMNAME('SYSTEM','INVTP',INVTP) INVTP_NAME,
+                      S.INVTP,
+                      S.INVNM,
+                      S.ACCOUNTABBR,
+                      IBF_GET_PARAMNAME('SYSTEM','IDTP',IDTP) IDTP_NAME,
+                      S.IDTP,
+                      S.IDNO,
+                      S.INSTREPRNAME,
+                      S.INSTREPRIDTP,
+                      S.INSTREPRIDNO,
+                      S.TELNO,
+                      S.MOBILENO,
+                      S.ADDR,
+                      S.POSTCODE,
+                      S.EMAIL,
+                      S.FAXNO,
+                      S.BROKERNAME,
+                      S.BROKERIDTP,
+                      S.BROKERIDNO,
+                      S.DELIVERTYPE,
+                      IBF_GET_PARAMNAME('SYSTEM','MELONMD',MELONMD) MELONMD_NAME,
+                      S.MELONMD,
+                      S.OPID,
+                      S.APDT,
+                      (CASE 
+	                           WHEN S.REGIONCODE = '0001' THEN '网下'
+	                           WHEN S.REGIONCODE = '9999' THEN '网上'
+                      END) REGIONCODE_NAME,
+                      S.REGIONCODE,
+                      S.HOMETEL,
+                      S.OFFICETEL,
+                      S.BROKEROFFICETEL,
+                      S.BROKERFAX,
+                      S.CHECKER,
+                      IBF_GET_PARAMNAME('DS','CHKFLAG',CHKFLAG) CHKFLAG_NAME,
+                      S.CHKFLAG,
+                   	 (CONCAT(IBF_GET_PARAMNAME('DSCUSTGROUP','FIRSTGROUP',DS.CUSTABBRCODE),'-') || (SELECT PMNM FROM PARAMETER WHERE PMST = 'DSCUSTGROUP' AND PMKY = 'SECONDGROUP'  AND PMV1 = DS.CUSTABBRCODE AND PMCO = DS.CUSTINSTREPRCODE)) INVNAME,
+                      DS.CUSTABBRCODE,
+                      DS.CUSTINSTREPRCODE
+			    FROM H_APPFDACBLOTTER S,
+			         DS_CUSTCLASSINFO DS
+			    WHERE 1 = 1 
+			   		 AND S.CUSTNO = DS.CUSTNO(+)
+			<if test=" null != sp.startDate  and '' != sp.startDate">
+		  		 AND S.APDT <![CDATA[>=]]> #{sp.startDate}
+		    </if>
+			<if test=" null != sp.endDate  and '' != sp.endDate">
+		  		 AND S.APDT <![CDATA[<=]]> #{sp.endDate}
+		    </if>
+	   		<if test=" null != sp.fundacct  and '' != sp.fundacct">
+		  		 AND TRIM(S.FUNDACCT) = #{sp.fundacct}
+		    </if>
+		    <if test=" null != sp.idno  and '' != sp.idno">
+		  		 AND S.IDNO = #{sp.idno}
+		    </if>
+		    <if test=" null != sp.invnm  and '' != sp.invnm">
+		  		 AND S.INVNM LIKE '%'||#{sp.invnm}||'%' 
+		    </if>
+		    <if test=" null != sp.apkind  and '' != sp.apkind">
+		  		 AND S.APKIND = #{sp.apkind}
+		    </if>
+		    <if test=" null != sp.tano  and '' != sp.tano">
+		  		 AND S.TANO = #{sp.tano}
+		    </if>
+		    <if test=" null != sp.qway  and '' != sp.qway">
+		  		 AND S.REGIONCODE = #{sp.qway}
+		    </if>
+		    <if test=" null != sp.netpoint  and '' != sp.netpoint">
+		  		 AND S.NETPOINT = #{sp.netpoint}
+		    </if>
+		       ORDER BY S.INVNM,S.APDT,S.APPNO ASC
+		</select>
+		
+		
+		<!--历史账户  导出方法-->
+		
+		<select id="queryAcctAppHisList" parameterType="sparam" resultMap="acctAppHisMap">
+				SELECT DISTINCT 
+					  S.SERIALNO,
+                      S.APPNO,
+                      S.FUNDACCT,
+                      S.NETPOINT,
+                      S.TRADEACCO,
+                      IBF_GET_PARAMNAME('SYSTEM','APKIND',APKIND) APKIND_NAME,
+                      S.APKIND,
+                      S.CUSTTP,
+                      IBF_GET_PARAMNAME('SYSTEM','INVTP',INVTP) INVTP_NAME,
+                      S.INVTP,
+                      S.INVNM,
+                      S.ACCOUNTABBR,
+                      IBF_GET_PARAMNAME('SYSTEM','IDTP',IDTP) IDTP_NAME,
+                      S.IDTP,
+                      S.IDNO,
+                      S.INSTREPRNAME,
+                      S.INSTREPRIDTP,
+                      S.INSTREPRIDNO,
+                      S.TELNO,
+                      S.MOBILENO,
+                      S.ADDR,
+                      S.POSTCODE,
+                      S.EMAIL,
+                      S.FAXNO,
+                      S.BROKERNAME,
+                      S.BROKERIDTP,
+                      S.BROKERIDNO,
+                      S.DELIVERTYPE,
+                      IBF_GET_PARAMNAME('SYSTEM','MELONMD',MELONMD) MELONMD_NAME,
+                      S.MELONMD,
+                      S.OPID,
+                      S.APDT,
+                      (CASE 
+	                           WHEN S.REGIONCODE = '0001' THEN '网下'
+	                           WHEN S.REGIONCODE = '9999' THEN '网上'
+                      END) REGIONCODE_NAME,
+                      S.REGIONCODE,
+                      S.HOMETEL,
+                      S.OFFICETEL,
+                      S.BROKEROFFICETEL,
+                      S.BROKERFAX,
+                      S.CHECKER,
+                      IBF_GET_PARAMNAME('DS','CHKFLAG',CHKFLAG) CHKFLAG_NAME,
+                      S.CHKFLAG,
+                   	 (CONCAT(IBF_GET_PARAMNAME('DSCUSTGROUP','FIRSTGROUP',DS.CUSTABBRCODE),'-') || (SELECT PMNM FROM PARAMETER WHERE PMST = 'DSCUSTGROUP' AND PMKY = 'SECONDGROUP'  AND PMV1 = DS.CUSTABBRCODE AND PMCO = DS.CUSTINSTREPRCODE)) INVNAME,
+                      DS.CUSTABBRCODE,
+                      DS.CUSTINSTREPRCODE
+			    FROM H_APPFDACBLOTTER S,
+			         DS_CUSTCLASSINFO DS
+			    WHERE 1 = 1 
+			   		 AND S.CUSTNO = DS.CUSTNO(+)
+			<if test=" null != sp.startDate  and '' != sp.startDate">
+		  		 AND S.APDT <![CDATA[>=]]> #{sp.startDate}
+		    </if>
+			<if test=" null != sp.endDate  and '' != sp.endDate">
+		  		 AND S.APDT <![CDATA[<=]]> #{sp.endDate}
+		    </if>
+    		 
+	   		<if test=" null != sp.fundacct  and '' != sp.fundacct">
+		  		 AND TRIM(S.FUNDACCT) = #{sp.fundacct}
+		    </if>
+		    <if test=" null != sp.idno  and '' != sp.idno">
+		  		 AND S.IDNO = #{sp.idno}
+		    </if>
+		    <if test=" null != sp.invnm  and '' != sp.invnm">
+		  		 AND S.INVNM LIKE '%'||#{sp.invnm}||'%' 
+		    </if>
+		    <if test=" null != sp.apkind  and '' != sp.apkind">
+		  		 AND S.APKIND = #{sp.apkind}
+		    </if>
+		    <if test=" null != sp.tano  and '' != sp.tano">
+		  		 AND S.TANO = #{sp.tano}
+		    </if>
+		    <if test=" null != sp.qway  and '' != sp.qway">
+		  		 AND S.REGIONCODE = #{sp.qway}
+		    </if>
+		    <if test=" null != sp.netpoint  and '' != sp.netpoint">
+		  		 AND S.NETPOINT = #{sp.netpoint}
+		    </if>
+		       ORDER BY S.INVNM,S.APDT,S.APPNO ASC
+		</select>
+		
+		<select id="queryAcctAppHisListTotal" parameterType="sparam" resultType="int">
+				 SELECT COUNT(*)
+				    FROM H_APPFDACBLOTTER S,
+				         DS_CUSTCLASSINFO DS
+				    WHERE 1 = 1
+				   		 AND S.CUSTNO = DS.CUSTNO(+)
+			   		 <if test=" null != sp.startDate  and '' != sp.startDate">
+				  		 AND S.APDT <![CDATA[>=]]> #{sp.startDate}
+				    </if>
+					<if test=" null != sp.endDate  and '' != sp.endDate">
+				  		 AND S.APDT <![CDATA[<=]]> #{sp.endDate}
+				    </if>
+			   		<if test=" null != sp.fundacct  and '' != sp.fundacct">
+				  		 AND TRIM(S.FUNDACCT) = #{sp.fundacct}
+				    </if>
+				    <if test=" null != sp.idno  and '' != sp.idno">
+				  		 AND S.IDNO = #{sp.idno}
+				    </if>
+				    <if test=" null != sp.invnm  and '' != sp.invnm">
+				  		 AND S.INVNM LIKE '%'||#{sp.invnm}||'%' 
+				    </if>
+				    <if test=" null != sp.apkind  and '' != sp.apkind">
+				  		 AND S.APKIND = #{sp.apkind}
+				    </if>
+				    <if test=" null != sp.tano  and '' != sp.tano">
+				  		 AND S.TANO = #{sp.tano}
+				    </if>
+				    <if test=" null != sp.qway  and '' != sp.qway">
+				  		 AND S.REGIONCODE = #{sp.qway}
+				    </if>
+				    <if test=" null != sp.netpoint  and '' != sp.netpoint">
+				  		 AND S.NETPOINT = #{sp.netpoint}
+				    </if>
+				      ORDER BY S.INVNM,S.APDT,S.APPNO ASC
+		</select>
+		
+		<!-- 历史二级清算账户 导出方法-->
+		
+		<select id="queryAcctAckClearHisList" parameterType="sparam" resultMap="acctAckClearHisMap">
+				 SELECT  H.ACKDT,
+			         H.ACKNO,
+			         H.RETCODE,
+			         H.RETMSG,
+			         H.SERIALNO,
+			         H.NETPOINT,
+			         H.APPNO,
+			         H.FUNDACCT,
+			         H.TRADEACCO,
+			         H.INVNM,
+			         IBF_GET_PARAMNAME('SYSTEM','INVTP',INVTP) INVTP_NAME,
+			         H.INVTP,
+			         IBF_GET_PARAMNAME('SYSTEM','IDTP',IDTP) IDTP_NAME,
+		             H.IDTP,
+			         H.IDNO,
+			         IBF_GET_PARAMNAME('SYSTEM','APKIND',APKIND) APKIND_NAME,
+			         H.APKIND,
+			         H.CLEARDT,
+			         H.APPLYST,
+			         IBF_GET_PARAMNAME('SYSTEM','MELONMD',H.MELONMD) MELONMD_NAME,
+			         H.MELONMD,
+			         H.MULTIACCTFLAG,
+			         (CASE 
+                          WHEN T.REGIONCODE = '0001' THEN '网下'
+                          WHEN T.REGIONCODE = '9999' THEN '网上'
+                      END) REGIONCODE_NAME,
+			         T.REGIONCODE,
+			         DS.BROKERNAME,
+			         DS.BROKEROFFICETEL,
+			         DS.BROKERFAX,
+                   	 (CONCAT(IBF_GET_PARAMNAME('DSCUSTGROUP','FIRSTGROUP',DC.CUSTABBRCODE),'-') || (SELECT PMNM FROM PARAMETER WHERE PMST = 'DSCUSTGROUP' AND PMKY = 'SECONDGROUP'  AND PMV1 = DC.CUSTABBRCODE AND PMCO = DC.CUSTINSTREPRCODE)) INVNAME,
+			         DC.CUSTABBRCODE,
+			         DC.CUSTINSTREPRCODE
+			    FROM HS_ACKFDACBLOTTER H,
+			         TRADEACCOINFO T,
+			         (
+			           SELECT *
+			             FROM DS_CUSTINFOADD
+			            WHERE MAINBROKERFLAG ='1'
+			              AND INFOFLAG ='B'
+			         ) DS,
+			         DS_CUSTCLASSINFO DC
+			         WHERE 1 = 1 
+			         AND H.CUSTNO = DS.CUSTNO(+)
+			         AND H.CUSTNO = DC.CUSTNO(+)    
+			         AND H.TRADEACCO = T.TRADEACCO
+			         
+			<if test=" null != sp.startDate  and '' != sp.startDate">
+		  		 AND H.ACKDT <![CDATA[>=]]> #{sp.startDate}
+		    </if>
+			<if test=" null != sp.endDate  and '' != sp.endDate">
+		  		 AND H.ACKDT <![CDATA[<=]]> #{sp.endDate}
+		    </if>
+	   		<if test=" null != sp.fundacct  and '' != sp.fundacct">
+		  		 AND TRIM(H.FUNDACCT) = #{sp.fundacct}
+		    </if>
+		    <if test=" null != sp.netpoint  and '' != sp.netpoint">
+		  		 AND H.NETPOINT = #{sp.netpoint}
+		    </if>
+		    <if test=" null != sp.idno  and '' != sp.idno">
+		  		 AND H.IDNO = #{sp.idno}
+		    </if>
+		    <if test=" null != sp.invnm  and '' != sp.invnm">
+		  		 AND H.INVNM LIKE '%'||#{sp.invnm}||'%' 
+		    </if>
+		    <if test=" null != sp.apkindack  and '' != sp.apkindack and 'null' != sp.apkindack">
+		  		 AND H.APKIND = #{sp.apkindack}
+		    </if>
+		    <if test=" null != sp.tano  and '' != sp.tano">
+		  		 AND H.TANO = #{sp.tano}
+		    </if>
+		    <if test=" null != sp.qway  and '' != sp.qway">
+		  		 AND T.REGIONCODE = #{sp.qway}
+		    </if>
+				ORDER BY H.INVNM,H.ACKDT,H.ACKNO ASC					    
+		</select>
+		<!-- 历史二级清算账户  -->
+		
+		<select id="queryAcctAckClearHisListPage" parameterType="sparam" resultMap="acctAckClearHisMap">
+				 SELECT  H.ACKDT,
+			         H.ACKNO,
+			         H.RETCODE,
+			         H.NETPOINT,
+			         H.RETMSG,
+			         H.SERIALNO,
+			         H.APPNO,
+			         H.FUNDACCT,
+			         H.TRADEACCO,
+			         H.INVNM,
+			         IBF_GET_PARAMNAME('SYSTEM','INVTP',INVTP) INVTP_NAME,
+			         H.INVTP,
+			         IBF_GET_PARAMNAME('SYSTEM','IDTP',IDTP) IDTP_NAME,
+		             H.IDTP,
+			         H.IDNO,
+			         IBF_GET_PARAMNAME('SYSTEM','APKIND',APKIND) APKIND_NAME,
+			         H.APKIND,
+			         H.CLEARDT,
+			         H.APPLYST,
+			         IBF_GET_PARAMNAME('SYSTEM','MELONMD',H.MELONMD) MELONMD_NAME,
+			         H.MELONMD,
+			         H.MULTIACCTFLAG,
+			         (CASE 
+                          WHEN T.REGIONCODE = '0001' THEN '网下'
+                          WHEN T.REGIONCODE = '9999' THEN '网上'
+                      END) REGIONCODE_NAME,
+			         T.REGIONCODE,
+			         DS.BROKERNAME,
+			         DS.BROKEROFFICETEL,
+			         DS.BROKERFAX,
+			         DC.CUSTABBRCODE,
+			         DC.CUSTINSTREPRCODE,
+                   	 (CONCAT(IBF_GET_PARAMNAME('DSCUSTGROUP','FIRSTGROUP',DC.CUSTABBRCODE),'-') || (SELECT PMNM FROM PARAMETER WHERE PMST = 'DSCUSTGROUP' AND PMKY = 'SECONDGROUP'  AND PMV1 = DC.CUSTABBRCODE AND PMCO = DC.CUSTINSTREPRCODE)) INVNAME
+			    FROM HS_ACKFDACBLOTTER H,
+			         TRADEACCOINFO T,
+			         (
+			           SELECT *
+			             FROM DS_CUSTINFOADD
+			            WHERE MAINBROKERFLAG ='1'
+			              AND INFOFLAG ='B'
+			         ) DS,
+			         DS_CUSTCLASSINFO DC
+			         WHERE 1 = 1 
+			         AND H.CUSTNO = DS.CUSTNO(+)
+			         AND H.CUSTNO = DC.CUSTNO(+)    
+			         AND H.TRADEACCO = T.TRADEACCO
+			         
+			<if test=" null != sp.startDate  and '' != sp.startDate">
+		  		 AND H.ACKDT <![CDATA[>=]]> #{sp.startDate}
+		    </if>
+			<if test=" null != sp.endDate  and '' != sp.endDate">
+		  		 AND H.ACKDT <![CDATA[<=]]> #{sp.endDate}
+		    </if>
+		    <if test=" null != sp.netpoint  and '' != sp.netpoint">
+		  		 AND H.NETPOINT = #{sp.netpoint}
+		    </if>
+	   		<if test=" null != sp.fundacct  and '' != sp.fundacct">
+		  		 AND TRIM(H.FUNDACCT) = #{sp.fundacct}
+		    </if>
+		    <if test=" null != sp.idno  and '' != sp.idno">
+		  		 AND H.IDNO = #{sp.idno}
+		    </if>
+		    <if test=" null != sp.invnm  and '' != sp.invnm">
+		  		 AND H.INVNM LIKE '%'||#{sp.invnm}||'%' 
+		    </if>
+		    <if test=" null != sp.apkindack  and '' != sp.apkindack">
+		  		 AND H.APKIND = #{sp.apkindack}
+		    </if>
+		    <if test=" null != sp.tano  and '' != sp.tano">
+		  		 AND H.TANO = #{sp.tano}
+		    </if>
+		    <if test=" null != sp.qway  and '' != sp.qway">
+		  		 AND T.REGIONCODE = #{sp.qway}
+		    </if>
+				ORDER BY H.INVNM,H.ACKDT,H.ACKNO ASC					    
+		</select>
+		
+		<select id="queryAcctAckClearHisListTotal" parameterType="sparam" resultType="int">
+				  SELECT  COUNT(*)
+			    	 FROM HS_ACKFDACBLOTTER H,
+			         TRADEACCOINFO T,
+			         (
+			           SELECT *
+			             FROM DS_CUSTINFOADD
+			            WHERE MAINBROKERFLAG ='1'
+			              AND INFOFLAG ='B'
+			         ) DS,
+			         DS_CUSTCLASSINFO DC
+			         WHERE 1 = 1 
+			         AND H.CUSTNO = DS.CUSTNO(+)
+			         AND H.CUSTNO = DC.CUSTNO(+)    
+			         AND H.TRADEACCO = T.TRADEACCO
+			<if test=" null != sp.startDate  and '' != sp.startDate">
+		  		 AND H.ACKDT <![CDATA[>=]]> #{sp.startDate}
+		    </if>
+			<if test=" null != sp.endDate  and '' != sp.endDate">
+		  		 AND H.ACKDT <![CDATA[<=]]> #{sp.endDate}
+		    </if>
+	   		<if test=" null != sp.fundacct  and '' != sp.fundacct">
+		  		 AND TRIM(H.FUNDACCT) = #{sp.fundacct}
+		    </if>
+		    <if test=" null != sp.netpoint  and '' != sp.netpoint">
+		  		 AND H.NETPOINT = #{sp.netpoint}
+		    </if>
+		    <if test=" null != sp.idno  and '' != sp.idno">
+		  		 AND H.IDNO = #{sp.idno}
+		    </if>
+		    <if test=" null != sp.invnm  and '' != sp.invnm">
+		  		 AND H.INVNM LIKE '%'||#{sp.invnm}||'%' 
+		    </if>
+		    <if test=" null != sp.apkindack  and '' != sp.apkindack">
+		  		 AND H.APKIND = #{sp.apkindack}
+		    </if>
+		    <if test=" null != sp.tano  and '' != sp.tano">
+		  		 AND H.TANO = #{sp.tano}
+		    </if>
+		    <if test=" null != sp.qway  and '' != sp.qway">
+		  		 AND T.REGIONCODE = #{sp.qway}
+		    </if>
+		    ORDER BY H.INVNM,H.ACKDT,H.ACKNO ASC
+		</select>
+		<!-- 客户账户修改流水 -->
+		<select id="queryAcctModifyListPage" parameterType="sparam" resultMap="acctAppModifyMap">
+				 SELECT DISTINCT
+				 	 H.SERIALNO
+			         APDT,
+			         FUNDACCT,
+			         INVNM,
+			         NETPOINT,
+			         IBF_GET_PARAMNAME('SYSTEM','IDTP',IDTP) IDTP_NAME,
+			         IDTP,
+			         IDNO,
+			         BANKNO,
+			         BANKLONGNAME,
+			         BANKACNM,
+			         BANKACCO,
+			         MOBILENO,
+			         ADDR,
+			         POSTCODE,
+			         EMAIL,
+			         FAXNO,
+			         HOMETEL,
+			         OFFICETEL,
+			         DELIVERTYPE,
+			         BROKERNAME,
+			         BROKERIDTP,
+			         BROKERIDNO,
+			         BROKEROFFICETEL,
+			         BROKERFAX,
+			         BROKERVALIDDATE,
+			         BROKERMOBILE,
+			         BROKEREMAIL,
+			         BROKERNATION,
+			         INSTREPRNAME,
+			         INSTREPRIDTP,
+			         INSTREPRIDNO,
+			         INSTREPRNATION,
+			         INSTREPDATE,
+			         PRINCIPALNAME,
+			         PRINCIPALNATION,
+			         PRINCIPALTYPE,
+			         PRINCIPALNO,
+			         PRINCIPALVALIDATE,
+			         TRADEACCO,
+			         APKIND,
+			         CUSTTP,
+			         INVTP,
+			         OPID,
+			         REGIONCODE,
+			         APPNO
+			    FROM H_APPFDACBLOTTER H
+			    WHERE 1 = 1 
+			     AND REGIONCODE = '0001'   
+			     AND (APKIND = '003' OR APKIND = '0B1')
+			     <if test=" null != sp.startDate  and '' != sp.startDate">
+		  		 	 AND APDT <![CDATA[>=]]> #{sp.startDate}
+			    </if>
+				<if test=" null != sp.endDate  and '' != sp.endDate">
+			  		 AND APDT <![CDATA[<=]]> #{sp.endDate}
+			    </if>
+				<if test=" null != sp.netpoint  and '' != sp.netpoint">
+			  		 AND NETPOINT = #{sp.netpoint}
+			    </if>
+			ORDER BY INVNM,APDT,APPNO ASC		
+		</select>
+		
+		<select id="queryAcctModifyListTotal" parameterType="sparam" resultType="int">
+			  SELECT COUNT(*)
+			    FROM H_APPFDACBLOTTER
+			    WHERE 1 = 1 
+			     AND REGIONCODE = '0001'   
+			     AND (APKIND = '003' OR APKIND = '0B1')
+   			     <if test=" null != sp.startDate  and '' != sp.startDate">
+		  		 	 AND APDT <![CDATA[>=]]> #{sp.startDate}
+			    </if>
+				<if test=" null != sp.endDate  and '' != sp.endDate">
+			  		 AND APDT <![CDATA[<=]]> #{sp.endDate}
+			    </if>
+			    <if test=" null != sp.netpoint  and '' != sp.netpoint">
+			  		 AND NETPOINT = #{sp.netpoint}
+			    </if>
+			    ORDER BY INVNM,APDT,APPNO ASC
+		</select>
+		
+</mapper>

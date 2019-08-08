@@ -1,0 +1,17 @@
+/*初始化样式*/
+*{margin:0;padding:0;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-appearance:none;outline:none;word-break:break-all;box-sizing:border-box;-webkit-box-sizing:border-box;}
+*:not(input,textarea) {-webkit-touch-callout: none;-webkit-user-select: none;}
+html,body{color:#333; margin:0 auto;font-family:Arial,"Microsoft YaHei"; font-size: 50px;background: #fff; width: 100%;height: 100%;}
+input{-webkit-user-select:initial;font-family:Arial,"Microsoft YaHei";border:none;}
+i{font-style: normal}
+a{text-decoration:none;}
+a:link{text-decoration:none;}
+a:visited{text-decoration:none;}
+a:hover{text-decoration:none;}
+a:active{text-decoration:none;}
+em{font-style: normal}
+ul,ol,li{list-style:none;}
+h1,h2,h3,h4,h5,h6{ font-weight: normal; }
+img{border:0;}
+.clearFloat:after,.clearFloat:before{content:"";display:table;}
+.clearFloat:after{clear:both;}
